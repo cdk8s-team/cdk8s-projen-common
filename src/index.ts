@@ -1,5 +1,4 @@
-import { Component, Project } from 'projen';
-import { UpgradeDependenciesSchedule } from 'projen/lib/javascript';
+import { Component, Project, javascript } from 'projen';
 
 // todo: derive this dynamically
 export const CDK8S_DEPENDENCIES_MAP = {
@@ -51,6 +50,10 @@ export function topologicalSort(dependencies: Record<string, string[]>): Record<
   return assignments;
 }
 
+export interface Cdk8sCommonPropsOptions {
+  readonly packageName: string;
+}
+
 export class Cdk8sCommon extends Component {
   /**
    * Due to many cdk8s libraries depending on each other, errors often occur
@@ -61,15 +64,25 @@ export class Cdk8sCommon extends Component {
    * To mitigate this, we schedule upgrades so that if a project depends on any
    * other upgrades, it will be assigned a different upgrade schedule.
    */
-  public static upgradeScheduleFor(packageName: string): UpgradeDependenciesSchedule {
+  public static upgradeScheduleFor(packageName: string): javascript.UpgradeDependenciesSchedule {
     const ordering = topologicalSort(CDK8S_DEPENDENCIES_MAP);
 
     if (packageName in ordering) {
       const assignedHour = ordering[packageName];
-      return UpgradeDependenciesSchedule.expressions([`0 ${assignedHour} * * *`]);
+      return javascript.UpgradeDependenciesSchedule.expressions([`0 ${assignedHour} * * *`]);
     } else {
-      return UpgradeDependenciesSchedule.expressions(['0 0 * * *']);
+      return javascript.UpgradeDependenciesSchedule.expressions(['0 0 * * *']);
     }
+  }
+
+  public static get props(): any {
+    return {
+      autoApproveOptions: {
+        allowedUsernames: ['cdk8s-automation'],
+        secret: 'GITHUB_TOKEN',
+      },
+      autoApproveUpgrades: true,
+    };
   }
 
   constructor(project: Project) {

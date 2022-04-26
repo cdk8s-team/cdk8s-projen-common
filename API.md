@@ -1,6 +1,35 @@
 # API Reference <a name="API Reference" id="api-reference"></a>
 
 
+## Structs <a name="Structs" id="Structs"></a>
+
+### Cdk8sCommonPropsOptions <a name="Cdk8sCommonPropsOptions" id="@cdk8s/projen-common.Cdk8sCommonPropsOptions"></a>
+
+#### Initializer <a name="Initializer" id="@cdk8s/projen-common.Cdk8sCommonPropsOptions.Initializer"></a>
+
+```typescript
+import { Cdk8sCommonPropsOptions } from '@cdk8s/projen-common'
+
+const cdk8sCommonPropsOptions: Cdk8sCommonPropsOptions = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdk8s/projen-common.Cdk8sCommonPropsOptions.property.packageName">packageName</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `packageName`<sup>Required</sup> <a name="packageName" id="@cdk8s/projen-common.Cdk8sCommonPropsOptions.property.packageName"></a>
+
+```typescript
+public readonly packageName: string;
+```
+
+- *Type:* string
+
+---
 
 ## Classes <a name="Classes" id="Classes"></a>
 
@@ -94,6 +123,7 @@ other upgrades, it will be assigned a different upgrade schedule.
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@cdk8s/projen-common.Cdk8sCommon.property.project">project</a></code> | <code>projen.Project</code> | *No description.* |
+| <code><a href="#@cdk8s/projen-common.Cdk8sCommon.property.props">props</a></code> | <code>any</code> | *No description.* |
 
 ---
 
@@ -104,6 +134,16 @@ public readonly project: Project;
 ```
 
 - *Type:* projen.Project
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@cdk8s/projen-common.Cdk8sCommon.property.props"></a>
+
+```typescript
+public readonly props: any;
+```
+
+- *Type:* any
 
 ---
 

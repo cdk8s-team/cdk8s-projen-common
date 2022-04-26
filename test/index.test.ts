@@ -1,3 +1,4 @@
+import { javascript, Testing } from 'projen';
 import { Cdk8sCommon, CDK8S_DEPENDENCIES_MAP, topologicalSort } from '../src';
 
 test('topological sort snapshot', () => {
@@ -22,4 +23,13 @@ Object {
 test('it returns a valid upgrade schedule', () => {
   const schedule = Cdk8sCommon.upgradeScheduleFor('cdk8s-plus-22');
   expect(schedule.cron[0]).toMatch(/0 \d \* \* \*/);
+});
+
+test('can provide props for a project', () => {
+  const project = new javascript.NodeProject({
+    ...Cdk8sCommon.props,
+    name: 'test-project',
+    defaultReleaseBranch: 'main',
+  });
+  expect(() => Testing.synth(project)).not.toThrow();
 });
