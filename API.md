@@ -66,16 +66,16 @@ Synthesizes files to the project output directory.
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#@cdk8s/projen-common.Cdk8sCommon.calculateUpgradeSchedule">calculateUpgradeSchedule</a></code> | Due to many cdk8s libraries depending on each other, errors often occur during scheduled dependency upgrade workflows because new package versions may become available in the middle of a workflow, and packages may get published to different package managers at different times. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sCommon.upgradeScheduleFor">upgradeScheduleFor</a></code> | Due to many cdk8s libraries depending on each other, errors often occur during scheduled dependency upgrade workflows because new package versions may become available in the middle of a workflow, and packages may get published to different package managers at different times. |
 
 ---
 
-##### `calculateUpgradeSchedule` <a name="calculateUpgradeSchedule" id="@cdk8s/projen-common.Cdk8sCommon.calculateUpgradeSchedule"></a>
+##### `upgradeScheduleFor` <a name="upgradeScheduleFor" id="@cdk8s/projen-common.Cdk8sCommon.upgradeScheduleFor"></a>
 
 ```typescript
 import { Cdk8sCommon } from '@cdk8s/projen-common'
 
-Cdk8sCommon.calculateUpgradeSchedule(packageName: string)
+Cdk8sCommon.upgradeScheduleFor(packageName: string)
 ```
 
 Due to many cdk8s libraries depending on each other, errors often occur during scheduled dependency upgrade workflows because new package versions may become available in the middle of a workflow, and packages may get published to different package managers at different times.
@@ -83,7 +83,7 @@ Due to many cdk8s libraries depending on each other, errors often occur during s
 To mitigate this, we schedule upgrades so that if a project depends on any
 other upgrades, it will be assigned a different upgrade schedule.
 
-###### `packageName`<sup>Required</sup> <a name="packageName" id="@cdk8s/projen-common.Cdk8sCommon.calculateUpgradeSchedule.parameter.packageName"></a>
+###### `packageName`<sup>Required</sup> <a name="packageName" id="@cdk8s/projen-common.Cdk8sCommon.upgradeScheduleFor.parameter.packageName"></a>
 
 - *Type:* string
 
