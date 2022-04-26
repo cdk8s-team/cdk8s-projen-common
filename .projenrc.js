@@ -13,6 +13,6 @@ const project = new cdk.JsiiProject({
   releaseToNpm: true,
 });
 
-project.package.addField("publishConfig", { "access": "public" });
+project.package.addField('publishConfig', { access: 'public' });
 
 project.synth();
