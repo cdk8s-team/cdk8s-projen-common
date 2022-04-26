@@ -1,5 +1,6 @@
 {
-  "name": "cdk8s-projen-common",
+  "name": "@cdk8s/projen-common",
+  "description": "Common projen configuration shared between cdk8s org projects.",
   "repository": {
     "type": "git",
     "url": "https://github.com/rybickic/cdk8s-projen-common.git"
@@ -43,7 +44,7 @@
     "eslint-import-resolver-node": "^0.3.6",
     "eslint-import-resolver-typescript": "^2.7.1",
     "eslint-plugin-import": "^2.26.0",
-    "jest": "^28.0.0",
+    "jest": "^27.5.1",
     "jest-junit": "^13",
     "jsii": "^1.57.0",
     "jsii-diff": "^1.57.0",
@@ -55,6 +56,9 @@
     "standard-version": "^9",
     "ts-jest": "^27.1.4",
     "typescript": "^4.6.3"
+  },
+  "peerDependencies": {
+    "projen": "^0.54.46"
   },
   "main": "lib/index.js",
   "license": "Apache-2.0",
