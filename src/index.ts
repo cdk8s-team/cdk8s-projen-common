@@ -2,17 +2,18 @@ import { Component, Project, javascript } from 'projen';
 
 // todo: derive this dynamically
 export const CDK8S_DEPENDENCIES_MAP = {
-  'cdk8s': [],
-  'cdk8s-cli': ['cdk8s'], // ignore cdk8s-plus-22 to prevent cycle
-  'cdk8s-plus-17': ['cdk8s', 'cdk8s-cli'],
-  'cdk8s-plus-20': ['cdk8s', 'cdk8s-cli'],
-  'cdk8s-plus-21': ['cdk8s', 'cdk8s-cli'],
-  'cdk8s-plus-22': ['cdk8s', 'cdk8s-cli'],
-  'cdk8s-grafana': ['cdk8s'],
-  'cdk8s-image': ['cdk8s'],
-  'cdk8s-kube-prometheus': ['cdk8s', 'cdk8s-cli', 'cdk8s-plus-22'],
-  'cdk8s-operator': ['cdk8s'],
-  'cdk8s-redis': ['cdk8s'],
+  '@cdk8s/projen-common': [],
+  'cdk8s': ['@cdk8s/projen-common'],
+  'cdk8s-cli': ['@cdk8s/projen-common', 'cdk8s'], // ignore cdk8s-plus-22 to prevent cycle
+  'cdk8s-plus-17': ['@cdk8s/projen-common', 'cdk8s', 'cdk8s-cli'],
+  'cdk8s-plus-20': ['@cdk8s/projen-common', 'cdk8s', 'cdk8s-cli'],
+  'cdk8s-plus-21': ['@cdk8s/projen-common', 'cdk8s', 'cdk8s-cli'],
+  'cdk8s-plus-22': ['@cdk8s/projen-common', 'cdk8s', 'cdk8s-cli'],
+  'cdk8s-grafana': ['@cdk8s/projen-common', 'cdk8s'],
+  'cdk8s-image': ['@cdk8s/projen-common', 'cdk8s'],
+  'cdk8s-kube-prometheus': ['@cdk8s/projen-common', 'cdk8s', 'cdk8s-cli', 'cdk8s-plus-22'],
+  'cdk8s-operator': ['@cdk8s/projen-common', 'cdk8s'],
+  'cdk8s-redis': ['@cdk8s/projen-common', 'cdk8s'],
 };
 
 /**
