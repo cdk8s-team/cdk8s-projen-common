@@ -11,6 +11,13 @@ const project = new cdk.JsiiProject({
   peerDeps: ['projen'],
 
   releaseToNpm: true,
+  
+  autoApproveOptions: {
+    allowedUsernames: ['cdk8s-automation'],
+    secret: 'GITHUB_TOKEN',
+  },
+  autoApproveUpgrades: true,
+  
 });
 
 project.package.addField('publishConfig', { access: 'public' });
