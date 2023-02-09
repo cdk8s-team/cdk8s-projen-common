@@ -7,27 +7,30 @@ export const SCOPE = '@cdk8s/';
  * Subset of options that should be fixed for all cdk8s-team typescript projects.
  * These will not be available for customization by individual projects.
  */
-export type fixedOptionsKeys = 'authorName'
-| 'authorEmail'
-| 'repository'
-| 'releaseToNpm'
-| 'autoApproveOptions'
-| 'autoApproveUpgrades'
-| 'minNodeVersion';
-
-// const sizes = ['small', 'medium', 'large'] as const;
-// type Size = typeof sizes[number]
+export const fixedOptionsKeys = [
+  'authorName',
+  'authorEmail',
+  'repository',
+  'releaseToNpm',
+  'autoApproveOptions',
+  'autoApproveUpgrades',
+  'minNodeVersion',
+] as const;
+type fixedOptionsKeysType = typeof fixedOptionsKeys[number];
 
 /**
  * Subset of options that have default values for all cdk8s-team typescript projects.
  * These will be available for customization by individual projects.
  */
-export type defaultOptionsKeys = 'defaultReleaseBranch'
+export const defaultOptionsKeys = [
+  'defaultReleaseBranch',
+] as const;
+type defaultOptionsKeysType = typeof defaultOptionsKeys[number];
 
 /**
  * Create the fixed typescript project options.
  */
-export function buildTypeScriptProjectFixedOptions(name: string): Pick<typescript.TypeScriptProjectOptions, fixedOptionsKeys> {
+export function buildTypeScriptProjectFixedOptions(name: string): Pick<typescript.TypeScriptProjectOptions, fixedOptionsKeysType> {
 
   const repoName = name.startsWith(SCOPE) ? name.replace(SCOPE, NAME_PREFIX) : name;
 
@@ -48,7 +51,7 @@ export function buildTypeScriptProjectFixedOptions(name: string): Pick<typescrip
 /**
  * Create the default typescript project options.
  */
-export function buildTypeScriptProjectDefaultOptions(releaseBranch?: string): Pick<typescript.TypeScriptProjectOptions, defaultOptionsKeys> {
+export function buildTypeScriptProjectDefaultOptions(releaseBranch?: string): Pick<typescript.TypeScriptProjectOptions, defaultOptionsKeysType> {
 
   return {
     defaultReleaseBranch: releaseBranch ?? 'main',
@@ -59,16 +62,7 @@ export function buildTypeScriptProjectDefaultOptions(releaseBranch?: string): Pi
 /**
  * Options for `Cdk8sTeamTypescriptProject`.
  */
-export interface Cdk8sTeamTypescriptProjectOptions extends Omit<typescript.TypeScriptProjectOptions, fixedOptionsKeys | defaultOptionsKeys> {
-
-  /**
-   * The default release branch of the repo.
-   *
-   * @default 'main'
-   */
-  readonly defaultReleaseBranch?: string;
-
-}
+export interface Cdk8sTeamTypescriptProjectOptions extends typescript.TypeScriptProjectOptions {}
 
 /**
  * @pjid cdk8s-team-typescript-project
@@ -77,6 +71,7 @@ export class Cdk8sTeamTypescriptProject extends typescript.TypeScriptProject {
 
   constructor(options: Cdk8sTeamTypescriptProjectOptions) {
 
+    validateOptions(options, fixedOptionsKeys as unknown as string[]);
     validateProjectName(options.name);
 
     const fixedOptions = buildTypeScriptProjectFixedOptions(options.name);
@@ -96,6 +91,23 @@ export class Cdk8sTeamTypescriptProject extends typescript.TypeScriptProject {
 
     // git-hooks
 
+  }
+
+}
+
+/**
+ * Validate that the options map does not contain any invalid option.
+ * This would usually be implemented at compile time using Omit/Pick but jsii
+ * doesn't allow this.
+ */
+export function validateOptions(options: any, invalid: string[]) {
+
+  const keys = Object.keys(options);
+
+  for (const key of fixedOptionsKeys) {
+    if (keys.includes(key)) {
+      throw new Error(`Invalid option: ${invalid}`);
+    }
   }
 
 }

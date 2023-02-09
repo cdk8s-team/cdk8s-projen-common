@@ -6,6 +6,7 @@ import {
   defaultOptionsKeys as tsDefaultOptionsKeys,
   buildTypeScriptProjectDefaultOptions,
   validateProjectName,
+  validateOptions,
 } from './typescript';
 
 const code = new maker.CodeMaker();
@@ -14,27 +15,33 @@ const code = new maker.CodeMaker();
  * Subset of options that should be fixed for all cdk8s-team jsii projects.
  * These will not be available for customization by individual projects.
  */
-type fixedOptionsKeys = tsDixedOptionsKeys
-| 'author'
-| 'authorAddress'
-| 'authorOrganization'
-| 'authorUrl'
-| 'repositoryUrl'
-| 'publishToPypi'
-| 'publishToMaven'
-| 'publishToNuget'
-| 'publishToGo';
+const fixedOptionsKeys = [
+  ...tsDixedOptionsKeys,
+  'author',
+  'authorAddress',
+  'authorOrganization',
+  'authorUrl',
+  'repositoryUrl',
+  'publishToPypi',
+  'publishToMaven',
+  'publishToNuget',
+  'publishToGo',
+] as const;
+type fixedOptionsKeysType = typeof fixedOptionsKeys[number];
 
 /**
  * Subset of options that have default values for all cdk8s-team typescript projects.
  * These will be available for customization by individual projects.
  */
-export type defaultOptionsKeys = tsDefaultOptionsKeys
+const defaultOptionsKeys = [
+  ...tsDefaultOptionsKeys,
+] as const;
+type defaultOptionsKeysType = typeof defaultOptionsKeys[number];
 
 /**
  * Create the fixed jsii project options.
  */
-export function buildJsiiProjectFixedOptions(name: string, golangBranch?: string): Pick<cdk.JsiiProjectOptions, fixedOptionsKeys> {
+export function buildJsiiProjectFixedOptions(name: string, golangBranch?: string): Pick<cdk.JsiiProjectOptions, fixedOptionsKeysType> {
 
   const typescriptOptions = buildTypeScriptProjectFixedOptions(name);
 
@@ -56,21 +63,14 @@ export function buildJsiiProjectFixedOptions(name: string, golangBranch?: string
 /**
  * Create the default jsii project options.
  */
-export function buildJsiiProjectDefaultOptions(releaseBranch?: string): Pick<cdk.JsiiProjectOptions, defaultOptionsKeys> {
+export function buildJsiiProjectDefaultOptions(releaseBranch?: string): Pick<cdk.JsiiProjectOptions, defaultOptionsKeysType> {
   return buildTypeScriptProjectDefaultOptions(releaseBranch);
 }
 
 /**
  * Options for `Cdk8sTeamJsiiProject`.
  */
-export interface Cdk8sTeamJsiiProjectOptions extends Omit<cdk.JsiiProjectOptions, fixedOptionsKeys | defaultOptionsKeys> {
-
-  /**
-   * The default release branch of the repo.
-   *
-   * @default 'main'
-   */
-  readonly defaultReleaseBranch?: string;
+export interface Cdk8sTeamJsiiProjectOptions extends cdk.JsiiProjectOptions {
 
   /**
    * Name of the branch in the golang repository to release to.
@@ -87,6 +87,7 @@ export class Cdk8sTeamJsiiProject extends cdk.JsiiProject {
 
   constructor(options: Cdk8sTeamJsiiProjectOptions) {
 
+    validateOptions(options, fixedOptionsKeys as unknown as string[]);
     validateProjectName(options.name);
 
     const fixedOptions = buildJsiiProjectFixedOptions(options.name, options.golangBranch);
