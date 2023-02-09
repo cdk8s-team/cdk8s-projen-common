@@ -61,14 +61,6 @@ export class Cdk8sTeamTypeScriptProject extends typescript.TypeScriptProject {
       ...options,
     });
 
-    // CODE_OF_CONDUCT.md
-
-    // SECURITY.md
-
-    // DCO
-
-    // git-hooks
-
   }
 
 }

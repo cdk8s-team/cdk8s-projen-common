@@ -119,14 +119,6 @@ export class Cdk8sTeamJsiiProject extends cdk.JsiiProject {
       ...options,
     });
 
-    // CODE_OF_CONDUCT.md
-
-    // SECURITY.md
-
-    // DCO
-
-    // git-hooks
-
   }
 
 }
