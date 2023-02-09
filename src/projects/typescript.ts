@@ -47,7 +47,7 @@ export interface Cdk8sTeamTypescriptProjectOptions extends typescript.TypeScript
 /**
  * @pjid cdk8s-team-typescript-project
  */
-export class Cdk8sTeamTypescriptProject extends typescript.TypeScriptProject {
+export class Cdk8sTeamTypeScriptProject extends typescript.TypeScriptProject {
 
   constructor(options: Cdk8sTeamTypescriptProjectOptions) {
 

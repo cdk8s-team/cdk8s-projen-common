@@ -5488,23 +5488,23 @@ this task should synthesize the project files.
 
 ---
 
-### Cdk8sTeamTypescriptProject <a name="Cdk8sTeamTypescriptProject" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject"></a>
+### Cdk8sTeamTypeScriptProject <a name="Cdk8sTeamTypeScriptProject" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject"></a>
 
-#### Initializers <a name="Initializers" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.Initializer"></a>
+#### Initializers <a name="Initializers" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.Initializer"></a>
 
 ```typescript
-import { Cdk8sTeamTypescriptProject } from '@cdk8s/projen-common'
+import { Cdk8sTeamTypeScriptProject } from '@cdk8s/projen-common'
 
-new Cdk8sTeamTypescriptProject(options: Cdk8sTeamTypescriptProjectOptions)
+new Cdk8sTeamTypeScriptProject(options: Cdk8sTeamTypescriptProjectOptions)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.Initializer.parameter.options">options</a></code> | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProjectOptions">Cdk8sTeamTypescriptProjectOptions</a></code> | *No description.* |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.Initializer.parameter.options">options</a></code> | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProjectOptions">Cdk8sTeamTypescriptProjectOptions</a></code> | *No description.* |
 
 ---
 
-##### `options`<sup>Required</sup> <a name="options" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.Initializer.parameter.options"></a>
+##### `options`<sup>Required</sup> <a name="options" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.Initializer.parameter.options"></a>
 
 - *Type:* <a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProjectOptions">Cdk8sTeamTypescriptProjectOptions</a>
 
@@ -5514,38 +5514,38 @@ new Cdk8sTeamTypescriptProject(options: Cdk8sTeamTypescriptProjectOptions)
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.addExcludeFromCleanup">addExcludeFromCleanup</a></code> | Exclude the matching files from pre-synth cleanup. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.addGitIgnore">addGitIgnore</a></code> | Adds a .gitignore pattern. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.addPackageIgnore">addPackageIgnore</a></code> | Exclude these files from the bundled package. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.addTask">addTask</a></code> | Adds a new task to this project. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.addTip">addTip</a></code> | Prints a "tip" message during synthesis. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.annotateGenerated">annotateGenerated</a></code> | Marks the provided file(s) as being generated. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.postSynthesize">postSynthesize</a></code> | Called after all components are synthesized. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.preSynthesize">preSynthesize</a></code> | Called before all components are synthesized. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.removeTask">removeTask</a></code> | Removes a task from a project. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.runTaskCommand">runTaskCommand</a></code> | Returns the shell command to execute in order to run a task. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.synth">synth</a></code> | Synthesize all project files into `outdir`. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.tryFindFile">tryFindFile</a></code> | Finds a file at the specified relative path within this project and all its subprojects. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.tryFindJsonFile">tryFindJsonFile</a></code> | Finds a json file by name. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.tryFindObjectFile">tryFindObjectFile</a></code> | Finds an object file (like JsonFile, YamlFile, etc.) by name. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.tryRemoveFile">tryRemoveFile</a></code> | Finds a file at the specified relative path within this project and removes it. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.addBins">addBins</a></code> | *No description.* |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.addBundledDeps">addBundledDeps</a></code> | Defines bundled dependencies. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.addCompileCommand">addCompileCommand</a></code> | DEPRECATED. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.addDeps">addDeps</a></code> | Defines normal dependencies. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.addDevDeps">addDevDeps</a></code> | Defines development/test dependencies. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.addFields">addFields</a></code> | Directly set fields in `package.json`. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.addKeywords">addKeywords</a></code> | Adds keywords to package.json (deduplicated). |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.addPeerDeps">addPeerDeps</a></code> | Defines peer dependencies. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.addTestCommand">addTestCommand</a></code> | DEPRECATED. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.hasScript">hasScript</a></code> | Indicates if a script by the name name is defined. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.removeScript">removeScript</a></code> | Removes the npm script (always successful). |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.renderWorkflowSetup">renderWorkflowSetup</a></code> | Returns the set of workflow steps which should be executed to bootstrap a workflow. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.setScript">setScript</a></code> | Replaces the contents of an npm package.json script. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addExcludeFromCleanup">addExcludeFromCleanup</a></code> | Exclude the matching files from pre-synth cleanup. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addGitIgnore">addGitIgnore</a></code> | Adds a .gitignore pattern. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addPackageIgnore">addPackageIgnore</a></code> | Exclude these files from the bundled package. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addTask">addTask</a></code> | Adds a new task to this project. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addTip">addTip</a></code> | Prints a "tip" message during synthesis. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.annotateGenerated">annotateGenerated</a></code> | Marks the provided file(s) as being generated. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.postSynthesize">postSynthesize</a></code> | Called after all components are synthesized. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.preSynthesize">preSynthesize</a></code> | Called before all components are synthesized. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.removeTask">removeTask</a></code> | Removes a task from a project. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.runTaskCommand">runTaskCommand</a></code> | Returns the shell command to execute in order to run a task. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.synth">synth</a></code> | Synthesize all project files into `outdir`. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.tryFindFile">tryFindFile</a></code> | Finds a file at the specified relative path within this project and all its subprojects. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.tryFindJsonFile">tryFindJsonFile</a></code> | Finds a json file by name. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.tryFindObjectFile">tryFindObjectFile</a></code> | Finds an object file (like JsonFile, YamlFile, etc.) by name. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.tryRemoveFile">tryRemoveFile</a></code> | Finds a file at the specified relative path within this project and removes it. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addBins">addBins</a></code> | *No description.* |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addBundledDeps">addBundledDeps</a></code> | Defines bundled dependencies. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addCompileCommand">addCompileCommand</a></code> | DEPRECATED. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addDeps">addDeps</a></code> | Defines normal dependencies. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addDevDeps">addDevDeps</a></code> | Defines development/test dependencies. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addFields">addFields</a></code> | Directly set fields in `package.json`. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addKeywords">addKeywords</a></code> | Adds keywords to package.json (deduplicated). |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addPeerDeps">addPeerDeps</a></code> | Defines peer dependencies. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addTestCommand">addTestCommand</a></code> | DEPRECATED. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.hasScript">hasScript</a></code> | Indicates if a script by the name name is defined. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.removeScript">removeScript</a></code> | Removes the npm script (always successful). |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.renderWorkflowSetup">renderWorkflowSetup</a></code> | Returns the set of workflow steps which should be executed to bootstrap a workflow. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.setScript">setScript</a></code> | Replaces the contents of an npm package.json script. |
 
 ---
 
-##### `addExcludeFromCleanup` <a name="addExcludeFromCleanup" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.addExcludeFromCleanup"></a>
+##### `addExcludeFromCleanup` <a name="addExcludeFromCleanup" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addExcludeFromCleanup"></a>
 
 ```typescript
 public addExcludeFromCleanup(globs: string): void
@@ -5556,7 +5556,7 @@ Exclude the matching files from pre-synth cleanup.
 Can be used when, for example, some
 source files include the projen marker and we don't want them to be erased during synth.
 
-###### `globs`<sup>Required</sup> <a name="globs" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.addExcludeFromCleanup.parameter.globs"></a>
+###### `globs`<sup>Required</sup> <a name="globs" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addExcludeFromCleanup.parameter.globs"></a>
 
 - *Type:* string
 
@@ -5564,7 +5564,7 @@ The glob patterns to match.
 
 ---
 
-##### `addGitIgnore` <a name="addGitIgnore" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.addGitIgnore"></a>
+##### `addGitIgnore` <a name="addGitIgnore" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addGitIgnore"></a>
 
 ```typescript
 public addGitIgnore(pattern: string): void
@@ -5572,7 +5572,7 @@ public addGitIgnore(pattern: string): void
 
 Adds a .gitignore pattern.
 
-###### `pattern`<sup>Required</sup> <a name="pattern" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.addGitIgnore.parameter.pattern"></a>
+###### `pattern`<sup>Required</sup> <a name="pattern" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addGitIgnore.parameter.pattern"></a>
 
 - *Type:* string
 
@@ -5580,7 +5580,7 @@ The glob pattern to ignore.
 
 ---
 
-##### `addPackageIgnore` <a name="addPackageIgnore" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.addPackageIgnore"></a>
+##### `addPackageIgnore` <a name="addPackageIgnore" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addPackageIgnore"></a>
 
 ```typescript
 public addPackageIgnore(pattern: string): void
@@ -5591,13 +5591,13 @@ Exclude these files from the bundled package.
 Implemented by project types based on the
 packaging mechanism. For example, `NodeProject` delegates this to `.npmignore`.
 
-###### `pattern`<sup>Required</sup> <a name="pattern" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.addPackageIgnore.parameter.pattern"></a>
+###### `pattern`<sup>Required</sup> <a name="pattern" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addPackageIgnore.parameter.pattern"></a>
 
 - *Type:* string
 
 ---
 
-##### `addTask` <a name="addTask" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.addTask"></a>
+##### `addTask` <a name="addTask" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addTask"></a>
 
 ```typescript
 public addTask(name: string, props?: TaskOptions): Task
@@ -5608,7 +5608,7 @@ Adds a new task to this project.
 This will fail if the project already has
 a task with this name.
 
-###### `name`<sup>Required</sup> <a name="name" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.addTask.parameter.name"></a>
+###### `name`<sup>Required</sup> <a name="name" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addTask.parameter.name"></a>
 
 - *Type:* string
 
@@ -5616,7 +5616,7 @@ The task name to add.
 
 ---
 
-###### `props`<sup>Optional</sup> <a name="props" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.addTask.parameter.props"></a>
+###### `props`<sup>Optional</sup> <a name="props" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addTask.parameter.props"></a>
 
 - *Type:* projen.TaskOptions
 
@@ -5624,7 +5624,7 @@ Task properties.
 
 ---
 
-##### ~~`addTip`~~ <a name="addTip" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.addTip"></a>
+##### ~~`addTip`~~ <a name="addTip" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addTip"></a>
 
 ```typescript
 public addTip(message: string): void
@@ -5632,7 +5632,7 @@ public addTip(message: string): void
 
 Prints a "tip" message during synthesis.
 
-###### `message`<sup>Required</sup> <a name="message" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.addTip.parameter.message"></a>
+###### `message`<sup>Required</sup> <a name="message" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addTip.parameter.message"></a>
 
 - *Type:* string
 
@@ -5640,7 +5640,7 @@ The message.
 
 ---
 
-##### `annotateGenerated` <a name="annotateGenerated" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.annotateGenerated"></a>
+##### `annotateGenerated` <a name="annotateGenerated" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.annotateGenerated"></a>
 
 ```typescript
 public annotateGenerated(glob: string): void
@@ -5654,7 +5654,7 @@ repository statistics and language breakdown.
 
 > [https://github.com/github/linguist/blob/master/docs/overrides.md](https://github.com/github/linguist/blob/master/docs/overrides.md)
 
-###### `glob`<sup>Required</sup> <a name="glob" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.annotateGenerated.parameter.glob"></a>
+###### `glob`<sup>Required</sup> <a name="glob" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.annotateGenerated.parameter.glob"></a>
 
 - *Type:* string
 
@@ -5662,7 +5662,7 @@ the glob pattern to match (could be a file path).
 
 ---
 
-##### `postSynthesize` <a name="postSynthesize" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.postSynthesize"></a>
+##### `postSynthesize` <a name="postSynthesize" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.postSynthesize"></a>
 
 ```typescript
 public postSynthesize(): void
@@ -5672,7 +5672,7 @@ Called after all components are synthesized.
 
 Order is *not* guaranteed.
 
-##### `preSynthesize` <a name="preSynthesize" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.preSynthesize"></a>
+##### `preSynthesize` <a name="preSynthesize" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.preSynthesize"></a>
 
 ```typescript
 public preSynthesize(): void
@@ -5680,7 +5680,7 @@ public preSynthesize(): void
 
 Called before all components are synthesized.
 
-##### `removeTask` <a name="removeTask" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.removeTask"></a>
+##### `removeTask` <a name="removeTask" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.removeTask"></a>
 
 ```typescript
 public removeTask(name: string): Task
@@ -5688,7 +5688,7 @@ public removeTask(name: string): Task
 
 Removes a task from a project.
 
-###### `name`<sup>Required</sup> <a name="name" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.removeTask.parameter.name"></a>
+###### `name`<sup>Required</sup> <a name="name" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.removeTask.parameter.name"></a>
 
 - *Type:* string
 
@@ -5696,7 +5696,7 @@ The name of the task to remove.
 
 ---
 
-##### `runTaskCommand` <a name="runTaskCommand" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.runTaskCommand"></a>
+##### `runTaskCommand` <a name="runTaskCommand" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.runTaskCommand"></a>
 
 ```typescript
 public runTaskCommand(task: Task): string
@@ -5707,7 +5707,7 @@ Returns the shell command to execute in order to run a task.
 This will
 typically be `npx projen TASK`.
 
-###### `task`<sup>Required</sup> <a name="task" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.runTaskCommand.parameter.task"></a>
+###### `task`<sup>Required</sup> <a name="task" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.runTaskCommand.parameter.task"></a>
 
 - *Type:* projen.Task
 
@@ -5715,7 +5715,7 @@ The task for which the command is required.
 
 ---
 
-##### `synth` <a name="synth" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.synth"></a>
+##### `synth` <a name="synth" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.synth"></a>
 
 ```typescript
 public synth(): void
@@ -5730,7 +5730,7 @@ Synthesize all project files into `outdir`.
 5. Call "postSynthesize()" for all components of this project
 6. Call "this.postSynthesize()"
 
-##### `tryFindFile` <a name="tryFindFile" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.tryFindFile"></a>
+##### `tryFindFile` <a name="tryFindFile" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.tryFindFile"></a>
 
 ```typescript
 public tryFindFile(filePath: string): FileBase
@@ -5738,7 +5738,7 @@ public tryFindFile(filePath: string): FileBase
 
 Finds a file at the specified relative path within this project and all its subprojects.
 
-###### `filePath`<sup>Required</sup> <a name="filePath" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.tryFindFile.parameter.filePath"></a>
+###### `filePath`<sup>Required</sup> <a name="filePath" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.tryFindFile.parameter.filePath"></a>
 
 - *Type:* string
 
@@ -5749,7 +5749,7 @@ from the root of _this_ project.
 
 ---
 
-##### ~~`tryFindJsonFile`~~ <a name="tryFindJsonFile" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.tryFindJsonFile"></a>
+##### ~~`tryFindJsonFile`~~ <a name="tryFindJsonFile" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.tryFindJsonFile"></a>
 
 ```typescript
 public tryFindJsonFile(filePath: string): JsonFile
@@ -5757,7 +5757,7 @@ public tryFindJsonFile(filePath: string): JsonFile
 
 Finds a json file by name.
 
-###### `filePath`<sup>Required</sup> <a name="filePath" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.tryFindJsonFile.parameter.filePath"></a>
+###### `filePath`<sup>Required</sup> <a name="filePath" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.tryFindJsonFile.parameter.filePath"></a>
 
 - *Type:* string
 
@@ -5765,7 +5765,7 @@ The file path.
 
 ---
 
-##### `tryFindObjectFile` <a name="tryFindObjectFile" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.tryFindObjectFile"></a>
+##### `tryFindObjectFile` <a name="tryFindObjectFile" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.tryFindObjectFile"></a>
 
 ```typescript
 public tryFindObjectFile(filePath: string): ObjectFile
@@ -5773,7 +5773,7 @@ public tryFindObjectFile(filePath: string): ObjectFile
 
 Finds an object file (like JsonFile, YamlFile, etc.) by name.
 
-###### `filePath`<sup>Required</sup> <a name="filePath" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.tryFindObjectFile.parameter.filePath"></a>
+###### `filePath`<sup>Required</sup> <a name="filePath" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.tryFindObjectFile.parameter.filePath"></a>
 
 - *Type:* string
 
@@ -5781,7 +5781,7 @@ The file path.
 
 ---
 
-##### `tryRemoveFile` <a name="tryRemoveFile" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.tryRemoveFile"></a>
+##### `tryRemoveFile` <a name="tryRemoveFile" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.tryRemoveFile"></a>
 
 ```typescript
 public tryRemoveFile(filePath: string): FileBase
@@ -5789,7 +5789,7 @@ public tryRemoveFile(filePath: string): FileBase
 
 Finds a file at the specified relative path within this project and removes it.
 
-###### `filePath`<sup>Required</sup> <a name="filePath" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.tryRemoveFile.parameter.filePath"></a>
+###### `filePath`<sup>Required</sup> <a name="filePath" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.tryRemoveFile.parameter.filePath"></a>
 
 - *Type:* string
 
@@ -5800,19 +5800,19 @@ resolved from the root of _this_ project.
 
 ---
 
-##### `addBins` <a name="addBins" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.addBins"></a>
+##### `addBins` <a name="addBins" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addBins"></a>
 
 ```typescript
 public addBins(bins: {[ key: string ]: string}): void
 ```
 
-###### `bins`<sup>Required</sup> <a name="bins" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.addBins.parameter.bins"></a>
+###### `bins`<sup>Required</sup> <a name="bins" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addBins.parameter.bins"></a>
 
 - *Type:* {[ key: string ]: string}
 
 ---
 
-##### `addBundledDeps` <a name="addBundledDeps" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.addBundledDeps"></a>
+##### `addBundledDeps` <a name="addBundledDeps" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addBundledDeps"></a>
 
 ```typescript
 public addBundledDeps(deps: string): void
@@ -5823,7 +5823,7 @@ Defines bundled dependencies.
 Bundled dependencies will be added as normal dependencies as well as to the
 `bundledDependencies` section of your `package.json`.
 
-###### `deps`<sup>Required</sup> <a name="deps" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.addBundledDeps.parameter.deps"></a>
+###### `deps`<sup>Required</sup> <a name="deps" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addBundledDeps.parameter.deps"></a>
 
 - *Type:* string
 
@@ -5837,7 +5837,7 @@ add/upgrade`. If you wish to specify a version range use this syntax:
 
 ---
 
-##### ~~`addCompileCommand`~~ <a name="addCompileCommand" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.addCompileCommand"></a>
+##### ~~`addCompileCommand`~~ <a name="addCompileCommand" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addCompileCommand"></a>
 
 ```typescript
 public addCompileCommand(commands: string): void
@@ -5845,13 +5845,13 @@ public addCompileCommand(commands: string): void
 
 DEPRECATED.
 
-###### `commands`<sup>Required</sup> <a name="commands" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.addCompileCommand.parameter.commands"></a>
+###### `commands`<sup>Required</sup> <a name="commands" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addCompileCommand.parameter.commands"></a>
 
 - *Type:* string
 
 ---
 
-##### `addDeps` <a name="addDeps" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.addDeps"></a>
+##### `addDeps` <a name="addDeps" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addDeps"></a>
 
 ```typescript
 public addDeps(deps: string): void
@@ -5859,7 +5859,7 @@ public addDeps(deps: string): void
 
 Defines normal dependencies.
 
-###### `deps`<sup>Required</sup> <a name="deps" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.addDeps.parameter.deps"></a>
+###### `deps`<sup>Required</sup> <a name="deps" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addDeps.parameter.deps"></a>
 
 - *Type:* string
 
@@ -5873,7 +5873,7 @@ add/upgrade`. If you wish to specify a version range use this syntax:
 
 ---
 
-##### `addDevDeps` <a name="addDevDeps" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.addDevDeps"></a>
+##### `addDevDeps` <a name="addDevDeps" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addDevDeps"></a>
 
 ```typescript
 public addDevDeps(deps: string): void
@@ -5881,7 +5881,7 @@ public addDevDeps(deps: string): void
 
 Defines development/test dependencies.
 
-###### `deps`<sup>Required</sup> <a name="deps" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.addDevDeps.parameter.deps"></a>
+###### `deps`<sup>Required</sup> <a name="deps" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addDevDeps.parameter.deps"></a>
 
 - *Type:* string
 
@@ -5895,7 +5895,7 @@ add/upgrade`. If you wish to specify a version range use this syntax:
 
 ---
 
-##### `addFields` <a name="addFields" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.addFields"></a>
+##### `addFields` <a name="addFields" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addFields"></a>
 
 ```typescript
 public addFields(fields: {[ key: string ]: any}): void
@@ -5903,7 +5903,7 @@ public addFields(fields: {[ key: string ]: any}): void
 
 Directly set fields in `package.json`.
 
-###### `fields`<sup>Required</sup> <a name="fields" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.addFields.parameter.fields"></a>
+###### `fields`<sup>Required</sup> <a name="fields" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addFields.parameter.fields"></a>
 
 - *Type:* {[ key: string ]: any}
 
@@ -5911,7 +5911,7 @@ The fields to set.
 
 ---
 
-##### `addKeywords` <a name="addKeywords" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.addKeywords"></a>
+##### `addKeywords` <a name="addKeywords" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addKeywords"></a>
 
 ```typescript
 public addKeywords(keywords: string): void
@@ -5919,7 +5919,7 @@ public addKeywords(keywords: string): void
 
 Adds keywords to package.json (deduplicated).
 
-###### `keywords`<sup>Required</sup> <a name="keywords" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.addKeywords.parameter.keywords"></a>
+###### `keywords`<sup>Required</sup> <a name="keywords" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addKeywords.parameter.keywords"></a>
 
 - *Type:* string
 
@@ -5927,7 +5927,7 @@ The keywords to add.
 
 ---
 
-##### `addPeerDeps` <a name="addPeerDeps" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.addPeerDeps"></a>
+##### `addPeerDeps` <a name="addPeerDeps" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addPeerDeps"></a>
 
 ```typescript
 public addPeerDeps(deps: string): void
@@ -5939,7 +5939,7 @@ When adding peer dependencies, a devDependency will also be added on the
 pinned version of the declared peer. This will ensure that you are testing
 your code against the minimum version required from your consumers.
 
-###### `deps`<sup>Required</sup> <a name="deps" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.addPeerDeps.parameter.deps"></a>
+###### `deps`<sup>Required</sup> <a name="deps" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addPeerDeps.parameter.deps"></a>
 
 - *Type:* string
 
@@ -5953,7 +5953,7 @@ add/upgrade`. If you wish to specify a version range use this syntax:
 
 ---
 
-##### ~~`addTestCommand`~~ <a name="addTestCommand" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.addTestCommand"></a>
+##### ~~`addTestCommand`~~ <a name="addTestCommand" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addTestCommand"></a>
 
 ```typescript
 public addTestCommand(commands: string): void
@@ -5961,13 +5961,13 @@ public addTestCommand(commands: string): void
 
 DEPRECATED.
 
-###### `commands`<sup>Required</sup> <a name="commands" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.addTestCommand.parameter.commands"></a>
+###### `commands`<sup>Required</sup> <a name="commands" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addTestCommand.parameter.commands"></a>
 
 - *Type:* string
 
 ---
 
-##### `hasScript` <a name="hasScript" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.hasScript"></a>
+##### `hasScript` <a name="hasScript" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.hasScript"></a>
 
 ```typescript
 public hasScript(name: string): boolean
@@ -5975,7 +5975,7 @@ public hasScript(name: string): boolean
 
 Indicates if a script by the name name is defined.
 
-###### `name`<sup>Required</sup> <a name="name" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.hasScript.parameter.name"></a>
+###### `name`<sup>Required</sup> <a name="name" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.hasScript.parameter.name"></a>
 
 - *Type:* string
 
@@ -5983,7 +5983,7 @@ The name of the script.
 
 ---
 
-##### `removeScript` <a name="removeScript" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.removeScript"></a>
+##### `removeScript` <a name="removeScript" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.removeScript"></a>
 
 ```typescript
 public removeScript(name: string): void
@@ -5991,7 +5991,7 @@ public removeScript(name: string): void
 
 Removes the npm script (always successful).
 
-###### `name`<sup>Required</sup> <a name="name" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.removeScript.parameter.name"></a>
+###### `name`<sup>Required</sup> <a name="name" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.removeScript.parameter.name"></a>
 
 - *Type:* string
 
@@ -5999,7 +5999,7 @@ The name of the script.
 
 ---
 
-##### `renderWorkflowSetup` <a name="renderWorkflowSetup" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.renderWorkflowSetup"></a>
+##### `renderWorkflowSetup` <a name="renderWorkflowSetup" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.renderWorkflowSetup"></a>
 
 ```typescript
 public renderWorkflowSetup(options?: RenderWorkflowSetupOptions): JobStep[]
@@ -6007,7 +6007,7 @@ public renderWorkflowSetup(options?: RenderWorkflowSetupOptions): JobStep[]
 
 Returns the set of workflow steps which should be executed to bootstrap a workflow.
 
-###### `options`<sup>Optional</sup> <a name="options" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.renderWorkflowSetup.parameter.options"></a>
+###### `options`<sup>Optional</sup> <a name="options" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.renderWorkflowSetup.parameter.options"></a>
 
 - *Type:* projen.javascript.RenderWorkflowSetupOptions
 
@@ -6015,7 +6015,7 @@ Options.
 
 ---
 
-##### `setScript` <a name="setScript" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.setScript"></a>
+##### `setScript` <a name="setScript" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.setScript"></a>
 
 ```typescript
 public setScript(name: string, command: string): void
@@ -6023,7 +6023,7 @@ public setScript(name: string, command: string): void
 
 Replaces the contents of an npm package.json script.
 
-###### `name`<sup>Required</sup> <a name="name" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.setScript.parameter.name"></a>
+###### `name`<sup>Required</sup> <a name="name" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.setScript.parameter.name"></a>
 
 - *Type:* string
 
@@ -6031,7 +6031,7 @@ The script name.
 
 ---
 
-###### `command`<sup>Required</sup> <a name="command" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.setScript.parameter.command"></a>
+###### `command`<sup>Required</sup> <a name="command" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.setScript.parameter.command"></a>
 
 - *Type:* string
 
@@ -6044,69 +6044,69 @@ The command to execute.
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.buildTask">buildTask</a></code> | <code>projen.Task</code> | *No description.* |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.commitGenerated">commitGenerated</a></code> | <code>boolean</code> | Whether to commit the managed files by default. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.compileTask">compileTask</a></code> | <code>projen.Task</code> | *No description.* |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.components">components</a></code> | <code>projen.Component[]</code> | Returns all the components within this project. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.deps">deps</a></code> | <code>projen.Dependencies</code> | Project dependencies. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.ejected">ejected</a></code> | <code>boolean</code> | Whether or not the project is being ejected. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.files">files</a></code> | <code>projen.FileBase[]</code> | All files in this project. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.gitattributes">gitattributes</a></code> | <code>projen.GitAttributesFile</code> | The .gitattributes file for this repository. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.gitignore">gitignore</a></code> | <code>projen.IgnoreFile</code> | .gitignore. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.logger">logger</a></code> | <code>projen.Logger</code> | Logging utilities. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.name">name</a></code> | <code>string</code> | Project name. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.outdir">outdir</a></code> | <code>string</code> | Absolute output directory of this project. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.packageTask">packageTask</a></code> | <code>projen.Task</code> | *No description.* |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.postCompileTask">postCompileTask</a></code> | <code>projen.Task</code> | *No description.* |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.preCompileTask">preCompileTask</a></code> | <code>projen.Task</code> | *No description.* |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.projectBuild">projectBuild</a></code> | <code>projen.ProjectBuild</code> | Manages the build process of the project. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.projenCommand">projenCommand</a></code> | <code>string</code> | The command to use in order to run the projen CLI. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.root">root</a></code> | <code>projen.Project</code> | The root project. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.tasks">tasks</a></code> | <code>projen.Tasks</code> | Project tasks. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.testTask">testTask</a></code> | <code>projen.Task</code> | *No description.* |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.defaultTask">defaultTask</a></code> | <code>projen.Task</code> | This is the "default" task, the one that executes "projen". |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.initProject">initProject</a></code> | <code>projen.InitProject</code> | The options used when this project is bootstrapped via `projen new`. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.parent">parent</a></code> | <code>projen.Project</code> | A parent project. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.projectType">projectType</a></code> | <code>projen.ProjectType</code> | *No description.* |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.autoApprove">autoApprove</a></code> | <code>projen.github.AutoApprove</code> | Auto approve set up for this project. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.devContainer">devContainer</a></code> | <code>projen.vscode.DevContainer</code> | Access for .devcontainer.json (used for GitHub Codespaces). |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.github">github</a></code> | <code>projen.github.GitHub</code> | Access all github components. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.gitpod">gitpod</a></code> | <code>projen.Gitpod</code> | Access for Gitpod. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.vscode">vscode</a></code> | <code>projen.vscode.VsCode</code> | Access all VSCode components. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.allowLibraryDependencies">allowLibraryDependencies</a></code> | <code>boolean</code> | *No description.* |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.artifactsDirectory">artifactsDirectory</a></code> | <code>string</code> | The build output directory. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.artifactsJavascriptDirectory">artifactsJavascriptDirectory</a></code> | <code>string</code> | The location of the npm tarball after build (`${artifactsDirectory}/js`). |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.bundler">bundler</a></code> | <code>projen.javascript.Bundler</code> | *No description.* |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.entrypoint">entrypoint</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.manifest">manifest</a></code> | <code>any</code> | *No description.* |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.package">package</a></code> | <code>projen.javascript.NodePackage</code> | API for managing the node package. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.packageManager">packageManager</a></code> | <code>projen.javascript.NodePackageManager</code> | The package manager to use. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.runScriptCommand">runScriptCommand</a></code> | <code>string</code> | The command to use to run scripts (e.g. `yarn run` or `npm run` depends on the package manager). |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.autoMerge">autoMerge</a></code> | <code>projen.github.AutoMerge</code> | Component that sets up mergify for merging approved pull requests. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.buildWorkflow">buildWorkflow</a></code> | <code>projen.build.BuildWorkflow</code> | The PR build GitHub workflow. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.buildWorkflowJobId">buildWorkflowJobId</a></code> | <code>string</code> | The job ID of the build workflow. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.jest">jest</a></code> | <code>projen.javascript.Jest</code> | The Jest configuration (if enabled). |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.maxNodeVersion">maxNodeVersion</a></code> | <code>string</code> | Maximum node version required by this pacakge. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.minNodeVersion">minNodeVersion</a></code> | <code>string</code> | Minimum node.js version required by this package. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.npmignore">npmignore</a></code> | <code>projen.IgnoreFile</code> | The .npmignore file. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.prettier">prettier</a></code> | <code>projen.javascript.Prettier</code> | *No description.* |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.publisher">publisher</a></code> | <code>projen.release.Publisher</code> | Package publisher. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.release">release</a></code> | <code>projen.release.Release</code> | Release management. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.upgradeWorkflow">upgradeWorkflow</a></code> | <code>projen.javascript.UpgradeDependencies</code> | The upgrade workflow. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.docsDirectory">docsDirectory</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.libdir">libdir</a></code> | <code>string</code> | The directory in which compiled .js files reside. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.srcdir">srcdir</a></code> | <code>string</code> | The directory in which the .ts sources reside. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.testdir">testdir</a></code> | <code>string</code> | The directory in which tests reside. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.tsconfigDev">tsconfigDev</a></code> | <code>projen.javascript.TypescriptConfig</code> | A typescript configuration file which covers all files (sources, tests, projen). |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.watchTask">watchTask</a></code> | <code>projen.Task</code> | The "watch" task. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.docgen">docgen</a></code> | <code>boolean</code> | *No description.* |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.eslint">eslint</a></code> | <code>projen.javascript.Eslint</code> | *No description.* |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.tsconfig">tsconfig</a></code> | <code>projen.javascript.TypescriptConfig</code> | *No description.* |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.tsconfigEslint">tsconfigEslint</a></code> | <code>projen.javascript.TypescriptConfig</code> | *No description.* |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.buildTask">buildTask</a></code> | <code>projen.Task</code> | *No description.* |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.commitGenerated">commitGenerated</a></code> | <code>boolean</code> | Whether to commit the managed files by default. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.compileTask">compileTask</a></code> | <code>projen.Task</code> | *No description.* |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.components">components</a></code> | <code>projen.Component[]</code> | Returns all the components within this project. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.deps">deps</a></code> | <code>projen.Dependencies</code> | Project dependencies. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.ejected">ejected</a></code> | <code>boolean</code> | Whether or not the project is being ejected. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.files">files</a></code> | <code>projen.FileBase[]</code> | All files in this project. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.gitattributes">gitattributes</a></code> | <code>projen.GitAttributesFile</code> | The .gitattributes file for this repository. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.gitignore">gitignore</a></code> | <code>projen.IgnoreFile</code> | .gitignore. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.logger">logger</a></code> | <code>projen.Logger</code> | Logging utilities. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.name">name</a></code> | <code>string</code> | Project name. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.outdir">outdir</a></code> | <code>string</code> | Absolute output directory of this project. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.packageTask">packageTask</a></code> | <code>projen.Task</code> | *No description.* |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.postCompileTask">postCompileTask</a></code> | <code>projen.Task</code> | *No description.* |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.preCompileTask">preCompileTask</a></code> | <code>projen.Task</code> | *No description.* |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.projectBuild">projectBuild</a></code> | <code>projen.ProjectBuild</code> | Manages the build process of the project. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.projenCommand">projenCommand</a></code> | <code>string</code> | The command to use in order to run the projen CLI. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.root">root</a></code> | <code>projen.Project</code> | The root project. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.tasks">tasks</a></code> | <code>projen.Tasks</code> | Project tasks. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.testTask">testTask</a></code> | <code>projen.Task</code> | *No description.* |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.defaultTask">defaultTask</a></code> | <code>projen.Task</code> | This is the "default" task, the one that executes "projen". |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.initProject">initProject</a></code> | <code>projen.InitProject</code> | The options used when this project is bootstrapped via `projen new`. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.parent">parent</a></code> | <code>projen.Project</code> | A parent project. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.projectType">projectType</a></code> | <code>projen.ProjectType</code> | *No description.* |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.autoApprove">autoApprove</a></code> | <code>projen.github.AutoApprove</code> | Auto approve set up for this project. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.devContainer">devContainer</a></code> | <code>projen.vscode.DevContainer</code> | Access for .devcontainer.json (used for GitHub Codespaces). |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.github">github</a></code> | <code>projen.github.GitHub</code> | Access all github components. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.gitpod">gitpod</a></code> | <code>projen.Gitpod</code> | Access for Gitpod. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.vscode">vscode</a></code> | <code>projen.vscode.VsCode</code> | Access all VSCode components. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.allowLibraryDependencies">allowLibraryDependencies</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.artifactsDirectory">artifactsDirectory</a></code> | <code>string</code> | The build output directory. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.artifactsJavascriptDirectory">artifactsJavascriptDirectory</a></code> | <code>string</code> | The location of the npm tarball after build (`${artifactsDirectory}/js`). |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.bundler">bundler</a></code> | <code>projen.javascript.Bundler</code> | *No description.* |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.entrypoint">entrypoint</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.manifest">manifest</a></code> | <code>any</code> | *No description.* |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.package">package</a></code> | <code>projen.javascript.NodePackage</code> | API for managing the node package. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.packageManager">packageManager</a></code> | <code>projen.javascript.NodePackageManager</code> | The package manager to use. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.runScriptCommand">runScriptCommand</a></code> | <code>string</code> | The command to use to run scripts (e.g. `yarn run` or `npm run` depends on the package manager). |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.autoMerge">autoMerge</a></code> | <code>projen.github.AutoMerge</code> | Component that sets up mergify for merging approved pull requests. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.buildWorkflow">buildWorkflow</a></code> | <code>projen.build.BuildWorkflow</code> | The PR build GitHub workflow. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.buildWorkflowJobId">buildWorkflowJobId</a></code> | <code>string</code> | The job ID of the build workflow. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.jest">jest</a></code> | <code>projen.javascript.Jest</code> | The Jest configuration (if enabled). |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.maxNodeVersion">maxNodeVersion</a></code> | <code>string</code> | Maximum node version required by this pacakge. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.minNodeVersion">minNodeVersion</a></code> | <code>string</code> | Minimum node.js version required by this package. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.npmignore">npmignore</a></code> | <code>projen.IgnoreFile</code> | The .npmignore file. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.prettier">prettier</a></code> | <code>projen.javascript.Prettier</code> | *No description.* |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.publisher">publisher</a></code> | <code>projen.release.Publisher</code> | Package publisher. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.release">release</a></code> | <code>projen.release.Release</code> | Release management. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.upgradeWorkflow">upgradeWorkflow</a></code> | <code>projen.javascript.UpgradeDependencies</code> | The upgrade workflow. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.docsDirectory">docsDirectory</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.libdir">libdir</a></code> | <code>string</code> | The directory in which compiled .js files reside. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.srcdir">srcdir</a></code> | <code>string</code> | The directory in which the .ts sources reside. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.testdir">testdir</a></code> | <code>string</code> | The directory in which tests reside. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.tsconfigDev">tsconfigDev</a></code> | <code>projen.javascript.TypescriptConfig</code> | A typescript configuration file which covers all files (sources, tests, projen). |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.watchTask">watchTask</a></code> | <code>projen.Task</code> | The "watch" task. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.docgen">docgen</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.eslint">eslint</a></code> | <code>projen.javascript.Eslint</code> | *No description.* |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.tsconfig">tsconfig</a></code> | <code>projen.javascript.TypescriptConfig</code> | *No description.* |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.tsconfigEslint">tsconfigEslint</a></code> | <code>projen.javascript.TypescriptConfig</code> | *No description.* |
 
 ---
 
-##### `buildTask`<sup>Required</sup> <a name="buildTask" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.buildTask"></a>
+##### `buildTask`<sup>Required</sup> <a name="buildTask" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.buildTask"></a>
 
 ```typescript
 public readonly buildTask: Task;
@@ -6116,7 +6116,7 @@ public readonly buildTask: Task;
 
 ---
 
-##### `commitGenerated`<sup>Required</sup> <a name="commitGenerated" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.commitGenerated"></a>
+##### `commitGenerated`<sup>Required</sup> <a name="commitGenerated" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.commitGenerated"></a>
 
 ```typescript
 public readonly commitGenerated: boolean;
@@ -6128,7 +6128,7 @@ Whether to commit the managed files by default.
 
 ---
 
-##### `compileTask`<sup>Required</sup> <a name="compileTask" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.compileTask"></a>
+##### `compileTask`<sup>Required</sup> <a name="compileTask" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.compileTask"></a>
 
 ```typescript
 public readonly compileTask: Task;
@@ -6138,7 +6138,7 @@ public readonly compileTask: Task;
 
 ---
 
-##### `components`<sup>Required</sup> <a name="components" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.components"></a>
+##### `components`<sup>Required</sup> <a name="components" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.components"></a>
 
 ```typescript
 public readonly components: Component[];
@@ -6150,7 +6150,7 @@ Returns all the components within this project.
 
 ---
 
-##### `deps`<sup>Required</sup> <a name="deps" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.deps"></a>
+##### `deps`<sup>Required</sup> <a name="deps" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.deps"></a>
 
 ```typescript
 public readonly deps: Dependencies;
@@ -6162,7 +6162,7 @@ Project dependencies.
 
 ---
 
-##### `ejected`<sup>Required</sup> <a name="ejected" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.ejected"></a>
+##### `ejected`<sup>Required</sup> <a name="ejected" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.ejected"></a>
 
 ```typescript
 public readonly ejected: boolean;
@@ -6174,7 +6174,7 @@ Whether or not the project is being ejected.
 
 ---
 
-##### `files`<sup>Required</sup> <a name="files" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.files"></a>
+##### `files`<sup>Required</sup> <a name="files" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.files"></a>
 
 ```typescript
 public readonly files: FileBase[];
@@ -6186,7 +6186,7 @@ All files in this project.
 
 ---
 
-##### `gitattributes`<sup>Required</sup> <a name="gitattributes" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.gitattributes"></a>
+##### `gitattributes`<sup>Required</sup> <a name="gitattributes" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.gitattributes"></a>
 
 ```typescript
 public readonly gitattributes: GitAttributesFile;
@@ -6198,7 +6198,7 @@ The .gitattributes file for this repository.
 
 ---
 
-##### `gitignore`<sup>Required</sup> <a name="gitignore" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.gitignore"></a>
+##### `gitignore`<sup>Required</sup> <a name="gitignore" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.gitignore"></a>
 
 ```typescript
 public readonly gitignore: IgnoreFile;
@@ -6210,7 +6210,7 @@ public readonly gitignore: IgnoreFile;
 
 ---
 
-##### `logger`<sup>Required</sup> <a name="logger" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.logger"></a>
+##### `logger`<sup>Required</sup> <a name="logger" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.logger"></a>
 
 ```typescript
 public readonly logger: Logger;
@@ -6222,7 +6222,7 @@ Logging utilities.
 
 ---
 
-##### `name`<sup>Required</sup> <a name="name" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.name"></a>
+##### `name`<sup>Required</sup> <a name="name" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.name"></a>
 
 ```typescript
 public readonly name: string;
@@ -6234,7 +6234,7 @@ Project name.
 
 ---
 
-##### `outdir`<sup>Required</sup> <a name="outdir" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.outdir"></a>
+##### `outdir`<sup>Required</sup> <a name="outdir" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.outdir"></a>
 
 ```typescript
 public readonly outdir: string;
@@ -6246,7 +6246,7 @@ Absolute output directory of this project.
 
 ---
 
-##### `packageTask`<sup>Required</sup> <a name="packageTask" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.packageTask"></a>
+##### `packageTask`<sup>Required</sup> <a name="packageTask" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.packageTask"></a>
 
 ```typescript
 public readonly packageTask: Task;
@@ -6256,7 +6256,7 @@ public readonly packageTask: Task;
 
 ---
 
-##### `postCompileTask`<sup>Required</sup> <a name="postCompileTask" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.postCompileTask"></a>
+##### `postCompileTask`<sup>Required</sup> <a name="postCompileTask" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.postCompileTask"></a>
 
 ```typescript
 public readonly postCompileTask: Task;
@@ -6266,7 +6266,7 @@ public readonly postCompileTask: Task;
 
 ---
 
-##### `preCompileTask`<sup>Required</sup> <a name="preCompileTask" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.preCompileTask"></a>
+##### `preCompileTask`<sup>Required</sup> <a name="preCompileTask" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.preCompileTask"></a>
 
 ```typescript
 public readonly preCompileTask: Task;
@@ -6276,7 +6276,7 @@ public readonly preCompileTask: Task;
 
 ---
 
-##### `projectBuild`<sup>Required</sup> <a name="projectBuild" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.projectBuild"></a>
+##### `projectBuild`<sup>Required</sup> <a name="projectBuild" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.projectBuild"></a>
 
 ```typescript
 public readonly projectBuild: ProjectBuild;
@@ -6288,7 +6288,7 @@ Manages the build process of the project.
 
 ---
 
-##### `projenCommand`<sup>Required</sup> <a name="projenCommand" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.projenCommand"></a>
+##### `projenCommand`<sup>Required</sup> <a name="projenCommand" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.projenCommand"></a>
 
 ```typescript
 public readonly projenCommand: string;
@@ -6300,7 +6300,7 @@ The command to use in order to run the projen CLI.
 
 ---
 
-##### `root`<sup>Required</sup> <a name="root" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.root"></a>
+##### `root`<sup>Required</sup> <a name="root" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.root"></a>
 
 ```typescript
 public readonly root: Project;
@@ -6312,7 +6312,7 @@ The root project.
 
 ---
 
-##### `tasks`<sup>Required</sup> <a name="tasks" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.tasks"></a>
+##### `tasks`<sup>Required</sup> <a name="tasks" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.tasks"></a>
 
 ```typescript
 public readonly tasks: Tasks;
@@ -6324,7 +6324,7 @@ Project tasks.
 
 ---
 
-##### `testTask`<sup>Required</sup> <a name="testTask" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.testTask"></a>
+##### `testTask`<sup>Required</sup> <a name="testTask" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.testTask"></a>
 
 ```typescript
 public readonly testTask: Task;
@@ -6334,7 +6334,7 @@ public readonly testTask: Task;
 
 ---
 
-##### `defaultTask`<sup>Optional</sup> <a name="defaultTask" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.defaultTask"></a>
+##### `defaultTask`<sup>Optional</sup> <a name="defaultTask" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.defaultTask"></a>
 
 ```typescript
 public readonly defaultTask: Task;
@@ -6349,7 +6349,7 @@ the project is being ejected.
 
 ---
 
-##### `initProject`<sup>Optional</sup> <a name="initProject" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.initProject"></a>
+##### `initProject`<sup>Optional</sup> <a name="initProject" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.initProject"></a>
 
 ```typescript
 public readonly initProject: InitProject;
@@ -6365,7 +6365,7 @@ FQN of the project type.
 
 ---
 
-##### `parent`<sup>Optional</sup> <a name="parent" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.parent"></a>
+##### `parent`<sup>Optional</sup> <a name="parent" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.parent"></a>
 
 ```typescript
 public readonly parent: Project;
@@ -6379,7 +6379,7 @@ If undefined, this is the root project.
 
 ---
 
-##### `projectType`<sup>Required</sup> <a name="projectType" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.projectType"></a>
+##### `projectType`<sup>Required</sup> <a name="projectType" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.projectType"></a>
 
 ```typescript
 public readonly projectType: ProjectType;
@@ -6389,7 +6389,7 @@ public readonly projectType: ProjectType;
 
 ---
 
-##### `autoApprove`<sup>Optional</sup> <a name="autoApprove" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.autoApprove"></a>
+##### `autoApprove`<sup>Optional</sup> <a name="autoApprove" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.autoApprove"></a>
 
 ```typescript
 public readonly autoApprove: AutoApprove;
@@ -6401,7 +6401,7 @@ Auto approve set up for this project.
 
 ---
 
-##### `devContainer`<sup>Optional</sup> <a name="devContainer" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.devContainer"></a>
+##### `devContainer`<sup>Optional</sup> <a name="devContainer" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.devContainer"></a>
 
 ```typescript
 public readonly devContainer: DevContainer;
@@ -6415,7 +6415,7 @@ This will be `undefined` if devContainer boolean is false
 
 ---
 
-##### `github`<sup>Optional</sup> <a name="github" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.github"></a>
+##### `github`<sup>Optional</sup> <a name="github" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.github"></a>
 
 ```typescript
 public readonly github: GitHub;
@@ -6429,7 +6429,7 @@ This will be `undefined` for subprojects.
 
 ---
 
-##### `gitpod`<sup>Optional</sup> <a name="gitpod" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.gitpod"></a>
+##### `gitpod`<sup>Optional</sup> <a name="gitpod" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.gitpod"></a>
 
 ```typescript
 public readonly gitpod: Gitpod;
@@ -6443,7 +6443,7 @@ This will be `undefined` if gitpod boolean is false
 
 ---
 
-##### `vscode`<sup>Optional</sup> <a name="vscode" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.vscode"></a>
+##### `vscode`<sup>Optional</sup> <a name="vscode" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.vscode"></a>
 
 ```typescript
 public readonly vscode: VsCode;
@@ -6457,7 +6457,7 @@ This will be `undefined` for subprojects.
 
 ---
 
-##### ~~`allowLibraryDependencies`~~<sup>Required</sup> <a name="allowLibraryDependencies" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.allowLibraryDependencies"></a>
+##### ~~`allowLibraryDependencies`~~<sup>Required</sup> <a name="allowLibraryDependencies" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.allowLibraryDependencies"></a>
 
 - *Deprecated:* use `package.allowLibraryDependencies`
 
@@ -6469,7 +6469,7 @@ public readonly allowLibraryDependencies: boolean;
 
 ---
 
-##### `artifactsDirectory`<sup>Required</sup> <a name="artifactsDirectory" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.artifactsDirectory"></a>
+##### `artifactsDirectory`<sup>Required</sup> <a name="artifactsDirectory" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.artifactsDirectory"></a>
 
 ```typescript
 public readonly artifactsDirectory: string;
@@ -6485,7 +6485,7 @@ tarball will be placed under `dist/js/boom-boom-1.2.3.tg`.
 
 ---
 
-##### `artifactsJavascriptDirectory`<sup>Required</sup> <a name="artifactsJavascriptDirectory" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.artifactsJavascriptDirectory"></a>
+##### `artifactsJavascriptDirectory`<sup>Required</sup> <a name="artifactsJavascriptDirectory" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.artifactsJavascriptDirectory"></a>
 
 ```typescript
 public readonly artifactsJavascriptDirectory: string;
@@ -6497,7 +6497,7 @@ The location of the npm tarball after build (`${artifactsDirectory}/js`).
 
 ---
 
-##### `bundler`<sup>Required</sup> <a name="bundler" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.bundler"></a>
+##### `bundler`<sup>Required</sup> <a name="bundler" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.bundler"></a>
 
 ```typescript
 public readonly bundler: Bundler;
@@ -6507,7 +6507,7 @@ public readonly bundler: Bundler;
 
 ---
 
-##### ~~`entrypoint`~~<sup>Required</sup> <a name="entrypoint" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.entrypoint"></a>
+##### ~~`entrypoint`~~<sup>Required</sup> <a name="entrypoint" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.entrypoint"></a>
 
 - *Deprecated:* use `package.entrypoint`
 
@@ -6519,7 +6519,7 @@ public readonly entrypoint: string;
 
 ---
 
-##### ~~`manifest`~~<sup>Required</sup> <a name="manifest" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.manifest"></a>
+##### ~~`manifest`~~<sup>Required</sup> <a name="manifest" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.manifest"></a>
 
 - *Deprecated:* use `package.addField(x, y)`
 
@@ -6531,7 +6531,7 @@ public readonly manifest: any;
 
 ---
 
-##### `package`<sup>Required</sup> <a name="package" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.package"></a>
+##### `package`<sup>Required</sup> <a name="package" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.package"></a>
 
 ```typescript
 public readonly package: NodePackage;
@@ -6543,7 +6543,7 @@ API for managing the node package.
 
 ---
 
-##### ~~`packageManager`~~<sup>Required</sup> <a name="packageManager" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.packageManager"></a>
+##### ~~`packageManager`~~<sup>Required</sup> <a name="packageManager" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.packageManager"></a>
 
 - *Deprecated:* use `package.packageManager`
 
@@ -6557,7 +6557,7 @@ The package manager to use.
 
 ---
 
-##### `runScriptCommand`<sup>Required</sup> <a name="runScriptCommand" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.runScriptCommand"></a>
+##### `runScriptCommand`<sup>Required</sup> <a name="runScriptCommand" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.runScriptCommand"></a>
 
 ```typescript
 public readonly runScriptCommand: string;
@@ -6569,7 +6569,7 @@ The command to use to run scripts (e.g. `yarn run` or `npm run` depends on the p
 
 ---
 
-##### `autoMerge`<sup>Optional</sup> <a name="autoMerge" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.autoMerge"></a>
+##### `autoMerge`<sup>Optional</sup> <a name="autoMerge" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.autoMerge"></a>
 
 ```typescript
 public readonly autoMerge: AutoMerge;
@@ -6581,7 +6581,7 @@ Component that sets up mergify for merging approved pull requests.
 
 ---
 
-##### `buildWorkflow`<sup>Optional</sup> <a name="buildWorkflow" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.buildWorkflow"></a>
+##### `buildWorkflow`<sup>Optional</sup> <a name="buildWorkflow" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.buildWorkflow"></a>
 
 ```typescript
 public readonly buildWorkflow: BuildWorkflow;
@@ -6595,7 +6595,7 @@ The PR build GitHub workflow.
 
 ---
 
-##### `buildWorkflowJobId`<sup>Optional</sup> <a name="buildWorkflowJobId" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.buildWorkflowJobId"></a>
+##### `buildWorkflowJobId`<sup>Optional</sup> <a name="buildWorkflowJobId" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.buildWorkflowJobId"></a>
 
 ```typescript
 public readonly buildWorkflowJobId: string;
@@ -6607,7 +6607,7 @@ The job ID of the build workflow.
 
 ---
 
-##### `jest`<sup>Optional</sup> <a name="jest" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.jest"></a>
+##### `jest`<sup>Optional</sup> <a name="jest" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.jest"></a>
 
 ```typescript
 public readonly jest: Jest;
@@ -6619,7 +6619,7 @@ The Jest configuration (if enabled).
 
 ---
 
-##### `maxNodeVersion`<sup>Optional</sup> <a name="maxNodeVersion" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.maxNodeVersion"></a>
+##### `maxNodeVersion`<sup>Optional</sup> <a name="maxNodeVersion" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.maxNodeVersion"></a>
 
 ```typescript
 public readonly maxNodeVersion: string;
@@ -6631,7 +6631,7 @@ Maximum node version required by this pacakge.
 
 ---
 
-##### `minNodeVersion`<sup>Optional</sup> <a name="minNodeVersion" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.minNodeVersion"></a>
+##### `minNodeVersion`<sup>Optional</sup> <a name="minNodeVersion" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.minNodeVersion"></a>
 
 ```typescript
 public readonly minNodeVersion: string;
@@ -6643,7 +6643,7 @@ Minimum node.js version required by this package.
 
 ---
 
-##### `npmignore`<sup>Optional</sup> <a name="npmignore" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.npmignore"></a>
+##### `npmignore`<sup>Optional</sup> <a name="npmignore" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.npmignore"></a>
 
 ```typescript
 public readonly npmignore: IgnoreFile;
@@ -6655,7 +6655,7 @@ The .npmignore file.
 
 ---
 
-##### `prettier`<sup>Optional</sup> <a name="prettier" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.prettier"></a>
+##### `prettier`<sup>Optional</sup> <a name="prettier" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.prettier"></a>
 
 ```typescript
 public readonly prettier: Prettier;
@@ -6665,7 +6665,7 @@ public readonly prettier: Prettier;
 
 ---
 
-##### ~~`publisher`~~<sup>Optional</sup> <a name="publisher" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.publisher"></a>
+##### ~~`publisher`~~<sup>Optional</sup> <a name="publisher" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.publisher"></a>
 
 - *Deprecated:* use `release.publisher`.
 
@@ -6682,7 +6682,7 @@ release workflow.
 
 ---
 
-##### `release`<sup>Optional</sup> <a name="release" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.release"></a>
+##### `release`<sup>Optional</sup> <a name="release" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.release"></a>
 
 ```typescript
 public readonly release: Release;
@@ -6694,7 +6694,7 @@ Release management.
 
 ---
 
-##### `upgradeWorkflow`<sup>Optional</sup> <a name="upgradeWorkflow" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.upgradeWorkflow"></a>
+##### `upgradeWorkflow`<sup>Optional</sup> <a name="upgradeWorkflow" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.upgradeWorkflow"></a>
 
 ```typescript
 public readonly upgradeWorkflow: UpgradeDependencies;
@@ -6706,7 +6706,7 @@ The upgrade workflow.
 
 ---
 
-##### `docsDirectory`<sup>Required</sup> <a name="docsDirectory" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.docsDirectory"></a>
+##### `docsDirectory`<sup>Required</sup> <a name="docsDirectory" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.docsDirectory"></a>
 
 ```typescript
 public readonly docsDirectory: string;
@@ -6716,7 +6716,7 @@ public readonly docsDirectory: string;
 
 ---
 
-##### `libdir`<sup>Required</sup> <a name="libdir" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.libdir"></a>
+##### `libdir`<sup>Required</sup> <a name="libdir" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.libdir"></a>
 
 ```typescript
 public readonly libdir: string;
@@ -6728,7 +6728,7 @@ The directory in which compiled .js files reside.
 
 ---
 
-##### `srcdir`<sup>Required</sup> <a name="srcdir" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.srcdir"></a>
+##### `srcdir`<sup>Required</sup> <a name="srcdir" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.srcdir"></a>
 
 ```typescript
 public readonly srcdir: string;
@@ -6740,7 +6740,7 @@ The directory in which the .ts sources reside.
 
 ---
 
-##### `testdir`<sup>Required</sup> <a name="testdir" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.testdir"></a>
+##### `testdir`<sup>Required</sup> <a name="testdir" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.testdir"></a>
 
 ```typescript
 public readonly testdir: string;
@@ -6752,7 +6752,7 @@ The directory in which tests reside.
 
 ---
 
-##### `tsconfigDev`<sup>Required</sup> <a name="tsconfigDev" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.tsconfigDev"></a>
+##### `tsconfigDev`<sup>Required</sup> <a name="tsconfigDev" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.tsconfigDev"></a>
 
 ```typescript
 public readonly tsconfigDev: TypescriptConfig;
@@ -6764,7 +6764,7 @@ A typescript configuration file which covers all files (sources, tests, projen).
 
 ---
 
-##### `watchTask`<sup>Required</sup> <a name="watchTask" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.watchTask"></a>
+##### `watchTask`<sup>Required</sup> <a name="watchTask" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.watchTask"></a>
 
 ```typescript
 public readonly watchTask: Task;
@@ -6776,7 +6776,7 @@ The "watch" task.
 
 ---
 
-##### `docgen`<sup>Optional</sup> <a name="docgen" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.docgen"></a>
+##### `docgen`<sup>Optional</sup> <a name="docgen" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.docgen"></a>
 
 ```typescript
 public readonly docgen: boolean;
@@ -6786,7 +6786,7 @@ public readonly docgen: boolean;
 
 ---
 
-##### `eslint`<sup>Optional</sup> <a name="eslint" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.eslint"></a>
+##### `eslint`<sup>Optional</sup> <a name="eslint" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.eslint"></a>
 
 ```typescript
 public readonly eslint: Eslint;
@@ -6796,7 +6796,7 @@ public readonly eslint: Eslint;
 
 ---
 
-##### `tsconfig`<sup>Optional</sup> <a name="tsconfig" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.tsconfig"></a>
+##### `tsconfig`<sup>Optional</sup> <a name="tsconfig" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.tsconfig"></a>
 
 ```typescript
 public readonly tsconfig: TypescriptConfig;
@@ -6806,7 +6806,7 @@ public readonly tsconfig: TypescriptConfig;
 
 ---
 
-##### `tsconfigEslint`<sup>Optional</sup> <a name="tsconfigEslint" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.tsconfigEslint"></a>
+##### `tsconfigEslint`<sup>Optional</sup> <a name="tsconfigEslint" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.tsconfigEslint"></a>
 
 ```typescript
 public readonly tsconfigEslint: TypescriptConfig;
@@ -6820,11 +6820,11 @@ public readonly tsconfigEslint: TypescriptConfig;
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.DEFAULT_TASK">DEFAULT_TASK</a></code> | <code>string</code> | The name of the default task (the task executed when `projen` is run without arguments). |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.DEFAULT_TASK">DEFAULT_TASK</a></code> | <code>string</code> | The name of the default task (the task executed when `projen` is run without arguments). |
 
 ---
 
-##### `DEFAULT_TASK`<sup>Required</sup> <a name="DEFAULT_TASK" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProject.property.DEFAULT_TASK"></a>
+##### `DEFAULT_TASK`<sup>Required</sup> <a name="DEFAULT_TASK" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.DEFAULT_TASK"></a>
 
 ```typescript
 public readonly DEFAULT_TASK: string;
