@@ -1,12 +1,11 @@
 import * as maker from 'codemaker';
-import { cdk } from 'projen';
+import { cdk, typescript } from 'projen';
 import {
   NAME_PREFIX, buildTypeScriptProjectFixedOptions,
   fixedOptionsKeys as tsDixedOptionsKeys,
-  defaultOptionsKeys as tsDefaultOptionsKeys,
-  buildTypeScriptProjectDefaultOptions,
   validateProjectName,
   validateOptions,
+  SCOPE,
 } from './typescript';
 
 const code = new maker.CodeMaker();
@@ -30,20 +29,16 @@ const fixedOptionsKeys = [
 type fixedOptionsKeysType = typeof fixedOptionsKeys[number];
 
 /**
- * Subset of options that have default values for all cdk8s-team typescript projects.
- * These will be available for customization by individual projects.
- */
-const defaultOptionsKeys = [
-  ...tsDefaultOptionsKeys,
-] as const;
-type defaultOptionsKeysType = typeof defaultOptionsKeys[number];
-
-/**
  * Create the fixed jsii project options.
  */
-export function buildJsiiProjectFixedOptions(name: string, golangBranch?: string): Pick<cdk.JsiiProjectOptions, fixedOptionsKeysType> {
+export function buildJsiiProjectFixedOptions(options: Cdk8sTeamJsiiProjectOptions): Pick<cdk.JsiiProjectOptions, fixedOptionsKeysType> {
 
-  const typescriptOptions = buildTypeScriptProjectFixedOptions(name);
+  const typescriptOptions = buildTypeScriptProjectFixedOptions(options.name);
+  const golangBranch = options.golangBranch ?? 'main';
+  const golang = options.golang ?? true;
+  const pypi = options.pypi ?? true;
+  const maven = options.maven ?? true;
+  const nuget = options.nuget ?? true;
 
   return {
     author: typescriptOptions.authorName!,
@@ -53,31 +48,58 @@ export function buildJsiiProjectFixedOptions(name: string, golangBranch?: string
     releaseToNpm: typescriptOptions.releaseToNpm,
     autoApproveUpgrades: typescriptOptions.autoApproveUpgrades,
     autoApproveOptions: typescriptOptions.autoApproveOptions,
-    publishToPypi: pythonTarget(name),
-    publishToMaven: javaTarget(name),
-    publishToNuget: dotnetTarget(name),
-    publishToGo: golangBranch ? golangTarget(name, golangBranch) : undefined,
+    publishToPypi: pypi ? pythonTarget(options.name) : undefined,
+    publishToMaven: maven ? javaTarget(options.name) : undefined,
+    publishToNuget: nuget ? dotnetTarget(options.name) : undefined,
+    publishToGo: golang ? golangTarget(options.name, golangBranch) : undefined,
   };
 }
 
 /**
- * Create the default jsii project options.
- */
-export function buildJsiiProjectDefaultOptions(releaseBranch?: string): Pick<cdk.JsiiProjectOptions, defaultOptionsKeysType> {
-  return buildTypeScriptProjectDefaultOptions(releaseBranch);
-}
-
-/**
  * Options for `Cdk8sTeamJsiiProject`.
+ *
+ * Note that this extends `typescript.TypeScriptProjectOptions` and not `cdk.JsiiProjectOptions`
+ * because `cdk.JsiiProjectOptions` has required properties (namely 'author' and 'authorAddress')
+ * that we want to hardcode and disallow customization of. This means that any jsii specific feature
+ * cannot be customized on the project level. This is ok because we don't expect much deviation
+ * with those features between projects. If this turns out to not be the case, we will change appropriately.
  */
-export interface Cdk8sTeamJsiiProjectOptions extends cdk.JsiiProjectOptions {
+export interface Cdk8sTeamJsiiProjectOptions extends typescript.TypeScriptProjectOptions {
 
   /**
-   * Name of the branch in the golang repository to release to.
+   * Publish Golang bindings to GitHub.
    *
-   * @default - Golang bidings will not be published.
+   * @default true
+   */
+  readonly golang?: boolean;
+
+  /**
+   * Name of the branch in the golang repository to publish to.
+   *
+   * @default 'main'
    */
   readonly golangBranch?: string;
+
+  /**
+   * Publish Python bindings to PyPI.
+   *
+   * @default true
+   */
+  readonly pypi?: boolean;
+
+  /**
+   * Publish Java bindings to Maven.
+   *
+   * @default true
+   */
+  readonly maven?: boolean;
+
+  /**
+   * Publish Dotnet bindings to Nuget.
+   *
+   * @default true
+   */
+  readonly nuget?: boolean;
 }
 
 /**
@@ -90,12 +112,10 @@ export class Cdk8sTeamJsiiProject extends cdk.JsiiProject {
     validateOptions(options, fixedOptionsKeys as unknown as string[]);
     validateProjectName(options.name);
 
-    const fixedOptions = buildJsiiProjectFixedOptions(options.name, options.golangBranch);
-    const defaultOptions = buildJsiiProjectDefaultOptions(options.defaultReleaseBranch);
+    const fixedOptions = buildJsiiProjectFixedOptions(options);
 
     super({
       ...fixedOptions,
-      ...defaultOptions,
       ...options,
     });
 
@@ -112,25 +132,26 @@ export class Cdk8sTeamJsiiProject extends cdk.JsiiProject {
 }
 
 function pythonTarget(name: string): cdk.JsiiPythonTarget {
+  const distName = name.startsWith(SCOPE) ? name.replace(SCOPE, NAME_PREFIX) : name;
   return {
-    distName: name,
-    module: code.toSnakeCase(name),
+    distName,
+    module: code.toSnakeCase(distName),
   };
 }
 
 function javaTarget(name: string): cdk.JsiiJavaTarget {
-  const nameSuffix = name.substring(NAME_PREFIX.length);
-  const pkg = nameSuffix.replace(/-/g, '');
+  const artifact = (name.startsWith(SCOPE) ? name.replace(SCOPE, NAME_PREFIX) : name).substring(NAME_PREFIX.length);
+  const pkg = artifact.replace(/-/g, '');
   return {
-    mavenArtifactId: name,
+    mavenArtifactId: artifact,
     mavenGroupId: 'org.cdk8s',
     javaPackage: `org.cdk8s.${pkg}`,
   };
 }
 
 function dotnetTarget(name: string) : cdk.JsiiDotNetTarget {
-  const nameSuffix = name.substring(NAME_PREFIX.length);
-  const pkg = code.toPascalCase(nameSuffix.replace(/-/g, ''));
+  const artifact = (name.startsWith(SCOPE) ? name.replace(SCOPE, NAME_PREFIX) : name).substring(NAME_PREFIX.length);
+  const pkg = code.toPascalCase(artifact).replace(/-/g, '');
   return {
     dotNetNamespace: `Org.Cdk8s.${pkg}`,
     packageId: `Org.Cdk8s.${pkg}`,

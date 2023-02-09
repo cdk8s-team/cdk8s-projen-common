@@ -8,9 +8,10 @@ const project = new src.Cdk8sTeamJsiiProject({
   bundledDeps: ['codemaker'],
   projenrcTs: true,
   defaultReleaseBranch: 'main',
-  author: 'Amazon Web Services',
-  authorAddress: 'https://aws.amazon.com',
-  repositoryUrl: 'https://github.com/cdk8s-team/cdk8s-projen-common',
+  pypi: false,
+  maven: false,
+  nuget: false,
+  golang: false,
 });
 
 project.synth();

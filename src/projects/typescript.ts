@@ -19,15 +19,6 @@ export const fixedOptionsKeys = [
 type fixedOptionsKeysType = typeof fixedOptionsKeys[number];
 
 /**
- * Subset of options that have default values for all cdk8s-team typescript projects.
- * These will be available for customization by individual projects.
- */
-export const defaultOptionsKeys = [
-  'defaultReleaseBranch',
-] as const;
-type defaultOptionsKeysType = typeof defaultOptionsKeys[number];
-
-/**
  * Create the fixed typescript project options.
  */
 export function buildTypeScriptProjectFixedOptions(name: string): Pick<typescript.TypeScriptProjectOptions, fixedOptionsKeysType> {
@@ -49,17 +40,6 @@ export function buildTypeScriptProjectFixedOptions(name: string): Pick<typescrip
 }
 
 /**
- * Create the default typescript project options.
- */
-export function buildTypeScriptProjectDefaultOptions(releaseBranch?: string): Pick<typescript.TypeScriptProjectOptions, defaultOptionsKeysType> {
-
-  return {
-    defaultReleaseBranch: releaseBranch ?? 'main',
-  };
-
-}
-
-/**
  * Options for `Cdk8sTeamTypescriptProject`.
  */
 export interface Cdk8sTeamTypescriptProjectOptions extends typescript.TypeScriptProjectOptions {}
@@ -75,11 +55,9 @@ export class Cdk8sTeamTypescriptProject extends typescript.TypeScriptProject {
     validateProjectName(options.name);
 
     const fixedOptions = buildTypeScriptProjectFixedOptions(options.name);
-    const defaultOptions = buildTypeScriptProjectDefaultOptions(options.defaultReleaseBranch);
 
     super({
       ...fixedOptions,
-      ...defaultOptions,
       ...options,
     });
 
@@ -104,9 +82,9 @@ export function validateOptions(options: any, invalid: string[]) {
 
   const keys = Object.keys(options);
 
-  for (const key of fixedOptionsKeys) {
+  for (const key of invalid) {
     if (keys.includes(key)) {
-      throw new Error(`Invalid option: ${invalid}`);
+      throw new Error(`Invalid option: ${key}`);
     }
   }
 

@@ -7,6 +7,12 @@
 
 Options for `Cdk8sTeamJsiiProject`.
 
+Note that this extends `typescript.TypeScriptProjectOptions` and not `cdk.JsiiProjectOptions`
+because `cdk.JsiiProjectOptions` has required properties (namely 'author' and 'authorAddress')
+that we want to hardcode and disallow customization of. This means that any jsii specific feature
+cannot be customized on the project level. This is ok because we don't expect much deviation
+with those features between projects. If this turns out to not be the case, we will change appropriately.
+
 #### Initializer <a name="Initializer" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.Initializer"></a>
 
 ```typescript
@@ -151,22 +157,11 @@ const cdk8sTeamJsiiProjectOptions: Cdk8sTeamJsiiProjectOptions = { ... }
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.tsconfigDev">tsconfigDev</a></code> | <code>projen.javascript.TypescriptConfigOptions</code> | Custom tsconfig options for the development tsconfig.json file (used for testing). |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.tsconfigDevFile">tsconfigDevFile</a></code> | <code>string</code> | The name of the development tsconfig.json file. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.typescriptVersion">typescriptVersion</a></code> | <code>string</code> | TypeScript version to use. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.author">author</a></code> | <code>string</code> | The name of the library author. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.authorAddress">authorAddress</a></code> | <code>string</code> | Email or URL of the library author. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.repositoryUrl">repositoryUrl</a></code> | <code>string</code> | Git repository URL. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.compat">compat</a></code> | <code>boolean</code> | Automatically run API compatibility test against the latest version published to npm after compilation. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.compatIgnore">compatIgnore</a></code> | <code>string</code> | Name of the ignore file for API compatibility tests. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.compressAssembly">compressAssembly</a></code> | <code>boolean</code> | Emit a compressed version of the assembly. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.docgenFilePath">docgenFilePath</a></code> | <code>string</code> | File path for generated docs. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.dotnet">dotnet</a></code> | <code>projen.cdk.JsiiDotNetTarget</code> | *No description.* |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.excludeTypescript">excludeTypescript</a></code> | <code>string[]</code> | Accepts a list of glob patterns. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.publishToGo">publishToGo</a></code> | <code>projen.cdk.JsiiGoTarget</code> | Publish Go bindings to a git repository. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.publishToMaven">publishToMaven</a></code> | <code>projen.cdk.JsiiJavaTarget</code> | Publish to maven. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.publishToNuget">publishToNuget</a></code> | <code>projen.cdk.JsiiDotNetTarget</code> | Publish to NuGet. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.publishToPypi">publishToPypi</a></code> | <code>projen.cdk.JsiiPythonTarget</code> | Publish to pypi. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.python">python</a></code> | <code>projen.cdk.JsiiPythonTarget</code> | *No description.* |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.rootdir">rootdir</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.golangBranch">golangBranch</a></code> | <code>string</code> | Name of the branch in the golang repository to release to. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.golang">golang</a></code> | <code>boolean</code> | Publish Golang bindings to GitHub. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.golangBranch">golangBranch</a></code> | <code>string</code> | Name of the branch in the golang repository to publish to. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.maven">maven</a></code> | <code>boolean</code> | Publish Java bindings to Maven. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.nuget">nuget</a></code> | <code>boolean</code> | Publish Dotnet bindings to Nuget. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.pypi">pypi</a></code> | <code>boolean</code> | Publish Python bindings to PyPI. |
 
 ---
 
@@ -2047,202 +2042,16 @@ same minor, so we recommend using a `~` dependency (e.g. `~1.2.3`).
 
 ---
 
-##### `author`<sup>Required</sup> <a name="author" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.author"></a>
+##### `golang`<sup>Optional</sup> <a name="golang" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.golang"></a>
 
 ```typescript
-public readonly author: string;
-```
-
-- *Type:* string
-- *Default:* $GIT_USER_NAME
-
-The name of the library author.
-
----
-
-##### `authorAddress`<sup>Required</sup> <a name="authorAddress" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.authorAddress"></a>
-
-```typescript
-public readonly authorAddress: string;
-```
-
-- *Type:* string
-- *Default:* $GIT_USER_EMAIL
-
-Email or URL of the library author.
-
----
-
-##### `repositoryUrl`<sup>Required</sup> <a name="repositoryUrl" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.repositoryUrl"></a>
-
-```typescript
-public readonly repositoryUrl: string;
-```
-
-- *Type:* string
-- *Default:* $GIT_REMOTE
-
-Git repository URL.
-
----
-
-##### `compat`<sup>Optional</sup> <a name="compat" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.compat"></a>
-
-```typescript
-public readonly compat: boolean;
+public readonly golang: boolean;
 ```
 
 - *Type:* boolean
-- *Default:* false
+- *Default:* true
 
-Automatically run API compatibility test against the latest version published to npm after compilation.
-
-You can manually run compatibility tests using `yarn compat` if this feature is disabled.
-- You can ignore compatibility failures by adding lines to a ".compatignore" file.
-
----
-
-##### `compatIgnore`<sup>Optional</sup> <a name="compatIgnore" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.compatIgnore"></a>
-
-```typescript
-public readonly compatIgnore: string;
-```
-
-- *Type:* string
-- *Default:* ".compatignore"
-
-Name of the ignore file for API compatibility tests.
-
----
-
-##### `compressAssembly`<sup>Optional</sup> <a name="compressAssembly" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.compressAssembly"></a>
-
-```typescript
-public readonly compressAssembly: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Emit a compressed version of the assembly.
-
----
-
-##### `docgenFilePath`<sup>Optional</sup> <a name="docgenFilePath" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.docgenFilePath"></a>
-
-```typescript
-public readonly docgenFilePath: string;
-```
-
-- *Type:* string
-- *Default:* "API.md"
-
-File path for generated docs.
-
----
-
-##### ~~`dotnet`~~<sup>Optional</sup> <a name="dotnet" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.dotnet"></a>
-
-- *Deprecated:* use `publishToNuget`
-
-```typescript
-public readonly dotnet: JsiiDotNetTarget;
-```
-
-- *Type:* projen.cdk.JsiiDotNetTarget
-
----
-
-##### `excludeTypescript`<sup>Optional</sup> <a name="excludeTypescript" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.excludeTypescript"></a>
-
-```typescript
-public readonly excludeTypescript: string[];
-```
-
-- *Type:* string[]
-
-Accepts a list of glob patterns.
-
-Files matching any of those patterns will be excluded from the TypeScript compiler input.
-
-By default, jsii will include all *.ts files (except .d.ts files) in the TypeScript compiler input.
-This can be problematic for example when the package's build or test procedure generates .ts files
-that cannot be compiled with jsii's compiler settings.
-
----
-
-##### `publishToGo`<sup>Optional</sup> <a name="publishToGo" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.publishToGo"></a>
-
-```typescript
-public readonly publishToGo: JsiiGoTarget;
-```
-
-- *Type:* projen.cdk.JsiiGoTarget
-- *Default:* no publishing
-
-Publish Go bindings to a git repository.
-
----
-
-##### `publishToMaven`<sup>Optional</sup> <a name="publishToMaven" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.publishToMaven"></a>
-
-```typescript
-public readonly publishToMaven: JsiiJavaTarget;
-```
-
-- *Type:* projen.cdk.JsiiJavaTarget
-- *Default:* no publishing
-
-Publish to maven.
-
----
-
-##### `publishToNuget`<sup>Optional</sup> <a name="publishToNuget" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.publishToNuget"></a>
-
-```typescript
-public readonly publishToNuget: JsiiDotNetTarget;
-```
-
-- *Type:* projen.cdk.JsiiDotNetTarget
-- *Default:* no publishing
-
-Publish to NuGet.
-
----
-
-##### `publishToPypi`<sup>Optional</sup> <a name="publishToPypi" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.publishToPypi"></a>
-
-```typescript
-public readonly publishToPypi: JsiiPythonTarget;
-```
-
-- *Type:* projen.cdk.JsiiPythonTarget
-- *Default:* no publishing
-
-Publish to pypi.
-
----
-
-##### ~~`python`~~<sup>Optional</sup> <a name="python" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.python"></a>
-
-- *Deprecated:* use `publishToPyPi`
-
-```typescript
-public readonly python: JsiiPythonTarget;
-```
-
-- *Type:* projen.cdk.JsiiPythonTarget
-
----
-
-##### `rootdir`<sup>Optional</sup> <a name="rootdir" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.rootdir"></a>
-
-```typescript
-public readonly rootdir: string;
-```
-
-- *Type:* string
-- *Default:* "."
+Publish Golang bindings to GitHub.
 
 ---
 
@@ -2253,9 +2062,48 @@ public readonly golangBranch: string;
 ```
 
 - *Type:* string
-- *Default:* Golang bidings will not be published.
+- *Default:* 'main'
 
-Name of the branch in the golang repository to release to.
+Name of the branch in the golang repository to publish to.
+
+---
+
+##### `maven`<sup>Optional</sup> <a name="maven" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.maven"></a>
+
+```typescript
+public readonly maven: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Publish Java bindings to Maven.
+
+---
+
+##### `nuget`<sup>Optional</sup> <a name="nuget" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.nuget"></a>
+
+```typescript
+public readonly nuget: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Publish Dotnet bindings to Nuget.
+
+---
+
+##### `pypi`<sup>Optional</sup> <a name="pypi" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.pypi"></a>
+
+```typescript
+public readonly pypi: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Publish Python bindings to PyPI.
 
 ---
 

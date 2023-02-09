@@ -17,10 +17,7 @@
     "eslint": "npx projen eslint",
     "package": "npx projen package",
     "package-all": "npx projen package-all",
-    "package:dotnet": "npx projen package:dotnet",
-    "package:java": "npx projen package:java",
     "package:js": "npx projen package:js",
-    "package:python": "npx projen package:python",
     "post-compile": "npx projen post-compile",
     "post-upgrade": "npx projen post-upgrade",
     "pre-compile": "npx projen pre-compile",
@@ -118,23 +115,7 @@
   "stability": "stable",
   "jsii": {
     "outdir": "dist",
-    "targets": {
-      "java": {
-        "package": "org.cdk8s./projencommon",
-        "maven": {
-          "groupId": "org.cdk8s",
-          "artifactId": "@cdk8s/projen-common"
-        }
-      },
-      "python": {
-        "distName": "@cdk8s/projen-common",
-        "module": "@cdk8s/projen-common"
-      },
-      "dotnet": {
-        "namespace": "Org.Cdk8s./projencommon",
-        "packageId": "Org.Cdk8s./projencommon"
-      }
-    },
+    "targets": {},
     "tsc": {
       "outDir": "lib",
       "rootDir": "src"
