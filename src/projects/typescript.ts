@@ -1,4 +1,5 @@
 import { typescript } from 'projen';
+import { CodeOfConductMD } from '../components/code-of-conduct.md';
 import { SecurityMD } from '../components/security.md';
 
 export const NAME_PREFIX = 'cdk8s-';
@@ -63,6 +64,7 @@ export class Cdk8sTeamTypeScriptProject extends typescript.TypeScriptProject {
     });
 
     new SecurityMD(this);
+    new CodeOfConductMD(this);
 
   }
 

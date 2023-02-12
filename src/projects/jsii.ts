@@ -6,6 +6,7 @@ import {
   validateOptions,
   SCOPE,
 } from './typescript';
+import { CodeOfConductMD } from '../components/code-of-conduct.md';
 import { SecurityMD } from '../components/security.md';
 
 const code = new maker.CodeMaker();
@@ -88,6 +89,7 @@ export class Cdk8sTeamJsiiProject extends cdk.JsiiProject {
     });
 
     new SecurityMD(this);
+    new CodeOfConductMD(this);
 
   }
 
