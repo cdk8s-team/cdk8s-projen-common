@@ -51,3 +51,6 @@ junit.xml
 .jsii
 tsconfig.json
 !/API.md
+!/SECURITY.md
+!/CODE_OF_CONDUCT.md
+!/DCO

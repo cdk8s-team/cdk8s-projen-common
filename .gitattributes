@@ -17,7 +17,10 @@
 /.projen/files.json linguist-generated
 /.projen/tasks.json linguist-generated
 /API.md linguist-generated
+/CODE_OF_CONDUCT.md linguist-generated
+/DCO linguist-generated
 /LICENSE linguist-generated
 /package.json linguist-generated
+/SECURITY.md linguist-generated
 /tsconfig.dev.json linguist-generated
 /yarn.lock linguist-generated

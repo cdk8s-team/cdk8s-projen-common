@@ -1,6 +1,7 @@
 import { typescript } from 'projen';
-import { CodeOfConductMD } from '../components/code-of-conduct.md';
-import { SecurityMD } from '../components/security.md';
+import { CodeOfConductMD } from '../components/code-of-conduct/code-of-conduct';
+import { DCO } from '../components/developer-certificate-of-origin/developer-certificate-of-origin';
+import { SecurityMD } from '../components/security/security';
 
 export const NAME_PREFIX = 'cdk8s-';
 export const SCOPE = '@cdk8s/';
@@ -65,6 +66,7 @@ export class Cdk8sTeamTypeScriptProject extends typescript.TypeScriptProject {
 
     new SecurityMD(this);
     new CodeOfConductMD(this);
+    new DCO(this);
 
   }
 
