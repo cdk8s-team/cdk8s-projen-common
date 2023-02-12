@@ -2,58 +2,12 @@ import * as maker from 'codemaker';
 import { cdk, typescript } from 'projen';
 import {
   NAME_PREFIX, buildTypeScriptProjectFixedOptions,
-  fixedOptionsKeys as tsDixedOptionsKeys,
   validateProjectName,
   validateOptions,
   SCOPE,
 } from './typescript';
 
 const code = new maker.CodeMaker();
-
-/**
- * Subset of options that should be fixed for all cdk8s-team jsii projects.
- * These will not be available for customization by individual projects.
- */
-const fixedOptionsKeys = [
-  ...tsDixedOptionsKeys,
-  'author',
-  'authorAddress',
-  'authorOrganization',
-  'authorUrl',
-  'repositoryUrl',
-  'publishToPypi',
-  'publishToMaven',
-  'publishToNuget',
-  'publishToGo',
-] as const;
-type fixedOptionsKeysType = typeof fixedOptionsKeys[number];
-
-/**
- * Create the fixed jsii project options.
- */
-export function buildJsiiProjectFixedOptions(options: Cdk8sTeamJsiiProjectOptions): Pick<cdk.JsiiProjectOptions, fixedOptionsKeysType> {
-
-  const typescriptOptions = buildTypeScriptProjectFixedOptions(options.name);
-  const golangBranch = options.golangBranch ?? 'main';
-  const golang = options.golang ?? true;
-  const pypi = options.pypi ?? true;
-  const maven = options.maven ?? true;
-  const nuget = options.nuget ?? true;
-
-  return {
-    author: typescriptOptions.authorName!,
-    authorAddress: typescriptOptions.authorEmail!,
-    repositoryUrl: typescriptOptions.repository!,
-    minNodeVersion: typescriptOptions.minNodeVersion,
-    releaseToNpm: typescriptOptions.releaseToNpm,
-    autoApproveUpgrades: typescriptOptions.autoApproveUpgrades,
-    autoApproveOptions: typescriptOptions.autoApproveOptions,
-    publishToPypi: pypi ? pythonTarget(options.name) : undefined,
-    publishToMaven: maven ? javaTarget(options.name) : undefined,
-    publishToNuget: nuget ? dotnetTarget(options.name) : undefined,
-    publishToGo: golang ? golangTarget(options.name, golangBranch) : undefined,
-  };
-}
 
 /**
  * Options for `Cdk8sTeamJsiiProject`.
@@ -109,13 +63,26 @@ export class Cdk8sTeamJsiiProject extends cdk.JsiiProject {
 
   constructor(options: Cdk8sTeamJsiiProjectOptions) {
 
-    validateOptions(options, fixedOptionsKeys as unknown as string[]);
+    validateOptions(options);
     validateProjectName(options.name);
 
-    const fixedOptions = buildJsiiProjectFixedOptions(options);
+    const typescriptOptions = buildTypeScriptProjectFixedOptions(options.name);
+
+    const golangBranch = options.golangBranch ?? 'main';
+    const golang = options.golang ?? true;
+    const pypi = options.pypi ?? true;
+    const maven = options.maven ?? true;
+    const nuget = options.nuget ?? true;
 
     super({
-      ...fixedOptions,
+      author: typescriptOptions.authorName!,
+      authorAddress: typescriptOptions.authorEmail!,
+      repositoryUrl: typescriptOptions.repository!,
+      ...typescriptOptions,
+      publishToPypi: pypi ? pythonTarget(options.name) : undefined,
+      publishToMaven: maven ? javaTarget(options.name) : undefined,
+      publishToNuget: nuget ? dotnetTarget(options.name) : undefined,
+      publishToGo: golang ? golangTarget(options.name, golangBranch) : undefined,
       ...options,
     });
 

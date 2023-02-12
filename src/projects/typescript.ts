@@ -16,7 +16,7 @@ export const fixedOptionsKeys = [
   'autoApproveUpgrades',
   'minNodeVersion',
 ] as const;
-type fixedOptionsKeysType = typeof fixedOptionsKeys[number];
+export type fixedOptionsKeysType = typeof fixedOptionsKeys[number];
 
 /**
  * Create the fixed typescript project options.
@@ -51,7 +51,7 @@ export class Cdk8sTeamTypeScriptProject extends typescript.TypeScriptProject {
 
   constructor(options: Cdk8sTeamTypescriptProjectOptions) {
 
-    validateOptions(options, fixedOptionsKeys as unknown as string[]);
+    validateOptions(options);
     validateProjectName(options.name);
 
     const fixedOptions = buildTypeScriptProjectFixedOptions(options.name);
@@ -70,11 +70,11 @@ export class Cdk8sTeamTypeScriptProject extends typescript.TypeScriptProject {
  * This would usually be implemented at compile time using Omit/Pick but jsii
  * doesn't allow this.
  */
-export function validateOptions(options: any, invalid: string[]) {
+export function validateOptions(options: any) {
 
   const keys = Object.keys(options);
 
-  for (const key of invalid) {
+  for (const key of fixedOptionsKeys) {
     if (keys.includes(key)) {
       throw new Error(`Invalid option: ${key}`);
     }
