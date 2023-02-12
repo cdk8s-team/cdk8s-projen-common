@@ -1,4 +1,5 @@
 import { typescript } from 'projen';
+import { SecurityMD } from '../components/security.md';
 
 export const NAME_PREFIX = 'cdk8s-';
 export const SCOPE = '@cdk8s/';
@@ -60,6 +61,8 @@ export class Cdk8sTeamTypeScriptProject extends typescript.TypeScriptProject {
       ...fixedOptions,
       ...options,
     });
+
+    new SecurityMD(this);
 
   }
 

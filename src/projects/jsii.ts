@@ -6,6 +6,7 @@ import {
   validateOptions,
   SCOPE,
 } from './typescript';
+import { SecurityMD } from '../components/security.md';
 
 const code = new maker.CodeMaker();
 
@@ -85,6 +86,8 @@ export class Cdk8sTeamJsiiProject extends cdk.JsiiProject {
       publishToGo: golang ? golangTarget(options.name, golangBranch) : undefined,
       ...options,
     });
+
+    new SecurityMD(this);
 
   }
 
