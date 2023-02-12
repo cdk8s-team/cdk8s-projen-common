@@ -31,6 +31,7 @@
   },
   "author": {
     "name": "Amazon Web Services",
+    "email": "https://aws.amazon.com",
     "url": "https://aws.amazon.com",
     "organization": false
   },
