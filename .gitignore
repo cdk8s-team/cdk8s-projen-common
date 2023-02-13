@@ -57,3 +57,7 @@ tsconfig.json
 !/git-hooks/prepare-commit-msg
 !/git-hooks/README.md
 !/git-hooks/setup.sh
+!/.github/workflows/triage.yml
+!/.github/ISSUE_TEMPLATE/config.yml
+!/.github/ISSUE_TEMPLATE/bug.md
+!/.github/ISSUE_TEMPLATE/feature-request.md

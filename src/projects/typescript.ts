@@ -1,8 +1,10 @@
 import { typescript } from 'projen';
 import { CodeOfConductMD } from '../components/code-of-conduct/code-of-conduct';
-import { DCO } from '../components/dco/developer-certificate-of-origin';
+import { DCO } from '../components/dco/devco';
 import { GitHooks } from '../components/git-hooks/git-hooks';
+import { IssueTemplates } from '../components/issue-templates/issue-templates';
 import { SecurityMD } from '../components/security/security';
+import { Triage } from '../components/triage/triage';
 
 export const NAME_PREFIX = 'cdk8s-';
 export const SCOPE = '@cdk8s/';
@@ -23,11 +25,23 @@ export const fixedOptionsKeys = [
 export type fixedOptionsKeysType = typeof fixedOptionsKeys[number];
 
 /**
+ * Build a repository name based on the project name.
+ */
+export function buildRepositoryName(projectName: string) {
+  if (projectName === 'root') {
+    // snowflake: https://github.com/cdk8s-team/cdk8s/blob/master/.projenrc.js
+    return 'cdk8s';
+  }
+
+  return projectName.startsWith(SCOPE) ? projectName.replace(SCOPE, NAME_PREFIX) : projectName;
+}
+
+/**
  * Create the fixed typescript project options.
  */
 export function buildTypeScriptProjectFixedOptions(name: string): Pick<typescript.TypeScriptProjectOptions, fixedOptionsKeysType> {
 
-  const repoName = name.startsWith(SCOPE) ? name.replace(SCOPE, NAME_PREFIX) : name;
+  const repoName = buildRepositoryName(name);
 
   return {
     authorName: 'Amazon Web Services',
@@ -41,6 +55,20 @@ export function buildTypeScriptProjectFixedOptions(name: string): Pick<typescrip
     autoApproveUpgrades: true,
     minNodeVersion: '14.17.0',
   };
+}
+
+/**
+ * Add typescript repo management components to the project.
+ */
+export function addCdk8sTeamTypescriptProjectComponents(project: typescript.TypeScriptProject) {
+
+  new SecurityMD(project);
+  new CodeOfConductMD(project);
+  new DCO(project);
+  new GitHooks(project);
+  new Triage(project);
+  new IssueTemplates(project);
+
 }
 
 /**
@@ -65,10 +93,7 @@ export class Cdk8sTeamTypeScriptProject extends typescript.TypeScriptProject {
       ...options,
     });
 
-    new SecurityMD(this);
-    new CodeOfConductMD(this);
-    new DCO(this);
-    new GitHooks(this);
+    addCdk8sTeamTypescriptProjectComponents(this);
 
   }
 

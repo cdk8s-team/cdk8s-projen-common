@@ -5,11 +5,8 @@ import {
   validateProjectName,
   validateOptions,
   SCOPE,
+  addCdk8sTeamTypescriptProjectComponents,
 } from './typescript';
-import { CodeOfConductMD } from '../components/code-of-conduct/code-of-conduct';
-import { DCO } from '../components/dco/developer-certificate-of-origin';
-import { GitHooks } from '../components/git-hooks/git-hooks';
-import { SecurityMD } from '../components/security/security';
 
 const code = new maker.CodeMaker();
 
@@ -90,10 +87,7 @@ export class Cdk8sTeamJsiiProject extends cdk.JsiiProject {
       ...options,
     });
 
-    new SecurityMD(this);
-    new CodeOfConductMD(this);
-    new DCO(this);
-    new GitHooks(this);
+    addCdk8sTeamTypescriptProjectComponents(this);
 
   }
 
