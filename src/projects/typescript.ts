@@ -1,6 +1,7 @@
 import { typescript } from 'projen';
 import { CodeOfConductMD } from '../components/code-of-conduct/code-of-conduct';
-import { DCO } from '../components/developer-certificate-of-origin/developer-certificate-of-origin';
+import { DCO } from '../components/dco/developer-certificate-of-origin';
+import { GitHooks } from '../components/git-hooks/git-hooks';
 import { SecurityMD } from '../components/security/security';
 
 export const NAME_PREFIX = 'cdk8s-';
@@ -67,6 +68,7 @@ export class Cdk8sTeamTypeScriptProject extends typescript.TypeScriptProject {
     new SecurityMD(this);
     new CodeOfConductMD(this);
     new DCO(this);
+    new GitHooks(this);
 
   }
 

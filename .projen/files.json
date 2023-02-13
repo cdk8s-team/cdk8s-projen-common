@@ -15,6 +15,9 @@
     ".projen/tasks.json",
     "CODE_OF_CONDUCT.md",
     "DCO",
+    "git-hooks/prepare-commit-msg",
+    "git-hooks/README.md",
+    "git-hooks/setup.sh",
     "LICENSE",
     "SECURITY.md",
     "tsconfig.dev.json"
