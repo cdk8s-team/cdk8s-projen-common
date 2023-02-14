@@ -3,7 +3,7 @@
   "description": "Common projen configuration shared between cdk8s-team org projects.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/cdk8s-team/cdk8s-projen-common"
+    "url": "https://github.com/cdk8s-team/cdk8s-projen-common.git"
   },
   "scripts": {
     "build": "npx projen build",
@@ -31,7 +31,6 @@
   },
   "author": {
     "name": "Amazon Web Services",
-    "email": "https://aws.amazon.com",
     "url": "https://aws.amazon.com",
     "organization": false
   },

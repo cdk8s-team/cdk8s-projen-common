@@ -5,6 +5,7 @@ import {
   validateProjectName,
   validateOptions,
   SCOPE,
+  buildRepositoryName,
 } from './typescript';
 
 const code = new maker.CodeMaker();
@@ -54,6 +55,15 @@ export interface Cdk8sTeamJsiiProjectOptions extends typescript.TypeScriptProjec
    * @default true
    */
   readonly nuget?: boolean;
+
+  /**
+   * The name of the repository inside the cdk8s-team
+   * org where the code of the project is locate in.
+   *
+   * @default - the package name.
+   */
+  readonly repoName?: string;
+
 }
 
 /**
@@ -66,7 +76,8 @@ export class Cdk8sTeamJsiiProject extends cdk.JsiiProject {
     validateOptions(options);
     validateProjectName(options.name);
 
-    const typescriptOptions = buildTypeScriptProjectFixedOptions(options.name);
+    const typescriptOptions = buildTypeScriptProjectFixedOptions();
+    const repoName = options.repoName ?? buildRepositoryName(options.name);
 
     const golangBranch = options.golangBranch ?? 'main';
     const golang = options.golang ?? true;
@@ -76,8 +87,8 @@ export class Cdk8sTeamJsiiProject extends cdk.JsiiProject {
 
     super({
       author: typescriptOptions.authorName!,
-      authorAddress: typescriptOptions.authorEmail!,
-      repositoryUrl: typescriptOptions.repository!,
+      authorAddress: 'https://aws.amazon.com',
+      repositoryUrl: `https://github.com/cdk8s-team/${repoName}.git`,
       ...typescriptOptions,
       publishToPypi: pypi ? pythonTarget(options.name) : undefined,
       publishToMaven: maven ? javaTarget(options.name) : undefined,

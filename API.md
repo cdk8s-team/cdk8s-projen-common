@@ -162,6 +162,7 @@ const cdk8sTeamJsiiProjectOptions: Cdk8sTeamJsiiProjectOptions = { ... }
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.maven">maven</a></code> | <code>boolean</code> | Publish Java bindings to Maven. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.nuget">nuget</a></code> | <code>boolean</code> | Publish Dotnet bindings to Nuget. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.pypi">pypi</a></code> | <code>boolean</code> | Publish Python bindings to PyPI. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.repoName">repoName</a></code> | <code>string</code> | The name of the repository inside the cdk8s-team org where the code of the project is locate in. |
 
 ---
 
@@ -2107,6 +2108,19 @@ Publish Python bindings to PyPI.
 
 ---
 
+##### `repoName`<sup>Optional</sup> <a name="repoName" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.repoName"></a>
+
+```typescript
+public readonly repoName: string;
+```
+
+- *Type:* string
+- *Default:* the package name.
+
+The name of the repository inside the cdk8s-team org where the code of the project is locate in.
+
+---
+
 ### Cdk8sTeamTypescriptProjectOptions <a name="Cdk8sTeamTypescriptProjectOptions" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProjectOptions"></a>
 
 Options for `Cdk8sTeamTypescriptProject`.
@@ -2255,6 +2269,7 @@ const cdk8sTeamTypescriptProjectOptions: Cdk8sTeamTypescriptProjectOptions = { .
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProjectOptions.property.tsconfigDev">tsconfigDev</a></code> | <code>projen.javascript.TypescriptConfigOptions</code> | Custom tsconfig options for the development tsconfig.json file (used for testing). |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProjectOptions.property.tsconfigDevFile">tsconfigDevFile</a></code> | <code>string</code> | The name of the development tsconfig.json file. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProjectOptions.property.typescriptVersion">typescriptVersion</a></code> | <code>string</code> | TypeScript version to use. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypescriptProjectOptions.property.repoName">repoName</a></code> | <code>string</code> | The name of the repository inside the cdk8s-team org where the code of the project is locate in. |
 
 ---
 
@@ -4132,6 +4147,19 @@ TypeScript version to use.
 
 NOTE: Typescript is not semantically versioned and should remain on the
 same minor, so we recommend using a `~` dependency (e.g. `~1.2.3`).
+
+---
+
+##### `repoName`<sup>Optional</sup> <a name="repoName" id="@cdk8s/projen-common.Cdk8sTeamTypescriptProjectOptions.property.repoName"></a>
+
+```typescript
+public readonly repoName: string;
+```
+
+- *Type:* string
+- *Default:* the package name.
+
+The name of the repository inside the cdk8s-team org where the code of the project is locate in.
 
 ---
 
