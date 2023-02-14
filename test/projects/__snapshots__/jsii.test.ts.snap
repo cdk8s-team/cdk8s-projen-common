@@ -3335,14 +3335,14 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         },
         "java": Object {
           "maven": Object {
-            "artifactId": "sample",
+            "artifactId": "cdk8s-sample",
             "groupId": "org.cdk8s",
           },
           "package": "org.cdk8s.sample",
         },
         "python": Object {
           "distName": "cdk8s-sample",
-          "module": "cdk8s-sample",
+          "module": "cdk8s_sample",
         },
       },
       "tsc": Object {
@@ -5182,14 +5182,14 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         },
         "java": Object {
           "maven": Object {
-            "artifactId": "sample",
+            "artifactId": "cdk8s-sample",
             "groupId": "org.cdk8s",
           },
           "package": "org.cdk8s.sample",
         },
         "python": Object {
           "distName": "cdk8s-sample",
-          "module": "cdk8s-sample",
+          "module": "cdk8s_sample",
         },
       },
       "tsc": Object {
@@ -7029,14 +7029,14 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         },
         "java": Object {
           "maven": Object {
-            "artifactId": "sample",
+            "artifactId": "cdk8s-sample",
             "groupId": "org.cdk8s",
           },
           "package": "org.cdk8s.sample",
         },
         "python": Object {
           "distName": "cdk8s-sample",
-          "module": "cdk8s-sample",
+          "module": "cdk8s_sample",
         },
       },
       "tsc": Object {
