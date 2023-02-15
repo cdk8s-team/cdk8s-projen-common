@@ -128,11 +128,11 @@ function dotnetTarget(name: string) : cdk.JsiiDotNetTarget {
   };
 }
 
-function golangTarget(name: string, branch: string): cdk.JsiiGoTarget {
+function golangTarget(repoName: string, branch: string): cdk.JsiiGoTarget {
   return {
     gitUserName: 'cdk8s-automation',
     gitUserEmail: 'cdk8s-team@amazon.com',
     gitBranch: branch,
-    moduleName: `github.com/cdk8s-team/${buildRepositoryName(name)}-go`,
+    moduleName: `github.com/cdk8s-team/${repoName}-go`,
   };
 }

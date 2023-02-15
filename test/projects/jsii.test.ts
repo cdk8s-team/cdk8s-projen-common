@@ -71,3 +71,15 @@ test('throws on invalid option', () => {
   }).toThrowError('Invalid option: authorName');
 
 });
+
+test('custom repository name', () => {
+
+  const project = new src.Cdk8sTeamJsiiProject({
+    name: 'cdk8s-plus-25',
+    defaultReleaseBranch: 'main',
+    repoName: 'cdk8s-plus',
+  });
+
+  expect(Testing.synth(project)).toMatchSnapshot();
+
+});
