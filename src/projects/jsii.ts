@@ -93,7 +93,7 @@ export class Cdk8sTeamJsiiProject extends cdk.JsiiProject {
       publishToPypi: pypi ? pythonTarget(options.name) : undefined,
       publishToMaven: maven ? javaTarget(options.name) : undefined,
       publishToNuget: nuget ? dotnetTarget(options.name) : undefined,
-      publishToGo: golang ? golangTarget(options.name, golangBranch) : undefined,
+      publishToGo: golang ? golangTarget(repoName, golangBranch) : undefined,
       ...options,
     });
 

@@ -5175,7 +5175,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
           "packageId": "Org.Cdk8s.Plus25",
         },
         "go": Object {
-          "moduleName": "github.com/cdk8s-team/cdk8s-plus-25-go",
+          "moduleName": "github.com/cdk8s-team/cdk8s-plus-go",
         },
         "java": Object {
           "maven": Object {
@@ -8867,7 +8867,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
           "packageId": "Org.Cdk8s.Sample",
         },
         "go": Object {
-          "moduleName": "github.com/cdk8s-team/@cdk8s/sample-go",
+          "moduleName": "github.com/cdk8s-team/cdk8s-sample-go",
         },
         "java": Object {
           "maven": Object {
