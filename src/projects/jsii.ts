@@ -105,13 +105,13 @@ function pythonTarget(name: string): cdk.JsiiPythonTarget {
   const distName = name.startsWith(SCOPE) ? name.replace(SCOPE, NAME_PREFIX) : name;
   return {
     distName,
-    module: code.toSnakeCase(distName),
+    module: distName.replace(/-/g, '_'),
   };
 }
 
 function javaTarget(name: string): cdk.JsiiJavaTarget {
-  const artifact = (name.startsWith(SCOPE) ? name.replace(SCOPE, NAME_PREFIX) : name).substring(NAME_PREFIX.length);
-  const pkg = artifact.replace(/-/g, '');
+  const artifact = name.startsWith(SCOPE) ? name.replace(SCOPE, NAME_PREFIX) : name;
+  const pkg = artifact.substring(NAME_PREFIX.length).replace(/-/g, '');
   return {
     mavenArtifactId: artifact,
     mavenGroupId: 'org.cdk8s',
