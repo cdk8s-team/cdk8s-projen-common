@@ -93,7 +93,7 @@ export class Cdk8sTeamJsiiProject extends cdk.JsiiProject {
       publishToPypi: pypi ? pythonTarget(options.name) : undefined,
       publishToMaven: maven ? javaTarget(options.name) : undefined,
       publishToNuget: nuget ? dotnetTarget(options.name) : undefined,
-      publishToGo: golang ? golangTarget(options.name, golangBranch) : undefined,
+      publishToGo: golang ? golangTarget(repoName, golangBranch) : undefined,
       ...options,
     });
 
@@ -128,11 +128,11 @@ function dotnetTarget(name: string) : cdk.JsiiDotNetTarget {
   };
 }
 
-function golangTarget(name: string, branch: string): cdk.JsiiGoTarget {
+function golangTarget(repoName: string, branch: string): cdk.JsiiGoTarget {
   return {
     gitUserName: 'cdk8s-automation',
     gitUserEmail: 'cdk8s-team@amazon.com',
     gitBranch: branch,
-    moduleName: `github.com/cdk8s-team/${buildRepositoryName(name)}-go`,
+    moduleName: `github.com/cdk8s-team/${repoName}-go`,
   };
 }
