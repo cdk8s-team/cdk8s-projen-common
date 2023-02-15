@@ -21,14 +21,10 @@ export type fixedOptionsKeysType = typeof fixedOptionsKeys[number];
 /**
  * Create the fixed typescript project options.
  */
-export function buildTypeScriptProjectFixedOptions(name: string): Pick<typescript.TypeScriptProjectOptions, fixedOptionsKeysType> {
-
-  const repoName = name.startsWith(SCOPE) ? name.replace(SCOPE, NAME_PREFIX) : name;
+export function buildTypeScriptProjectFixedOptions(): Pick<typescript.TypeScriptProjectOptions, fixedOptionsKeysType> {
 
   return {
     authorName: 'Amazon Web Services',
-    authorEmail: 'https://aws.amazon.com',
-    repository: `https://github.com/cdk8s-team/${repoName}`,
     releaseToNpm: true,
     autoApproveOptions: {
       allowedUsernames: ['cdk8s-automation'],
@@ -40,9 +36,26 @@ export function buildTypeScriptProjectFixedOptions(name: string): Pick<typescrip
 }
 
 /**
+ * Create the repository name based on the project name.
+ */
+export function buildRepositoryName(projectName: string) {
+  return projectName.startsWith(SCOPE) ? projectName.replace(SCOPE, NAME_PREFIX) : projectName;
+}
+
+/**
  * Options for `Cdk8sTeamTypescriptProject`.
  */
-export interface Cdk8sTeamTypescriptProjectOptions extends typescript.TypeScriptProjectOptions {}
+export interface Cdk8sTeamTypescriptProjectOptions extends typescript.TypeScriptProjectOptions {
+
+  /**
+   * The name of the repository inside the cdk8s-team
+   * org where the code of the project is locate in.
+   *
+   * @default - the package name.
+   */
+  readonly repoName?: string;
+
+}
 
 /**
  * @pjid cdk8s-team-typescript-project
@@ -54,10 +67,12 @@ export class Cdk8sTeamTypeScriptProject extends typescript.TypeScriptProject {
     validateOptions(options);
     validateProjectName(options.name);
 
-    const fixedOptions = buildTypeScriptProjectFixedOptions(options.name);
+    const fixedOptions = buildTypeScriptProjectFixedOptions();
+    const repoName = options.repoName ?? buildRepositoryName(options.name);
 
     super({
       ...fixedOptions,
+      repository: `https://github.com/cdk8s-team/${repoName}.git`,
       ...options,
     });
 
