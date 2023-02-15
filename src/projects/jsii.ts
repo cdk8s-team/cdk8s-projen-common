@@ -133,6 +133,6 @@ function golangTarget(name: string, branch: string): cdk.JsiiGoTarget {
     gitUserName: 'cdk8s-automation',
     gitUserEmail: 'cdk8s-team@amazon.com',
     gitBranch: branch,
-    moduleName: `github.com/cdk8s-team/${name}-go`,
+    moduleName: `github.com/cdk8s-team/${buildRepositoryName(name)}-go`,
   };
 }

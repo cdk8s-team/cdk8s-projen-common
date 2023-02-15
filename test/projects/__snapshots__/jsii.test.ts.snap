@@ -7021,7 +7021,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
           "packageId": "Org.Cdk8s.Sample",
         },
         "go": Object {
-          "moduleName": "github.com/cdk8s-team/@cdk8s/sample-go",
+          "moduleName": "github.com/cdk8s-team/cdk8s-sample-go",
         },
         "java": Object {
           "maven": Object {
