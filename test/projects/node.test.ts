@@ -1,10 +1,10 @@
 import { Testing } from 'projen';
 import * as src from '../../src';
 
-test('typescript project name must start with cdk8s-', () => {
+test('node project name must start with cdk8s-', () => {
 
   expect(() => {
-    new src.Cdk8sTeamTypeScriptProject({
+    new src.Cdk8sTeamNodeProject({
       name: 'sample',
       defaultReleaseBranch: 'main',
     });
@@ -12,9 +12,9 @@ test('typescript project name must start with cdk8s-', () => {
 
 });
 
-test('default typescript project', () => {
+test('default node project', () => {
 
-  const project = new src.Cdk8sTeamTypeScriptProject({
+  const project = new src.Cdk8sTeamNodeProject({
     name: 'cdk8s-sample',
     defaultReleaseBranch: 'main',
   });
@@ -23,9 +23,9 @@ test('default typescript project', () => {
 
 });
 
-test('default scoped typescript project', () => {
+test('default scoped node project', () => {
 
-  const project = new src.Cdk8sTeamTypeScriptProject({
+  const project = new src.Cdk8sTeamNodeProject({
     name: '@cdk8s/sample',
     defaultReleaseBranch: 'main',
   });
@@ -34,9 +34,9 @@ test('default scoped typescript project', () => {
 
 });
 
-test('default root typescript project', () => {
+test('default root node project', () => {
 
-  const project = new src.Cdk8sTeamTypeScriptProject({
+  const project = new src.Cdk8sTeamNodeProject({
     name: 'root',
     defaultReleaseBranch: 'main',
   });
@@ -45,16 +45,12 @@ test('default root typescript project', () => {
 
 });
 
-test('custom typescript project', () => {
+test('custom node project', () => {
 
-  const project = new src.Cdk8sTeamTypeScriptProject({
+  const project = new src.Cdk8sTeamNodeProject({
     name: 'cdk8s-sample',
     defaultReleaseBranch: 'main',
-
-    // a new option provided by this project type
     repoName: 'custom-repo-name',
-
-    // affects defaults of this project type
     release: false,
   });
 
@@ -62,16 +58,12 @@ test('custom typescript project', () => {
 
 });
 
-test('custom scoped typescript project', () => {
+test('custom scoped node project', () => {
 
-  const project = new src.Cdk8sTeamTypeScriptProject({
+  const project = new src.Cdk8sTeamNodeProject({
     name: '@cdk8s/sample',
     defaultReleaseBranch: 'main',
-
-    // a new option provided by this project type
     repoName: 'custom-repo-name',
-
-    // affects defaults of this project type
     release: false,
   });
 
@@ -79,9 +71,9 @@ test('custom scoped typescript project', () => {
 
 });
 
-test('custom root typescript project', () => {
+test('custom root node project', () => {
 
-  const project = new src.Cdk8sTeamTypeScriptProject({
+  const project = new src.Cdk8sTeamNodeProject({
     name: 'root',
     defaultReleaseBranch: 'main',
 
@@ -96,10 +88,10 @@ test('custom root typescript project', () => {
 
 });
 
-test('typescript project throws on invalid option', () => {
+test('node project throws on invalid option', () => {
 
   expect(() => {
-    new src.Cdk8sTeamTypeScriptProject({
+    new src.Cdk8sTeamNodeProject({
       name: 'sample',
       defaultReleaseBranch: 'main',
       authorName: 'foor',
