@@ -133,6 +133,11 @@ export function validateProjectName(options: Cdk8sTeamNodeProjectOptions) {
     return;
   }
 
+  // snowflake for cdk8s-core
+  if (options.name === 'cdk8s') {
+    return;
+  }
+
   // otherwise we want it to either start with the '@cdk8s' scope of 'cdk8s-' prefix.
   const name = options.name;
   const scoped = name.startsWith('@');

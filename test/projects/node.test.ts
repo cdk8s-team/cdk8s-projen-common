@@ -12,6 +12,28 @@ test('node project name must start with cdk8s-', () => {
 
 });
 
+test('node project can be root', () => {
+
+  const project = new src.Cdk8sTeamNodeProject({
+    name: 'root',
+    defaultReleaseBranch: 'main',
+  });
+
+  expect(Testing.synth(project)).toMatchSnapshot();
+
+});
+
+test('node project can be cdk8s', () => {
+
+  const project = new src.Cdk8sTeamNodeProject({
+    name: 'cdk8s',
+    defaultReleaseBranch: 'main',
+  });
+
+  expect(Testing.synth(project)).toMatchSnapshot();
+
+});
+
 test('default node project', () => {
 
   const project = new src.Cdk8sTeamNodeProject({

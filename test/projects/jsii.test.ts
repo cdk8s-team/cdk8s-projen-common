@@ -12,6 +12,28 @@ test('jsii project name must start with cdk8s-', () => {
 
 });
 
+test('jsii project can be root', () => {
+
+  const project = new src.Cdk8sTeamJsiiProject({
+    name: 'root',
+    defaultReleaseBranch: 'main',
+  });
+
+  expect(Testing.synth(project)).toMatchSnapshot();
+
+});
+
+test('jsii project can be cdk8s', () => {
+
+  const project = new src.Cdk8sTeamJsiiProject({
+    name: 'cdk8s',
+    defaultReleaseBranch: 'main',
+  });
+
+  expect(Testing.synth(project)).toMatchSnapshot();
+
+});
+
 test('default jsii project', () => {
 
   const project = new src.Cdk8sTeamJsiiProject({
