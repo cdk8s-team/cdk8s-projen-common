@@ -74,6 +74,7 @@ test('custom node project', () => {
     defaultReleaseBranch: 'main',
     repoName: 'custom-repo-name',
     release: false,
+    minNodeVersion: '14.18.0',
   });
 
   expect(Testing.synth(project)).toMatchSnapshot();

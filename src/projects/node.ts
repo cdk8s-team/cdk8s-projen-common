@@ -13,7 +13,6 @@ export const fixedOptionsKeys = [
   'repository',
   'autoApproveOptions',
   'autoApproveUpgrades',
-  'minNodeVersion',
 
   // this is deprecated in favor of 'release'.
   // lets disallow using it.
@@ -28,6 +27,7 @@ export type fixedOptionsKeysType = typeof fixedOptionsKeys[number];
 export const defaultOptionsKeys = [
   'releaseToNpm',
   'release',
+  'minNodeVersion',
 ] as const;
 export type defaultOptionsKeysType = typeof defaultOptionsKeys[number];
 
@@ -45,7 +45,6 @@ Pick<javascript.NodeProjectOptions, fixedOptionsKeysType> {
       secret: 'GITHUB_TOKEN',
     },
     autoApproveUpgrades: true,
-    minNodeVersion: '14.17.0',
     releaseWorkflow: options.release,
   };
 }
@@ -58,6 +57,7 @@ Pick<javascript.NodeProjectOptions, defaultOptionsKeysType> {
   return {
     // if release is enabled, default to releasing to npm as well
     releaseToNpm: options.release,
+    minNodeVersion: '14.17.0',
   };
 }
 
