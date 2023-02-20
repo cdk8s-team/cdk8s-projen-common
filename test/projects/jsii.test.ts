@@ -12,6 +12,28 @@ test('jsii project name must start with cdk8s-', () => {
 
 });
 
+test('jsii project can be root', () => {
+
+  const project = new src.Cdk8sTeamJsiiProject({
+    name: 'root',
+    defaultReleaseBranch: 'main',
+  });
+
+  expect(Testing.synth(project)).toMatchSnapshot();
+
+});
+
+test('jsii project can be cdk8s', () => {
+
+  const project = new src.Cdk8sTeamJsiiProject({
+    name: 'cdk8s',
+    defaultReleaseBranch: 'main',
+  });
+
+  expect(Testing.synth(project)).toMatchSnapshot();
+
+});
+
 test('default jsii project', () => {
 
   const project = new src.Cdk8sTeamJsiiProject({
@@ -23,7 +45,7 @@ test('default jsii project', () => {
 
 });
 
-test('scoped default jsii project', () => {
+test('default scoped jsii project', () => {
 
   const project = new src.Cdk8sTeamJsiiProject({
     name: '@cdk8s/sample',
@@ -34,33 +56,147 @@ test('scoped default jsii project', () => {
 
 });
 
-test('can publish golang bindings for jsii project', () => {
+test('default root jsii project', () => {
 
   const project = new src.Cdk8sTeamJsiiProject({
-    name: 'cdk8s-sample',
+    name: 'root',
     defaultReleaseBranch: 'main',
-    golangBranch: 'main',
   });
 
   expect(Testing.synth(project)).toMatchSnapshot();
 
 });
 
-test('can disable publishing', () => {
+test('custom jsii project | disable publishing', () => {
 
   const project = new src.Cdk8sTeamJsiiProject({
     name: 'cdk8s-sample',
     defaultReleaseBranch: 'main',
+
+    // a new option provided by this project type
+    repoName: 'custom-repo-name',
+
+    // affects defaults of this project type
+    release: false,
+
+    // new options provided by this project type
+    golang: false,
     pypi: false,
-    maven: false,
     nuget: false,
+    maven: false,
   });
 
   expect(Testing.synth(project)).toMatchSnapshot();
 
 });
 
-test('throws on invalid option', () => {
+test('custom jsii project | override golang branch', () => {
+
+  const project = new src.Cdk8sTeamJsiiProject({
+    name: 'cdk8s-sample',
+    defaultReleaseBranch: 'main',
+
+    // a new option provided by this project type
+    repoName: 'custom-repo-name',
+
+    // affects defaults of this project type
+    release: false,
+
+    // new options provided by this project type
+    golangBranch: '2.x',
+  });
+
+  expect(Testing.synth(project)).toMatchSnapshot();
+
+});
+
+test('custom scoped jsii project | disable publishing', () => {
+
+  const project = new src.Cdk8sTeamJsiiProject({
+    name: '@cdk8s/sample',
+    defaultReleaseBranch: 'main',
+
+    // a new option provided by this project type
+    repoName: 'custom-repo-name',
+
+    // affects defaults of this project type
+    release: false,
+
+    // new options provided by this project type
+    golang: false,
+    pypi: false,
+    nuget: false,
+    maven: false,
+  });
+
+  expect(Testing.synth(project)).toMatchSnapshot();
+
+});
+
+test('custom scoped jsii project | override golang branch', () => {
+
+  const project = new src.Cdk8sTeamJsiiProject({
+    name: '@cdk8s/sample',
+    defaultReleaseBranch: 'main',
+
+    // a new option provided by this project type
+    repoName: 'custom-repo-name',
+
+    // affects defaults of this project type
+    release: false,
+
+    // new options provided by this project type
+    golangBranch: '2.x',
+  });
+
+  expect(Testing.synth(project)).toMatchSnapshot();
+
+});
+
+test('custom root jsii project | disable publishing', () => {
+
+  const project = new src.Cdk8sTeamJsiiProject({
+    name: 'root',
+    defaultReleaseBranch: 'main',
+
+    // a new option provided by this project type
+    repoName: 'custom-repo-name',
+
+    // affects defaults of this project type
+    release: false,
+
+    // new options provided by this project type
+    golang: false,
+    pypi: false,
+    nuget: false,
+    maven: false,
+  });
+
+  expect(Testing.synth(project)).toMatchSnapshot();
+
+});
+
+test('custom root jsii project | override golang branch', () => {
+
+  const project = new src.Cdk8sTeamJsiiProject({
+    name: 'root',
+    defaultReleaseBranch: 'main',
+
+    // a new option provided by this project type
+    repoName: 'custom-repo-name',
+
+    // affects defaults of this project type
+    release: false,
+
+    // new options provided by this project type
+    golangBranch: '2.x',
+  });
+
+  expect(Testing.synth(project)).toMatchSnapshot();
+
+});
+
+test('jsii project throws on invalid option', () => {
 
   expect(() => {
     new src.Cdk8sTeamJsiiProject({
@@ -72,14 +208,3 @@ test('throws on invalid option', () => {
 
 });
 
-test('custom repository name', () => {
-
-  const project = new src.Cdk8sTeamJsiiProject({
-    name: 'cdk8s-plus-25',
-    defaultReleaseBranch: 'main',
-    repoName: 'cdk8s-plus',
-  });
-
-  expect(Testing.synth(project)).toMatchSnapshot();
-
-});

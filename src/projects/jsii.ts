@@ -1,25 +1,20 @@
 import * as maker from 'codemaker';
-import { cdk, typescript } from 'projen';
-import {
-  NAME_PREFIX, buildTypeScriptProjectFixedOptions,
-  validateProjectName,
-  validateOptions,
-  SCOPE,
-  buildRepositoryName,
-} from './typescript';
+import { cdk } from 'projen';
+import * as node from './node';
+import * as ts from './typescript';
 
 const code = new maker.CodeMaker();
 
 /**
  * Options for `Cdk8sTeamJsiiProject`.
  *
- * Note that this extends `typescript.TypeScriptProjectOptions` and not `cdk.JsiiProjectOptions`
+ * Note that this extends `Cdk8sTeamTypeScriptProjectOptions` and not `cdk.JsiiProjectOptions`
  * because `cdk.JsiiProjectOptions` has required properties (namely 'author' and 'authorAddress')
  * that we want to hardcode and disallow customization of. This means that any jsii specific feature
  * cannot be customized on the project level. This is ok because we don't expect much deviation
  * with those features between projects. If this turns out to not be the case, we will change appropriately.
  */
-export interface Cdk8sTeamJsiiProjectOptions extends typescript.TypeScriptProjectOptions {
+export interface Cdk8sTeamJsiiProjectOptions extends ts.Cdk8sTeamTypeScriptProjectOptions {
 
   /**
    * Publish Golang bindings to GitHub.
@@ -56,14 +51,6 @@ export interface Cdk8sTeamJsiiProjectOptions extends typescript.TypeScriptProjec
    */
   readonly nuget?: boolean;
 
-  /**
-   * The name of the repository inside the cdk8s-team
-   * org where the code of the project is locate in.
-   *
-   * @default - the package name.
-   */
-  readonly repoName?: string;
-
 }
 
 /**
@@ -73,11 +60,12 @@ export class Cdk8sTeamJsiiProject extends cdk.JsiiProject {
 
   constructor(options: Cdk8sTeamJsiiProjectOptions) {
 
-    validateOptions(options);
-    validateProjectName(options.name);
+    node.validateOptions(options);
+    node.validateProjectName(options);
 
-    const typescriptOptions = buildTypeScriptProjectFixedOptions();
-    const repoName = options.repoName ?? buildRepositoryName(options.name);
+    const fixedTypeScriptOptions = node.buildNodeProjectFixedOptions(options);
+    const defaultTypeScriptOptions = node.buildNodeProjectDefaultOptions(options);
+    const repoName = options.repoName ?? node.buildRepositoryName(options.name);
 
     const golangBranch = options.golangBranch ?? 'main';
     const golang = options.golang ?? true;
@@ -86,14 +74,15 @@ export class Cdk8sTeamJsiiProject extends cdk.JsiiProject {
     const nuget = options.nuget ?? true;
 
     super({
-      author: typescriptOptions.authorName!,
+      author: fixedTypeScriptOptions.authorName!,
+      repositoryUrl: fixedTypeScriptOptions.repository!,
       authorAddress: 'https://aws.amazon.com',
-      repositoryUrl: `https://github.com/cdk8s-team/${repoName}.git`,
-      ...typescriptOptions,
       publishToPypi: pypi ? pythonTarget(options.name) : undefined,
       publishToMaven: maven ? javaTarget(options.name) : undefined,
       publishToNuget: nuget ? dotnetTarget(options.name) : undefined,
       publishToGo: golang ? golangTarget(repoName, golangBranch) : undefined,
+      ...fixedTypeScriptOptions,
+      ...defaultTypeScriptOptions,
       ...options,
     });
 
@@ -102,25 +91,26 @@ export class Cdk8sTeamJsiiProject extends cdk.JsiiProject {
 }
 
 function pythonTarget(name: string): cdk.JsiiPythonTarget {
-  const distName = name.startsWith(SCOPE) ? name.replace(SCOPE, NAME_PREFIX) : name;
+  const repoName = node.buildRepositoryName(name);
   return {
-    distName,
-    module: distName.replace(/-/g, '_'),
+    distName: repoName,
+    module: repoName.replace(/-/g, '_'),
   };
 }
 
 function javaTarget(name: string): cdk.JsiiJavaTarget {
-  const artifact = name.startsWith(SCOPE) ? name.replace(SCOPE, NAME_PREFIX) : name;
-  const pkg = artifact.substring(NAME_PREFIX.length).replace(/-/g, '');
+  const repoName = node.buildRepositoryName(name);
+  const pkg = repoName.substring(node.NAME_PREFIX.length).replace(/-/g, '');
   return {
-    mavenArtifactId: artifact,
+    mavenArtifactId: repoName,
     mavenGroupId: 'org.cdk8s',
     javaPackage: `org.cdk8s.${pkg}`,
   };
 }
 
 function dotnetTarget(name: string) : cdk.JsiiDotNetTarget {
-  const artifact = (name.startsWith(SCOPE) ? name.replace(SCOPE, NAME_PREFIX) : name).substring(NAME_PREFIX.length);
+  const repoName = node.buildRepositoryName(name);
+  const artifact = repoName.substring(node.NAME_PREFIX.length);
   const pkg = code.toPascalCase(artifact).replace(/-/g, '');
   return {
     dotNetNamespace: `Org.Cdk8s.${pkg}`,
