@@ -5386,8 +5386,8 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
       "outdir": "dist",
       "targets": Object {
         "dotnet": Object {
-          "namespace": "Org.Cdk8s.",
-          "packageId": "Org.Cdk8s.",
+          "namespace": "Org.Cdk8s",
+          "packageId": "Org.Cdk8s",
         },
         "go": Object {
           "moduleName": "github.com/cdk8s-team/custom-repo-name-go",
@@ -5397,7 +5397,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
             "artifactId": "root",
             "groupId": "org.cdk8s",
           },
-          "package": "org.cdk8s.",
+          "package": "org.cdk8s",
         },
         "python": Object {
           "distName": "root",
@@ -11822,8 +11822,8 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
       "outdir": "dist",
       "targets": Object {
         "dotnet": Object {
-          "namespace": "Org.Cdk8s.",
-          "packageId": "Org.Cdk8s.",
+          "namespace": "Org.Cdk8s",
+          "packageId": "Org.Cdk8s",
         },
         "go": Object {
           "moduleName": "github.com/cdk8s-team/root-go",
@@ -11833,7 +11833,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
             "artifactId": "root",
             "groupId": "org.cdk8s",
           },
-          "package": "org.cdk8s.",
+          "package": "org.cdk8s",
         },
         "python": Object {
           "distName": "root",
@@ -15514,8 +15514,8 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
       "outdir": "dist",
       "targets": Object {
         "dotnet": Object {
-          "namespace": "Org.Cdk8s.",
-          "packageId": "Org.Cdk8s.",
+          "namespace": "Org.Cdk8s",
+          "packageId": "Org.Cdk8s",
         },
         "go": Object {
           "moduleName": "github.com/cdk8s-team/cdk8s-go",
@@ -15525,7 +15525,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
             "artifactId": "cdk8s",
             "groupId": "org.cdk8s",
           },
-          "package": "org.cdk8s.",
+          "package": "org.cdk8s",
         },
         "python": Object {
           "distName": "cdk8s",
@@ -17360,8 +17360,8 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
       "outdir": "dist",
       "targets": Object {
         "dotnet": Object {
-          "namespace": "Org.Cdk8s.",
-          "packageId": "Org.Cdk8s.",
+          "namespace": "Org.Cdk8s",
+          "packageId": "Org.Cdk8s",
         },
         "go": Object {
           "moduleName": "github.com/cdk8s-team/root-go",
@@ -17371,7 +17371,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
             "artifactId": "root",
             "groupId": "org.cdk8s",
           },
-          "package": "org.cdk8s.",
+          "package": "org.cdk8s",
         },
         "python": Object {
           "distName": "root",
