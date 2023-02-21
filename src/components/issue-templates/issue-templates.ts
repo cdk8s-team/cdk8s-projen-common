@@ -1,15 +1,15 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { Component, TextFile, YamlFile } from 'projen';
-import { TypeScriptProject } from 'projen/lib/typescript';
-import { buildRepositoryName } from '../../projects/typescript';
+import { NodeProject } from 'projen/lib/javascript';
+import { buildRepositoryName } from '../../projects/node';
 
 /**
  * Add issue templates to our repositories.
  */
 export class IssueTemplates extends Component {
 
-  constructor(project: TypeScriptProject) {
+  constructor(project: NodeProject) {
     super(project);
 
     const repoName = buildRepositoryName(project.name);

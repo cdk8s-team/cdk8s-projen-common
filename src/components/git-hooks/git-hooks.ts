@@ -1,14 +1,14 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { Component, TextFile } from 'projen';
-import { TypeScriptProject } from 'projen/lib/typescript';
+import { NodeProject } from 'projen/lib/javascript';
 
 /**
  * Add git hooks to our repositories.
  */
 export class GitHooks extends Component {
 
-  constructor(project: TypeScriptProject) {
+  constructor(project: NodeProject) {
     super(project);
 
     this.addFile('prepare-commit-msg', false);

@@ -1,14 +1,14 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { Component, TextFile } from 'projen';
-import { TypeScriptProject } from 'projen/lib/typescript';
+import { NodeProject } from 'projen/lib/javascript';
 
 /**
  * Add a code of conduct statement to our repositories.
  */
 export class CodeOfConductMD extends Component {
 
-  constructor(project: TypeScriptProject) {
+  constructor(project: NodeProject) {
     super(project);
 
     const fileName = 'CODE_OF_CONDUCT.md';

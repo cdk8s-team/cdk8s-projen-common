@@ -1,6 +1,6 @@
 import { Component } from 'projen';
 import { JobPermission } from 'projen/lib/github/workflows-model';
-import { TypeScriptProject } from 'projen/lib/typescript';
+import { NodeProject } from 'projen/lib/javascript';
 
 /**
  * Add a Triage workflow to our repos.
@@ -9,7 +9,7 @@ import { TypeScriptProject } from 'projen/lib/typescript';
  */
 export class Triage extends Component {
 
-  constructor(project: TypeScriptProject) {
+  constructor(project: NodeProject) {
     super(project);
 
     // hmm, we need to remember to update this in 2024
