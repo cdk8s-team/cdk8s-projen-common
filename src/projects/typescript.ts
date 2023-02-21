@@ -36,7 +36,9 @@ export class Cdk8sTeamTypeScriptProject extends typescript.TypeScriptProject {
       ...options,
     });
 
-    node.addComponents(this);
+    const repoName = options.repoName ?? node.buildRepositoryName(options.name);
+
+    node.addComponents(this, repoName);
 
   }
 

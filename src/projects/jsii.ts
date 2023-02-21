@@ -86,7 +86,7 @@ export class Cdk8sTeamJsiiProject extends cdk.JsiiProject {
       ...options,
     });
 
-    node.addComponents(this);
+    node.addComponents(this, repoName);
 
   }
 
