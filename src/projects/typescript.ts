@@ -36,6 +36,8 @@ export class Cdk8sTeamTypeScriptProject extends typescript.TypeScriptProject {
       ...options,
     });
 
+    node.addComponents(this);
+
   }
 
 }

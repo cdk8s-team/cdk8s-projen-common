@@ -1,4 +1,11 @@
 import { javascript } from 'projen';
+import { NodeProject } from 'projen/lib/javascript';
+import { CodeOfConductMD } from '../components/code-of-conduct/code-of-conduct';
+import { DCO } from '../components/dco/devco';
+import { GitHooks } from '../components/git-hooks/git-hooks';
+import { IssueTemplates } from '../components/issue-templates/issue-templates';
+import { SecurityMD } from '../components/security/security';
+import { Triage } from '../components/triage/triage';
 
 export const NAME_PREFIX = 'cdk8s-';
 export const SCOPE = '@cdk8s/';
@@ -151,6 +158,20 @@ export function validateProjectName(options: Cdk8sTeamNodeProjectOptions) {
       throw new Error(`Illegal project name: ${name}. Name must start with 'cdk8s-'`);
     }
   }
+
+}
+
+/**
+ * Add common components to the project.
+ */
+export function addComponents(project: NodeProject) {
+
+  new CodeOfConductMD(project);
+  new DCO(project);
+  new GitHooks(project);
+  new IssueTemplates(project);
+  new SecurityMD(project);
+  new Triage(project);
 
 }
 
