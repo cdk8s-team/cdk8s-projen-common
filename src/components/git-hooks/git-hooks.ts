@@ -11,7 +11,7 @@ export class GitHooks extends Component {
   constructor(project: NodeProject) {
     super(project);
 
-    this.addFile('prepare-commit-msg', false);
+    this.addFile('prepare-commit-msg', true);
     this.addFile('README.md', false);
     this.addFile('setup.sh', true);
 
