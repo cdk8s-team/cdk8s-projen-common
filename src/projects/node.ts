@@ -109,6 +109,8 @@ export class Cdk8sTeamNodeProject extends javascript.NodeProject {
       ...options,
     });
 
+    addComponents(this);
+
   }
 
 }
