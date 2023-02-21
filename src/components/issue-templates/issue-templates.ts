@@ -2,17 +2,27 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { Component, TextFile, YamlFile } from 'projen';
 import { NodeProject } from 'projen/lib/javascript';
-import { buildRepositoryName } from '../../projects/node';
+
+/**
+ * Options for `IssueTemplates`.
+ */
+export interface IssueTemplatesOptions {
+
+  /**
+   * The repository name.
+   */
+  readonly repoName: string;
+}
 
 /**
  * Add issue templates to our repositories.
  */
 export class IssueTemplates extends Component {
 
-  constructor(project: NodeProject) {
+  constructor(project: NodeProject, options: IssueTemplatesOptions) {
     super(project);
 
-    const repoName = buildRepositoryName(project.name);
+    const repoName = options.repoName;
 
     // see https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository#configuring-the-template-chooser
     new YamlFile(this.project, '.github/ISSUE_TEMPLATE/config.yml', {

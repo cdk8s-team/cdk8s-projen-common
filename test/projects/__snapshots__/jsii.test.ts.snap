@@ -326,7 +326,7 @@ contact_links:
     url: https://cloud-native.slack.com/archives/C02KCDACGTT
     about: Please ask and answer questions here.
   - name: GitHub Community Support
-    url: https://github.com/cdk8s-team/cdk8s-sample/discussions
+    url: https://github.com/cdk8s-team/custom-repo-name/discussions
     about: Please ask and answer questions here.
 ",
   ".github/ISSUE_TEMPLATE/feature-request.md": "---
@@ -1844,7 +1844,7 @@ contact_links:
     url: https://cloud-native.slack.com/archives/C02KCDACGTT
     about: Please ask and answer questions here.
   - name: GitHub Community Support
-    url: https://github.com/cdk8s-team/cdk8s-sample/discussions
+    url: https://github.com/cdk8s-team/custom-repo-name/discussions
     about: Please ask and answer questions here.
 ",
   ".github/ISSUE_TEMPLATE/feature-request.md": "---
@@ -3564,7 +3564,7 @@ contact_links:
     url: https://cloud-native.slack.com/archives/C02KCDACGTT
     about: Please ask and answer questions here.
   - name: GitHub Community Support
-    url: https://github.com/cdk8s-team/root/discussions
+    url: https://github.com/cdk8s-team/custom-repo-name/discussions
     about: Please ask and answer questions here.
 ",
   ".github/ISSUE_TEMPLATE/feature-request.md": "---
@@ -5082,7 +5082,7 @@ contact_links:
     url: https://cloud-native.slack.com/archives/C02KCDACGTT
     about: Please ask and answer questions here.
   - name: GitHub Community Support
-    url: https://github.com/cdk8s-team/root/discussions
+    url: https://github.com/cdk8s-team/custom-repo-name/discussions
     about: Please ask and answer questions here.
 ",
   ".github/ISSUE_TEMPLATE/feature-request.md": "---
@@ -6802,7 +6802,7 @@ contact_links:
     url: https://cloud-native.slack.com/archives/C02KCDACGTT
     about: Please ask and answer questions here.
   - name: GitHub Community Support
-    url: https://github.com/cdk8s-team/cdk8s-sample/discussions
+    url: https://github.com/cdk8s-team/custom-repo-name/discussions
     about: Please ask and answer questions here.
 ",
   ".github/ISSUE_TEMPLATE/feature-request.md": "---
@@ -8320,7 +8320,7 @@ contact_links:
     url: https://cloud-native.slack.com/archives/C02KCDACGTT
     about: Please ask and answer questions here.
   - name: GitHub Community Support
-    url: https://github.com/cdk8s-team/cdk8s-sample/discussions
+    url: https://github.com/cdk8s-team/custom-repo-name/discussions
     about: Please ask and answer questions here.
 ",
   ".github/ISSUE_TEMPLATE/feature-request.md": "---

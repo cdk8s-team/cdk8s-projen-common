@@ -109,7 +109,9 @@ export class Cdk8sTeamNodeProject extends javascript.NodeProject {
       ...options,
     });
 
-    addComponents(this);
+    const repoName = options.repoName ?? buildRepositoryName(options.name);
+
+    addComponents(this, repoName);
 
   }
 
@@ -166,12 +168,12 @@ export function validateProjectName(options: Cdk8sTeamNodeProjectOptions) {
 /**
  * Add common components to the project.
  */
-export function addComponents(project: NodeProject) {
+export function addComponents(project: NodeProject, repoName: string) {
 
   new CodeOfConductMD(project);
   new DCO(project);
   new GitHooks(project);
-  new IssueTemplates(project);
+  new IssueTemplates(project, { repoName });
   new SecurityMD(project);
   new Triage(project);
 
