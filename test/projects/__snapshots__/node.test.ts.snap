@@ -286,7 +286,7 @@ jobs:
     permissions:
       issues: write
     steps:
-      - uses: actions/add-to-project@0.4.0
+      - uses: actions/add-to-project@v0.4.0
         with:
           project-url: https://github.com/orgs/cdk8s-team/projects/12
           github-token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
@@ -1336,7 +1336,7 @@ jobs:
     permissions:
       issues: write
     steps:
-      - uses: actions/add-to-project@0.4.0
+      - uses: actions/add-to-project@v0.4.0
         with:
           project-url: https://github.com/orgs/cdk8s-team/projects/12
           github-token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
@@ -2386,7 +2386,7 @@ jobs:
     permissions:
       issues: write
     steps:
-      - uses: actions/add-to-project@0.4.0
+      - uses: actions/add-to-project@v0.4.0
         with:
           project-url: https://github.com/orgs/cdk8s-team/projects/12
           github-token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
@@ -3510,7 +3510,7 @@ jobs:
     permissions:
       issues: write
     steps:
-      - uses: actions/add-to-project@0.4.0
+      - uses: actions/add-to-project@v0.4.0
         with:
           project-url: https://github.com/orgs/cdk8s-team/projects/12
           github-token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
@@ -4709,7 +4709,7 @@ jobs:
     permissions:
       issues: write
     steps:
-      - uses: actions/add-to-project@0.4.0
+      - uses: actions/add-to-project@v0.4.0
         with:
           project-url: https://github.com/orgs/cdk8s-team/projects/12
           github-token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
@@ -5908,7 +5908,7 @@ jobs:
     permissions:
       issues: write
     steps:
-      - uses: actions/add-to-project@0.4.0
+      - uses: actions/add-to-project@v0.4.0
         with:
           project-url: https://github.com/orgs/cdk8s-team/projects/12
           github-token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
@@ -7107,7 +7107,7 @@ jobs:
     permissions:
       issues: write
     steps:
-      - uses: actions/add-to-project@0.4.0
+      - uses: actions/add-to-project@v0.4.0
         with:
           project-url: https://github.com/orgs/cdk8s-team/projects/12
           github-token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
@@ -8306,7 +8306,7 @@ jobs:
     permissions:
       issues: write
     steps:
-      - uses: actions/add-to-project@0.4.0
+      - uses: actions/add-to-project@v0.4.0
         with:
           project-url: https://github.com/orgs/cdk8s-team/projects/12
           github-token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
