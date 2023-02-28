@@ -90,7 +90,8 @@ export interface Cdk8sTeamNodeProjectOptions extends javascript.NodeProjectOptio
   readonly repoName?: string;
 
   /**
-   * Flag for repository security incident notifications.
+   * Creates issues for security incidents reported by Github for the repository
+   * Currently creates issues for code scanning alerts
    *
    * @default true
    */

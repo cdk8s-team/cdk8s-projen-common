@@ -28,8 +28,8 @@ export async function createSecurityWorkflow() {
 }
 
 /**
- * Create issue in the repository if it does not already exists.
- * @param existingSecurityIssues
+ * Create issues for code scanning alerts
+ * @param existingSecurityIssues List of existing security issues
  */
 async function codeScanningAlerts(existingSecurityIssues: GetResponseDataTypeFromEndpointMethod<typeof client.issues.listForRepo>) {
   const csIncidents = await client.codeScanning.listAlertsForRepo({

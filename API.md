@@ -159,7 +159,7 @@ const cdk8sTeamJsiiProjectOptions: Cdk8sTeamJsiiProjectOptions = { ... }
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.tsconfigDevFile">tsconfigDevFile</a></code> | <code>string</code> | The name of the development tsconfig.json file. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.typescriptVersion">typescriptVersion</a></code> | <code>string</code> | TypeScript version to use. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.repoName">repoName</a></code> | <code>string</code> | The name of the repository inside the cdk8s-team org where the code of the project is locate in. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.securityNotifications">securityNotifications</a></code> | <code>boolean</code> | Flag for repository security incident notifications. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.securityNotifications">securityNotifications</a></code> | <code>boolean</code> | Creates issues for security incidents reported by Github for the repository Currently creates issues for code scanning alerts. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.golang">golang</a></code> | <code>boolean</code> | Publish Golang bindings to GitHub. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.golangBranch">golangBranch</a></code> | <code>string</code> | Name of the branch in the golang repository to publish to. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.maven">maven</a></code> | <code>boolean</code> | Publish Java bindings to Maven. |
@@ -2079,7 +2079,7 @@ public readonly securityNotifications: boolean;
 - *Type:* boolean
 - *Default:* true
 
-Flag for repository security incident notifications.
+Creates issues for security incidents reported by Github for the repository Currently creates issues for code scanning alerts.
 
 ---
 
@@ -2282,7 +2282,7 @@ const cdk8sTeamNodeProjectOptions: Cdk8sTeamNodeProjectOptions = { ... }
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.workflowGitIdentity">workflowGitIdentity</a></code> | <code>projen.github.GitIdentity</code> | The git identity to use in workflows. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.workflowNodeVersion">workflowNodeVersion</a></code> | <code>string</code> | The node version to use in GitHub workflows. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.repoName">repoName</a></code> | <code>string</code> | The name of the repository inside the cdk8s-team org where the code of the project is locate in. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.securityNotifications">securityNotifications</a></code> | <code>boolean</code> | Flag for repository security incident notifications. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.securityNotifications">securityNotifications</a></code> | <code>boolean</code> | Creates issues for security incidents reported by Github for the repository Currently creates issues for code scanning alerts. |
 
 ---
 
@@ -3982,7 +3982,7 @@ public readonly securityNotifications: boolean;
 - *Type:* boolean
 - *Default:* true
 
-Flag for repository security incident notifications.
+Creates issues for security incidents reported by Github for the repository Currently creates issues for code scanning alerts.
 
 ---
 
@@ -4136,7 +4136,7 @@ const cdk8sTeamTypeScriptProjectOptions: Cdk8sTeamTypeScriptProjectOptions = { .
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.tsconfigDevFile">tsconfigDevFile</a></code> | <code>string</code> | The name of the development tsconfig.json file. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.typescriptVersion">typescriptVersion</a></code> | <code>string</code> | TypeScript version to use. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.repoName">repoName</a></code> | <code>string</code> | The name of the repository inside the cdk8s-team org where the code of the project is locate in. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.securityNotifications">securityNotifications</a></code> | <code>boolean</code> | Flag for repository security incident notifications. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.securityNotifications">securityNotifications</a></code> | <code>boolean</code> | Creates issues for security incidents reported by Github for the repository Currently creates issues for code scanning alerts. |
 
 ---
 
@@ -6051,7 +6051,7 @@ public readonly securityNotifications: boolean;
 - *Type:* boolean
 - *Default:* true
 
-Flag for repository security incident notifications.
+Creates issues for security incidents reported by Github for the repository Currently creates issues for code scanning alerts.
 
 ---
 
