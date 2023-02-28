@@ -26,7 +26,7 @@ export class Triage extends Component {
       permissions: { issues: JobPermission.WRITE },
       runsOn: ['ubuntu-latest'],
       steps: [{
-        uses: 'actions/add-to-project@0.4.0',
+        uses: 'actions/add-to-project@v0.4.0',
         with: {
           'project-url': projectUrl,
           'github-token': '${{ secrets.PROJEN_GITHUB_TOKEN }}',
