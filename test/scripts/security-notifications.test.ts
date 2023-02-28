@@ -7,6 +7,7 @@ const ownerName = 'cdk8s-mock-owner';
 const repoName = 'cdk8s-mock-repo';
 const rawRepoName = `${ownerName}/${repoName}`;
 const token = 'cdk8s-mock-token';
+const P0_ISSUE_LABEL = 'priority/p0';
 
 const oldEnv = process.env;
 process.env = {
@@ -70,6 +71,7 @@ describe('security workflow script', () => {
       body: issueBody,
       labels: [
         SECURITY_INCIDENT_LABEL,
+        P0_ISSUE_LABEL,
       ],
     });
   });
@@ -126,6 +128,7 @@ describe('security workflow script', () => {
     mockListIssues.mockResolvedValueOnce({
       data: [{
         labels: [SECURITY_INCIDENT_LABEL],
+        title: issueTitle,
         state: 'open',
         pull_request: 'some_pr',
       }],
@@ -153,6 +156,7 @@ describe('security workflow script', () => {
       body: issueBody,
       labels: [
         SECURITY_INCIDENT_LABEL,
+        P0_ISSUE_LABEL,
       ],
     });
   });

@@ -4,6 +4,7 @@ import { Octokit } from '@octokit/rest';
 import { GetResponseDataTypeFromEndpointMethod } from '@octokit/types';
 
 const SECURITY_INCIDENT_LABEL = 'gh-security-finding';
+const P0_ISSUE_LABEL = 'priority/p0';
 
 const owner = getRepositoryOwner();
 const repository = getRepositoryName();
@@ -62,6 +63,7 @@ async function createSecurityIssue(issueTitle: string, incidentUrl: string) {
     body: `Github reported a new security incident at: ${incidentUrl}`,
     labels: [
       SECURITY_INCIDENT_LABEL,
+      P0_ISSUE_LABEL,
     ],
   });
 }
