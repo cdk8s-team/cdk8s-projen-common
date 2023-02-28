@@ -123,3 +123,14 @@ test('node project throws on invalid option', () => {
 
 });
 
+test('security notification enabled for node project', () => {
+
+  const project = new src.Cdk8sTeamNodeProject({
+    name: 'cdk8s-sample',
+    defaultReleaseBranch: 'main',
+    securityNotifications: true,
+  });
+
+  expect(Testing.synth(project)).toMatchSnapshot();
+
+});

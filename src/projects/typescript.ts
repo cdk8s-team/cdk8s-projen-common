@@ -1,5 +1,6 @@
 import { typescript } from 'projen';
 import * as node from './node';
+import { SecurityNotificationWorkflow } from '../workflows/security-notification';
 
 /**
  * Options for `Cdk8sTeamTypeScriptProject`.
@@ -14,6 +15,12 @@ export interface Cdk8sTeamTypeScriptProjectOptions extends typescript.TypeScript
    */
   readonly repoName?: string;
 
+  /**
+   * Flag for repository security incident notifications.
+   *
+   * @default true
+   */
+  readonly securityNotifications?: boolean;
 }
 
 /**
@@ -28,11 +35,12 @@ export class Cdk8sTeamTypeScriptProject extends typescript.TypeScriptProject {
 
     const fixedOptions = node.buildNodeProjectFixedOptions(options);
     const defaultOptions = node.buildNodeProjectDefaultOptions(options);
-
+    const securityNotifications = options.securityNotifications ?? true;
 
     super({
       ...fixedOptions,
       ...defaultOptions,
+      securityNotifications,
       ...options,
     });
 
@@ -40,6 +48,9 @@ export class Cdk8sTeamTypeScriptProject extends typescript.TypeScriptProject {
 
     node.addComponents(this, repoName);
 
+    if (securityNotifications) {
+      new SecurityNotificationWorkflow(this);
+    }
   }
 
 }

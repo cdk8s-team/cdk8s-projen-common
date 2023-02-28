@@ -2,6 +2,7 @@ import * as maker from 'codemaker';
 import { cdk } from 'projen';
 import * as node from './node';
 import * as ts from './typescript';
+import { SecurityNotificationWorkflow } from '../workflows/security-notification';
 
 const code = new maker.CodeMaker();
 
@@ -50,7 +51,6 @@ export interface Cdk8sTeamJsiiProjectOptions extends ts.Cdk8sTeamTypeScriptProje
    * @default true
    */
   readonly nuget?: boolean;
-
 }
 
 /**
@@ -66,6 +66,7 @@ export class Cdk8sTeamJsiiProject extends cdk.JsiiProject {
     const fixedTypeScriptOptions = node.buildNodeProjectFixedOptions(options);
     const defaultTypeScriptOptions = node.buildNodeProjectDefaultOptions(options);
     const repoName = options.repoName ?? node.buildRepositoryName(options.name);
+    const securityNotifications = options.securityNotifications ?? true;
 
     const golangBranch = options.golangBranch ?? 'main';
     const golang = options.golang ?? true;
@@ -88,6 +89,9 @@ export class Cdk8sTeamJsiiProject extends cdk.JsiiProject {
 
     node.addComponents(this, repoName);
 
+    if (securityNotifications) {
+      new SecurityNotificationWorkflow(this);
+    }
   }
 
 }

@@ -6,6 +6,7 @@ import { GitHooks } from '../components/git-hooks/git-hooks';
 import { IssueTemplates } from '../components/issue-templates/issue-templates';
 import { SecurityMD } from '../components/security/security';
 import { Triage } from '../components/triage/triage';
+import { SecurityNotificationWorkflow } from '../workflows/security-notification';
 
 export const NAME_PREFIX = 'cdk8s-';
 export const SCOPE = '@cdk8s/';
@@ -88,6 +89,12 @@ export interface Cdk8sTeamNodeProjectOptions extends javascript.NodeProjectOptio
    */
   readonly repoName?: string;
 
+  /**
+   * Flag for repository security incident notifications.
+   *
+   * @default true
+   */
+  readonly securityNotifications?: boolean;
 }
 
 /**
@@ -102,10 +109,12 @@ export class Cdk8sTeamNodeProject extends javascript.NodeProject {
 
     const fixedOptions = buildNodeProjectFixedOptions(options);
     const defaultOptions = buildNodeProjectDefaultOptions(options);
+    const securityNotifications = options.securityNotifications ?? true;
 
     super({
       ...fixedOptions,
       ...defaultOptions,
+      securityNotifications,
       ...options,
     });
 
@@ -113,6 +122,9 @@ export class Cdk8sTeamNodeProject extends javascript.NodeProject {
 
     addComponents(this, repoName);
 
+    if (securityNotifications) {
+      new SecurityNotificationWorkflow(this);
+    }
   }
 
 }
@@ -176,6 +188,5 @@ export function addComponents(project: NodeProject, repoName: string) {
   new IssueTemplates(project, { repoName });
   new SecurityMD(project);
   new Triage(project);
-
 }
 
