@@ -525,9 +525,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Install and Build
-        run: yarn install --frozen-lockfile && cd scripts/security-notifications && yarn build && yarn test
+        run: yarn install --frozen-lockfile && yarn build && yarn test && cd scripts
       - name: Run Script
-        uses: ./scripts/security-notifications
+        uses: ./scripts/createSecurityIssue.ts
         env:
           GITHUB_TOKEN: \${{ secrets.PROJEN_GITHUB_TOKEN }}
           REPO_ROOT: \${{ github.workspace }}
@@ -2193,9 +2193,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Install and Build
-        run: yarn install --frozen-lockfile && cd scripts/security-notifications && yarn build && yarn test
+        run: yarn install --frozen-lockfile && yarn build && yarn test && cd scripts
       - name: Run Script
-        uses: ./scripts/security-notifications
+        uses: ./scripts/createSecurityIssue.ts
         env:
           GITHUB_TOKEN: \${{ secrets.PROJEN_GITHUB_TOKEN }}
           REPO_ROOT: \${{ github.workspace }}
@@ -3821,9 +3821,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Install and Build
-        run: yarn install --frozen-lockfile && cd scripts/security-notifications && yarn build && yarn test
+        run: yarn install --frozen-lockfile && yarn build && yarn test && cd scripts
       - name: Run Script
-        uses: ./scripts/security-notifications
+        uses: ./scripts/createSecurityIssue.ts
         env:
           GITHUB_TOKEN: \${{ secrets.PROJEN_GITHUB_TOKEN }}
           REPO_ROOT: \${{ github.workspace }}
@@ -5489,9 +5489,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Install and Build
-        run: yarn install --frozen-lockfile && cd scripts/security-notifications && yarn build && yarn test
+        run: yarn install --frozen-lockfile && yarn build && yarn test && cd scripts
       - name: Run Script
-        uses: ./scripts/security-notifications
+        uses: ./scripts/createSecurityIssue.ts
         env:
           GITHUB_TOKEN: \${{ secrets.PROJEN_GITHUB_TOKEN }}
           REPO_ROOT: \${{ github.workspace }}
@@ -7117,9 +7117,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Install and Build
-        run: yarn install --frozen-lockfile && cd scripts/security-notifications && yarn build && yarn test
+        run: yarn install --frozen-lockfile && yarn build && yarn test && cd scripts
       - name: Run Script
-        uses: ./scripts/security-notifications
+        uses: ./scripts/createSecurityIssue.ts
         env:
           GITHUB_TOKEN: \${{ secrets.PROJEN_GITHUB_TOKEN }}
           REPO_ROOT: \${{ github.workspace }}
@@ -8785,9 +8785,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Install and Build
-        run: yarn install --frozen-lockfile && cd scripts/security-notifications && yarn build && yarn test
+        run: yarn install --frozen-lockfile && yarn build && yarn test && cd scripts
       - name: Run Script
-        uses: ./scripts/security-notifications
+        uses: ./scripts/createSecurityIssue.ts
         env:
           GITHUB_TOKEN: \${{ secrets.PROJEN_GITHUB_TOKEN }}
           REPO_ROOT: \${{ github.workspace }}
@@ -10815,9 +10815,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Install and Build
-        run: yarn install --frozen-lockfile && cd scripts/security-notifications && yarn build && yarn test
+        run: yarn install --frozen-lockfile && yarn build && yarn test && cd scripts
       - name: Run Script
-        uses: ./scripts/security-notifications
+        uses: ./scripts/createSecurityIssue.ts
         env:
           GITHUB_TOKEN: \${{ secrets.PROJEN_GITHUB_TOKEN }}
           REPO_ROOT: \${{ github.workspace }}
@@ -12935,9 +12935,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Install and Build
-        run: yarn install --frozen-lockfile && cd scripts/security-notifications && yarn build && yarn test
+        run: yarn install --frozen-lockfile && yarn build && yarn test && cd scripts
       - name: Run Script
-        uses: ./scripts/security-notifications
+        uses: ./scripts/createSecurityIssue.ts
         env:
           GITHUB_TOKEN: \${{ secrets.PROJEN_GITHUB_TOKEN }}
           REPO_ROOT: \${{ github.workspace }}
@@ -15055,9 +15055,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Install and Build
-        run: yarn install --frozen-lockfile && cd scripts/security-notifications && yarn build && yarn test
+        run: yarn install --frozen-lockfile && yarn build && yarn test && cd scripts
       - name: Run Script
-        uses: ./scripts/security-notifications
+        uses: ./scripts/createSecurityIssue.ts
         env:
           GITHUB_TOKEN: \${{ secrets.PROJEN_GITHUB_TOKEN }}
           REPO_ROOT: \${{ github.workspace }}
@@ -17175,9 +17175,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Install and Build
-        run: yarn install --frozen-lockfile && cd scripts/security-notifications && yarn build && yarn test
+        run: yarn install --frozen-lockfile && yarn build && yarn test && cd scripts
       - name: Run Script
-        uses: ./scripts/security-notifications
+        uses: ./scripts/createSecurityIssue.ts
         env:
           GITHUB_TOKEN: \${{ secrets.PROJEN_GITHUB_TOKEN }}
           REPO_ROOT: \${{ github.workspace }}
@@ -19295,9 +19295,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Install and Build
-        run: yarn install --frozen-lockfile && cd scripts/security-notifications && yarn build && yarn test
+        run: yarn install --frozen-lockfile && yarn build && yarn test && cd scripts
       - name: Run Script
-        uses: ./scripts/security-notifications
+        uses: ./scripts/createSecurityIssue.ts
         env:
           GITHUB_TOKEN: \${{ secrets.PROJEN_GITHUB_TOKEN }}
           REPO_ROOT: \${{ github.workspace }}
@@ -21415,9 +21415,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Install and Build
-        run: yarn install --frozen-lockfile && cd scripts/security-notifications && yarn build && yarn test
+        run: yarn install --frozen-lockfile && yarn build && yarn test && cd scripts
       - name: Run Script
-        uses: ./scripts/security-notifications
+        uses: ./scripts/createSecurityIssue.ts
         env:
           GITHUB_TOKEN: \${{ secrets.PROJEN_GITHUB_TOKEN }}
           REPO_ROOT: \${{ github.workspace }}

@@ -33,7 +33,7 @@ const mockListCodeScanningAlerts = jest.fn().mockResolvedValue({
   }],
 });
 
-import { createOctokitClient, getRepositoryName, getRepositoryOwner, createSecurityWorkflow } from '../../src/components/scripts/security-notification';
+import { createOctokitClient, getRepositoryName, getRepositoryOwner, createSecurityWorkflow } from '../../src/components/scripts/createSecurityIssue';
 
 jest.mock('@octokit/rest', () => ({
   Octokit: jest.fn().mockImplementation(() => ({
