@@ -6,7 +6,7 @@ import { GitHooks } from '../components/git-hooks/git-hooks';
 import { IssueTemplates } from '../components/issue-templates/issue-templates';
 import { SecurityMD } from '../components/security/security';
 import { Triage } from '../components/triage/triage';
-import { SecurityNotificationWorkflow } from '../workflows/security-notification';
+import { DependabotSecurityNotificationWorkflow } from '../workflows/dependabot-security-notification';
 
 export const NAME_PREFIX = 'cdk8s-';
 export const SCOPE = '@cdk8s/';
@@ -124,7 +124,7 @@ export class Cdk8sTeamNodeProject extends javascript.NodeProject {
     addComponents(this, repoName);
 
     if (securityNotifications) {
-      new SecurityNotificationWorkflow(this);
+      new DependabotSecurityNotificationWorkflow(this);
     }
   }
 

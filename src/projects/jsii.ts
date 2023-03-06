@@ -2,7 +2,7 @@ import * as maker from 'codemaker';
 import { cdk } from 'projen';
 import * as node from './node';
 import * as ts from './typescript';
-import { SecurityNotificationWorkflow } from '../workflows/security-notification';
+import { DependabotSecurityNotificationWorkflow } from '../workflows/dependabot-security-notification';
 
 const code = new maker.CodeMaker();
 
@@ -90,7 +90,7 @@ export class Cdk8sTeamJsiiProject extends cdk.JsiiProject {
     node.addComponents(this, repoName);
 
     if (securityNotifications) {
-      new SecurityNotificationWorkflow(this);
+      new DependabotSecurityNotificationWorkflow(this);
     }
   }
 

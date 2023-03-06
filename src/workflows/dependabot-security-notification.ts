@@ -5,11 +5,13 @@ import { workflows, GithubWorkflow } from 'projen/lib/github';
 import { NodeProject } from 'projen/lib/javascript';
 import { copyFiles } from '../utils/copyFiles';
 
+const filename = 'createDependabotIssue.ts';
+
 /**
- * Create security notification workflow for the project.
- * This creates an issue if there is a security finding from Github.
+ * Create dependabot security notification workflow for the project.
+ * This creates an issue if there is a dependabot security finding from Github.
  */
-export class SecurityNotificationWorkflow extends Component {
+export class DependabotSecurityNotificationWorkflow extends Component {
 
   constructor(project: NodeProject) {
     super(project);
@@ -17,7 +19,7 @@ export class SecurityNotificationWorkflow extends Component {
     // Copying script files for this workflow
     this.copyFilesOver();
 
-    const workflow: GithubWorkflow = project.github!.addWorkflow('Security-Notifications');
+    const workflow: GithubWorkflow = project.github!.addWorkflow('Dependabot-Security-Notifications');
 
     const runEveryFiveMins = '*/5 * * * *';
     const trigger: workflows.Triggers = {
@@ -28,9 +30,8 @@ export class SecurityNotificationWorkflow extends Component {
 
     const runsOn = ['ubuntu-latest'];
     const pathToScript = 'scripts';
-    const filename = 'createSecurityIssue.ts';
     const job: workflows.Job = {
-      name: 'security-notification',
+      name: 'dependabot-security-notification',
       runsOn: runsOn,
       permissions: {
         securityEvents: workflows.JobPermission.READ,
@@ -60,7 +61,7 @@ export class SecurityNotificationWorkflow extends Component {
 
 
     workflow.on(trigger);
-    workflow.addJob('security_notification', job);
+    workflow.addJob('dependabot_security_notification', job);
   }
 
   copyFilesOver() {
@@ -68,7 +69,7 @@ export class SecurityNotificationWorkflow extends Component {
     const destinationDir = path.join(__dirname, '../../scripts');
 
     copyFiles(sourceDir, destinationDir);
-    addProjenGuidance(`${destinationDir}/createSecurityIssue.ts`);
+    addProjenGuidance(`${destinationDir}/${filename}`);
   }
 }
 

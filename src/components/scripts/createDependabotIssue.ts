@@ -1,18 +1,18 @@
 import { Octokit } from '@octokit/rest';
-import { GetResponseDataTypeFromEndpointMethod } from '@octokit/types';
 
-const SECURITY_INCIDENT_LABEL = 'gh-security-finding';
+const DEPENDABOT_SECURITY_INCIDENT_LABEL = 'dependabot-security-finding';
 const P0_ISSUE_LABEL = 'priority/p0';
+const TRIAGE_LABEL = 'needs-triage';
 
 const owner = getRepositoryOwner();
 const repository = getRepositoryName();
 const client = createOctokitClient();
 
 /**
- * Runs as part of Security Notification workflow.
- * This creates an issue for any code scanning alerts that github creates for the repository.
+ * Runs as part of Dependabot Security Notification workflow.
+ * This creates an issue for any dependabot security alerts that github creates for the repository.
  */
-export async function createSecurityWorkflow() {
+export async function runWorkflowScript() {
   const existingIssues = await client.issues.listForRepo({
     owner: owner,
     repo: repository,
@@ -20,48 +20,43 @@ export async function createSecurityWorkflow() {
 
   // This also returns pull requests, so making sure we are only considering issues
   // https://docs.github.com/en/rest/issues/issues?apiVersion=2022-11-28#list-repository-issues
-  const existingSecurityIssues = existingIssues.data.filter((issue) =>
-    issue.labels.includes(SECURITY_INCIDENT_LABEL) && !('pull_request' in issue) && issue.state === 'open',
+  const existingDependabotSecurityIssues = existingIssues.data.filter((issue) =>
+    issue.labels.includes(DEPENDABOT_SECURITY_INCIDENT_LABEL) && !('pull_request' in issue) && issue.state === 'open',
   );
 
-  await codeScanningAlerts(existingSecurityIssues);
-}
-
-/**
- * Create issues for code scanning alerts
- * @param existingSecurityIssues List of existing security issues
- */
-async function codeScanningAlerts(existingSecurityIssues: GetResponseDataTypeFromEndpointMethod<typeof client.issues.listForRepo>) {
-  const csIncidents = await client.codeScanning.listAlertsForRepo({
+  const dependabotSecurityIncidents = await client.dependabot.listAlertsForRepo({
     owner: owner,
     repo: repository,
   });
 
-  for (const securityIncident of csIncidents.data) {
-    const issueTitle = `[AUTOCUT] GH CodeScanning Alert #${securityIncident.number}`;
+  const openSecurityIncidents = dependabotSecurityIncidents.data.filter((incident) => incident.state === 'open');
 
-    const issueExists = existingSecurityIssues.find((issue) => issue.title === issueTitle);
+  for (const incident of openSecurityIncidents) {
+    const issueTitle = `[AUTOCUT] Dependabot Security Alert #${incident.number}`;
+
+    const issueExists = existingDependabotSecurityIssues.find((issue) => issue.title === issueTitle);
 
     if (issueExists === undefined) {
-      await createSecurityIssue(issueTitle, securityIncident.html_url);
+      await createDependabotSecurityIssue(issueTitle, incident.html_url);
     }
   }
 }
 
 /**
- * Helper method to create a code scanning alert issue.
+ * Helper method to create a dependabot security alert issue.
  * @param issueTitle The title of the issue to create.
- * @param incidentUrl The URL to the code scanning alert.
+ * @param incidentUrl The URL to the dependabot security alert.
  */
-async function createSecurityIssue(issueTitle: string, incidentUrl: string) {
+async function createDependabotSecurityIssue(issueTitle: string, incidentUrl: string) {
   await client.issues.create({
     owner: owner,
     repo: repository,
     title: issueTitle,
-    body: `Github reported a new security incident at: ${incidentUrl}`,
+    body: `Github reported a new dependabot security incident at: ${incidentUrl}`,
     labels: [
-      SECURITY_INCIDENT_LABEL,
+      DEPENDABOT_SECURITY_INCIDENT_LABEL,
       P0_ISSUE_LABEL,
+      TRIAGE_LABEL,
     ],
   });
 }
@@ -110,6 +105,6 @@ export function getRepositoryName(): string {
   return repositoryName.split('/')[1];
 }
 
-createSecurityWorkflow().catch((err) => {
+runWorkflowScript().catch((err) => {
   throw new Error(err);
 });
