@@ -24,7 +24,6 @@
     "git-hooks/README.md",
     "git-hooks/setup.sh",
     "LICENSE",
-    "scripts/github-actions/createDependabotIssue.ts",
     "SECURITY.md",
     "tsconfig.dev.json"
   ],

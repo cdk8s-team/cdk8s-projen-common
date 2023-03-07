@@ -91,14 +91,6 @@
       "type": "build"
     },
     {
-      "name": "@octokit/rest",
-      "type": "bundled"
-    },
-    {
-      "name": "@octokit/types",
-      "type": "bundled"
-    },
-    {
       "name": "codemaker",
       "type": "bundled"
     },
@@ -115,14 +107,6 @@
     {
       "name": "projen",
       "type": "peer"
-    },
-    {
-      "name": "@octokit/rest",
-      "type": "runtime"
-    },
-    {
-      "name": "@octokit/types",
-      "type": "runtime"
     },
     {
       "name": "codemaker",

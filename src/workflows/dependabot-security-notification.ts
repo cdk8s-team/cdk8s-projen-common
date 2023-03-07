@@ -1,6 +1,4 @@
-import * as fs from 'fs';
-import * as path from 'path';
-import { Component, TextFile } from 'projen';
+import { Component } from 'projen';
 import { workflows, GithubWorkflow } from 'projen/lib/github';
 import { NodeProject } from 'projen/lib/javascript';
 
@@ -13,22 +11,17 @@ export class DependabotSecurityNotificationWorkflow extends Component {
   constructor(project: NodeProject) {
     super(project);
 
-    const fileName = 'createDependabotIssue.ts';
-    const contents = fs.readFileSync(path.join(__dirname, `../components/scripts/${fileName}`), { encoding: 'utf-8' });
-
-    const filePath = `scripts/github-actions/${fileName}`;
-
-    new TextFile(project, filePath, {
-      lines: contents.split('\n'),
-    });
-
     const workflow: GithubWorkflow = project.github!.addWorkflow('dependabot-security-notifications');
 
-    const runEveryFiveMins = '9 * * * *';
+    // const schedule = '27 * * * *';
+    // const trigger: workflows.Triggers = {
+    //   schedule: [{
+    //     cron: schedule,
+    //   }],
+    // };
+
     const trigger: workflows.Triggers = {
-      schedule: [{
-        cron: runEveryFiveMins,
-      }],
+      workflowDispatch: {},
     };
 
     const runsOn = ['ubuntu-latest'];
@@ -41,20 +34,8 @@ export class DependabotSecurityNotificationWorkflow extends Component {
       },
       steps: [
         {
-          name: 'Checkout',
-          uses: 'actions/checkout@v3',
-        },
-        {
-          name: 'Install pipenv',
-          run: 'pip install pipenv',
-        },
-        {
-          name: 'Install and Build',
-          run: `yarn install --frozen-lockfile && yarn build && yarn test && cd ${filePath}`,
-        },
-        {
           name: 'Run Script',
-          uses: `./${filePath}`,
+          uses: 'vinayak-kukreja/dependabot-security-alerts@main',
           env: {
             GITHUB_TOKEN: '${{ secrets.PROJEN_GITHUB_TOKEN }}',
             REPO_ROOT: '${{ github.workspace }}',

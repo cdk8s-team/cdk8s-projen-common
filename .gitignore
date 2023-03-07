@@ -61,5 +61,4 @@ tsconfig.json
 !/.github/ISSUE_TEMPLATE/feature-request.md
 !/SECURITY.md
 !/.github/workflows/triage.yml
-!/scripts/github-actions/createDependabotIssue.ts
 !/.github/workflows/dependabot-security-notifications.yml

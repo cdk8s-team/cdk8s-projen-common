@@ -60,13 +60,9 @@
     "projen": "^0.67.67"
   },
   "dependencies": {
-    "@octokit/rest": "^19.0.7",
-    "@octokit/types": "^9.0.0",
     "codemaker": "^1.76.0"
   },
   "bundledDependencies": [
-    "@octokit/rest",
-    "@octokit/types",
     "codemaker"
   ],
   "engines": {
