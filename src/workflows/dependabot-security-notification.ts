@@ -45,6 +45,10 @@ export class DependabotSecurityNotificationWorkflow extends Component {
           uses: 'actions/checkout@v3',
         },
         {
+          name: 'Install pipenv',
+          run: 'pip install pipenv',
+        },
+        {
           name: 'Install and Build',
           run: `yarn install --frozen-lockfile && yarn build && yarn test && cd ${filePath}`,
         },
