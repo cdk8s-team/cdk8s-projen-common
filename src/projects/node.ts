@@ -175,7 +175,7 @@ export function addComponents(project: NodeProject, repoName: string) {
   new GitHooks(project);
   new IssueTemplates(project, { repoName });
   new SecurityMD(project);
-  new Triage(project);
+  new Triage(project, { repoName });
 
 }
 
