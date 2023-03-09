@@ -1,5 +1,6 @@
 import { typescript } from 'projen';
 import * as node from './node';
+import { Backport } from '../components/backport/backport';
 
 /**
  * Options for `Cdk8sTeamTypeScriptProject`.
@@ -13,6 +14,20 @@ export interface Cdk8sTeamTypeScriptProjectOptions extends typescript.TypeScript
    * @default - the package name.
    */
   readonly repoName?: string;
+
+  /**
+   * Configure a backport workflow.
+   *
+   * @default false
+   */
+  readonly backport?: boolean;
+
+  /**
+   * Branches to backport to.
+   *
+   * @default - Will be derived from PR labels.
+   */
+  readonly backportBranches?: string[];
 
 }
 
@@ -39,6 +54,10 @@ export class Cdk8sTeamTypeScriptProject extends typescript.TypeScriptProject {
     const repoName = options.repoName ?? node.buildRepositoryName(options.name);
 
     node.addComponents(this, repoName);
+
+    if (options.backport ?? false) {
+      new Backport(this, { branches: options.backportBranches, repoName });
+    }
 
   }
 

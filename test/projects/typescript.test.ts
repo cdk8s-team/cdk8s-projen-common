@@ -131,3 +131,15 @@ test('typescript project throws on invalid option', () => {
 
 });
 
+test('can configure backport', () => {
+
+  const project = new src.Cdk8sTeamTypeScriptProject({
+    name: 'root',
+    defaultReleaseBranch: 'main',
+    backport: true,
+    backportBranches: ['1.x'],
+  });
+
+  expect(Testing.synth(project)).toMatchSnapshot();
+
+});
