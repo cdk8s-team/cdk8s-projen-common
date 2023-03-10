@@ -136,7 +136,7 @@ test('security notifications enabled for typescript project', () => {
   const project = new src.Cdk8sTeamTypeScriptProject({
     name: 'cdk8s-sample',
     defaultReleaseBranch: 'main',
-    securityNotifications: true,
+    dependabotSecurityAlerts: true,
   });
 
   expect(Testing.synth(project)).toMatchSnapshot();

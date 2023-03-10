@@ -16,12 +16,11 @@ export interface Cdk8sTeamTypeScriptProjectOptions extends typescript.TypeScript
   readonly repoName?: string;
 
   /**
-   * Creates issues for security incidents reported by Github for the repository
-   * Currently creates issues for code scanning alerts
+   * Creates issues for security incidents reported by dependabot for the repository
    *
    * @default true
    */
-  readonly securityNotifications?: boolean;
+  readonly dependabotSecurityAlerts?: boolean;
 }
 
 /**
@@ -36,12 +35,12 @@ export class Cdk8sTeamTypeScriptProject extends typescript.TypeScriptProject {
 
     const fixedOptions = node.buildNodeProjectFixedOptions(options);
     const defaultOptions = node.buildNodeProjectDefaultOptions(options);
-    const securityNotifications = options.securityNotifications ?? true;
+    const dependabotSecurityAlerts = options.dependabotSecurityAlerts ?? true;
 
     super({
       ...fixedOptions,
       ...defaultOptions,
-      securityNotifications,
+      dependabotSecurityAlerts,
       ...options,
     });
 
@@ -49,7 +48,7 @@ export class Cdk8sTeamTypeScriptProject extends typescript.TypeScriptProject {
 
     node.addComponents(this, repoName);
 
-    if (securityNotifications) {
+    if (dependabotSecurityAlerts) {
       new DependabotSecurityAlertWorkflow(this);
     }
   }

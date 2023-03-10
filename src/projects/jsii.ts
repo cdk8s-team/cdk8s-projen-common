@@ -66,7 +66,7 @@ export class Cdk8sTeamJsiiProject extends cdk.JsiiProject {
     const fixedTypeScriptOptions = node.buildNodeProjectFixedOptions(options);
     const defaultTypeScriptOptions = node.buildNodeProjectDefaultOptions(options);
     const repoName = options.repoName ?? node.buildRepositoryName(options.name);
-    const securityNotifications = options.securityNotifications ?? true;
+    const dependabotSecurityAlerts = options.dependabotSecurityAlerts ?? true;
 
     const golangBranch = options.golangBranch ?? 'main';
     const golang = options.golang ?? true;
@@ -89,7 +89,7 @@ export class Cdk8sTeamJsiiProject extends cdk.JsiiProject {
 
     node.addComponents(this, repoName);
 
-    if (securityNotifications) {
+    if (dependabotSecurityAlerts) {
       new DependabotSecurityAlertWorkflow(this);
     }
   }

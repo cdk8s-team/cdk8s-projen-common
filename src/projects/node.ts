@@ -95,7 +95,7 @@ export interface Cdk8sTeamNodeProjectOptions extends javascript.NodeProjectOptio
    *
    * @default true
    */
-  readonly securityNotifications?: boolean;
+  readonly dependabotSecurityAlerts?: boolean;
 }
 
 /**
@@ -110,12 +110,12 @@ export class Cdk8sTeamNodeProject extends javascript.NodeProject {
 
     const fixedOptions = buildNodeProjectFixedOptions(options);
     const defaultOptions = buildNodeProjectDefaultOptions(options);
-    const securityNotifications = options.securityNotifications ?? true;
+    const dependabotSecurityAlerts = options.dependabotSecurityAlerts ?? true;
 
     super({
       ...fixedOptions,
       ...defaultOptions,
-      securityNotifications,
+      dependabotSecurityAlerts,
       ...options,
     });
 
@@ -123,7 +123,7 @@ export class Cdk8sTeamNodeProject extends javascript.NodeProject {
 
     addComponents(this, repoName);
 
-    if (securityNotifications) {
+    if (dependabotSecurityAlerts) {
       new DependabotSecurityAlertWorkflow(this);
     }
   }
