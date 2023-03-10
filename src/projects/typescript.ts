@@ -1,6 +1,6 @@
 import { typescript } from 'projen';
 import * as node from './node';
-import { DependabotSecurityNotificationWorkflow } from '../workflows/dependabot-security-notification';
+import { DependabotSecurityAlertWorkflow } from '../workflows/dependabot-security-notification';
 
 /**
  * Options for `Cdk8sTeamTypeScriptProject`.
@@ -50,7 +50,7 @@ export class Cdk8sTeamTypeScriptProject extends typescript.TypeScriptProject {
     node.addComponents(this, repoName);
 
     if (securityNotifications) {
-      new DependabotSecurityNotificationWorkflow(this);
+      new DependabotSecurityAlertWorkflow(this);
     }
   }
 

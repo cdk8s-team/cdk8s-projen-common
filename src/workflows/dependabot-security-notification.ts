@@ -3,30 +3,29 @@ import { workflows, GithubWorkflow } from 'projen/lib/github';
 import { NodeProject } from 'projen/lib/javascript';
 
 /**
- * Create dependabot security notification workflow for the project.
+ * Create dependabot security alert workflow for the project.
  * This creates an issue if there is a dependabot security finding from Github.
  */
-export class DependabotSecurityNotificationWorkflow extends Component {
+export class DependabotSecurityAlertWorkflow extends Component {
 
   constructor(project: NodeProject) {
     super(project);
 
-    const workflow: GithubWorkflow = project.github!.addWorkflow('dependabot-security-notifications');
+    const workflow: GithubWorkflow = project.github!.addWorkflow('dependabot-security-alerts');
 
-    // const schedule = '27 * * * *';
-    // const trigger: workflows.Triggers = {
-    //   schedule: [{
-    //     cron: schedule,
-    //   }],
-    // };
-
+    // Keeping a random interval since cron scheduling is a best effort scheduling for Github. Also adding manual trigger option.
+    // See: https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule
+    const schedule = '27 * * * *';
     const trigger: workflows.Triggers = {
+      schedule: [{
+        cron: schedule,
+      }],
       workflowDispatch: {},
     };
 
     const runsOn = ['ubuntu-latest'];
     const job: workflows.Job = {
-      name: 'dependabot-security-notification',
+      name: 'dependabot-security-alert',
       runsOn: runsOn,
       permissions: {
         securityEvents: workflows.JobPermission.READ,
@@ -35,7 +34,7 @@ export class DependabotSecurityNotificationWorkflow extends Component {
       steps: [
         {
           name: 'Run Script',
-          uses: 'vinayak-kukreja/dependabot-security-alerts@main',
+          uses: 'cdk8s-team/cdk8s-dependabot-security-alerts@main',
           env: {
             GITHUB_TOKEN: '${{ secrets.PROJEN_GITHUB_TOKEN }}',
             REPO_ROOT: '${{ github.workspace }}',
@@ -47,6 +46,6 @@ export class DependabotSecurityNotificationWorkflow extends Component {
     };
 
     workflow.on(trigger);
-    workflow.addJob('dependabot_security_notification', job);
+    workflow.addJob('dependabot_security_alert', job);
   }
 }
