@@ -1,6 +1,6 @@
 import { typescript } from 'projen';
 import * as node from './node';
-import { DependabotSecurityAlertWorkflow } from '../workflows/dependabot-security-notification';
+import { DependabotSecurityAlertWorkflow } from '../workflows/dependabot-security-alert';
 
 /**
  * Options for `Cdk8sTeamTypeScriptProject`.
@@ -16,7 +16,7 @@ export interface Cdk8sTeamTypeScriptProjectOptions extends typescript.TypeScript
   readonly repoName?: string;
 
   /**
-   * Creates issues for security incidents reported by dependabot for the repository
+   * Creates issues for security incidents reported by dependabot for the repository.
    *
    * @default true
    */

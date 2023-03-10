@@ -6,7 +6,7 @@ import { GitHooks } from '../components/git-hooks/git-hooks';
 import { IssueTemplates } from '../components/issue-templates/issue-templates';
 import { SecurityMD } from '../components/security/security';
 import { Triage } from '../components/triage/triage';
-import { DependabotSecurityAlertWorkflow } from '../workflows/dependabot-security-notification';
+import { DependabotSecurityAlertWorkflow } from '../workflows/dependabot-security-alert';
 
 export const NAME_PREFIX = 'cdk8s-';
 export const SCOPE = '@cdk8s/';
@@ -90,8 +90,7 @@ export interface Cdk8sTeamNodeProjectOptions extends javascript.NodeProjectOptio
   readonly repoName?: string;
 
   /**
-   * Creates issues for security incidents reported by Github for the repository
-   * Currently creates issues for code scanning alerts
+   * Creates issues for security incidents reported by dependabot for the repository.
    *
    * @default true
    */

@@ -2296,7 +2296,7 @@ const cdk8sTeamNodeProjectOptions: Cdk8sTeamNodeProjectOptions = { ... }
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.workflowBootstrapSteps">workflowBootstrapSteps</a></code> | <code>projen.github.workflows.JobStep[]</code> | Workflow steps to use in order to bootstrap this repo. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.workflowGitIdentity">workflowGitIdentity</a></code> | <code>projen.github.GitIdentity</code> | The git identity to use in workflows. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.workflowNodeVersion">workflowNodeVersion</a></code> | <code>string</code> | The node version to use in GitHub workflows. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.dependabotSecurityAlerts">dependabotSecurityAlerts</a></code> | <code>boolean</code> | Creates issues for security incidents reported by Github for the repository Currently creates issues for code scanning alerts. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.dependabotSecurityAlerts">dependabotSecurityAlerts</a></code> | <code>boolean</code> | Creates issues for security incidents reported by dependabot for the repository. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.repoName">repoName</a></code> | <code>string</code> | The name of the repository inside the cdk8s-team org where the code of the project is locate in. |
 
 ---
@@ -3997,7 +3997,7 @@ public readonly dependabotSecurityAlerts: boolean;
 - *Type:* boolean
 - *Default:* true
 
-Creates issues for security incidents reported by Github for the repository Currently creates issues for code scanning alerts.
+Creates issues for security incidents reported by dependabot for the repository.
 
 ---
 

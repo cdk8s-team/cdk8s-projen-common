@@ -131,7 +131,7 @@ test('typescript project throws on invalid option', () => {
 
 });
 
-test('security notifications enabled for typescript project', () => {
+test('security alerts enabled for typescript project', () => {
 
   const project = new src.Cdk8sTeamTypeScriptProject({
     name: 'cdk8s-sample',

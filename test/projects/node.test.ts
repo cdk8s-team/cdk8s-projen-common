@@ -123,7 +123,7 @@ test('node project throws on invalid option', () => {
 
 });
 
-test('security notification enabled for node project', () => {
+test('security alerts enabled for node project', () => {
 
   const project = new src.Cdk8sTeamNodeProject({
     name: 'cdk8s-sample',

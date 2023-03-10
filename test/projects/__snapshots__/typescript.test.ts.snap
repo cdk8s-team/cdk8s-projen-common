@@ -9447,7 +9447,7 @@ test('hello', () => {
 }
 `;
 
-exports[`security notifications enabled for typescript project 1`] = `
+exports[`security alerts enabled for typescript project 1`] = `
 Object {
   ".eslintrc.json": Object {
     "env": Object {

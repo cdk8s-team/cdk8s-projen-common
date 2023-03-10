@@ -2,7 +2,7 @@ import * as maker from 'codemaker';
 import { cdk } from 'projen';
 import * as node from './node';
 import * as ts from './typescript';
-import { DependabotSecurityAlertWorkflow } from '../workflows/dependabot-security-notification';
+import { DependabotSecurityAlertWorkflow } from '../workflows/dependabot-security-alert';
 
 const code = new maker.CodeMaker();
 
