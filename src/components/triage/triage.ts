@@ -21,16 +21,18 @@ export class Triage extends Component {
       issues: {
         types: ['opened'],
       },
+      pullRequest: {
+        types: ['opened'],
+      },
     });
     workflow.addJob('assign-to-project', {
-      permissions: { issues: JobPermission.WRITE },
+      permissions: { issues: JobPermission.WRITE, pullRequests: JobPermission.WRITE },
       runsOn: ['ubuntu-latest'],
       steps: [{
         uses: 'actions/add-to-project@v0.4.0',
         with: {
           'project-url': projectUrl,
           'github-token': '${{ secrets.PROJEN_GITHUB_TOKEN }}',
-          'labeled': 'needs-triage',
         },
       }],
     });
