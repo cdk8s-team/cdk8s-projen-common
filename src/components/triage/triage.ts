@@ -33,9 +33,12 @@ export class Triage extends Component {
       issues: {
         types: ['opened'],
       },
+      pullRequest: {
+        types: ['opened'],
+      },
     });
     workflow.addJob('assign-to-project', {
-      permissions: { issues: JobPermission.WRITE },
+      permissions: { issues: JobPermission.WRITE, pullRequests: JobPermission.WRITE },
       // dont run this action in forks as it contains a hard link to our project board.
       // see https://docs.github.com/en/actions/using-jobs/using-conditions-to-control-job-execution#example-only-run-job-for-specific-repository
       if: `github.repository == cdk8s-team/${options.repoName}`,
@@ -45,7 +48,6 @@ export class Triage extends Component {
         with: {
           'project-url': projectUrl,
           'github-token': '${{ secrets.PROJEN_GITHUB_TOKEN }}',
-          'labeled': 'needs-triage',
         },
       }],
     });
