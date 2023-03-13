@@ -1,5 +1,6 @@
 import { javascript } from 'projen';
 import { NodeProject } from 'projen/lib/javascript';
+import { Backport } from '../components/backport/backport';
 import { CodeOfConductMD } from '../components/code-of-conduct/code-of-conduct';
 import { DCO } from '../components/dco/devco';
 import { GitHooks } from '../components/git-hooks/git-hooks';
@@ -88,6 +89,20 @@ export interface Cdk8sTeamNodeProjectOptions extends javascript.NodeProjectOptio
    */
   readonly repoName?: string;
 
+  /**
+   * Configure a backport workflow.
+   *
+   * @default false
+   */
+  readonly backport?: boolean;
+
+  /**
+   * Branches to backport to.
+   *
+   * @default - Will be derived from PR labels.
+   */
+  readonly backportBranches?: string[];
+
 }
 
 /**
@@ -112,6 +127,10 @@ export class Cdk8sTeamNodeProject extends javascript.NodeProject {
     const repoName = options.repoName ?? buildRepositoryName(options.name);
 
     addComponents(this, repoName);
+
+    if (options.backport ?? false) {
+      new Backport(this, { branches: options.backportBranches, repoName });
+    }
 
   }
 
@@ -175,7 +194,7 @@ export function addComponents(project: NodeProject, repoName: string) {
   new GitHooks(project);
   new IssueTemplates(project, { repoName });
   new SecurityMD(project);
-  new Triage(project);
+  new Triage(project, { repoName });
 
 }
 
