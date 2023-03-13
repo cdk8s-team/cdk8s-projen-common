@@ -404,6 +404,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       issues: write
+    if: github.repository == cdk8s-team/root
     steps:
       - uses: actions/add-to-project@v0.4.0
         with:
