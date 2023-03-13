@@ -2688,6 +2688,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       issues: write
+    if: github.repository == cdk8s-team/custom-repo-name
     steps:
       - uses: actions/add-to-project@v0.4.0
         with:
@@ -4327,6 +4328,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       issues: write
+    if: github.repository == cdk8s-team/custom-repo-name
     steps:
       - uses: actions/add-to-project@v0.4.0
         with:
@@ -5926,6 +5928,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       issues: write
+    if: github.repository == cdk8s-team/custom-repo-name
     steps:
       - uses: actions/add-to-project@v0.4.0
         with:
@@ -7565,6 +7568,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       issues: write
+    if: github.repository == cdk8s-team/custom-repo-name
     steps:
       - uses: actions/add-to-project@v0.4.0
         with:
@@ -9164,6 +9168,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       issues: write
+    if: github.repository == cdk8s-team/custom-repo-name
     steps:
       - uses: actions/add-to-project@v0.4.0
         with:
@@ -10803,6 +10808,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       issues: write
+    if: github.repository == cdk8s-team/custom-repo-name
     steps:
       - uses: actions/add-to-project@v0.4.0
         with:
@@ -12804,6 +12810,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       issues: write
+    if: github.repository == cdk8s-team/cdk8s-sample
     steps:
       - uses: actions/add-to-project@v0.4.0
         with:
@@ -14895,6 +14902,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       issues: write
+    if: github.repository == cdk8s-team/root
     steps:
       - uses: actions/add-to-project@v0.4.0
         with:
@@ -16986,6 +16994,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       issues: write
+    if: github.repository == cdk8s-team/cdk8s-sample
     steps:
       - uses: actions/add-to-project@v0.4.0
         with:
@@ -19077,6 +19086,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       issues: write
+    if: github.repository == cdk8s-team/cdk8s
     steps:
       - uses: actions/add-to-project@v0.4.0
         with:
@@ -21168,6 +21178,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       issues: write
+    if: github.repository == cdk8s-team/root
     steps:
       - uses: actions/add-to-project@v0.4.0
         with:
