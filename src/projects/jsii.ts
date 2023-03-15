@@ -2,6 +2,7 @@ import * as maker from 'codemaker';
 import { cdk } from 'projen';
 import * as node from './node';
 import * as ts from './typescript';
+import { Backport } from '../components/backport/backport';
 import { DependabotSecurityAlertWorkflow } from '../workflows/dependabot-security-alert';
 
 const code = new maker.CodeMaker();
@@ -92,8 +93,10 @@ export class Cdk8sTeamJsiiProject extends cdk.JsiiProject {
     if (dependabotSecurityAlerts) {
       new DependabotSecurityAlertWorkflow(this);
     }
+    if (options.backport ?? false) {
+      new Backport(this, { branches: options.backportBranches, repoName });
+    }
   }
-
 }
 
 function pythonTarget(name: string): cdk.JsiiPythonTarget {

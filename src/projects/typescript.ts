@@ -1,5 +1,6 @@
 import { typescript } from 'projen';
 import * as node from './node';
+import { Backport } from '../components/backport/backport';
 import { DependabotSecurityAlertWorkflow } from '../workflows/dependabot-security-alert';
 
 /**
@@ -21,6 +22,19 @@ export interface Cdk8sTeamTypeScriptProjectOptions extends typescript.TypeScript
    * @default true
    */
   readonly dependabotSecurityAlerts?: boolean;
+
+  /** Configure a backport workflow.
+   *
+   * @default false
+   */
+  readonly backport?: boolean;
+
+  /**
+   * Branches to backport to.
+   *
+   * @default - Will be derived from PR labels.
+   */
+  readonly backportBranches?: string[];
 }
 
 /**
@@ -51,6 +65,8 @@ export class Cdk8sTeamTypeScriptProject extends typescript.TypeScriptProject {
     if (dependabotSecurityAlerts) {
       new DependabotSecurityAlertWorkflow(this);
     }
+    if (options.backport ?? false) {
+      new Backport(this, { branches: options.backportBranches, repoName });
+    }
   }
-
 }

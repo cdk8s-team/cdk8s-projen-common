@@ -218,3 +218,15 @@ test('security alerts enabled for jsii project', () => {
 
   expect(Testing.synth(project)).toMatchSnapshot();
 });
+test('can configure backport', () => {
+
+  const project = new src.Cdk8sTeamJsiiProject({
+    name: 'root',
+    defaultReleaseBranch: 'main',
+    backport: true,
+    backportBranches: ['1.x'],
+  });
+
+  expect(Testing.synth(project)).toMatchSnapshot();
+
+});
