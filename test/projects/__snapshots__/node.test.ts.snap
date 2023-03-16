@@ -408,7 +408,7 @@ jobs:
     permissions:
       issues: write
       pull-requests: write
-    if: (github.repository == 'cdk8s-team/root') && (github.event.issue || github.event.pull_request.user.login != 'cdk8s-automation')
+    if: (github.repository == 'cdk8s-team/root') && (github.event.issue || (github.event.pull_request.user.login != 'cdk8s-automation' && github.event.pull_request.head.repo.full_name == github.repository))
     steps:
       - uses: actions/add-to-project@v0.4.0
         with:
@@ -1588,7 +1588,7 @@ jobs:
     permissions:
       issues: write
       pull-requests: write
-    if: (github.repository == 'cdk8s-team/custom-repo-name') && (github.event.issue || github.event.pull_request.user.login != 'cdk8s-automation')
+    if: (github.repository == 'cdk8s-team/custom-repo-name') && (github.event.issue || (github.event.pull_request.user.login != 'cdk8s-automation' && github.event.pull_request.head.repo.full_name == github.repository))
     steps:
       - uses: actions/add-to-project@v0.4.0
         with:
@@ -2660,7 +2660,7 @@ jobs:
     permissions:
       issues: write
       pull-requests: write
-    if: (github.repository == 'cdk8s-team/custom-repo-name') && (github.event.issue || github.event.pull_request.user.login != 'cdk8s-automation')
+    if: (github.repository == 'cdk8s-team/custom-repo-name') && (github.event.issue || (github.event.pull_request.user.login != 'cdk8s-automation' && github.event.pull_request.head.repo.full_name == github.repository))
     steps:
       - uses: actions/add-to-project@v0.4.0
         with:
@@ -3732,7 +3732,7 @@ jobs:
     permissions:
       issues: write
       pull-requests: write
-    if: (github.repository == 'cdk8s-team/custom-repo-name') && (github.event.issue || github.event.pull_request.user.login != 'cdk8s-automation')
+    if: (github.repository == 'cdk8s-team/custom-repo-name') && (github.event.issue || (github.event.pull_request.user.login != 'cdk8s-automation' && github.event.pull_request.head.repo.full_name == github.repository))
     steps:
       - uses: actions/add-to-project@v0.4.0
         with:
@@ -4878,7 +4878,7 @@ jobs:
     permissions:
       issues: write
       pull-requests: write
-    if: (github.repository == 'cdk8s-team/cdk8s-sample') && (github.event.issue || github.event.pull_request.user.login != 'cdk8s-automation')
+    if: (github.repository == 'cdk8s-team/cdk8s-sample') && (github.event.issue || (github.event.pull_request.user.login != 'cdk8s-automation' && github.event.pull_request.head.repo.full_name == github.repository))
     steps:
       - uses: actions/add-to-project@v0.4.0
         with:
@@ -6099,7 +6099,7 @@ jobs:
     permissions:
       issues: write
       pull-requests: write
-    if: (github.repository == 'cdk8s-team/root') && (github.event.issue || github.event.pull_request.user.login != 'cdk8s-automation')
+    if: (github.repository == 'cdk8s-team/root') && (github.event.issue || (github.event.pull_request.user.login != 'cdk8s-automation' && github.event.pull_request.head.repo.full_name == github.repository))
     steps:
       - uses: actions/add-to-project@v0.4.0
         with:
@@ -7320,7 +7320,7 @@ jobs:
     permissions:
       issues: write
       pull-requests: write
-    if: (github.repository == 'cdk8s-team/cdk8s-sample') && (github.event.issue || github.event.pull_request.user.login != 'cdk8s-automation')
+    if: (github.repository == 'cdk8s-team/cdk8s-sample') && (github.event.issue || (github.event.pull_request.user.login != 'cdk8s-automation' && github.event.pull_request.head.repo.full_name == github.repository))
     steps:
       - uses: actions/add-to-project@v0.4.0
         with:
@@ -8541,7 +8541,7 @@ jobs:
     permissions:
       issues: write
       pull-requests: write
-    if: (github.repository == 'cdk8s-team/cdk8s') && (github.event.issue || github.event.pull_request.user.login != 'cdk8s-automation')
+    if: (github.repository == 'cdk8s-team/cdk8s') && (github.event.issue || (github.event.pull_request.user.login != 'cdk8s-automation' && github.event.pull_request.head.repo.full_name == github.repository))
     steps:
       - uses: actions/add-to-project@v0.4.0
         with:
@@ -9762,7 +9762,7 @@ jobs:
     permissions:
       issues: write
       pull-requests: write
-    if: (github.repository == 'cdk8s-team/root') && (github.event.issue || github.event.pull_request.user.login != 'cdk8s-automation')
+    if: (github.repository == 'cdk8s-team/root') && (github.event.issue || (github.event.pull_request.user.login != 'cdk8s-automation' && github.event.pull_request.head.repo.full_name == github.repository))
     steps:
       - uses: actions/add-to-project@v0.4.0
         with:
