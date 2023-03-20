@@ -39,9 +39,10 @@ export class Triage extends Component {
     });
     workflow.addJob('assign-to-project', {
       permissions: { issues: JobPermission.WRITE, pullRequests: JobPermission.WRITE },
-      // dont run this action in forks as it contains a hard link to our project board.
+      // dont dont triage issues/prs on forks
+      // dont triage autimation bot prs
       // see https://docs.github.com/en/actions/using-jobs/using-conditions-to-control-job-execution#example-only-run-job-for-specific-repository
-      if: `github.repository == cdk8s-team/${options.repoName}`,
+      if: `(github.repository == \'cdk8s-team/${options.repoName}\') && (github.event.issue || (github.event.pull_request.user.login != \'cdk8s-automation\' && github.event.pull_request.head.repo.full_name == github.repository))`,
       runsOn: ['ubuntu-latest'],
       steps: [{
         uses: 'actions/add-to-project@v0.4.0',
