@@ -123,6 +123,17 @@ test('node project throws on invalid option', () => {
 
 });
 
+test('security alerts enabled for node project', () => {
+
+  const project = new src.Cdk8sTeamNodeProject({
+    name: 'cdk8s-sample',
+    defaultReleaseBranch: 'main',
+    dependabotSecurityAlerts: true,
+  });
+
+  expect(Testing.synth(project)).toMatchSnapshot();
+});
+
 test('can configure backport', () => {
 
   const project = new src.Cdk8sTeamNodeProject({
@@ -133,5 +144,4 @@ test('can configure backport', () => {
   });
 
   expect(Testing.synth(project)).toMatchSnapshot();
-
 });

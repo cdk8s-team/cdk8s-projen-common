@@ -131,6 +131,16 @@ test('typescript project throws on invalid option', () => {
 
 });
 
+test('security alerts enabled for typescript project', () => {
+
+  const project = new src.Cdk8sTeamTypeScriptProject({
+    name: 'cdk8s-sample',
+    defaultReleaseBranch: 'main',
+    dependabotSecurityAlerts: true,
+  });
+
+  expect(Testing.synth(project)).toMatchSnapshot();
+});
 test('can configure backport', () => {
 
   const project = new src.Cdk8sTeamTypeScriptProject({

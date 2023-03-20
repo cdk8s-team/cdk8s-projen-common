@@ -208,6 +208,16 @@ test('jsii project throws on invalid option', () => {
 
 });
 
+test('security alerts enabled for jsii project', () => {
+
+  const project = new src.Cdk8sTeamJsiiProject({
+    name: 'cdk8s-sample',
+    defaultReleaseBranch: 'main',
+    dependabotSecurityAlerts: true,
+  });
+
+  expect(Testing.synth(project)).toMatchSnapshot();
+});
 test('can configure backport', () => {
 
   const project = new src.Cdk8sTeamJsiiProject({

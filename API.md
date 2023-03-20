@@ -163,6 +163,7 @@ const cdk8sTeamJsiiProjectOptions: Cdk8sTeamJsiiProjectOptions = { ... }
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.typescriptVersion">typescriptVersion</a></code> | <code>string</code> | TypeScript version to use. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.backport">backport</a></code> | <code>boolean</code> | Configure a backport workflow. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.backportBranches">backportBranches</a></code> | <code>string[]</code> | Branches to backport to. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.dependabotSecurityAlerts">dependabotSecurityAlerts</a></code> | <code>boolean</code> | Creates issues for security incidents reported by dependabot for the repository. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.repoName">repoName</a></code> | <code>string</code> | The name of the repository inside the cdk8s-team org where the code of the project is locate in. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.golang">golang</a></code> | <code>boolean</code> | Publish Golang bindings to GitHub. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.golangBranch">golangBranch</a></code> | <code>string</code> | Name of the branch in the golang repository to publish to. |
@@ -2124,6 +2125,19 @@ Branches to backport to.
 
 ---
 
+##### `dependabotSecurityAlerts`<sup>Optional</sup> <a name="dependabotSecurityAlerts" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.dependabotSecurityAlerts"></a>
+
+```typescript
+public readonly dependabotSecurityAlerts: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Creates issues for security incidents reported by dependabot for the repository.
+
+---
+
 ##### `repoName`<sup>Optional</sup> <a name="repoName" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.repoName"></a>
 
 ```typescript
@@ -2340,6 +2354,7 @@ const cdk8sTeamNodeProjectOptions: Cdk8sTeamNodeProjectOptions = { ... }
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.workflowNodeVersion">workflowNodeVersion</a></code> | <code>string</code> | The node version to use in GitHub workflows. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.backport">backport</a></code> | <code>boolean</code> | Configure a backport workflow. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.backportBranches">backportBranches</a></code> | <code>string[]</code> | Branches to backport to. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.dependabotSecurityAlerts">dependabotSecurityAlerts</a></code> | <code>boolean</code> | Creates issues for security incidents reported by dependabot for the repository. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.repoName">repoName</a></code> | <code>string</code> | The name of the repository inside the cdk8s-team org where the code of the project is locate in. |
 
 ---
@@ -4081,6 +4096,19 @@ Branches to backport to.
 
 ---
 
+##### `dependabotSecurityAlerts`<sup>Optional</sup> <a name="dependabotSecurityAlerts" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.dependabotSecurityAlerts"></a>
+
+```typescript
+public readonly dependabotSecurityAlerts: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Creates issues for security incidents reported by dependabot for the repository.
+
+---
+
 ##### `repoName`<sup>Optional</sup> <a name="repoName" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.repoName"></a>
 
 ```typescript
@@ -4248,6 +4276,7 @@ const cdk8sTeamTypeScriptProjectOptions: Cdk8sTeamTypeScriptProjectOptions = { .
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.typescriptVersion">typescriptVersion</a></code> | <code>string</code> | TypeScript version to use. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.backport">backport</a></code> | <code>boolean</code> | Configure a backport workflow. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.backportBranches">backportBranches</a></code> | <code>string[]</code> | Branches to backport to. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.dependabotSecurityAlerts">dependabotSecurityAlerts</a></code> | <code>boolean</code> | Creates issues for security incidents reported by dependabot for the repository. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.repoName">repoName</a></code> | <code>string</code> | The name of the repository inside the cdk8s-team org where the code of the project is locate in. |
 
 ---
@@ -6201,6 +6230,19 @@ public readonly backportBranches: string[];
 - *Default:* Will be derived from PR labels.
 
 Branches to backport to.
+
+---
+
+##### `dependabotSecurityAlerts`<sup>Optional</sup> <a name="dependabotSecurityAlerts" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.dependabotSecurityAlerts"></a>
+
+```typescript
+public readonly dependabotSecurityAlerts: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Creates issues for security incidents reported by dependabot for the repository.
 
 ---
 

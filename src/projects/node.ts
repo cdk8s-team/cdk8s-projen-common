@@ -7,6 +7,7 @@ import { GitHooks } from '../components/git-hooks/git-hooks';
 import { IssueTemplates } from '../components/issue-templates/issue-templates';
 import { SecurityMD } from '../components/security/security';
 import { Triage } from '../components/triage/triage';
+import { DependabotSecurityAlertWorkflow } from '../workflows/dependabot-security-alert';
 
 export const NAME_PREFIX = 'cdk8s-';
 export const SCOPE = '@cdk8s/';
@@ -90,7 +91,13 @@ export interface Cdk8sTeamNodeProjectOptions extends javascript.NodeProjectOptio
   readonly repoName?: string;
 
   /**
-   * Configure a backport workflow.
+   * Creates issues for security incidents reported by dependabot for the repository.
+   *
+   * @default true
+   */
+  readonly dependabotSecurityAlerts?: boolean;
+
+  /** Configure a backport workflow.
    *
    * @default false
    */
@@ -102,7 +109,6 @@ export interface Cdk8sTeamNodeProjectOptions extends javascript.NodeProjectOptio
    * @default - Will be derived from PR labels.
    */
   readonly backportBranches?: string[];
-
 }
 
 /**
@@ -117,10 +123,12 @@ export class Cdk8sTeamNodeProject extends javascript.NodeProject {
 
     const fixedOptions = buildNodeProjectFixedOptions(options);
     const defaultOptions = buildNodeProjectDefaultOptions(options);
+    const dependabotSecurityAlerts = options.dependabotSecurityAlerts ?? true;
 
     super({
       ...fixedOptions,
       ...defaultOptions,
+      dependabotSecurityAlerts,
       ...options,
     });
 
@@ -128,12 +136,13 @@ export class Cdk8sTeamNodeProject extends javascript.NodeProject {
 
     addComponents(this, repoName);
 
+    if (dependabotSecurityAlerts) {
+      new DependabotSecurityAlertWorkflow(this);
+    }
     if (options.backport ?? false) {
       new Backport(this, { branches: options.backportBranches, repoName });
     }
-
   }
-
 }
 
 /**
@@ -195,6 +204,5 @@ export function addComponents(project: NodeProject, repoName: string) {
   new IssueTemplates(project, { repoName });
   new SecurityMD(project);
   new Triage(project, { repoName });
-
 }
 
