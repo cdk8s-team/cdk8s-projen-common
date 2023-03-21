@@ -4,8 +4,6 @@ import { NodeProject } from 'projen/lib/javascript';
 
 /**
  * Cleanup stale issue.
- *
- * // https://github.com/iliapolo/cdk8s-projen-common/actions/runs/4476215493/jobs/7866357709
  */
 export class Stale extends Component {
 
