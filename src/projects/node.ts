@@ -6,6 +6,7 @@ import { DCO } from '../components/dco/devco';
 import { GitHooks } from '../components/git-hooks/git-hooks';
 import { IssueTemplates } from '../components/issue-templates/issue-templates';
 import { SecurityMD } from '../components/security/security';
+import { Stale } from '../components/stale/stale';
 import { Triage } from '../components/triage/triage';
 import { DependabotSecurityAlertWorkflow } from '../workflows/dependabot-security-alert';
 
@@ -204,5 +205,6 @@ export function addComponents(project: NodeProject, repoName: string) {
   new IssueTemplates(project, { repoName });
   new SecurityMD(project);
   new Triage(project, { repoName });
+  new Stale(project);
 }
 
