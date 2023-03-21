@@ -5,9 +5,8 @@ import { CodeOfConductMD } from '../components/code-of-conduct/code-of-conduct';
 import { DCO } from '../components/dco/devco';
 import { GitHooks } from '../components/git-hooks/git-hooks';
 import { IssueTemplates } from '../components/issue-templates/issue-templates';
-import { SecurityMD } from '../components/security/security';
+import { Security } from '../components/security/security';
 import { Triage } from '../components/triage/triage';
-import { DependabotSecurityAlertWorkflow } from '../workflows/dependabot-security-alert';
 
 export const NAME_PREFIX = 'cdk8s-';
 export const SCOPE = '@cdk8s/';
@@ -90,13 +89,6 @@ export interface Cdk8sTeamNodeProjectOptions extends javascript.NodeProjectOptio
    */
   readonly repoName?: string;
 
-  /**
-   * Creates issues for security incidents reported by dependabot for the repository.
-   *
-   * @default true
-   */
-  readonly dependabotSecurityAlerts?: boolean;
-
   /** Configure a backport workflow.
    *
    * @default false
@@ -123,12 +115,10 @@ export class Cdk8sTeamNodeProject extends javascript.NodeProject {
 
     const fixedOptions = buildNodeProjectFixedOptions(options);
     const defaultOptions = buildNodeProjectDefaultOptions(options);
-    const dependabotSecurityAlerts = options.dependabotSecurityAlerts ?? true;
 
     super({
       ...fixedOptions,
       ...defaultOptions,
-      dependabotSecurityAlerts,
       ...options,
     });
 
@@ -136,9 +126,6 @@ export class Cdk8sTeamNodeProject extends javascript.NodeProject {
 
     addComponents(this, repoName);
 
-    if (dependabotSecurityAlerts) {
-      new DependabotSecurityAlertWorkflow(this);
-    }
     if (options.backport ?? false) {
       new Backport(this, { branches: options.backportBranches, repoName });
     }
@@ -202,7 +189,7 @@ export function addComponents(project: NodeProject, repoName: string) {
   new DCO(project);
   new GitHooks(project);
   new IssueTemplates(project, { repoName });
-  new SecurityMD(project);
+  new Security(project);
   new Triage(project, { repoName });
 }
 

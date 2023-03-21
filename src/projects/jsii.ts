@@ -3,7 +3,6 @@ import { cdk } from 'projen';
 import * as node from './node';
 import * as ts from './typescript';
 import { Backport } from '../components/backport/backport';
-import { DependabotSecurityAlertWorkflow } from '../workflows/dependabot-security-alert';
 
 const code = new maker.CodeMaker();
 
@@ -67,7 +66,6 @@ export class Cdk8sTeamJsiiProject extends cdk.JsiiProject {
     const fixedTypeScriptOptions = node.buildNodeProjectFixedOptions(options);
     const defaultTypeScriptOptions = node.buildNodeProjectDefaultOptions(options);
     const repoName = options.repoName ?? node.buildRepositoryName(options.name);
-    const dependabotSecurityAlerts = options.dependabotSecurityAlerts ?? true;
 
     const golangBranch = options.golangBranch ?? 'main';
     const golang = options.golang ?? true;
@@ -90,9 +88,6 @@ export class Cdk8sTeamJsiiProject extends cdk.JsiiProject {
 
     node.addComponents(this, repoName);
 
-    if (dependabotSecurityAlerts) {
-      new DependabotSecurityAlertWorkflow(this);
-    }
     if (options.backport ?? false) {
       new Backport(this, { branches: options.backportBranches, repoName });
     }
