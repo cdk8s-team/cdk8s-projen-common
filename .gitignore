@@ -62,3 +62,4 @@ tsconfig.json
 !/SECURITY.md
 !/.github/workflows/security.yml
 !/.github/workflows/triage.yml
+!/.github/workflows/stale.yml
