@@ -3,6 +3,7 @@ import * as src from './src';
 const project = new src.Cdk8sTeamJsiiProject({
   name: '@cdk8s/projen-common',
   description: 'Common projen configuration shared between cdk8s-team org projects.',
+  devDeps: ['github-label-sync'],
   peerDeps: ['projen'],
   deps: ['codemaker'],
   bundledDeps: ['codemaker'],

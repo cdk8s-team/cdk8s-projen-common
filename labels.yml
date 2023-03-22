@@ -1,0 +1,84 @@
+# https://github.com/Financial-Times/github-label-sync
+# GITHUB_ACCESS_TOKEN=<token> github-label-sync --labels labels.yml --allow-added-labels cdk8s-team/cdk8s-plus
+- name: auto-approve
+  color: "ededed"
+  description: Pull requests that should be auto approved
+  delete: false
+- name: bug
+  color: "d73a4a"
+  description: Something isn't working
+  delete: false
+- name: documentation
+  color: "0075ca"
+  description: Improvements or additions to documentation
+  delete: false
+- name: duplicate
+  color: "cfd3d7"
+  description: This issue or pull request already exists
+  delete: false
+- name: effort/large
+  color: "053281"
+  description: 1+ weeks
+  delete: false
+- name: effort/medium
+  color: "053281"
+  description: 1 week tops
+  delete: false
+- name: effort/small
+  color: "053281"
+  description: 1 day tops
+  delete: false
+- name: feature-request
+  color: "017E0C"
+  description: New/Enhanced functionality wanted
+  delete: false
+- name: good-first-issue
+  color: "B7DBE3"
+  aliases:
+    - good first issue
+  description: Good for newcomers
+  delete: false
+- name: management/tracking
+  color: "44c986"
+  description: Issues that track a subject or multiple issues
+  delete: false
+- name: needs-triage
+  color: "B2A15D"
+  description: Priority and effort undetermined yet
+  delete: false
+- name: pr/auto-approve
+  color: "C5DEF5"
+  description: Pull requests that should be auto approved
+  delete: false
+- name: pr/do-not-merge
+  color: "C5DEF5"
+  description: Do not auto merge the PR
+  delete: false
+- name: priority/p0
+  color: "E99695"
+  description: Needs to be addressed immediately
+  delete: false
+- name: priority/p1
+  color: "E99695"
+  description: Should be on near term plans
+  delete: false
+- name: priority/p2
+  color: "E99695"
+  description: Dependent on community feedback. PR's are welcome :)
+  delete: false
+- name: response-requested
+  color: "9B47A0"
+  description: Awaiting response from author
+  delete: false
+- name: closing-soon
+  color: "f9d0c4"
+  description: Issue/PR will be closing soon if no response is provided
+  delete: false
+- name: no-autoclose
+  color: "f9d0c4"
+  description: Exclude this issue/pr from automatic closure
+  delete: false
+- name: closed-for-staleness
+  color: "f9d0c4"
+  description: Issue/PR was closed due to staleness
+  delete: false
