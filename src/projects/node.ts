@@ -66,7 +66,7 @@ Pick<javascript.NodeProjectOptions, defaultOptionsKeysType> {
   return {
     // if release is enabled, default to releasing to npm as well
     releaseToNpm: options.release,
-    minNodeVersion: '14.18.0',
+    minNodeVersion: '14.17.0',
   };
 }
 
