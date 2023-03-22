@@ -628,6 +628,7 @@ junit.xml
 
 queue_rules:
   - name: default
+    update_method: merge
     conditions:
       - \\"#approved-reviews-by>=1\\"
       - -label~=(do-not-merge)
@@ -669,7 +670,7 @@ permissions-backup.acl
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^13",
+        "version": "^15",
       },
       Object {
         "name": "npm-check-updates",
@@ -1284,7 +1285,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     },
     "devDependencies": Object {
       "jest": "*",
-      "jest-junit": "^13",
+      "jest-junit": "^15",
       "npm-check-updates": "^16",
       "projen": "*",
       "standard-version": "^9",
@@ -1862,6 +1863,7 @@ junit.xml
 
 queue_rules:
   - name: default
+    update_method: merge
     conditions:
       - \\"#approved-reviews-by>=1\\"
       - -label~=(do-not-merge)
@@ -1901,7 +1903,7 @@ permissions-backup.acl
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^13",
+        "version": "^15",
       },
       Object {
         "name": "npm-check-updates",
@@ -2427,7 +2429,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     },
     "devDependencies": Object {
       "jest": "*",
-      "jest-junit": "^13",
+      "jest-junit": "^15",
       "npm-check-updates": "^16",
       "projen": "*",
     },
@@ -2996,6 +2998,7 @@ junit.xml
 
 queue_rules:
   - name: default
+    update_method: merge
     conditions:
       - \\"#approved-reviews-by>=1\\"
       - -label~=(do-not-merge)
@@ -3035,7 +3038,7 @@ permissions-backup.acl
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^13",
+        "version": "^15",
       },
       Object {
         "name": "npm-check-updates",
@@ -3561,7 +3564,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     },
     "devDependencies": Object {
       "jest": "*",
-      "jest-junit": "^13",
+      "jest-junit": "^15",
       "npm-check-updates": "^16",
       "projen": "*",
     },
@@ -4130,6 +4133,7 @@ junit.xml
 
 queue_rules:
   - name: default
+    update_method: merge
     conditions:
       - \\"#approved-reviews-by>=1\\"
       - -label~=(do-not-merge)
@@ -4169,7 +4173,7 @@ permissions-backup.acl
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^13",
+        "version": "^15",
       },
       Object {
         "name": "npm-check-updates",
@@ -4695,7 +4699,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     },
     "devDependencies": Object {
       "jest": "*",
-      "jest-junit": "^13",
+      "jest-junit": "^15",
       "npm-check-updates": "^16",
       "projen": "*",
     },
@@ -5344,6 +5348,7 @@ junit.xml
 
 queue_rules:
   - name: default
+    update_method: merge
     conditions:
       - \\"#approved-reviews-by>=1\\"
       - -label~=(do-not-merge)
@@ -5385,7 +5390,7 @@ permissions-backup.acl
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^13",
+        "version": "^15",
       },
       Object {
         "name": "npm-check-updates",
@@ -5974,7 +5979,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     },
     "devDependencies": Object {
       "jest": "*",
-      "jest-junit": "^13",
+      "jest-junit": "^15",
       "npm-check-updates": "^16",
       "projen": "*",
       "standard-version": "^9",
@@ -6627,6 +6632,7 @@ junit.xml
 
 queue_rules:
   - name: default
+    update_method: merge
     conditions:
       - \\"#approved-reviews-by>=1\\"
       - -label~=(do-not-merge)
@@ -6668,7 +6674,7 @@ permissions-backup.acl
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^13",
+        "version": "^15",
       },
       Object {
         "name": "npm-check-updates",
@@ -7257,7 +7263,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     },
     "devDependencies": Object {
       "jest": "*",
-      "jest-junit": "^13",
+      "jest-junit": "^15",
       "npm-check-updates": "^16",
       "projen": "*",
       "standard-version": "^9",
@@ -7910,6 +7916,7 @@ junit.xml
 
 queue_rules:
   - name: default
+    update_method: merge
     conditions:
       - \\"#approved-reviews-by>=1\\"
       - -label~=(do-not-merge)
@@ -7951,7 +7958,7 @@ permissions-backup.acl
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^13",
+        "version": "^15",
       },
       Object {
         "name": "npm-check-updates",
@@ -8540,7 +8547,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     },
     "devDependencies": Object {
       "jest": "*",
-      "jest-junit": "^13",
+      "jest-junit": "^15",
       "npm-check-updates": "^16",
       "projen": "*",
       "standard-version": "^9",
@@ -9193,6 +9200,7 @@ junit.xml
 
 queue_rules:
   - name: default
+    update_method: merge
     conditions:
       - \\"#approved-reviews-by>=1\\"
       - -label~=(do-not-merge)
@@ -9234,7 +9242,7 @@ permissions-backup.acl
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^13",
+        "version": "^15",
       },
       Object {
         "name": "npm-check-updates",
@@ -9823,7 +9831,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     },
     "devDependencies": Object {
       "jest": "*",
-      "jest-junit": "^13",
+      "jest-junit": "^15",
       "npm-check-updates": "^16",
       "projen": "*",
       "standard-version": "^9",
@@ -10476,6 +10484,7 @@ junit.xml
 
 queue_rules:
   - name: default
+    update_method: merge
     conditions:
       - \\"#approved-reviews-by>=1\\"
       - -label~=(do-not-merge)
@@ -10517,7 +10526,7 @@ permissions-backup.acl
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^13",
+        "version": "^15",
       },
       Object {
         "name": "npm-check-updates",
@@ -11106,7 +11115,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     },
     "devDependencies": Object {
       "jest": "*",
-      "jest-junit": "^13",
+      "jest-junit": "^15",
       "npm-check-updates": "^16",
       "projen": "*",
       "standard-version": "^9",
