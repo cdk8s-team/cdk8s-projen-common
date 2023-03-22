@@ -1,7 +1,6 @@
 import { typescript } from 'projen';
 import * as node from './node';
 import { Backport } from '../components/backport/backport';
-import { DependabotSecurityAlertWorkflow } from '../workflows/dependabot-security-alert';
 
 /**
  * Options for `Cdk8sTeamTypeScriptProject`.
@@ -15,13 +14,6 @@ export interface Cdk8sTeamTypeScriptProjectOptions extends typescript.TypeScript
    * @default - the package name.
    */
   readonly repoName?: string;
-
-  /**
-   * Creates issues for security incidents reported by dependabot for the repository.
-   *
-   * @default true
-   */
-  readonly dependabotSecurityAlerts?: boolean;
 
   /** Configure a backport workflow.
    *
@@ -49,12 +41,10 @@ export class Cdk8sTeamTypeScriptProject extends typescript.TypeScriptProject {
 
     const fixedOptions = node.buildNodeProjectFixedOptions(options);
     const defaultOptions = node.buildNodeProjectDefaultOptions(options);
-    const dependabotSecurityAlerts = options.dependabotSecurityAlerts ?? true;
 
     super({
       ...fixedOptions,
       ...defaultOptions,
-      dependabotSecurityAlerts,
       ...options,
     });
 
@@ -62,9 +52,6 @@ export class Cdk8sTeamTypeScriptProject extends typescript.TypeScriptProject {
 
     node.addComponents(this, repoName);
 
-    if (dependabotSecurityAlerts) {
-      new DependabotSecurityAlertWorkflow(this);
-    }
     if (options.backport ?? false) {
       new Backport(this, { branches: options.backportBranches, repoName });
     }
