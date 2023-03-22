@@ -869,6 +869,7 @@ junit.xml
 
 queue_rules:
   - name: default
+    update_method: merge
     conditions:
       - \\"#approved-reviews-by>=1\\"
       - -label~=(do-not-merge)
@@ -959,7 +960,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^13",
+        "version": "^15",
       },
       Object {
         "name": "npm-check-updates",
@@ -1619,7 +1620,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
-      "jest-junit": "^13",
+      "jest-junit": "^15",
       "npm-check-updates": "^16",
       "projen": "*",
       "standard-version": "^9",
@@ -2527,6 +2528,7 @@ junit.xml
 
 queue_rules:
   - name: default
+    update_method: merge
     conditions:
       - \\"#approved-reviews-by>=1\\"
       - -label~=(do-not-merge)
@@ -2615,7 +2617,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^13",
+        "version": "^15",
       },
       Object {
         "name": "npm-check-updates",
@@ -3186,7 +3188,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
-      "jest-junit": "^13",
+      "jest-junit": "^15",
       "npm-check-updates": "^16",
       "projen": "*",
       "ts-jest": "*",
@@ -4085,6 +4087,7 @@ junit.xml
 
 queue_rules:
   - name: default
+    update_method: merge
     conditions:
       - \\"#approved-reviews-by>=1\\"
       - -label~=(do-not-merge)
@@ -4173,7 +4176,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^13",
+        "version": "^15",
       },
       Object {
         "name": "npm-check-updates",
@@ -4744,7 +4747,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
-      "jest-junit": "^13",
+      "jest-junit": "^15",
       "npm-check-updates": "^16",
       "projen": "*",
       "ts-jest": "*",
@@ -5643,6 +5646,7 @@ junit.xml
 
 queue_rules:
   - name: default
+    update_method: merge
     conditions:
       - \\"#approved-reviews-by>=1\\"
       - -label~=(do-not-merge)
@@ -5731,7 +5735,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^13",
+        "version": "^15",
       },
       Object {
         "name": "npm-check-updates",
@@ -6302,7 +6306,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
-      "jest-junit": "^13",
+      "jest-junit": "^15",
       "npm-check-updates": "^16",
       "projen": "*",
       "ts-jest": "*",
@@ -7281,6 +7285,7 @@ junit.xml
 
 queue_rules:
   - name: default
+    update_method: merge
     conditions:
       - \\"#approved-reviews-by>=1\\"
       - -label~=(do-not-merge)
@@ -7371,7 +7376,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^13",
+        "version": "^15",
       },
       Object {
         "name": "npm-check-updates",
@@ -8005,7 +8010,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
-      "jest-junit": "^13",
+      "jest-junit": "^15",
       "npm-check-updates": "^16",
       "projen": "*",
       "standard-version": "^9",
@@ -8988,6 +8993,7 @@ junit.xml
 
 queue_rules:
   - name: default
+    update_method: merge
     conditions:
       - \\"#approved-reviews-by>=1\\"
       - -label~=(do-not-merge)
@@ -9078,7 +9084,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^13",
+        "version": "^15",
       },
       Object {
         "name": "npm-check-updates",
@@ -9712,7 +9718,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
-      "jest-junit": "^13",
+      "jest-junit": "^15",
       "npm-check-updates": "^16",
       "projen": "*",
       "standard-version": "^9",
@@ -10695,6 +10701,7 @@ junit.xml
 
 queue_rules:
   - name: default
+    update_method: merge
     conditions:
       - \\"#approved-reviews-by>=1\\"
       - -label~=(do-not-merge)
@@ -10785,7 +10792,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^13",
+        "version": "^15",
       },
       Object {
         "name": "npm-check-updates",
@@ -11419,7 +11426,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
-      "jest-junit": "^13",
+      "jest-junit": "^15",
       "npm-check-updates": "^16",
       "projen": "*",
       "standard-version": "^9",
@@ -12402,6 +12409,7 @@ junit.xml
 
 queue_rules:
   - name: default
+    update_method: merge
     conditions:
       - \\"#approved-reviews-by>=1\\"
       - -label~=(do-not-merge)
@@ -12492,7 +12500,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^13",
+        "version": "^15",
       },
       Object {
         "name": "npm-check-updates",
@@ -13126,7 +13134,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
-      "jest-junit": "^13",
+      "jest-junit": "^15",
       "npm-check-updates": "^16",
       "projen": "*",
       "standard-version": "^9",
@@ -14109,6 +14117,7 @@ junit.xml
 
 queue_rules:
   - name: default
+    update_method: merge
     conditions:
       - \\"#approved-reviews-by>=1\\"
       - -label~=(do-not-merge)
@@ -14199,7 +14208,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^13",
+        "version": "^15",
       },
       Object {
         "name": "npm-check-updates",
@@ -14833,7 +14842,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
-      "jest-junit": "^13",
+      "jest-junit": "^15",
       "npm-check-updates": "^16",
       "projen": "*",
       "standard-version": "^9",
