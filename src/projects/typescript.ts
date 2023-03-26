@@ -39,18 +39,20 @@ export class Cdk8sTeamTypeScriptProject extends typescript.TypeScriptProject {
     node.validateOptions(options);
     node.validateProjectName(options);
 
-    const fixedOptions = node.buildNodeProjectFixedOptions(options);
-    const defaultOptions = node.buildNodeProjectDefaultOptions(options);
+    const fixedNodeOptions = node.buildNodeProjectFixedOptions(options);
+    const defaultNodeOptions = node.buildNodeProjectDefaultOptions(options);
 
-    super({
-      ...fixedOptions,
-      ...defaultOptions,
+    const finalOptions = {
+      ...fixedNodeOptions,
+      ...defaultNodeOptions,
       ...options,
-    });
+    };
+
+    super(finalOptions);
 
     const repoName = options.repoName ?? node.buildRepositoryName(options.name);
 
-    node.addComponents(this, repoName);
+    node.addComponents(this, repoName, finalOptions.depsUpgradeOptions?.workflowOptions?.branches);
 
     if (options.backport ?? false) {
       new Backport(this, { branches: options.backportBranches, repoName });

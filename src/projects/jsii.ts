@@ -63,8 +63,8 @@ export class Cdk8sTeamJsiiProject extends cdk.JsiiProject {
     node.validateOptions(options);
     node.validateProjectName(options);
 
-    const fixedTypeScriptOptions = node.buildNodeProjectFixedOptions(options);
-    const defaultTypeScriptOptions = node.buildNodeProjectDefaultOptions(options);
+    const fixedNodeOptions = node.buildNodeProjectFixedOptions(options);
+    const defaultNodeOptions = node.buildNodeProjectDefaultOptions(options);
     const repoName = options.repoName ?? node.buildRepositoryName(options.name);
 
     const golangBranch = options.golangBranch ?? 'main';
@@ -73,20 +73,22 @@ export class Cdk8sTeamJsiiProject extends cdk.JsiiProject {
     const maven = options.maven ?? true;
     const nuget = options.nuget ?? true;
 
-    super({
-      author: fixedTypeScriptOptions.authorName!,
-      repositoryUrl: fixedTypeScriptOptions.repository!,
+    const finalOptions = {
+      author: fixedNodeOptions.authorName!,
+      repositoryUrl: fixedNodeOptions.repository!,
       authorAddress: 'https://aws.amazon.com',
       publishToPypi: pypi ? pythonTarget(options.name) : undefined,
       publishToMaven: maven ? javaTarget(options.name) : undefined,
       publishToNuget: nuget ? dotnetTarget(options.name) : undefined,
       publishToGo: golang ? golangTarget(repoName, golangBranch) : undefined,
-      ...fixedTypeScriptOptions,
-      ...defaultTypeScriptOptions,
+      ...fixedNodeOptions,
+      ...defaultNodeOptions,
       ...options,
-    });
+    };
 
-    node.addComponents(this, repoName);
+    super(finalOptions);
+
+    node.addComponents(this, repoName, finalOptions.depsUpgradeOptions?.workflowOptions?.branches);
 
     if (options.backport ?? false) {
       new Backport(this, { branches: options.backportBranches, repoName });

@@ -1,5 +1,5 @@
 import { javascript } from 'projen';
-import { NodeProject } from 'projen/lib/javascript';
+import { NodeProject, UpgradeDependencies, UpgradeDependenciesOptions } from 'projen/lib/javascript';
 import { Backport } from '../components/backport/backport';
 import { CodeOfConductMD } from '../components/code-of-conduct/code-of-conduct';
 import { DCO } from '../components/dco/devco';
@@ -37,6 +37,7 @@ export const defaultOptionsKeys = [
   'releaseToNpm',
   'release',
   'minNodeVersion',
+  'depsUpgradeOptions',
 ] as const;
 export type defaultOptionsKeysType = typeof defaultOptionsKeys[number];
 
@@ -63,10 +64,20 @@ Pick<javascript.NodeProjectOptions, fixedOptionsKeysType> {
  */
 export function buildNodeProjectDefaultOptions(options: Cdk8sTeamNodeProjectOptions):
 Pick<javascript.NodeProjectOptions, defaultOptionsKeysType> {
+
+  // exclude '@cdk8s/projen-common' because we will
+  // create a dedicated workflow for it
+  const depsUpgradeOptions: UpgradeDependenciesOptions | undefined = options.name === '@cdk8s/projen-common' ? undefined : {
+    exclude: ['@cdk8s/projen-common'],
+    taskName: 'upgrade-dependencies',
+    pullRequestTitle: 'upgrade dependencies',
+  };
+
   return {
     // if release is enabled, default to releasing to npm as well
     releaseToNpm: options.release,
     minNodeVersion: '14.17.0',
+    depsUpgradeOptions,
   };
 }
 
@@ -117,15 +128,17 @@ export class Cdk8sTeamNodeProject extends javascript.NodeProject {
     const fixedOptions = buildNodeProjectFixedOptions(options);
     const defaultOptions = buildNodeProjectDefaultOptions(options);
 
-    super({
+    const finalOptions = {
       ...fixedOptions,
       ...defaultOptions,
       ...options,
-    });
+    };
+
+    super(finalOptions);
 
     const repoName = options.repoName ?? buildRepositoryName(options.name);
 
-    addComponents(this, repoName);
+    addComponents(this, repoName, finalOptions.depsUpgradeOptions?.workflowOptions?.branches);
 
     if (options.backport ?? false) {
       new Backport(this, { branches: options.backportBranches, repoName });
@@ -184,7 +197,7 @@ export function validateProjectName(options: Cdk8sTeamNodeProjectOptions) {
 /**
  * Add common components to the project.
  */
-export function addComponents(project: NodeProject, repoName: string) {
+export function addComponents(project: NodeProject, repoName: string, branches?: string[]) {
 
   new CodeOfConductMD(project);
   new DCO(project);
@@ -193,5 +206,15 @@ export function addComponents(project: NodeProject, repoName: string) {
   new Security(project);
   new Triage(project, { repoName });
   new Stale(project);
+
+  if (project.name !== '@cdk8s/projen-common') {
+    new UpgradeDependencies(project, {
+      include: ['@cdk8s/projen-common'],
+      taskName: 'upgrade-projen-common',
+      pullRequestTitle: 'upgrade `@cdk8s/projen-common`',
+      workflowOptions: { branches },
+    });
+  }
+
 }
 
