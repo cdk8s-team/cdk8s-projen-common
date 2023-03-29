@@ -6268,6 +6268,7 @@ new Cdk8sTeamJsiiProject(options: Cdk8sTeamJsiiProjectOptions)
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.addFields">addFields</a></code> | Directly set fields in `package.json`. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.addKeywords">addKeywords</a></code> | Adds keywords to package.json (deduplicated). |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.addPeerDeps">addPeerDeps</a></code> | Defines peer dependencies. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.addScripts">addScripts</a></code> | Replaces the contents of multiple npm package.json scripts. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.addTestCommand">addTestCommand</a></code> | DEPRECATED. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.hasScript">hasScript</a></code> | Indicates if a script by the name name is defined. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.removeScript">removeScript</a></code> | Removes the npm script (always successful). |
@@ -6681,6 +6682,22 @@ be installed in the next `npx projen` run and the version will be recorded
 in your `package.json` file. You can upgrade manually or using `yarn
 add/upgrade`. If you wish to specify a version range use this syntax:
 `module@^7`.
+
+---
+
+##### `addScripts` <a name="addScripts" id="@cdk8s/projen-common.Cdk8sTeamJsiiProject.addScripts"></a>
+
+```typescript
+public addScripts(scripts: {[ key: string ]: string}): void
+```
+
+Replaces the contents of multiple npm package.json scripts.
+
+###### `scripts`<sup>Required</sup> <a name="scripts" id="@cdk8s/projen-common.Cdk8sTeamJsiiProject.addScripts.parameter.scripts"></a>
+
+- *Type:* {[ key: string ]: string}
+
+The scripts to set.
 
 ---
 
@@ -7619,6 +7636,7 @@ new Cdk8sTeamNodeProject(options: Cdk8sTeamNodeProjectOptions)
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.addFields">addFields</a></code> | Directly set fields in `package.json`. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.addKeywords">addKeywords</a></code> | Adds keywords to package.json (deduplicated). |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.addPeerDeps">addPeerDeps</a></code> | Defines peer dependencies. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.addScripts">addScripts</a></code> | Replaces the contents of multiple npm package.json scripts. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.addTestCommand">addTestCommand</a></code> | DEPRECATED. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.hasScript">hasScript</a></code> | Indicates if a script by the name name is defined. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.removeScript">removeScript</a></code> | Removes the npm script (always successful). |
@@ -8032,6 +8050,22 @@ be installed in the next `npx projen` run and the version will be recorded
 in your `package.json` file. You can upgrade manually or using `yarn
 add/upgrade`. If you wish to specify a version range use this syntax:
 `module@^7`.
+
+---
+
+##### `addScripts` <a name="addScripts" id="@cdk8s/projen-common.Cdk8sTeamNodeProject.addScripts"></a>
+
+```typescript
+public addScripts(scripts: {[ key: string ]: string}): void
+```
+
+Replaces the contents of multiple npm package.json scripts.
+
+###### `scripts`<sup>Required</sup> <a name="scripts" id="@cdk8s/projen-common.Cdk8sTeamNodeProject.addScripts.parameter.scripts"></a>
+
+- *Type:* {[ key: string ]: string}
+
+The scripts to set.
 
 ---
 
@@ -8850,6 +8884,7 @@ new Cdk8sTeamTypeScriptProject(options: Cdk8sTeamTypeScriptProjectOptions)
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addFields">addFields</a></code> | Directly set fields in `package.json`. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addKeywords">addKeywords</a></code> | Adds keywords to package.json (deduplicated). |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addPeerDeps">addPeerDeps</a></code> | Defines peer dependencies. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addScripts">addScripts</a></code> | Replaces the contents of multiple npm package.json scripts. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addTestCommand">addTestCommand</a></code> | DEPRECATED. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.hasScript">hasScript</a></code> | Indicates if a script by the name name is defined. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.removeScript">removeScript</a></code> | Removes the npm script (always successful). |
@@ -9263,6 +9298,22 @@ be installed in the next `npx projen` run and the version will be recorded
 in your `package.json` file. You can upgrade manually or using `yarn
 add/upgrade`. If you wish to specify a version range use this syntax:
 `module@^7`.
+
+---
+
+##### `addScripts` <a name="addScripts" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addScripts"></a>
+
+```typescript
+public addScripts(scripts: {[ key: string ]: string}): void
+```
+
+Replaces the contents of multiple npm package.json scripts.
+
+###### `scripts`<sup>Required</sup> <a name="scripts" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addScripts.parameter.scripts"></a>
+
+- *Type:* {[ key: string ]: string}
+
+The scripts to set.
 
 ---
 
