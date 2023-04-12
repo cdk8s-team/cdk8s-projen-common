@@ -68,7 +68,7 @@ Pick<javascript.NodeProjectOptions, defaultOptionsKeysType> {
     // if release is enabled, default to releasing to npm as well
     releaseToNpm: options.release,
     minNodeVersion: '14.17.0',
-    workflowNodeVersion: '16.13.0',
+    workflowNodeVersion: '16.20.0',
   };
 }
 
