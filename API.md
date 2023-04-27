@@ -6868,6 +6868,7 @@ The command to execute.
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.property.bundler">bundler</a></code> | <code>projen.javascript.Bundler</code> | *No description.* |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.property.entrypoint">entrypoint</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.property.manifest">manifest</a></code> | <code>any</code> | *No description.* |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.property.npmrc">npmrc</a></code> | <code>projen.javascript.NpmConfig</code> | The .npmrc file. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.property.package">package</a></code> | <code>projen.javascript.NodePackage</code> | API for managing the node package. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.property.packageManager">packageManager</a></code> | <code>projen.javascript.NodePackageManager</code> | The package manager to use. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.property.runScriptCommand">runScriptCommand</a></code> | <code>string</code> | The command to use to run scripts (e.g. `yarn run` or `npm run` depends on the package manager). |
@@ -7317,6 +7318,18 @@ public readonly manifest: any;
 ```
 
 - *Type:* any
+
+---
+
+##### `npmrc`<sup>Required</sup> <a name="npmrc" id="@cdk8s/projen-common.Cdk8sTeamJsiiProject.property.npmrc"></a>
+
+```typescript
+public readonly npmrc: NpmConfig;
+```
+
+- *Type:* projen.javascript.NpmConfig
+
+The .npmrc file.
 
 ---
 
@@ -8236,6 +8249,7 @@ The command to execute.
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.property.bundler">bundler</a></code> | <code>projen.javascript.Bundler</code> | *No description.* |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.property.entrypoint">entrypoint</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.property.manifest">manifest</a></code> | <code>any</code> | *No description.* |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.property.npmrc">npmrc</a></code> | <code>projen.javascript.NpmConfig</code> | The .npmrc file. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.property.package">package</a></code> | <code>projen.javascript.NodePackage</code> | API for managing the node package. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.property.packageManager">packageManager</a></code> | <code>projen.javascript.NodePackageManager</code> | The package manager to use. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.property.runScriptCommand">runScriptCommand</a></code> | <code>string</code> | The command to use to run scripts (e.g. `yarn run` or `npm run` depends on the package manager). |
@@ -8675,6 +8689,18 @@ public readonly manifest: any;
 ```
 
 - *Type:* any
+
+---
+
+##### `npmrc`<sup>Required</sup> <a name="npmrc" id="@cdk8s/projen-common.Cdk8sTeamNodeProject.property.npmrc"></a>
+
+```typescript
+public readonly npmrc: NpmConfig;
+```
+
+- *Type:* projen.javascript.NpmConfig
+
+The .npmrc file.
 
 ---
 
@@ -9484,6 +9510,7 @@ The command to execute.
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.bundler">bundler</a></code> | <code>projen.javascript.Bundler</code> | *No description.* |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.entrypoint">entrypoint</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.manifest">manifest</a></code> | <code>any</code> | *No description.* |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.npmrc">npmrc</a></code> | <code>projen.javascript.NpmConfig</code> | The .npmrc file. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.package">package</a></code> | <code>projen.javascript.NodePackage</code> | API for managing the node package. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.packageManager">packageManager</a></code> | <code>projen.javascript.NodePackageManager</code> | The package manager to use. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.runScriptCommand">runScriptCommand</a></code> | <code>string</code> | The command to use to run scripts (e.g. `yarn run` or `npm run` depends on the package manager). |
@@ -9933,6 +9960,18 @@ public readonly manifest: any;
 ```
 
 - *Type:* any
+
+---
+
+##### `npmrc`<sup>Required</sup> <a name="npmrc" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.npmrc"></a>
+
+```typescript
+public readonly npmrc: NpmConfig;
+```
+
+- *Type:* projen.javascript.NpmConfig
+
+The .npmrc file.
 
 ---
 
