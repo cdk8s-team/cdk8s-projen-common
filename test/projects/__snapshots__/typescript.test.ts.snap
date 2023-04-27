@@ -272,6 +272,7 @@ Object {
 /.gitignore linguist-generated
 /.mergify.yml linguist-generated
 /.npmignore linguist-generated
+/.npmrc linguist-generated
 /.projen/** linguist-generated
 /.projen/deps.json linguist-generated
 /.projen/files.json linguist-generated
@@ -843,6 +844,7 @@ junit.xml
 !/.mergify.yml
 !/.github/workflows/upgrade-main.yml
 !/.github/pull_request_template.md
+!/.npmrc
 !/test/
 !/tsconfig.json
 !/tsconfig.dev.json
@@ -1008,6 +1010,7 @@ tsconfig.tsbuildinfo
       ".gitignore",
       ".mergify.yml",
       ".npmignore",
+      ".npmrc",
       ".projen/deps.json",
       ".projen/files.json",
       ".projen/tasks.json",
@@ -2038,6 +2041,7 @@ Object {
 /.gitignore linguist-generated
 /.mergify.yml linguist-generated
 /.npmignore linguist-generated
+/.npmrc linguist-generated
 /.projen/** linguist-generated
 /.projen/deps.json linguist-generated
 /.projen/files.json linguist-generated
@@ -2504,6 +2508,7 @@ junit.xml
 !/.mergify.yml
 !/.github/workflows/upgrade.yml
 !/.github/pull_request_template.md
+!/.npmrc
 !/test/
 !/tsconfig.json
 !/tsconfig.dev.json
@@ -2657,6 +2662,7 @@ tsconfig.tsbuildinfo
       ".gitignore",
       ".mergify.yml",
       ".npmignore",
+      ".npmrc",
       ".projen/deps.json",
       ".projen/files.json",
       ".projen/tasks.json",
@@ -3597,6 +3603,7 @@ Object {
 /.gitignore linguist-generated
 /.mergify.yml linguist-generated
 /.npmignore linguist-generated
+/.npmrc linguist-generated
 /.projen/** linguist-generated
 /.projen/deps.json linguist-generated
 /.projen/files.json linguist-generated
@@ -4063,6 +4070,7 @@ junit.xml
 !/.mergify.yml
 !/.github/workflows/upgrade.yml
 !/.github/pull_request_template.md
+!/.npmrc
 !/test/
 !/tsconfig.json
 !/tsconfig.dev.json
@@ -4216,6 +4224,7 @@ tsconfig.tsbuildinfo
       ".gitignore",
       ".mergify.yml",
       ".npmignore",
+      ".npmrc",
       ".projen/deps.json",
       ".projen/files.json",
       ".projen/tasks.json",
@@ -5156,6 +5165,7 @@ Object {
 /.gitignore linguist-generated
 /.mergify.yml linguist-generated
 /.npmignore linguist-generated
+/.npmrc linguist-generated
 /.projen/** linguist-generated
 /.projen/deps.json linguist-generated
 /.projen/files.json linguist-generated
@@ -5622,6 +5632,7 @@ junit.xml
 !/.mergify.yml
 !/.github/workflows/upgrade.yml
 !/.github/pull_request_template.md
+!/.npmrc
 !/test/
 !/tsconfig.json
 !/tsconfig.dev.json
@@ -5775,6 +5786,7 @@ tsconfig.tsbuildinfo
       ".gitignore",
       ".mergify.yml",
       ".npmignore",
+      ".npmrc",
       ".projen/deps.json",
       ".projen/files.json",
       ".projen/tasks.json",
@@ -6716,6 +6728,7 @@ Object {
 /.gitignore linguist-generated
 /.mergify.yml linguist-generated
 /.npmignore linguist-generated
+/.npmrc linguist-generated
 /.projen/** linguist-generated
 /.projen/deps.json linguist-generated
 /.projen/files.json linguist-generated
@@ -7261,6 +7274,7 @@ junit.xml
 !/.mergify.yml
 !/.github/workflows/upgrade-main.yml
 !/.github/pull_request_template.md
+!/.npmrc
 !/test/
 !/tsconfig.json
 !/tsconfig.dev.json
@@ -7422,6 +7436,7 @@ tsconfig.tsbuildinfo
       ".gitignore",
       ".mergify.yml",
       ".npmignore",
+      ".npmrc",
       ".projen/deps.json",
       ".projen/files.json",
       ".projen/tasks.json",
@@ -8424,6 +8439,7 @@ Object {
 /.gitignore linguist-generated
 /.mergify.yml linguist-generated
 /.npmignore linguist-generated
+/.npmrc linguist-generated
 /.projen/** linguist-generated
 /.projen/deps.json linguist-generated
 /.projen/files.json linguist-generated
@@ -8969,6 +8985,7 @@ junit.xml
 !/.mergify.yml
 !/.github/workflows/upgrade-main.yml
 !/.github/pull_request_template.md
+!/.npmrc
 !/test/
 !/tsconfig.json
 !/tsconfig.dev.json
@@ -9130,6 +9147,7 @@ tsconfig.tsbuildinfo
       ".gitignore",
       ".mergify.yml",
       ".npmignore",
+      ".npmrc",
       ".projen/deps.json",
       ".projen/files.json",
       ".projen/tasks.json",
@@ -10132,6 +10150,7 @@ Object {
 /.gitignore linguist-generated
 /.mergify.yml linguist-generated
 /.npmignore linguist-generated
+/.npmrc linguist-generated
 /.projen/** linguist-generated
 /.projen/deps.json linguist-generated
 /.projen/files.json linguist-generated
@@ -10677,6 +10696,7 @@ junit.xml
 !/.mergify.yml
 !/.github/workflows/upgrade-main.yml
 !/.github/pull_request_template.md
+!/.npmrc
 !/test/
 !/tsconfig.json
 !/tsconfig.dev.json
@@ -10838,6 +10858,7 @@ tsconfig.tsbuildinfo
       ".gitignore",
       ".mergify.yml",
       ".npmignore",
+      ".npmrc",
       ".projen/deps.json",
       ".projen/files.json",
       ".projen/tasks.json",
@@ -11840,6 +11861,7 @@ Object {
 /.gitignore linguist-generated
 /.mergify.yml linguist-generated
 /.npmignore linguist-generated
+/.npmrc linguist-generated
 /.projen/** linguist-generated
 /.projen/deps.json linguist-generated
 /.projen/files.json linguist-generated
@@ -12385,6 +12407,7 @@ junit.xml
 !/.mergify.yml
 !/.github/workflows/upgrade-main.yml
 !/.github/pull_request_template.md
+!/.npmrc
 !/test/
 !/tsconfig.json
 !/tsconfig.dev.json
@@ -12546,6 +12569,7 @@ tsconfig.tsbuildinfo
       ".gitignore",
       ".mergify.yml",
       ".npmignore",
+      ".npmrc",
       ".projen/deps.json",
       ".projen/files.json",
       ".projen/tasks.json",
@@ -13548,6 +13572,7 @@ Object {
 /.gitignore linguist-generated
 /.mergify.yml linguist-generated
 /.npmignore linguist-generated
+/.npmrc linguist-generated
 /.projen/** linguist-generated
 /.projen/deps.json linguist-generated
 /.projen/files.json linguist-generated
@@ -14093,6 +14118,7 @@ junit.xml
 !/.mergify.yml
 !/.github/workflows/upgrade-main.yml
 !/.github/pull_request_template.md
+!/.npmrc
 !/test/
 !/tsconfig.json
 !/tsconfig.dev.json
@@ -14254,6 +14280,7 @@ tsconfig.tsbuildinfo
       ".gitignore",
       ".mergify.yml",
       ".npmignore",
+      ".npmrc",
       ".projen/deps.json",
       ".projen/files.json",
       ".projen/tasks.json",
