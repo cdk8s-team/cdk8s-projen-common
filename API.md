@@ -6851,6 +6851,7 @@ The command to execute.
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.property.projectBuild">projectBuild</a></code> | <code>projen.ProjectBuild</code> | Manages the build process of the project. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.property.projenCommand">projenCommand</a></code> | <code>string</code> | The command to use in order to run the projen CLI. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.property.root">root</a></code> | <code>projen.Project</code> | The root project. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.property.subprojects">subprojects</a></code> | <code>projen.Project[]</code> | Returns all the subprojects within this project. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.property.tasks">tasks</a></code> | <code>projen.Tasks</code> | Project tasks. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.property.testTask">testTask</a></code> | <code>projen.Task</code> | *No description.* |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.property.defaultTask">defaultTask</a></code> | <code>projen.Task</code> | This is the "default" task, the one that executes "projen". |
@@ -7099,6 +7100,18 @@ public readonly root: Project;
 - *Type:* projen.Project
 
 The root project.
+
+---
+
+##### `subprojects`<sup>Required</sup> <a name="subprojects" id="@cdk8s/projen-common.Cdk8sTeamJsiiProject.property.subprojects"></a>
+
+```typescript
+public readonly subprojects: Project[];
+```
+
+- *Type:* projen.Project[]
+
+Returns all the subprojects within this project.
 
 ---
 
@@ -8232,6 +8245,7 @@ The command to execute.
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.property.projectBuild">projectBuild</a></code> | <code>projen.ProjectBuild</code> | Manages the build process of the project. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.property.projenCommand">projenCommand</a></code> | <code>string</code> | The command to use in order to run the projen CLI. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.property.root">root</a></code> | <code>projen.Project</code> | The root project. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.property.subprojects">subprojects</a></code> | <code>projen.Project[]</code> | Returns all the subprojects within this project. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.property.tasks">tasks</a></code> | <code>projen.Tasks</code> | Project tasks. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.property.testTask">testTask</a></code> | <code>projen.Task</code> | *No description.* |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.property.defaultTask">defaultTask</a></code> | <code>projen.Task</code> | This is the "default" task, the one that executes "projen". |
@@ -8470,6 +8484,18 @@ public readonly root: Project;
 - *Type:* projen.Project
 
 The root project.
+
+---
+
+##### `subprojects`<sup>Required</sup> <a name="subprojects" id="@cdk8s/projen-common.Cdk8sTeamNodeProject.property.subprojects"></a>
+
+```typescript
+public readonly subprojects: Project[];
+```
+
+- *Type:* projen.Project[]
+
+Returns all the subprojects within this project.
 
 ---
 
@@ -9493,6 +9519,7 @@ The command to execute.
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.projectBuild">projectBuild</a></code> | <code>projen.ProjectBuild</code> | Manages the build process of the project. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.projenCommand">projenCommand</a></code> | <code>string</code> | The command to use in order to run the projen CLI. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.root">root</a></code> | <code>projen.Project</code> | The root project. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.subprojects">subprojects</a></code> | <code>projen.Project[]</code> | Returns all the subprojects within this project. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.tasks">tasks</a></code> | <code>projen.Tasks</code> | Project tasks. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.testTask">testTask</a></code> | <code>projen.Task</code> | *No description.* |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.defaultTask">defaultTask</a></code> | <code>projen.Task</code> | This is the "default" task, the one that executes "projen". |
@@ -9741,6 +9768,18 @@ public readonly root: Project;
 - *Type:* projen.Project
 
 The root project.
+
+---
+
+##### `subprojects`<sup>Required</sup> <a name="subprojects" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.subprojects"></a>
+
+```typescript
+public readonly subprojects: Project[];
+```
+
+- *Type:* projen.Project[]
+
+Returns all the subprojects within this project.
 
 ---
 
