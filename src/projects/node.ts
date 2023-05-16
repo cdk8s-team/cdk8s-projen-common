@@ -64,10 +64,10 @@ export function buildNodeProjectFixedOptions(options: Cdk8sTeamNodeProjectOption
  */
 export function buildNodeProjectDefaultOptions(options: Cdk8sTeamNodeProjectOptions): Pick<javascript.NodeProjectOptions, defaultOptionsKeysType> {
 
-  // exclude '@cdk8s/projen-common' because we will
-  // create a dedicated workflow for it
+  // exclude '@cdk8s/projen-common' and 'projen' because we will
+  // create a dedicated workflow for them
   const depsUpgradeOptions: UpgradeDependenciesOptions | undefined = options.name === '@cdk8s/projen-common' ? undefined : {
-    exclude: ['@cdk8s/projen-common'],
+    exclude: ['@cdk8s/projen-common', 'projen'],
     taskName: 'upgrade-dependencies',
     pullRequestTitle: 'upgrade dependencies',
   };
@@ -209,9 +209,9 @@ export function addComponents(project: NodeProject, repoName: string, branches?:
 
   if (project.name !== '@cdk8s/projen-common') {
     new UpgradeDependencies(project, {
-      include: ['@cdk8s/projen-common'],
-      taskName: 'upgrade-projen-common',
-      pullRequestTitle: 'upgrade `@cdk8s/projen-common`',
+      include: ['@cdk8s/projen-common', 'projen'],
+      taskName: 'upgrade-configuration',
+      pullRequestTitle: 'upgrade configuration',
       workflowOptions: { branches },
     });
   }
