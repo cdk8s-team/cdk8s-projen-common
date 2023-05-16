@@ -110,6 +110,7 @@ export class Backport extends Component {
             'fetch-depth': 0,
           },
         },
+        ...project.renderWorkflowSetup({ mutable: false }),
         {
           name: 'Set Git Identity',
           run: 'git config --global user.name "github-actions" && git config --global user.email "github-actions@github.com"',
