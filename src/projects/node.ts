@@ -38,14 +38,14 @@ export const defaultOptionsKeys = [
   'release',
   'minNodeVersion',
   'depsUpgradeOptions',
+  'workflowNodeVersion',
 ] as const;
 export type defaultOptionsKeysType = typeof defaultOptionsKeys[number];
 
 /**
  * Create the fixed typescript project options.
  */
-export function buildNodeProjectFixedOptions(options: Cdk8sTeamNodeProjectOptions):
-Pick<javascript.NodeProjectOptions, fixedOptionsKeysType> {
+export function buildNodeProjectFixedOptions(options: Cdk8sTeamNodeProjectOptions): Pick<javascript.NodeProjectOptions, fixedOptionsKeysType> {
 
   return {
     authorName: 'Amazon Web Services',
@@ -62,8 +62,7 @@ Pick<javascript.NodeProjectOptions, fixedOptionsKeysType> {
 /**
  * Create the default typescript project options.
  */
-export function buildNodeProjectDefaultOptions(options: Cdk8sTeamNodeProjectOptions):
-Pick<javascript.NodeProjectOptions, defaultOptionsKeysType> {
+export function buildNodeProjectDefaultOptions(options: Cdk8sTeamNodeProjectOptions): Pick<javascript.NodeProjectOptions, defaultOptionsKeysType> {
 
   // exclude '@cdk8s/projen-common' because we will
   // create a dedicated workflow for it
@@ -78,6 +77,7 @@ Pick<javascript.NodeProjectOptions, defaultOptionsKeysType> {
     releaseToNpm: options.release,
     minNodeVersion: '14.17.0',
     depsUpgradeOptions,
+    workflowNodeVersion: '16.20.0',
   };
 }
 
