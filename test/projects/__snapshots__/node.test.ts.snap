@@ -562,6 +562,7 @@ jobs:
             *Automatically created by projen via the \\"upgrade-configuration-main\\" workflow*
           branch: github-actions/upgrade-configuration-main
           title: \\"chore(deps): upgrade configuration\\"
+          labels: auto-approve
           body: |-
             Upgrades project dependencies. See details in [workflow run].
 
@@ -1941,6 +1942,7 @@ jobs:
             *Automatically created by projen via the \\"upgrade-configuration\\" workflow*
           branch: github-actions/upgrade-configuration
           title: \\"chore(deps): upgrade configuration\\"
+          labels: auto-approve
           body: |-
             Upgrades project dependencies. See details in [workflow run].
 
@@ -3212,6 +3214,7 @@ jobs:
             *Automatically created by projen via the \\"upgrade-configuration\\" workflow*
           branch: github-actions/upgrade-configuration
           title: \\"chore(deps): upgrade configuration\\"
+          labels: auto-approve
           body: |-
             Upgrades project dependencies. See details in [workflow run].
 
@@ -4483,6 +4486,7 @@ jobs:
             *Automatically created by projen via the \\"upgrade-configuration\\" workflow*
           branch: github-actions/upgrade-configuration
           title: \\"chore(deps): upgrade configuration\\"
+          labels: auto-approve
           body: |-
             Upgrades project dependencies. See details in [workflow run].
 
@@ -5831,6 +5835,7 @@ jobs:
             *Automatically created by projen via the \\"upgrade-configuration-main\\" workflow*
           branch: github-actions/upgrade-configuration-main
           title: \\"chore(deps): upgrade configuration\\"
+          labels: auto-approve
           body: |-
             Upgrades project dependencies. See details in [workflow run].
 
@@ -7254,6 +7259,7 @@ jobs:
             *Automatically created by projen via the \\"upgrade-configuration-main\\" workflow*
           branch: github-actions/upgrade-configuration-main
           title: \\"chore(deps): upgrade configuration\\"
+          labels: auto-approve
           body: |-
             Upgrades project dependencies. See details in [workflow run].
 
@@ -8677,6 +8683,7 @@ jobs:
             *Automatically created by projen via the \\"upgrade-configuration-main\\" workflow*
           branch: github-actions/upgrade-configuration-main
           title: \\"chore(deps): upgrade configuration\\"
+          labels: auto-approve
           body: |-
             Upgrades project dependencies. See details in [workflow run].
 
@@ -10100,6 +10107,7 @@ jobs:
             *Automatically created by projen via the \\"upgrade-configuration-main\\" workflow*
           branch: github-actions/upgrade-configuration-main
           title: \\"chore(deps): upgrade configuration\\"
+          labels: auto-approve
           body: |-
             Upgrades project dependencies. See details in [workflow run].
 
@@ -11523,6 +11531,7 @@ jobs:
             *Automatically created by projen via the \\"upgrade-configuration-main\\" workflow*
           branch: github-actions/upgrade-configuration-main
           title: \\"chore(deps): upgrade configuration\\"
+          labels: auto-approve
           body: |-
             Upgrades project dependencies. See details in [workflow run].
 

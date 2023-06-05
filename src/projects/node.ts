@@ -212,9 +212,10 @@ export function addComponents(project: NodeProject, repoName: string, branches?:
       include: ['@cdk8s/projen-common', 'projen'],
       taskName: 'upgrade-configuration',
       pullRequestTitle: 'upgrade configuration',
-      workflowOptions: { branches },
+      workflowOptions: {
+        branches,
+        labels: ['auto-approve'],
+      },
     });
   }
-
 }
-
