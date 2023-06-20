@@ -75,9 +75,8 @@ export function buildNodeProjectDefaultOptions(options: Cdk8sTeamNodeProjectOpti
   return {
     // if release is enabled, default to releasing to npm as well
     releaseToNpm: options.release,
-    minNodeVersion: '14.17.0',
+    minNodeVersion: '16.20.0',
     depsUpgradeOptions,
-    workflowNodeVersion: '16.20.0',
   };
 }
 
