@@ -101,6 +101,7 @@ const cdk8sTeamJsiiProjectOptions: Cdk8sTeamJsiiProjectOptions = { ... }
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.prerelease">prerelease</a></code> | <code>string</code> | Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pre"). |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.publishDryRun">publishDryRun</a></code> | <code>boolean</code> | Instead of actually publishing to package managers, just print the publishing command. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.publishTasks">publishTasks</a></code> | <code>boolean</code> | Define publishing tasks that can be executed manually as well as workflows. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releasableCommits">releasableCommits</a></code> | <code>projen.ReleasableCommits</code> | Find commits that should be considered releasable Used to decide if a release is required. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseBranches">releaseBranches</a></code> | <code>{[ key: string ]: projen.release.BranchOptions}</code> | Defines additional release branches. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseEveryCommit">releaseEveryCommit</a></code> | <code>boolean</code> | Automatically release new versions every commit to one of branches in `releaseBranches`. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseFailureIssue">releaseFailureIssue</a></code> | <code>boolean</code> | Create a github issue on every failed publishing task. |
@@ -1237,6 +1238,19 @@ in order to create a publishing task for each publishing activity.
 
 ---
 
+##### `releasableCommits`<sup>Optional</sup> <a name="releasableCommits" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releasableCommits"></a>
+
+```typescript
+public readonly releasableCommits: ReleasableCommits;
+```
+
+- *Type:* projen.ReleasableCommits
+- *Default:* ReleasableCommits.everyCommit()
+
+Find commits that should be considered releasable Used to decide if a release is required.
+
+---
+
 ##### `releaseBranches`<sup>Optional</sup> <a name="releaseBranches" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseBranches"></a>
 
 ```typescript
@@ -2325,6 +2339,7 @@ const cdk8sTeamNodeProjectOptions: Cdk8sTeamNodeProjectOptions = { ... }
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.prerelease">prerelease</a></code> | <code>string</code> | Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pre"). |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.publishDryRun">publishDryRun</a></code> | <code>boolean</code> | Instead of actually publishing to package managers, just print the publishing command. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.publishTasks">publishTasks</a></code> | <code>boolean</code> | Define publishing tasks that can be executed manually as well as workflows. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releasableCommits">releasableCommits</a></code> | <code>projen.ReleasableCommits</code> | Find commits that should be considered releasable Used to decide if a release is required. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseBranches">releaseBranches</a></code> | <code>{[ key: string ]: projen.release.BranchOptions}</code> | Defines additional release branches. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseEveryCommit">releaseEveryCommit</a></code> | <code>boolean</code> | Automatically release new versions every commit to one of branches in `releaseBranches`. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseFailureIssue">releaseFailureIssue</a></code> | <code>boolean</code> | Create a github issue on every failed publishing task. |
@@ -3439,6 +3454,19 @@ in order to create a publishing task for each publishing activity.
 
 ---
 
+##### `releasableCommits`<sup>Optional</sup> <a name="releasableCommits" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releasableCommits"></a>
+
+```typescript
+public readonly releasableCommits: ReleasableCommits;
+```
+
+- *Type:* projen.ReleasableCommits
+- *Default:* ReleasableCommits.everyCommit()
+
+Find commits that should be considered releasable Used to decide if a release is required.
+
+---
+
 ##### `releaseBranches`<sup>Optional</sup> <a name="releaseBranches" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseBranches"></a>
 
 ```typescript
@@ -4234,6 +4262,7 @@ const cdk8sTeamTypeScriptProjectOptions: Cdk8sTeamTypeScriptProjectOptions = { .
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.prerelease">prerelease</a></code> | <code>string</code> | Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pre"). |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.publishDryRun">publishDryRun</a></code> | <code>boolean</code> | Instead of actually publishing to package managers, just print the publishing command. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.publishTasks">publishTasks</a></code> | <code>boolean</code> | Define publishing tasks that can be executed manually as well as workflows. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releasableCommits">releasableCommits</a></code> | <code>projen.ReleasableCommits</code> | Find commits that should be considered releasable Used to decide if a release is required. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseBranches">releaseBranches</a></code> | <code>{[ key: string ]: projen.release.BranchOptions}</code> | Defines additional release branches. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseEveryCommit">releaseEveryCommit</a></code> | <code>boolean</code> | Automatically release new versions every commit to one of branches in `releaseBranches`. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseFailureIssue">releaseFailureIssue</a></code> | <code>boolean</code> | Create a github issue on every failed publishing task. |
@@ -5362,6 +5391,19 @@ Define publishing tasks that can be executed manually as well as workflows.
 
 Normally, publishing only happens within automated workflows. Enable this
 in order to create a publishing task for each publishing activity.
+
+---
+
+##### `releasableCommits`<sup>Optional</sup> <a name="releasableCommits" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releasableCommits"></a>
+
+```typescript
+public readonly releasableCommits: ReleasableCommits;
+```
+
+- *Type:* projen.ReleasableCommits
+- *Default:* ReleasableCommits.everyCommit()
+
+Find commits that should be considered releasable Used to decide if a release is required.
 
 ---
 
