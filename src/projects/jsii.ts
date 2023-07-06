@@ -51,6 +51,13 @@ export interface Cdk8sTeamJsiiProjectOptions extends ts.Cdk8sTeamTypeScriptProje
    * @default true
    */
   readonly nuget?: boolean;
+
+  /**
+   * JSII version to use
+   *
+   * @default '1.x'
+   */
+  readonly jsiiVersion?: string;
 }
 
 /**
