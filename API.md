@@ -173,6 +173,7 @@ const cdk8sTeamJsiiProjectOptions: Cdk8sTeamJsiiProjectOptions = { ... }
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.repoName">repoName</a></code> | <code>string</code> | The name of the repository inside the cdk8s-team org where the code of the project is locate in. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.golang">golang</a></code> | <code>boolean</code> | Publish Golang bindings to GitHub. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.golangBranch">golangBranch</a></code> | <code>string</code> | Name of the branch in the golang repository to publish to. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.jsiiVersion">jsiiVersion</a></code> | <code>string</code> | JSII version to use. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.maven">maven</a></code> | <code>boolean</code> | Publish Java bindings to Maven. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.nuget">nuget</a></code> | <code>boolean</code> | Publish Dotnet bindings to Nuget. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.pypi">pypi</a></code> | <code>boolean</code> | Publish Python bindings to PyPI. |
@@ -2209,6 +2210,19 @@ public readonly golangBranch: string;
 - *Default:* 'main'
 
 Name of the branch in the golang repository to publish to.
+
+---
+
+##### `jsiiVersion`<sup>Optional</sup> <a name="jsiiVersion" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.jsiiVersion"></a>
+
+```typescript
+public readonly jsiiVersion: string;
+```
+
+- *Type:* string
+- *Default:* '1.x'
+
+JSII version to use.
 
 ---
 
