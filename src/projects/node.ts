@@ -1,5 +1,5 @@
-import { javascript } from 'projen';
-import { NodeProject, UpgradeDependencies, UpgradeDependenciesOptions } from 'projen/lib/javascript';
+import { DependencyType, ReleasableCommits, javascript } from 'projen';
+import { NodeProject, NodeProjectOptions, UpgradeDependencies, UpgradeDependenciesOptions } from 'projen/lib/javascript';
 import { Backport } from '../components/backport/backport';
 import { CodeOfConductMD } from '../components/code-of-conduct/code-of-conduct';
 import { DCO } from '../components/dco/devco';
@@ -22,6 +22,7 @@ export const fixedOptionsKeys = [
   'repository',
   'autoApproveOptions',
   'autoApproveUpgrades',
+  'releasableCommits',
 
   // this is deprecated in favor of 'release'.
   // lets disallow using it.
@@ -56,6 +57,7 @@ export function buildNodeProjectFixedOptions(options: Cdk8sTeamNodeProjectOption
     },
     autoApproveUpgrades: true,
     releaseWorkflow: options.release,
+    releasableCommits: ReleasableCommits.featuresAndFixes(),
   };
 }
 
@@ -64,12 +66,19 @@ export function buildNodeProjectFixedOptions(options: Cdk8sTeamNodeProjectOption
  */
 export function buildNodeProjectDefaultOptions(options: Cdk8sTeamNodeProjectOptions): Pick<javascript.NodeProjectOptions, defaultOptionsKeysType> {
 
-  // exclude '@cdk8s/projen-common' and 'projen' because we will
-  // create a dedicated workflow for them
-  const depsUpgradeOptions: UpgradeDependenciesOptions | undefined = options.name === '@cdk8s/projen-common' ? undefined : {
-    exclude: ['@cdk8s/projen-common', 'projen'],
-    taskName: 'upgrade-dependencies',
-    pullRequestTitle: 'upgrade dependencies',
+  const configDeps = ['projen'];
+  if (options.name !== '@cdk8s/projen-common') {
+    configDeps.push('@cdk8s/projen-common');
+  }
+
+  const depsUpgradeOptions: UpgradeDependenciesOptions = {
+    // exclude because we will create a dedicated workflow for them
+    exclude: configDeps,
+    taskName: 'upgrade-runtime-dependencies',
+    pullRequestTitle: 'upgrade runtime dependencies',
+    semanticCommit: 'feat',
+    // only include peer and runtime because we will created a non release trigerring PR for the rest
+    types: [DependencyType.PEER, DependencyType.RUNTIME, DependencyType.OPTIONAL],
   };
 
   return {
@@ -127,7 +136,7 @@ export class Cdk8sTeamNodeProject extends javascript.NodeProject {
     const fixedOptions = buildNodeProjectFixedOptions(options);
     const defaultOptions = buildNodeProjectDefaultOptions(options);
 
-    const finalOptions = {
+    const finalOptions: NodeProjectOptions = {
       ...fixedOptions,
       ...defaultOptions,
       ...options,
@@ -206,15 +215,30 @@ export function addComponents(project: NodeProject, repoName: string, branches?:
   new Triage(project, { repoName });
   new Stale(project);
 
+  const configDeps = ['projen'];
   if (project.name !== '@cdk8s/projen-common') {
-    new UpgradeDependencies(project, {
-      include: ['@cdk8s/projen-common', 'projen'],
-      taskName: 'upgrade-configuration',
-      pullRequestTitle: 'upgrade configuration',
-      workflowOptions: {
-        branches,
-        labels: ['auto-approve'],
-      },
-    });
+    configDeps.push('@cdk8s/projen-common');
   }
+
+  new UpgradeDependencies(project, {
+    include: configDeps,
+    taskName: 'upgrade-configuration',
+    pullRequestTitle: 'upgrade configuration',
+    workflowOptions: {
+      branches,
+      labels: ['auto-approve'],
+    },
+  });
+
+  new UpgradeDependencies(project, {
+    exclude: configDeps,
+    taskName: 'upgrade-dev-dependencies',
+    pullRequestTitle: 'upgrade dev dependencies',
+    workflowOptions: {
+      branches,
+      labels: ['auto-approve'],
+    },
+    types: [DependencyType.BUILD, DependencyType.BUNDLED, DependencyType.DEVENV, DependencyType.TEST],
+  });
+
 }
