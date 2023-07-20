@@ -61,7 +61,7 @@
     "typescript": "^4.9.5"
   },
   "peerDependencies": {
-    "projen": "^0.71.142"
+    "projen": "^0.71.144"
   },
   "dependencies": {
     "codemaker": "^1.85.0"
