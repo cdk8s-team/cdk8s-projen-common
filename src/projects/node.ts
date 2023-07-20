@@ -205,7 +205,7 @@ export function validateProjectName(options: Cdk8sTeamNodeProjectOptions) {
 /**
  * Add common components to the project.
  */
-export function addComponents(project: NodeProject, repoName: string, branches?: string[]) {
+export function addComponents(project: NodeProject, repoName: string, branches?: string[], compilerDeps?: string[]) {
 
   new CodeOfConductMD(project);
   new DCO(project);
@@ -231,7 +231,7 @@ export function addComponents(project: NodeProject, repoName: string, branches?:
   });
 
   new UpgradeDependencies(project, {
-    exclude: configDeps,
+    exclude: [...configDeps, ...(compilerDeps ?? [])],
     taskName: 'upgrade-dev-dependencies',
     pullRequestTitle: 'upgrade dev dependencies',
     workflowOptions: {
@@ -240,5 +240,21 @@ export function addComponents(project: NodeProject, repoName: string, branches?:
     },
     types: [DependencyType.BUILD, DependencyType.BUNDLED, DependencyType.DEVENV, DependencyType.TEST],
   });
+
+  if (compilerDeps && compilerDeps.length > 0) {
+    new UpgradeDependencies(project, {
+      include: compilerDeps,
+      taskName: 'upgrade-compiler-dependencies',
+      pullRequestTitle: 'upgrade compiler dependencies',
+      // compiler dependencies should trigger a release because they change
+      // the published artifact.
+      semanticCommit: 'feat',
+      workflowOptions: {
+        branches,
+        labels: ['auto-approve'],
+      },
+      types: [DependencyType.BUILD],
+    });
+  }
 
 }

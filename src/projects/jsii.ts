@@ -95,7 +95,14 @@ export class Cdk8sTeamJsiiProject extends cdk.JsiiProject {
 
     super(finalOptions);
 
-    node.addComponents(this, repoName, finalOptions.depsUpgradeOptions?.workflowOptions?.branches);
+    const compilerDependencies = [...(options.additionalCompilerDependencies ?? []),
+      'jsii',
+      'jsii-docgen',
+      'jsii-pacmak',
+      'jsii-rosetta',
+      'typescript'];
+
+    node.addComponents(this, repoName, finalOptions.depsUpgradeOptions?.workflowOptions?.branches, compilerDependencies);
 
     if (options.backport ?? false) {
       new Backport(this, { branches: options.backportBranches, repoName });

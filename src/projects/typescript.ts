@@ -27,6 +27,14 @@ export interface Cdk8sTeamTypeScriptProjectOptions extends typescript.TypeScript
    * @default - Will be derived from PR labels.
    */
   readonly backportBranches?: string[];
+
+  /**
+   * Packages that compile the project apart from the typescript/jsii compiler.
+   * Any package that produces a published artifact should be included in this list.
+   *
+   * @default - No additional compiler dependencies.
+   */
+  readonly additionalCompilerDependencies?: string[];
 }
 
 /**
@@ -52,7 +60,9 @@ export class Cdk8sTeamTypeScriptProject extends typescript.TypeScriptProject {
 
     const repoName = options.repoName ?? node.buildRepositoryName(options.name);
 
-    node.addComponents(this, repoName, finalOptions.depsUpgradeOptions?.workflowOptions?.branches);
+    const compilerDependencies = [...(options.additionalCompilerDependencies ?? []), 'typescript'];
+
+    node.addComponents(this, repoName, finalOptions.depsUpgradeOptions?.workflowOptions?.branches, compilerDependencies);
 
     if (options.backport ?? false) {
       new Backport(this, { branches: options.backportBranches, repoName });

@@ -168,6 +168,7 @@ const cdk8sTeamJsiiProjectOptions: Cdk8sTeamJsiiProjectOptions = { ... }
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.tsconfigDev">tsconfigDev</a></code> | <code>projen.javascript.TypescriptConfigOptions</code> | Custom tsconfig options for the development tsconfig.json file (used for testing). |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.tsconfigDevFile">tsconfigDevFile</a></code> | <code>string</code> | The name of the development tsconfig.json file. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.typescriptVersion">typescriptVersion</a></code> | <code>string</code> | TypeScript version to use. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.additionalCompilerDependencies">additionalCompilerDependencies</a></code> | <code>string[]</code> | Packages that compile the project apart from the typescript/jsii compiler. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.backport">backport</a></code> | <code>boolean</code> | Configure a backport workflow. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.backportBranches">backportBranches</a></code> | <code>string[]</code> | Branches to backport to. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.repoName">repoName</a></code> | <code>string</code> | The name of the repository inside the cdk8s-team org where the code of the project is locate in. |
@@ -2145,6 +2146,21 @@ TypeScript version to use.
 
 NOTE: Typescript is not semantically versioned and should remain on the
 same minor, so we recommend using a `~` dependency (e.g. `~1.2.3`).
+
+---
+
+##### `additionalCompilerDependencies`<sup>Optional</sup> <a name="additionalCompilerDependencies" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.additionalCompilerDependencies"></a>
+
+```typescript
+public readonly additionalCompilerDependencies: string[];
+```
+
+- *Type:* string[]
+- *Default:* No additional compiler dependencies.
+
+Packages that compile the project apart from the typescript/jsii compiler.
+
+Any package that produces a published artifact should be included in this list.
 
 ---
 
@@ -4343,6 +4359,7 @@ const cdk8sTeamTypeScriptProjectOptions: Cdk8sTeamTypeScriptProjectOptions = { .
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.tsconfigDev">tsconfigDev</a></code> | <code>projen.javascript.TypescriptConfigOptions</code> | Custom tsconfig options for the development tsconfig.json file (used for testing). |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.tsconfigDevFile">tsconfigDevFile</a></code> | <code>string</code> | The name of the development tsconfig.json file. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.typescriptVersion">typescriptVersion</a></code> | <code>string</code> | TypeScript version to use. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.additionalCompilerDependencies">additionalCompilerDependencies</a></code> | <code>string[]</code> | Packages that compile the project apart from the typescript/jsii compiler. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.backport">backport</a></code> | <code>boolean</code> | Configure a backport workflow. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.backportBranches">backportBranches</a></code> | <code>string[]</code> | Branches to backport to. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.repoName">repoName</a></code> | <code>string</code> | The name of the repository inside the cdk8s-team org where the code of the project is locate in. |
@@ -6314,6 +6331,21 @@ TypeScript version to use.
 
 NOTE: Typescript is not semantically versioned and should remain on the
 same minor, so we recommend using a `~` dependency (e.g. `~1.2.3`).
+
+---
+
+##### `additionalCompilerDependencies`<sup>Optional</sup> <a name="additionalCompilerDependencies" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.additionalCompilerDependencies"></a>
+
+```typescript
+public readonly additionalCompilerDependencies: string[];
+```
+
+- *Type:* string[]
+- *Default:* No additional compiler dependencies.
+
+Packages that compile the project apart from the typescript/jsii compiler.
+
+Any package that produces a published artifact should be included in this list.
 
 ---
 

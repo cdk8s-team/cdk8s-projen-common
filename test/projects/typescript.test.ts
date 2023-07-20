@@ -1,6 +1,18 @@
 import { Testing } from 'projen';
 import * as src from '../../src';
 
+test('can configure additional compiler dependencies', () => {
+
+  const project = new src.Cdk8sTeamTypeScriptProject({
+    name: 'root',
+    defaultReleaseBranch: 'main',
+    additionalCompilerDependencies: ['comp1'],
+  });
+
+  expect(Testing.synth(project)).toMatchSnapshot();
+
+});
+
 test('typescript project name must start with cdk8s-', () => {
 
   expect(() => {
