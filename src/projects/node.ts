@@ -220,7 +220,7 @@ export function addComponents(project: NodeProject, repoName: string, branches?:
     configDeps.push('@cdk8s/projen-common');
   }
 
-  new UpgradeDependencies(project, {
+  const configUpgrade = new UpgradeDependencies(project, {
     include: configDeps,
     taskName: 'upgrade-configuration',
     pullRequestTitle: 'upgrade configuration',
@@ -229,6 +229,7 @@ export function addComponents(project: NodeProject, repoName: string, branches?:
       labels: ['auto-approve'],
     },
   });
+  configUpgrade.workflows.forEach(wf => wf.file?.addOverride('jobs.upgrade.steps.1.with.node-version', 'lts'));
 
   new UpgradeDependencies(project, {
     exclude: [...configDeps, ...(compilerDeps ?? [])],
