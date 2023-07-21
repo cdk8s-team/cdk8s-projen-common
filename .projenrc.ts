@@ -13,6 +13,9 @@ const project = new src.Cdk8sTeamJsiiProject({
   nuget: false,
   golang: false,
 });
+// Do not force a node version as install requirement since this can fail upgrading
+// Consuming packages will update node versions AFTER the upgrade
+project.package.file.addOverride('engines.node', undefined);
 
 // copy the components to lib because it contains
 // resources required at runtime. should probably do done via tsconfig.json
