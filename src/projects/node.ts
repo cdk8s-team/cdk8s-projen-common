@@ -229,7 +229,7 @@ export function addComponents(project: NodeProject, repoName: string, branches?:
       labels: ['auto-approve'],
     },
   });
-  configUpgrade.workflows.forEach(wf => wf.file?.addOverride('jobs.upgrade.steps.1.with.node-version', 'lts'));
+  configUpgrade.workflows.forEach(wf => wf.file?.addOverride('jobs.upgrade.steps.1.with.node-version', 'lts/*'));
 
   new UpgradeDependencies(project, {
     exclude: [...configDeps, ...(compilerDeps ?? [])],
