@@ -1,5 +1,5 @@
 import { DependencyType, ReleasableCommits, javascript } from 'projen';
-import { NodeProject, NodeProjectOptions, UpgradeDependencies, UpgradeDependenciesOptions } from 'projen/lib/javascript';
+import { NodeProject, NodeProjectOptions, UpgradeDependencies, UpgradeDependenciesOptions, UpgradeDependenciesSchedule } from 'projen/lib/javascript';
 import { Backport } from '../components/backport/backport';
 import { CodeOfConductMD } from '../components/code-of-conduct/code-of-conduct';
 import { DCO } from '../components/dco/devco';
@@ -79,6 +79,9 @@ export function buildNodeProjectDefaultOptions(options: Cdk8sTeamNodeProjectOpti
     semanticCommit: 'feat',
     // only include peer and runtime because we will created a non release trigerring PR for the rest
     types: [DependencyType.PEER, DependencyType.RUNTIME, DependencyType.OPTIONAL],
+    workflowOptions: {
+      schedule: UpgradeDependenciesSchedule.expressions(['0 6 * * *']),
+    },
   };
 
   return {
