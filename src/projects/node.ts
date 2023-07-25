@@ -80,7 +80,7 @@ export function buildNodeProjectDefaultOptions(options: Cdk8sTeamNodeProjectOpti
     // only include peer and runtime because we will created a non release trigerring PR for the rest
     types: [DependencyType.PEER, DependencyType.RUNTIME, DependencyType.OPTIONAL],
     workflowOptions: {
-      schedule: UpgradeDependenciesSchedule.expressions(['15 0 * * *']),
+      schedule: UpgradeDependenciesSchedule.expressions(['0 6 * * *']),
     },
   };
 
