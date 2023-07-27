@@ -4737,9 +4737,9 @@ npm-packlist@^7.0.0:
     ignore-walk "^6.0.0"
 
 npm-pick-manifest@^8.0.0:
-  version "8.0.1"
-  resolved "https://registry.yarnpkg.com/npm-pick-manifest/-/npm-pick-manifest-8.0.1.tgz#c6acd97d1ad4c5dbb80eac7b386b03ffeb289e5f"
-  integrity sha512-mRtvlBjTsJvfCCdmPtiu2bdlx8d/KXtF7yNXNWe7G0Z36qWA9Ny5zXsI2PfBZEv7SXgoxTmNaTzGSbbzDZChoA==
+  version "8.0.2"
+  resolved "https://registry.yarnpkg.com/npm-pick-manifest/-/npm-pick-manifest-8.0.2.tgz#2159778d9c7360420c925c1a2287b5a884c713aa"
+  integrity sha512-1dKY+86/AIiq1tkKVD3l0WI+Gd3vkknVGAggsFeBkTvbhMQ1OND/LKkYv4JtXPKUJ8bOTCyLiqEg2P6QNdK+Gg==
   dependencies:
     npm-install-checks "^6.0.0"
     npm-normalize-package-bin "^3.0.0"
