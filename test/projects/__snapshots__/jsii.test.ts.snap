@@ -2057,13 +2057,13 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep peer --upgrade --target=minor",
           },
           Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep prod --upgrade --target=minor",
           },
           Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep optional --upgrade --target=minor",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -4705,13 +4705,13 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep peer --upgrade --target=minor",
           },
           Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep prod --upgrade --target=minor",
           },
           Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep optional --upgrade --target=minor",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -6723,13 +6723,13 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep peer --upgrade --target=minor",
           },
           Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep prod --upgrade --target=minor",
           },
           Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep optional --upgrade --target=minor",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -8887,13 +8887,13 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep peer --upgrade --target=minor",
           },
           Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep prod --upgrade --target=minor",
           },
           Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep optional --upgrade --target=minor",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -10895,13 +10895,13 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep peer --upgrade --target=minor",
           },
           Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep prod --upgrade --target=minor",
           },
           Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep optional --upgrade --target=minor",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -13059,13 +13059,13 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep peer --upgrade --target=minor",
           },
           Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep prod --upgrade --target=minor",
           },
           Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep optional --upgrade --target=minor",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -15067,13 +15067,13 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep peer --upgrade --target=minor",
           },
           Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep prod --upgrade --target=minor",
           },
           Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep optional --upgrade --target=minor",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -17231,13 +17231,13 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep peer --upgrade --target=minor",
           },
           Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep prod --upgrade --target=minor",
           },
           Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep optional --upgrade --target=minor",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -19795,13 +19795,13 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep peer --upgrade --target=minor",
           },
           Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep prod --upgrade --target=minor",
           },
           Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep optional --upgrade --target=minor",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -22364,13 +22364,13 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep peer --upgrade --target=minor",
           },
           Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep prod --upgrade --target=minor",
           },
           Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep optional --upgrade --target=minor",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -24933,13 +24933,13 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep peer --upgrade --target=minor",
           },
           Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep prod --upgrade --target=minor",
           },
           Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep optional --upgrade --target=minor",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -27502,13 +27502,13 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep peer --upgrade --target=minor",
           },
           Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep prod --upgrade --target=minor",
           },
           Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep optional --upgrade --target=minor",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -30071,13 +30071,13 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep peer --upgrade --target=minor",
           },
           Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep prod --upgrade --target=minor",
           },
           Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep optional --upgrade --target=minor",
           },
           Object {
             "exec": "yarn install --check-files",
