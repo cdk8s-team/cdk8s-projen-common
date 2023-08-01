@@ -1246,7 +1246,7 @@ permissions-backup.acl
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade jest jest-junit npm-check-updates standard-version",
+            "exec": "yarn upgrade ",
           },
           Object {
             "exec": "npx projen",
@@ -2645,7 +2645,7 @@ permissions-backup.acl
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade jest jest-junit npm-check-updates",
+            "exec": "yarn upgrade ",
           },
           Object {
             "exec": "npx projen",
@@ -4035,7 +4035,7 @@ permissions-backup.acl
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade jest jest-junit npm-check-updates",
+            "exec": "yarn upgrade ",
           },
           Object {
             "exec": "npx projen",
@@ -5425,7 +5425,7 @@ permissions-backup.acl
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade jest jest-junit npm-check-updates",
+            "exec": "yarn upgrade ",
           },
           Object {
             "exec": "npx projen",
@@ -6968,7 +6968,7 @@ permissions-backup.acl
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade jest jest-junit npm-check-updates standard-version",
+            "exec": "yarn upgrade ",
           },
           Object {
             "exec": "npx projen",
@@ -8515,7 +8515,7 @@ permissions-backup.acl
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade jest jest-junit npm-check-updates standard-version",
+            "exec": "yarn upgrade ",
           },
           Object {
             "exec": "npx projen",
@@ -10062,7 +10062,7 @@ permissions-backup.acl
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade jest jest-junit npm-check-updates standard-version",
+            "exec": "yarn upgrade ",
           },
           Object {
             "exec": "npx projen",
@@ -11609,7 +11609,7 @@ permissions-backup.acl
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade jest jest-junit npm-check-updates standard-version",
+            "exec": "yarn upgrade ",
           },
           Object {
             "exec": "npx projen",
@@ -13156,7 +13156,7 @@ permissions-backup.acl
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade jest jest-junit npm-check-updates standard-version",
+            "exec": "yarn upgrade ",
           },
           Object {
             "exec": "npx projen",

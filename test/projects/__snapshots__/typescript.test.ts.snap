@@ -1607,7 +1607,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit npm-check-updates standard-version ts-jest typescript",
+            "exec": "yarn upgrade ",
           },
           Object {
             "exec": "npx projen",
@@ -3780,7 +3780,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit npm-check-updates standard-version ts-jest typescript",
+            "exec": "yarn upgrade ",
           },
           Object {
             "exec": "npx projen",
@@ -5723,7 +5723,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit npm-check-updates ts-jest typescript",
+            "exec": "yarn upgrade ",
           },
           Object {
             "exec": "npx projen",
@@ -7657,7 +7657,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit npm-check-updates ts-jest typescript",
+            "exec": "yarn upgrade ",
           },
           Object {
             "exec": "npx projen",
@@ -9591,7 +9591,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit npm-check-updates ts-jest typescript",
+            "exec": "yarn upgrade ",
           },
           Object {
             "exec": "npx projen",
@@ -11681,7 +11681,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit npm-check-updates standard-version ts-jest typescript",
+            "exec": "yarn upgrade ",
           },
           Object {
             "exec": "npx projen",
@@ -13775,7 +13775,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit npm-check-updates standard-version ts-jest typescript",
+            "exec": "yarn upgrade ",
           },
           Object {
             "exec": "npx projen",
@@ -15869,7 +15869,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit npm-check-updates standard-version ts-jest typescript",
+            "exec": "yarn upgrade ",
           },
           Object {
             "exec": "npx projen",
@@ -17963,7 +17963,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit npm-check-updates standard-version ts-jest typescript",
+            "exec": "yarn upgrade ",
           },
           Object {
             "exec": "npx projen",
@@ -20057,7 +20057,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit npm-check-updates standard-version ts-jest typescript",
+            "exec": "yarn upgrade ",
           },
           Object {
             "exec": "npx projen",
