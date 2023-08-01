@@ -2057,19 +2057,19 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='jsii-rosetta,jsii,projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
           },
           Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='jsii-rosetta,jsii,projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
           },
           Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='jsii-rosetta,jsii,projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff jsii-docgen jsii-pacmak jsii-rosetta jsii npm-check-updates standard-version ts-jest typescript",
+            "exec": "yarn upgrade ",
           },
           Object {
             "exec": "npx projen",
@@ -4705,19 +4705,19 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='jsii-rosetta,jsii,projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
           },
           Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='jsii-rosetta,jsii,projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
           },
           Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='jsii-rosetta,jsii,projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff jsii-docgen jsii-pacmak jsii-rosetta jsii npm-check-updates standard-version ts-jest typescript",
+            "exec": "yarn upgrade ",
           },
           Object {
             "exec": "npx projen",
@@ -6723,19 +6723,19 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='jsii-rosetta,jsii,projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
           },
           Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='jsii-rosetta,jsii,projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
           },
           Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='jsii-rosetta,jsii,projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff jsii-docgen jsii-pacmak jsii-rosetta jsii npm-check-updates ts-jest typescript",
+            "exec": "yarn upgrade ",
           },
           Object {
             "exec": "npx projen",
@@ -8887,19 +8887,19 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='jsii-rosetta,jsii,projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
           },
           Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='jsii-rosetta,jsii,projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
           },
           Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='jsii-rosetta,jsii,projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff jsii-docgen jsii-pacmak jsii-rosetta jsii npm-check-updates ts-jest typescript",
+            "exec": "yarn upgrade ",
           },
           Object {
             "exec": "npx projen",
@@ -10895,19 +10895,19 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='jsii-rosetta,jsii,projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
           },
           Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='jsii-rosetta,jsii,projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
           },
           Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='jsii-rosetta,jsii,projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff jsii-docgen jsii-pacmak jsii-rosetta jsii npm-check-updates ts-jest typescript",
+            "exec": "yarn upgrade ",
           },
           Object {
             "exec": "npx projen",
@@ -13059,19 +13059,19 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='jsii-rosetta,jsii,projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
           },
           Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='jsii-rosetta,jsii,projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
           },
           Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='jsii-rosetta,jsii,projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff jsii-docgen jsii-pacmak jsii-rosetta jsii npm-check-updates ts-jest typescript",
+            "exec": "yarn upgrade ",
           },
           Object {
             "exec": "npx projen",
@@ -15067,19 +15067,19 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='jsii-rosetta,jsii,projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
           },
           Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='jsii-rosetta,jsii,projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
           },
           Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='jsii-rosetta,jsii,projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff jsii-docgen jsii-pacmak jsii-rosetta jsii npm-check-updates ts-jest typescript",
+            "exec": "yarn upgrade ",
           },
           Object {
             "exec": "npx projen",
@@ -17231,19 +17231,19 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='jsii-rosetta,jsii,projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
           },
           Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='jsii-rosetta,jsii,projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
           },
           Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='jsii-rosetta,jsii,projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff jsii-docgen jsii-pacmak jsii-rosetta jsii npm-check-updates ts-jest typescript",
+            "exec": "yarn upgrade ",
           },
           Object {
             "exec": "npx projen",
@@ -19795,19 +19795,19 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='jsii-rosetta,jsii,projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
           },
           Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='jsii-rosetta,jsii,projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
           },
           Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='jsii-rosetta,jsii,projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff jsii-docgen jsii-pacmak jsii-rosetta jsii npm-check-updates standard-version ts-jest typescript",
+            "exec": "yarn upgrade ",
           },
           Object {
             "exec": "npx projen",
@@ -22364,19 +22364,19 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='jsii-rosetta,jsii,projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
           },
           Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='jsii-rosetta,jsii,projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
           },
           Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='jsii-rosetta,jsii,projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff jsii-docgen jsii-pacmak jsii-rosetta jsii npm-check-updates standard-version ts-jest typescript",
+            "exec": "yarn upgrade ",
           },
           Object {
             "exec": "npx projen",
@@ -24933,19 +24933,19 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='jsii-rosetta,jsii,projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
           },
           Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='jsii-rosetta,jsii,projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
           },
           Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='jsii-rosetta,jsii,projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff jsii-docgen jsii-pacmak jsii-rosetta jsii npm-check-updates standard-version ts-jest typescript",
+            "exec": "yarn upgrade ",
           },
           Object {
             "exec": "npx projen",
@@ -27502,19 +27502,19 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='jsii-rosetta,jsii,projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
           },
           Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='jsii-rosetta,jsii,projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
           },
           Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='jsii-rosetta,jsii,projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff jsii-docgen jsii-pacmak jsii-rosetta jsii npm-check-updates standard-version ts-jest typescript",
+            "exec": "yarn upgrade ",
           },
           Object {
             "exec": "npx projen",
@@ -30071,19 +30071,19 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='jsii-rosetta,jsii,projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
           },
           Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='jsii-rosetta,jsii,projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
           },
           Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='jsii-rosetta,jsii,projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff jsii-docgen jsii-pacmak jsii-rosetta jsii npm-check-updates standard-version ts-jest typescript",
+            "exec": "yarn upgrade ",
           },
           Object {
             "exec": "npx projen",
