@@ -66,14 +66,7 @@ export function buildNodeProjectFixedOptions(options: Cdk8sTeamNodeProjectOption
  */
 export function buildNodeProjectDefaultOptions(options: Cdk8sTeamNodeProjectOptions): Pick<javascript.NodeProjectOptions, defaultOptionsKeysType> {
 
-  const configDeps = ['projen'];
-  if (options.name !== '@cdk8s/projen-common') {
-    configDeps.push('@cdk8s/projen-common');
-  }
-
   const depsUpgradeOptions: UpgradeDependenciesOptions = {
-    // exclude because we will create a dedicated workflow for them
-    exclude: configDeps,
     taskName: 'upgrade-runtime-dependencies',
     pullRequestTitle: 'upgrade runtime dependencies',
     semanticCommit: 'feat',
