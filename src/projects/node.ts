@@ -12,6 +12,13 @@ import { Triage } from '../components/triage/triage';
 export const NAME_PREFIX = 'cdk8s-';
 export const SCOPE = '@cdk8s/';
 
+// they need to be far enough apart so they don't
+// create merge conflicts on one another.
+const UPGRADE_RUNTIME_DEPENDENCIES_SCHEDULE = '0 6 * * *';
+const UPGRADE_DEV_DEPENDENCIES_SCHEDULE = '0 9 * * *';
+const UPGRADE_COMPILER_DEPENDENCIES_SCHEDULE = '0 12 * * *';
+const UPGRADE_CONFIGURATION_SCHEDULE = '0 15 * * *';
+
 /**
  * Subset of options that should be fixed for all cdk8s-team node projects.
  * These will not be available for customization by individual projects.
@@ -73,7 +80,7 @@ export function buildNodeProjectDefaultOptions(options: Cdk8sTeamNodeProjectOpti
     // only include peer and runtime because we will created a non release trigerring PR for the rest
     types: [DependencyType.PEER, DependencyType.RUNTIME, DependencyType.OPTIONAL],
     workflowOptions: {
-      schedule: UpgradeDependenciesSchedule.expressions(['0 6 * * *']),
+      schedule: UpgradeDependenciesSchedule.expressions([UPGRADE_RUNTIME_DEPENDENCIES_SCHEDULE]),
     },
   };
 
@@ -223,6 +230,7 @@ export function addComponents(project: NodeProject, repoName: string, branches?:
     workflowOptions: {
       branches,
       labels: ['auto-approve'],
+      schedule: UpgradeDependenciesSchedule.expressions([UPGRADE_CONFIGURATION_SCHEDULE]),
     },
   });
   configUpgrade.workflows.forEach(wf => wf.file?.addOverride('jobs.upgrade.steps.1.with.node-version', 'lts/*'));
@@ -234,6 +242,7 @@ export function addComponents(project: NodeProject, repoName: string, branches?:
     workflowOptions: {
       branches,
       labels: ['auto-approve'],
+      schedule: UpgradeDependenciesSchedule.expressions([UPGRADE_DEV_DEPENDENCIES_SCHEDULE]),
     },
     types: [DependencyType.BUILD, DependencyType.BUNDLED, DependencyType.DEVENV, DependencyType.TEST],
   });
@@ -249,6 +258,7 @@ export function addComponents(project: NodeProject, repoName: string, branches?:
       workflowOptions: {
         branches,
         labels: ['auto-approve'],
+        schedule: UpgradeDependenciesSchedule.expressions([UPGRADE_COMPILER_DEPENDENCIES_SCHEDULE]),
       },
       types: [DependencyType.BUILD],
     });
