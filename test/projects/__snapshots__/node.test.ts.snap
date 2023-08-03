@@ -1165,25 +1165,13 @@ permissions-backup.acl
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep bundle --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade projen",
+            "exec": "yarn upgrade projen @cdk8s/projen-common",
           },
           Object {
             "exec": "npx projen",
@@ -1204,10 +1192,7 @@ permissions-backup.acl
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep bundle --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=jest,jest-junit,npm-check-updates,standard-version",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -1231,28 +1216,7 @@ permissions-backup.acl
         "name": "upgrade-runtime-dependencies",
         "steps": Array [
           Object {
-            "exec": "yarn upgrade npm-check-updates",
-          },
-          Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor",
-          },
-          Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor",
-          },
-          Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor",
-          },
-          Object {
-            "exec": "yarn install --check-files",
-          },
-          Object {
-            "exec": "yarn upgrade ",
-          },
-          Object {
-            "exec": "npx projen",
-          },
-          Object {
-            "spawn": "post-upgrade",
+            "exec": "echo No dependencies to upgrade.",
           },
         ],
       },
@@ -2564,25 +2528,13 @@ permissions-backup.acl
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep bundle --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade projen",
+            "exec": "yarn upgrade projen @cdk8s/projen-common",
           },
           Object {
             "exec": "npx projen",
@@ -2603,10 +2555,7 @@ permissions-backup.acl
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep bundle --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=jest,jest-junit,npm-check-updates",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -2630,28 +2579,7 @@ permissions-backup.acl
         "name": "upgrade-runtime-dependencies",
         "steps": Array [
           Object {
-            "exec": "yarn upgrade npm-check-updates",
-          },
-          Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor",
-          },
-          Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor",
-          },
-          Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor",
-          },
-          Object {
-            "exec": "yarn install --check-files",
-          },
-          Object {
-            "exec": "yarn upgrade ",
-          },
-          Object {
-            "exec": "npx projen",
-          },
-          Object {
-            "spawn": "post-upgrade",
+            "exec": "echo No dependencies to upgrade.",
           },
         ],
       },
@@ -3954,25 +3882,13 @@ permissions-backup.acl
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep bundle --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade projen",
+            "exec": "yarn upgrade projen @cdk8s/projen-common",
           },
           Object {
             "exec": "npx projen",
@@ -3993,10 +3909,7 @@ permissions-backup.acl
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep bundle --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=jest,jest-junit,npm-check-updates",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -4020,28 +3933,7 @@ permissions-backup.acl
         "name": "upgrade-runtime-dependencies",
         "steps": Array [
           Object {
-            "exec": "yarn upgrade npm-check-updates",
-          },
-          Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor",
-          },
-          Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor",
-          },
-          Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor",
-          },
-          Object {
-            "exec": "yarn install --check-files",
-          },
-          Object {
-            "exec": "yarn upgrade ",
-          },
-          Object {
-            "exec": "npx projen",
-          },
-          Object {
-            "spawn": "post-upgrade",
+            "exec": "echo No dependencies to upgrade.",
           },
         ],
       },
@@ -5344,25 +5236,13 @@ permissions-backup.acl
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep bundle --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade projen",
+            "exec": "yarn upgrade projen @cdk8s/projen-common",
           },
           Object {
             "exec": "npx projen",
@@ -5383,10 +5263,7 @@ permissions-backup.acl
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep bundle --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=jest,jest-junit,npm-check-updates",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -5410,28 +5287,7 @@ permissions-backup.acl
         "name": "upgrade-runtime-dependencies",
         "steps": Array [
           Object {
-            "exec": "yarn upgrade npm-check-updates",
-          },
-          Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor",
-          },
-          Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor",
-          },
-          Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor",
-          },
-          Object {
-            "exec": "yarn install --check-files",
-          },
-          Object {
-            "exec": "yarn upgrade ",
-          },
-          Object {
-            "exec": "npx projen",
-          },
-          Object {
-            "spawn": "post-upgrade",
+            "exec": "echo No dependencies to upgrade.",
           },
         ],
       },
@@ -6887,25 +6743,13 @@ permissions-backup.acl
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep bundle --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade projen",
+            "exec": "yarn upgrade projen @cdk8s/projen-common",
           },
           Object {
             "exec": "npx projen",
@@ -6926,10 +6770,7 @@ permissions-backup.acl
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep bundle --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=jest,jest-junit,npm-check-updates,standard-version",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -6953,28 +6794,7 @@ permissions-backup.acl
         "name": "upgrade-runtime-dependencies",
         "steps": Array [
           Object {
-            "exec": "yarn upgrade npm-check-updates",
-          },
-          Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor",
-          },
-          Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor",
-          },
-          Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor",
-          },
-          Object {
-            "exec": "yarn install --check-files",
-          },
-          Object {
-            "exec": "yarn upgrade ",
-          },
-          Object {
-            "exec": "npx projen",
-          },
-          Object {
-            "spawn": "post-upgrade",
+            "exec": "echo No dependencies to upgrade.",
           },
         ],
       },
@@ -8434,25 +8254,13 @@ permissions-backup.acl
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep bundle --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade projen",
+            "exec": "yarn upgrade projen @cdk8s/projen-common",
           },
           Object {
             "exec": "npx projen",
@@ -8473,10 +8281,7 @@ permissions-backup.acl
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep bundle --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=jest,jest-junit,npm-check-updates,standard-version",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -8500,28 +8305,7 @@ permissions-backup.acl
         "name": "upgrade-runtime-dependencies",
         "steps": Array [
           Object {
-            "exec": "yarn upgrade npm-check-updates",
-          },
-          Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor",
-          },
-          Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor",
-          },
-          Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor",
-          },
-          Object {
-            "exec": "yarn install --check-files",
-          },
-          Object {
-            "exec": "yarn upgrade ",
-          },
-          Object {
-            "exec": "npx projen",
-          },
-          Object {
-            "spawn": "post-upgrade",
+            "exec": "echo No dependencies to upgrade.",
           },
         ],
       },
@@ -9981,25 +9765,13 @@ permissions-backup.acl
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep bundle --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade projen",
+            "exec": "yarn upgrade projen @cdk8s/projen-common",
           },
           Object {
             "exec": "npx projen",
@@ -10020,10 +9792,7 @@ permissions-backup.acl
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep bundle --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=jest,jest-junit,npm-check-updates,standard-version",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -10047,28 +9816,7 @@ permissions-backup.acl
         "name": "upgrade-runtime-dependencies",
         "steps": Array [
           Object {
-            "exec": "yarn upgrade npm-check-updates",
-          },
-          Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor",
-          },
-          Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor",
-          },
-          Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor",
-          },
-          Object {
-            "exec": "yarn install --check-files",
-          },
-          Object {
-            "exec": "yarn upgrade ",
-          },
-          Object {
-            "exec": "npx projen",
-          },
-          Object {
-            "spawn": "post-upgrade",
+            "exec": "echo No dependencies to upgrade.",
           },
         ],
       },
@@ -11528,25 +11276,13 @@ permissions-backup.acl
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep bundle --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade projen",
+            "exec": "yarn upgrade projen @cdk8s/projen-common",
           },
           Object {
             "exec": "npx projen",
@@ -11567,10 +11303,7 @@ permissions-backup.acl
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep bundle --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=jest,jest-junit,npm-check-updates,standard-version",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -11594,28 +11327,7 @@ permissions-backup.acl
         "name": "upgrade-runtime-dependencies",
         "steps": Array [
           Object {
-            "exec": "yarn upgrade npm-check-updates",
-          },
-          Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor",
-          },
-          Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor",
-          },
-          Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor",
-          },
-          Object {
-            "exec": "yarn install --check-files",
-          },
-          Object {
-            "exec": "yarn upgrade ",
-          },
-          Object {
-            "exec": "npx projen",
-          },
-          Object {
-            "spawn": "post-upgrade",
+            "exec": "echo No dependencies to upgrade.",
           },
         ],
       },
@@ -13075,25 +12787,13 @@ permissions-backup.acl
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep bundle --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade projen",
+            "exec": "yarn upgrade projen @cdk8s/projen-common",
           },
           Object {
             "exec": "npx projen",
@@ -13114,10 +12814,7 @@ permissions-backup.acl
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep bundle --upgrade --target=minor --reject='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=jest,jest-junit,npm-check-updates,standard-version",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -13141,28 +12838,7 @@ permissions-backup.acl
         "name": "upgrade-runtime-dependencies",
         "steps": Array [
           Object {
-            "exec": "yarn upgrade npm-check-updates",
-          },
-          Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor",
-          },
-          Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor",
-          },
-          Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor",
-          },
-          Object {
-            "exec": "yarn install --check-files",
-          },
-          Object {
-            "exec": "yarn upgrade ",
-          },
-          Object {
-            "exec": "npx projen",
-          },
-          Object {
-            "spawn": "post-upgrade",
+            "exec": "echo No dependencies to upgrade.",
           },
         ],
       },
