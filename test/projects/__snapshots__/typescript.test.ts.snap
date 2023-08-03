@@ -1499,13 +1499,13 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --filter='comp1,typescript'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=comp1,typescript",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade typescript",
+            "exec": "yarn upgrade comp1 typescript",
           },
           Object {
             "exec": "npx projen",
@@ -1526,25 +1526,13 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep bundle --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade projen",
+            "exec": "yarn upgrade projen @cdk8s/projen-common",
           },
           Object {
             "exec": "npx projen",
@@ -1565,10 +1553,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --reject='projen,@cdk8s/projen-common,comp1,typescript'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep bundle --upgrade --target=minor --reject='projen,@cdk8s/projen-common,comp1,typescript'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,eslint-import-resolver-node,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest,jest-junit,npm-check-updates,standard-version,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -1592,28 +1577,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-runtime-dependencies",
         "steps": Array [
           Object {
-            "exec": "yarn upgrade npm-check-updates",
-          },
-          Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor",
-          },
-          Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor",
-          },
-          Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor",
-          },
-          Object {
-            "exec": "yarn install --check-files",
-          },
-          Object {
-            "exec": "yarn upgrade ",
-          },
-          Object {
-            "exec": "npx projen",
-          },
-          Object {
-            "spawn": "post-upgrade",
+            "exec": "echo No dependencies to upgrade.",
           },
         ],
       },
@@ -3672,7 +3636,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --filter='typescript'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=typescript",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -3699,25 +3663,13 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep bundle --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade projen",
+            "exec": "yarn upgrade projen @cdk8s/projen-common",
           },
           Object {
             "exec": "npx projen",
@@ -3738,10 +3690,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --reject='projen,@cdk8s/projen-common,typescript'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep bundle --upgrade --target=minor --reject='projen,@cdk8s/projen-common,typescript'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,eslint-import-resolver-node,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest,jest-junit,npm-check-updates,standard-version,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -3765,28 +3714,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-runtime-dependencies",
         "steps": Array [
           Object {
-            "exec": "yarn upgrade npm-check-updates",
-          },
-          Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor",
-          },
-          Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor",
-          },
-          Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor",
-          },
-          Object {
-            "exec": "yarn install --check-files",
-          },
-          Object {
-            "exec": "yarn upgrade ",
-          },
-          Object {
-            "exec": "npx projen",
-          },
-          Object {
-            "spawn": "post-upgrade",
+            "exec": "echo No dependencies to upgrade.",
           },
         ],
       },
@@ -5615,7 +5543,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --filter='typescript'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=typescript",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -5642,25 +5570,13 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep bundle --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade projen",
+            "exec": "yarn upgrade projen @cdk8s/projen-common",
           },
           Object {
             "exec": "npx projen",
@@ -5681,10 +5597,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --reject='projen,@cdk8s/projen-common,typescript'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep bundle --upgrade --target=minor --reject='projen,@cdk8s/projen-common,typescript'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,eslint-import-resolver-node,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest,jest-junit,npm-check-updates,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -5708,28 +5621,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-runtime-dependencies",
         "steps": Array [
           Object {
-            "exec": "yarn upgrade npm-check-updates",
-          },
-          Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor",
-          },
-          Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor",
-          },
-          Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor",
-          },
-          Object {
-            "exec": "yarn install --check-files",
-          },
-          Object {
-            "exec": "yarn upgrade ",
-          },
-          Object {
-            "exec": "npx projen",
-          },
-          Object {
-            "spawn": "post-upgrade",
+            "exec": "echo No dependencies to upgrade.",
           },
         ],
       },
@@ -7549,7 +7441,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --filter='typescript'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=typescript",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -7576,25 +7468,13 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep bundle --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade projen",
+            "exec": "yarn upgrade projen @cdk8s/projen-common",
           },
           Object {
             "exec": "npx projen",
@@ -7615,10 +7495,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --reject='projen,@cdk8s/projen-common,typescript'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep bundle --upgrade --target=minor --reject='projen,@cdk8s/projen-common,typescript'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,eslint-import-resolver-node,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest,jest-junit,npm-check-updates,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -7642,28 +7519,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-runtime-dependencies",
         "steps": Array [
           Object {
-            "exec": "yarn upgrade npm-check-updates",
-          },
-          Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor",
-          },
-          Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor",
-          },
-          Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor",
-          },
-          Object {
-            "exec": "yarn install --check-files",
-          },
-          Object {
-            "exec": "yarn upgrade ",
-          },
-          Object {
-            "exec": "npx projen",
-          },
-          Object {
-            "spawn": "post-upgrade",
+            "exec": "echo No dependencies to upgrade.",
           },
         ],
       },
@@ -9483,7 +9339,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --filter='typescript'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=typescript",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -9510,25 +9366,13 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep bundle --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade projen",
+            "exec": "yarn upgrade projen @cdk8s/projen-common",
           },
           Object {
             "exec": "npx projen",
@@ -9549,10 +9393,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --reject='projen,@cdk8s/projen-common,typescript'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep bundle --upgrade --target=minor --reject='projen,@cdk8s/projen-common,typescript'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,eslint-import-resolver-node,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest,jest-junit,npm-check-updates,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -9576,28 +9417,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-runtime-dependencies",
         "steps": Array [
           Object {
-            "exec": "yarn upgrade npm-check-updates",
-          },
-          Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor",
-          },
-          Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor",
-          },
-          Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor",
-          },
-          Object {
-            "exec": "yarn install --check-files",
-          },
-          Object {
-            "exec": "yarn upgrade ",
-          },
-          Object {
-            "exec": "npx projen",
-          },
-          Object {
-            "spawn": "post-upgrade",
+            "exec": "echo No dependencies to upgrade.",
           },
         ],
       },
@@ -11573,7 +11393,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --filter='typescript'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=typescript",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -11600,25 +11420,13 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep bundle --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade projen",
+            "exec": "yarn upgrade projen @cdk8s/projen-common",
           },
           Object {
             "exec": "npx projen",
@@ -11639,10 +11447,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --reject='projen,@cdk8s/projen-common,typescript'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep bundle --upgrade --target=minor --reject='projen,@cdk8s/projen-common,typescript'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,eslint-import-resolver-node,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest,jest-junit,npm-check-updates,standard-version,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -11666,28 +11471,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-runtime-dependencies",
         "steps": Array [
           Object {
-            "exec": "yarn upgrade npm-check-updates",
-          },
-          Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor",
-          },
-          Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor",
-          },
-          Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor",
-          },
-          Object {
-            "exec": "yarn install --check-files",
-          },
-          Object {
-            "exec": "yarn upgrade ",
-          },
-          Object {
-            "exec": "npx projen",
-          },
-          Object {
-            "spawn": "post-upgrade",
+            "exec": "echo No dependencies to upgrade.",
           },
         ],
       },
@@ -13667,7 +13451,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --filter='typescript'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=typescript",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -13694,25 +13478,13 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep bundle --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade projen",
+            "exec": "yarn upgrade projen @cdk8s/projen-common",
           },
           Object {
             "exec": "npx projen",
@@ -13733,10 +13505,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --reject='projen,@cdk8s/projen-common,typescript'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep bundle --upgrade --target=minor --reject='projen,@cdk8s/projen-common,typescript'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,eslint-import-resolver-node,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest,jest-junit,npm-check-updates,standard-version,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -13760,28 +13529,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-runtime-dependencies",
         "steps": Array [
           Object {
-            "exec": "yarn upgrade npm-check-updates",
-          },
-          Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor",
-          },
-          Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor",
-          },
-          Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor",
-          },
-          Object {
-            "exec": "yarn install --check-files",
-          },
-          Object {
-            "exec": "yarn upgrade ",
-          },
-          Object {
-            "exec": "npx projen",
-          },
-          Object {
-            "spawn": "post-upgrade",
+            "exec": "echo No dependencies to upgrade.",
           },
         ],
       },
@@ -15761,7 +15509,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --filter='typescript'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=typescript",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -15788,25 +15536,13 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep bundle --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade projen",
+            "exec": "yarn upgrade projen @cdk8s/projen-common",
           },
           Object {
             "exec": "npx projen",
@@ -15827,10 +15563,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --reject='projen,@cdk8s/projen-common,typescript'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep bundle --upgrade --target=minor --reject='projen,@cdk8s/projen-common,typescript'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,eslint-import-resolver-node,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest,jest-junit,npm-check-updates,standard-version,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -15854,28 +15587,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-runtime-dependencies",
         "steps": Array [
           Object {
-            "exec": "yarn upgrade npm-check-updates",
-          },
-          Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor",
-          },
-          Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor",
-          },
-          Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor",
-          },
-          Object {
-            "exec": "yarn install --check-files",
-          },
-          Object {
-            "exec": "yarn upgrade ",
-          },
-          Object {
-            "exec": "npx projen",
-          },
-          Object {
-            "spawn": "post-upgrade",
+            "exec": "echo No dependencies to upgrade.",
           },
         ],
       },
@@ -17855,7 +17567,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --filter='typescript'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=typescript",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -17882,25 +17594,13 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep bundle --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade projen",
+            "exec": "yarn upgrade projen @cdk8s/projen-common",
           },
           Object {
             "exec": "npx projen",
@@ -17921,10 +17621,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --reject='projen,@cdk8s/projen-common,typescript'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep bundle --upgrade --target=minor --reject='projen,@cdk8s/projen-common,typescript'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,eslint-import-resolver-node,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest,jest-junit,npm-check-updates,standard-version,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -17948,28 +17645,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-runtime-dependencies",
         "steps": Array [
           Object {
-            "exec": "yarn upgrade npm-check-updates",
-          },
-          Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor",
-          },
-          Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor",
-          },
-          Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor",
-          },
-          Object {
-            "exec": "yarn install --check-files",
-          },
-          Object {
-            "exec": "yarn upgrade ",
-          },
-          Object {
-            "exec": "npx projen",
-          },
-          Object {
-            "spawn": "post-upgrade",
+            "exec": "echo No dependencies to upgrade.",
           },
         ],
       },
@@ -19949,7 +19625,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --filter='typescript'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=typescript",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -19976,25 +19652,13 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep bundle --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor --filter='projen,@cdk8s/projen-common'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade projen",
+            "exec": "yarn upgrade projen @cdk8s/projen-common",
           },
           Object {
             "exec": "npx projen",
@@ -20015,10 +19679,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --dep dev --upgrade --target=minor --reject='projen,@cdk8s/projen-common,typescript'",
-          },
-          Object {
-            "exec": "npm-check-updates --dep bundle --upgrade --target=minor --reject='projen,@cdk8s/projen-common,typescript'",
+            "exec": "npm-check-updates --upgrade --target=minor --filter=@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,eslint-import-resolver-node,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest,jest-junit,npm-check-updates,standard-version,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -20042,28 +19703,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-runtime-dependencies",
         "steps": Array [
           Object {
-            "exec": "yarn upgrade npm-check-updates",
-          },
-          Object {
-            "exec": "npm-check-updates --dep peer --upgrade --target=minor",
-          },
-          Object {
-            "exec": "npm-check-updates --dep prod --upgrade --target=minor",
-          },
-          Object {
-            "exec": "npm-check-updates --dep optional --upgrade --target=minor",
-          },
-          Object {
-            "exec": "yarn install --check-files",
-          },
-          Object {
-            "exec": "yarn upgrade ",
-          },
-          Object {
-            "exec": "npx projen",
-          },
-          Object {
-            "spawn": "post-upgrade",
+            "exec": "echo No dependencies to upgrade.",
           },
         ],
       },
