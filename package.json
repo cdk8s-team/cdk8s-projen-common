@@ -64,7 +64,7 @@
     "projen": "^0.72.1"
   },
   "dependencies": {
-    "codemaker": "^1.86.1"
+    "codemaker": "^1.87.0"
   },
   "bundledDependencies": [
     "codemaker"
