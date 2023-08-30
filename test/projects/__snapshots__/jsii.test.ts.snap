@@ -1600,6 +1600,11 @@ tsconfig.tsbuildinfo
         "type": "override",
         "version": "2.6.0",
       },
+      Object {
+        "name": "**/downlevel-dts/**/typescript",
+        "type": "override",
+        "version": "~5.2.2",
+      },
     ],
   },
   ".projen/files.json": Object {
@@ -2447,6 +2452,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "url": "https://github.com/cdk8s-team/root.git",
     },
     "resolutions": Object {
+      "**/downlevel-dts/**/typescript": "~5.2.2",
       "@types/babel__traverse": "7.18.2",
       "@types/prettier": "2.6.0",
     },
@@ -4186,6 +4192,11 @@ tsconfig.tsbuildinfo
         "type": "override",
         "version": "2.6.0",
       },
+      Object {
+        "name": "**/downlevel-dts/**/typescript",
+        "type": "override",
+        "version": "~5.2.2",
+      },
     ],
   },
   ".projen/files.json": Object {
@@ -5062,6 +5073,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "url": "https://github.com/cdk8s-team/root.git",
     },
     "resolutions": Object {
+      "**/downlevel-dts/**/typescript": "~5.2.2",
       "@types/babel__traverse": "7.18.2",
       "@types/prettier": "2.6.0",
     },
@@ -6316,6 +6328,11 @@ tsconfig.tsbuildinfo
         "type": "override",
         "version": "2.6.0",
       },
+      Object {
+        "name": "**/downlevel-dts/**/typescript",
+        "type": "override",
+        "version": "~5.2.2",
+      },
     ],
   },
   ".projen/files.json": Object {
@@ -7021,6 +7038,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "url": "https://github.com/cdk8s-team/custom-repo-name.git",
     },
     "resolutions": Object {
+      "**/downlevel-dts/**/typescript": "~5.2.2",
       "@types/babel__traverse": "7.18.2",
       "@types/prettier": "2.6.0",
     },
@@ -8394,6 +8412,11 @@ tsconfig.tsbuildinfo
         "type": "override",
         "version": "2.6.0",
       },
+      Object {
+        "name": "**/downlevel-dts/**/typescript",
+        "type": "override",
+        "version": "~5.2.2",
+      },
     ],
   },
   ".projen/files.json": Object {
@@ -9168,6 +9191,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "url": "https://github.com/cdk8s-team/custom-repo-name.git",
     },
     "resolutions": Object {
+      "**/downlevel-dts/**/typescript": "~5.2.2",
       "@types/babel__traverse": "7.18.2",
       "@types/prettier": "2.6.0",
     },
@@ -10416,6 +10440,11 @@ tsconfig.tsbuildinfo
         "type": "override",
         "version": "2.6.0",
       },
+      Object {
+        "name": "**/downlevel-dts/**/typescript",
+        "type": "override",
+        "version": "~5.2.2",
+      },
     ],
   },
   ".projen/files.json": Object {
@@ -11121,6 +11150,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "url": "https://github.com/cdk8s-team/custom-repo-name.git",
     },
     "resolutions": Object {
+      "**/downlevel-dts/**/typescript": "~5.2.2",
       "@types/babel__traverse": "7.18.2",
       "@types/prettier": "2.6.0",
     },
@@ -12494,6 +12524,11 @@ tsconfig.tsbuildinfo
         "type": "override",
         "version": "2.6.0",
       },
+      Object {
+        "name": "**/downlevel-dts/**/typescript",
+        "type": "override",
+        "version": "~5.2.2",
+      },
     ],
   },
   ".projen/files.json": Object {
@@ -13268,6 +13303,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "url": "https://github.com/cdk8s-team/custom-repo-name.git",
     },
     "resolutions": Object {
+      "**/downlevel-dts/**/typescript": "~5.2.2",
       "@types/babel__traverse": "7.18.2",
       "@types/prettier": "2.6.0",
     },
@@ -14516,6 +14552,11 @@ tsconfig.tsbuildinfo
         "type": "override",
         "version": "2.6.0",
       },
+      Object {
+        "name": "**/downlevel-dts/**/typescript",
+        "type": "override",
+        "version": "~5.2.2",
+      },
     ],
   },
   ".projen/files.json": Object {
@@ -15221,6 +15262,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "url": "https://github.com/cdk8s-team/custom-repo-name.git",
     },
     "resolutions": Object {
+      "**/downlevel-dts/**/typescript": "~5.2.2",
       "@types/babel__traverse": "7.18.2",
       "@types/prettier": "2.6.0",
     },
@@ -16594,6 +16636,11 @@ tsconfig.tsbuildinfo
         "type": "override",
         "version": "2.6.0",
       },
+      Object {
+        "name": "**/downlevel-dts/**/typescript",
+        "type": "override",
+        "version": "~5.2.2",
+      },
     ],
   },
   ".projen/files.json": Object {
@@ -17368,6 +17415,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "url": "https://github.com/cdk8s-team/custom-repo-name.git",
     },
     "resolutions": Object {
+      "**/downlevel-dts/**/typescript": "~5.2.2",
       "@types/babel__traverse": "7.18.2",
       "@types/prettier": "2.6.0",
     },
@@ -19050,6 +19098,11 @@ tsconfig.tsbuildinfo
         "type": "override",
         "version": "2.6.0",
       },
+      Object {
+        "name": "**/downlevel-dts/**/typescript",
+        "type": "override",
+        "version": "~5.2.2",
+      },
     ],
   },
   ".projen/files.json": Object {
@@ -19897,6 +19950,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "url": "https://github.com/cdk8s-team/cdk8s-sample.git",
     },
     "resolutions": Object {
+      "**/downlevel-dts/**/typescript": "~5.2.2",
       "@types/babel__traverse": "7.18.2",
       "@types/prettier": "2.6.0",
     },
@@ -21583,6 +21637,11 @@ tsconfig.tsbuildinfo
         "type": "override",
         "version": "2.6.0",
       },
+      Object {
+        "name": "**/downlevel-dts/**/typescript",
+        "type": "override",
+        "version": "~5.2.2",
+      },
     ],
   },
   ".projen/files.json": Object {
@@ -22430,6 +22489,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "url": "https://github.com/cdk8s-team/root.git",
     },
     "resolutions": Object {
+      "**/downlevel-dts/**/typescript": "~5.2.2",
       "@types/babel__traverse": "7.18.2",
       "@types/prettier": "2.6.0",
     },
@@ -24116,6 +24176,11 @@ tsconfig.tsbuildinfo
         "type": "override",
         "version": "2.6.0",
       },
+      Object {
+        "name": "**/downlevel-dts/**/typescript",
+        "type": "override",
+        "version": "~5.2.2",
+      },
     ],
   },
   ".projen/files.json": Object {
@@ -24963,6 +25028,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "url": "https://github.com/cdk8s-team/cdk8s-sample.git",
     },
     "resolutions": Object {
+      "**/downlevel-dts/**/typescript": "~5.2.2",
       "@types/babel__traverse": "7.18.2",
       "@types/prettier": "2.6.0",
     },
@@ -26649,6 +26715,11 @@ tsconfig.tsbuildinfo
         "type": "override",
         "version": "2.6.0",
       },
+      Object {
+        "name": "**/downlevel-dts/**/typescript",
+        "type": "override",
+        "version": "~5.2.2",
+      },
     ],
   },
   ".projen/files.json": Object {
@@ -27496,6 +27567,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "url": "https://github.com/cdk8s-team/cdk8s.git",
     },
     "resolutions": Object {
+      "**/downlevel-dts/**/typescript": "~5.2.2",
       "@types/babel__traverse": "7.18.2",
       "@types/prettier": "2.6.0",
     },
@@ -29182,6 +29254,11 @@ tsconfig.tsbuildinfo
         "type": "override",
         "version": "2.6.0",
       },
+      Object {
+        "name": "**/downlevel-dts/**/typescript",
+        "type": "override",
+        "version": "~5.2.2",
+      },
     ],
   },
   ".projen/files.json": Object {
@@ -30029,6 +30106,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "url": "https://github.com/cdk8s-team/root.git",
     },
     "resolutions": Object {
+      "**/downlevel-dts/**/typescript": "~5.2.2",
       "@types/babel__traverse": "7.18.2",
       "@types/prettier": "2.6.0",
     },
