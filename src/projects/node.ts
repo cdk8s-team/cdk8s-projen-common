@@ -55,6 +55,15 @@ export type defaultOptionsKeysType = typeof defaultOptionsKeys[number];
  */
 export function buildNodeProjectFixedOptions(options: Cdk8sTeamNodeProjectOptions): Pick<javascript.NodeProjectOptions, fixedOptionsKeysType> {
 
+  const releasableCommitsCmd = [
+    ReleasableCommits.featuresAndFixes().cmd,
+
+    // runtime and compiler dependencies should trigger a release because
+    // they have the potential to change the published artifact.
+    "'chore\\(deps\\): upgrade runtime dependencies'",
+    "'chore\\(deps\\): upgrade compiler dependencies'",
+  ];
+
   return {
     authorName: 'Amazon Web Services',
     repository: `https://github.com/cdk8s-team/${options.repoName ?? buildRepositoryName(options.name)}.git`,
@@ -64,7 +73,7 @@ export function buildNodeProjectFixedOptions(options: Cdk8sTeamNodeProjectOption
     },
     autoApproveUpgrades: true,
     releaseWorkflow: options.release,
-    releasableCommits: ReleasableCommits.featuresAndFixes(),
+    releasableCommits: ReleasableCommits.exec(releasableCommitsCmd.join(' --grep ')),
   };
 }
 
@@ -76,7 +85,6 @@ export function buildNodeProjectDefaultOptions(options: Cdk8sTeamNodeProjectOpti
   const depsUpgradeOptions: UpgradeDependenciesOptions = {
     taskName: 'upgrade-runtime-dependencies',
     pullRequestTitle: 'upgrade runtime dependencies',
-    semanticCommit: 'feat',
     // only include peer and runtime because we will created a non release trigerring PR for the rest
     types: [DependencyType.PEER, DependencyType.RUNTIME, DependencyType.OPTIONAL],
     workflowOptions: {
@@ -252,9 +260,6 @@ export function addComponents(project: NodeProject, repoName: string, branches?:
       include: compilerDeps,
       taskName: 'upgrade-compiler-dependencies',
       pullRequestTitle: 'upgrade compiler dependencies',
-      // compiler dependencies should trigger a release because they change
-      // the published artifact.
-      semanticCommit: 'feat',
       workflowOptions: {
         branches,
         labels: ['auto-approve'],
