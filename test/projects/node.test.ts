@@ -1,5 +1,30 @@
 import { Testing } from 'projen';
+import { UpgradeDependenciesSchedule } from 'projen/lib/javascript';
 import * as src from '../../src';
+
+test('deps upgrade options are merged', () => {
+
+  const project = new src.Cdk8sTeamTypeScriptProject({
+    name: 'root',
+    defaultReleaseBranch: 'main',
+    depsUpgradeOptions: {
+      workflowOptions: {
+        branches: ['b1', 'b2', 'b3'],
+        schedule: UpgradeDependenciesSchedule.expressions(['0 2 * * *']),
+      },
+    },
+  });
+
+  const snapshot = Testing.synth(project);
+  expect(snapshot['.github/workflows/upgrade-compiler-dependencies-b1.yml']).toBeDefined();
+  expect(snapshot['.github/workflows/upgrade-compiler-dependencies-b2.yml']).toBeDefined();
+  expect(snapshot['.github/workflows/upgrade-compiler-dependencies-b3.yml']).toBeDefined();
+
+  expect(snapshot['.github/workflows/upgrade-runtime-dependencies-b1.yml']).toBeDefined();
+  expect(snapshot['.github/workflows/upgrade-runtime-dependencies-b2.yml']).toBeDefined();
+  expect(snapshot['.github/workflows/upgrade-runtime-dependencies-b3.yml']).toBeDefined();
+
+});
 
 test('node project name must start with cdk8s-', () => {
 
