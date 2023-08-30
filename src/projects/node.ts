@@ -60,8 +60,8 @@ export function buildNodeProjectFixedOptions(options: Cdk8sTeamNodeProjectOption
 
     // runtime and compiler dependencies should trigger a release because
     // they have the potential to change the published artifact.
-    'chore\\(deps\\): upgrade runtime dependencies',
-    'chore\\(deps\\): upgrade compiler dependencies',
+    "'chore\\(deps\\): upgrade runtime dependencies'",
+    "'chore\\(deps\\): upgrade compiler dependencies'",
   ];
 
   return {
