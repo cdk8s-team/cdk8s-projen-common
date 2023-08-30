@@ -5,7 +5,7 @@ const project = new src.Cdk8sTeamJsiiProject({
   description: 'Common projen configuration shared between cdk8s-team org projects.',
   peerDeps: ['projen'],
   deps: ['codemaker'],
-  bundledDeps: ['codemaker'],
+  bundledDeps: ['codemaker', 'deepmerge'],
   projenrcTs: true,
   defaultReleaseBranch: 'main',
   pypi: false,

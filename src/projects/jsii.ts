@@ -1,4 +1,5 @@
 import * as maker from 'codemaker';
+import * as deepmerge from 'deepmerge';
 import { cdk } from 'projen';
 import * as node from './node';
 import * as ts from './typescript';
@@ -80,7 +81,7 @@ export class Cdk8sTeamJsiiProject extends cdk.JsiiProject {
     const maven = options.maven ?? true;
     const nuget = options.nuget ?? true;
 
-    const finalOptions = {
+    const finalOptions = deepmerge.all([{
       author: fixedNodeOptions.authorName!,
       repositoryUrl: fixedNodeOptions.repository!,
       authorAddress: 'https://aws.amazon.com',
@@ -90,8 +91,7 @@ export class Cdk8sTeamJsiiProject extends cdk.JsiiProject {
       publishToGo: golang ? golangTarget(repoName, golangBranch) : undefined,
       ...fixedNodeOptions,
       ...defaultNodeOptions,
-      ...options,
-    };
+    }, options]) as cdk.JsiiProjectOptions;
 
     super(finalOptions);
 
