@@ -737,7 +737,7 @@ jobs:
         with:
           token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
           commit-message: |-
-            feat(deps): upgrade runtime dependencies
+            chore(deps): upgrade runtime dependencies
 
             Upgrades project dependencies. See details in [workflow run].
 
@@ -747,7 +747,7 @@ jobs:
 
             *Automatically created by projen via the \\"upgrade-runtime-dependencies-main\\" workflow*
           branch: github-actions/upgrade-runtime-dependencies-main
-          title: \\"feat(deps): upgrade runtime dependencies\\"
+          title: \\"chore(deps): upgrade runtime dependencies\\"
           labels: auto-approve
           body: |-
             Upgrades project dependencies. See details in [workflow run].
@@ -984,7 +984,7 @@ permissions-backup.acl
           "BUMPFILE": "dist/version.txt",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+'",
+          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -1143,7 +1143,7 @@ permissions-backup.acl
           "BUMPFILE": "dist/version.txt",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+'",
+          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -2198,7 +2198,7 @@ jobs:
         with:
           token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
           commit-message: |-
-            feat(deps): upgrade runtime dependencies
+            chore(deps): upgrade runtime dependencies
 
             Upgrades project dependencies. See details in [workflow run].
 
@@ -2208,7 +2208,7 @@ jobs:
 
             *Automatically created by projen via the \\"upgrade-runtime-dependencies\\" workflow*
           branch: github-actions/upgrade-runtime-dependencies
-          title: \\"feat(deps): upgrade runtime dependencies\\"
+          title: \\"chore(deps): upgrade runtime dependencies\\"
           labels: auto-approve
           body: |-
             Upgrades project dependencies. See details in [workflow run].
@@ -3552,7 +3552,7 @@ jobs:
         with:
           token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
           commit-message: |-
-            feat(deps): upgrade runtime dependencies
+            chore(deps): upgrade runtime dependencies
 
             Upgrades project dependencies. See details in [workflow run].
 
@@ -3562,7 +3562,7 @@ jobs:
 
             *Automatically created by projen via the \\"upgrade-runtime-dependencies\\" workflow*
           branch: github-actions/upgrade-runtime-dependencies
-          title: \\"feat(deps): upgrade runtime dependencies\\"
+          title: \\"chore(deps): upgrade runtime dependencies\\"
           labels: auto-approve
           body: |-
             Upgrades project dependencies. See details in [workflow run].
@@ -4906,7 +4906,7 @@ jobs:
         with:
           token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
           commit-message: |-
-            feat(deps): upgrade runtime dependencies
+            chore(deps): upgrade runtime dependencies
 
             Upgrades project dependencies. See details in [workflow run].
 
@@ -4916,7 +4916,7 @@ jobs:
 
             *Automatically created by projen via the \\"upgrade-runtime-dependencies\\" workflow*
           branch: github-actions/upgrade-runtime-dependencies
-          title: \\"feat(deps): upgrade runtime dependencies\\"
+          title: \\"chore(deps): upgrade runtime dependencies\\"
           labels: auto-approve
           body: |-
             Upgrades project dependencies. See details in [workflow run].
@@ -6343,7 +6343,7 @@ jobs:
         with:
           token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
           commit-message: |-
-            feat(deps): upgrade runtime dependencies
+            chore(deps): upgrade runtime dependencies
 
             Upgrades project dependencies. See details in [workflow run].
 
@@ -6353,7 +6353,7 @@ jobs:
 
             *Automatically created by projen via the \\"upgrade-runtime-dependencies-main\\" workflow*
           branch: github-actions/upgrade-runtime-dependencies-main
-          title: \\"feat(deps): upgrade runtime dependencies\\"
+          title: \\"chore(deps): upgrade runtime dependencies\\"
           labels: auto-approve
           body: |-
             Upgrades project dependencies. See details in [workflow run].
@@ -6562,7 +6562,7 @@ permissions-backup.acl
           "BUMPFILE": "dist/version.txt",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+'",
+          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -6721,7 +6721,7 @@ permissions-backup.acl
           "BUMPFILE": "dist/version.txt",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+'",
+          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -7854,7 +7854,7 @@ jobs:
         with:
           token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
           commit-message: |-
-            feat(deps): upgrade runtime dependencies
+            chore(deps): upgrade runtime dependencies
 
             Upgrades project dependencies. See details in [workflow run].
 
@@ -7864,7 +7864,7 @@ jobs:
 
             *Automatically created by projen via the \\"upgrade-runtime-dependencies-main\\" workflow*
           branch: github-actions/upgrade-runtime-dependencies-main
-          title: \\"feat(deps): upgrade runtime dependencies\\"
+          title: \\"chore(deps): upgrade runtime dependencies\\"
           labels: auto-approve
           body: |-
             Upgrades project dependencies. See details in [workflow run].
@@ -8073,7 +8073,7 @@ permissions-backup.acl
           "BUMPFILE": "dist/version.txt",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+'",
+          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -8232,7 +8232,7 @@ permissions-backup.acl
           "BUMPFILE": "dist/version.txt",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+'",
+          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -9365,7 +9365,7 @@ jobs:
         with:
           token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
           commit-message: |-
-            feat(deps): upgrade runtime dependencies
+            chore(deps): upgrade runtime dependencies
 
             Upgrades project dependencies. See details in [workflow run].
 
@@ -9375,7 +9375,7 @@ jobs:
 
             *Automatically created by projen via the \\"upgrade-runtime-dependencies-main\\" workflow*
           branch: github-actions/upgrade-runtime-dependencies-main
-          title: \\"feat(deps): upgrade runtime dependencies\\"
+          title: \\"chore(deps): upgrade runtime dependencies\\"
           labels: auto-approve
           body: |-
             Upgrades project dependencies. See details in [workflow run].
@@ -9584,7 +9584,7 @@ permissions-backup.acl
           "BUMPFILE": "dist/version.txt",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+'",
+          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -9743,7 +9743,7 @@ permissions-backup.acl
           "BUMPFILE": "dist/version.txt",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+'",
+          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -10876,7 +10876,7 @@ jobs:
         with:
           token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
           commit-message: |-
-            feat(deps): upgrade runtime dependencies
+            chore(deps): upgrade runtime dependencies
 
             Upgrades project dependencies. See details in [workflow run].
 
@@ -10886,7 +10886,7 @@ jobs:
 
             *Automatically created by projen via the \\"upgrade-runtime-dependencies-main\\" workflow*
           branch: github-actions/upgrade-runtime-dependencies-main
-          title: \\"feat(deps): upgrade runtime dependencies\\"
+          title: \\"chore(deps): upgrade runtime dependencies\\"
           labels: auto-approve
           body: |-
             Upgrades project dependencies. See details in [workflow run].
@@ -11095,7 +11095,7 @@ permissions-backup.acl
           "BUMPFILE": "dist/version.txt",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+'",
+          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -11254,7 +11254,7 @@ permissions-backup.acl
           "BUMPFILE": "dist/version.txt",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+'",
+          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -12387,7 +12387,7 @@ jobs:
         with:
           token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
           commit-message: |-
-            feat(deps): upgrade runtime dependencies
+            chore(deps): upgrade runtime dependencies
 
             Upgrades project dependencies. See details in [workflow run].
 
@@ -12397,7 +12397,7 @@ jobs:
 
             *Automatically created by projen via the \\"upgrade-runtime-dependencies-main\\" workflow*
           branch: github-actions/upgrade-runtime-dependencies-main
-          title: \\"feat(deps): upgrade runtime dependencies\\"
+          title: \\"chore(deps): upgrade runtime dependencies\\"
           labels: auto-approve
           body: |-
             Upgrades project dependencies. See details in [workflow run].
@@ -12606,7 +12606,7 @@ permissions-backup.acl
           "BUMPFILE": "dist/version.txt",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+'",
+          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -12765,7 +12765,7 @@ permissions-backup.acl
           "BUMPFILE": "dist/version.txt",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+'",
+          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
