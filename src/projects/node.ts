@@ -1,3 +1,4 @@
+import * as deepmerge from 'deepmerge';
 import { DependencyType, ReleasableCommits, javascript } from 'projen';
 import { NodeProject, NodeProjectOptions, UpgradeDependencies, UpgradeDependenciesOptions, UpgradeDependenciesSchedule } from 'projen/lib/javascript';
 import { Backport } from '../components/backport/backport';
@@ -147,11 +148,10 @@ export class Cdk8sTeamNodeProject extends javascript.NodeProject {
     const fixedOptions = buildNodeProjectFixedOptions(options);
     const defaultOptions = buildNodeProjectDefaultOptions(options);
 
-    const finalOptions: NodeProjectOptions = {
+    const finalOptions: NodeProjectOptions = deepmerge.all([{
       ...fixedOptions,
       ...defaultOptions,
-      ...options,
-    };
+    }, options]) as NodeProjectOptions;
 
     super(finalOptions);
 

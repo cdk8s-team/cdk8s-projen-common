@@ -64,10 +64,12 @@
     "projen": "^0.72.1"
   },
   "dependencies": {
-    "codemaker": "^1.88.0"
+    "codemaker": "^1.88.0",
+    "deepmerge": "^4.3.1"
   },
   "bundledDependencies": [
-    "codemaker"
+    "codemaker",
+    "deepmerge"
   ],
   "resolutions": {
     "@types/babel__traverse": "7.18.2",

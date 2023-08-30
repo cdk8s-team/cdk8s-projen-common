@@ -1,3 +1,4 @@
+import * as deepmerge from 'deepmerge';
 import { typescript } from 'projen';
 import * as node from './node';
 import { Backport } from '../components/backport/backport';
@@ -50,11 +51,10 @@ export class Cdk8sTeamTypeScriptProject extends typescript.TypeScriptProject {
     const fixedNodeOptions = node.buildNodeProjectFixedOptions(options);
     const defaultNodeOptions = node.buildNodeProjectDefaultOptions(options);
 
-    const finalOptions = {
+    const finalOptions = deepmerge.all([{
       ...fixedNodeOptions,
       ...defaultNodeOptions,
-      ...options,
-    };
+    }, options]) as typescript.TypeScriptProjectOptions;
 
     super(finalOptions);
 

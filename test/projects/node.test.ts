@@ -1,6 +1,25 @@
 import { Testing } from 'projen';
 import * as src from '../../src';
 
+test('deps upgrade options are merged', () => {
+
+  const project = new src.Cdk8sTeamNodeProject({
+    name: 'root',
+    defaultReleaseBranch: 'main',
+    depsUpgradeOptions: {
+      workflowOptions: {
+        branches: ['b1', 'b2', 'b3'],
+      },
+    },
+  });
+
+  const snapshot = Testing.synth(project);
+  expect(snapshot['.github/workflows/upgrade-runtime-dependencies-b1.yml']).toBeDefined();
+  expect(snapshot['.github/workflows/upgrade-runtime-dependencies-b2.yml']).toBeDefined();
+  expect(snapshot['.github/workflows/upgrade-runtime-dependencies-b3.yml']).toBeDefined();
+
+});
+
 test('node project name must start with cdk8s-', () => {
 
   expect(() => {
