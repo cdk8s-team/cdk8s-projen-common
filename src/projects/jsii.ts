@@ -107,6 +107,10 @@ export class Cdk8sTeamJsiiProject extends cdk.JsiiProject {
     if (options.backport ?? false) {
       new Backport(this, { branches: options.backportBranches, repoName });
     }
+
+    // prevent upgrading the typescript version used by downlevel-dts because
+    // it depends on typescript@next - which causes daily identical releases.
+    this.package.addPackageResolutions('**/downlevel-dts/**/typescript@~5.2.2');
   }
 }
 
