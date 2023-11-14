@@ -256,7 +256,6 @@ Object {
 /.gitignore linguist-generated
 /.mergify.yml linguist-generated
 /.npmignore linguist-generated
-/.npmrc linguist-generated
 /.projen/** linguist-generated
 /.projen/deps.json linguist-generated
 /.projen/files.json linguist-generated
@@ -1081,7 +1080,6 @@ junit.xml
 !/.mergify.yml
 !/.github/workflows/upgrade-runtime-dependencies-main.yml
 !/.github/pull_request_template.md
-!/.npmrc
 !/test/
 !/tsconfig.json
 !/tsconfig.dev.json
@@ -1169,16 +1167,17 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@typescript-eslint/eslint-plugin",
         "type": "build",
-        "version": "^5",
+        "version": "^6",
       },
       Object {
         "name": "@typescript-eslint/parser",
         "type": "build",
-        "version": "^5",
+        "version": "^6",
       },
       Object {
-        "name": "eslint-import-resolver-node",
+        "name": "constructs",
         "type": "build",
+        "version": "^10.0.0",
       },
       Object {
         "name": "eslint-import-resolver-typescript",
@@ -1249,7 +1248,6 @@ tsconfig.tsbuildinfo
       ".gitignore",
       ".mergify.yml",
       ".npmignore",
-      ".npmrc",
       ".projen/deps.json",
       ".projen/files.json",
       ".projen/tasks.json",
@@ -1499,7 +1497,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --upgrade --target=minor --filter=comp1,typescript",
+            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev --filter=comp1,typescript",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -1526,7 +1524,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --upgrade --target=minor --filter=projen,@cdk8s/projen-common",
+            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -1553,13 +1551,13 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --upgrade --target=minor --filter=@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,eslint-import-resolver-node,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest,jest-junit,npm-check-updates,standard-version,ts-jest",
+            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev --filter=@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,constructs,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest,jest-junit,npm-check-updates,standard-version,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit npm-check-updates standard-version ts-jest",
+            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit npm-check-updates standard-version ts-jest",
           },
           Object {
             "exec": "npx projen",
@@ -1887,10 +1885,10 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "devDependencies": Object {
       "@types/jest": "*",
       "@types/node": "^16",
-      "@typescript-eslint/eslint-plugin": "^5",
-      "@typescript-eslint/parser": "^5",
+      "@typescript-eslint/eslint-plugin": "^6",
+      "@typescript-eslint/parser": "^6",
+      "constructs": "^10.0.0",
       "eslint": "^8",
-      "eslint-import-resolver-node": "*",
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
@@ -2333,7 +2331,6 @@ Object {
 /.gitignore linguist-generated
 /.mergify.yml linguist-generated
 /.npmignore linguist-generated
-/.npmrc linguist-generated
 /.projen/** linguist-generated
 /.projen/deps.json linguist-generated
 /.projen/files.json linguist-generated
@@ -3190,7 +3187,6 @@ junit.xml
 !/.mergify.yml
 !/.github/workflows/upgrade-runtime-dependencies-main.yml
 !/.github/pull_request_template.md
-!/.npmrc
 !/test/
 !/tsconfig.json
 !/tsconfig.dev.json
@@ -3280,16 +3276,17 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@typescript-eslint/eslint-plugin",
         "type": "build",
-        "version": "^5",
+        "version": "^6",
       },
       Object {
         "name": "@typescript-eslint/parser",
         "type": "build",
-        "version": "^5",
+        "version": "^6",
       },
       Object {
-        "name": "eslint-import-resolver-node",
+        "name": "constructs",
         "type": "build",
+        "version": "^10.0.0",
       },
       Object {
         "name": "eslint-import-resolver-typescript",
@@ -3362,7 +3359,6 @@ tsconfig.tsbuildinfo
       ".gitignore",
       ".mergify.yml",
       ".npmignore",
-      ".npmrc",
       ".projen/deps.json",
       ".projen/files.json",
       ".projen/tasks.json",
@@ -3636,7 +3632,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --upgrade --target=minor --filter=typescript",
+            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev --filter=typescript",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -3663,7 +3659,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --upgrade --target=minor --filter=projen,@cdk8s/projen-common",
+            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -3690,13 +3686,13 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --upgrade --target=minor --filter=@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,eslint-import-resolver-node,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest,jest-junit,npm-check-updates,standard-version,ts-jest",
+            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev --filter=@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,constructs,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest,jest-junit,npm-check-updates,standard-version,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit npm-check-updates standard-version ts-jest",
+            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit npm-check-updates standard-version ts-jest",
           },
           Object {
             "exec": "npx projen",
@@ -4024,10 +4020,10 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "devDependencies": Object {
       "@types/jest": "*",
       "@types/node": "^16",
-      "@typescript-eslint/eslint-plugin": "^5",
-      "@typescript-eslint/parser": "^5",
+      "@typescript-eslint/eslint-plugin": "^6",
+      "@typescript-eslint/parser": "^6",
+      "constructs": "^10.0.0",
       "eslint": "^8",
-      "eslint-import-resolver-node": "*",
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
@@ -4455,7 +4451,6 @@ Object {
 /.gitignore linguist-generated
 /.mergify.yml linguist-generated
 /.npmignore linguist-generated
-/.npmrc linguist-generated
 /.projen/** linguist-generated
 /.projen/deps.json linguist-generated
 /.projen/files.json linguist-generated
@@ -5192,7 +5187,6 @@ junit.xml
 !/.mergify.yml
 !/.github/workflows/upgrade-runtime-dependencies.yml
 !/.github/pull_request_template.md
-!/.npmrc
 !/test/
 !/tsconfig.json
 !/tsconfig.dev.json
@@ -5278,16 +5272,17 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@typescript-eslint/eslint-plugin",
         "type": "build",
-        "version": "^5",
+        "version": "^6",
       },
       Object {
         "name": "@typescript-eslint/parser",
         "type": "build",
-        "version": "^5",
+        "version": "^6",
       },
       Object {
-        "name": "eslint-import-resolver-node",
+        "name": "constructs",
         "type": "build",
+        "version": "^10.0.0",
       },
       Object {
         "name": "eslint-import-resolver-typescript",
@@ -5352,7 +5347,6 @@ tsconfig.tsbuildinfo
       ".gitignore",
       ".mergify.yml",
       ".npmignore",
-      ".npmrc",
       ".projen/deps.json",
       ".projen/files.json",
       ".projen/tasks.json",
@@ -5543,7 +5537,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --upgrade --target=minor --filter=typescript",
+            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev --filter=typescript",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -5570,7 +5564,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --upgrade --target=minor --filter=projen,@cdk8s/projen-common",
+            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -5597,13 +5591,13 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --upgrade --target=minor --filter=@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,eslint-import-resolver-node,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest,jest-junit,npm-check-updates,ts-jest",
+            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev --filter=@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,constructs,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest,jest-junit,npm-check-updates,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit npm-check-updates ts-jest",
+            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit npm-check-updates ts-jest",
           },
           Object {
             "exec": "npx projen",
@@ -5931,10 +5925,10 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "devDependencies": Object {
       "@types/jest": "*",
       "@types/node": "^16",
-      "@typescript-eslint/eslint-plugin": "^5",
-      "@typescript-eslint/parser": "^5",
+      "@typescript-eslint/eslint-plugin": "^6",
+      "@typescript-eslint/parser": "^6",
+      "constructs": "^10.0.0",
       "eslint": "^8",
-      "eslint-import-resolver-node": "*",
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
@@ -6353,7 +6347,6 @@ Object {
 /.gitignore linguist-generated
 /.mergify.yml linguist-generated
 /.npmignore linguist-generated
-/.npmrc linguist-generated
 /.projen/** linguist-generated
 /.projen/deps.json linguist-generated
 /.projen/files.json linguist-generated
@@ -7090,7 +7083,6 @@ junit.xml
 !/.mergify.yml
 !/.github/workflows/upgrade-runtime-dependencies.yml
 !/.github/pull_request_template.md
-!/.npmrc
 !/test/
 !/tsconfig.json
 !/tsconfig.dev.json
@@ -7176,16 +7168,17 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@typescript-eslint/eslint-plugin",
         "type": "build",
-        "version": "^5",
+        "version": "^6",
       },
       Object {
         "name": "@typescript-eslint/parser",
         "type": "build",
-        "version": "^5",
+        "version": "^6",
       },
       Object {
-        "name": "eslint-import-resolver-node",
+        "name": "constructs",
         "type": "build",
+        "version": "^10.0.0",
       },
       Object {
         "name": "eslint-import-resolver-typescript",
@@ -7250,7 +7243,6 @@ tsconfig.tsbuildinfo
       ".gitignore",
       ".mergify.yml",
       ".npmignore",
-      ".npmrc",
       ".projen/deps.json",
       ".projen/files.json",
       ".projen/tasks.json",
@@ -7441,7 +7433,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --upgrade --target=minor --filter=typescript",
+            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev --filter=typescript",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -7468,7 +7460,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --upgrade --target=minor --filter=projen,@cdk8s/projen-common",
+            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -7495,13 +7487,13 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --upgrade --target=minor --filter=@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,eslint-import-resolver-node,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest,jest-junit,npm-check-updates,ts-jest",
+            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev --filter=@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,constructs,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest,jest-junit,npm-check-updates,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit npm-check-updates ts-jest",
+            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit npm-check-updates ts-jest",
           },
           Object {
             "exec": "npx projen",
@@ -7829,10 +7821,10 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "devDependencies": Object {
       "@types/jest": "*",
       "@types/node": "^16",
-      "@typescript-eslint/eslint-plugin": "^5",
-      "@typescript-eslint/parser": "^5",
+      "@typescript-eslint/eslint-plugin": "^6",
+      "@typescript-eslint/parser": "^6",
+      "constructs": "^10.0.0",
       "eslint": "^8",
-      "eslint-import-resolver-node": "*",
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
@@ -8251,7 +8243,6 @@ Object {
 /.gitignore linguist-generated
 /.mergify.yml linguist-generated
 /.npmignore linguist-generated
-/.npmrc linguist-generated
 /.projen/** linguist-generated
 /.projen/deps.json linguist-generated
 /.projen/files.json linguist-generated
@@ -8988,7 +8979,6 @@ junit.xml
 !/.mergify.yml
 !/.github/workflows/upgrade-runtime-dependencies.yml
 !/.github/pull_request_template.md
-!/.npmrc
 !/test/
 !/tsconfig.json
 !/tsconfig.dev.json
@@ -9074,16 +9064,17 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@typescript-eslint/eslint-plugin",
         "type": "build",
-        "version": "^5",
+        "version": "^6",
       },
       Object {
         "name": "@typescript-eslint/parser",
         "type": "build",
-        "version": "^5",
+        "version": "^6",
       },
       Object {
-        "name": "eslint-import-resolver-node",
+        "name": "constructs",
         "type": "build",
+        "version": "^10.0.0",
       },
       Object {
         "name": "eslint-import-resolver-typescript",
@@ -9148,7 +9139,6 @@ tsconfig.tsbuildinfo
       ".gitignore",
       ".mergify.yml",
       ".npmignore",
-      ".npmrc",
       ".projen/deps.json",
       ".projen/files.json",
       ".projen/tasks.json",
@@ -9339,7 +9329,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --upgrade --target=minor --filter=typescript",
+            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev --filter=typescript",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -9366,7 +9356,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --upgrade --target=minor --filter=projen,@cdk8s/projen-common",
+            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -9393,13 +9383,13 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --upgrade --target=minor --filter=@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,eslint-import-resolver-node,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest,jest-junit,npm-check-updates,ts-jest",
+            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev --filter=@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,constructs,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest,jest-junit,npm-check-updates,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit npm-check-updates ts-jest",
+            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit npm-check-updates ts-jest",
           },
           Object {
             "exec": "npx projen",
@@ -9727,10 +9717,10 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "devDependencies": Object {
       "@types/jest": "*",
       "@types/node": "^16",
-      "@typescript-eslint/eslint-plugin": "^5",
-      "@typescript-eslint/parser": "^5",
+      "@typescript-eslint/eslint-plugin": "^6",
+      "@typescript-eslint/parser": "^6",
+      "constructs": "^10.0.0",
       "eslint": "^8",
-      "eslint-import-resolver-node": "*",
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
@@ -10150,7 +10140,6 @@ Object {
 /.gitignore linguist-generated
 /.mergify.yml linguist-generated
 /.npmignore linguist-generated
-/.npmrc linguist-generated
 /.projen/** linguist-generated
 /.projen/deps.json linguist-generated
 /.projen/files.json linguist-generated
@@ -10975,7 +10964,6 @@ junit.xml
 !/.mergify.yml
 !/.github/workflows/upgrade-runtime-dependencies-main.yml
 !/.github/pull_request_template.md
-!/.npmrc
 !/test/
 !/tsconfig.json
 !/tsconfig.dev.json
@@ -11063,16 +11051,17 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@typescript-eslint/eslint-plugin",
         "type": "build",
-        "version": "^5",
+        "version": "^6",
       },
       Object {
         "name": "@typescript-eslint/parser",
         "type": "build",
-        "version": "^5",
+        "version": "^6",
       },
       Object {
-        "name": "eslint-import-resolver-node",
+        "name": "constructs",
         "type": "build",
+        "version": "^10.0.0",
       },
       Object {
         "name": "eslint-import-resolver-typescript",
@@ -11143,7 +11132,6 @@ tsconfig.tsbuildinfo
       ".gitignore",
       ".mergify.yml",
       ".npmignore",
-      ".npmrc",
       ".projen/deps.json",
       ".projen/files.json",
       ".projen/tasks.json",
@@ -11393,7 +11381,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --upgrade --target=minor --filter=typescript",
+            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev --filter=typescript",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -11420,7 +11408,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --upgrade --target=minor --filter=projen,@cdk8s/projen-common",
+            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -11447,13 +11435,13 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --upgrade --target=minor --filter=@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,eslint-import-resolver-node,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest,jest-junit,npm-check-updates,standard-version,ts-jest",
+            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev --filter=@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,constructs,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest,jest-junit,npm-check-updates,standard-version,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit npm-check-updates standard-version ts-jest",
+            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit npm-check-updates standard-version ts-jest",
           },
           Object {
             "exec": "npx projen",
@@ -11781,10 +11769,10 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "devDependencies": Object {
       "@types/jest": "*",
       "@types/node": "^16",
-      "@typescript-eslint/eslint-plugin": "^5",
-      "@typescript-eslint/parser": "^5",
+      "@typescript-eslint/eslint-plugin": "^6",
+      "@typescript-eslint/parser": "^6",
+      "constructs": "^10.0.0",
       "eslint": "^8",
-      "eslint-import-resolver-node": "*",
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
@@ -12208,7 +12196,6 @@ Object {
 /.gitignore linguist-generated
 /.mergify.yml linguist-generated
 /.npmignore linguist-generated
-/.npmrc linguist-generated
 /.projen/** linguist-generated
 /.projen/deps.json linguist-generated
 /.projen/files.json linguist-generated
@@ -13033,7 +13020,6 @@ junit.xml
 !/.mergify.yml
 !/.github/workflows/upgrade-runtime-dependencies-main.yml
 !/.github/pull_request_template.md
-!/.npmrc
 !/test/
 !/tsconfig.json
 !/tsconfig.dev.json
@@ -13121,16 +13107,17 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@typescript-eslint/eslint-plugin",
         "type": "build",
-        "version": "^5",
+        "version": "^6",
       },
       Object {
         "name": "@typescript-eslint/parser",
         "type": "build",
-        "version": "^5",
+        "version": "^6",
       },
       Object {
-        "name": "eslint-import-resolver-node",
+        "name": "constructs",
         "type": "build",
+        "version": "^10.0.0",
       },
       Object {
         "name": "eslint-import-resolver-typescript",
@@ -13201,7 +13188,6 @@ tsconfig.tsbuildinfo
       ".gitignore",
       ".mergify.yml",
       ".npmignore",
-      ".npmrc",
       ".projen/deps.json",
       ".projen/files.json",
       ".projen/tasks.json",
@@ -13451,7 +13437,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --upgrade --target=minor --filter=typescript",
+            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev --filter=typescript",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -13478,7 +13464,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --upgrade --target=minor --filter=projen,@cdk8s/projen-common",
+            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -13505,13 +13491,13 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --upgrade --target=minor --filter=@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,eslint-import-resolver-node,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest,jest-junit,npm-check-updates,standard-version,ts-jest",
+            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev --filter=@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,constructs,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest,jest-junit,npm-check-updates,standard-version,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit npm-check-updates standard-version ts-jest",
+            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit npm-check-updates standard-version ts-jest",
           },
           Object {
             "exec": "npx projen",
@@ -13839,10 +13825,10 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "devDependencies": Object {
       "@types/jest": "*",
       "@types/node": "^16",
-      "@typescript-eslint/eslint-plugin": "^5",
-      "@typescript-eslint/parser": "^5",
+      "@typescript-eslint/eslint-plugin": "^6",
+      "@typescript-eslint/parser": "^6",
+      "constructs": "^10.0.0",
       "eslint": "^8",
-      "eslint-import-resolver-node": "*",
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
@@ -14266,7 +14252,6 @@ Object {
 /.gitignore linguist-generated
 /.mergify.yml linguist-generated
 /.npmignore linguist-generated
-/.npmrc linguist-generated
 /.projen/** linguist-generated
 /.projen/deps.json linguist-generated
 /.projen/files.json linguist-generated
@@ -15091,7 +15076,6 @@ junit.xml
 !/.mergify.yml
 !/.github/workflows/upgrade-runtime-dependencies-main.yml
 !/.github/pull_request_template.md
-!/.npmrc
 !/test/
 !/tsconfig.json
 !/tsconfig.dev.json
@@ -15179,16 +15163,17 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@typescript-eslint/eslint-plugin",
         "type": "build",
-        "version": "^5",
+        "version": "^6",
       },
       Object {
         "name": "@typescript-eslint/parser",
         "type": "build",
-        "version": "^5",
+        "version": "^6",
       },
       Object {
-        "name": "eslint-import-resolver-node",
+        "name": "constructs",
         "type": "build",
+        "version": "^10.0.0",
       },
       Object {
         "name": "eslint-import-resolver-typescript",
@@ -15259,7 +15244,6 @@ tsconfig.tsbuildinfo
       ".gitignore",
       ".mergify.yml",
       ".npmignore",
-      ".npmrc",
       ".projen/deps.json",
       ".projen/files.json",
       ".projen/tasks.json",
@@ -15509,7 +15493,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --upgrade --target=minor --filter=typescript",
+            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev --filter=typescript",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -15536,7 +15520,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --upgrade --target=minor --filter=projen,@cdk8s/projen-common",
+            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -15563,13 +15547,13 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --upgrade --target=minor --filter=@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,eslint-import-resolver-node,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest,jest-junit,npm-check-updates,standard-version,ts-jest",
+            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev --filter=@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,constructs,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest,jest-junit,npm-check-updates,standard-version,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit npm-check-updates standard-version ts-jest",
+            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit npm-check-updates standard-version ts-jest",
           },
           Object {
             "exec": "npx projen",
@@ -15897,10 +15881,10 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "devDependencies": Object {
       "@types/jest": "*",
       "@types/node": "^16",
-      "@typescript-eslint/eslint-plugin": "^5",
-      "@typescript-eslint/parser": "^5",
+      "@typescript-eslint/eslint-plugin": "^6",
+      "@typescript-eslint/parser": "^6",
+      "constructs": "^10.0.0",
       "eslint": "^8",
-      "eslint-import-resolver-node": "*",
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
@@ -16324,7 +16308,6 @@ Object {
 /.gitignore linguist-generated
 /.mergify.yml linguist-generated
 /.npmignore linguist-generated
-/.npmrc linguist-generated
 /.projen/** linguist-generated
 /.projen/deps.json linguist-generated
 /.projen/files.json linguist-generated
@@ -17149,7 +17132,6 @@ junit.xml
 !/.mergify.yml
 !/.github/workflows/upgrade-runtime-dependencies-main.yml
 !/.github/pull_request_template.md
-!/.npmrc
 !/test/
 !/tsconfig.json
 !/tsconfig.dev.json
@@ -17237,16 +17219,17 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@typescript-eslint/eslint-plugin",
         "type": "build",
-        "version": "^5",
+        "version": "^6",
       },
       Object {
         "name": "@typescript-eslint/parser",
         "type": "build",
-        "version": "^5",
+        "version": "^6",
       },
       Object {
-        "name": "eslint-import-resolver-node",
+        "name": "constructs",
         "type": "build",
+        "version": "^10.0.0",
       },
       Object {
         "name": "eslint-import-resolver-typescript",
@@ -17317,7 +17300,6 @@ tsconfig.tsbuildinfo
       ".gitignore",
       ".mergify.yml",
       ".npmignore",
-      ".npmrc",
       ".projen/deps.json",
       ".projen/files.json",
       ".projen/tasks.json",
@@ -17567,7 +17549,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --upgrade --target=minor --filter=typescript",
+            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev --filter=typescript",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -17594,7 +17576,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --upgrade --target=minor --filter=projen,@cdk8s/projen-common",
+            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -17621,13 +17603,13 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --upgrade --target=minor --filter=@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,eslint-import-resolver-node,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest,jest-junit,npm-check-updates,standard-version,ts-jest",
+            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev --filter=@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,constructs,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest,jest-junit,npm-check-updates,standard-version,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit npm-check-updates standard-version ts-jest",
+            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit npm-check-updates standard-version ts-jest",
           },
           Object {
             "exec": "npx projen",
@@ -17955,10 +17937,10 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "devDependencies": Object {
       "@types/jest": "*",
       "@types/node": "^16",
-      "@typescript-eslint/eslint-plugin": "^5",
-      "@typescript-eslint/parser": "^5",
+      "@typescript-eslint/eslint-plugin": "^6",
+      "@typescript-eslint/parser": "^6",
+      "constructs": "^10.0.0",
       "eslint": "^8",
-      "eslint-import-resolver-node": "*",
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
@@ -18382,7 +18364,6 @@ Object {
 /.gitignore linguist-generated
 /.mergify.yml linguist-generated
 /.npmignore linguist-generated
-/.npmrc linguist-generated
 /.projen/** linguist-generated
 /.projen/deps.json linguist-generated
 /.projen/files.json linguist-generated
@@ -19207,7 +19188,6 @@ junit.xml
 !/.mergify.yml
 !/.github/workflows/upgrade-runtime-dependencies-main.yml
 !/.github/pull_request_template.md
-!/.npmrc
 !/test/
 !/tsconfig.json
 !/tsconfig.dev.json
@@ -19295,16 +19275,17 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@typescript-eslint/eslint-plugin",
         "type": "build",
-        "version": "^5",
+        "version": "^6",
       },
       Object {
         "name": "@typescript-eslint/parser",
         "type": "build",
-        "version": "^5",
+        "version": "^6",
       },
       Object {
-        "name": "eslint-import-resolver-node",
+        "name": "constructs",
         "type": "build",
+        "version": "^10.0.0",
       },
       Object {
         "name": "eslint-import-resolver-typescript",
@@ -19375,7 +19356,6 @@ tsconfig.tsbuildinfo
       ".gitignore",
       ".mergify.yml",
       ".npmignore",
-      ".npmrc",
       ".projen/deps.json",
       ".projen/files.json",
       ".projen/tasks.json",
@@ -19625,7 +19605,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --upgrade --target=minor --filter=typescript",
+            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev --filter=typescript",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -19652,7 +19632,7 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --upgrade --target=minor --filter=projen,@cdk8s/projen-common",
+            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -19679,13 +19659,13 @@ tsconfig.tsbuildinfo
             "exec": "yarn upgrade npm-check-updates",
           },
           Object {
-            "exec": "npm-check-updates --upgrade --target=minor --filter=@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,eslint-import-resolver-node,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest,jest-junit,npm-check-updates,standard-version,ts-jest",
+            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev --filter=@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,constructs,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest,jest-junit,npm-check-updates,standard-version,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit npm-check-updates standard-version ts-jest",
+            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit npm-check-updates standard-version ts-jest",
           },
           Object {
             "exec": "npx projen",
@@ -20013,10 +19993,10 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "devDependencies": Object {
       "@types/jest": "*",
       "@types/node": "^16",
-      "@typescript-eslint/eslint-plugin": "^5",
-      "@typescript-eslint/parser": "^5",
+      "@typescript-eslint/eslint-plugin": "^6",
+      "@typescript-eslint/parser": "^6",
+      "constructs": "^10.0.0",
       "eslint": "^8",
-      "eslint-import-resolver-node": "*",
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
