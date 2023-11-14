@@ -4,6391 +4,7 @@ Common configuration for projen-managed projects in the cdk8s-team GitHub org.
 
 # API Reference <a name="API Reference" id="api-reference"></a>
 
-
-## Structs <a name="Structs" id="Structs"></a>
-
-### Cdk8sTeamJsiiProjectOptions <a name="Cdk8sTeamJsiiProjectOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions"></a>
-
-Options for `Cdk8sTeamJsiiProject`.
-
-Note that this extends `Cdk8sTeamTypeScriptProjectOptions` and not `cdk.JsiiProjectOptions`
-because `cdk.JsiiProjectOptions` has required properties (namely 'author' and 'authorAddress')
-that we want to hardcode and disallow customization of. This means that any jsii specific feature
-cannot be customized on the project level. This is ok because we don't expect much deviation
-with those features between projects. If this turns out to not be the case, we will change appropriately.
-
-#### Initializer <a name="Initializer" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.Initializer"></a>
-
-```typescript
-import { Cdk8sTeamJsiiProjectOptions } from '@cdk8s/projen-common'
-
-const cdk8sTeamJsiiProjectOptions: Cdk8sTeamJsiiProjectOptions = { ... }
-```
-
-#### Properties <a name="Properties" id="Properties"></a>
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.name">name</a></code> | <code>string</code> | This is the name of your project. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.commitGenerated">commitGenerated</a></code> | <code>boolean</code> | Whether to commit the managed files by default. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.gitIgnoreOptions">gitIgnoreOptions</a></code> | <code>projen.IgnoreFileOptions</code> | Configuration options for .gitignore file. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.gitOptions">gitOptions</a></code> | <code>projen.GitOptions</code> | Configuration options for git. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.logging">logging</a></code> | <code>projen.LoggerOptions</code> | Configure logging options such as verbosity. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.outdir">outdir</a></code> | <code>string</code> | The root directory of the project. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.parent">parent</a></code> | <code>projen.Project</code> | The parent project, if this project is part of a bigger project. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenCommand">projenCommand</a></code> | <code>string</code> | The shell command to use in order to run the projen CLI. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenrcJson">projenrcJson</a></code> | <code>boolean</code> | Generate (once) .projenrc.json (in JSON). Set to `false` in order to disable .projenrc.json generation. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenrcJsonOptions">projenrcJsonOptions</a></code> | <code>projen.ProjenrcJsonOptions</code> | Options for .projenrc.json. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.renovatebot">renovatebot</a></code> | <code>boolean</code> | Use renovatebot to handle dependency upgrades. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.renovatebotOptions">renovatebotOptions</a></code> | <code>projen.RenovatebotOptions</code> | Options for renovatebot. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.autoApproveOptions">autoApproveOptions</a></code> | <code>projen.github.AutoApproveOptions</code> | Enable and configure the 'auto approve' workflow. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.autoMerge">autoMerge</a></code> | <code>boolean</code> | Enable automatic merging on GitHub. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.autoMergeOptions">autoMergeOptions</a></code> | <code>projen.github.AutoMergeOptions</code> | Configure options for automatic merging on GitHub. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.clobber">clobber</a></code> | <code>boolean</code> | Add a `clobber` task which resets the repo to origin. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.devContainer">devContainer</a></code> | <code>boolean</code> | Add a VSCode development environment (used for GitHub Codespaces). |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.github">github</a></code> | <code>boolean</code> | Enable GitHub integration. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.githubOptions">githubOptions</a></code> | <code>projen.github.GitHubOptions</code> | Options for GitHub integration. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.gitpod">gitpod</a></code> | <code>boolean</code> | Add a Gitpod development environment. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.mergify">mergify</a></code> | <code>boolean</code> | Whether mergify should be enabled on this repository or not. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.mergifyOptions">mergifyOptions</a></code> | <code>projen.github.MergifyOptions</code> | Options for mergify. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projectType">projectType</a></code> | <code>projen.ProjectType</code> | Which type of project this is (library/app). |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenCredentials">projenCredentials</a></code> | <code>projen.github.GithubCredentials</code> | Choose a method of providing GitHub API access for projen workflows. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenTokenSecret">projenTokenSecret</a></code> | <code>string</code> | The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.readme">readme</a></code> | <code>projen.SampleReadmeProps</code> | The README setup. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.stale">stale</a></code> | <code>boolean</code> | Auto-close of stale issues and pull request. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.staleOptions">staleOptions</a></code> | <code>projen.github.StaleOptions</code> | Auto-close stale issues and pull requests. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.vscode">vscode</a></code> | <code>boolean</code> | Enable VSCode integration. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.allowLibraryDependencies">allowLibraryDependencies</a></code> | <code>boolean</code> | Allow the project to include `peerDependencies` and `bundledDependencies`. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.authorEmail">authorEmail</a></code> | <code>string</code> | Author's e-mail. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.authorName">authorName</a></code> | <code>string</code> | Author's name. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.authorOrganization">authorOrganization</a></code> | <code>boolean</code> | Is the author an organization. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.authorUrl">authorUrl</a></code> | <code>string</code> | Author's URL / Website. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.autoDetectBin">autoDetectBin</a></code> | <code>boolean</code> | Automatically add all executables under the `bin` directory to your `package.json` file under the `bin` section. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.bin">bin</a></code> | <code>{[ key: string ]: string}</code> | Binary programs vended with your module. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.bugsEmail">bugsEmail</a></code> | <code>string</code> | The email address to which issues should be reported. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.bugsUrl">bugsUrl</a></code> | <code>string</code> | The url to your project's issue tracker. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.bundledDeps">bundledDeps</a></code> | <code>string[]</code> | List of dependencies to bundle into this module. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.codeArtifactOptions">codeArtifactOptions</a></code> | <code>projen.javascript.CodeArtifactOptions</code> | Options for npm packages using AWS CodeArtifact. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.deps">deps</a></code> | <code>string[]</code> | Runtime dependencies of this module. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.description">description</a></code> | <code>string</code> | The description is just a string that helps people understand the purpose of the package. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.devDeps">devDeps</a></code> | <code>string[]</code> | Build dependencies for this module. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.entrypoint">entrypoint</a></code> | <code>string</code> | Module entrypoint (`main` in `package.json`). |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.homepage">homepage</a></code> | <code>string</code> | Package's Homepage / Website. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.keywords">keywords</a></code> | <code>string[]</code> | Keywords to include in `package.json`. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.license">license</a></code> | <code>string</code> | License's SPDX identifier. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.licensed">licensed</a></code> | <code>boolean</code> | Indicates if a license should be added. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.maxNodeVersion">maxNodeVersion</a></code> | <code>string</code> | Minimum node.js version to require via `engines` (inclusive). |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.minNodeVersion">minNodeVersion</a></code> | <code>string</code> | Minimum Node.js version to require via package.json `engines` (inclusive). |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.npmAccess">npmAccess</a></code> | <code>projen.javascript.NpmAccess</code> | Access level of the npm package. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.npmRegistry">npmRegistry</a></code> | <code>string</code> | The host name of the npm registry to publish to. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.npmRegistryUrl">npmRegistryUrl</a></code> | <code>string</code> | The base URL of the npm package registry. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.npmTokenSecret">npmTokenSecret</a></code> | <code>string</code> | GitHub secret which contains the NPM token to use when publishing packages. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.packageManager">packageManager</a></code> | <code>projen.javascript.NodePackageManager</code> | The Node Package Manager used to execute scripts. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.packageName">packageName</a></code> | <code>string</code> | The "name" in package.json. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.peerDependencyOptions">peerDependencyOptions</a></code> | <code>projen.javascript.PeerDependencyOptions</code> | Options for `peerDeps`. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.peerDeps">peerDeps</a></code> | <code>string[]</code> | Peer dependencies for this module. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.pnpmVersion">pnpmVersion</a></code> | <code>string</code> | The version of PNPM to use if using PNPM as a package manager. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.repository">repository</a></code> | <code>string</code> | The repository is the location where the actual code for your package lives. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.repositoryDirectory">repositoryDirectory</a></code> | <code>string</code> | If the package.json for your package is not in the root directory (for example if it is part of a monorepo), you can specify the directory in which it lives. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.scopedPackagesOptions">scopedPackagesOptions</a></code> | <code>projen.javascript.ScopedPackagesOptions[]</code> | Options for privately hosted scoped packages. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.scripts">scripts</a></code> | <code>{[ key: string ]: string}</code> | npm scripts to include. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.stability">stability</a></code> | <code>string</code> | Package's Stability. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.jsiiReleaseVersion">jsiiReleaseVersion</a></code> | <code>string</code> | Version requirement of `publib` which is used to publish modules to npm. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.majorVersion">majorVersion</a></code> | <code>number</code> | Major version to release from the default branch. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.minMajorVersion">minMajorVersion</a></code> | <code>number</code> | Minimal Major version to release. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.npmDistTag">npmDistTag</a></code> | <code>string</code> | The npmDistTag to use when publishing from the default branch. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.postBuildSteps">postBuildSteps</a></code> | <code>projen.github.workflows.JobStep[]</code> | Steps to execute after build as part of the release workflow. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.prerelease">prerelease</a></code> | <code>string</code> | Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pre"). |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.publishDryRun">publishDryRun</a></code> | <code>boolean</code> | Instead of actually publishing to package managers, just print the publishing command. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.publishTasks">publishTasks</a></code> | <code>boolean</code> | Define publishing tasks that can be executed manually as well as workflows. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releasableCommits">releasableCommits</a></code> | <code>projen.ReleasableCommits</code> | Find commits that should be considered releasable Used to decide if a release is required. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseBranches">releaseBranches</a></code> | <code>{[ key: string ]: projen.release.BranchOptions}</code> | Defines additional release branches. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseEveryCommit">releaseEveryCommit</a></code> | <code>boolean</code> | Automatically release new versions every commit to one of branches in `releaseBranches`. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseFailureIssue">releaseFailureIssue</a></code> | <code>boolean</code> | Create a github issue on every failed publishing task. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseFailureIssueLabel">releaseFailureIssueLabel</a></code> | <code>string</code> | The label to apply to issues indicating publish failures. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseSchedule">releaseSchedule</a></code> | <code>string</code> | CRON schedule to trigger new releases. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseTagPrefix">releaseTagPrefix</a></code> | <code>string</code> | Automatically add the given prefix to release tags. Useful if you are releasing on multiple branches with overlapping version numbers. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseTrigger">releaseTrigger</a></code> | <code>projen.release.ReleaseTrigger</code> | The release trigger to use. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseWorkflowName">releaseWorkflowName</a></code> | <code>string</code> | The name of the default release workflow. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseWorkflowSetupSteps">releaseWorkflowSetupSteps</a></code> | <code>projen.github.workflows.JobStep[]</code> | A set of workflow steps to execute in order to setup the workflow container. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.versionrcOptions">versionrcOptions</a></code> | <code>{[ key: string ]: any}</code> | Custom configuration used when creating changelog with standard-version package. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.workflowContainerImage">workflowContainerImage</a></code> | <code>string</code> | Container image to use for GitHub workflows. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.workflowRunsOn">workflowRunsOn</a></code> | <code>string[]</code> | Github Runner selection labels. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.defaultReleaseBranch">defaultReleaseBranch</a></code> | <code>string</code> | The name of the main release branch. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.artifactsDirectory">artifactsDirectory</a></code> | <code>string</code> | A directory which will contain build artifacts. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.autoApproveUpgrades">autoApproveUpgrades</a></code> | <code>boolean</code> | Automatically approve deps upgrade PRs, allowing them to be merged by mergify (if configued). |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.buildWorkflow">buildWorkflow</a></code> | <code>boolean</code> | Define a GitHub workflow for building PRs. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.buildWorkflowTriggers">buildWorkflowTriggers</a></code> | <code>projen.github.workflows.Triggers</code> | Build workflow triggers. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.bundlerOptions">bundlerOptions</a></code> | <code>projen.javascript.BundlerOptions</code> | Options for `Bundler`. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.codeCov">codeCov</a></code> | <code>boolean</code> | Define a GitHub workflow step for sending code coverage metrics to https://codecov.io/ Uses codecov/codecov-action@v3 A secret is required for private repos. Configured with `@codeCovTokenSecret`. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.codeCovTokenSecret">codeCovTokenSecret</a></code> | <code>string</code> | Define the secret name for a specified https://codecov.io/ token A secret is required to send coverage for private repositories. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.copyrightOwner">copyrightOwner</a></code> | <code>string</code> | License copyright owner. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.copyrightPeriod">copyrightPeriod</a></code> | <code>string</code> | The copyright years to put in the LICENSE file. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.dependabot">dependabot</a></code> | <code>boolean</code> | Use dependabot to handle dependency upgrades. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.dependabotOptions">dependabotOptions</a></code> | <code>projen.github.DependabotOptions</code> | Options for dependabot. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.depsUpgrade">depsUpgrade</a></code> | <code>boolean</code> | Use github workflows to handle dependency upgrades. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.depsUpgradeOptions">depsUpgradeOptions</a></code> | <code>projen.javascript.UpgradeDependenciesOptions</code> | Options for `UpgradeDependencies`. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.gitignore">gitignore</a></code> | <code>string[]</code> | Additional entries to .gitignore. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.jest">jest</a></code> | <code>boolean</code> | Setup jest unit tests. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.jestOptions">jestOptions</a></code> | <code>projen.javascript.JestOptions</code> | Jest options. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.mutableBuild">mutableBuild</a></code> | <code>boolean</code> | Automatically update files modified during builds to pull-request branches. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.npmignore">npmignore</a></code> | <code>string[]</code> | Additional entries to .npmignore. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.npmignoreEnabled">npmignoreEnabled</a></code> | <code>boolean</code> | Defines an .npmignore file. Normally this is only needed for libraries that are packaged as tarballs. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.npmIgnoreOptions">npmIgnoreOptions</a></code> | <code>projen.IgnoreFileOptions</code> | Configuration options for .npmignore file. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.package">package</a></code> | <code>boolean</code> | Defines a `package` task that will produce an npm tarball under the artifacts directory (e.g. `dist`). |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.prettier">prettier</a></code> | <code>boolean</code> | Setup prettier. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.prettierOptions">prettierOptions</a></code> | <code>projen.javascript.PrettierOptions</code> | Prettier options. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenDevDependency">projenDevDependency</a></code> | <code>boolean</code> | Indicates of "projen" should be installed as a devDependency. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenrcJs">projenrcJs</a></code> | <code>boolean</code> | Generate (once) .projenrc.js (in JavaScript). Set to `false` in order to disable .projenrc.js generation. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenrcJsOptions">projenrcJsOptions</a></code> | <code>projen.javascript.ProjenrcOptions</code> | Options for .projenrc.js. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenVersion">projenVersion</a></code> | <code>string</code> | Version of projen to install. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.pullRequestTemplate">pullRequestTemplate</a></code> | <code>boolean</code> | Include a GitHub pull request template. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.pullRequestTemplateContents">pullRequestTemplateContents</a></code> | <code>string[]</code> | The contents of the pull request template. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.release">release</a></code> | <code>boolean</code> | Add release management to this project. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseToNpm">releaseToNpm</a></code> | <code>boolean</code> | Automatically release to npm when new versions are introduced. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseWorkflow">releaseWorkflow</a></code> | <code>boolean</code> | DEPRECATED: renamed to `release`. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.workflowBootstrapSteps">workflowBootstrapSteps</a></code> | <code>projen.github.workflows.JobStep[]</code> | Workflow steps to use in order to bootstrap this repo. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.workflowGitIdentity">workflowGitIdentity</a></code> | <code>projen.github.GitIdentity</code> | The git identity to use in workflows. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.workflowNodeVersion">workflowNodeVersion</a></code> | <code>string</code> | The node version to use in GitHub workflows. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.workflowPackageCache">workflowPackageCache</a></code> | <code>boolean</code> | Enable Node.js package cache in GitHub workflows. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.disableTsconfig">disableTsconfig</a></code> | <code>boolean</code> | Do not generate a `tsconfig.json` file (used by jsii projects since tsconfig.json is generated by the jsii compiler). |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.disableTsconfigDev">disableTsconfigDev</a></code> | <code>boolean</code> | Do not generate a `tsconfig.dev.json` file. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.docgen">docgen</a></code> | <code>boolean</code> | Docgen by Typedoc. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.docsDirectory">docsDirectory</a></code> | <code>string</code> | Docs directory. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.entrypointTypes">entrypointTypes</a></code> | <code>string</code> | The .d.ts file that includes the type declarations for this module. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.eslint">eslint</a></code> | <code>boolean</code> | Setup eslint. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.eslintOptions">eslintOptions</a></code> | <code>projen.javascript.EslintOptions</code> | Eslint options. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.libdir">libdir</a></code> | <code>string</code> | Typescript  artifacts output directory. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenrcTs">projenrcTs</a></code> | <code>boolean</code> | Use TypeScript for your projenrc file (`.projenrc.ts`). |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenrcTsOptions">projenrcTsOptions</a></code> | <code>projen.typescript.ProjenrcOptions</code> | Options for .projenrc.ts. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.sampleCode">sampleCode</a></code> | <code>boolean</code> | Generate one-time sample in `src/` and `test/` if there are no files there. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.srcdir">srcdir</a></code> | <code>string</code> | Typescript sources directory. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.testdir">testdir</a></code> | <code>string</code> | Jest tests directory. Tests files should be named `xxx.test.ts`. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.tsconfig">tsconfig</a></code> | <code>projen.javascript.TypescriptConfigOptions</code> | Custom TSConfig. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.tsconfigDev">tsconfigDev</a></code> | <code>projen.javascript.TypescriptConfigOptions</code> | Custom tsconfig options for the development tsconfig.json file (used for testing). |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.tsconfigDevFile">tsconfigDevFile</a></code> | <code>string</code> | The name of the development tsconfig.json file. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.typescriptVersion">typescriptVersion</a></code> | <code>string</code> | TypeScript version to use. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.additionalCompilerDependencies">additionalCompilerDependencies</a></code> | <code>string[]</code> | Packages that compile the project apart from the typescript/jsii compiler. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.backport">backport</a></code> | <code>boolean</code> | Configure a backport workflow. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.backportBranches">backportBranches</a></code> | <code>string[]</code> | Branches to backport to. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.repoName">repoName</a></code> | <code>string</code> | The name of the repository inside the cdk8s-team org where the code of the project is locate in. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.golang">golang</a></code> | <code>boolean</code> | Publish Golang bindings to GitHub. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.golangBranch">golangBranch</a></code> | <code>string</code> | Name of the branch in the golang repository to publish to. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.jsiiVersion">jsiiVersion</a></code> | <code>string</code> | JSII version to use. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.maven">maven</a></code> | <code>boolean</code> | Publish Java bindings to Maven. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.nuget">nuget</a></code> | <code>boolean</code> | Publish Dotnet bindings to Nuget. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.pypi">pypi</a></code> | <code>boolean</code> | Publish Python bindings to PyPI. |
-
----
-
-##### `name`<sup>Required</sup> <a name="name" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.name"></a>
-
-```typescript
-public readonly name: string;
-```
-
-- *Type:* string
-- *Default:* $BASEDIR
-
-This is the name of your project.
-
----
-
-##### `commitGenerated`<sup>Optional</sup> <a name="commitGenerated" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.commitGenerated"></a>
-
-```typescript
-public readonly commitGenerated: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Whether to commit the managed files by default.
-
----
-
-##### `gitIgnoreOptions`<sup>Optional</sup> <a name="gitIgnoreOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.gitIgnoreOptions"></a>
-
-```typescript
-public readonly gitIgnoreOptions: IgnoreFileOptions;
-```
-
-- *Type:* projen.IgnoreFileOptions
-
-Configuration options for .gitignore file.
-
----
-
-##### `gitOptions`<sup>Optional</sup> <a name="gitOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.gitOptions"></a>
-
-```typescript
-public readonly gitOptions: GitOptions;
-```
-
-- *Type:* projen.GitOptions
-
-Configuration options for git.
-
----
-
-##### `logging`<sup>Optional</sup> <a name="logging" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.logging"></a>
-
-```typescript
-public readonly logging: LoggerOptions;
-```
-
-- *Type:* projen.LoggerOptions
-- *Default:* {}
-
-Configure logging options such as verbosity.
-
----
-
-##### `outdir`<sup>Optional</sup> <a name="outdir" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.outdir"></a>
-
-```typescript
-public readonly outdir: string;
-```
-
-- *Type:* string
-- *Default:* "."
-
-The root directory of the project.
-
-Relative to this directory, all files are synthesized.
-
-If this project has a parent, this directory is relative to the parent
-directory and it cannot be the same as the parent or any of it's other
-sub-projects.
-
----
-
-##### `parent`<sup>Optional</sup> <a name="parent" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.parent"></a>
-
-```typescript
-public readonly parent: Project;
-```
-
-- *Type:* projen.Project
-
-The parent project, if this project is part of a bigger project.
-
----
-
-##### `projenCommand`<sup>Optional</sup> <a name="projenCommand" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenCommand"></a>
-
-```typescript
-public readonly projenCommand: string;
-```
-
-- *Type:* string
-- *Default:* "npx projen"
-
-The shell command to use in order to run the projen CLI.
-
-Can be used to customize in special environments.
-
----
-
-##### `projenrcJson`<sup>Optional</sup> <a name="projenrcJson" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenrcJson"></a>
-
-```typescript
-public readonly projenrcJson: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Generate (once) .projenrc.json (in JSON). Set to `false` in order to disable .projenrc.json generation.
-
----
-
-##### `projenrcJsonOptions`<sup>Optional</sup> <a name="projenrcJsonOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenrcJsonOptions"></a>
-
-```typescript
-public readonly projenrcJsonOptions: ProjenrcJsonOptions;
-```
-
-- *Type:* projen.ProjenrcJsonOptions
-- *Default:* default options
-
-Options for .projenrc.json.
-
----
-
-##### `renovatebot`<sup>Optional</sup> <a name="renovatebot" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.renovatebot"></a>
-
-```typescript
-public readonly renovatebot: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Use renovatebot to handle dependency upgrades.
-
----
-
-##### `renovatebotOptions`<sup>Optional</sup> <a name="renovatebotOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.renovatebotOptions"></a>
-
-```typescript
-public readonly renovatebotOptions: RenovatebotOptions;
-```
-
-- *Type:* projen.RenovatebotOptions
-- *Default:* default options
-
-Options for renovatebot.
-
----
-
-##### `autoApproveOptions`<sup>Optional</sup> <a name="autoApproveOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.autoApproveOptions"></a>
-
-```typescript
-public readonly autoApproveOptions: AutoApproveOptions;
-```
-
-- *Type:* projen.github.AutoApproveOptions
-- *Default:* auto approve is disabled
-
-Enable and configure the 'auto approve' workflow.
-
----
-
-##### `autoMerge`<sup>Optional</sup> <a name="autoMerge" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.autoMerge"></a>
-
-```typescript
-public readonly autoMerge: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Enable automatic merging on GitHub.
-
-Has no effect if `github.mergify`
-is set to false.
-
----
-
-##### `autoMergeOptions`<sup>Optional</sup> <a name="autoMergeOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.autoMergeOptions"></a>
-
-```typescript
-public readonly autoMergeOptions: AutoMergeOptions;
-```
-
-- *Type:* projen.github.AutoMergeOptions
-- *Default:* see defaults in `AutoMergeOptions`
-
-Configure options for automatic merging on GitHub.
-
-Has no effect if
-`github.mergify` or `autoMerge` is set to false.
-
----
-
-##### `clobber`<sup>Optional</sup> <a name="clobber" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.clobber"></a>
-
-```typescript
-public readonly clobber: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true, but false for subprojects
-
-Add a `clobber` task which resets the repo to origin.
-
----
-
-##### `devContainer`<sup>Optional</sup> <a name="devContainer" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.devContainer"></a>
-
-```typescript
-public readonly devContainer: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Add a VSCode development environment (used for GitHub Codespaces).
-
----
-
-##### `github`<sup>Optional</sup> <a name="github" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.github"></a>
-
-```typescript
-public readonly github: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Enable GitHub integration.
-
-Enabled by default for root projects. Disabled for non-root projects.
-
----
-
-##### `githubOptions`<sup>Optional</sup> <a name="githubOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.githubOptions"></a>
-
-```typescript
-public readonly githubOptions: GitHubOptions;
-```
-
-- *Type:* projen.github.GitHubOptions
-- *Default:* see GitHubOptions
-
-Options for GitHub integration.
-
----
-
-##### `gitpod`<sup>Optional</sup> <a name="gitpod" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.gitpod"></a>
-
-```typescript
-public readonly gitpod: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Add a Gitpod development environment.
-
----
-
-##### ~~`mergify`~~<sup>Optional</sup> <a name="mergify" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.mergify"></a>
-
-- *Deprecated:* use `githubOptions.mergify` instead
-
-```typescript
-public readonly mergify: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Whether mergify should be enabled on this repository or not.
-
----
-
-##### ~~`mergifyOptions`~~<sup>Optional</sup> <a name="mergifyOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.mergifyOptions"></a>
-
-- *Deprecated:* use `githubOptions.mergifyOptions` instead
-
-```typescript
-public readonly mergifyOptions: MergifyOptions;
-```
-
-- *Type:* projen.github.MergifyOptions
-- *Default:* default options
-
-Options for mergify.
-
----
-
-##### ~~`projectType`~~<sup>Optional</sup> <a name="projectType" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projectType"></a>
-
-- *Deprecated:* no longer supported at the base project level
-
-```typescript
-public readonly projectType: ProjectType;
-```
-
-- *Type:* projen.ProjectType
-- *Default:* ProjectType.UNKNOWN
-
-Which type of project this is (library/app).
-
----
-
-##### `projenCredentials`<sup>Optional</sup> <a name="projenCredentials" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenCredentials"></a>
-
-```typescript
-public readonly projenCredentials: GithubCredentials;
-```
-
-- *Type:* projen.github.GithubCredentials
-- *Default:* use a personal access token named PROJEN_GITHUB_TOKEN
-
-Choose a method of providing GitHub API access for projen workflows.
-
----
-
-##### ~~`projenTokenSecret`~~<sup>Optional</sup> <a name="projenTokenSecret" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenTokenSecret"></a>
-
-- *Deprecated:* use `projenCredentials`
-
-```typescript
-public readonly projenTokenSecret: string;
-```
-
-- *Type:* string
-- *Default:* "PROJEN_GITHUB_TOKEN"
-
-The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
-
-This token needs to have the `repo`, `workflows`
-and `packages` scope.
-
----
-
-##### `readme`<sup>Optional</sup> <a name="readme" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.readme"></a>
-
-```typescript
-public readonly readme: SampleReadmeProps;
-```
-
-- *Type:* projen.SampleReadmeProps
-- *Default:* { filename: 'README.md', contents: '# replace this' }
-
-The README setup.
-
----
-
-*Example*
-
-```typescript
-"{ filename: 'readme.md', contents: '# title' }"
-```
-
-
-##### `stale`<sup>Optional</sup> <a name="stale" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.stale"></a>
-
-```typescript
-public readonly stale: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Auto-close of stale issues and pull request.
-
-See `staleOptions` for options.
-
----
-
-##### `staleOptions`<sup>Optional</sup> <a name="staleOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.staleOptions"></a>
-
-```typescript
-public readonly staleOptions: StaleOptions;
-```
-
-- *Type:* projen.github.StaleOptions
-- *Default:* see defaults in `StaleOptions`
-
-Auto-close stale issues and pull requests.
-
-To disable set `stale` to `false`.
-
----
-
-##### `vscode`<sup>Optional</sup> <a name="vscode" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.vscode"></a>
-
-```typescript
-public readonly vscode: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Enable VSCode integration.
-
-Enabled by default for root projects. Disabled for non-root projects.
-
----
-
-##### `allowLibraryDependencies`<sup>Optional</sup> <a name="allowLibraryDependencies" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.allowLibraryDependencies"></a>
-
-```typescript
-public readonly allowLibraryDependencies: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Allow the project to include `peerDependencies` and `bundledDependencies`.
-
-This is normally only allowed for libraries. For apps, there's no meaning
-for specifying these.
-
----
-
-##### `authorEmail`<sup>Optional</sup> <a name="authorEmail" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.authorEmail"></a>
-
-```typescript
-public readonly authorEmail: string;
-```
-
-- *Type:* string
-
-Author's e-mail.
-
----
-
-##### `authorName`<sup>Optional</sup> <a name="authorName" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.authorName"></a>
-
-```typescript
-public readonly authorName: string;
-```
-
-- *Type:* string
-
-Author's name.
-
----
-
-##### `authorOrganization`<sup>Optional</sup> <a name="authorOrganization" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.authorOrganization"></a>
-
-```typescript
-public readonly authorOrganization: boolean;
-```
-
-- *Type:* boolean
-
-Is the author an organization.
-
----
-
-##### `authorUrl`<sup>Optional</sup> <a name="authorUrl" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.authorUrl"></a>
-
-```typescript
-public readonly authorUrl: string;
-```
-
-- *Type:* string
-
-Author's URL / Website.
-
----
-
-##### `autoDetectBin`<sup>Optional</sup> <a name="autoDetectBin" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.autoDetectBin"></a>
-
-```typescript
-public readonly autoDetectBin: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Automatically add all executables under the `bin` directory to your `package.json` file under the `bin` section.
-
----
-
-##### `bin`<sup>Optional</sup> <a name="bin" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.bin"></a>
-
-```typescript
-public readonly bin: {[ key: string ]: string};
-```
-
-- *Type:* {[ key: string ]: string}
-
-Binary programs vended with your module.
-
-You can use this option to add/customize how binaries are represented in
-your `package.json`, but unless `autoDetectBin` is `false`, every
-executable file under `bin` will automatically be added to this section.
-
----
-
-##### `bugsEmail`<sup>Optional</sup> <a name="bugsEmail" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.bugsEmail"></a>
-
-```typescript
-public readonly bugsEmail: string;
-```
-
-- *Type:* string
-
-The email address to which issues should be reported.
-
----
-
-##### `bugsUrl`<sup>Optional</sup> <a name="bugsUrl" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.bugsUrl"></a>
-
-```typescript
-public readonly bugsUrl: string;
-```
-
-- *Type:* string
-
-The url to your project's issue tracker.
-
----
-
-##### `bundledDeps`<sup>Optional</sup> <a name="bundledDeps" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.bundledDeps"></a>
-
-```typescript
-public readonly bundledDeps: string[];
-```
-
-- *Type:* string[]
-
-List of dependencies to bundle into this module.
-
-These modules will be
-added both to the `dependencies` section and `bundledDependencies` section of
-your `package.json`.
-
-The recommendation is to only specify the module name here (e.g.
-`express`). This will behave similar to `yarn add` or `npm install` in the
-sense that it will add the module as a dependency to your `package.json`
-file with the latest version (`^`). You can specify semver requirements in
-the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
-this will be what you `package.json` will eventually include.
-
----
-
-##### `codeArtifactOptions`<sup>Optional</sup> <a name="codeArtifactOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.codeArtifactOptions"></a>
-
-```typescript
-public readonly codeArtifactOptions: CodeArtifactOptions;
-```
-
-- *Type:* projen.javascript.CodeArtifactOptions
-- *Default:* undefined
-
-Options for npm packages using AWS CodeArtifact.
-
-This is required if publishing packages to, or installing scoped packages from AWS CodeArtifact
-
----
-
-##### `deps`<sup>Optional</sup> <a name="deps" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.deps"></a>
-
-```typescript
-public readonly deps: string[];
-```
-
-- *Type:* string[]
-- *Default:* []
-
-Runtime dependencies of this module.
-
-The recommendation is to only specify the module name here (e.g.
-`express`). This will behave similar to `yarn add` or `npm install` in the
-sense that it will add the module as a dependency to your `package.json`
-file with the latest version (`^`). You can specify semver requirements in
-the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
-this will be what you `package.json` will eventually include.
-
----
-
-*Example*
-
-```typescript
-[ 'express', 'lodash', 'foo@^2' ]
-```
-
-
-##### `description`<sup>Optional</sup> <a name="description" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.description"></a>
-
-```typescript
-public readonly description: string;
-```
-
-- *Type:* string
-
-The description is just a string that helps people understand the purpose of the package.
-
-It can be used when searching for packages in a package manager as well.
-See https://classic.yarnpkg.com/en/docs/package-json/#toc-description
-
----
-
-##### `devDeps`<sup>Optional</sup> <a name="devDeps" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.devDeps"></a>
-
-```typescript
-public readonly devDeps: string[];
-```
-
-- *Type:* string[]
-- *Default:* []
-
-Build dependencies for this module.
-
-These dependencies will only be
-available in your build environment but will not be fetched when this
-module is consumed.
-
-The recommendation is to only specify the module name here (e.g.
-`express`). This will behave similar to `yarn add` or `npm install` in the
-sense that it will add the module as a dependency to your `package.json`
-file with the latest version (`^`). You can specify semver requirements in
-the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
-this will be what you `package.json` will eventually include.
-
----
-
-*Example*
-
-```typescript
-[ 'typescript', '@types/express' ]
-```
-
-
-##### `entrypoint`<sup>Optional</sup> <a name="entrypoint" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.entrypoint"></a>
-
-```typescript
-public readonly entrypoint: string;
-```
-
-- *Type:* string
-- *Default:* "lib/index.js"
-
-Module entrypoint (`main` in `package.json`).
-
-Set to an empty string to not include `main` in your package.json
-
----
-
-##### `homepage`<sup>Optional</sup> <a name="homepage" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.homepage"></a>
-
-```typescript
-public readonly homepage: string;
-```
-
-- *Type:* string
-
-Package's Homepage / Website.
-
----
-
-##### `keywords`<sup>Optional</sup> <a name="keywords" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.keywords"></a>
-
-```typescript
-public readonly keywords: string[];
-```
-
-- *Type:* string[]
-
-Keywords to include in `package.json`.
-
----
-
-##### `license`<sup>Optional</sup> <a name="license" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.license"></a>
-
-```typescript
-public readonly license: string;
-```
-
-- *Type:* string
-- *Default:* "Apache-2.0"
-
-License's SPDX identifier.
-
-See https://github.com/projen/projen/tree/main/license-text for a list of supported licenses.
-Use the `licensed` option if you want to no license to be specified.
-
----
-
-##### `licensed`<sup>Optional</sup> <a name="licensed" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.licensed"></a>
-
-```typescript
-public readonly licensed: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Indicates if a license should be added.
-
----
-
-##### `maxNodeVersion`<sup>Optional</sup> <a name="maxNodeVersion" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.maxNodeVersion"></a>
-
-```typescript
-public readonly maxNodeVersion: string;
-```
-
-- *Type:* string
-- *Default:* no max
-
-Minimum node.js version to require via `engines` (inclusive).
-
----
-
-##### `minNodeVersion`<sup>Optional</sup> <a name="minNodeVersion" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.minNodeVersion"></a>
-
-```typescript
-public readonly minNodeVersion: string;
-```
-
-- *Type:* string
-- *Default:* no "engines" specified
-
-Minimum Node.js version to require via package.json `engines` (inclusive).
-
----
-
-##### `npmAccess`<sup>Optional</sup> <a name="npmAccess" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.npmAccess"></a>
-
-```typescript
-public readonly npmAccess: NpmAccess;
-```
-
-- *Type:* projen.javascript.NpmAccess
-- *Default:* for scoped packages (e.g. `foo@bar`), the default is `NpmAccess.RESTRICTED`, for non-scoped packages, the default is `NpmAccess.PUBLIC`.
-
-Access level of the npm package.
-
----
-
-##### ~~`npmRegistry`~~<sup>Optional</sup> <a name="npmRegistry" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.npmRegistry"></a>
-
-- *Deprecated:* use `npmRegistryUrl` instead
-
-```typescript
-public readonly npmRegistry: string;
-```
-
-- *Type:* string
-
-The host name of the npm registry to publish to.
-
-Cannot be set together with `npmRegistryUrl`.
-
----
-
-##### `npmRegistryUrl`<sup>Optional</sup> <a name="npmRegistryUrl" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.npmRegistryUrl"></a>
-
-```typescript
-public readonly npmRegistryUrl: string;
-```
-
-- *Type:* string
-- *Default:* "https://registry.npmjs.org"
-
-The base URL of the npm package registry.
-
-Must be a URL (e.g. start with "https://" or "http://")
-
----
-
-##### `npmTokenSecret`<sup>Optional</sup> <a name="npmTokenSecret" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.npmTokenSecret"></a>
-
-```typescript
-public readonly npmTokenSecret: string;
-```
-
-- *Type:* string
-- *Default:* "NPM_TOKEN"
-
-GitHub secret which contains the NPM token to use when publishing packages.
-
----
-
-##### `packageManager`<sup>Optional</sup> <a name="packageManager" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.packageManager"></a>
-
-```typescript
-public readonly packageManager: NodePackageManager;
-```
-
-- *Type:* projen.javascript.NodePackageManager
-- *Default:* NodePackageManager.YARN
-
-The Node Package Manager used to execute scripts.
-
----
-
-##### `packageName`<sup>Optional</sup> <a name="packageName" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.packageName"></a>
-
-```typescript
-public readonly packageName: string;
-```
-
-- *Type:* string
-- *Default:* defaults to project name
-
-The "name" in package.json.
-
----
-
-##### `peerDependencyOptions`<sup>Optional</sup> <a name="peerDependencyOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.peerDependencyOptions"></a>
-
-```typescript
-public readonly peerDependencyOptions: PeerDependencyOptions;
-```
-
-- *Type:* projen.javascript.PeerDependencyOptions
-
-Options for `peerDeps`.
-
----
-
-##### `peerDeps`<sup>Optional</sup> <a name="peerDeps" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.peerDeps"></a>
-
-```typescript
-public readonly peerDeps: string[];
-```
-
-- *Type:* string[]
-- *Default:* []
-
-Peer dependencies for this module.
-
-Dependencies listed here are required to
-be installed (and satisfied) by the _consumer_ of this library. Using peer
-dependencies allows you to ensure that only a single module of a certain
-library exists in the `node_modules` tree of your consumers.
-
-Note that prior to npm@7, peer dependencies are _not_ automatically
-installed, which means that adding peer dependencies to a library will be a
-breaking change for your customers.
-
-Unless `peerDependencyOptions.pinnedDevDependency` is disabled (it is
-enabled by default), projen will automatically add a dev dependency with a
-pinned version for each peer dependency. This will ensure that you build &
-test your module against the lowest peer version required.
-
----
-
-##### `pnpmVersion`<sup>Optional</sup> <a name="pnpmVersion" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.pnpmVersion"></a>
-
-```typescript
-public readonly pnpmVersion: string;
-```
-
-- *Type:* string
-- *Default:* "7"
-
-The version of PNPM to use if using PNPM as a package manager.
-
----
-
-##### `repository`<sup>Optional</sup> <a name="repository" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.repository"></a>
-
-```typescript
-public readonly repository: string;
-```
-
-- *Type:* string
-
-The repository is the location where the actual code for your package lives.
-
-See https://classic.yarnpkg.com/en/docs/package-json/#toc-repository
-
----
-
-##### `repositoryDirectory`<sup>Optional</sup> <a name="repositoryDirectory" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.repositoryDirectory"></a>
-
-```typescript
-public readonly repositoryDirectory: string;
-```
-
-- *Type:* string
-
-If the package.json for your package is not in the root directory (for example if it is part of a monorepo), you can specify the directory in which it lives.
-
----
-
-##### `scopedPackagesOptions`<sup>Optional</sup> <a name="scopedPackagesOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.scopedPackagesOptions"></a>
-
-```typescript
-public readonly scopedPackagesOptions: ScopedPackagesOptions[];
-```
-
-- *Type:* projen.javascript.ScopedPackagesOptions[]
-- *Default:* fetch all scoped packages from the public npm registry
-
-Options for privately hosted scoped packages.
-
----
-
-##### ~~`scripts`~~<sup>Optional</sup> <a name="scripts" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.scripts"></a>
-
-- *Deprecated:* use `project.addTask()` or `package.setScript()`
-
-```typescript
-public readonly scripts: {[ key: string ]: string};
-```
-
-- *Type:* {[ key: string ]: string}
-- *Default:* {}
-
-npm scripts to include.
-
-If a script has the same name as a standard script,
-the standard script will be overwritten.
-Also adds the script as a task.
-
----
-
-##### `stability`<sup>Optional</sup> <a name="stability" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.stability"></a>
-
-```typescript
-public readonly stability: string;
-```
-
-- *Type:* string
-
-Package's Stability.
-
----
-
-##### `jsiiReleaseVersion`<sup>Optional</sup> <a name="jsiiReleaseVersion" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.jsiiReleaseVersion"></a>
-
-```typescript
-public readonly jsiiReleaseVersion: string;
-```
-
-- *Type:* string
-- *Default:* "latest"
-
-Version requirement of `publib` which is used to publish modules to npm.
-
----
-
-##### `majorVersion`<sup>Optional</sup> <a name="majorVersion" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.majorVersion"></a>
-
-```typescript
-public readonly majorVersion: number;
-```
-
-- *Type:* number
-- *Default:* Major version is not enforced.
-
-Major version to release from the default branch.
-
-If this is specified, we bump the latest version of this major version line.
-If not specified, we bump the global latest version.
-
----
-
-##### `minMajorVersion`<sup>Optional</sup> <a name="minMajorVersion" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.minMajorVersion"></a>
-
-```typescript
-public readonly minMajorVersion: number;
-```
-
-- *Type:* number
-- *Default:* No minimum version is being enforced
-
-Minimal Major version to release.
-
-This can be useful to set to 1, as breaking changes before the 1.x major
-release are not incrementing the major version number.
-
-Can not be set together with `majorVersion`.
-
----
-
-##### `npmDistTag`<sup>Optional</sup> <a name="npmDistTag" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.npmDistTag"></a>
-
-```typescript
-public readonly npmDistTag: string;
-```
-
-- *Type:* string
-- *Default:* "latest"
-
-The npmDistTag to use when publishing from the default branch.
-
-To set the npm dist-tag for release branches, set the `npmDistTag` property
-for each branch.
-
----
-
-##### `postBuildSteps`<sup>Optional</sup> <a name="postBuildSteps" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.postBuildSteps"></a>
-
-```typescript
-public readonly postBuildSteps: JobStep[];
-```
-
-- *Type:* projen.github.workflows.JobStep[]
-- *Default:* []
-
-Steps to execute after build as part of the release workflow.
-
----
-
-##### `prerelease`<sup>Optional</sup> <a name="prerelease" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.prerelease"></a>
-
-```typescript
-public readonly prerelease: string;
-```
-
-- *Type:* string
-- *Default:* normal semantic versions
-
-Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pre").
-
----
-
-##### `publishDryRun`<sup>Optional</sup> <a name="publishDryRun" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.publishDryRun"></a>
-
-```typescript
-public readonly publishDryRun: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Instead of actually publishing to package managers, just print the publishing command.
-
----
-
-##### `publishTasks`<sup>Optional</sup> <a name="publishTasks" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.publishTasks"></a>
-
-```typescript
-public readonly publishTasks: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Define publishing tasks that can be executed manually as well as workflows.
-
-Normally, publishing only happens within automated workflows. Enable this
-in order to create a publishing task for each publishing activity.
-
----
-
-##### `releasableCommits`<sup>Optional</sup> <a name="releasableCommits" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releasableCommits"></a>
-
-```typescript
-public readonly releasableCommits: ReleasableCommits;
-```
-
-- *Type:* projen.ReleasableCommits
-- *Default:* ReleasableCommits.everyCommit()
-
-Find commits that should be considered releasable Used to decide if a release is required.
-
----
-
-##### `releaseBranches`<sup>Optional</sup> <a name="releaseBranches" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseBranches"></a>
-
-```typescript
-public readonly releaseBranches: {[ key: string ]: BranchOptions};
-```
-
-- *Type:* {[ key: string ]: projen.release.BranchOptions}
-- *Default:* no additional branches are used for release. you can use `addBranch()` to add additional branches.
-
-Defines additional release branches.
-
-A workflow will be created for each
-release branch which will publish releases from commits in this branch.
-Each release branch _must_ be assigned a major version number which is used
-to enforce that versions published from that branch always use that major
-version. If multiple branches are used, the `majorVersion` field must also
-be provided for the default branch.
-
----
-
-##### ~~`releaseEveryCommit`~~<sup>Optional</sup> <a name="releaseEveryCommit" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseEveryCommit"></a>
-
-- *Deprecated:* Use `releaseTrigger: ReleaseTrigger.continuous()` instead
-
-```typescript
-public readonly releaseEveryCommit: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Automatically release new versions every commit to one of branches in `releaseBranches`.
-
----
-
-##### `releaseFailureIssue`<sup>Optional</sup> <a name="releaseFailureIssue" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseFailureIssue"></a>
-
-```typescript
-public readonly releaseFailureIssue: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Create a github issue on every failed publishing task.
-
----
-
-##### `releaseFailureIssueLabel`<sup>Optional</sup> <a name="releaseFailureIssueLabel" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseFailureIssueLabel"></a>
-
-```typescript
-public readonly releaseFailureIssueLabel: string;
-```
-
-- *Type:* string
-- *Default:* "failed-release"
-
-The label to apply to issues indicating publish failures.
-
-Only applies if `releaseFailureIssue` is true.
-
----
-
-##### ~~`releaseSchedule`~~<sup>Optional</sup> <a name="releaseSchedule" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseSchedule"></a>
-
-- *Deprecated:* Use `releaseTrigger: ReleaseTrigger.scheduled()` instead
-
-```typescript
-public readonly releaseSchedule: string;
-```
-
-- *Type:* string
-- *Default:* no scheduled releases
-
-CRON schedule to trigger new releases.
-
----
-
-##### `releaseTagPrefix`<sup>Optional</sup> <a name="releaseTagPrefix" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseTagPrefix"></a>
-
-```typescript
-public readonly releaseTagPrefix: string;
-```
-
-- *Type:* string
-- *Default:* "v"
-
-Automatically add the given prefix to release tags. Useful if you are releasing on multiple branches with overlapping version numbers.
-
-Note: this prefix is used to detect the latest tagged version
-when bumping, so if you change this on a project with an existing version
-history, you may need to manually tag your latest release
-with the new prefix.
-
----
-
-##### `releaseTrigger`<sup>Optional</sup> <a name="releaseTrigger" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseTrigger"></a>
-
-```typescript
-public readonly releaseTrigger: ReleaseTrigger;
-```
-
-- *Type:* projen.release.ReleaseTrigger
-- *Default:* Continuous releases (`ReleaseTrigger.continuous()`)
-
-The release trigger to use.
-
----
-
-##### `releaseWorkflowName`<sup>Optional</sup> <a name="releaseWorkflowName" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseWorkflowName"></a>
-
-```typescript
-public readonly releaseWorkflowName: string;
-```
-
-- *Type:* string
-- *Default:* "Release"
-
-The name of the default release workflow.
-
----
-
-##### `releaseWorkflowSetupSteps`<sup>Optional</sup> <a name="releaseWorkflowSetupSteps" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseWorkflowSetupSteps"></a>
-
-```typescript
-public readonly releaseWorkflowSetupSteps: JobStep[];
-```
-
-- *Type:* projen.github.workflows.JobStep[]
-
-A set of workflow steps to execute in order to setup the workflow container.
-
----
-
-##### `versionrcOptions`<sup>Optional</sup> <a name="versionrcOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.versionrcOptions"></a>
-
-```typescript
-public readonly versionrcOptions: {[ key: string ]: any};
-```
-
-- *Type:* {[ key: string ]: any}
-- *Default:* standard configuration applicable for GitHub repositories
-
-Custom configuration used when creating changelog with standard-version package.
-
-Given values either append to default configuration or overwrite values in it.
-
----
-
-##### `workflowContainerImage`<sup>Optional</sup> <a name="workflowContainerImage" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.workflowContainerImage"></a>
-
-```typescript
-public readonly workflowContainerImage: string;
-```
-
-- *Type:* string
-- *Default:* default image
-
-Container image to use for GitHub workflows.
-
----
-
-##### `workflowRunsOn`<sup>Optional</sup> <a name="workflowRunsOn" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.workflowRunsOn"></a>
-
-```typescript
-public readonly workflowRunsOn: string[];
-```
-
-- *Type:* string[]
-- *Default:* ["ubuntu-latest"]
-
-Github Runner selection labels.
-
----
-
-##### `defaultReleaseBranch`<sup>Required</sup> <a name="defaultReleaseBranch" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.defaultReleaseBranch"></a>
-
-```typescript
-public readonly defaultReleaseBranch: string;
-```
-
-- *Type:* string
-- *Default:* "main"
-
-The name of the main release branch.
-
----
-
-##### `artifactsDirectory`<sup>Optional</sup> <a name="artifactsDirectory" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.artifactsDirectory"></a>
-
-```typescript
-public readonly artifactsDirectory: string;
-```
-
-- *Type:* string
-- *Default:* "dist"
-
-A directory which will contain build artifacts.
-
----
-
-##### `autoApproveUpgrades`<sup>Optional</sup> <a name="autoApproveUpgrades" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.autoApproveUpgrades"></a>
-
-```typescript
-public readonly autoApproveUpgrades: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Automatically approve deps upgrade PRs, allowing them to be merged by mergify (if configued).
-
-Throw if set to true but `autoApproveOptions` are not defined.
-
----
-
-##### `buildWorkflow`<sup>Optional</sup> <a name="buildWorkflow" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.buildWorkflow"></a>
-
-```typescript
-public readonly buildWorkflow: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true if not a subproject
-
-Define a GitHub workflow for building PRs.
-
----
-
-##### `buildWorkflowTriggers`<sup>Optional</sup> <a name="buildWorkflowTriggers" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.buildWorkflowTriggers"></a>
-
-```typescript
-public readonly buildWorkflowTriggers: Triggers;
-```
-
-- *Type:* projen.github.workflows.Triggers
-- *Default:* "{ pullRequest: {}, workflowDispatch: {} }"
-
-Build workflow triggers.
-
----
-
-##### `bundlerOptions`<sup>Optional</sup> <a name="bundlerOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.bundlerOptions"></a>
-
-```typescript
-public readonly bundlerOptions: BundlerOptions;
-```
-
-- *Type:* projen.javascript.BundlerOptions
-
-Options for `Bundler`.
-
----
-
-##### `codeCov`<sup>Optional</sup> <a name="codeCov" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.codeCov"></a>
-
-```typescript
-public readonly codeCov: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Define a GitHub workflow step for sending code coverage metrics to https://codecov.io/ Uses codecov/codecov-action@v3 A secret is required for private repos. Configured with `@codeCovTokenSecret`.
-
----
-
-##### `codeCovTokenSecret`<sup>Optional</sup> <a name="codeCovTokenSecret" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.codeCovTokenSecret"></a>
-
-```typescript
-public readonly codeCovTokenSecret: string;
-```
-
-- *Type:* string
-- *Default:* if this option is not specified, only public repositories are supported
-
-Define the secret name for a specified https://codecov.io/ token A secret is required to send coverage for private repositories.
-
----
-
-##### `copyrightOwner`<sup>Optional</sup> <a name="copyrightOwner" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.copyrightOwner"></a>
-
-```typescript
-public readonly copyrightOwner: string;
-```
-
-- *Type:* string
-- *Default:* defaults to the value of authorName or "" if `authorName` is undefined.
-
-License copyright owner.
-
----
-
-##### `copyrightPeriod`<sup>Optional</sup> <a name="copyrightPeriod" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.copyrightPeriod"></a>
-
-```typescript
-public readonly copyrightPeriod: string;
-```
-
-- *Type:* string
-- *Default:* current year
-
-The copyright years to put in the LICENSE file.
-
----
-
-##### `dependabot`<sup>Optional</sup> <a name="dependabot" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.dependabot"></a>
-
-```typescript
-public readonly dependabot: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Use dependabot to handle dependency upgrades.
-
-Cannot be used in conjunction with `depsUpgrade`.
-
----
-
-##### `dependabotOptions`<sup>Optional</sup> <a name="dependabotOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.dependabotOptions"></a>
-
-```typescript
-public readonly dependabotOptions: DependabotOptions;
-```
-
-- *Type:* projen.github.DependabotOptions
-- *Default:* default options
-
-Options for dependabot.
-
----
-
-##### `depsUpgrade`<sup>Optional</sup> <a name="depsUpgrade" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.depsUpgrade"></a>
-
-```typescript
-public readonly depsUpgrade: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Use github workflows to handle dependency upgrades.
-
-Cannot be used in conjunction with `dependabot`.
-
----
-
-##### `depsUpgradeOptions`<sup>Optional</sup> <a name="depsUpgradeOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.depsUpgradeOptions"></a>
-
-```typescript
-public readonly depsUpgradeOptions: UpgradeDependenciesOptions;
-```
-
-- *Type:* projen.javascript.UpgradeDependenciesOptions
-- *Default:* default options
-
-Options for `UpgradeDependencies`.
-
----
-
-##### `gitignore`<sup>Optional</sup> <a name="gitignore" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.gitignore"></a>
-
-```typescript
-public readonly gitignore: string[];
-```
-
-- *Type:* string[]
-
-Additional entries to .gitignore.
-
----
-
-##### `jest`<sup>Optional</sup> <a name="jest" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.jest"></a>
-
-```typescript
-public readonly jest: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Setup jest unit tests.
-
----
-
-##### `jestOptions`<sup>Optional</sup> <a name="jestOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.jestOptions"></a>
-
-```typescript
-public readonly jestOptions: JestOptions;
-```
-
-- *Type:* projen.javascript.JestOptions
-- *Default:* default options
-
-Jest options.
-
----
-
-##### `mutableBuild`<sup>Optional</sup> <a name="mutableBuild" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.mutableBuild"></a>
-
-```typescript
-public readonly mutableBuild: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Automatically update files modified during builds to pull-request branches.
-
-This means
-that any files synthesized by projen or e.g. test snapshots will always be up-to-date
-before a PR is merged.
-
-Implies that PR builds do not have anti-tamper checks.
-
----
-
-##### ~~`npmignore`~~<sup>Optional</sup> <a name="npmignore" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.npmignore"></a>
-
-- *Deprecated:* - use `project.addPackageIgnore`
-
-```typescript
-public readonly npmignore: string[];
-```
-
-- *Type:* string[]
-
-Additional entries to .npmignore.
-
----
-
-##### `npmignoreEnabled`<sup>Optional</sup> <a name="npmignoreEnabled" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.npmignoreEnabled"></a>
-
-```typescript
-public readonly npmignoreEnabled: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Defines an .npmignore file. Normally this is only needed for libraries that are packaged as tarballs.
-
----
-
-##### `npmIgnoreOptions`<sup>Optional</sup> <a name="npmIgnoreOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.npmIgnoreOptions"></a>
-
-```typescript
-public readonly npmIgnoreOptions: IgnoreFileOptions;
-```
-
-- *Type:* projen.IgnoreFileOptions
-
-Configuration options for .npmignore file.
-
----
-
-##### `package`<sup>Optional</sup> <a name="package" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.package"></a>
-
-```typescript
-public readonly package: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Defines a `package` task that will produce an npm tarball under the artifacts directory (e.g. `dist`).
-
----
-
-##### `prettier`<sup>Optional</sup> <a name="prettier" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.prettier"></a>
-
-```typescript
-public readonly prettier: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Setup prettier.
-
----
-
-##### `prettierOptions`<sup>Optional</sup> <a name="prettierOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.prettierOptions"></a>
-
-```typescript
-public readonly prettierOptions: PrettierOptions;
-```
-
-- *Type:* projen.javascript.PrettierOptions
-- *Default:* default options
-
-Prettier options.
-
----
-
-##### `projenDevDependency`<sup>Optional</sup> <a name="projenDevDependency" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenDevDependency"></a>
-
-```typescript
-public readonly projenDevDependency: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Indicates of "projen" should be installed as a devDependency.
-
----
-
-##### `projenrcJs`<sup>Optional</sup> <a name="projenrcJs" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenrcJs"></a>
-
-```typescript
-public readonly projenrcJs: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true if projenrcJson is false
-
-Generate (once) .projenrc.js (in JavaScript). Set to `false` in order to disable .projenrc.js generation.
-
----
-
-##### `projenrcJsOptions`<sup>Optional</sup> <a name="projenrcJsOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenrcJsOptions"></a>
-
-```typescript
-public readonly projenrcJsOptions: ProjenrcOptions;
-```
-
-- *Type:* projen.javascript.ProjenrcOptions
-- *Default:* default options
-
-Options for .projenrc.js.
-
----
-
-##### `projenVersion`<sup>Optional</sup> <a name="projenVersion" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenVersion"></a>
-
-```typescript
-public readonly projenVersion: string;
-```
-
-- *Type:* string
-- *Default:* Defaults to the latest version.
-
-Version of projen to install.
-
----
-
-##### `pullRequestTemplate`<sup>Optional</sup> <a name="pullRequestTemplate" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.pullRequestTemplate"></a>
-
-```typescript
-public readonly pullRequestTemplate: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Include a GitHub pull request template.
-
----
-
-##### `pullRequestTemplateContents`<sup>Optional</sup> <a name="pullRequestTemplateContents" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.pullRequestTemplateContents"></a>
-
-```typescript
-public readonly pullRequestTemplateContents: string[];
-```
-
-- *Type:* string[]
-- *Default:* default content
-
-The contents of the pull request template.
-
----
-
-##### `release`<sup>Optional</sup> <a name="release" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.release"></a>
-
-```typescript
-public readonly release: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true (false for subprojects)
-
-Add release management to this project.
-
----
-
-##### `releaseToNpm`<sup>Optional</sup> <a name="releaseToNpm" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseToNpm"></a>
-
-```typescript
-public readonly releaseToNpm: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Automatically release to npm when new versions are introduced.
-
----
-
-##### ~~`releaseWorkflow`~~<sup>Optional</sup> <a name="releaseWorkflow" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseWorkflow"></a>
-
-- *Deprecated:* see `release`.
-
-```typescript
-public readonly releaseWorkflow: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true if not a subproject
-
-DEPRECATED: renamed to `release`.
-
----
-
-##### `workflowBootstrapSteps`<sup>Optional</sup> <a name="workflowBootstrapSteps" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.workflowBootstrapSteps"></a>
-
-```typescript
-public readonly workflowBootstrapSteps: JobStep[];
-```
-
-- *Type:* projen.github.workflows.JobStep[]
-- *Default:* "yarn install --frozen-lockfile && yarn projen"
-
-Workflow steps to use in order to bootstrap this repo.
-
----
-
-##### `workflowGitIdentity`<sup>Optional</sup> <a name="workflowGitIdentity" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.workflowGitIdentity"></a>
-
-```typescript
-public readonly workflowGitIdentity: GitIdentity;
-```
-
-- *Type:* projen.github.GitIdentity
-- *Default:* GitHub Actions
-
-The git identity to use in workflows.
-
----
-
-##### `workflowNodeVersion`<sup>Optional</sup> <a name="workflowNodeVersion" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.workflowNodeVersion"></a>
-
-```typescript
-public readonly workflowNodeVersion: string;
-```
-
-- *Type:* string
-- *Default:* same as `minNodeVersion`
-
-The node version to use in GitHub workflows.
-
----
-
-##### `workflowPackageCache`<sup>Optional</sup> <a name="workflowPackageCache" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.workflowPackageCache"></a>
-
-```typescript
-public readonly workflowPackageCache: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Enable Node.js package cache in GitHub workflows.
-
----
-
-##### `disableTsconfig`<sup>Optional</sup> <a name="disableTsconfig" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.disableTsconfig"></a>
-
-```typescript
-public readonly disableTsconfig: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Do not generate a `tsconfig.json` file (used by jsii projects since tsconfig.json is generated by the jsii compiler).
-
----
-
-##### `disableTsconfigDev`<sup>Optional</sup> <a name="disableTsconfigDev" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.disableTsconfigDev"></a>
-
-```typescript
-public readonly disableTsconfigDev: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Do not generate a `tsconfig.dev.json` file.
-
----
-
-##### `docgen`<sup>Optional</sup> <a name="docgen" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.docgen"></a>
-
-```typescript
-public readonly docgen: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Docgen by Typedoc.
-
----
-
-##### `docsDirectory`<sup>Optional</sup> <a name="docsDirectory" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.docsDirectory"></a>
-
-```typescript
-public readonly docsDirectory: string;
-```
-
-- *Type:* string
-- *Default:* "docs"
-
-Docs directory.
-
----
-
-##### `entrypointTypes`<sup>Optional</sup> <a name="entrypointTypes" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.entrypointTypes"></a>
-
-```typescript
-public readonly entrypointTypes: string;
-```
-
-- *Type:* string
-- *Default:* .d.ts file derived from the project's entrypoint (usually lib/index.d.ts)
-
-The .d.ts file that includes the type declarations for this module.
-
----
-
-##### `eslint`<sup>Optional</sup> <a name="eslint" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.eslint"></a>
-
-```typescript
-public readonly eslint: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Setup eslint.
-
----
-
-##### `eslintOptions`<sup>Optional</sup> <a name="eslintOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.eslintOptions"></a>
-
-```typescript
-public readonly eslintOptions: EslintOptions;
-```
-
-- *Type:* projen.javascript.EslintOptions
-- *Default:* opinionated default options
-
-Eslint options.
-
----
-
-##### `libdir`<sup>Optional</sup> <a name="libdir" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.libdir"></a>
-
-```typescript
-public readonly libdir: string;
-```
-
-- *Type:* string
-- *Default:* "lib"
-
-Typescript  artifacts output directory.
-
----
-
-##### `projenrcTs`<sup>Optional</sup> <a name="projenrcTs" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenrcTs"></a>
-
-```typescript
-public readonly projenrcTs: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Use TypeScript for your projenrc file (`.projenrc.ts`).
-
----
-
-##### `projenrcTsOptions`<sup>Optional</sup> <a name="projenrcTsOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenrcTsOptions"></a>
-
-```typescript
-public readonly projenrcTsOptions: ProjenrcOptions;
-```
-
-- *Type:* projen.typescript.ProjenrcOptions
-
-Options for .projenrc.ts.
-
----
-
-##### `sampleCode`<sup>Optional</sup> <a name="sampleCode" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.sampleCode"></a>
-
-```typescript
-public readonly sampleCode: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Generate one-time sample in `src/` and `test/` if there are no files there.
-
----
-
-##### `srcdir`<sup>Optional</sup> <a name="srcdir" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.srcdir"></a>
-
-```typescript
-public readonly srcdir: string;
-```
-
-- *Type:* string
-- *Default:* "src"
-
-Typescript sources directory.
-
----
-
-##### `testdir`<sup>Optional</sup> <a name="testdir" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.testdir"></a>
-
-```typescript
-public readonly testdir: string;
-```
-
-- *Type:* string
-- *Default:* "test"
-
-Jest tests directory. Tests files should be named `xxx.test.ts`.
-
-If this directory is under `srcdir` (e.g. `src/test`, `src/__tests__`),
-then tests are going to be compiled into `lib/` and executed as javascript.
-If the test directory is outside of `src`, then we configure jest to
-compile the code in-memory.
-
----
-
-##### `tsconfig`<sup>Optional</sup> <a name="tsconfig" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.tsconfig"></a>
-
-```typescript
-public readonly tsconfig: TypescriptConfigOptions;
-```
-
-- *Type:* projen.javascript.TypescriptConfigOptions
-- *Default:* default options
-
-Custom TSConfig.
-
----
-
-##### `tsconfigDev`<sup>Optional</sup> <a name="tsconfigDev" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.tsconfigDev"></a>
-
-```typescript
-public readonly tsconfigDev: TypescriptConfigOptions;
-```
-
-- *Type:* projen.javascript.TypescriptConfigOptions
-- *Default:* use the production tsconfig options
-
-Custom tsconfig options for the development tsconfig.json file (used for testing).
-
----
-
-##### `tsconfigDevFile`<sup>Optional</sup> <a name="tsconfigDevFile" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.tsconfigDevFile"></a>
-
-```typescript
-public readonly tsconfigDevFile: string;
-```
-
-- *Type:* string
-- *Default:* "tsconfig.dev.json"
-
-The name of the development tsconfig.json file.
-
----
-
-##### `typescriptVersion`<sup>Optional</sup> <a name="typescriptVersion" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.typescriptVersion"></a>
-
-```typescript
-public readonly typescriptVersion: string;
-```
-
-- *Type:* string
-- *Default:* "latest"
-
-TypeScript version to use.
-
-NOTE: Typescript is not semantically versioned and should remain on the
-same minor, so we recommend using a `~` dependency (e.g. `~1.2.3`).
-
----
-
-##### `additionalCompilerDependencies`<sup>Optional</sup> <a name="additionalCompilerDependencies" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.additionalCompilerDependencies"></a>
-
-```typescript
-public readonly additionalCompilerDependencies: string[];
-```
-
-- *Type:* string[]
-- *Default:* No additional compiler dependencies.
-
-Packages that compile the project apart from the typescript/jsii compiler.
-
-Any package that produces a published artifact should be included in this list.
-
----
-
-##### `backport`<sup>Optional</sup> <a name="backport" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.backport"></a>
-
-```typescript
-public readonly backport: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Configure a backport workflow.
-
----
-
-##### `backportBranches`<sup>Optional</sup> <a name="backportBranches" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.backportBranches"></a>
-
-```typescript
-public readonly backportBranches: string[];
-```
-
-- *Type:* string[]
-- *Default:* Will be derived from PR labels.
-
-Branches to backport to.
-
----
-
-##### `repoName`<sup>Optional</sup> <a name="repoName" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.repoName"></a>
-
-```typescript
-public readonly repoName: string;
-```
-
-- *Type:* string
-- *Default:* the package name.
-
-The name of the repository inside the cdk8s-team org where the code of the project is locate in.
-
----
-
-##### `golang`<sup>Optional</sup> <a name="golang" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.golang"></a>
-
-```typescript
-public readonly golang: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Publish Golang bindings to GitHub.
-
----
-
-##### `golangBranch`<sup>Optional</sup> <a name="golangBranch" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.golangBranch"></a>
-
-```typescript
-public readonly golangBranch: string;
-```
-
-- *Type:* string
-- *Default:* 'main'
-
-Name of the branch in the golang repository to publish to.
-
----
-
-##### `jsiiVersion`<sup>Optional</sup> <a name="jsiiVersion" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.jsiiVersion"></a>
-
-```typescript
-public readonly jsiiVersion: string;
-```
-
-- *Type:* string
-- *Default:* '1.x'
-
-JSII version to use.
-
----
-
-##### `maven`<sup>Optional</sup> <a name="maven" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.maven"></a>
-
-```typescript
-public readonly maven: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Publish Java bindings to Maven.
-
----
-
-##### `nuget`<sup>Optional</sup> <a name="nuget" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.nuget"></a>
-
-```typescript
-public readonly nuget: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Publish Dotnet bindings to Nuget.
-
----
-
-##### `pypi`<sup>Optional</sup> <a name="pypi" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.pypi"></a>
-
-```typescript
-public readonly pypi: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Publish Python bindings to PyPI.
-
----
-
-### Cdk8sTeamNodeProjectOptions <a name="Cdk8sTeamNodeProjectOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions"></a>
-
-Options for `Cdk8sTeamNodeProject`.
-
-#### Initializer <a name="Initializer" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.Initializer"></a>
-
-```typescript
-import { Cdk8sTeamNodeProjectOptions } from '@cdk8s/projen-common'
-
-const cdk8sTeamNodeProjectOptions: Cdk8sTeamNodeProjectOptions = { ... }
-```
-
-#### Properties <a name="Properties" id="Properties"></a>
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.name">name</a></code> | <code>string</code> | This is the name of your project. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.commitGenerated">commitGenerated</a></code> | <code>boolean</code> | Whether to commit the managed files by default. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.gitIgnoreOptions">gitIgnoreOptions</a></code> | <code>projen.IgnoreFileOptions</code> | Configuration options for .gitignore file. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.gitOptions">gitOptions</a></code> | <code>projen.GitOptions</code> | Configuration options for git. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.logging">logging</a></code> | <code>projen.LoggerOptions</code> | Configure logging options such as verbosity. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.outdir">outdir</a></code> | <code>string</code> | The root directory of the project. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.parent">parent</a></code> | <code>projen.Project</code> | The parent project, if this project is part of a bigger project. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.projenCommand">projenCommand</a></code> | <code>string</code> | The shell command to use in order to run the projen CLI. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.projenrcJson">projenrcJson</a></code> | <code>boolean</code> | Generate (once) .projenrc.json (in JSON). Set to `false` in order to disable .projenrc.json generation. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.projenrcJsonOptions">projenrcJsonOptions</a></code> | <code>projen.ProjenrcJsonOptions</code> | Options for .projenrc.json. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.renovatebot">renovatebot</a></code> | <code>boolean</code> | Use renovatebot to handle dependency upgrades. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.renovatebotOptions">renovatebotOptions</a></code> | <code>projen.RenovatebotOptions</code> | Options for renovatebot. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.autoApproveOptions">autoApproveOptions</a></code> | <code>projen.github.AutoApproveOptions</code> | Enable and configure the 'auto approve' workflow. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.autoMerge">autoMerge</a></code> | <code>boolean</code> | Enable automatic merging on GitHub. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.autoMergeOptions">autoMergeOptions</a></code> | <code>projen.github.AutoMergeOptions</code> | Configure options for automatic merging on GitHub. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.clobber">clobber</a></code> | <code>boolean</code> | Add a `clobber` task which resets the repo to origin. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.devContainer">devContainer</a></code> | <code>boolean</code> | Add a VSCode development environment (used for GitHub Codespaces). |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.github">github</a></code> | <code>boolean</code> | Enable GitHub integration. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.githubOptions">githubOptions</a></code> | <code>projen.github.GitHubOptions</code> | Options for GitHub integration. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.gitpod">gitpod</a></code> | <code>boolean</code> | Add a Gitpod development environment. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.mergify">mergify</a></code> | <code>boolean</code> | Whether mergify should be enabled on this repository or not. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.mergifyOptions">mergifyOptions</a></code> | <code>projen.github.MergifyOptions</code> | Options for mergify. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.projectType">projectType</a></code> | <code>projen.ProjectType</code> | Which type of project this is (library/app). |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.projenCredentials">projenCredentials</a></code> | <code>projen.github.GithubCredentials</code> | Choose a method of providing GitHub API access for projen workflows. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.projenTokenSecret">projenTokenSecret</a></code> | <code>string</code> | The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.readme">readme</a></code> | <code>projen.SampleReadmeProps</code> | The README setup. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.stale">stale</a></code> | <code>boolean</code> | Auto-close of stale issues and pull request. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.staleOptions">staleOptions</a></code> | <code>projen.github.StaleOptions</code> | Auto-close stale issues and pull requests. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.vscode">vscode</a></code> | <code>boolean</code> | Enable VSCode integration. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.allowLibraryDependencies">allowLibraryDependencies</a></code> | <code>boolean</code> | Allow the project to include `peerDependencies` and `bundledDependencies`. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.authorEmail">authorEmail</a></code> | <code>string</code> | Author's e-mail. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.authorName">authorName</a></code> | <code>string</code> | Author's name. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.authorOrganization">authorOrganization</a></code> | <code>boolean</code> | Is the author an organization. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.authorUrl">authorUrl</a></code> | <code>string</code> | Author's URL / Website. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.autoDetectBin">autoDetectBin</a></code> | <code>boolean</code> | Automatically add all executables under the `bin` directory to your `package.json` file under the `bin` section. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.bin">bin</a></code> | <code>{[ key: string ]: string}</code> | Binary programs vended with your module. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.bugsEmail">bugsEmail</a></code> | <code>string</code> | The email address to which issues should be reported. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.bugsUrl">bugsUrl</a></code> | <code>string</code> | The url to your project's issue tracker. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.bundledDeps">bundledDeps</a></code> | <code>string[]</code> | List of dependencies to bundle into this module. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.codeArtifactOptions">codeArtifactOptions</a></code> | <code>projen.javascript.CodeArtifactOptions</code> | Options for npm packages using AWS CodeArtifact. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.deps">deps</a></code> | <code>string[]</code> | Runtime dependencies of this module. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.description">description</a></code> | <code>string</code> | The description is just a string that helps people understand the purpose of the package. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.devDeps">devDeps</a></code> | <code>string[]</code> | Build dependencies for this module. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.entrypoint">entrypoint</a></code> | <code>string</code> | Module entrypoint (`main` in `package.json`). |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.homepage">homepage</a></code> | <code>string</code> | Package's Homepage / Website. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.keywords">keywords</a></code> | <code>string[]</code> | Keywords to include in `package.json`. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.license">license</a></code> | <code>string</code> | License's SPDX identifier. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.licensed">licensed</a></code> | <code>boolean</code> | Indicates if a license should be added. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.maxNodeVersion">maxNodeVersion</a></code> | <code>string</code> | Minimum node.js version to require via `engines` (inclusive). |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.minNodeVersion">minNodeVersion</a></code> | <code>string</code> | Minimum Node.js version to require via package.json `engines` (inclusive). |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.npmAccess">npmAccess</a></code> | <code>projen.javascript.NpmAccess</code> | Access level of the npm package. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.npmRegistry">npmRegistry</a></code> | <code>string</code> | The host name of the npm registry to publish to. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.npmRegistryUrl">npmRegistryUrl</a></code> | <code>string</code> | The base URL of the npm package registry. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.npmTokenSecret">npmTokenSecret</a></code> | <code>string</code> | GitHub secret which contains the NPM token to use when publishing packages. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.packageManager">packageManager</a></code> | <code>projen.javascript.NodePackageManager</code> | The Node Package Manager used to execute scripts. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.packageName">packageName</a></code> | <code>string</code> | The "name" in package.json. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.peerDependencyOptions">peerDependencyOptions</a></code> | <code>projen.javascript.PeerDependencyOptions</code> | Options for `peerDeps`. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.peerDeps">peerDeps</a></code> | <code>string[]</code> | Peer dependencies for this module. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.pnpmVersion">pnpmVersion</a></code> | <code>string</code> | The version of PNPM to use if using PNPM as a package manager. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.repository">repository</a></code> | <code>string</code> | The repository is the location where the actual code for your package lives. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.repositoryDirectory">repositoryDirectory</a></code> | <code>string</code> | If the package.json for your package is not in the root directory (for example if it is part of a monorepo), you can specify the directory in which it lives. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.scopedPackagesOptions">scopedPackagesOptions</a></code> | <code>projen.javascript.ScopedPackagesOptions[]</code> | Options for privately hosted scoped packages. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.scripts">scripts</a></code> | <code>{[ key: string ]: string}</code> | npm scripts to include. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.stability">stability</a></code> | <code>string</code> | Package's Stability. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.jsiiReleaseVersion">jsiiReleaseVersion</a></code> | <code>string</code> | Version requirement of `publib` which is used to publish modules to npm. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.majorVersion">majorVersion</a></code> | <code>number</code> | Major version to release from the default branch. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.minMajorVersion">minMajorVersion</a></code> | <code>number</code> | Minimal Major version to release. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.npmDistTag">npmDistTag</a></code> | <code>string</code> | The npmDistTag to use when publishing from the default branch. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.postBuildSteps">postBuildSteps</a></code> | <code>projen.github.workflows.JobStep[]</code> | Steps to execute after build as part of the release workflow. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.prerelease">prerelease</a></code> | <code>string</code> | Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pre"). |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.publishDryRun">publishDryRun</a></code> | <code>boolean</code> | Instead of actually publishing to package managers, just print the publishing command. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.publishTasks">publishTasks</a></code> | <code>boolean</code> | Define publishing tasks that can be executed manually as well as workflows. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releasableCommits">releasableCommits</a></code> | <code>projen.ReleasableCommits</code> | Find commits that should be considered releasable Used to decide if a release is required. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseBranches">releaseBranches</a></code> | <code>{[ key: string ]: projen.release.BranchOptions}</code> | Defines additional release branches. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseEveryCommit">releaseEveryCommit</a></code> | <code>boolean</code> | Automatically release new versions every commit to one of branches in `releaseBranches`. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseFailureIssue">releaseFailureIssue</a></code> | <code>boolean</code> | Create a github issue on every failed publishing task. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseFailureIssueLabel">releaseFailureIssueLabel</a></code> | <code>string</code> | The label to apply to issues indicating publish failures. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseSchedule">releaseSchedule</a></code> | <code>string</code> | CRON schedule to trigger new releases. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseTagPrefix">releaseTagPrefix</a></code> | <code>string</code> | Automatically add the given prefix to release tags. Useful if you are releasing on multiple branches with overlapping version numbers. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseTrigger">releaseTrigger</a></code> | <code>projen.release.ReleaseTrigger</code> | The release trigger to use. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseWorkflowName">releaseWorkflowName</a></code> | <code>string</code> | The name of the default release workflow. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseWorkflowSetupSteps">releaseWorkflowSetupSteps</a></code> | <code>projen.github.workflows.JobStep[]</code> | A set of workflow steps to execute in order to setup the workflow container. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.versionrcOptions">versionrcOptions</a></code> | <code>{[ key: string ]: any}</code> | Custom configuration used when creating changelog with standard-version package. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.workflowContainerImage">workflowContainerImage</a></code> | <code>string</code> | Container image to use for GitHub workflows. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.workflowRunsOn">workflowRunsOn</a></code> | <code>string[]</code> | Github Runner selection labels. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.defaultReleaseBranch">defaultReleaseBranch</a></code> | <code>string</code> | The name of the main release branch. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.artifactsDirectory">artifactsDirectory</a></code> | <code>string</code> | A directory which will contain build artifacts. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.autoApproveUpgrades">autoApproveUpgrades</a></code> | <code>boolean</code> | Automatically approve deps upgrade PRs, allowing them to be merged by mergify (if configued). |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.buildWorkflow">buildWorkflow</a></code> | <code>boolean</code> | Define a GitHub workflow for building PRs. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.buildWorkflowTriggers">buildWorkflowTriggers</a></code> | <code>projen.github.workflows.Triggers</code> | Build workflow triggers. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.bundlerOptions">bundlerOptions</a></code> | <code>projen.javascript.BundlerOptions</code> | Options for `Bundler`. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.codeCov">codeCov</a></code> | <code>boolean</code> | Define a GitHub workflow step for sending code coverage metrics to https://codecov.io/ Uses codecov/codecov-action@v3 A secret is required for private repos. Configured with `@codeCovTokenSecret`. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.codeCovTokenSecret">codeCovTokenSecret</a></code> | <code>string</code> | Define the secret name for a specified https://codecov.io/ token A secret is required to send coverage for private repositories. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.copyrightOwner">copyrightOwner</a></code> | <code>string</code> | License copyright owner. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.copyrightPeriod">copyrightPeriod</a></code> | <code>string</code> | The copyright years to put in the LICENSE file. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.dependabot">dependabot</a></code> | <code>boolean</code> | Use dependabot to handle dependency upgrades. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.dependabotOptions">dependabotOptions</a></code> | <code>projen.github.DependabotOptions</code> | Options for dependabot. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.depsUpgrade">depsUpgrade</a></code> | <code>boolean</code> | Use github workflows to handle dependency upgrades. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.depsUpgradeOptions">depsUpgradeOptions</a></code> | <code>projen.javascript.UpgradeDependenciesOptions</code> | Options for `UpgradeDependencies`. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.gitignore">gitignore</a></code> | <code>string[]</code> | Additional entries to .gitignore. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.jest">jest</a></code> | <code>boolean</code> | Setup jest unit tests. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.jestOptions">jestOptions</a></code> | <code>projen.javascript.JestOptions</code> | Jest options. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.mutableBuild">mutableBuild</a></code> | <code>boolean</code> | Automatically update files modified during builds to pull-request branches. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.npmignore">npmignore</a></code> | <code>string[]</code> | Additional entries to .npmignore. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.npmignoreEnabled">npmignoreEnabled</a></code> | <code>boolean</code> | Defines an .npmignore file. Normally this is only needed for libraries that are packaged as tarballs. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.npmIgnoreOptions">npmIgnoreOptions</a></code> | <code>projen.IgnoreFileOptions</code> | Configuration options for .npmignore file. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.package">package</a></code> | <code>boolean</code> | Defines a `package` task that will produce an npm tarball under the artifacts directory (e.g. `dist`). |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.prettier">prettier</a></code> | <code>boolean</code> | Setup prettier. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.prettierOptions">prettierOptions</a></code> | <code>projen.javascript.PrettierOptions</code> | Prettier options. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.projenDevDependency">projenDevDependency</a></code> | <code>boolean</code> | Indicates of "projen" should be installed as a devDependency. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.projenrcJs">projenrcJs</a></code> | <code>boolean</code> | Generate (once) .projenrc.js (in JavaScript). Set to `false` in order to disable .projenrc.js generation. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.projenrcJsOptions">projenrcJsOptions</a></code> | <code>projen.javascript.ProjenrcOptions</code> | Options for .projenrc.js. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.projenVersion">projenVersion</a></code> | <code>string</code> | Version of projen to install. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.pullRequestTemplate">pullRequestTemplate</a></code> | <code>boolean</code> | Include a GitHub pull request template. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.pullRequestTemplateContents">pullRequestTemplateContents</a></code> | <code>string[]</code> | The contents of the pull request template. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.release">release</a></code> | <code>boolean</code> | Add release management to this project. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseToNpm">releaseToNpm</a></code> | <code>boolean</code> | Automatically release to npm when new versions are introduced. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseWorkflow">releaseWorkflow</a></code> | <code>boolean</code> | DEPRECATED: renamed to `release`. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.workflowBootstrapSteps">workflowBootstrapSteps</a></code> | <code>projen.github.workflows.JobStep[]</code> | Workflow steps to use in order to bootstrap this repo. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.workflowGitIdentity">workflowGitIdentity</a></code> | <code>projen.github.GitIdentity</code> | The git identity to use in workflows. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.workflowNodeVersion">workflowNodeVersion</a></code> | <code>string</code> | The node version to use in GitHub workflows. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.workflowPackageCache">workflowPackageCache</a></code> | <code>boolean</code> | Enable Node.js package cache in GitHub workflows. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.backport">backport</a></code> | <code>boolean</code> | Configure a backport workflow. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.backportBranches">backportBranches</a></code> | <code>string[]</code> | Branches to backport to. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.repoName">repoName</a></code> | <code>string</code> | The name of the repository inside the cdk8s-team org where the code of the project is locate in. |
-
----
-
-##### `name`<sup>Required</sup> <a name="name" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.name"></a>
-
-```typescript
-public readonly name: string;
-```
-
-- *Type:* string
-- *Default:* $BASEDIR
-
-This is the name of your project.
-
----
-
-##### `commitGenerated`<sup>Optional</sup> <a name="commitGenerated" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.commitGenerated"></a>
-
-```typescript
-public readonly commitGenerated: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Whether to commit the managed files by default.
-
----
-
-##### `gitIgnoreOptions`<sup>Optional</sup> <a name="gitIgnoreOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.gitIgnoreOptions"></a>
-
-```typescript
-public readonly gitIgnoreOptions: IgnoreFileOptions;
-```
-
-- *Type:* projen.IgnoreFileOptions
-
-Configuration options for .gitignore file.
-
----
-
-##### `gitOptions`<sup>Optional</sup> <a name="gitOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.gitOptions"></a>
-
-```typescript
-public readonly gitOptions: GitOptions;
-```
-
-- *Type:* projen.GitOptions
-
-Configuration options for git.
-
----
-
-##### `logging`<sup>Optional</sup> <a name="logging" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.logging"></a>
-
-```typescript
-public readonly logging: LoggerOptions;
-```
-
-- *Type:* projen.LoggerOptions
-- *Default:* {}
-
-Configure logging options such as verbosity.
-
----
-
-##### `outdir`<sup>Optional</sup> <a name="outdir" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.outdir"></a>
-
-```typescript
-public readonly outdir: string;
-```
-
-- *Type:* string
-- *Default:* "."
-
-The root directory of the project.
-
-Relative to this directory, all files are synthesized.
-
-If this project has a parent, this directory is relative to the parent
-directory and it cannot be the same as the parent or any of it's other
-sub-projects.
-
----
-
-##### `parent`<sup>Optional</sup> <a name="parent" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.parent"></a>
-
-```typescript
-public readonly parent: Project;
-```
-
-- *Type:* projen.Project
-
-The parent project, if this project is part of a bigger project.
-
----
-
-##### `projenCommand`<sup>Optional</sup> <a name="projenCommand" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.projenCommand"></a>
-
-```typescript
-public readonly projenCommand: string;
-```
-
-- *Type:* string
-- *Default:* "npx projen"
-
-The shell command to use in order to run the projen CLI.
-
-Can be used to customize in special environments.
-
----
-
-##### `projenrcJson`<sup>Optional</sup> <a name="projenrcJson" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.projenrcJson"></a>
-
-```typescript
-public readonly projenrcJson: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Generate (once) .projenrc.json (in JSON). Set to `false` in order to disable .projenrc.json generation.
-
----
-
-##### `projenrcJsonOptions`<sup>Optional</sup> <a name="projenrcJsonOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.projenrcJsonOptions"></a>
-
-```typescript
-public readonly projenrcJsonOptions: ProjenrcJsonOptions;
-```
-
-- *Type:* projen.ProjenrcJsonOptions
-- *Default:* default options
-
-Options for .projenrc.json.
-
----
-
-##### `renovatebot`<sup>Optional</sup> <a name="renovatebot" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.renovatebot"></a>
-
-```typescript
-public readonly renovatebot: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Use renovatebot to handle dependency upgrades.
-
----
-
-##### `renovatebotOptions`<sup>Optional</sup> <a name="renovatebotOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.renovatebotOptions"></a>
-
-```typescript
-public readonly renovatebotOptions: RenovatebotOptions;
-```
-
-- *Type:* projen.RenovatebotOptions
-- *Default:* default options
-
-Options for renovatebot.
-
----
-
-##### `autoApproveOptions`<sup>Optional</sup> <a name="autoApproveOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.autoApproveOptions"></a>
-
-```typescript
-public readonly autoApproveOptions: AutoApproveOptions;
-```
-
-- *Type:* projen.github.AutoApproveOptions
-- *Default:* auto approve is disabled
-
-Enable and configure the 'auto approve' workflow.
-
----
-
-##### `autoMerge`<sup>Optional</sup> <a name="autoMerge" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.autoMerge"></a>
-
-```typescript
-public readonly autoMerge: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Enable automatic merging on GitHub.
-
-Has no effect if `github.mergify`
-is set to false.
-
----
-
-##### `autoMergeOptions`<sup>Optional</sup> <a name="autoMergeOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.autoMergeOptions"></a>
-
-```typescript
-public readonly autoMergeOptions: AutoMergeOptions;
-```
-
-- *Type:* projen.github.AutoMergeOptions
-- *Default:* see defaults in `AutoMergeOptions`
-
-Configure options for automatic merging on GitHub.
-
-Has no effect if
-`github.mergify` or `autoMerge` is set to false.
-
----
-
-##### `clobber`<sup>Optional</sup> <a name="clobber" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.clobber"></a>
-
-```typescript
-public readonly clobber: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true, but false for subprojects
-
-Add a `clobber` task which resets the repo to origin.
-
----
-
-##### `devContainer`<sup>Optional</sup> <a name="devContainer" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.devContainer"></a>
-
-```typescript
-public readonly devContainer: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Add a VSCode development environment (used for GitHub Codespaces).
-
----
-
-##### `github`<sup>Optional</sup> <a name="github" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.github"></a>
-
-```typescript
-public readonly github: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Enable GitHub integration.
-
-Enabled by default for root projects. Disabled for non-root projects.
-
----
-
-##### `githubOptions`<sup>Optional</sup> <a name="githubOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.githubOptions"></a>
-
-```typescript
-public readonly githubOptions: GitHubOptions;
-```
-
-- *Type:* projen.github.GitHubOptions
-- *Default:* see GitHubOptions
-
-Options for GitHub integration.
-
----
-
-##### `gitpod`<sup>Optional</sup> <a name="gitpod" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.gitpod"></a>
-
-```typescript
-public readonly gitpod: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Add a Gitpod development environment.
-
----
-
-##### ~~`mergify`~~<sup>Optional</sup> <a name="mergify" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.mergify"></a>
-
-- *Deprecated:* use `githubOptions.mergify` instead
-
-```typescript
-public readonly mergify: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Whether mergify should be enabled on this repository or not.
-
----
-
-##### ~~`mergifyOptions`~~<sup>Optional</sup> <a name="mergifyOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.mergifyOptions"></a>
-
-- *Deprecated:* use `githubOptions.mergifyOptions` instead
-
-```typescript
-public readonly mergifyOptions: MergifyOptions;
-```
-
-- *Type:* projen.github.MergifyOptions
-- *Default:* default options
-
-Options for mergify.
-
----
-
-##### ~~`projectType`~~<sup>Optional</sup> <a name="projectType" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.projectType"></a>
-
-- *Deprecated:* no longer supported at the base project level
-
-```typescript
-public readonly projectType: ProjectType;
-```
-
-- *Type:* projen.ProjectType
-- *Default:* ProjectType.UNKNOWN
-
-Which type of project this is (library/app).
-
----
-
-##### `projenCredentials`<sup>Optional</sup> <a name="projenCredentials" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.projenCredentials"></a>
-
-```typescript
-public readonly projenCredentials: GithubCredentials;
-```
-
-- *Type:* projen.github.GithubCredentials
-- *Default:* use a personal access token named PROJEN_GITHUB_TOKEN
-
-Choose a method of providing GitHub API access for projen workflows.
-
----
-
-##### ~~`projenTokenSecret`~~<sup>Optional</sup> <a name="projenTokenSecret" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.projenTokenSecret"></a>
-
-- *Deprecated:* use `projenCredentials`
-
-```typescript
-public readonly projenTokenSecret: string;
-```
-
-- *Type:* string
-- *Default:* "PROJEN_GITHUB_TOKEN"
-
-The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
-
-This token needs to have the `repo`, `workflows`
-and `packages` scope.
-
----
-
-##### `readme`<sup>Optional</sup> <a name="readme" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.readme"></a>
-
-```typescript
-public readonly readme: SampleReadmeProps;
-```
-
-- *Type:* projen.SampleReadmeProps
-- *Default:* { filename: 'README.md', contents: '# replace this' }
-
-The README setup.
-
----
-
-*Example*
-
-```typescript
-"{ filename: 'readme.md', contents: '# title' }"
-```
-
-
-##### `stale`<sup>Optional</sup> <a name="stale" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.stale"></a>
-
-```typescript
-public readonly stale: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Auto-close of stale issues and pull request.
-
-See `staleOptions` for options.
-
----
-
-##### `staleOptions`<sup>Optional</sup> <a name="staleOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.staleOptions"></a>
-
-```typescript
-public readonly staleOptions: StaleOptions;
-```
-
-- *Type:* projen.github.StaleOptions
-- *Default:* see defaults in `StaleOptions`
-
-Auto-close stale issues and pull requests.
-
-To disable set `stale` to `false`.
-
----
-
-##### `vscode`<sup>Optional</sup> <a name="vscode" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.vscode"></a>
-
-```typescript
-public readonly vscode: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Enable VSCode integration.
-
-Enabled by default for root projects. Disabled for non-root projects.
-
----
-
-##### `allowLibraryDependencies`<sup>Optional</sup> <a name="allowLibraryDependencies" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.allowLibraryDependencies"></a>
-
-```typescript
-public readonly allowLibraryDependencies: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Allow the project to include `peerDependencies` and `bundledDependencies`.
-
-This is normally only allowed for libraries. For apps, there's no meaning
-for specifying these.
-
----
-
-##### `authorEmail`<sup>Optional</sup> <a name="authorEmail" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.authorEmail"></a>
-
-```typescript
-public readonly authorEmail: string;
-```
-
-- *Type:* string
-
-Author's e-mail.
-
----
-
-##### `authorName`<sup>Optional</sup> <a name="authorName" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.authorName"></a>
-
-```typescript
-public readonly authorName: string;
-```
-
-- *Type:* string
-
-Author's name.
-
----
-
-##### `authorOrganization`<sup>Optional</sup> <a name="authorOrganization" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.authorOrganization"></a>
-
-```typescript
-public readonly authorOrganization: boolean;
-```
-
-- *Type:* boolean
-
-Is the author an organization.
-
----
-
-##### `authorUrl`<sup>Optional</sup> <a name="authorUrl" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.authorUrl"></a>
-
-```typescript
-public readonly authorUrl: string;
-```
-
-- *Type:* string
-
-Author's URL / Website.
-
----
-
-##### `autoDetectBin`<sup>Optional</sup> <a name="autoDetectBin" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.autoDetectBin"></a>
-
-```typescript
-public readonly autoDetectBin: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Automatically add all executables under the `bin` directory to your `package.json` file under the `bin` section.
-
----
-
-##### `bin`<sup>Optional</sup> <a name="bin" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.bin"></a>
-
-```typescript
-public readonly bin: {[ key: string ]: string};
-```
-
-- *Type:* {[ key: string ]: string}
-
-Binary programs vended with your module.
-
-You can use this option to add/customize how binaries are represented in
-your `package.json`, but unless `autoDetectBin` is `false`, every
-executable file under `bin` will automatically be added to this section.
-
----
-
-##### `bugsEmail`<sup>Optional</sup> <a name="bugsEmail" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.bugsEmail"></a>
-
-```typescript
-public readonly bugsEmail: string;
-```
-
-- *Type:* string
-
-The email address to which issues should be reported.
-
----
-
-##### `bugsUrl`<sup>Optional</sup> <a name="bugsUrl" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.bugsUrl"></a>
-
-```typescript
-public readonly bugsUrl: string;
-```
-
-- *Type:* string
-
-The url to your project's issue tracker.
-
----
-
-##### `bundledDeps`<sup>Optional</sup> <a name="bundledDeps" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.bundledDeps"></a>
-
-```typescript
-public readonly bundledDeps: string[];
-```
-
-- *Type:* string[]
-
-List of dependencies to bundle into this module.
-
-These modules will be
-added both to the `dependencies` section and `bundledDependencies` section of
-your `package.json`.
-
-The recommendation is to only specify the module name here (e.g.
-`express`). This will behave similar to `yarn add` or `npm install` in the
-sense that it will add the module as a dependency to your `package.json`
-file with the latest version (`^`). You can specify semver requirements in
-the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
-this will be what you `package.json` will eventually include.
-
----
-
-##### `codeArtifactOptions`<sup>Optional</sup> <a name="codeArtifactOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.codeArtifactOptions"></a>
-
-```typescript
-public readonly codeArtifactOptions: CodeArtifactOptions;
-```
-
-- *Type:* projen.javascript.CodeArtifactOptions
-- *Default:* undefined
-
-Options for npm packages using AWS CodeArtifact.
-
-This is required if publishing packages to, or installing scoped packages from AWS CodeArtifact
-
----
-
-##### `deps`<sup>Optional</sup> <a name="deps" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.deps"></a>
-
-```typescript
-public readonly deps: string[];
-```
-
-- *Type:* string[]
-- *Default:* []
-
-Runtime dependencies of this module.
-
-The recommendation is to only specify the module name here (e.g.
-`express`). This will behave similar to `yarn add` or `npm install` in the
-sense that it will add the module as a dependency to your `package.json`
-file with the latest version (`^`). You can specify semver requirements in
-the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
-this will be what you `package.json` will eventually include.
-
----
-
-*Example*
-
-```typescript
-[ 'express', 'lodash', 'foo@^2' ]
-```
-
-
-##### `description`<sup>Optional</sup> <a name="description" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.description"></a>
-
-```typescript
-public readonly description: string;
-```
-
-- *Type:* string
-
-The description is just a string that helps people understand the purpose of the package.
-
-It can be used when searching for packages in a package manager as well.
-See https://classic.yarnpkg.com/en/docs/package-json/#toc-description
-
----
-
-##### `devDeps`<sup>Optional</sup> <a name="devDeps" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.devDeps"></a>
-
-```typescript
-public readonly devDeps: string[];
-```
-
-- *Type:* string[]
-- *Default:* []
-
-Build dependencies for this module.
-
-These dependencies will only be
-available in your build environment but will not be fetched when this
-module is consumed.
-
-The recommendation is to only specify the module name here (e.g.
-`express`). This will behave similar to `yarn add` or `npm install` in the
-sense that it will add the module as a dependency to your `package.json`
-file with the latest version (`^`). You can specify semver requirements in
-the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
-this will be what you `package.json` will eventually include.
-
----
-
-*Example*
-
-```typescript
-[ 'typescript', '@types/express' ]
-```
-
-
-##### `entrypoint`<sup>Optional</sup> <a name="entrypoint" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.entrypoint"></a>
-
-```typescript
-public readonly entrypoint: string;
-```
-
-- *Type:* string
-- *Default:* "lib/index.js"
-
-Module entrypoint (`main` in `package.json`).
-
-Set to an empty string to not include `main` in your package.json
-
----
-
-##### `homepage`<sup>Optional</sup> <a name="homepage" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.homepage"></a>
-
-```typescript
-public readonly homepage: string;
-```
-
-- *Type:* string
-
-Package's Homepage / Website.
-
----
-
-##### `keywords`<sup>Optional</sup> <a name="keywords" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.keywords"></a>
-
-```typescript
-public readonly keywords: string[];
-```
-
-- *Type:* string[]
-
-Keywords to include in `package.json`.
-
----
-
-##### `license`<sup>Optional</sup> <a name="license" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.license"></a>
-
-```typescript
-public readonly license: string;
-```
-
-- *Type:* string
-- *Default:* "Apache-2.0"
-
-License's SPDX identifier.
-
-See https://github.com/projen/projen/tree/main/license-text for a list of supported licenses.
-Use the `licensed` option if you want to no license to be specified.
-
----
-
-##### `licensed`<sup>Optional</sup> <a name="licensed" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.licensed"></a>
-
-```typescript
-public readonly licensed: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Indicates if a license should be added.
-
----
-
-##### `maxNodeVersion`<sup>Optional</sup> <a name="maxNodeVersion" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.maxNodeVersion"></a>
-
-```typescript
-public readonly maxNodeVersion: string;
-```
-
-- *Type:* string
-- *Default:* no max
-
-Minimum node.js version to require via `engines` (inclusive).
-
----
-
-##### `minNodeVersion`<sup>Optional</sup> <a name="minNodeVersion" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.minNodeVersion"></a>
-
-```typescript
-public readonly minNodeVersion: string;
-```
-
-- *Type:* string
-- *Default:* no "engines" specified
-
-Minimum Node.js version to require via package.json `engines` (inclusive).
-
----
-
-##### `npmAccess`<sup>Optional</sup> <a name="npmAccess" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.npmAccess"></a>
-
-```typescript
-public readonly npmAccess: NpmAccess;
-```
-
-- *Type:* projen.javascript.NpmAccess
-- *Default:* for scoped packages (e.g. `foo@bar`), the default is `NpmAccess.RESTRICTED`, for non-scoped packages, the default is `NpmAccess.PUBLIC`.
-
-Access level of the npm package.
-
----
-
-##### ~~`npmRegistry`~~<sup>Optional</sup> <a name="npmRegistry" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.npmRegistry"></a>
-
-- *Deprecated:* use `npmRegistryUrl` instead
-
-```typescript
-public readonly npmRegistry: string;
-```
-
-- *Type:* string
-
-The host name of the npm registry to publish to.
-
-Cannot be set together with `npmRegistryUrl`.
-
----
-
-##### `npmRegistryUrl`<sup>Optional</sup> <a name="npmRegistryUrl" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.npmRegistryUrl"></a>
-
-```typescript
-public readonly npmRegistryUrl: string;
-```
-
-- *Type:* string
-- *Default:* "https://registry.npmjs.org"
-
-The base URL of the npm package registry.
-
-Must be a URL (e.g. start with "https://" or "http://")
-
----
-
-##### `npmTokenSecret`<sup>Optional</sup> <a name="npmTokenSecret" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.npmTokenSecret"></a>
-
-```typescript
-public readonly npmTokenSecret: string;
-```
-
-- *Type:* string
-- *Default:* "NPM_TOKEN"
-
-GitHub secret which contains the NPM token to use when publishing packages.
-
----
-
-##### `packageManager`<sup>Optional</sup> <a name="packageManager" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.packageManager"></a>
-
-```typescript
-public readonly packageManager: NodePackageManager;
-```
-
-- *Type:* projen.javascript.NodePackageManager
-- *Default:* NodePackageManager.YARN
-
-The Node Package Manager used to execute scripts.
-
----
-
-##### `packageName`<sup>Optional</sup> <a name="packageName" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.packageName"></a>
-
-```typescript
-public readonly packageName: string;
-```
-
-- *Type:* string
-- *Default:* defaults to project name
-
-The "name" in package.json.
-
----
-
-##### `peerDependencyOptions`<sup>Optional</sup> <a name="peerDependencyOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.peerDependencyOptions"></a>
-
-```typescript
-public readonly peerDependencyOptions: PeerDependencyOptions;
-```
-
-- *Type:* projen.javascript.PeerDependencyOptions
-
-Options for `peerDeps`.
-
----
-
-##### `peerDeps`<sup>Optional</sup> <a name="peerDeps" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.peerDeps"></a>
-
-```typescript
-public readonly peerDeps: string[];
-```
-
-- *Type:* string[]
-- *Default:* []
-
-Peer dependencies for this module.
-
-Dependencies listed here are required to
-be installed (and satisfied) by the _consumer_ of this library. Using peer
-dependencies allows you to ensure that only a single module of a certain
-library exists in the `node_modules` tree of your consumers.
-
-Note that prior to npm@7, peer dependencies are _not_ automatically
-installed, which means that adding peer dependencies to a library will be a
-breaking change for your customers.
-
-Unless `peerDependencyOptions.pinnedDevDependency` is disabled (it is
-enabled by default), projen will automatically add a dev dependency with a
-pinned version for each peer dependency. This will ensure that you build &
-test your module against the lowest peer version required.
-
----
-
-##### `pnpmVersion`<sup>Optional</sup> <a name="pnpmVersion" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.pnpmVersion"></a>
-
-```typescript
-public readonly pnpmVersion: string;
-```
-
-- *Type:* string
-- *Default:* "7"
-
-The version of PNPM to use if using PNPM as a package manager.
-
----
-
-##### `repository`<sup>Optional</sup> <a name="repository" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.repository"></a>
-
-```typescript
-public readonly repository: string;
-```
-
-- *Type:* string
-
-The repository is the location where the actual code for your package lives.
-
-See https://classic.yarnpkg.com/en/docs/package-json/#toc-repository
-
----
-
-##### `repositoryDirectory`<sup>Optional</sup> <a name="repositoryDirectory" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.repositoryDirectory"></a>
-
-```typescript
-public readonly repositoryDirectory: string;
-```
-
-- *Type:* string
-
-If the package.json for your package is not in the root directory (for example if it is part of a monorepo), you can specify the directory in which it lives.
-
----
-
-##### `scopedPackagesOptions`<sup>Optional</sup> <a name="scopedPackagesOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.scopedPackagesOptions"></a>
-
-```typescript
-public readonly scopedPackagesOptions: ScopedPackagesOptions[];
-```
-
-- *Type:* projen.javascript.ScopedPackagesOptions[]
-- *Default:* fetch all scoped packages from the public npm registry
-
-Options for privately hosted scoped packages.
-
----
-
-##### ~~`scripts`~~<sup>Optional</sup> <a name="scripts" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.scripts"></a>
-
-- *Deprecated:* use `project.addTask()` or `package.setScript()`
-
-```typescript
-public readonly scripts: {[ key: string ]: string};
-```
-
-- *Type:* {[ key: string ]: string}
-- *Default:* {}
-
-npm scripts to include.
-
-If a script has the same name as a standard script,
-the standard script will be overwritten.
-Also adds the script as a task.
-
----
-
-##### `stability`<sup>Optional</sup> <a name="stability" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.stability"></a>
-
-```typescript
-public readonly stability: string;
-```
-
-- *Type:* string
-
-Package's Stability.
-
----
-
-##### `jsiiReleaseVersion`<sup>Optional</sup> <a name="jsiiReleaseVersion" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.jsiiReleaseVersion"></a>
-
-```typescript
-public readonly jsiiReleaseVersion: string;
-```
-
-- *Type:* string
-- *Default:* "latest"
-
-Version requirement of `publib` which is used to publish modules to npm.
-
----
-
-##### `majorVersion`<sup>Optional</sup> <a name="majorVersion" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.majorVersion"></a>
-
-```typescript
-public readonly majorVersion: number;
-```
-
-- *Type:* number
-- *Default:* Major version is not enforced.
-
-Major version to release from the default branch.
-
-If this is specified, we bump the latest version of this major version line.
-If not specified, we bump the global latest version.
-
----
-
-##### `minMajorVersion`<sup>Optional</sup> <a name="minMajorVersion" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.minMajorVersion"></a>
-
-```typescript
-public readonly minMajorVersion: number;
-```
-
-- *Type:* number
-- *Default:* No minimum version is being enforced
-
-Minimal Major version to release.
-
-This can be useful to set to 1, as breaking changes before the 1.x major
-release are not incrementing the major version number.
-
-Can not be set together with `majorVersion`.
-
----
-
-##### `npmDistTag`<sup>Optional</sup> <a name="npmDistTag" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.npmDistTag"></a>
-
-```typescript
-public readonly npmDistTag: string;
-```
-
-- *Type:* string
-- *Default:* "latest"
-
-The npmDistTag to use when publishing from the default branch.
-
-To set the npm dist-tag for release branches, set the `npmDistTag` property
-for each branch.
-
----
-
-##### `postBuildSteps`<sup>Optional</sup> <a name="postBuildSteps" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.postBuildSteps"></a>
-
-```typescript
-public readonly postBuildSteps: JobStep[];
-```
-
-- *Type:* projen.github.workflows.JobStep[]
-- *Default:* []
-
-Steps to execute after build as part of the release workflow.
-
----
-
-##### `prerelease`<sup>Optional</sup> <a name="prerelease" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.prerelease"></a>
-
-```typescript
-public readonly prerelease: string;
-```
-
-- *Type:* string
-- *Default:* normal semantic versions
-
-Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pre").
-
----
-
-##### `publishDryRun`<sup>Optional</sup> <a name="publishDryRun" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.publishDryRun"></a>
-
-```typescript
-public readonly publishDryRun: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Instead of actually publishing to package managers, just print the publishing command.
-
----
-
-##### `publishTasks`<sup>Optional</sup> <a name="publishTasks" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.publishTasks"></a>
-
-```typescript
-public readonly publishTasks: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Define publishing tasks that can be executed manually as well as workflows.
-
-Normally, publishing only happens within automated workflows. Enable this
-in order to create a publishing task for each publishing activity.
-
----
-
-##### `releasableCommits`<sup>Optional</sup> <a name="releasableCommits" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releasableCommits"></a>
-
-```typescript
-public readonly releasableCommits: ReleasableCommits;
-```
-
-- *Type:* projen.ReleasableCommits
-- *Default:* ReleasableCommits.everyCommit()
-
-Find commits that should be considered releasable Used to decide if a release is required.
-
----
-
-##### `releaseBranches`<sup>Optional</sup> <a name="releaseBranches" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseBranches"></a>
-
-```typescript
-public readonly releaseBranches: {[ key: string ]: BranchOptions};
-```
-
-- *Type:* {[ key: string ]: projen.release.BranchOptions}
-- *Default:* no additional branches are used for release. you can use `addBranch()` to add additional branches.
-
-Defines additional release branches.
-
-A workflow will be created for each
-release branch which will publish releases from commits in this branch.
-Each release branch _must_ be assigned a major version number which is used
-to enforce that versions published from that branch always use that major
-version. If multiple branches are used, the `majorVersion` field must also
-be provided for the default branch.
-
----
-
-##### ~~`releaseEveryCommit`~~<sup>Optional</sup> <a name="releaseEveryCommit" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseEveryCommit"></a>
-
-- *Deprecated:* Use `releaseTrigger: ReleaseTrigger.continuous()` instead
-
-```typescript
-public readonly releaseEveryCommit: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Automatically release new versions every commit to one of branches in `releaseBranches`.
-
----
-
-##### `releaseFailureIssue`<sup>Optional</sup> <a name="releaseFailureIssue" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseFailureIssue"></a>
-
-```typescript
-public readonly releaseFailureIssue: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Create a github issue on every failed publishing task.
-
----
-
-##### `releaseFailureIssueLabel`<sup>Optional</sup> <a name="releaseFailureIssueLabel" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseFailureIssueLabel"></a>
-
-```typescript
-public readonly releaseFailureIssueLabel: string;
-```
-
-- *Type:* string
-- *Default:* "failed-release"
-
-The label to apply to issues indicating publish failures.
-
-Only applies if `releaseFailureIssue` is true.
-
----
-
-##### ~~`releaseSchedule`~~<sup>Optional</sup> <a name="releaseSchedule" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseSchedule"></a>
-
-- *Deprecated:* Use `releaseTrigger: ReleaseTrigger.scheduled()` instead
-
-```typescript
-public readonly releaseSchedule: string;
-```
-
-- *Type:* string
-- *Default:* no scheduled releases
-
-CRON schedule to trigger new releases.
-
----
-
-##### `releaseTagPrefix`<sup>Optional</sup> <a name="releaseTagPrefix" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseTagPrefix"></a>
-
-```typescript
-public readonly releaseTagPrefix: string;
-```
-
-- *Type:* string
-- *Default:* "v"
-
-Automatically add the given prefix to release tags. Useful if you are releasing on multiple branches with overlapping version numbers.
-
-Note: this prefix is used to detect the latest tagged version
-when bumping, so if you change this on a project with an existing version
-history, you may need to manually tag your latest release
-with the new prefix.
-
----
-
-##### `releaseTrigger`<sup>Optional</sup> <a name="releaseTrigger" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseTrigger"></a>
-
-```typescript
-public readonly releaseTrigger: ReleaseTrigger;
-```
-
-- *Type:* projen.release.ReleaseTrigger
-- *Default:* Continuous releases (`ReleaseTrigger.continuous()`)
-
-The release trigger to use.
-
----
-
-##### `releaseWorkflowName`<sup>Optional</sup> <a name="releaseWorkflowName" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseWorkflowName"></a>
-
-```typescript
-public readonly releaseWorkflowName: string;
-```
-
-- *Type:* string
-- *Default:* "Release"
-
-The name of the default release workflow.
-
----
-
-##### `releaseWorkflowSetupSteps`<sup>Optional</sup> <a name="releaseWorkflowSetupSteps" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseWorkflowSetupSteps"></a>
-
-```typescript
-public readonly releaseWorkflowSetupSteps: JobStep[];
-```
-
-- *Type:* projen.github.workflows.JobStep[]
-
-A set of workflow steps to execute in order to setup the workflow container.
-
----
-
-##### `versionrcOptions`<sup>Optional</sup> <a name="versionrcOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.versionrcOptions"></a>
-
-```typescript
-public readonly versionrcOptions: {[ key: string ]: any};
-```
-
-- *Type:* {[ key: string ]: any}
-- *Default:* standard configuration applicable for GitHub repositories
-
-Custom configuration used when creating changelog with standard-version package.
-
-Given values either append to default configuration or overwrite values in it.
-
----
-
-##### `workflowContainerImage`<sup>Optional</sup> <a name="workflowContainerImage" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.workflowContainerImage"></a>
-
-```typescript
-public readonly workflowContainerImage: string;
-```
-
-- *Type:* string
-- *Default:* default image
-
-Container image to use for GitHub workflows.
-
----
-
-##### `workflowRunsOn`<sup>Optional</sup> <a name="workflowRunsOn" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.workflowRunsOn"></a>
-
-```typescript
-public readonly workflowRunsOn: string[];
-```
-
-- *Type:* string[]
-- *Default:* ["ubuntu-latest"]
-
-Github Runner selection labels.
-
----
-
-##### `defaultReleaseBranch`<sup>Required</sup> <a name="defaultReleaseBranch" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.defaultReleaseBranch"></a>
-
-```typescript
-public readonly defaultReleaseBranch: string;
-```
-
-- *Type:* string
-- *Default:* "main"
-
-The name of the main release branch.
-
----
-
-##### `artifactsDirectory`<sup>Optional</sup> <a name="artifactsDirectory" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.artifactsDirectory"></a>
-
-```typescript
-public readonly artifactsDirectory: string;
-```
-
-- *Type:* string
-- *Default:* "dist"
-
-A directory which will contain build artifacts.
-
----
-
-##### `autoApproveUpgrades`<sup>Optional</sup> <a name="autoApproveUpgrades" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.autoApproveUpgrades"></a>
-
-```typescript
-public readonly autoApproveUpgrades: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Automatically approve deps upgrade PRs, allowing them to be merged by mergify (if configued).
-
-Throw if set to true but `autoApproveOptions` are not defined.
-
----
-
-##### `buildWorkflow`<sup>Optional</sup> <a name="buildWorkflow" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.buildWorkflow"></a>
-
-```typescript
-public readonly buildWorkflow: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true if not a subproject
-
-Define a GitHub workflow for building PRs.
-
----
-
-##### `buildWorkflowTriggers`<sup>Optional</sup> <a name="buildWorkflowTriggers" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.buildWorkflowTriggers"></a>
-
-```typescript
-public readonly buildWorkflowTriggers: Triggers;
-```
-
-- *Type:* projen.github.workflows.Triggers
-- *Default:* "{ pullRequest: {}, workflowDispatch: {} }"
-
-Build workflow triggers.
-
----
-
-##### `bundlerOptions`<sup>Optional</sup> <a name="bundlerOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.bundlerOptions"></a>
-
-```typescript
-public readonly bundlerOptions: BundlerOptions;
-```
-
-- *Type:* projen.javascript.BundlerOptions
-
-Options for `Bundler`.
-
----
-
-##### `codeCov`<sup>Optional</sup> <a name="codeCov" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.codeCov"></a>
-
-```typescript
-public readonly codeCov: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Define a GitHub workflow step for sending code coverage metrics to https://codecov.io/ Uses codecov/codecov-action@v3 A secret is required for private repos. Configured with `@codeCovTokenSecret`.
-
----
-
-##### `codeCovTokenSecret`<sup>Optional</sup> <a name="codeCovTokenSecret" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.codeCovTokenSecret"></a>
-
-```typescript
-public readonly codeCovTokenSecret: string;
-```
-
-- *Type:* string
-- *Default:* if this option is not specified, only public repositories are supported
-
-Define the secret name for a specified https://codecov.io/ token A secret is required to send coverage for private repositories.
-
----
-
-##### `copyrightOwner`<sup>Optional</sup> <a name="copyrightOwner" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.copyrightOwner"></a>
-
-```typescript
-public readonly copyrightOwner: string;
-```
-
-- *Type:* string
-- *Default:* defaults to the value of authorName or "" if `authorName` is undefined.
-
-License copyright owner.
-
----
-
-##### `copyrightPeriod`<sup>Optional</sup> <a name="copyrightPeriod" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.copyrightPeriod"></a>
-
-```typescript
-public readonly copyrightPeriod: string;
-```
-
-- *Type:* string
-- *Default:* current year
-
-The copyright years to put in the LICENSE file.
-
----
-
-##### `dependabot`<sup>Optional</sup> <a name="dependabot" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.dependabot"></a>
-
-```typescript
-public readonly dependabot: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Use dependabot to handle dependency upgrades.
-
-Cannot be used in conjunction with `depsUpgrade`.
-
----
-
-##### `dependabotOptions`<sup>Optional</sup> <a name="dependabotOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.dependabotOptions"></a>
-
-```typescript
-public readonly dependabotOptions: DependabotOptions;
-```
-
-- *Type:* projen.github.DependabotOptions
-- *Default:* default options
-
-Options for dependabot.
-
----
-
-##### `depsUpgrade`<sup>Optional</sup> <a name="depsUpgrade" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.depsUpgrade"></a>
-
-```typescript
-public readonly depsUpgrade: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Use github workflows to handle dependency upgrades.
-
-Cannot be used in conjunction with `dependabot`.
-
----
-
-##### `depsUpgradeOptions`<sup>Optional</sup> <a name="depsUpgradeOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.depsUpgradeOptions"></a>
-
-```typescript
-public readonly depsUpgradeOptions: UpgradeDependenciesOptions;
-```
-
-- *Type:* projen.javascript.UpgradeDependenciesOptions
-- *Default:* default options
-
-Options for `UpgradeDependencies`.
-
----
-
-##### `gitignore`<sup>Optional</sup> <a name="gitignore" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.gitignore"></a>
-
-```typescript
-public readonly gitignore: string[];
-```
-
-- *Type:* string[]
-
-Additional entries to .gitignore.
-
----
-
-##### `jest`<sup>Optional</sup> <a name="jest" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.jest"></a>
-
-```typescript
-public readonly jest: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Setup jest unit tests.
-
----
-
-##### `jestOptions`<sup>Optional</sup> <a name="jestOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.jestOptions"></a>
-
-```typescript
-public readonly jestOptions: JestOptions;
-```
-
-- *Type:* projen.javascript.JestOptions
-- *Default:* default options
-
-Jest options.
-
----
-
-##### `mutableBuild`<sup>Optional</sup> <a name="mutableBuild" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.mutableBuild"></a>
-
-```typescript
-public readonly mutableBuild: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Automatically update files modified during builds to pull-request branches.
-
-This means
-that any files synthesized by projen or e.g. test snapshots will always be up-to-date
-before a PR is merged.
-
-Implies that PR builds do not have anti-tamper checks.
-
----
-
-##### ~~`npmignore`~~<sup>Optional</sup> <a name="npmignore" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.npmignore"></a>
-
-- *Deprecated:* - use `project.addPackageIgnore`
-
-```typescript
-public readonly npmignore: string[];
-```
-
-- *Type:* string[]
-
-Additional entries to .npmignore.
-
----
-
-##### `npmignoreEnabled`<sup>Optional</sup> <a name="npmignoreEnabled" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.npmignoreEnabled"></a>
-
-```typescript
-public readonly npmignoreEnabled: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Defines an .npmignore file. Normally this is only needed for libraries that are packaged as tarballs.
-
----
-
-##### `npmIgnoreOptions`<sup>Optional</sup> <a name="npmIgnoreOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.npmIgnoreOptions"></a>
-
-```typescript
-public readonly npmIgnoreOptions: IgnoreFileOptions;
-```
-
-- *Type:* projen.IgnoreFileOptions
-
-Configuration options for .npmignore file.
-
----
-
-##### `package`<sup>Optional</sup> <a name="package" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.package"></a>
-
-```typescript
-public readonly package: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Defines a `package` task that will produce an npm tarball under the artifacts directory (e.g. `dist`).
-
----
-
-##### `prettier`<sup>Optional</sup> <a name="prettier" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.prettier"></a>
-
-```typescript
-public readonly prettier: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Setup prettier.
-
----
-
-##### `prettierOptions`<sup>Optional</sup> <a name="prettierOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.prettierOptions"></a>
-
-```typescript
-public readonly prettierOptions: PrettierOptions;
-```
-
-- *Type:* projen.javascript.PrettierOptions
-- *Default:* default options
-
-Prettier options.
-
----
-
-##### `projenDevDependency`<sup>Optional</sup> <a name="projenDevDependency" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.projenDevDependency"></a>
-
-```typescript
-public readonly projenDevDependency: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Indicates of "projen" should be installed as a devDependency.
-
----
-
-##### `projenrcJs`<sup>Optional</sup> <a name="projenrcJs" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.projenrcJs"></a>
-
-```typescript
-public readonly projenrcJs: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true if projenrcJson is false
-
-Generate (once) .projenrc.js (in JavaScript). Set to `false` in order to disable .projenrc.js generation.
-
----
-
-##### `projenrcJsOptions`<sup>Optional</sup> <a name="projenrcJsOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.projenrcJsOptions"></a>
-
-```typescript
-public readonly projenrcJsOptions: ProjenrcOptions;
-```
-
-- *Type:* projen.javascript.ProjenrcOptions
-- *Default:* default options
-
-Options for .projenrc.js.
-
----
-
-##### `projenVersion`<sup>Optional</sup> <a name="projenVersion" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.projenVersion"></a>
-
-```typescript
-public readonly projenVersion: string;
-```
-
-- *Type:* string
-- *Default:* Defaults to the latest version.
-
-Version of projen to install.
-
----
-
-##### `pullRequestTemplate`<sup>Optional</sup> <a name="pullRequestTemplate" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.pullRequestTemplate"></a>
-
-```typescript
-public readonly pullRequestTemplate: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Include a GitHub pull request template.
-
----
-
-##### `pullRequestTemplateContents`<sup>Optional</sup> <a name="pullRequestTemplateContents" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.pullRequestTemplateContents"></a>
-
-```typescript
-public readonly pullRequestTemplateContents: string[];
-```
-
-- *Type:* string[]
-- *Default:* default content
-
-The contents of the pull request template.
-
----
-
-##### `release`<sup>Optional</sup> <a name="release" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.release"></a>
-
-```typescript
-public readonly release: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true (false for subprojects)
-
-Add release management to this project.
-
----
-
-##### `releaseToNpm`<sup>Optional</sup> <a name="releaseToNpm" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseToNpm"></a>
-
-```typescript
-public readonly releaseToNpm: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Automatically release to npm when new versions are introduced.
-
----
-
-##### ~~`releaseWorkflow`~~<sup>Optional</sup> <a name="releaseWorkflow" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseWorkflow"></a>
-
-- *Deprecated:* see `release`.
-
-```typescript
-public readonly releaseWorkflow: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true if not a subproject
-
-DEPRECATED: renamed to `release`.
-
----
-
-##### `workflowBootstrapSteps`<sup>Optional</sup> <a name="workflowBootstrapSteps" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.workflowBootstrapSteps"></a>
-
-```typescript
-public readonly workflowBootstrapSteps: JobStep[];
-```
-
-- *Type:* projen.github.workflows.JobStep[]
-- *Default:* "yarn install --frozen-lockfile && yarn projen"
-
-Workflow steps to use in order to bootstrap this repo.
-
----
-
-##### `workflowGitIdentity`<sup>Optional</sup> <a name="workflowGitIdentity" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.workflowGitIdentity"></a>
-
-```typescript
-public readonly workflowGitIdentity: GitIdentity;
-```
-
-- *Type:* projen.github.GitIdentity
-- *Default:* GitHub Actions
-
-The git identity to use in workflows.
-
----
-
-##### `workflowNodeVersion`<sup>Optional</sup> <a name="workflowNodeVersion" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.workflowNodeVersion"></a>
-
-```typescript
-public readonly workflowNodeVersion: string;
-```
-
-- *Type:* string
-- *Default:* same as `minNodeVersion`
-
-The node version to use in GitHub workflows.
-
----
-
-##### `workflowPackageCache`<sup>Optional</sup> <a name="workflowPackageCache" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.workflowPackageCache"></a>
-
-```typescript
-public readonly workflowPackageCache: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Enable Node.js package cache in GitHub workflows.
-
----
-
-##### `backport`<sup>Optional</sup> <a name="backport" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.backport"></a>
-
-```typescript
-public readonly backport: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Configure a backport workflow.
-
----
-
-##### `backportBranches`<sup>Optional</sup> <a name="backportBranches" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.backportBranches"></a>
-
-```typescript
-public readonly backportBranches: string[];
-```
-
-- *Type:* string[]
-- *Default:* Will be derived from PR labels.
-
-Branches to backport to.
-
----
-
-##### `repoName`<sup>Optional</sup> <a name="repoName" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.repoName"></a>
-
-```typescript
-public readonly repoName: string;
-```
-
-- *Type:* string
-- *Default:* the package name.
-
-The name of the repository inside the cdk8s-team org where the code of the project is locate in.
-
----
-
-### Cdk8sTeamTypeScriptProjectOptions <a name="Cdk8sTeamTypeScriptProjectOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions"></a>
-
-Options for `Cdk8sTeamTypeScriptProject`.
-
-#### Initializer <a name="Initializer" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.Initializer"></a>
-
-```typescript
-import { Cdk8sTeamTypeScriptProjectOptions } from '@cdk8s/projen-common'
-
-const cdk8sTeamTypeScriptProjectOptions: Cdk8sTeamTypeScriptProjectOptions = { ... }
-```
-
-#### Properties <a name="Properties" id="Properties"></a>
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.name">name</a></code> | <code>string</code> | This is the name of your project. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.commitGenerated">commitGenerated</a></code> | <code>boolean</code> | Whether to commit the managed files by default. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.gitIgnoreOptions">gitIgnoreOptions</a></code> | <code>projen.IgnoreFileOptions</code> | Configuration options for .gitignore file. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.gitOptions">gitOptions</a></code> | <code>projen.GitOptions</code> | Configuration options for git. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.logging">logging</a></code> | <code>projen.LoggerOptions</code> | Configure logging options such as verbosity. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.outdir">outdir</a></code> | <code>string</code> | The root directory of the project. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.parent">parent</a></code> | <code>projen.Project</code> | The parent project, if this project is part of a bigger project. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenCommand">projenCommand</a></code> | <code>string</code> | The shell command to use in order to run the projen CLI. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenrcJson">projenrcJson</a></code> | <code>boolean</code> | Generate (once) .projenrc.json (in JSON). Set to `false` in order to disable .projenrc.json generation. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenrcJsonOptions">projenrcJsonOptions</a></code> | <code>projen.ProjenrcJsonOptions</code> | Options for .projenrc.json. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.renovatebot">renovatebot</a></code> | <code>boolean</code> | Use renovatebot to handle dependency upgrades. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.renovatebotOptions">renovatebotOptions</a></code> | <code>projen.RenovatebotOptions</code> | Options for renovatebot. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.autoApproveOptions">autoApproveOptions</a></code> | <code>projen.github.AutoApproveOptions</code> | Enable and configure the 'auto approve' workflow. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.autoMerge">autoMerge</a></code> | <code>boolean</code> | Enable automatic merging on GitHub. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.autoMergeOptions">autoMergeOptions</a></code> | <code>projen.github.AutoMergeOptions</code> | Configure options for automatic merging on GitHub. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.clobber">clobber</a></code> | <code>boolean</code> | Add a `clobber` task which resets the repo to origin. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.devContainer">devContainer</a></code> | <code>boolean</code> | Add a VSCode development environment (used for GitHub Codespaces). |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.github">github</a></code> | <code>boolean</code> | Enable GitHub integration. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.githubOptions">githubOptions</a></code> | <code>projen.github.GitHubOptions</code> | Options for GitHub integration. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.gitpod">gitpod</a></code> | <code>boolean</code> | Add a Gitpod development environment. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.mergify">mergify</a></code> | <code>boolean</code> | Whether mergify should be enabled on this repository or not. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.mergifyOptions">mergifyOptions</a></code> | <code>projen.github.MergifyOptions</code> | Options for mergify. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projectType">projectType</a></code> | <code>projen.ProjectType</code> | Which type of project this is (library/app). |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenCredentials">projenCredentials</a></code> | <code>projen.github.GithubCredentials</code> | Choose a method of providing GitHub API access for projen workflows. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenTokenSecret">projenTokenSecret</a></code> | <code>string</code> | The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.readme">readme</a></code> | <code>projen.SampleReadmeProps</code> | The README setup. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.stale">stale</a></code> | <code>boolean</code> | Auto-close of stale issues and pull request. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.staleOptions">staleOptions</a></code> | <code>projen.github.StaleOptions</code> | Auto-close stale issues and pull requests. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.vscode">vscode</a></code> | <code>boolean</code> | Enable VSCode integration. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.allowLibraryDependencies">allowLibraryDependencies</a></code> | <code>boolean</code> | Allow the project to include `peerDependencies` and `bundledDependencies`. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.authorEmail">authorEmail</a></code> | <code>string</code> | Author's e-mail. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.authorName">authorName</a></code> | <code>string</code> | Author's name. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.authorOrganization">authorOrganization</a></code> | <code>boolean</code> | Is the author an organization. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.authorUrl">authorUrl</a></code> | <code>string</code> | Author's URL / Website. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.autoDetectBin">autoDetectBin</a></code> | <code>boolean</code> | Automatically add all executables under the `bin` directory to your `package.json` file under the `bin` section. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.bin">bin</a></code> | <code>{[ key: string ]: string}</code> | Binary programs vended with your module. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.bugsEmail">bugsEmail</a></code> | <code>string</code> | The email address to which issues should be reported. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.bugsUrl">bugsUrl</a></code> | <code>string</code> | The url to your project's issue tracker. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.bundledDeps">bundledDeps</a></code> | <code>string[]</code> | List of dependencies to bundle into this module. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.codeArtifactOptions">codeArtifactOptions</a></code> | <code>projen.javascript.CodeArtifactOptions</code> | Options for npm packages using AWS CodeArtifact. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.deps">deps</a></code> | <code>string[]</code> | Runtime dependencies of this module. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.description">description</a></code> | <code>string</code> | The description is just a string that helps people understand the purpose of the package. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.devDeps">devDeps</a></code> | <code>string[]</code> | Build dependencies for this module. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.entrypoint">entrypoint</a></code> | <code>string</code> | Module entrypoint (`main` in `package.json`). |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.homepage">homepage</a></code> | <code>string</code> | Package's Homepage / Website. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.keywords">keywords</a></code> | <code>string[]</code> | Keywords to include in `package.json`. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.license">license</a></code> | <code>string</code> | License's SPDX identifier. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.licensed">licensed</a></code> | <code>boolean</code> | Indicates if a license should be added. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.maxNodeVersion">maxNodeVersion</a></code> | <code>string</code> | Minimum node.js version to require via `engines` (inclusive). |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.minNodeVersion">minNodeVersion</a></code> | <code>string</code> | Minimum Node.js version to require via package.json `engines` (inclusive). |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.npmAccess">npmAccess</a></code> | <code>projen.javascript.NpmAccess</code> | Access level of the npm package. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.npmRegistry">npmRegistry</a></code> | <code>string</code> | The host name of the npm registry to publish to. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.npmRegistryUrl">npmRegistryUrl</a></code> | <code>string</code> | The base URL of the npm package registry. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.npmTokenSecret">npmTokenSecret</a></code> | <code>string</code> | GitHub secret which contains the NPM token to use when publishing packages. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.packageManager">packageManager</a></code> | <code>projen.javascript.NodePackageManager</code> | The Node Package Manager used to execute scripts. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.packageName">packageName</a></code> | <code>string</code> | The "name" in package.json. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.peerDependencyOptions">peerDependencyOptions</a></code> | <code>projen.javascript.PeerDependencyOptions</code> | Options for `peerDeps`. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.peerDeps">peerDeps</a></code> | <code>string[]</code> | Peer dependencies for this module. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.pnpmVersion">pnpmVersion</a></code> | <code>string</code> | The version of PNPM to use if using PNPM as a package manager. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.repository">repository</a></code> | <code>string</code> | The repository is the location where the actual code for your package lives. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.repositoryDirectory">repositoryDirectory</a></code> | <code>string</code> | If the package.json for your package is not in the root directory (for example if it is part of a monorepo), you can specify the directory in which it lives. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.scopedPackagesOptions">scopedPackagesOptions</a></code> | <code>projen.javascript.ScopedPackagesOptions[]</code> | Options for privately hosted scoped packages. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.scripts">scripts</a></code> | <code>{[ key: string ]: string}</code> | npm scripts to include. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.stability">stability</a></code> | <code>string</code> | Package's Stability. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.jsiiReleaseVersion">jsiiReleaseVersion</a></code> | <code>string</code> | Version requirement of `publib` which is used to publish modules to npm. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.majorVersion">majorVersion</a></code> | <code>number</code> | Major version to release from the default branch. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.minMajorVersion">minMajorVersion</a></code> | <code>number</code> | Minimal Major version to release. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.npmDistTag">npmDistTag</a></code> | <code>string</code> | The npmDistTag to use when publishing from the default branch. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.postBuildSteps">postBuildSteps</a></code> | <code>projen.github.workflows.JobStep[]</code> | Steps to execute after build as part of the release workflow. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.prerelease">prerelease</a></code> | <code>string</code> | Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pre"). |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.publishDryRun">publishDryRun</a></code> | <code>boolean</code> | Instead of actually publishing to package managers, just print the publishing command. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.publishTasks">publishTasks</a></code> | <code>boolean</code> | Define publishing tasks that can be executed manually as well as workflows. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releasableCommits">releasableCommits</a></code> | <code>projen.ReleasableCommits</code> | Find commits that should be considered releasable Used to decide if a release is required. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseBranches">releaseBranches</a></code> | <code>{[ key: string ]: projen.release.BranchOptions}</code> | Defines additional release branches. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseEveryCommit">releaseEveryCommit</a></code> | <code>boolean</code> | Automatically release new versions every commit to one of branches in `releaseBranches`. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseFailureIssue">releaseFailureIssue</a></code> | <code>boolean</code> | Create a github issue on every failed publishing task. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseFailureIssueLabel">releaseFailureIssueLabel</a></code> | <code>string</code> | The label to apply to issues indicating publish failures. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseSchedule">releaseSchedule</a></code> | <code>string</code> | CRON schedule to trigger new releases. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseTagPrefix">releaseTagPrefix</a></code> | <code>string</code> | Automatically add the given prefix to release tags. Useful if you are releasing on multiple branches with overlapping version numbers. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseTrigger">releaseTrigger</a></code> | <code>projen.release.ReleaseTrigger</code> | The release trigger to use. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseWorkflowName">releaseWorkflowName</a></code> | <code>string</code> | The name of the default release workflow. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseWorkflowSetupSteps">releaseWorkflowSetupSteps</a></code> | <code>projen.github.workflows.JobStep[]</code> | A set of workflow steps to execute in order to setup the workflow container. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.versionrcOptions">versionrcOptions</a></code> | <code>{[ key: string ]: any}</code> | Custom configuration used when creating changelog with standard-version package. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.workflowContainerImage">workflowContainerImage</a></code> | <code>string</code> | Container image to use for GitHub workflows. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.workflowRunsOn">workflowRunsOn</a></code> | <code>string[]</code> | Github Runner selection labels. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.defaultReleaseBranch">defaultReleaseBranch</a></code> | <code>string</code> | The name of the main release branch. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.artifactsDirectory">artifactsDirectory</a></code> | <code>string</code> | A directory which will contain build artifacts. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.autoApproveUpgrades">autoApproveUpgrades</a></code> | <code>boolean</code> | Automatically approve deps upgrade PRs, allowing them to be merged by mergify (if configued). |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.buildWorkflow">buildWorkflow</a></code> | <code>boolean</code> | Define a GitHub workflow for building PRs. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.buildWorkflowTriggers">buildWorkflowTriggers</a></code> | <code>projen.github.workflows.Triggers</code> | Build workflow triggers. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.bundlerOptions">bundlerOptions</a></code> | <code>projen.javascript.BundlerOptions</code> | Options for `Bundler`. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.codeCov">codeCov</a></code> | <code>boolean</code> | Define a GitHub workflow step for sending code coverage metrics to https://codecov.io/ Uses codecov/codecov-action@v3 A secret is required for private repos. Configured with `@codeCovTokenSecret`. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.codeCovTokenSecret">codeCovTokenSecret</a></code> | <code>string</code> | Define the secret name for a specified https://codecov.io/ token A secret is required to send coverage for private repositories. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.copyrightOwner">copyrightOwner</a></code> | <code>string</code> | License copyright owner. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.copyrightPeriod">copyrightPeriod</a></code> | <code>string</code> | The copyright years to put in the LICENSE file. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.dependabot">dependabot</a></code> | <code>boolean</code> | Use dependabot to handle dependency upgrades. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.dependabotOptions">dependabotOptions</a></code> | <code>projen.github.DependabotOptions</code> | Options for dependabot. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.depsUpgrade">depsUpgrade</a></code> | <code>boolean</code> | Use github workflows to handle dependency upgrades. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.depsUpgradeOptions">depsUpgradeOptions</a></code> | <code>projen.javascript.UpgradeDependenciesOptions</code> | Options for `UpgradeDependencies`. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.gitignore">gitignore</a></code> | <code>string[]</code> | Additional entries to .gitignore. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.jest">jest</a></code> | <code>boolean</code> | Setup jest unit tests. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.jestOptions">jestOptions</a></code> | <code>projen.javascript.JestOptions</code> | Jest options. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.mutableBuild">mutableBuild</a></code> | <code>boolean</code> | Automatically update files modified during builds to pull-request branches. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.npmignore">npmignore</a></code> | <code>string[]</code> | Additional entries to .npmignore. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.npmignoreEnabled">npmignoreEnabled</a></code> | <code>boolean</code> | Defines an .npmignore file. Normally this is only needed for libraries that are packaged as tarballs. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.npmIgnoreOptions">npmIgnoreOptions</a></code> | <code>projen.IgnoreFileOptions</code> | Configuration options for .npmignore file. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.package">package</a></code> | <code>boolean</code> | Defines a `package` task that will produce an npm tarball under the artifacts directory (e.g. `dist`). |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.prettier">prettier</a></code> | <code>boolean</code> | Setup prettier. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.prettierOptions">prettierOptions</a></code> | <code>projen.javascript.PrettierOptions</code> | Prettier options. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenDevDependency">projenDevDependency</a></code> | <code>boolean</code> | Indicates of "projen" should be installed as a devDependency. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenrcJs">projenrcJs</a></code> | <code>boolean</code> | Generate (once) .projenrc.js (in JavaScript). Set to `false` in order to disable .projenrc.js generation. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenrcJsOptions">projenrcJsOptions</a></code> | <code>projen.javascript.ProjenrcOptions</code> | Options for .projenrc.js. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenVersion">projenVersion</a></code> | <code>string</code> | Version of projen to install. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.pullRequestTemplate">pullRequestTemplate</a></code> | <code>boolean</code> | Include a GitHub pull request template. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.pullRequestTemplateContents">pullRequestTemplateContents</a></code> | <code>string[]</code> | The contents of the pull request template. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.release">release</a></code> | <code>boolean</code> | Add release management to this project. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseToNpm">releaseToNpm</a></code> | <code>boolean</code> | Automatically release to npm when new versions are introduced. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseWorkflow">releaseWorkflow</a></code> | <code>boolean</code> | DEPRECATED: renamed to `release`. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.workflowBootstrapSteps">workflowBootstrapSteps</a></code> | <code>projen.github.workflows.JobStep[]</code> | Workflow steps to use in order to bootstrap this repo. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.workflowGitIdentity">workflowGitIdentity</a></code> | <code>projen.github.GitIdentity</code> | The git identity to use in workflows. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.workflowNodeVersion">workflowNodeVersion</a></code> | <code>string</code> | The node version to use in GitHub workflows. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.workflowPackageCache">workflowPackageCache</a></code> | <code>boolean</code> | Enable Node.js package cache in GitHub workflows. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.disableTsconfig">disableTsconfig</a></code> | <code>boolean</code> | Do not generate a `tsconfig.json` file (used by jsii projects since tsconfig.json is generated by the jsii compiler). |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.disableTsconfigDev">disableTsconfigDev</a></code> | <code>boolean</code> | Do not generate a `tsconfig.dev.json` file. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.docgen">docgen</a></code> | <code>boolean</code> | Docgen by Typedoc. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.docsDirectory">docsDirectory</a></code> | <code>string</code> | Docs directory. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.entrypointTypes">entrypointTypes</a></code> | <code>string</code> | The .d.ts file that includes the type declarations for this module. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.eslint">eslint</a></code> | <code>boolean</code> | Setup eslint. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.eslintOptions">eslintOptions</a></code> | <code>projen.javascript.EslintOptions</code> | Eslint options. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.libdir">libdir</a></code> | <code>string</code> | Typescript  artifacts output directory. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenrcTs">projenrcTs</a></code> | <code>boolean</code> | Use TypeScript for your projenrc file (`.projenrc.ts`). |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenrcTsOptions">projenrcTsOptions</a></code> | <code>projen.typescript.ProjenrcOptions</code> | Options for .projenrc.ts. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.sampleCode">sampleCode</a></code> | <code>boolean</code> | Generate one-time sample in `src/` and `test/` if there are no files there. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.srcdir">srcdir</a></code> | <code>string</code> | Typescript sources directory. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.testdir">testdir</a></code> | <code>string</code> | Jest tests directory. Tests files should be named `xxx.test.ts`. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.tsconfig">tsconfig</a></code> | <code>projen.javascript.TypescriptConfigOptions</code> | Custom TSConfig. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.tsconfigDev">tsconfigDev</a></code> | <code>projen.javascript.TypescriptConfigOptions</code> | Custom tsconfig options for the development tsconfig.json file (used for testing). |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.tsconfigDevFile">tsconfigDevFile</a></code> | <code>string</code> | The name of the development tsconfig.json file. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.typescriptVersion">typescriptVersion</a></code> | <code>string</code> | TypeScript version to use. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.additionalCompilerDependencies">additionalCompilerDependencies</a></code> | <code>string[]</code> | Packages that compile the project apart from the typescript/jsii compiler. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.backport">backport</a></code> | <code>boolean</code> | Configure a backport workflow. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.backportBranches">backportBranches</a></code> | <code>string[]</code> | Branches to backport to. |
-| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.repoName">repoName</a></code> | <code>string</code> | The name of the repository inside the cdk8s-team org where the code of the project is locate in. |
-
----
-
-##### `name`<sup>Required</sup> <a name="name" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.name"></a>
-
-```typescript
-public readonly name: string;
-```
-
-- *Type:* string
-- *Default:* $BASEDIR
-
-This is the name of your project.
-
----
-
-##### `commitGenerated`<sup>Optional</sup> <a name="commitGenerated" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.commitGenerated"></a>
-
-```typescript
-public readonly commitGenerated: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Whether to commit the managed files by default.
-
----
-
-##### `gitIgnoreOptions`<sup>Optional</sup> <a name="gitIgnoreOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.gitIgnoreOptions"></a>
-
-```typescript
-public readonly gitIgnoreOptions: IgnoreFileOptions;
-```
-
-- *Type:* projen.IgnoreFileOptions
-
-Configuration options for .gitignore file.
-
----
-
-##### `gitOptions`<sup>Optional</sup> <a name="gitOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.gitOptions"></a>
-
-```typescript
-public readonly gitOptions: GitOptions;
-```
-
-- *Type:* projen.GitOptions
-
-Configuration options for git.
-
----
-
-##### `logging`<sup>Optional</sup> <a name="logging" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.logging"></a>
-
-```typescript
-public readonly logging: LoggerOptions;
-```
-
-- *Type:* projen.LoggerOptions
-- *Default:* {}
-
-Configure logging options such as verbosity.
-
----
-
-##### `outdir`<sup>Optional</sup> <a name="outdir" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.outdir"></a>
-
-```typescript
-public readonly outdir: string;
-```
-
-- *Type:* string
-- *Default:* "."
-
-The root directory of the project.
-
-Relative to this directory, all files are synthesized.
-
-If this project has a parent, this directory is relative to the parent
-directory and it cannot be the same as the parent or any of it's other
-sub-projects.
-
----
-
-##### `parent`<sup>Optional</sup> <a name="parent" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.parent"></a>
-
-```typescript
-public readonly parent: Project;
-```
-
-- *Type:* projen.Project
-
-The parent project, if this project is part of a bigger project.
-
----
-
-##### `projenCommand`<sup>Optional</sup> <a name="projenCommand" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenCommand"></a>
-
-```typescript
-public readonly projenCommand: string;
-```
-
-- *Type:* string
-- *Default:* "npx projen"
-
-The shell command to use in order to run the projen CLI.
-
-Can be used to customize in special environments.
-
----
-
-##### `projenrcJson`<sup>Optional</sup> <a name="projenrcJson" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenrcJson"></a>
-
-```typescript
-public readonly projenrcJson: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Generate (once) .projenrc.json (in JSON). Set to `false` in order to disable .projenrc.json generation.
-
----
-
-##### `projenrcJsonOptions`<sup>Optional</sup> <a name="projenrcJsonOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenrcJsonOptions"></a>
-
-```typescript
-public readonly projenrcJsonOptions: ProjenrcJsonOptions;
-```
-
-- *Type:* projen.ProjenrcJsonOptions
-- *Default:* default options
-
-Options for .projenrc.json.
-
----
-
-##### `renovatebot`<sup>Optional</sup> <a name="renovatebot" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.renovatebot"></a>
-
-```typescript
-public readonly renovatebot: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Use renovatebot to handle dependency upgrades.
-
----
-
-##### `renovatebotOptions`<sup>Optional</sup> <a name="renovatebotOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.renovatebotOptions"></a>
-
-```typescript
-public readonly renovatebotOptions: RenovatebotOptions;
-```
-
-- *Type:* projen.RenovatebotOptions
-- *Default:* default options
-
-Options for renovatebot.
-
----
-
-##### `autoApproveOptions`<sup>Optional</sup> <a name="autoApproveOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.autoApproveOptions"></a>
-
-```typescript
-public readonly autoApproveOptions: AutoApproveOptions;
-```
-
-- *Type:* projen.github.AutoApproveOptions
-- *Default:* auto approve is disabled
-
-Enable and configure the 'auto approve' workflow.
-
----
-
-##### `autoMerge`<sup>Optional</sup> <a name="autoMerge" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.autoMerge"></a>
-
-```typescript
-public readonly autoMerge: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Enable automatic merging on GitHub.
-
-Has no effect if `github.mergify`
-is set to false.
-
----
-
-##### `autoMergeOptions`<sup>Optional</sup> <a name="autoMergeOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.autoMergeOptions"></a>
-
-```typescript
-public readonly autoMergeOptions: AutoMergeOptions;
-```
-
-- *Type:* projen.github.AutoMergeOptions
-- *Default:* see defaults in `AutoMergeOptions`
-
-Configure options for automatic merging on GitHub.
-
-Has no effect if
-`github.mergify` or `autoMerge` is set to false.
-
----
-
-##### `clobber`<sup>Optional</sup> <a name="clobber" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.clobber"></a>
-
-```typescript
-public readonly clobber: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true, but false for subprojects
-
-Add a `clobber` task which resets the repo to origin.
-
----
-
-##### `devContainer`<sup>Optional</sup> <a name="devContainer" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.devContainer"></a>
-
-```typescript
-public readonly devContainer: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Add a VSCode development environment (used for GitHub Codespaces).
-
----
-
-##### `github`<sup>Optional</sup> <a name="github" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.github"></a>
-
-```typescript
-public readonly github: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Enable GitHub integration.
-
-Enabled by default for root projects. Disabled for non-root projects.
-
----
-
-##### `githubOptions`<sup>Optional</sup> <a name="githubOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.githubOptions"></a>
-
-```typescript
-public readonly githubOptions: GitHubOptions;
-```
-
-- *Type:* projen.github.GitHubOptions
-- *Default:* see GitHubOptions
-
-Options for GitHub integration.
-
----
-
-##### `gitpod`<sup>Optional</sup> <a name="gitpod" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.gitpod"></a>
-
-```typescript
-public readonly gitpod: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Add a Gitpod development environment.
-
----
-
-##### ~~`mergify`~~<sup>Optional</sup> <a name="mergify" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.mergify"></a>
-
-- *Deprecated:* use `githubOptions.mergify` instead
-
-```typescript
-public readonly mergify: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Whether mergify should be enabled on this repository or not.
-
----
-
-##### ~~`mergifyOptions`~~<sup>Optional</sup> <a name="mergifyOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.mergifyOptions"></a>
-
-- *Deprecated:* use `githubOptions.mergifyOptions` instead
-
-```typescript
-public readonly mergifyOptions: MergifyOptions;
-```
-
-- *Type:* projen.github.MergifyOptions
-- *Default:* default options
-
-Options for mergify.
-
----
-
-##### ~~`projectType`~~<sup>Optional</sup> <a name="projectType" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projectType"></a>
-
-- *Deprecated:* no longer supported at the base project level
-
-```typescript
-public readonly projectType: ProjectType;
-```
-
-- *Type:* projen.ProjectType
-- *Default:* ProjectType.UNKNOWN
-
-Which type of project this is (library/app).
-
----
-
-##### `projenCredentials`<sup>Optional</sup> <a name="projenCredentials" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenCredentials"></a>
-
-```typescript
-public readonly projenCredentials: GithubCredentials;
-```
-
-- *Type:* projen.github.GithubCredentials
-- *Default:* use a personal access token named PROJEN_GITHUB_TOKEN
-
-Choose a method of providing GitHub API access for projen workflows.
-
----
-
-##### ~~`projenTokenSecret`~~<sup>Optional</sup> <a name="projenTokenSecret" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenTokenSecret"></a>
-
-- *Deprecated:* use `projenCredentials`
-
-```typescript
-public readonly projenTokenSecret: string;
-```
-
-- *Type:* string
-- *Default:* "PROJEN_GITHUB_TOKEN"
-
-The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
-
-This token needs to have the `repo`, `workflows`
-and `packages` scope.
-
----
-
-##### `readme`<sup>Optional</sup> <a name="readme" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.readme"></a>
-
-```typescript
-public readonly readme: SampleReadmeProps;
-```
-
-- *Type:* projen.SampleReadmeProps
-- *Default:* { filename: 'README.md', contents: '# replace this' }
-
-The README setup.
-
----
-
-*Example*
-
-```typescript
-"{ filename: 'readme.md', contents: '# title' }"
-```
-
-
-##### `stale`<sup>Optional</sup> <a name="stale" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.stale"></a>
-
-```typescript
-public readonly stale: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Auto-close of stale issues and pull request.
-
-See `staleOptions` for options.
-
----
-
-##### `staleOptions`<sup>Optional</sup> <a name="staleOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.staleOptions"></a>
-
-```typescript
-public readonly staleOptions: StaleOptions;
-```
-
-- *Type:* projen.github.StaleOptions
-- *Default:* see defaults in `StaleOptions`
-
-Auto-close stale issues and pull requests.
-
-To disable set `stale` to `false`.
-
----
-
-##### `vscode`<sup>Optional</sup> <a name="vscode" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.vscode"></a>
-
-```typescript
-public readonly vscode: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Enable VSCode integration.
-
-Enabled by default for root projects. Disabled for non-root projects.
-
----
-
-##### `allowLibraryDependencies`<sup>Optional</sup> <a name="allowLibraryDependencies" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.allowLibraryDependencies"></a>
-
-```typescript
-public readonly allowLibraryDependencies: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Allow the project to include `peerDependencies` and `bundledDependencies`.
-
-This is normally only allowed for libraries. For apps, there's no meaning
-for specifying these.
-
----
-
-##### `authorEmail`<sup>Optional</sup> <a name="authorEmail" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.authorEmail"></a>
-
-```typescript
-public readonly authorEmail: string;
-```
-
-- *Type:* string
-
-Author's e-mail.
-
----
-
-##### `authorName`<sup>Optional</sup> <a name="authorName" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.authorName"></a>
-
-```typescript
-public readonly authorName: string;
-```
-
-- *Type:* string
-
-Author's name.
-
----
-
-##### `authorOrganization`<sup>Optional</sup> <a name="authorOrganization" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.authorOrganization"></a>
-
-```typescript
-public readonly authorOrganization: boolean;
-```
-
-- *Type:* boolean
-
-Is the author an organization.
-
----
-
-##### `authorUrl`<sup>Optional</sup> <a name="authorUrl" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.authorUrl"></a>
-
-```typescript
-public readonly authorUrl: string;
-```
-
-- *Type:* string
-
-Author's URL / Website.
-
----
-
-##### `autoDetectBin`<sup>Optional</sup> <a name="autoDetectBin" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.autoDetectBin"></a>
-
-```typescript
-public readonly autoDetectBin: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Automatically add all executables under the `bin` directory to your `package.json` file under the `bin` section.
-
----
-
-##### `bin`<sup>Optional</sup> <a name="bin" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.bin"></a>
-
-```typescript
-public readonly bin: {[ key: string ]: string};
-```
-
-- *Type:* {[ key: string ]: string}
-
-Binary programs vended with your module.
-
-You can use this option to add/customize how binaries are represented in
-your `package.json`, but unless `autoDetectBin` is `false`, every
-executable file under `bin` will automatically be added to this section.
-
----
-
-##### `bugsEmail`<sup>Optional</sup> <a name="bugsEmail" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.bugsEmail"></a>
-
-```typescript
-public readonly bugsEmail: string;
-```
-
-- *Type:* string
-
-The email address to which issues should be reported.
-
----
-
-##### `bugsUrl`<sup>Optional</sup> <a name="bugsUrl" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.bugsUrl"></a>
-
-```typescript
-public readonly bugsUrl: string;
-```
-
-- *Type:* string
-
-The url to your project's issue tracker.
-
----
-
-##### `bundledDeps`<sup>Optional</sup> <a name="bundledDeps" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.bundledDeps"></a>
-
-```typescript
-public readonly bundledDeps: string[];
-```
-
-- *Type:* string[]
-
-List of dependencies to bundle into this module.
-
-These modules will be
-added both to the `dependencies` section and `bundledDependencies` section of
-your `package.json`.
-
-The recommendation is to only specify the module name here (e.g.
-`express`). This will behave similar to `yarn add` or `npm install` in the
-sense that it will add the module as a dependency to your `package.json`
-file with the latest version (`^`). You can specify semver requirements in
-the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
-this will be what you `package.json` will eventually include.
-
----
-
-##### `codeArtifactOptions`<sup>Optional</sup> <a name="codeArtifactOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.codeArtifactOptions"></a>
-
-```typescript
-public readonly codeArtifactOptions: CodeArtifactOptions;
-```
-
-- *Type:* projen.javascript.CodeArtifactOptions
-- *Default:* undefined
-
-Options for npm packages using AWS CodeArtifact.
-
-This is required if publishing packages to, or installing scoped packages from AWS CodeArtifact
-
----
-
-##### `deps`<sup>Optional</sup> <a name="deps" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.deps"></a>
-
-```typescript
-public readonly deps: string[];
-```
-
-- *Type:* string[]
-- *Default:* []
-
-Runtime dependencies of this module.
-
-The recommendation is to only specify the module name here (e.g.
-`express`). This will behave similar to `yarn add` or `npm install` in the
-sense that it will add the module as a dependency to your `package.json`
-file with the latest version (`^`). You can specify semver requirements in
-the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
-this will be what you `package.json` will eventually include.
-
----
-
-*Example*
-
-```typescript
-[ 'express', 'lodash', 'foo@^2' ]
-```
-
-
-##### `description`<sup>Optional</sup> <a name="description" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.description"></a>
-
-```typescript
-public readonly description: string;
-```
-
-- *Type:* string
-
-The description is just a string that helps people understand the purpose of the package.
-
-It can be used when searching for packages in a package manager as well.
-See https://classic.yarnpkg.com/en/docs/package-json/#toc-description
-
----
-
-##### `devDeps`<sup>Optional</sup> <a name="devDeps" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.devDeps"></a>
-
-```typescript
-public readonly devDeps: string[];
-```
-
-- *Type:* string[]
-- *Default:* []
-
-Build dependencies for this module.
-
-These dependencies will only be
-available in your build environment but will not be fetched when this
-module is consumed.
-
-The recommendation is to only specify the module name here (e.g.
-`express`). This will behave similar to `yarn add` or `npm install` in the
-sense that it will add the module as a dependency to your `package.json`
-file with the latest version (`^`). You can specify semver requirements in
-the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
-this will be what you `package.json` will eventually include.
-
----
-
-*Example*
-
-```typescript
-[ 'typescript', '@types/express' ]
-```
-
-
-##### `entrypoint`<sup>Optional</sup> <a name="entrypoint" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.entrypoint"></a>
-
-```typescript
-public readonly entrypoint: string;
-```
-
-- *Type:* string
-- *Default:* "lib/index.js"
-
-Module entrypoint (`main` in `package.json`).
-
-Set to an empty string to not include `main` in your package.json
-
----
-
-##### `homepage`<sup>Optional</sup> <a name="homepage" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.homepage"></a>
-
-```typescript
-public readonly homepage: string;
-```
-
-- *Type:* string
-
-Package's Homepage / Website.
-
----
-
-##### `keywords`<sup>Optional</sup> <a name="keywords" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.keywords"></a>
-
-```typescript
-public readonly keywords: string[];
-```
-
-- *Type:* string[]
-
-Keywords to include in `package.json`.
-
----
-
-##### `license`<sup>Optional</sup> <a name="license" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.license"></a>
-
-```typescript
-public readonly license: string;
-```
-
-- *Type:* string
-- *Default:* "Apache-2.0"
-
-License's SPDX identifier.
-
-See https://github.com/projen/projen/tree/main/license-text for a list of supported licenses.
-Use the `licensed` option if you want to no license to be specified.
-
----
-
-##### `licensed`<sup>Optional</sup> <a name="licensed" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.licensed"></a>
-
-```typescript
-public readonly licensed: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Indicates if a license should be added.
-
----
-
-##### `maxNodeVersion`<sup>Optional</sup> <a name="maxNodeVersion" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.maxNodeVersion"></a>
-
-```typescript
-public readonly maxNodeVersion: string;
-```
-
-- *Type:* string
-- *Default:* no max
-
-Minimum node.js version to require via `engines` (inclusive).
-
----
-
-##### `minNodeVersion`<sup>Optional</sup> <a name="minNodeVersion" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.minNodeVersion"></a>
-
-```typescript
-public readonly minNodeVersion: string;
-```
-
-- *Type:* string
-- *Default:* no "engines" specified
-
-Minimum Node.js version to require via package.json `engines` (inclusive).
-
----
-
-##### `npmAccess`<sup>Optional</sup> <a name="npmAccess" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.npmAccess"></a>
-
-```typescript
-public readonly npmAccess: NpmAccess;
-```
-
-- *Type:* projen.javascript.NpmAccess
-- *Default:* for scoped packages (e.g. `foo@bar`), the default is `NpmAccess.RESTRICTED`, for non-scoped packages, the default is `NpmAccess.PUBLIC`.
-
-Access level of the npm package.
-
----
-
-##### ~~`npmRegistry`~~<sup>Optional</sup> <a name="npmRegistry" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.npmRegistry"></a>
-
-- *Deprecated:* use `npmRegistryUrl` instead
-
-```typescript
-public readonly npmRegistry: string;
-```
-
-- *Type:* string
-
-The host name of the npm registry to publish to.
-
-Cannot be set together with `npmRegistryUrl`.
-
----
-
-##### `npmRegistryUrl`<sup>Optional</sup> <a name="npmRegistryUrl" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.npmRegistryUrl"></a>
-
-```typescript
-public readonly npmRegistryUrl: string;
-```
-
-- *Type:* string
-- *Default:* "https://registry.npmjs.org"
-
-The base URL of the npm package registry.
-
-Must be a URL (e.g. start with "https://" or "http://")
-
----
-
-##### `npmTokenSecret`<sup>Optional</sup> <a name="npmTokenSecret" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.npmTokenSecret"></a>
-
-```typescript
-public readonly npmTokenSecret: string;
-```
-
-- *Type:* string
-- *Default:* "NPM_TOKEN"
-
-GitHub secret which contains the NPM token to use when publishing packages.
-
----
-
-##### `packageManager`<sup>Optional</sup> <a name="packageManager" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.packageManager"></a>
-
-```typescript
-public readonly packageManager: NodePackageManager;
-```
-
-- *Type:* projen.javascript.NodePackageManager
-- *Default:* NodePackageManager.YARN
-
-The Node Package Manager used to execute scripts.
-
----
-
-##### `packageName`<sup>Optional</sup> <a name="packageName" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.packageName"></a>
-
-```typescript
-public readonly packageName: string;
-```
-
-- *Type:* string
-- *Default:* defaults to project name
-
-The "name" in package.json.
-
----
-
-##### `peerDependencyOptions`<sup>Optional</sup> <a name="peerDependencyOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.peerDependencyOptions"></a>
-
-```typescript
-public readonly peerDependencyOptions: PeerDependencyOptions;
-```
-
-- *Type:* projen.javascript.PeerDependencyOptions
-
-Options for `peerDeps`.
-
----
-
-##### `peerDeps`<sup>Optional</sup> <a name="peerDeps" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.peerDeps"></a>
-
-```typescript
-public readonly peerDeps: string[];
-```
-
-- *Type:* string[]
-- *Default:* []
-
-Peer dependencies for this module.
-
-Dependencies listed here are required to
-be installed (and satisfied) by the _consumer_ of this library. Using peer
-dependencies allows you to ensure that only a single module of a certain
-library exists in the `node_modules` tree of your consumers.
-
-Note that prior to npm@7, peer dependencies are _not_ automatically
-installed, which means that adding peer dependencies to a library will be a
-breaking change for your customers.
-
-Unless `peerDependencyOptions.pinnedDevDependency` is disabled (it is
-enabled by default), projen will automatically add a dev dependency with a
-pinned version for each peer dependency. This will ensure that you build &
-test your module against the lowest peer version required.
-
----
-
-##### `pnpmVersion`<sup>Optional</sup> <a name="pnpmVersion" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.pnpmVersion"></a>
-
-```typescript
-public readonly pnpmVersion: string;
-```
-
-- *Type:* string
-- *Default:* "7"
-
-The version of PNPM to use if using PNPM as a package manager.
-
----
-
-##### `repository`<sup>Optional</sup> <a name="repository" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.repository"></a>
-
-```typescript
-public readonly repository: string;
-```
-
-- *Type:* string
-
-The repository is the location where the actual code for your package lives.
-
-See https://classic.yarnpkg.com/en/docs/package-json/#toc-repository
-
----
-
-##### `repositoryDirectory`<sup>Optional</sup> <a name="repositoryDirectory" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.repositoryDirectory"></a>
-
-```typescript
-public readonly repositoryDirectory: string;
-```
-
-- *Type:* string
-
-If the package.json for your package is not in the root directory (for example if it is part of a monorepo), you can specify the directory in which it lives.
-
----
-
-##### `scopedPackagesOptions`<sup>Optional</sup> <a name="scopedPackagesOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.scopedPackagesOptions"></a>
-
-```typescript
-public readonly scopedPackagesOptions: ScopedPackagesOptions[];
-```
-
-- *Type:* projen.javascript.ScopedPackagesOptions[]
-- *Default:* fetch all scoped packages from the public npm registry
-
-Options for privately hosted scoped packages.
-
----
-
-##### ~~`scripts`~~<sup>Optional</sup> <a name="scripts" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.scripts"></a>
-
-- *Deprecated:* use `project.addTask()` or `package.setScript()`
-
-```typescript
-public readonly scripts: {[ key: string ]: string};
-```
-
-- *Type:* {[ key: string ]: string}
-- *Default:* {}
-
-npm scripts to include.
-
-If a script has the same name as a standard script,
-the standard script will be overwritten.
-Also adds the script as a task.
-
----
-
-##### `stability`<sup>Optional</sup> <a name="stability" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.stability"></a>
-
-```typescript
-public readonly stability: string;
-```
-
-- *Type:* string
-
-Package's Stability.
-
----
-
-##### `jsiiReleaseVersion`<sup>Optional</sup> <a name="jsiiReleaseVersion" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.jsiiReleaseVersion"></a>
-
-```typescript
-public readonly jsiiReleaseVersion: string;
-```
-
-- *Type:* string
-- *Default:* "latest"
-
-Version requirement of `publib` which is used to publish modules to npm.
-
----
-
-##### `majorVersion`<sup>Optional</sup> <a name="majorVersion" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.majorVersion"></a>
-
-```typescript
-public readonly majorVersion: number;
-```
-
-- *Type:* number
-- *Default:* Major version is not enforced.
-
-Major version to release from the default branch.
-
-If this is specified, we bump the latest version of this major version line.
-If not specified, we bump the global latest version.
-
----
-
-##### `minMajorVersion`<sup>Optional</sup> <a name="minMajorVersion" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.minMajorVersion"></a>
-
-```typescript
-public readonly minMajorVersion: number;
-```
-
-- *Type:* number
-- *Default:* No minimum version is being enforced
-
-Minimal Major version to release.
-
-This can be useful to set to 1, as breaking changes before the 1.x major
-release are not incrementing the major version number.
-
-Can not be set together with `majorVersion`.
-
----
-
-##### `npmDistTag`<sup>Optional</sup> <a name="npmDistTag" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.npmDistTag"></a>
-
-```typescript
-public readonly npmDistTag: string;
-```
-
-- *Type:* string
-- *Default:* "latest"
-
-The npmDistTag to use when publishing from the default branch.
-
-To set the npm dist-tag for release branches, set the `npmDistTag` property
-for each branch.
-
----
-
-##### `postBuildSteps`<sup>Optional</sup> <a name="postBuildSteps" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.postBuildSteps"></a>
-
-```typescript
-public readonly postBuildSteps: JobStep[];
-```
-
-- *Type:* projen.github.workflows.JobStep[]
-- *Default:* []
-
-Steps to execute after build as part of the release workflow.
-
----
-
-##### `prerelease`<sup>Optional</sup> <a name="prerelease" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.prerelease"></a>
-
-```typescript
-public readonly prerelease: string;
-```
-
-- *Type:* string
-- *Default:* normal semantic versions
-
-Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pre").
-
----
-
-##### `publishDryRun`<sup>Optional</sup> <a name="publishDryRun" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.publishDryRun"></a>
-
-```typescript
-public readonly publishDryRun: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Instead of actually publishing to package managers, just print the publishing command.
-
----
-
-##### `publishTasks`<sup>Optional</sup> <a name="publishTasks" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.publishTasks"></a>
-
-```typescript
-public readonly publishTasks: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Define publishing tasks that can be executed manually as well as workflows.
-
-Normally, publishing only happens within automated workflows. Enable this
-in order to create a publishing task for each publishing activity.
-
----
-
-##### `releasableCommits`<sup>Optional</sup> <a name="releasableCommits" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releasableCommits"></a>
-
-```typescript
-public readonly releasableCommits: ReleasableCommits;
-```
-
-- *Type:* projen.ReleasableCommits
-- *Default:* ReleasableCommits.everyCommit()
-
-Find commits that should be considered releasable Used to decide if a release is required.
-
----
-
-##### `releaseBranches`<sup>Optional</sup> <a name="releaseBranches" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseBranches"></a>
-
-```typescript
-public readonly releaseBranches: {[ key: string ]: BranchOptions};
-```
-
-- *Type:* {[ key: string ]: projen.release.BranchOptions}
-- *Default:* no additional branches are used for release. you can use `addBranch()` to add additional branches.
-
-Defines additional release branches.
-
-A workflow will be created for each
-release branch which will publish releases from commits in this branch.
-Each release branch _must_ be assigned a major version number which is used
-to enforce that versions published from that branch always use that major
-version. If multiple branches are used, the `majorVersion` field must also
-be provided for the default branch.
-
----
-
-##### ~~`releaseEveryCommit`~~<sup>Optional</sup> <a name="releaseEveryCommit" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseEveryCommit"></a>
-
-- *Deprecated:* Use `releaseTrigger: ReleaseTrigger.continuous()` instead
-
-```typescript
-public readonly releaseEveryCommit: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Automatically release new versions every commit to one of branches in `releaseBranches`.
-
----
-
-##### `releaseFailureIssue`<sup>Optional</sup> <a name="releaseFailureIssue" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseFailureIssue"></a>
-
-```typescript
-public readonly releaseFailureIssue: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Create a github issue on every failed publishing task.
-
----
-
-##### `releaseFailureIssueLabel`<sup>Optional</sup> <a name="releaseFailureIssueLabel" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseFailureIssueLabel"></a>
-
-```typescript
-public readonly releaseFailureIssueLabel: string;
-```
-
-- *Type:* string
-- *Default:* "failed-release"
-
-The label to apply to issues indicating publish failures.
-
-Only applies if `releaseFailureIssue` is true.
-
----
-
-##### ~~`releaseSchedule`~~<sup>Optional</sup> <a name="releaseSchedule" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseSchedule"></a>
-
-- *Deprecated:* Use `releaseTrigger: ReleaseTrigger.scheduled()` instead
-
-```typescript
-public readonly releaseSchedule: string;
-```
-
-- *Type:* string
-- *Default:* no scheduled releases
-
-CRON schedule to trigger new releases.
-
----
-
-##### `releaseTagPrefix`<sup>Optional</sup> <a name="releaseTagPrefix" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseTagPrefix"></a>
-
-```typescript
-public readonly releaseTagPrefix: string;
-```
-
-- *Type:* string
-- *Default:* "v"
-
-Automatically add the given prefix to release tags. Useful if you are releasing on multiple branches with overlapping version numbers.
-
-Note: this prefix is used to detect the latest tagged version
-when bumping, so if you change this on a project with an existing version
-history, you may need to manually tag your latest release
-with the new prefix.
-
----
-
-##### `releaseTrigger`<sup>Optional</sup> <a name="releaseTrigger" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseTrigger"></a>
-
-```typescript
-public readonly releaseTrigger: ReleaseTrigger;
-```
-
-- *Type:* projen.release.ReleaseTrigger
-- *Default:* Continuous releases (`ReleaseTrigger.continuous()`)
-
-The release trigger to use.
-
----
-
-##### `releaseWorkflowName`<sup>Optional</sup> <a name="releaseWorkflowName" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseWorkflowName"></a>
-
-```typescript
-public readonly releaseWorkflowName: string;
-```
-
-- *Type:* string
-- *Default:* "Release"
-
-The name of the default release workflow.
-
----
-
-##### `releaseWorkflowSetupSteps`<sup>Optional</sup> <a name="releaseWorkflowSetupSteps" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseWorkflowSetupSteps"></a>
-
-```typescript
-public readonly releaseWorkflowSetupSteps: JobStep[];
-```
-
-- *Type:* projen.github.workflows.JobStep[]
-
-A set of workflow steps to execute in order to setup the workflow container.
-
----
-
-##### `versionrcOptions`<sup>Optional</sup> <a name="versionrcOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.versionrcOptions"></a>
-
-```typescript
-public readonly versionrcOptions: {[ key: string ]: any};
-```
-
-- *Type:* {[ key: string ]: any}
-- *Default:* standard configuration applicable for GitHub repositories
-
-Custom configuration used when creating changelog with standard-version package.
-
-Given values either append to default configuration or overwrite values in it.
-
----
-
-##### `workflowContainerImage`<sup>Optional</sup> <a name="workflowContainerImage" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.workflowContainerImage"></a>
-
-```typescript
-public readonly workflowContainerImage: string;
-```
-
-- *Type:* string
-- *Default:* default image
-
-Container image to use for GitHub workflows.
-
----
-
-##### `workflowRunsOn`<sup>Optional</sup> <a name="workflowRunsOn" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.workflowRunsOn"></a>
-
-```typescript
-public readonly workflowRunsOn: string[];
-```
-
-- *Type:* string[]
-- *Default:* ["ubuntu-latest"]
-
-Github Runner selection labels.
-
----
-
-##### `defaultReleaseBranch`<sup>Required</sup> <a name="defaultReleaseBranch" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.defaultReleaseBranch"></a>
-
-```typescript
-public readonly defaultReleaseBranch: string;
-```
-
-- *Type:* string
-- *Default:* "main"
-
-The name of the main release branch.
-
----
-
-##### `artifactsDirectory`<sup>Optional</sup> <a name="artifactsDirectory" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.artifactsDirectory"></a>
-
-```typescript
-public readonly artifactsDirectory: string;
-```
-
-- *Type:* string
-- *Default:* "dist"
-
-A directory which will contain build artifacts.
-
----
-
-##### `autoApproveUpgrades`<sup>Optional</sup> <a name="autoApproveUpgrades" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.autoApproveUpgrades"></a>
-
-```typescript
-public readonly autoApproveUpgrades: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Automatically approve deps upgrade PRs, allowing them to be merged by mergify (if configued).
-
-Throw if set to true but `autoApproveOptions` are not defined.
-
----
-
-##### `buildWorkflow`<sup>Optional</sup> <a name="buildWorkflow" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.buildWorkflow"></a>
-
-```typescript
-public readonly buildWorkflow: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true if not a subproject
-
-Define a GitHub workflow for building PRs.
-
----
-
-##### `buildWorkflowTriggers`<sup>Optional</sup> <a name="buildWorkflowTriggers" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.buildWorkflowTriggers"></a>
-
-```typescript
-public readonly buildWorkflowTriggers: Triggers;
-```
-
-- *Type:* projen.github.workflows.Triggers
-- *Default:* "{ pullRequest: {}, workflowDispatch: {} }"
-
-Build workflow triggers.
-
----
-
-##### `bundlerOptions`<sup>Optional</sup> <a name="bundlerOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.bundlerOptions"></a>
-
-```typescript
-public readonly bundlerOptions: BundlerOptions;
-```
-
-- *Type:* projen.javascript.BundlerOptions
-
-Options for `Bundler`.
-
----
-
-##### `codeCov`<sup>Optional</sup> <a name="codeCov" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.codeCov"></a>
-
-```typescript
-public readonly codeCov: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Define a GitHub workflow step for sending code coverage metrics to https://codecov.io/ Uses codecov/codecov-action@v3 A secret is required for private repos. Configured with `@codeCovTokenSecret`.
-
----
-
-##### `codeCovTokenSecret`<sup>Optional</sup> <a name="codeCovTokenSecret" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.codeCovTokenSecret"></a>
-
-```typescript
-public readonly codeCovTokenSecret: string;
-```
-
-- *Type:* string
-- *Default:* if this option is not specified, only public repositories are supported
-
-Define the secret name for a specified https://codecov.io/ token A secret is required to send coverage for private repositories.
-
----
-
-##### `copyrightOwner`<sup>Optional</sup> <a name="copyrightOwner" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.copyrightOwner"></a>
-
-```typescript
-public readonly copyrightOwner: string;
-```
-
-- *Type:* string
-- *Default:* defaults to the value of authorName or "" if `authorName` is undefined.
-
-License copyright owner.
-
----
-
-##### `copyrightPeriod`<sup>Optional</sup> <a name="copyrightPeriod" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.copyrightPeriod"></a>
-
-```typescript
-public readonly copyrightPeriod: string;
-```
-
-- *Type:* string
-- *Default:* current year
-
-The copyright years to put in the LICENSE file.
-
----
-
-##### `dependabot`<sup>Optional</sup> <a name="dependabot" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.dependabot"></a>
-
-```typescript
-public readonly dependabot: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Use dependabot to handle dependency upgrades.
-
-Cannot be used in conjunction with `depsUpgrade`.
-
----
-
-##### `dependabotOptions`<sup>Optional</sup> <a name="dependabotOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.dependabotOptions"></a>
-
-```typescript
-public readonly dependabotOptions: DependabotOptions;
-```
-
-- *Type:* projen.github.DependabotOptions
-- *Default:* default options
-
-Options for dependabot.
-
----
-
-##### `depsUpgrade`<sup>Optional</sup> <a name="depsUpgrade" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.depsUpgrade"></a>
-
-```typescript
-public readonly depsUpgrade: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Use github workflows to handle dependency upgrades.
-
-Cannot be used in conjunction with `dependabot`.
-
----
-
-##### `depsUpgradeOptions`<sup>Optional</sup> <a name="depsUpgradeOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.depsUpgradeOptions"></a>
-
-```typescript
-public readonly depsUpgradeOptions: UpgradeDependenciesOptions;
-```
-
-- *Type:* projen.javascript.UpgradeDependenciesOptions
-- *Default:* default options
-
-Options for `UpgradeDependencies`.
-
----
-
-##### `gitignore`<sup>Optional</sup> <a name="gitignore" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.gitignore"></a>
-
-```typescript
-public readonly gitignore: string[];
-```
-
-- *Type:* string[]
-
-Additional entries to .gitignore.
-
----
-
-##### `jest`<sup>Optional</sup> <a name="jest" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.jest"></a>
-
-```typescript
-public readonly jest: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Setup jest unit tests.
-
----
-
-##### `jestOptions`<sup>Optional</sup> <a name="jestOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.jestOptions"></a>
-
-```typescript
-public readonly jestOptions: JestOptions;
-```
-
-- *Type:* projen.javascript.JestOptions
-- *Default:* default options
-
-Jest options.
-
----
-
-##### `mutableBuild`<sup>Optional</sup> <a name="mutableBuild" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.mutableBuild"></a>
-
-```typescript
-public readonly mutableBuild: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Automatically update files modified during builds to pull-request branches.
-
-This means
-that any files synthesized by projen or e.g. test snapshots will always be up-to-date
-before a PR is merged.
-
-Implies that PR builds do not have anti-tamper checks.
-
----
-
-##### ~~`npmignore`~~<sup>Optional</sup> <a name="npmignore" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.npmignore"></a>
-
-- *Deprecated:* - use `project.addPackageIgnore`
-
-```typescript
-public readonly npmignore: string[];
-```
-
-- *Type:* string[]
-
-Additional entries to .npmignore.
-
----
-
-##### `npmignoreEnabled`<sup>Optional</sup> <a name="npmignoreEnabled" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.npmignoreEnabled"></a>
-
-```typescript
-public readonly npmignoreEnabled: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Defines an .npmignore file. Normally this is only needed for libraries that are packaged as tarballs.
-
----
-
-##### `npmIgnoreOptions`<sup>Optional</sup> <a name="npmIgnoreOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.npmIgnoreOptions"></a>
-
-```typescript
-public readonly npmIgnoreOptions: IgnoreFileOptions;
-```
-
-- *Type:* projen.IgnoreFileOptions
-
-Configuration options for .npmignore file.
-
----
-
-##### `package`<sup>Optional</sup> <a name="package" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.package"></a>
-
-```typescript
-public readonly package: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Defines a `package` task that will produce an npm tarball under the artifacts directory (e.g. `dist`).
-
----
-
-##### `prettier`<sup>Optional</sup> <a name="prettier" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.prettier"></a>
-
-```typescript
-public readonly prettier: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Setup prettier.
-
----
-
-##### `prettierOptions`<sup>Optional</sup> <a name="prettierOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.prettierOptions"></a>
-
-```typescript
-public readonly prettierOptions: PrettierOptions;
-```
-
-- *Type:* projen.javascript.PrettierOptions
-- *Default:* default options
-
-Prettier options.
-
----
-
-##### `projenDevDependency`<sup>Optional</sup> <a name="projenDevDependency" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenDevDependency"></a>
-
-```typescript
-public readonly projenDevDependency: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Indicates of "projen" should be installed as a devDependency.
-
----
-
-##### `projenrcJs`<sup>Optional</sup> <a name="projenrcJs" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenrcJs"></a>
-
-```typescript
-public readonly projenrcJs: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true if projenrcJson is false
-
-Generate (once) .projenrc.js (in JavaScript). Set to `false` in order to disable .projenrc.js generation.
-
----
-
-##### `projenrcJsOptions`<sup>Optional</sup> <a name="projenrcJsOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenrcJsOptions"></a>
-
-```typescript
-public readonly projenrcJsOptions: ProjenrcOptions;
-```
-
-- *Type:* projen.javascript.ProjenrcOptions
-- *Default:* default options
-
-Options for .projenrc.js.
-
----
-
-##### `projenVersion`<sup>Optional</sup> <a name="projenVersion" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenVersion"></a>
-
-```typescript
-public readonly projenVersion: string;
-```
-
-- *Type:* string
-- *Default:* Defaults to the latest version.
-
-Version of projen to install.
-
----
-
-##### `pullRequestTemplate`<sup>Optional</sup> <a name="pullRequestTemplate" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.pullRequestTemplate"></a>
-
-```typescript
-public readonly pullRequestTemplate: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Include a GitHub pull request template.
-
----
-
-##### `pullRequestTemplateContents`<sup>Optional</sup> <a name="pullRequestTemplateContents" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.pullRequestTemplateContents"></a>
-
-```typescript
-public readonly pullRequestTemplateContents: string[];
-```
-
-- *Type:* string[]
-- *Default:* default content
-
-The contents of the pull request template.
-
----
-
-##### `release`<sup>Optional</sup> <a name="release" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.release"></a>
-
-```typescript
-public readonly release: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true (false for subprojects)
-
-Add release management to this project.
-
----
-
-##### `releaseToNpm`<sup>Optional</sup> <a name="releaseToNpm" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseToNpm"></a>
-
-```typescript
-public readonly releaseToNpm: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Automatically release to npm when new versions are introduced.
-
----
-
-##### ~~`releaseWorkflow`~~<sup>Optional</sup> <a name="releaseWorkflow" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseWorkflow"></a>
-
-- *Deprecated:* see `release`.
-
-```typescript
-public readonly releaseWorkflow: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true if not a subproject
-
-DEPRECATED: renamed to `release`.
-
----
-
-##### `workflowBootstrapSteps`<sup>Optional</sup> <a name="workflowBootstrapSteps" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.workflowBootstrapSteps"></a>
-
-```typescript
-public readonly workflowBootstrapSteps: JobStep[];
-```
-
-- *Type:* projen.github.workflows.JobStep[]
-- *Default:* "yarn install --frozen-lockfile && yarn projen"
-
-Workflow steps to use in order to bootstrap this repo.
-
----
-
-##### `workflowGitIdentity`<sup>Optional</sup> <a name="workflowGitIdentity" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.workflowGitIdentity"></a>
-
-```typescript
-public readonly workflowGitIdentity: GitIdentity;
-```
-
-- *Type:* projen.github.GitIdentity
-- *Default:* GitHub Actions
-
-The git identity to use in workflows.
-
----
-
-##### `workflowNodeVersion`<sup>Optional</sup> <a name="workflowNodeVersion" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.workflowNodeVersion"></a>
-
-```typescript
-public readonly workflowNodeVersion: string;
-```
-
-- *Type:* string
-- *Default:* same as `minNodeVersion`
-
-The node version to use in GitHub workflows.
-
----
-
-##### `workflowPackageCache`<sup>Optional</sup> <a name="workflowPackageCache" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.workflowPackageCache"></a>
-
-```typescript
-public readonly workflowPackageCache: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Enable Node.js package cache in GitHub workflows.
-
----
-
-##### `disableTsconfig`<sup>Optional</sup> <a name="disableTsconfig" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.disableTsconfig"></a>
-
-```typescript
-public readonly disableTsconfig: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Do not generate a `tsconfig.json` file (used by jsii projects since tsconfig.json is generated by the jsii compiler).
-
----
-
-##### `disableTsconfigDev`<sup>Optional</sup> <a name="disableTsconfigDev" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.disableTsconfigDev"></a>
-
-```typescript
-public readonly disableTsconfigDev: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Do not generate a `tsconfig.dev.json` file.
-
----
-
-##### `docgen`<sup>Optional</sup> <a name="docgen" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.docgen"></a>
-
-```typescript
-public readonly docgen: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Docgen by Typedoc.
-
----
-
-##### `docsDirectory`<sup>Optional</sup> <a name="docsDirectory" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.docsDirectory"></a>
-
-```typescript
-public readonly docsDirectory: string;
-```
-
-- *Type:* string
-- *Default:* "docs"
-
-Docs directory.
-
----
-
-##### `entrypointTypes`<sup>Optional</sup> <a name="entrypointTypes" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.entrypointTypes"></a>
-
-```typescript
-public readonly entrypointTypes: string;
-```
-
-- *Type:* string
-- *Default:* .d.ts file derived from the project's entrypoint (usually lib/index.d.ts)
-
-The .d.ts file that includes the type declarations for this module.
-
----
-
-##### `eslint`<sup>Optional</sup> <a name="eslint" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.eslint"></a>
-
-```typescript
-public readonly eslint: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Setup eslint.
-
----
-
-##### `eslintOptions`<sup>Optional</sup> <a name="eslintOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.eslintOptions"></a>
-
-```typescript
-public readonly eslintOptions: EslintOptions;
-```
-
-- *Type:* projen.javascript.EslintOptions
-- *Default:* opinionated default options
-
-Eslint options.
-
----
-
-##### `libdir`<sup>Optional</sup> <a name="libdir" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.libdir"></a>
-
-```typescript
-public readonly libdir: string;
-```
-
-- *Type:* string
-- *Default:* "lib"
-
-Typescript  artifacts output directory.
-
----
-
-##### `projenrcTs`<sup>Optional</sup> <a name="projenrcTs" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenrcTs"></a>
-
-```typescript
-public readonly projenrcTs: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Use TypeScript for your projenrc file (`.projenrc.ts`).
-
----
-
-##### `projenrcTsOptions`<sup>Optional</sup> <a name="projenrcTsOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenrcTsOptions"></a>
-
-```typescript
-public readonly projenrcTsOptions: ProjenrcOptions;
-```
-
-- *Type:* projen.typescript.ProjenrcOptions
-
-Options for .projenrc.ts.
-
----
-
-##### `sampleCode`<sup>Optional</sup> <a name="sampleCode" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.sampleCode"></a>
-
-```typescript
-public readonly sampleCode: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Generate one-time sample in `src/` and `test/` if there are no files there.
-
----
-
-##### `srcdir`<sup>Optional</sup> <a name="srcdir" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.srcdir"></a>
-
-```typescript
-public readonly srcdir: string;
-```
-
-- *Type:* string
-- *Default:* "src"
-
-Typescript sources directory.
-
----
-
-##### `testdir`<sup>Optional</sup> <a name="testdir" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.testdir"></a>
-
-```typescript
-public readonly testdir: string;
-```
-
-- *Type:* string
-- *Default:* "test"
-
-Jest tests directory. Tests files should be named `xxx.test.ts`.
-
-If this directory is under `srcdir` (e.g. `src/test`, `src/__tests__`),
-then tests are going to be compiled into `lib/` and executed as javascript.
-If the test directory is outside of `src`, then we configure jest to
-compile the code in-memory.
-
----
-
-##### `tsconfig`<sup>Optional</sup> <a name="tsconfig" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.tsconfig"></a>
-
-```typescript
-public readonly tsconfig: TypescriptConfigOptions;
-```
-
-- *Type:* projen.javascript.TypescriptConfigOptions
-- *Default:* default options
-
-Custom TSConfig.
-
----
-
-##### `tsconfigDev`<sup>Optional</sup> <a name="tsconfigDev" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.tsconfigDev"></a>
-
-```typescript
-public readonly tsconfigDev: TypescriptConfigOptions;
-```
-
-- *Type:* projen.javascript.TypescriptConfigOptions
-- *Default:* use the production tsconfig options
-
-Custom tsconfig options for the development tsconfig.json file (used for testing).
-
----
-
-##### `tsconfigDevFile`<sup>Optional</sup> <a name="tsconfigDevFile" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.tsconfigDevFile"></a>
-
-```typescript
-public readonly tsconfigDevFile: string;
-```
-
-- *Type:* string
-- *Default:* "tsconfig.dev.json"
-
-The name of the development tsconfig.json file.
-
----
-
-##### `typescriptVersion`<sup>Optional</sup> <a name="typescriptVersion" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.typescriptVersion"></a>
-
-```typescript
-public readonly typescriptVersion: string;
-```
-
-- *Type:* string
-- *Default:* "latest"
-
-TypeScript version to use.
-
-NOTE: Typescript is not semantically versioned and should remain on the
-same minor, so we recommend using a `~` dependency (e.g. `~1.2.3`).
-
----
-
-##### `additionalCompilerDependencies`<sup>Optional</sup> <a name="additionalCompilerDependencies" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.additionalCompilerDependencies"></a>
-
-```typescript
-public readonly additionalCompilerDependencies: string[];
-```
-
-- *Type:* string[]
-- *Default:* No additional compiler dependencies.
-
-Packages that compile the project apart from the typescript/jsii compiler.
-
-Any package that produces a published artifact should be included in this list.
-
----
-
-##### `backport`<sup>Optional</sup> <a name="backport" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.backport"></a>
-
-```typescript
-public readonly backport: boolean;
-```
-
-- *Type:* boolean
-- *Default:* false
-
-Configure a backport workflow.
-
----
-
-##### `backportBranches`<sup>Optional</sup> <a name="backportBranches" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.backportBranches"></a>
-
-```typescript
-public readonly backportBranches: string[];
-```
-
-- *Type:* string[]
-- *Default:* Will be derived from PR labels.
-
-Branches to backport to.
-
----
-
-##### `repoName`<sup>Optional</sup> <a name="repoName" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.repoName"></a>
-
-```typescript
-public readonly repoName: string;
-```
-
-- *Type:* string
-- *Default:* the package name.
-
-The name of the repository inside the cdk8s-team org where the code of the project is locate in.
-
----
-
-## Classes <a name="Classes" id="Classes"></a>
+## Constructs <a name="Constructs" id="Constructs"></a>
 
 ### Cdk8sTeamJsiiProject <a name="Cdk8sTeamJsiiProject" id="@cdk8s/projen-common.Cdk8sTeamJsiiProject"></a>
 
@@ -6416,6 +32,7 @@ new Cdk8sTeamJsiiProject(options: Cdk8sTeamJsiiProjectOptions)
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.toString">toString</a></code> | Returns a string representation of this construct. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.addExcludeFromCleanup">addExcludeFromCleanup</a></code> | Exclude the matching files from pre-synth cleanup. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.addGitIgnore">addGitIgnore</a></code> | Adds a .gitignore pattern. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.addPackageIgnore">addPackageIgnore</a></code> | Exclude these files from the bundled package. |
@@ -6447,6 +64,14 @@ new Cdk8sTeamJsiiProject(options: Cdk8sTeamJsiiProjectOptions)
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.setScript">setScript</a></code> | Replaces the contents of an npm package.json script. |
 
 ---
+
+##### `toString` <a name="toString" id="@cdk8s/projen-common.Cdk8sTeamJsiiProject.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
 
 ##### `addExcludeFromCleanup` <a name="addExcludeFromCleanup" id="@cdk8s/projen-common.Cdk8sTeamJsiiProject.addExcludeFromCleanup"></a>
 
@@ -6628,7 +253,7 @@ Synthesize all project files into `outdir`.
 
 1. Call "this.preSynthesize()"
 2. Delete all generated files
-3. Synthesize all sub-projects
+3. Synthesize all subprojects
 4. Synthesize all components of this project
 5. Call "postSynthesize()" for all components of this project
 6. Call "this.postSynthesize()"
@@ -6958,11 +583,87 @@ The command to execute.
 
 ---
 
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.isProject">isProject</a></code> | Test whether the given construct is a project. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.of">of</a></code> | Find the closest ancestor project for given construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@cdk8s/projen-common.Cdk8sTeamJsiiProject.isConstruct"></a>
+
+```typescript
+import { Cdk8sTeamJsiiProject } from '@cdk8s/projen-common'
+
+Cdk8sTeamJsiiProject.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@cdk8s/projen-common.Cdk8sTeamJsiiProject.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+##### `isProject` <a name="isProject" id="@cdk8s/projen-common.Cdk8sTeamJsiiProject.isProject"></a>
+
+```typescript
+import { Cdk8sTeamJsiiProject } from '@cdk8s/projen-common'
+
+Cdk8sTeamJsiiProject.isProject(x: any)
+```
+
+Test whether the given construct is a project.
+
+###### `x`<sup>Required</sup> <a name="x" id="@cdk8s/projen-common.Cdk8sTeamJsiiProject.isProject.parameter.x"></a>
+
+- *Type:* any
+
+---
+
+##### `of` <a name="of" id="@cdk8s/projen-common.Cdk8sTeamJsiiProject.of"></a>
+
+```typescript
+import { Cdk8sTeamJsiiProject } from '@cdk8s/projen-common'
+
+Cdk8sTeamJsiiProject.of(construct: IConstruct)
+```
+
+Find the closest ancestor project for given construct.
+
+When given a project, this it the project itself.
+
+###### `construct`<sup>Required</sup> <a name="construct" id="@cdk8s/projen-common.Cdk8sTeamJsiiProject.of.parameter.construct"></a>
+
+- *Type:* constructs.IConstruct
+
+---
 
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.property.buildTask">buildTask</a></code> | <code>projen.Task</code> | *No description.* |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.property.commitGenerated">commitGenerated</a></code> | <code>boolean</code> | Whether to commit the managed files by default. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.property.compileTask">compileTask</a></code> | <code>projen.Task</code> | *No description.* |
@@ -7024,6 +725,18 @@ The command to execute.
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.property.eslint">eslint</a></code> | <code>projen.javascript.Eslint</code> | *No description.* |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.property.tsconfig">tsconfig</a></code> | <code>projen.javascript.TypescriptConfig</code> | *No description.* |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.property.tsconfigEslint">tsconfigEslint</a></code> | <code>projen.javascript.TypescriptConfig</code> | *No description.* |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@cdk8s/projen-common.Cdk8sTeamJsiiProject.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
 
 ---
 
@@ -7810,6 +1523,7 @@ new Cdk8sTeamNodeProject(options: Cdk8sTeamNodeProjectOptions)
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.toString">toString</a></code> | Returns a string representation of this construct. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.addExcludeFromCleanup">addExcludeFromCleanup</a></code> | Exclude the matching files from pre-synth cleanup. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.addGitIgnore">addGitIgnore</a></code> | Adds a .gitignore pattern. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.addPackageIgnore">addPackageIgnore</a></code> | Exclude these files from the bundled package. |
@@ -7841,6 +1555,14 @@ new Cdk8sTeamNodeProject(options: Cdk8sTeamNodeProjectOptions)
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.setScript">setScript</a></code> | Replaces the contents of an npm package.json script. |
 
 ---
+
+##### `toString` <a name="toString" id="@cdk8s/projen-common.Cdk8sTeamNodeProject.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
 
 ##### `addExcludeFromCleanup` <a name="addExcludeFromCleanup" id="@cdk8s/projen-common.Cdk8sTeamNodeProject.addExcludeFromCleanup"></a>
 
@@ -8022,7 +1744,7 @@ Synthesize all project files into `outdir`.
 
 1. Call "this.preSynthesize()"
 2. Delete all generated files
-3. Synthesize all sub-projects
+3. Synthesize all subprojects
 4. Synthesize all components of this project
 5. Call "postSynthesize()" for all components of this project
 6. Call "this.postSynthesize()"
@@ -8352,11 +2074,87 @@ The command to execute.
 
 ---
 
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.isProject">isProject</a></code> | Test whether the given construct is a project. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.of">of</a></code> | Find the closest ancestor project for given construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@cdk8s/projen-common.Cdk8sTeamNodeProject.isConstruct"></a>
+
+```typescript
+import { Cdk8sTeamNodeProject } from '@cdk8s/projen-common'
+
+Cdk8sTeamNodeProject.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@cdk8s/projen-common.Cdk8sTeamNodeProject.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+##### `isProject` <a name="isProject" id="@cdk8s/projen-common.Cdk8sTeamNodeProject.isProject"></a>
+
+```typescript
+import { Cdk8sTeamNodeProject } from '@cdk8s/projen-common'
+
+Cdk8sTeamNodeProject.isProject(x: any)
+```
+
+Test whether the given construct is a project.
+
+###### `x`<sup>Required</sup> <a name="x" id="@cdk8s/projen-common.Cdk8sTeamNodeProject.isProject.parameter.x"></a>
+
+- *Type:* any
+
+---
+
+##### `of` <a name="of" id="@cdk8s/projen-common.Cdk8sTeamNodeProject.of"></a>
+
+```typescript
+import { Cdk8sTeamNodeProject } from '@cdk8s/projen-common'
+
+Cdk8sTeamNodeProject.of(construct: IConstruct)
+```
+
+Find the closest ancestor project for given construct.
+
+When given a project, this it the project itself.
+
+###### `construct`<sup>Required</sup> <a name="construct" id="@cdk8s/projen-common.Cdk8sTeamNodeProject.of.parameter.construct"></a>
+
+- *Type:* constructs.IConstruct
+
+---
 
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.property.buildTask">buildTask</a></code> | <code>projen.Task</code> | *No description.* |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.property.commitGenerated">commitGenerated</a></code> | <code>boolean</code> | Whether to commit the managed files by default. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.property.compileTask">compileTask</a></code> | <code>projen.Task</code> | *No description.* |
@@ -8408,6 +2206,18 @@ The command to execute.
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.property.publisher">publisher</a></code> | <code>projen.release.Publisher</code> | Package publisher. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.property.release">release</a></code> | <code>projen.release.Release</code> | Release management. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.property.upgradeWorkflow">upgradeWorkflow</a></code> | <code>projen.javascript.UpgradeDependencies</code> | The upgrade workflow. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@cdk8s/projen-common.Cdk8sTeamNodeProject.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
 
 ---
 
@@ -9084,6 +2894,7 @@ new Cdk8sTeamTypeScriptProject(options: Cdk8sTeamTypeScriptProjectOptions)
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.toString">toString</a></code> | Returns a string representation of this construct. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addExcludeFromCleanup">addExcludeFromCleanup</a></code> | Exclude the matching files from pre-synth cleanup. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addGitIgnore">addGitIgnore</a></code> | Adds a .gitignore pattern. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addPackageIgnore">addPackageIgnore</a></code> | Exclude these files from the bundled package. |
@@ -9115,6 +2926,14 @@ new Cdk8sTeamTypeScriptProject(options: Cdk8sTeamTypeScriptProjectOptions)
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.setScript">setScript</a></code> | Replaces the contents of an npm package.json script. |
 
 ---
+
+##### `toString` <a name="toString" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
 
 ##### `addExcludeFromCleanup` <a name="addExcludeFromCleanup" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addExcludeFromCleanup"></a>
 
@@ -9296,7 +3115,7 @@ Synthesize all project files into `outdir`.
 
 1. Call "this.preSynthesize()"
 2. Delete all generated files
-3. Synthesize all sub-projects
+3. Synthesize all subprojects
 4. Synthesize all components of this project
 5. Call "postSynthesize()" for all components of this project
 6. Call "this.postSynthesize()"
@@ -9626,11 +3445,87 @@ The command to execute.
 
 ---
 
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.isProject">isProject</a></code> | Test whether the given construct is a project. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.of">of</a></code> | Find the closest ancestor project for given construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.isConstruct"></a>
+
+```typescript
+import { Cdk8sTeamTypeScriptProject } from '@cdk8s/projen-common'
+
+Cdk8sTeamTypeScriptProject.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+##### `isProject` <a name="isProject" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.isProject"></a>
+
+```typescript
+import { Cdk8sTeamTypeScriptProject } from '@cdk8s/projen-common'
+
+Cdk8sTeamTypeScriptProject.isProject(x: any)
+```
+
+Test whether the given construct is a project.
+
+###### `x`<sup>Required</sup> <a name="x" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.isProject.parameter.x"></a>
+
+- *Type:* any
+
+---
+
+##### `of` <a name="of" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.of"></a>
+
+```typescript
+import { Cdk8sTeamTypeScriptProject } from '@cdk8s/projen-common'
+
+Cdk8sTeamTypeScriptProject.of(construct: IConstruct)
+```
+
+Find the closest ancestor project for given construct.
+
+When given a project, this it the project itself.
+
+###### `construct`<sup>Required</sup> <a name="construct" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.of.parameter.construct"></a>
+
+- *Type:* constructs.IConstruct
+
+---
 
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.buildTask">buildTask</a></code> | <code>projen.Task</code> | *No description.* |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.commitGenerated">commitGenerated</a></code> | <code>boolean</code> | Whether to commit the managed files by default. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.compileTask">compileTask</a></code> | <code>projen.Task</code> | *No description.* |
@@ -9692,6 +3587,18 @@ The command to execute.
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.eslint">eslint</a></code> | <code>projen.javascript.Eslint</code> | *No description.* |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.tsconfig">tsconfig</a></code> | <code>projen.javascript.TypescriptConfig</code> | *No description.* |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.tsconfigEslint">tsconfigEslint</a></code> | <code>projen.javascript.TypescriptConfig</code> | *No description.* |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
 
 ---
 
@@ -10451,5 +4358,6470 @@ Normally
 this task should synthesize the project files.
 
 ---
+
+## Structs <a name="Structs" id="Structs"></a>
+
+### Cdk8sTeamJsiiProjectOptions <a name="Cdk8sTeamJsiiProjectOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions"></a>
+
+Options for `Cdk8sTeamJsiiProject`.
+
+Note that this extends `Cdk8sTeamTypeScriptProjectOptions` and not `cdk.JsiiProjectOptions`
+because `cdk.JsiiProjectOptions` has required properties (namely 'author' and 'authorAddress')
+that we want to hardcode and disallow customization of. This means that any jsii specific feature
+cannot be customized on the project level. This is ok because we don't expect much deviation
+with those features between projects. If this turns out to not be the case, we will change appropriately.
+
+#### Initializer <a name="Initializer" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.Initializer"></a>
+
+```typescript
+import { Cdk8sTeamJsiiProjectOptions } from '@cdk8s/projen-common'
+
+const cdk8sTeamJsiiProjectOptions: Cdk8sTeamJsiiProjectOptions = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.name">name</a></code> | <code>string</code> | This is the name of your project. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.commitGenerated">commitGenerated</a></code> | <code>boolean</code> | Whether to commit the managed files by default. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.gitIgnoreOptions">gitIgnoreOptions</a></code> | <code>projen.IgnoreFileOptions</code> | Configuration options for .gitignore file. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.gitOptions">gitOptions</a></code> | <code>projen.GitOptions</code> | Configuration options for git. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.logging">logging</a></code> | <code>projen.LoggerOptions</code> | Configure logging options such as verbosity. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.outdir">outdir</a></code> | <code>string</code> | The root directory of the project. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.parent">parent</a></code> | <code>projen.Project</code> | The parent project, if this project is part of a bigger project. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenCommand">projenCommand</a></code> | <code>string</code> | The shell command to use in order to run the projen CLI. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenrcJson">projenrcJson</a></code> | <code>boolean</code> | Generate (once) .projenrc.json (in JSON). Set to `false` in order to disable .projenrc.json generation. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenrcJsonOptions">projenrcJsonOptions</a></code> | <code>projen.ProjenrcJsonOptions</code> | Options for .projenrc.json. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.renovatebot">renovatebot</a></code> | <code>boolean</code> | Use renovatebot to handle dependency upgrades. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.renovatebotOptions">renovatebotOptions</a></code> | <code>projen.RenovatebotOptions</code> | Options for renovatebot. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.autoApproveOptions">autoApproveOptions</a></code> | <code>projen.github.AutoApproveOptions</code> | Enable and configure the 'auto approve' workflow. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.autoMerge">autoMerge</a></code> | <code>boolean</code> | Enable automatic merging on GitHub. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.autoMergeOptions">autoMergeOptions</a></code> | <code>projen.github.AutoMergeOptions</code> | Configure options for automatic merging on GitHub. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.clobber">clobber</a></code> | <code>boolean</code> | Add a `clobber` task which resets the repo to origin. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.devContainer">devContainer</a></code> | <code>boolean</code> | Add a VSCode development environment (used for GitHub Codespaces). |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.github">github</a></code> | <code>boolean</code> | Enable GitHub integration. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.githubOptions">githubOptions</a></code> | <code>projen.github.GitHubOptions</code> | Options for GitHub integration. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.gitpod">gitpod</a></code> | <code>boolean</code> | Add a Gitpod development environment. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.mergify">mergify</a></code> | <code>boolean</code> | Whether mergify should be enabled on this repository or not. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.mergifyOptions">mergifyOptions</a></code> | <code>projen.github.MergifyOptions</code> | Options for mergify. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projectType">projectType</a></code> | <code>projen.ProjectType</code> | Which type of project this is (library/app). |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenCredentials">projenCredentials</a></code> | <code>projen.github.GithubCredentials</code> | Choose a method of providing GitHub API access for projen workflows. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenTokenSecret">projenTokenSecret</a></code> | <code>string</code> | The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.readme">readme</a></code> | <code>projen.SampleReadmeProps</code> | The README setup. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.stale">stale</a></code> | <code>boolean</code> | Auto-close of stale issues and pull request. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.staleOptions">staleOptions</a></code> | <code>projen.github.StaleOptions</code> | Auto-close stale issues and pull requests. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.vscode">vscode</a></code> | <code>boolean</code> | Enable VSCode integration. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.allowLibraryDependencies">allowLibraryDependencies</a></code> | <code>boolean</code> | Allow the project to include `peerDependencies` and `bundledDependencies`. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.authorEmail">authorEmail</a></code> | <code>string</code> | Author's e-mail. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.authorName">authorName</a></code> | <code>string</code> | Author's name. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.authorOrganization">authorOrganization</a></code> | <code>boolean</code> | Is the author an organization. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.authorUrl">authorUrl</a></code> | <code>string</code> | Author's URL / Website. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.autoDetectBin">autoDetectBin</a></code> | <code>boolean</code> | Automatically add all executables under the `bin` directory to your `package.json` file under the `bin` section. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.bin">bin</a></code> | <code>{[ key: string ]: string}</code> | Binary programs vended with your module. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.bugsEmail">bugsEmail</a></code> | <code>string</code> | The email address to which issues should be reported. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.bugsUrl">bugsUrl</a></code> | <code>string</code> | The url to your project's issue tracker. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.bundledDeps">bundledDeps</a></code> | <code>string[]</code> | List of dependencies to bundle into this module. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.codeArtifactOptions">codeArtifactOptions</a></code> | <code>projen.javascript.CodeArtifactOptions</code> | Options for npm packages using AWS CodeArtifact. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.deps">deps</a></code> | <code>string[]</code> | Runtime dependencies of this module. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.description">description</a></code> | <code>string</code> | The description is just a string that helps people understand the purpose of the package. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.devDeps">devDeps</a></code> | <code>string[]</code> | Build dependencies for this module. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.entrypoint">entrypoint</a></code> | <code>string</code> | Module entrypoint (`main` in `package.json`). |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.homepage">homepage</a></code> | <code>string</code> | Package's Homepage / Website. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.keywords">keywords</a></code> | <code>string[]</code> | Keywords to include in `package.json`. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.license">license</a></code> | <code>string</code> | License's SPDX identifier. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.licensed">licensed</a></code> | <code>boolean</code> | Indicates if a license should be added. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.maxNodeVersion">maxNodeVersion</a></code> | <code>string</code> | Minimum node.js version to require via `engines` (inclusive). |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.minNodeVersion">minNodeVersion</a></code> | <code>string</code> | Minimum Node.js version to require via package.json `engines` (inclusive). |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.npmAccess">npmAccess</a></code> | <code>projen.javascript.NpmAccess</code> | Access level of the npm package. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.npmRegistry">npmRegistry</a></code> | <code>string</code> | The host name of the npm registry to publish to. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.npmRegistryUrl">npmRegistryUrl</a></code> | <code>string</code> | The base URL of the npm package registry. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.npmTokenSecret">npmTokenSecret</a></code> | <code>string</code> | GitHub secret which contains the NPM token to use when publishing packages. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.packageManager">packageManager</a></code> | <code>projen.javascript.NodePackageManager</code> | The Node Package Manager used to execute scripts. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.packageName">packageName</a></code> | <code>string</code> | The "name" in package.json. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.peerDependencyOptions">peerDependencyOptions</a></code> | <code>projen.javascript.PeerDependencyOptions</code> | Options for `peerDeps`. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.peerDeps">peerDeps</a></code> | <code>string[]</code> | Peer dependencies for this module. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.pnpmVersion">pnpmVersion</a></code> | <code>string</code> | The version of PNPM to use if using PNPM as a package manager. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.repository">repository</a></code> | <code>string</code> | The repository is the location where the actual code for your package lives. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.repositoryDirectory">repositoryDirectory</a></code> | <code>string</code> | If the package.json for your package is not in the root directory (for example if it is part of a monorepo), you can specify the directory in which it lives. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.scopedPackagesOptions">scopedPackagesOptions</a></code> | <code>projen.javascript.ScopedPackagesOptions[]</code> | Options for privately hosted scoped packages. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.scripts">scripts</a></code> | <code>{[ key: string ]: string}</code> | npm scripts to include. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.stability">stability</a></code> | <code>string</code> | Package's Stability. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.yarnBerryOptions">yarnBerryOptions</a></code> | <code>projen.javascript.YarnBerryOptions</code> | Options for Yarn Berry. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.jsiiReleaseVersion">jsiiReleaseVersion</a></code> | <code>string</code> | Version requirement of `publib` which is used to publish modules to npm. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.majorVersion">majorVersion</a></code> | <code>number</code> | Major version to release from the default branch. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.minMajorVersion">minMajorVersion</a></code> | <code>number</code> | Minimal Major version to release. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.npmDistTag">npmDistTag</a></code> | <code>string</code> | The npmDistTag to use when publishing from the default branch. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.postBuildSteps">postBuildSteps</a></code> | <code>projen.github.workflows.JobStep[]</code> | Steps to execute after build as part of the release workflow. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.prerelease">prerelease</a></code> | <code>string</code> | Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pre"). |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.publishDryRun">publishDryRun</a></code> | <code>boolean</code> | Instead of actually publishing to package managers, just print the publishing command. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.publishTasks">publishTasks</a></code> | <code>boolean</code> | Define publishing tasks that can be executed manually as well as workflows. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releasableCommits">releasableCommits</a></code> | <code>projen.ReleasableCommits</code> | Find commits that should be considered releasable Used to decide if a release is required. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseBranches">releaseBranches</a></code> | <code>{[ key: string ]: projen.release.BranchOptions}</code> | Defines additional release branches. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseEveryCommit">releaseEveryCommit</a></code> | <code>boolean</code> | Automatically release new versions every commit to one of branches in `releaseBranches`. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseFailureIssue">releaseFailureIssue</a></code> | <code>boolean</code> | Create a github issue on every failed publishing task. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseFailureIssueLabel">releaseFailureIssueLabel</a></code> | <code>string</code> | The label to apply to issues indicating publish failures. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseSchedule">releaseSchedule</a></code> | <code>string</code> | CRON schedule to trigger new releases. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseTagPrefix">releaseTagPrefix</a></code> | <code>string</code> | Automatically add the given prefix to release tags. Useful if you are releasing on multiple branches with overlapping version numbers. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseTrigger">releaseTrigger</a></code> | <code>projen.release.ReleaseTrigger</code> | The release trigger to use. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseWorkflowName">releaseWorkflowName</a></code> | <code>string</code> | The name of the default release workflow. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseWorkflowSetupSteps">releaseWorkflowSetupSteps</a></code> | <code>projen.github.workflows.JobStep[]</code> | A set of workflow steps to execute in order to setup the workflow container. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.versionrcOptions">versionrcOptions</a></code> | <code>{[ key: string ]: any}</code> | Custom configuration used when creating changelog with standard-version package. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.workflowContainerImage">workflowContainerImage</a></code> | <code>string</code> | Container image to use for GitHub workflows. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.workflowRunsOn">workflowRunsOn</a></code> | <code>string[]</code> | Github Runner selection labels. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.workflowRunsOnGroup">workflowRunsOnGroup</a></code> | <code>projen.GroupRunnerOptions</code> | Github Runner Group selection options. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.defaultReleaseBranch">defaultReleaseBranch</a></code> | <code>string</code> | The name of the main release branch. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.artifactsDirectory">artifactsDirectory</a></code> | <code>string</code> | A directory which will contain build artifacts. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.autoApproveUpgrades">autoApproveUpgrades</a></code> | <code>boolean</code> | Automatically approve deps upgrade PRs, allowing them to be merged by mergify (if configued). |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.buildWorkflow">buildWorkflow</a></code> | <code>boolean</code> | Define a GitHub workflow for building PRs. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.buildWorkflowTriggers">buildWorkflowTriggers</a></code> | <code>projen.github.workflows.Triggers</code> | Build workflow triggers. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.bundlerOptions">bundlerOptions</a></code> | <code>projen.javascript.BundlerOptions</code> | Options for `Bundler`. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.codeCov">codeCov</a></code> | <code>boolean</code> | Define a GitHub workflow step for sending code coverage metrics to https://codecov.io/ Uses codecov/codecov-action@v3 A secret is required for private repos. Configured with `@codeCovTokenSecret`. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.codeCovTokenSecret">codeCovTokenSecret</a></code> | <code>string</code> | Define the secret name for a specified https://codecov.io/ token A secret is required to send coverage for private repositories. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.copyrightOwner">copyrightOwner</a></code> | <code>string</code> | License copyright owner. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.copyrightPeriod">copyrightPeriod</a></code> | <code>string</code> | The copyright years to put in the LICENSE file. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.dependabot">dependabot</a></code> | <code>boolean</code> | Use dependabot to handle dependency upgrades. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.dependabotOptions">dependabotOptions</a></code> | <code>projen.github.DependabotOptions</code> | Options for dependabot. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.depsUpgrade">depsUpgrade</a></code> | <code>boolean</code> | Use tasks and github workflows to handle dependency upgrades. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.depsUpgradeOptions">depsUpgradeOptions</a></code> | <code>projen.javascript.UpgradeDependenciesOptions</code> | Options for `UpgradeDependencies`. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.gitignore">gitignore</a></code> | <code>string[]</code> | Additional entries to .gitignore. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.jest">jest</a></code> | <code>boolean</code> | Setup jest unit tests. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.jestOptions">jestOptions</a></code> | <code>projen.javascript.JestOptions</code> | Jest options. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.mutableBuild">mutableBuild</a></code> | <code>boolean</code> | Automatically update files modified during builds to pull-request branches. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.npmignore">npmignore</a></code> | <code>string[]</code> | Additional entries to .npmignore. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.npmignoreEnabled">npmignoreEnabled</a></code> | <code>boolean</code> | Defines an .npmignore file. Normally this is only needed for libraries that are packaged as tarballs. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.npmIgnoreOptions">npmIgnoreOptions</a></code> | <code>projen.IgnoreFileOptions</code> | Configuration options for .npmignore file. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.package">package</a></code> | <code>boolean</code> | Defines a `package` task that will produce an npm tarball under the artifacts directory (e.g. `dist`). |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.prettier">prettier</a></code> | <code>boolean</code> | Setup prettier. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.prettierOptions">prettierOptions</a></code> | <code>projen.javascript.PrettierOptions</code> | Prettier options. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenDevDependency">projenDevDependency</a></code> | <code>boolean</code> | Indicates of "projen" should be installed as a devDependency. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenrcJs">projenrcJs</a></code> | <code>boolean</code> | Generate (once) .projenrc.js (in JavaScript). Set to `false` in order to disable .projenrc.js generation. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenrcJsOptions">projenrcJsOptions</a></code> | <code>projen.javascript.ProjenrcOptions</code> | Options for .projenrc.js. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenVersion">projenVersion</a></code> | <code>string</code> | Version of projen to install. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.pullRequestTemplate">pullRequestTemplate</a></code> | <code>boolean</code> | Include a GitHub pull request template. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.pullRequestTemplateContents">pullRequestTemplateContents</a></code> | <code>string[]</code> | The contents of the pull request template. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.release">release</a></code> | <code>boolean</code> | Add release management to this project. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseToNpm">releaseToNpm</a></code> | <code>boolean</code> | Automatically release to npm when new versions are introduced. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseWorkflow">releaseWorkflow</a></code> | <code>boolean</code> | DEPRECATED: renamed to `release`. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.workflowBootstrapSteps">workflowBootstrapSteps</a></code> | <code>projen.github.workflows.JobStep[]</code> | Workflow steps to use in order to bootstrap this repo. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.workflowGitIdentity">workflowGitIdentity</a></code> | <code>projen.github.GitIdentity</code> | The git identity to use in workflows. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.workflowNodeVersion">workflowNodeVersion</a></code> | <code>string</code> | The node version to use in GitHub workflows. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.workflowPackageCache">workflowPackageCache</a></code> | <code>boolean</code> | Enable Node.js package cache in GitHub workflows. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.disableTsconfig">disableTsconfig</a></code> | <code>boolean</code> | Do not generate a `tsconfig.json` file (used by jsii projects since tsconfig.json is generated by the jsii compiler). |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.disableTsconfigDev">disableTsconfigDev</a></code> | <code>boolean</code> | Do not generate a `tsconfig.dev.json` file. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.docgen">docgen</a></code> | <code>boolean</code> | Docgen by Typedoc. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.docsDirectory">docsDirectory</a></code> | <code>string</code> | Docs directory. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.entrypointTypes">entrypointTypes</a></code> | <code>string</code> | The .d.ts file that includes the type declarations for this module. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.eslint">eslint</a></code> | <code>boolean</code> | Setup eslint. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.eslintOptions">eslintOptions</a></code> | <code>projen.javascript.EslintOptions</code> | Eslint options. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.libdir">libdir</a></code> | <code>string</code> | Typescript  artifacts output directory. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenrcTs">projenrcTs</a></code> | <code>boolean</code> | Use TypeScript for your projenrc file (`.projenrc.ts`). |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenrcTsOptions">projenrcTsOptions</a></code> | <code>projen.typescript.ProjenrcOptions</code> | Options for .projenrc.ts. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.sampleCode">sampleCode</a></code> | <code>boolean</code> | Generate one-time sample in `src/` and `test/` if there are no files there. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.srcdir">srcdir</a></code> | <code>string</code> | Typescript sources directory. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.testdir">testdir</a></code> | <code>string</code> | Jest tests directory. Tests files should be named `xxx.test.ts`. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.tsconfig">tsconfig</a></code> | <code>projen.javascript.TypescriptConfigOptions</code> | Custom TSConfig. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.tsconfigDev">tsconfigDev</a></code> | <code>projen.javascript.TypescriptConfigOptions</code> | Custom tsconfig options for the development tsconfig.json file (used for testing). |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.tsconfigDevFile">tsconfigDevFile</a></code> | <code>string</code> | The name of the development tsconfig.json file. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.typescriptVersion">typescriptVersion</a></code> | <code>string</code> | TypeScript version to use. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.additionalCompilerDependencies">additionalCompilerDependencies</a></code> | <code>string[]</code> | Packages that compile the project apart from the typescript/jsii compiler. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.backport">backport</a></code> | <code>boolean</code> | Configure a backport workflow. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.backportBranches">backportBranches</a></code> | <code>string[]</code> | Branches to backport to. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.repoName">repoName</a></code> | <code>string</code> | The name of the repository inside the cdk8s-team org where the code of the project is locate in. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.golang">golang</a></code> | <code>boolean</code> | Publish Golang bindings to GitHub. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.golangBranch">golangBranch</a></code> | <code>string</code> | Name of the branch in the golang repository to publish to. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.jsiiVersion">jsiiVersion</a></code> | <code>string</code> | JSII version to use. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.maven">maven</a></code> | <code>boolean</code> | Publish Java bindings to Maven. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.nuget">nuget</a></code> | <code>boolean</code> | Publish Dotnet bindings to Nuget. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.pypi">pypi</a></code> | <code>boolean</code> | Publish Python bindings to PyPI. |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+- *Default:* $BASEDIR
+
+This is the name of your project.
+
+---
+
+##### `commitGenerated`<sup>Optional</sup> <a name="commitGenerated" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.commitGenerated"></a>
+
+```typescript
+public readonly commitGenerated: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to commit the managed files by default.
+
+---
+
+##### `gitIgnoreOptions`<sup>Optional</sup> <a name="gitIgnoreOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.gitIgnoreOptions"></a>
+
+```typescript
+public readonly gitIgnoreOptions: IgnoreFileOptions;
+```
+
+- *Type:* projen.IgnoreFileOptions
+
+Configuration options for .gitignore file.
+
+---
+
+##### `gitOptions`<sup>Optional</sup> <a name="gitOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.gitOptions"></a>
+
+```typescript
+public readonly gitOptions: GitOptions;
+```
+
+- *Type:* projen.GitOptions
+
+Configuration options for git.
+
+---
+
+##### `logging`<sup>Optional</sup> <a name="logging" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.logging"></a>
+
+```typescript
+public readonly logging: LoggerOptions;
+```
+
+- *Type:* projen.LoggerOptions
+- *Default:* {}
+
+Configure logging options such as verbosity.
+
+---
+
+##### `outdir`<sup>Optional</sup> <a name="outdir" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.outdir"></a>
+
+```typescript
+public readonly outdir: string;
+```
+
+- *Type:* string
+- *Default:* "."
+
+The root directory of the project.
+
+Relative to this directory, all files are synthesized.
+
+If this project has a parent, this directory is relative to the parent
+directory and it cannot be the same as the parent or any of it's other
+subprojects.
+
+---
+
+##### `parent`<sup>Optional</sup> <a name="parent" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.parent"></a>
+
+```typescript
+public readonly parent: Project;
+```
+
+- *Type:* projen.Project
+
+The parent project, if this project is part of a bigger project.
+
+---
+
+##### `projenCommand`<sup>Optional</sup> <a name="projenCommand" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenCommand"></a>
+
+```typescript
+public readonly projenCommand: string;
+```
+
+- *Type:* string
+- *Default:* "npx projen"
+
+The shell command to use in order to run the projen CLI.
+
+Can be used to customize in special environments.
+
+---
+
+##### `projenrcJson`<sup>Optional</sup> <a name="projenrcJson" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenrcJson"></a>
+
+```typescript
+public readonly projenrcJson: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Generate (once) .projenrc.json (in JSON). Set to `false` in order to disable .projenrc.json generation.
+
+---
+
+##### `projenrcJsonOptions`<sup>Optional</sup> <a name="projenrcJsonOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenrcJsonOptions"></a>
+
+```typescript
+public readonly projenrcJsonOptions: ProjenrcJsonOptions;
+```
+
+- *Type:* projen.ProjenrcJsonOptions
+- *Default:* default options
+
+Options for .projenrc.json.
+
+---
+
+##### `renovatebot`<sup>Optional</sup> <a name="renovatebot" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.renovatebot"></a>
+
+```typescript
+public readonly renovatebot: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Use renovatebot to handle dependency upgrades.
+
+---
+
+##### `renovatebotOptions`<sup>Optional</sup> <a name="renovatebotOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.renovatebotOptions"></a>
+
+```typescript
+public readonly renovatebotOptions: RenovatebotOptions;
+```
+
+- *Type:* projen.RenovatebotOptions
+- *Default:* default options
+
+Options for renovatebot.
+
+---
+
+##### `autoApproveOptions`<sup>Optional</sup> <a name="autoApproveOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.autoApproveOptions"></a>
+
+```typescript
+public readonly autoApproveOptions: AutoApproveOptions;
+```
+
+- *Type:* projen.github.AutoApproveOptions
+- *Default:* auto approve is disabled
+
+Enable and configure the 'auto approve' workflow.
+
+---
+
+##### `autoMerge`<sup>Optional</sup> <a name="autoMerge" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.autoMerge"></a>
+
+```typescript
+public readonly autoMerge: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Enable automatic merging on GitHub.
+
+Has no effect if `github.mergify`
+is set to false.
+
+---
+
+##### `autoMergeOptions`<sup>Optional</sup> <a name="autoMergeOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.autoMergeOptions"></a>
+
+```typescript
+public readonly autoMergeOptions: AutoMergeOptions;
+```
+
+- *Type:* projen.github.AutoMergeOptions
+- *Default:* see defaults in `AutoMergeOptions`
+
+Configure options for automatic merging on GitHub.
+
+Has no effect if
+`github.mergify` or `autoMerge` is set to false.
+
+---
+
+##### `clobber`<sup>Optional</sup> <a name="clobber" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.clobber"></a>
+
+```typescript
+public readonly clobber: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true, but false for subprojects
+
+Add a `clobber` task which resets the repo to origin.
+
+---
+
+##### `devContainer`<sup>Optional</sup> <a name="devContainer" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.devContainer"></a>
+
+```typescript
+public readonly devContainer: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Add a VSCode development environment (used for GitHub Codespaces).
+
+---
+
+##### `github`<sup>Optional</sup> <a name="github" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.github"></a>
+
+```typescript
+public readonly github: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Enable GitHub integration.
+
+Enabled by default for root projects. Disabled for non-root projects.
+
+---
+
+##### `githubOptions`<sup>Optional</sup> <a name="githubOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.githubOptions"></a>
+
+```typescript
+public readonly githubOptions: GitHubOptions;
+```
+
+- *Type:* projen.github.GitHubOptions
+- *Default:* see GitHubOptions
+
+Options for GitHub integration.
+
+---
+
+##### `gitpod`<sup>Optional</sup> <a name="gitpod" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.gitpod"></a>
+
+```typescript
+public readonly gitpod: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Add a Gitpod development environment.
+
+---
+
+##### ~~`mergify`~~<sup>Optional</sup> <a name="mergify" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.mergify"></a>
+
+- *Deprecated:* use `githubOptions.mergify` instead
+
+```typescript
+public readonly mergify: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether mergify should be enabled on this repository or not.
+
+---
+
+##### ~~`mergifyOptions`~~<sup>Optional</sup> <a name="mergifyOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.mergifyOptions"></a>
+
+- *Deprecated:* use `githubOptions.mergifyOptions` instead
+
+```typescript
+public readonly mergifyOptions: MergifyOptions;
+```
+
+- *Type:* projen.github.MergifyOptions
+- *Default:* default options
+
+Options for mergify.
+
+---
+
+##### ~~`projectType`~~<sup>Optional</sup> <a name="projectType" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projectType"></a>
+
+- *Deprecated:* no longer supported at the base project level
+
+```typescript
+public readonly projectType: ProjectType;
+```
+
+- *Type:* projen.ProjectType
+- *Default:* ProjectType.UNKNOWN
+
+Which type of project this is (library/app).
+
+---
+
+##### `projenCredentials`<sup>Optional</sup> <a name="projenCredentials" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenCredentials"></a>
+
+```typescript
+public readonly projenCredentials: GithubCredentials;
+```
+
+- *Type:* projen.github.GithubCredentials
+- *Default:* use a personal access token named PROJEN_GITHUB_TOKEN
+
+Choose a method of providing GitHub API access for projen workflows.
+
+---
+
+##### ~~`projenTokenSecret`~~<sup>Optional</sup> <a name="projenTokenSecret" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenTokenSecret"></a>
+
+- *Deprecated:* use `projenCredentials`
+
+```typescript
+public readonly projenTokenSecret: string;
+```
+
+- *Type:* string
+- *Default:* "PROJEN_GITHUB_TOKEN"
+
+The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
+
+This token needs to have the `repo`, `workflows`
+and `packages` scope.
+
+---
+
+##### `readme`<sup>Optional</sup> <a name="readme" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.readme"></a>
+
+```typescript
+public readonly readme: SampleReadmeProps;
+```
+
+- *Type:* projen.SampleReadmeProps
+- *Default:* { filename: 'README.md', contents: '# replace this' }
+
+The README setup.
+
+---
+
+*Example*
+
+```typescript
+"{ filename: 'readme.md', contents: '# title' }"
+```
+
+
+##### `stale`<sup>Optional</sup> <a name="stale" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.stale"></a>
+
+```typescript
+public readonly stale: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Auto-close of stale issues and pull request.
+
+See `staleOptions` for options.
+
+---
+
+##### `staleOptions`<sup>Optional</sup> <a name="staleOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.staleOptions"></a>
+
+```typescript
+public readonly staleOptions: StaleOptions;
+```
+
+- *Type:* projen.github.StaleOptions
+- *Default:* see defaults in `StaleOptions`
+
+Auto-close stale issues and pull requests.
+
+To disable set `stale` to `false`.
+
+---
+
+##### `vscode`<sup>Optional</sup> <a name="vscode" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.vscode"></a>
+
+```typescript
+public readonly vscode: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Enable VSCode integration.
+
+Enabled by default for root projects. Disabled for non-root projects.
+
+---
+
+##### `allowLibraryDependencies`<sup>Optional</sup> <a name="allowLibraryDependencies" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.allowLibraryDependencies"></a>
+
+```typescript
+public readonly allowLibraryDependencies: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Allow the project to include `peerDependencies` and `bundledDependencies`.
+
+This is normally only allowed for libraries. For apps, there's no meaning
+for specifying these.
+
+---
+
+##### `authorEmail`<sup>Optional</sup> <a name="authorEmail" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.authorEmail"></a>
+
+```typescript
+public readonly authorEmail: string;
+```
+
+- *Type:* string
+
+Author's e-mail.
+
+---
+
+##### `authorName`<sup>Optional</sup> <a name="authorName" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.authorName"></a>
+
+```typescript
+public readonly authorName: string;
+```
+
+- *Type:* string
+
+Author's name.
+
+---
+
+##### `authorOrganization`<sup>Optional</sup> <a name="authorOrganization" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.authorOrganization"></a>
+
+```typescript
+public readonly authorOrganization: boolean;
+```
+
+- *Type:* boolean
+
+Is the author an organization.
+
+---
+
+##### `authorUrl`<sup>Optional</sup> <a name="authorUrl" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.authorUrl"></a>
+
+```typescript
+public readonly authorUrl: string;
+```
+
+- *Type:* string
+
+Author's URL / Website.
+
+---
+
+##### `autoDetectBin`<sup>Optional</sup> <a name="autoDetectBin" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.autoDetectBin"></a>
+
+```typescript
+public readonly autoDetectBin: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Automatically add all executables under the `bin` directory to your `package.json` file under the `bin` section.
+
+---
+
+##### `bin`<sup>Optional</sup> <a name="bin" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.bin"></a>
+
+```typescript
+public readonly bin: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Binary programs vended with your module.
+
+You can use this option to add/customize how binaries are represented in
+your `package.json`, but unless `autoDetectBin` is `false`, every
+executable file under `bin` will automatically be added to this section.
+
+---
+
+##### `bugsEmail`<sup>Optional</sup> <a name="bugsEmail" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.bugsEmail"></a>
+
+```typescript
+public readonly bugsEmail: string;
+```
+
+- *Type:* string
+
+The email address to which issues should be reported.
+
+---
+
+##### `bugsUrl`<sup>Optional</sup> <a name="bugsUrl" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.bugsUrl"></a>
+
+```typescript
+public readonly bugsUrl: string;
+```
+
+- *Type:* string
+
+The url to your project's issue tracker.
+
+---
+
+##### `bundledDeps`<sup>Optional</sup> <a name="bundledDeps" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.bundledDeps"></a>
+
+```typescript
+public readonly bundledDeps: string[];
+```
+
+- *Type:* string[]
+
+List of dependencies to bundle into this module.
+
+These modules will be
+added both to the `dependencies` section and `bundledDependencies` section of
+your `package.json`.
+
+The recommendation is to only specify the module name here (e.g.
+`express`). This will behave similar to `yarn add` or `npm install` in the
+sense that it will add the module as a dependency to your `package.json`
+file with the latest version (`^`). You can specify semver requirements in
+the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
+this will be what you `package.json` will eventually include.
+
+---
+
+##### `codeArtifactOptions`<sup>Optional</sup> <a name="codeArtifactOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.codeArtifactOptions"></a>
+
+```typescript
+public readonly codeArtifactOptions: CodeArtifactOptions;
+```
+
+- *Type:* projen.javascript.CodeArtifactOptions
+- *Default:* undefined
+
+Options for npm packages using AWS CodeArtifact.
+
+This is required if publishing packages to, or installing scoped packages from AWS CodeArtifact
+
+---
+
+##### `deps`<sup>Optional</sup> <a name="deps" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.deps"></a>
+
+```typescript
+public readonly deps: string[];
+```
+
+- *Type:* string[]
+- *Default:* []
+
+Runtime dependencies of this module.
+
+The recommendation is to only specify the module name here (e.g.
+`express`). This will behave similar to `yarn add` or `npm install` in the
+sense that it will add the module as a dependency to your `package.json`
+file with the latest version (`^`). You can specify semver requirements in
+the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
+this will be what you `package.json` will eventually include.
+
+---
+
+*Example*
+
+```typescript
+[ 'express', 'lodash', 'foo@^2' ]
+```
+
+
+##### `description`<sup>Optional</sup> <a name="description" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.description"></a>
+
+```typescript
+public readonly description: string;
+```
+
+- *Type:* string
+
+The description is just a string that helps people understand the purpose of the package.
+
+It can be used when searching for packages in a package manager as well.
+See https://classic.yarnpkg.com/en/docs/package-json/#toc-description
+
+---
+
+##### `devDeps`<sup>Optional</sup> <a name="devDeps" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.devDeps"></a>
+
+```typescript
+public readonly devDeps: string[];
+```
+
+- *Type:* string[]
+- *Default:* []
+
+Build dependencies for this module.
+
+These dependencies will only be
+available in your build environment but will not be fetched when this
+module is consumed.
+
+The recommendation is to only specify the module name here (e.g.
+`express`). This will behave similar to `yarn add` or `npm install` in the
+sense that it will add the module as a dependency to your `package.json`
+file with the latest version (`^`). You can specify semver requirements in
+the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
+this will be what you `package.json` will eventually include.
+
+---
+
+*Example*
+
+```typescript
+[ 'typescript', '@types/express' ]
+```
+
+
+##### `entrypoint`<sup>Optional</sup> <a name="entrypoint" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.entrypoint"></a>
+
+```typescript
+public readonly entrypoint: string;
+```
+
+- *Type:* string
+- *Default:* "lib/index.js"
+
+Module entrypoint (`main` in `package.json`).
+
+Set to an empty string to not include `main` in your package.json
+
+---
+
+##### `homepage`<sup>Optional</sup> <a name="homepage" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.homepage"></a>
+
+```typescript
+public readonly homepage: string;
+```
+
+- *Type:* string
+
+Package's Homepage / Website.
+
+---
+
+##### `keywords`<sup>Optional</sup> <a name="keywords" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.keywords"></a>
+
+```typescript
+public readonly keywords: string[];
+```
+
+- *Type:* string[]
+
+Keywords to include in `package.json`.
+
+---
+
+##### `license`<sup>Optional</sup> <a name="license" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.license"></a>
+
+```typescript
+public readonly license: string;
+```
+
+- *Type:* string
+- *Default:* "Apache-2.0"
+
+License's SPDX identifier.
+
+See https://github.com/projen/projen/tree/main/license-text for a list of supported licenses.
+Use the `licensed` option if you want to no license to be specified.
+
+---
+
+##### `licensed`<sup>Optional</sup> <a name="licensed" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.licensed"></a>
+
+```typescript
+public readonly licensed: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Indicates if a license should be added.
+
+---
+
+##### `maxNodeVersion`<sup>Optional</sup> <a name="maxNodeVersion" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.maxNodeVersion"></a>
+
+```typescript
+public readonly maxNodeVersion: string;
+```
+
+- *Type:* string
+- *Default:* no max
+
+Minimum node.js version to require via `engines` (inclusive).
+
+---
+
+##### `minNodeVersion`<sup>Optional</sup> <a name="minNodeVersion" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.minNodeVersion"></a>
+
+```typescript
+public readonly minNodeVersion: string;
+```
+
+- *Type:* string
+- *Default:* no "engines" specified
+
+Minimum Node.js version to require via package.json `engines` (inclusive).
+
+---
+
+##### `npmAccess`<sup>Optional</sup> <a name="npmAccess" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.npmAccess"></a>
+
+```typescript
+public readonly npmAccess: NpmAccess;
+```
+
+- *Type:* projen.javascript.NpmAccess
+- *Default:* for scoped packages (e.g. `foo@bar`), the default is `NpmAccess.RESTRICTED`, for non-scoped packages, the default is `NpmAccess.PUBLIC`.
+
+Access level of the npm package.
+
+---
+
+##### ~~`npmRegistry`~~<sup>Optional</sup> <a name="npmRegistry" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.npmRegistry"></a>
+
+- *Deprecated:* use `npmRegistryUrl` instead
+
+```typescript
+public readonly npmRegistry: string;
+```
+
+- *Type:* string
+
+The host name of the npm registry to publish to.
+
+Cannot be set together with `npmRegistryUrl`.
+
+---
+
+##### `npmRegistryUrl`<sup>Optional</sup> <a name="npmRegistryUrl" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.npmRegistryUrl"></a>
+
+```typescript
+public readonly npmRegistryUrl: string;
+```
+
+- *Type:* string
+- *Default:* "https://registry.npmjs.org"
+
+The base URL of the npm package registry.
+
+Must be a URL (e.g. start with "https://" or "http://")
+
+---
+
+##### `npmTokenSecret`<sup>Optional</sup> <a name="npmTokenSecret" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.npmTokenSecret"></a>
+
+```typescript
+public readonly npmTokenSecret: string;
+```
+
+- *Type:* string
+- *Default:* "NPM_TOKEN"
+
+GitHub secret which contains the NPM token to use when publishing packages.
+
+---
+
+##### `packageManager`<sup>Optional</sup> <a name="packageManager" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.packageManager"></a>
+
+```typescript
+public readonly packageManager: NodePackageManager;
+```
+
+- *Type:* projen.javascript.NodePackageManager
+- *Default:* NodePackageManager.YARN_CLASSIC
+
+The Node Package Manager used to execute scripts.
+
+---
+
+##### `packageName`<sup>Optional</sup> <a name="packageName" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.packageName"></a>
+
+```typescript
+public readonly packageName: string;
+```
+
+- *Type:* string
+- *Default:* defaults to project name
+
+The "name" in package.json.
+
+---
+
+##### `peerDependencyOptions`<sup>Optional</sup> <a name="peerDependencyOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.peerDependencyOptions"></a>
+
+```typescript
+public readonly peerDependencyOptions: PeerDependencyOptions;
+```
+
+- *Type:* projen.javascript.PeerDependencyOptions
+
+Options for `peerDeps`.
+
+---
+
+##### `peerDeps`<sup>Optional</sup> <a name="peerDeps" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.peerDeps"></a>
+
+```typescript
+public readonly peerDeps: string[];
+```
+
+- *Type:* string[]
+- *Default:* []
+
+Peer dependencies for this module.
+
+Dependencies listed here are required to
+be installed (and satisfied) by the _consumer_ of this library. Using peer
+dependencies allows you to ensure that only a single module of a certain
+library exists in the `node_modules` tree of your consumers.
+
+Note that prior to npm@7, peer dependencies are _not_ automatically
+installed, which means that adding peer dependencies to a library will be a
+breaking change for your customers.
+
+Unless `peerDependencyOptions.pinnedDevDependency` is disabled (it is
+enabled by default), projen will automatically add a dev dependency with a
+pinned version for each peer dependency. This will ensure that you build &
+test your module against the lowest peer version required.
+
+---
+
+##### `pnpmVersion`<sup>Optional</sup> <a name="pnpmVersion" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.pnpmVersion"></a>
+
+```typescript
+public readonly pnpmVersion: string;
+```
+
+- *Type:* string
+- *Default:* "7"
+
+The version of PNPM to use if using PNPM as a package manager.
+
+---
+
+##### `repository`<sup>Optional</sup> <a name="repository" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.repository"></a>
+
+```typescript
+public readonly repository: string;
+```
+
+- *Type:* string
+
+The repository is the location where the actual code for your package lives.
+
+See https://classic.yarnpkg.com/en/docs/package-json/#toc-repository
+
+---
+
+##### `repositoryDirectory`<sup>Optional</sup> <a name="repositoryDirectory" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.repositoryDirectory"></a>
+
+```typescript
+public readonly repositoryDirectory: string;
+```
+
+- *Type:* string
+
+If the package.json for your package is not in the root directory (for example if it is part of a monorepo), you can specify the directory in which it lives.
+
+---
+
+##### `scopedPackagesOptions`<sup>Optional</sup> <a name="scopedPackagesOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.scopedPackagesOptions"></a>
+
+```typescript
+public readonly scopedPackagesOptions: ScopedPackagesOptions[];
+```
+
+- *Type:* projen.javascript.ScopedPackagesOptions[]
+- *Default:* fetch all scoped packages from the public npm registry
+
+Options for privately hosted scoped packages.
+
+---
+
+##### ~~`scripts`~~<sup>Optional</sup> <a name="scripts" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.scripts"></a>
+
+- *Deprecated:* use `project.addTask()` or `package.setScript()`
+
+```typescript
+public readonly scripts: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+- *Default:* {}
+
+npm scripts to include.
+
+If a script has the same name as a standard script,
+the standard script will be overwritten.
+Also adds the script as a task.
+
+---
+
+##### `stability`<sup>Optional</sup> <a name="stability" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.stability"></a>
+
+```typescript
+public readonly stability: string;
+```
+
+- *Type:* string
+
+Package's Stability.
+
+---
+
+##### `yarnBerryOptions`<sup>Optional</sup> <a name="yarnBerryOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.yarnBerryOptions"></a>
+
+```typescript
+public readonly yarnBerryOptions: YarnBerryOptions;
+```
+
+- *Type:* projen.javascript.YarnBerryOptions
+- *Default:* Yarn Berry v4 with all default options
+
+Options for Yarn Berry.
+
+---
+
+##### `jsiiReleaseVersion`<sup>Optional</sup> <a name="jsiiReleaseVersion" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.jsiiReleaseVersion"></a>
+
+```typescript
+public readonly jsiiReleaseVersion: string;
+```
+
+- *Type:* string
+- *Default:* "latest"
+
+Version requirement of `publib` which is used to publish modules to npm.
+
+---
+
+##### `majorVersion`<sup>Optional</sup> <a name="majorVersion" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.majorVersion"></a>
+
+```typescript
+public readonly majorVersion: number;
+```
+
+- *Type:* number
+- *Default:* Major version is not enforced.
+
+Major version to release from the default branch.
+
+If this is specified, we bump the latest version of this major version line.
+If not specified, we bump the global latest version.
+
+---
+
+##### `minMajorVersion`<sup>Optional</sup> <a name="minMajorVersion" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.minMajorVersion"></a>
+
+```typescript
+public readonly minMajorVersion: number;
+```
+
+- *Type:* number
+- *Default:* No minimum version is being enforced
+
+Minimal Major version to release.
+
+This can be useful to set to 1, as breaking changes before the 1.x major
+release are not incrementing the major version number.
+
+Can not be set together with `majorVersion`.
+
+---
+
+##### `npmDistTag`<sup>Optional</sup> <a name="npmDistTag" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.npmDistTag"></a>
+
+```typescript
+public readonly npmDistTag: string;
+```
+
+- *Type:* string
+- *Default:* "latest"
+
+The npmDistTag to use when publishing from the default branch.
+
+To set the npm dist-tag for release branches, set the `npmDistTag` property
+for each branch.
+
+---
+
+##### `postBuildSteps`<sup>Optional</sup> <a name="postBuildSteps" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.postBuildSteps"></a>
+
+```typescript
+public readonly postBuildSteps: JobStep[];
+```
+
+- *Type:* projen.github.workflows.JobStep[]
+- *Default:* []
+
+Steps to execute after build as part of the release workflow.
+
+---
+
+##### `prerelease`<sup>Optional</sup> <a name="prerelease" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.prerelease"></a>
+
+```typescript
+public readonly prerelease: string;
+```
+
+- *Type:* string
+- *Default:* normal semantic versions
+
+Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pre").
+
+---
+
+##### `publishDryRun`<sup>Optional</sup> <a name="publishDryRun" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.publishDryRun"></a>
+
+```typescript
+public readonly publishDryRun: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Instead of actually publishing to package managers, just print the publishing command.
+
+---
+
+##### `publishTasks`<sup>Optional</sup> <a name="publishTasks" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.publishTasks"></a>
+
+```typescript
+public readonly publishTasks: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Define publishing tasks that can be executed manually as well as workflows.
+
+Normally, publishing only happens within automated workflows. Enable this
+in order to create a publishing task for each publishing activity.
+
+---
+
+##### `releasableCommits`<sup>Optional</sup> <a name="releasableCommits" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releasableCommits"></a>
+
+```typescript
+public readonly releasableCommits: ReleasableCommits;
+```
+
+- *Type:* projen.ReleasableCommits
+- *Default:* ReleasableCommits.everyCommit()
+
+Find commits that should be considered releasable Used to decide if a release is required.
+
+---
+
+##### `releaseBranches`<sup>Optional</sup> <a name="releaseBranches" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseBranches"></a>
+
+```typescript
+public readonly releaseBranches: {[ key: string ]: BranchOptions};
+```
+
+- *Type:* {[ key: string ]: projen.release.BranchOptions}
+- *Default:* no additional branches are used for release. you can use `addBranch()` to add additional branches.
+
+Defines additional release branches.
+
+A workflow will be created for each
+release branch which will publish releases from commits in this branch.
+Each release branch _must_ be assigned a major version number which is used
+to enforce that versions published from that branch always use that major
+version. If multiple branches are used, the `majorVersion` field must also
+be provided for the default branch.
+
+---
+
+##### ~~`releaseEveryCommit`~~<sup>Optional</sup> <a name="releaseEveryCommit" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseEveryCommit"></a>
+
+- *Deprecated:* Use `releaseTrigger: ReleaseTrigger.continuous()` instead
+
+```typescript
+public readonly releaseEveryCommit: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Automatically release new versions every commit to one of branches in `releaseBranches`.
+
+---
+
+##### `releaseFailureIssue`<sup>Optional</sup> <a name="releaseFailureIssue" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseFailureIssue"></a>
+
+```typescript
+public readonly releaseFailureIssue: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Create a github issue on every failed publishing task.
+
+---
+
+##### `releaseFailureIssueLabel`<sup>Optional</sup> <a name="releaseFailureIssueLabel" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseFailureIssueLabel"></a>
+
+```typescript
+public readonly releaseFailureIssueLabel: string;
+```
+
+- *Type:* string
+- *Default:* "failed-release"
+
+The label to apply to issues indicating publish failures.
+
+Only applies if `releaseFailureIssue` is true.
+
+---
+
+##### ~~`releaseSchedule`~~<sup>Optional</sup> <a name="releaseSchedule" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseSchedule"></a>
+
+- *Deprecated:* Use `releaseTrigger: ReleaseTrigger.scheduled()` instead
+
+```typescript
+public readonly releaseSchedule: string;
+```
+
+- *Type:* string
+- *Default:* no scheduled releases
+
+CRON schedule to trigger new releases.
+
+---
+
+##### `releaseTagPrefix`<sup>Optional</sup> <a name="releaseTagPrefix" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseTagPrefix"></a>
+
+```typescript
+public readonly releaseTagPrefix: string;
+```
+
+- *Type:* string
+- *Default:* "v"
+
+Automatically add the given prefix to release tags. Useful if you are releasing on multiple branches with overlapping version numbers.
+
+Note: this prefix is used to detect the latest tagged version
+when bumping, so if you change this on a project with an existing version
+history, you may need to manually tag your latest release
+with the new prefix.
+
+---
+
+##### `releaseTrigger`<sup>Optional</sup> <a name="releaseTrigger" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseTrigger"></a>
+
+```typescript
+public readonly releaseTrigger: ReleaseTrigger;
+```
+
+- *Type:* projen.release.ReleaseTrigger
+- *Default:* Continuous releases (`ReleaseTrigger.continuous()`)
+
+The release trigger to use.
+
+---
+
+##### `releaseWorkflowName`<sup>Optional</sup> <a name="releaseWorkflowName" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseWorkflowName"></a>
+
+```typescript
+public readonly releaseWorkflowName: string;
+```
+
+- *Type:* string
+- *Default:* "Release"
+
+The name of the default release workflow.
+
+---
+
+##### `releaseWorkflowSetupSteps`<sup>Optional</sup> <a name="releaseWorkflowSetupSteps" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseWorkflowSetupSteps"></a>
+
+```typescript
+public readonly releaseWorkflowSetupSteps: JobStep[];
+```
+
+- *Type:* projen.github.workflows.JobStep[]
+
+A set of workflow steps to execute in order to setup the workflow container.
+
+---
+
+##### `versionrcOptions`<sup>Optional</sup> <a name="versionrcOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.versionrcOptions"></a>
+
+```typescript
+public readonly versionrcOptions: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+- *Default:* standard configuration applicable for GitHub repositories
+
+Custom configuration used when creating changelog with standard-version package.
+
+Given values either append to default configuration or overwrite values in it.
+
+---
+
+##### `workflowContainerImage`<sup>Optional</sup> <a name="workflowContainerImage" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.workflowContainerImage"></a>
+
+```typescript
+public readonly workflowContainerImage: string;
+```
+
+- *Type:* string
+- *Default:* default image
+
+Container image to use for GitHub workflows.
+
+---
+
+##### `workflowRunsOn`<sup>Optional</sup> <a name="workflowRunsOn" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.workflowRunsOn"></a>
+
+```typescript
+public readonly workflowRunsOn: string[];
+```
+
+- *Type:* string[]
+- *Default:* ["ubuntu-latest"]
+
+Github Runner selection labels.
+
+---
+
+##### `workflowRunsOnGroup`<sup>Optional</sup> <a name="workflowRunsOnGroup" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.workflowRunsOnGroup"></a>
+
+```typescript
+public readonly workflowRunsOnGroup: GroupRunnerOptions;
+```
+
+- *Type:* projen.GroupRunnerOptions
+
+Github Runner Group selection options.
+
+---
+
+##### `defaultReleaseBranch`<sup>Required</sup> <a name="defaultReleaseBranch" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.defaultReleaseBranch"></a>
+
+```typescript
+public readonly defaultReleaseBranch: string;
+```
+
+- *Type:* string
+- *Default:* "main"
+
+The name of the main release branch.
+
+---
+
+##### `artifactsDirectory`<sup>Optional</sup> <a name="artifactsDirectory" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.artifactsDirectory"></a>
+
+```typescript
+public readonly artifactsDirectory: string;
+```
+
+- *Type:* string
+- *Default:* "dist"
+
+A directory which will contain build artifacts.
+
+---
+
+##### `autoApproveUpgrades`<sup>Optional</sup> <a name="autoApproveUpgrades" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.autoApproveUpgrades"></a>
+
+```typescript
+public readonly autoApproveUpgrades: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Automatically approve deps upgrade PRs, allowing them to be merged by mergify (if configued).
+
+Throw if set to true but `autoApproveOptions` are not defined.
+
+---
+
+##### `buildWorkflow`<sup>Optional</sup> <a name="buildWorkflow" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.buildWorkflow"></a>
+
+```typescript
+public readonly buildWorkflow: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true if not a subproject
+
+Define a GitHub workflow for building PRs.
+
+---
+
+##### `buildWorkflowTriggers`<sup>Optional</sup> <a name="buildWorkflowTriggers" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.buildWorkflowTriggers"></a>
+
+```typescript
+public readonly buildWorkflowTriggers: Triggers;
+```
+
+- *Type:* projen.github.workflows.Triggers
+- *Default:* "{ pullRequest: {}, workflowDispatch: {} }"
+
+Build workflow triggers.
+
+---
+
+##### `bundlerOptions`<sup>Optional</sup> <a name="bundlerOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.bundlerOptions"></a>
+
+```typescript
+public readonly bundlerOptions: BundlerOptions;
+```
+
+- *Type:* projen.javascript.BundlerOptions
+
+Options for `Bundler`.
+
+---
+
+##### `codeCov`<sup>Optional</sup> <a name="codeCov" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.codeCov"></a>
+
+```typescript
+public readonly codeCov: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Define a GitHub workflow step for sending code coverage metrics to https://codecov.io/ Uses codecov/codecov-action@v3 A secret is required for private repos. Configured with `@codeCovTokenSecret`.
+
+---
+
+##### `codeCovTokenSecret`<sup>Optional</sup> <a name="codeCovTokenSecret" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.codeCovTokenSecret"></a>
+
+```typescript
+public readonly codeCovTokenSecret: string;
+```
+
+- *Type:* string
+- *Default:* if this option is not specified, only public repositories are supported
+
+Define the secret name for a specified https://codecov.io/ token A secret is required to send coverage for private repositories.
+
+---
+
+##### `copyrightOwner`<sup>Optional</sup> <a name="copyrightOwner" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.copyrightOwner"></a>
+
+```typescript
+public readonly copyrightOwner: string;
+```
+
+- *Type:* string
+- *Default:* defaults to the value of authorName or "" if `authorName` is undefined.
+
+License copyright owner.
+
+---
+
+##### `copyrightPeriod`<sup>Optional</sup> <a name="copyrightPeriod" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.copyrightPeriod"></a>
+
+```typescript
+public readonly copyrightPeriod: string;
+```
+
+- *Type:* string
+- *Default:* current year
+
+The copyright years to put in the LICENSE file.
+
+---
+
+##### `dependabot`<sup>Optional</sup> <a name="dependabot" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.dependabot"></a>
+
+```typescript
+public readonly dependabot: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Use dependabot to handle dependency upgrades.
+
+Cannot be used in conjunction with `depsUpgrade`.
+
+---
+
+##### `dependabotOptions`<sup>Optional</sup> <a name="dependabotOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.dependabotOptions"></a>
+
+```typescript
+public readonly dependabotOptions: DependabotOptions;
+```
+
+- *Type:* projen.github.DependabotOptions
+- *Default:* default options
+
+Options for dependabot.
+
+---
+
+##### `depsUpgrade`<sup>Optional</sup> <a name="depsUpgrade" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.depsUpgrade"></a>
+
+```typescript
+public readonly depsUpgrade: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Use tasks and github workflows to handle dependency upgrades.
+
+Cannot be used in conjunction with `dependabot`.
+
+---
+
+##### `depsUpgradeOptions`<sup>Optional</sup> <a name="depsUpgradeOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.depsUpgradeOptions"></a>
+
+```typescript
+public readonly depsUpgradeOptions: UpgradeDependenciesOptions;
+```
+
+- *Type:* projen.javascript.UpgradeDependenciesOptions
+- *Default:* default options
+
+Options for `UpgradeDependencies`.
+
+---
+
+##### `gitignore`<sup>Optional</sup> <a name="gitignore" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.gitignore"></a>
+
+```typescript
+public readonly gitignore: string[];
+```
+
+- *Type:* string[]
+
+Additional entries to .gitignore.
+
+---
+
+##### `jest`<sup>Optional</sup> <a name="jest" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.jest"></a>
+
+```typescript
+public readonly jest: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Setup jest unit tests.
+
+---
+
+##### `jestOptions`<sup>Optional</sup> <a name="jestOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.jestOptions"></a>
+
+```typescript
+public readonly jestOptions: JestOptions;
+```
+
+- *Type:* projen.javascript.JestOptions
+- *Default:* default options
+
+Jest options.
+
+---
+
+##### `mutableBuild`<sup>Optional</sup> <a name="mutableBuild" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.mutableBuild"></a>
+
+```typescript
+public readonly mutableBuild: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Automatically update files modified during builds to pull-request branches.
+
+This means
+that any files synthesized by projen or e.g. test snapshots will always be up-to-date
+before a PR is merged.
+
+Implies that PR builds do not have anti-tamper checks.
+
+---
+
+##### ~~`npmignore`~~<sup>Optional</sup> <a name="npmignore" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.npmignore"></a>
+
+- *Deprecated:* - use `project.addPackageIgnore`
+
+```typescript
+public readonly npmignore: string[];
+```
+
+- *Type:* string[]
+
+Additional entries to .npmignore.
+
+---
+
+##### `npmignoreEnabled`<sup>Optional</sup> <a name="npmignoreEnabled" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.npmignoreEnabled"></a>
+
+```typescript
+public readonly npmignoreEnabled: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Defines an .npmignore file. Normally this is only needed for libraries that are packaged as tarballs.
+
+---
+
+##### `npmIgnoreOptions`<sup>Optional</sup> <a name="npmIgnoreOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.npmIgnoreOptions"></a>
+
+```typescript
+public readonly npmIgnoreOptions: IgnoreFileOptions;
+```
+
+- *Type:* projen.IgnoreFileOptions
+
+Configuration options for .npmignore file.
+
+---
+
+##### `package`<sup>Optional</sup> <a name="package" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.package"></a>
+
+```typescript
+public readonly package: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Defines a `package` task that will produce an npm tarball under the artifacts directory (e.g. `dist`).
+
+---
+
+##### `prettier`<sup>Optional</sup> <a name="prettier" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.prettier"></a>
+
+```typescript
+public readonly prettier: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Setup prettier.
+
+---
+
+##### `prettierOptions`<sup>Optional</sup> <a name="prettierOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.prettierOptions"></a>
+
+```typescript
+public readonly prettierOptions: PrettierOptions;
+```
+
+- *Type:* projen.javascript.PrettierOptions
+- *Default:* default options
+
+Prettier options.
+
+---
+
+##### `projenDevDependency`<sup>Optional</sup> <a name="projenDevDependency" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenDevDependency"></a>
+
+```typescript
+public readonly projenDevDependency: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Indicates of "projen" should be installed as a devDependency.
+
+---
+
+##### `projenrcJs`<sup>Optional</sup> <a name="projenrcJs" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenrcJs"></a>
+
+```typescript
+public readonly projenrcJs: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true if projenrcJson is false
+
+Generate (once) .projenrc.js (in JavaScript). Set to `false` in order to disable .projenrc.js generation.
+
+---
+
+##### `projenrcJsOptions`<sup>Optional</sup> <a name="projenrcJsOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenrcJsOptions"></a>
+
+```typescript
+public readonly projenrcJsOptions: ProjenrcOptions;
+```
+
+- *Type:* projen.javascript.ProjenrcOptions
+- *Default:* default options
+
+Options for .projenrc.js.
+
+---
+
+##### `projenVersion`<sup>Optional</sup> <a name="projenVersion" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenVersion"></a>
+
+```typescript
+public readonly projenVersion: string;
+```
+
+- *Type:* string
+- *Default:* Defaults to the latest version.
+
+Version of projen to install.
+
+---
+
+##### `pullRequestTemplate`<sup>Optional</sup> <a name="pullRequestTemplate" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.pullRequestTemplate"></a>
+
+```typescript
+public readonly pullRequestTemplate: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Include a GitHub pull request template.
+
+---
+
+##### `pullRequestTemplateContents`<sup>Optional</sup> <a name="pullRequestTemplateContents" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.pullRequestTemplateContents"></a>
+
+```typescript
+public readonly pullRequestTemplateContents: string[];
+```
+
+- *Type:* string[]
+- *Default:* default content
+
+The contents of the pull request template.
+
+---
+
+##### `release`<sup>Optional</sup> <a name="release" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.release"></a>
+
+```typescript
+public readonly release: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true (false for subprojects)
+
+Add release management to this project.
+
+---
+
+##### `releaseToNpm`<sup>Optional</sup> <a name="releaseToNpm" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseToNpm"></a>
+
+```typescript
+public readonly releaseToNpm: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Automatically release to npm when new versions are introduced.
+
+---
+
+##### ~~`releaseWorkflow`~~<sup>Optional</sup> <a name="releaseWorkflow" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.releaseWorkflow"></a>
+
+- *Deprecated:* see `release`.
+
+```typescript
+public readonly releaseWorkflow: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true if not a subproject
+
+DEPRECATED: renamed to `release`.
+
+---
+
+##### `workflowBootstrapSteps`<sup>Optional</sup> <a name="workflowBootstrapSteps" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.workflowBootstrapSteps"></a>
+
+```typescript
+public readonly workflowBootstrapSteps: JobStep[];
+```
+
+- *Type:* projen.github.workflows.JobStep[]
+- *Default:* "yarn install --frozen-lockfile && yarn projen"
+
+Workflow steps to use in order to bootstrap this repo.
+
+---
+
+##### `workflowGitIdentity`<sup>Optional</sup> <a name="workflowGitIdentity" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.workflowGitIdentity"></a>
+
+```typescript
+public readonly workflowGitIdentity: GitIdentity;
+```
+
+- *Type:* projen.github.GitIdentity
+- *Default:* GitHub Actions
+
+The git identity to use in workflows.
+
+---
+
+##### `workflowNodeVersion`<sup>Optional</sup> <a name="workflowNodeVersion" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.workflowNodeVersion"></a>
+
+```typescript
+public readonly workflowNodeVersion: string;
+```
+
+- *Type:* string
+- *Default:* same as `minNodeVersion`
+
+The node version to use in GitHub workflows.
+
+---
+
+##### `workflowPackageCache`<sup>Optional</sup> <a name="workflowPackageCache" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.workflowPackageCache"></a>
+
+```typescript
+public readonly workflowPackageCache: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Enable Node.js package cache in GitHub workflows.
+
+---
+
+##### `disableTsconfig`<sup>Optional</sup> <a name="disableTsconfig" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.disableTsconfig"></a>
+
+```typescript
+public readonly disableTsconfig: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Do not generate a `tsconfig.json` file (used by jsii projects since tsconfig.json is generated by the jsii compiler).
+
+---
+
+##### `disableTsconfigDev`<sup>Optional</sup> <a name="disableTsconfigDev" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.disableTsconfigDev"></a>
+
+```typescript
+public readonly disableTsconfigDev: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Do not generate a `tsconfig.dev.json` file.
+
+---
+
+##### `docgen`<sup>Optional</sup> <a name="docgen" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.docgen"></a>
+
+```typescript
+public readonly docgen: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Docgen by Typedoc.
+
+---
+
+##### `docsDirectory`<sup>Optional</sup> <a name="docsDirectory" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.docsDirectory"></a>
+
+```typescript
+public readonly docsDirectory: string;
+```
+
+- *Type:* string
+- *Default:* "docs"
+
+Docs directory.
+
+---
+
+##### `entrypointTypes`<sup>Optional</sup> <a name="entrypointTypes" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.entrypointTypes"></a>
+
+```typescript
+public readonly entrypointTypes: string;
+```
+
+- *Type:* string
+- *Default:* .d.ts file derived from the project's entrypoint (usually lib/index.d.ts)
+
+The .d.ts file that includes the type declarations for this module.
+
+---
+
+##### `eslint`<sup>Optional</sup> <a name="eslint" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.eslint"></a>
+
+```typescript
+public readonly eslint: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Setup eslint.
+
+---
+
+##### `eslintOptions`<sup>Optional</sup> <a name="eslintOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.eslintOptions"></a>
+
+```typescript
+public readonly eslintOptions: EslintOptions;
+```
+
+- *Type:* projen.javascript.EslintOptions
+- *Default:* opinionated default options
+
+Eslint options.
+
+---
+
+##### `libdir`<sup>Optional</sup> <a name="libdir" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.libdir"></a>
+
+```typescript
+public readonly libdir: string;
+```
+
+- *Type:* string
+- *Default:* "lib"
+
+Typescript  artifacts output directory.
+
+---
+
+##### `projenrcTs`<sup>Optional</sup> <a name="projenrcTs" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenrcTs"></a>
+
+```typescript
+public readonly projenrcTs: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Use TypeScript for your projenrc file (`.projenrc.ts`).
+
+---
+
+##### `projenrcTsOptions`<sup>Optional</sup> <a name="projenrcTsOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenrcTsOptions"></a>
+
+```typescript
+public readonly projenrcTsOptions: ProjenrcOptions;
+```
+
+- *Type:* projen.typescript.ProjenrcOptions
+
+Options for .projenrc.ts.
+
+---
+
+##### `sampleCode`<sup>Optional</sup> <a name="sampleCode" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.sampleCode"></a>
+
+```typescript
+public readonly sampleCode: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Generate one-time sample in `src/` and `test/` if there are no files there.
+
+---
+
+##### `srcdir`<sup>Optional</sup> <a name="srcdir" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.srcdir"></a>
+
+```typescript
+public readonly srcdir: string;
+```
+
+- *Type:* string
+- *Default:* "src"
+
+Typescript sources directory.
+
+---
+
+##### `testdir`<sup>Optional</sup> <a name="testdir" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.testdir"></a>
+
+```typescript
+public readonly testdir: string;
+```
+
+- *Type:* string
+- *Default:* "test"
+
+Jest tests directory. Tests files should be named `xxx.test.ts`.
+
+If this directory is under `srcdir` (e.g. `src/test`, `src/__tests__`),
+then tests are going to be compiled into `lib/` and executed as javascript.
+If the test directory is outside of `src`, then we configure jest to
+compile the code in-memory.
+
+---
+
+##### `tsconfig`<sup>Optional</sup> <a name="tsconfig" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.tsconfig"></a>
+
+```typescript
+public readonly tsconfig: TypescriptConfigOptions;
+```
+
+- *Type:* projen.javascript.TypescriptConfigOptions
+- *Default:* default options
+
+Custom TSConfig.
+
+---
+
+##### `tsconfigDev`<sup>Optional</sup> <a name="tsconfigDev" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.tsconfigDev"></a>
+
+```typescript
+public readonly tsconfigDev: TypescriptConfigOptions;
+```
+
+- *Type:* projen.javascript.TypescriptConfigOptions
+- *Default:* use the production tsconfig options
+
+Custom tsconfig options for the development tsconfig.json file (used for testing).
+
+---
+
+##### `tsconfigDevFile`<sup>Optional</sup> <a name="tsconfigDevFile" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.tsconfigDevFile"></a>
+
+```typescript
+public readonly tsconfigDevFile: string;
+```
+
+- *Type:* string
+- *Default:* "tsconfig.dev.json"
+
+The name of the development tsconfig.json file.
+
+---
+
+##### `typescriptVersion`<sup>Optional</sup> <a name="typescriptVersion" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.typescriptVersion"></a>
+
+```typescript
+public readonly typescriptVersion: string;
+```
+
+- *Type:* string
+- *Default:* "latest"
+
+TypeScript version to use.
+
+NOTE: Typescript is not semantically versioned and should remain on the
+same minor, so we recommend using a `~` dependency (e.g. `~1.2.3`).
+
+---
+
+##### `additionalCompilerDependencies`<sup>Optional</sup> <a name="additionalCompilerDependencies" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.additionalCompilerDependencies"></a>
+
+```typescript
+public readonly additionalCompilerDependencies: string[];
+```
+
+- *Type:* string[]
+- *Default:* No additional compiler dependencies.
+
+Packages that compile the project apart from the typescript/jsii compiler.
+
+Any package that produces a published artifact should be included in this list.
+
+---
+
+##### `backport`<sup>Optional</sup> <a name="backport" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.backport"></a>
+
+```typescript
+public readonly backport: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Configure a backport workflow.
+
+---
+
+##### `backportBranches`<sup>Optional</sup> <a name="backportBranches" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.backportBranches"></a>
+
+```typescript
+public readonly backportBranches: string[];
+```
+
+- *Type:* string[]
+- *Default:* Will be derived from PR labels.
+
+Branches to backport to.
+
+---
+
+##### `repoName`<sup>Optional</sup> <a name="repoName" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.repoName"></a>
+
+```typescript
+public readonly repoName: string;
+```
+
+- *Type:* string
+- *Default:* the package name.
+
+The name of the repository inside the cdk8s-team org where the code of the project is locate in.
+
+---
+
+##### `golang`<sup>Optional</sup> <a name="golang" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.golang"></a>
+
+```typescript
+public readonly golang: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Publish Golang bindings to GitHub.
+
+---
+
+##### `golangBranch`<sup>Optional</sup> <a name="golangBranch" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.golangBranch"></a>
+
+```typescript
+public readonly golangBranch: string;
+```
+
+- *Type:* string
+- *Default:* 'main'
+
+Name of the branch in the golang repository to publish to.
+
+---
+
+##### `jsiiVersion`<sup>Optional</sup> <a name="jsiiVersion" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.jsiiVersion"></a>
+
+```typescript
+public readonly jsiiVersion: string;
+```
+
+- *Type:* string
+- *Default:* '1.x'
+
+JSII version to use.
+
+---
+
+##### `maven`<sup>Optional</sup> <a name="maven" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.maven"></a>
+
+```typescript
+public readonly maven: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Publish Java bindings to Maven.
+
+---
+
+##### `nuget`<sup>Optional</sup> <a name="nuget" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.nuget"></a>
+
+```typescript
+public readonly nuget: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Publish Dotnet bindings to Nuget.
+
+---
+
+##### `pypi`<sup>Optional</sup> <a name="pypi" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.pypi"></a>
+
+```typescript
+public readonly pypi: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Publish Python bindings to PyPI.
+
+---
+
+### Cdk8sTeamNodeProjectOptions <a name="Cdk8sTeamNodeProjectOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions"></a>
+
+Options for `Cdk8sTeamNodeProject`.
+
+#### Initializer <a name="Initializer" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.Initializer"></a>
+
+```typescript
+import { Cdk8sTeamNodeProjectOptions } from '@cdk8s/projen-common'
+
+const cdk8sTeamNodeProjectOptions: Cdk8sTeamNodeProjectOptions = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.name">name</a></code> | <code>string</code> | This is the name of your project. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.commitGenerated">commitGenerated</a></code> | <code>boolean</code> | Whether to commit the managed files by default. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.gitIgnoreOptions">gitIgnoreOptions</a></code> | <code>projen.IgnoreFileOptions</code> | Configuration options for .gitignore file. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.gitOptions">gitOptions</a></code> | <code>projen.GitOptions</code> | Configuration options for git. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.logging">logging</a></code> | <code>projen.LoggerOptions</code> | Configure logging options such as verbosity. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.outdir">outdir</a></code> | <code>string</code> | The root directory of the project. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.parent">parent</a></code> | <code>projen.Project</code> | The parent project, if this project is part of a bigger project. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.projenCommand">projenCommand</a></code> | <code>string</code> | The shell command to use in order to run the projen CLI. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.projenrcJson">projenrcJson</a></code> | <code>boolean</code> | Generate (once) .projenrc.json (in JSON). Set to `false` in order to disable .projenrc.json generation. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.projenrcJsonOptions">projenrcJsonOptions</a></code> | <code>projen.ProjenrcJsonOptions</code> | Options for .projenrc.json. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.renovatebot">renovatebot</a></code> | <code>boolean</code> | Use renovatebot to handle dependency upgrades. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.renovatebotOptions">renovatebotOptions</a></code> | <code>projen.RenovatebotOptions</code> | Options for renovatebot. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.autoApproveOptions">autoApproveOptions</a></code> | <code>projen.github.AutoApproveOptions</code> | Enable and configure the 'auto approve' workflow. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.autoMerge">autoMerge</a></code> | <code>boolean</code> | Enable automatic merging on GitHub. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.autoMergeOptions">autoMergeOptions</a></code> | <code>projen.github.AutoMergeOptions</code> | Configure options for automatic merging on GitHub. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.clobber">clobber</a></code> | <code>boolean</code> | Add a `clobber` task which resets the repo to origin. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.devContainer">devContainer</a></code> | <code>boolean</code> | Add a VSCode development environment (used for GitHub Codespaces). |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.github">github</a></code> | <code>boolean</code> | Enable GitHub integration. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.githubOptions">githubOptions</a></code> | <code>projen.github.GitHubOptions</code> | Options for GitHub integration. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.gitpod">gitpod</a></code> | <code>boolean</code> | Add a Gitpod development environment. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.mergify">mergify</a></code> | <code>boolean</code> | Whether mergify should be enabled on this repository or not. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.mergifyOptions">mergifyOptions</a></code> | <code>projen.github.MergifyOptions</code> | Options for mergify. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.projectType">projectType</a></code> | <code>projen.ProjectType</code> | Which type of project this is (library/app). |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.projenCredentials">projenCredentials</a></code> | <code>projen.github.GithubCredentials</code> | Choose a method of providing GitHub API access for projen workflows. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.projenTokenSecret">projenTokenSecret</a></code> | <code>string</code> | The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.readme">readme</a></code> | <code>projen.SampleReadmeProps</code> | The README setup. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.stale">stale</a></code> | <code>boolean</code> | Auto-close of stale issues and pull request. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.staleOptions">staleOptions</a></code> | <code>projen.github.StaleOptions</code> | Auto-close stale issues and pull requests. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.vscode">vscode</a></code> | <code>boolean</code> | Enable VSCode integration. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.allowLibraryDependencies">allowLibraryDependencies</a></code> | <code>boolean</code> | Allow the project to include `peerDependencies` and `bundledDependencies`. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.authorEmail">authorEmail</a></code> | <code>string</code> | Author's e-mail. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.authorName">authorName</a></code> | <code>string</code> | Author's name. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.authorOrganization">authorOrganization</a></code> | <code>boolean</code> | Is the author an organization. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.authorUrl">authorUrl</a></code> | <code>string</code> | Author's URL / Website. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.autoDetectBin">autoDetectBin</a></code> | <code>boolean</code> | Automatically add all executables under the `bin` directory to your `package.json` file under the `bin` section. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.bin">bin</a></code> | <code>{[ key: string ]: string}</code> | Binary programs vended with your module. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.bugsEmail">bugsEmail</a></code> | <code>string</code> | The email address to which issues should be reported. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.bugsUrl">bugsUrl</a></code> | <code>string</code> | The url to your project's issue tracker. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.bundledDeps">bundledDeps</a></code> | <code>string[]</code> | List of dependencies to bundle into this module. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.codeArtifactOptions">codeArtifactOptions</a></code> | <code>projen.javascript.CodeArtifactOptions</code> | Options for npm packages using AWS CodeArtifact. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.deps">deps</a></code> | <code>string[]</code> | Runtime dependencies of this module. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.description">description</a></code> | <code>string</code> | The description is just a string that helps people understand the purpose of the package. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.devDeps">devDeps</a></code> | <code>string[]</code> | Build dependencies for this module. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.entrypoint">entrypoint</a></code> | <code>string</code> | Module entrypoint (`main` in `package.json`). |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.homepage">homepage</a></code> | <code>string</code> | Package's Homepage / Website. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.keywords">keywords</a></code> | <code>string[]</code> | Keywords to include in `package.json`. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.license">license</a></code> | <code>string</code> | License's SPDX identifier. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.licensed">licensed</a></code> | <code>boolean</code> | Indicates if a license should be added. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.maxNodeVersion">maxNodeVersion</a></code> | <code>string</code> | Minimum node.js version to require via `engines` (inclusive). |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.minNodeVersion">minNodeVersion</a></code> | <code>string</code> | Minimum Node.js version to require via package.json `engines` (inclusive). |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.npmAccess">npmAccess</a></code> | <code>projen.javascript.NpmAccess</code> | Access level of the npm package. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.npmRegistry">npmRegistry</a></code> | <code>string</code> | The host name of the npm registry to publish to. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.npmRegistryUrl">npmRegistryUrl</a></code> | <code>string</code> | The base URL of the npm package registry. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.npmTokenSecret">npmTokenSecret</a></code> | <code>string</code> | GitHub secret which contains the NPM token to use when publishing packages. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.packageManager">packageManager</a></code> | <code>projen.javascript.NodePackageManager</code> | The Node Package Manager used to execute scripts. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.packageName">packageName</a></code> | <code>string</code> | The "name" in package.json. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.peerDependencyOptions">peerDependencyOptions</a></code> | <code>projen.javascript.PeerDependencyOptions</code> | Options for `peerDeps`. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.peerDeps">peerDeps</a></code> | <code>string[]</code> | Peer dependencies for this module. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.pnpmVersion">pnpmVersion</a></code> | <code>string</code> | The version of PNPM to use if using PNPM as a package manager. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.repository">repository</a></code> | <code>string</code> | The repository is the location where the actual code for your package lives. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.repositoryDirectory">repositoryDirectory</a></code> | <code>string</code> | If the package.json for your package is not in the root directory (for example if it is part of a monorepo), you can specify the directory in which it lives. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.scopedPackagesOptions">scopedPackagesOptions</a></code> | <code>projen.javascript.ScopedPackagesOptions[]</code> | Options for privately hosted scoped packages. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.scripts">scripts</a></code> | <code>{[ key: string ]: string}</code> | npm scripts to include. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.stability">stability</a></code> | <code>string</code> | Package's Stability. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.yarnBerryOptions">yarnBerryOptions</a></code> | <code>projen.javascript.YarnBerryOptions</code> | Options for Yarn Berry. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.jsiiReleaseVersion">jsiiReleaseVersion</a></code> | <code>string</code> | Version requirement of `publib` which is used to publish modules to npm. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.majorVersion">majorVersion</a></code> | <code>number</code> | Major version to release from the default branch. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.minMajorVersion">minMajorVersion</a></code> | <code>number</code> | Minimal Major version to release. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.npmDistTag">npmDistTag</a></code> | <code>string</code> | The npmDistTag to use when publishing from the default branch. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.postBuildSteps">postBuildSteps</a></code> | <code>projen.github.workflows.JobStep[]</code> | Steps to execute after build as part of the release workflow. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.prerelease">prerelease</a></code> | <code>string</code> | Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pre"). |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.publishDryRun">publishDryRun</a></code> | <code>boolean</code> | Instead of actually publishing to package managers, just print the publishing command. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.publishTasks">publishTasks</a></code> | <code>boolean</code> | Define publishing tasks that can be executed manually as well as workflows. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releasableCommits">releasableCommits</a></code> | <code>projen.ReleasableCommits</code> | Find commits that should be considered releasable Used to decide if a release is required. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseBranches">releaseBranches</a></code> | <code>{[ key: string ]: projen.release.BranchOptions}</code> | Defines additional release branches. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseEveryCommit">releaseEveryCommit</a></code> | <code>boolean</code> | Automatically release new versions every commit to one of branches in `releaseBranches`. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseFailureIssue">releaseFailureIssue</a></code> | <code>boolean</code> | Create a github issue on every failed publishing task. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseFailureIssueLabel">releaseFailureIssueLabel</a></code> | <code>string</code> | The label to apply to issues indicating publish failures. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseSchedule">releaseSchedule</a></code> | <code>string</code> | CRON schedule to trigger new releases. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseTagPrefix">releaseTagPrefix</a></code> | <code>string</code> | Automatically add the given prefix to release tags. Useful if you are releasing on multiple branches with overlapping version numbers. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseTrigger">releaseTrigger</a></code> | <code>projen.release.ReleaseTrigger</code> | The release trigger to use. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseWorkflowName">releaseWorkflowName</a></code> | <code>string</code> | The name of the default release workflow. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseWorkflowSetupSteps">releaseWorkflowSetupSteps</a></code> | <code>projen.github.workflows.JobStep[]</code> | A set of workflow steps to execute in order to setup the workflow container. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.versionrcOptions">versionrcOptions</a></code> | <code>{[ key: string ]: any}</code> | Custom configuration used when creating changelog with standard-version package. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.workflowContainerImage">workflowContainerImage</a></code> | <code>string</code> | Container image to use for GitHub workflows. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.workflowRunsOn">workflowRunsOn</a></code> | <code>string[]</code> | Github Runner selection labels. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.workflowRunsOnGroup">workflowRunsOnGroup</a></code> | <code>projen.GroupRunnerOptions</code> | Github Runner Group selection options. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.defaultReleaseBranch">defaultReleaseBranch</a></code> | <code>string</code> | The name of the main release branch. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.artifactsDirectory">artifactsDirectory</a></code> | <code>string</code> | A directory which will contain build artifacts. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.autoApproveUpgrades">autoApproveUpgrades</a></code> | <code>boolean</code> | Automatically approve deps upgrade PRs, allowing them to be merged by mergify (if configued). |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.buildWorkflow">buildWorkflow</a></code> | <code>boolean</code> | Define a GitHub workflow for building PRs. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.buildWorkflowTriggers">buildWorkflowTriggers</a></code> | <code>projen.github.workflows.Triggers</code> | Build workflow triggers. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.bundlerOptions">bundlerOptions</a></code> | <code>projen.javascript.BundlerOptions</code> | Options for `Bundler`. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.codeCov">codeCov</a></code> | <code>boolean</code> | Define a GitHub workflow step for sending code coverage metrics to https://codecov.io/ Uses codecov/codecov-action@v3 A secret is required for private repos. Configured with `@codeCovTokenSecret`. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.codeCovTokenSecret">codeCovTokenSecret</a></code> | <code>string</code> | Define the secret name for a specified https://codecov.io/ token A secret is required to send coverage for private repositories. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.copyrightOwner">copyrightOwner</a></code> | <code>string</code> | License copyright owner. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.copyrightPeriod">copyrightPeriod</a></code> | <code>string</code> | The copyright years to put in the LICENSE file. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.dependabot">dependabot</a></code> | <code>boolean</code> | Use dependabot to handle dependency upgrades. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.dependabotOptions">dependabotOptions</a></code> | <code>projen.github.DependabotOptions</code> | Options for dependabot. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.depsUpgrade">depsUpgrade</a></code> | <code>boolean</code> | Use tasks and github workflows to handle dependency upgrades. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.depsUpgradeOptions">depsUpgradeOptions</a></code> | <code>projen.javascript.UpgradeDependenciesOptions</code> | Options for `UpgradeDependencies`. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.gitignore">gitignore</a></code> | <code>string[]</code> | Additional entries to .gitignore. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.jest">jest</a></code> | <code>boolean</code> | Setup jest unit tests. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.jestOptions">jestOptions</a></code> | <code>projen.javascript.JestOptions</code> | Jest options. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.mutableBuild">mutableBuild</a></code> | <code>boolean</code> | Automatically update files modified during builds to pull-request branches. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.npmignore">npmignore</a></code> | <code>string[]</code> | Additional entries to .npmignore. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.npmignoreEnabled">npmignoreEnabled</a></code> | <code>boolean</code> | Defines an .npmignore file. Normally this is only needed for libraries that are packaged as tarballs. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.npmIgnoreOptions">npmIgnoreOptions</a></code> | <code>projen.IgnoreFileOptions</code> | Configuration options for .npmignore file. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.package">package</a></code> | <code>boolean</code> | Defines a `package` task that will produce an npm tarball under the artifacts directory (e.g. `dist`). |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.prettier">prettier</a></code> | <code>boolean</code> | Setup prettier. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.prettierOptions">prettierOptions</a></code> | <code>projen.javascript.PrettierOptions</code> | Prettier options. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.projenDevDependency">projenDevDependency</a></code> | <code>boolean</code> | Indicates of "projen" should be installed as a devDependency. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.projenrcJs">projenrcJs</a></code> | <code>boolean</code> | Generate (once) .projenrc.js (in JavaScript). Set to `false` in order to disable .projenrc.js generation. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.projenrcJsOptions">projenrcJsOptions</a></code> | <code>projen.javascript.ProjenrcOptions</code> | Options for .projenrc.js. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.projenVersion">projenVersion</a></code> | <code>string</code> | Version of projen to install. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.pullRequestTemplate">pullRequestTemplate</a></code> | <code>boolean</code> | Include a GitHub pull request template. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.pullRequestTemplateContents">pullRequestTemplateContents</a></code> | <code>string[]</code> | The contents of the pull request template. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.release">release</a></code> | <code>boolean</code> | Add release management to this project. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseToNpm">releaseToNpm</a></code> | <code>boolean</code> | Automatically release to npm when new versions are introduced. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseWorkflow">releaseWorkflow</a></code> | <code>boolean</code> | DEPRECATED: renamed to `release`. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.workflowBootstrapSteps">workflowBootstrapSteps</a></code> | <code>projen.github.workflows.JobStep[]</code> | Workflow steps to use in order to bootstrap this repo. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.workflowGitIdentity">workflowGitIdentity</a></code> | <code>projen.github.GitIdentity</code> | The git identity to use in workflows. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.workflowNodeVersion">workflowNodeVersion</a></code> | <code>string</code> | The node version to use in GitHub workflows. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.workflowPackageCache">workflowPackageCache</a></code> | <code>boolean</code> | Enable Node.js package cache in GitHub workflows. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.backport">backport</a></code> | <code>boolean</code> | Configure a backport workflow. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.backportBranches">backportBranches</a></code> | <code>string[]</code> | Branches to backport to. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.repoName">repoName</a></code> | <code>string</code> | The name of the repository inside the cdk8s-team org where the code of the project is locate in. |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+- *Default:* $BASEDIR
+
+This is the name of your project.
+
+---
+
+##### `commitGenerated`<sup>Optional</sup> <a name="commitGenerated" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.commitGenerated"></a>
+
+```typescript
+public readonly commitGenerated: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to commit the managed files by default.
+
+---
+
+##### `gitIgnoreOptions`<sup>Optional</sup> <a name="gitIgnoreOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.gitIgnoreOptions"></a>
+
+```typescript
+public readonly gitIgnoreOptions: IgnoreFileOptions;
+```
+
+- *Type:* projen.IgnoreFileOptions
+
+Configuration options for .gitignore file.
+
+---
+
+##### `gitOptions`<sup>Optional</sup> <a name="gitOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.gitOptions"></a>
+
+```typescript
+public readonly gitOptions: GitOptions;
+```
+
+- *Type:* projen.GitOptions
+
+Configuration options for git.
+
+---
+
+##### `logging`<sup>Optional</sup> <a name="logging" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.logging"></a>
+
+```typescript
+public readonly logging: LoggerOptions;
+```
+
+- *Type:* projen.LoggerOptions
+- *Default:* {}
+
+Configure logging options such as verbosity.
+
+---
+
+##### `outdir`<sup>Optional</sup> <a name="outdir" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.outdir"></a>
+
+```typescript
+public readonly outdir: string;
+```
+
+- *Type:* string
+- *Default:* "."
+
+The root directory of the project.
+
+Relative to this directory, all files are synthesized.
+
+If this project has a parent, this directory is relative to the parent
+directory and it cannot be the same as the parent or any of it's other
+subprojects.
+
+---
+
+##### `parent`<sup>Optional</sup> <a name="parent" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.parent"></a>
+
+```typescript
+public readonly parent: Project;
+```
+
+- *Type:* projen.Project
+
+The parent project, if this project is part of a bigger project.
+
+---
+
+##### `projenCommand`<sup>Optional</sup> <a name="projenCommand" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.projenCommand"></a>
+
+```typescript
+public readonly projenCommand: string;
+```
+
+- *Type:* string
+- *Default:* "npx projen"
+
+The shell command to use in order to run the projen CLI.
+
+Can be used to customize in special environments.
+
+---
+
+##### `projenrcJson`<sup>Optional</sup> <a name="projenrcJson" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.projenrcJson"></a>
+
+```typescript
+public readonly projenrcJson: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Generate (once) .projenrc.json (in JSON). Set to `false` in order to disable .projenrc.json generation.
+
+---
+
+##### `projenrcJsonOptions`<sup>Optional</sup> <a name="projenrcJsonOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.projenrcJsonOptions"></a>
+
+```typescript
+public readonly projenrcJsonOptions: ProjenrcJsonOptions;
+```
+
+- *Type:* projen.ProjenrcJsonOptions
+- *Default:* default options
+
+Options for .projenrc.json.
+
+---
+
+##### `renovatebot`<sup>Optional</sup> <a name="renovatebot" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.renovatebot"></a>
+
+```typescript
+public readonly renovatebot: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Use renovatebot to handle dependency upgrades.
+
+---
+
+##### `renovatebotOptions`<sup>Optional</sup> <a name="renovatebotOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.renovatebotOptions"></a>
+
+```typescript
+public readonly renovatebotOptions: RenovatebotOptions;
+```
+
+- *Type:* projen.RenovatebotOptions
+- *Default:* default options
+
+Options for renovatebot.
+
+---
+
+##### `autoApproveOptions`<sup>Optional</sup> <a name="autoApproveOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.autoApproveOptions"></a>
+
+```typescript
+public readonly autoApproveOptions: AutoApproveOptions;
+```
+
+- *Type:* projen.github.AutoApproveOptions
+- *Default:* auto approve is disabled
+
+Enable and configure the 'auto approve' workflow.
+
+---
+
+##### `autoMerge`<sup>Optional</sup> <a name="autoMerge" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.autoMerge"></a>
+
+```typescript
+public readonly autoMerge: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Enable automatic merging on GitHub.
+
+Has no effect if `github.mergify`
+is set to false.
+
+---
+
+##### `autoMergeOptions`<sup>Optional</sup> <a name="autoMergeOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.autoMergeOptions"></a>
+
+```typescript
+public readonly autoMergeOptions: AutoMergeOptions;
+```
+
+- *Type:* projen.github.AutoMergeOptions
+- *Default:* see defaults in `AutoMergeOptions`
+
+Configure options for automatic merging on GitHub.
+
+Has no effect if
+`github.mergify` or `autoMerge` is set to false.
+
+---
+
+##### `clobber`<sup>Optional</sup> <a name="clobber" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.clobber"></a>
+
+```typescript
+public readonly clobber: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true, but false for subprojects
+
+Add a `clobber` task which resets the repo to origin.
+
+---
+
+##### `devContainer`<sup>Optional</sup> <a name="devContainer" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.devContainer"></a>
+
+```typescript
+public readonly devContainer: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Add a VSCode development environment (used for GitHub Codespaces).
+
+---
+
+##### `github`<sup>Optional</sup> <a name="github" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.github"></a>
+
+```typescript
+public readonly github: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Enable GitHub integration.
+
+Enabled by default for root projects. Disabled for non-root projects.
+
+---
+
+##### `githubOptions`<sup>Optional</sup> <a name="githubOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.githubOptions"></a>
+
+```typescript
+public readonly githubOptions: GitHubOptions;
+```
+
+- *Type:* projen.github.GitHubOptions
+- *Default:* see GitHubOptions
+
+Options for GitHub integration.
+
+---
+
+##### `gitpod`<sup>Optional</sup> <a name="gitpod" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.gitpod"></a>
+
+```typescript
+public readonly gitpod: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Add a Gitpod development environment.
+
+---
+
+##### ~~`mergify`~~<sup>Optional</sup> <a name="mergify" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.mergify"></a>
+
+- *Deprecated:* use `githubOptions.mergify` instead
+
+```typescript
+public readonly mergify: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether mergify should be enabled on this repository or not.
+
+---
+
+##### ~~`mergifyOptions`~~<sup>Optional</sup> <a name="mergifyOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.mergifyOptions"></a>
+
+- *Deprecated:* use `githubOptions.mergifyOptions` instead
+
+```typescript
+public readonly mergifyOptions: MergifyOptions;
+```
+
+- *Type:* projen.github.MergifyOptions
+- *Default:* default options
+
+Options for mergify.
+
+---
+
+##### ~~`projectType`~~<sup>Optional</sup> <a name="projectType" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.projectType"></a>
+
+- *Deprecated:* no longer supported at the base project level
+
+```typescript
+public readonly projectType: ProjectType;
+```
+
+- *Type:* projen.ProjectType
+- *Default:* ProjectType.UNKNOWN
+
+Which type of project this is (library/app).
+
+---
+
+##### `projenCredentials`<sup>Optional</sup> <a name="projenCredentials" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.projenCredentials"></a>
+
+```typescript
+public readonly projenCredentials: GithubCredentials;
+```
+
+- *Type:* projen.github.GithubCredentials
+- *Default:* use a personal access token named PROJEN_GITHUB_TOKEN
+
+Choose a method of providing GitHub API access for projen workflows.
+
+---
+
+##### ~~`projenTokenSecret`~~<sup>Optional</sup> <a name="projenTokenSecret" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.projenTokenSecret"></a>
+
+- *Deprecated:* use `projenCredentials`
+
+```typescript
+public readonly projenTokenSecret: string;
+```
+
+- *Type:* string
+- *Default:* "PROJEN_GITHUB_TOKEN"
+
+The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
+
+This token needs to have the `repo`, `workflows`
+and `packages` scope.
+
+---
+
+##### `readme`<sup>Optional</sup> <a name="readme" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.readme"></a>
+
+```typescript
+public readonly readme: SampleReadmeProps;
+```
+
+- *Type:* projen.SampleReadmeProps
+- *Default:* { filename: 'README.md', contents: '# replace this' }
+
+The README setup.
+
+---
+
+*Example*
+
+```typescript
+"{ filename: 'readme.md', contents: '# title' }"
+```
+
+
+##### `stale`<sup>Optional</sup> <a name="stale" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.stale"></a>
+
+```typescript
+public readonly stale: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Auto-close of stale issues and pull request.
+
+See `staleOptions` for options.
+
+---
+
+##### `staleOptions`<sup>Optional</sup> <a name="staleOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.staleOptions"></a>
+
+```typescript
+public readonly staleOptions: StaleOptions;
+```
+
+- *Type:* projen.github.StaleOptions
+- *Default:* see defaults in `StaleOptions`
+
+Auto-close stale issues and pull requests.
+
+To disable set `stale` to `false`.
+
+---
+
+##### `vscode`<sup>Optional</sup> <a name="vscode" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.vscode"></a>
+
+```typescript
+public readonly vscode: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Enable VSCode integration.
+
+Enabled by default for root projects. Disabled for non-root projects.
+
+---
+
+##### `allowLibraryDependencies`<sup>Optional</sup> <a name="allowLibraryDependencies" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.allowLibraryDependencies"></a>
+
+```typescript
+public readonly allowLibraryDependencies: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Allow the project to include `peerDependencies` and `bundledDependencies`.
+
+This is normally only allowed for libraries. For apps, there's no meaning
+for specifying these.
+
+---
+
+##### `authorEmail`<sup>Optional</sup> <a name="authorEmail" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.authorEmail"></a>
+
+```typescript
+public readonly authorEmail: string;
+```
+
+- *Type:* string
+
+Author's e-mail.
+
+---
+
+##### `authorName`<sup>Optional</sup> <a name="authorName" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.authorName"></a>
+
+```typescript
+public readonly authorName: string;
+```
+
+- *Type:* string
+
+Author's name.
+
+---
+
+##### `authorOrganization`<sup>Optional</sup> <a name="authorOrganization" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.authorOrganization"></a>
+
+```typescript
+public readonly authorOrganization: boolean;
+```
+
+- *Type:* boolean
+
+Is the author an organization.
+
+---
+
+##### `authorUrl`<sup>Optional</sup> <a name="authorUrl" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.authorUrl"></a>
+
+```typescript
+public readonly authorUrl: string;
+```
+
+- *Type:* string
+
+Author's URL / Website.
+
+---
+
+##### `autoDetectBin`<sup>Optional</sup> <a name="autoDetectBin" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.autoDetectBin"></a>
+
+```typescript
+public readonly autoDetectBin: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Automatically add all executables under the `bin` directory to your `package.json` file under the `bin` section.
+
+---
+
+##### `bin`<sup>Optional</sup> <a name="bin" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.bin"></a>
+
+```typescript
+public readonly bin: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Binary programs vended with your module.
+
+You can use this option to add/customize how binaries are represented in
+your `package.json`, but unless `autoDetectBin` is `false`, every
+executable file under `bin` will automatically be added to this section.
+
+---
+
+##### `bugsEmail`<sup>Optional</sup> <a name="bugsEmail" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.bugsEmail"></a>
+
+```typescript
+public readonly bugsEmail: string;
+```
+
+- *Type:* string
+
+The email address to which issues should be reported.
+
+---
+
+##### `bugsUrl`<sup>Optional</sup> <a name="bugsUrl" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.bugsUrl"></a>
+
+```typescript
+public readonly bugsUrl: string;
+```
+
+- *Type:* string
+
+The url to your project's issue tracker.
+
+---
+
+##### `bundledDeps`<sup>Optional</sup> <a name="bundledDeps" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.bundledDeps"></a>
+
+```typescript
+public readonly bundledDeps: string[];
+```
+
+- *Type:* string[]
+
+List of dependencies to bundle into this module.
+
+These modules will be
+added both to the `dependencies` section and `bundledDependencies` section of
+your `package.json`.
+
+The recommendation is to only specify the module name here (e.g.
+`express`). This will behave similar to `yarn add` or `npm install` in the
+sense that it will add the module as a dependency to your `package.json`
+file with the latest version (`^`). You can specify semver requirements in
+the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
+this will be what you `package.json` will eventually include.
+
+---
+
+##### `codeArtifactOptions`<sup>Optional</sup> <a name="codeArtifactOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.codeArtifactOptions"></a>
+
+```typescript
+public readonly codeArtifactOptions: CodeArtifactOptions;
+```
+
+- *Type:* projen.javascript.CodeArtifactOptions
+- *Default:* undefined
+
+Options for npm packages using AWS CodeArtifact.
+
+This is required if publishing packages to, or installing scoped packages from AWS CodeArtifact
+
+---
+
+##### `deps`<sup>Optional</sup> <a name="deps" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.deps"></a>
+
+```typescript
+public readonly deps: string[];
+```
+
+- *Type:* string[]
+- *Default:* []
+
+Runtime dependencies of this module.
+
+The recommendation is to only specify the module name here (e.g.
+`express`). This will behave similar to `yarn add` or `npm install` in the
+sense that it will add the module as a dependency to your `package.json`
+file with the latest version (`^`). You can specify semver requirements in
+the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
+this will be what you `package.json` will eventually include.
+
+---
+
+*Example*
+
+```typescript
+[ 'express', 'lodash', 'foo@^2' ]
+```
+
+
+##### `description`<sup>Optional</sup> <a name="description" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.description"></a>
+
+```typescript
+public readonly description: string;
+```
+
+- *Type:* string
+
+The description is just a string that helps people understand the purpose of the package.
+
+It can be used when searching for packages in a package manager as well.
+See https://classic.yarnpkg.com/en/docs/package-json/#toc-description
+
+---
+
+##### `devDeps`<sup>Optional</sup> <a name="devDeps" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.devDeps"></a>
+
+```typescript
+public readonly devDeps: string[];
+```
+
+- *Type:* string[]
+- *Default:* []
+
+Build dependencies for this module.
+
+These dependencies will only be
+available in your build environment but will not be fetched when this
+module is consumed.
+
+The recommendation is to only specify the module name here (e.g.
+`express`). This will behave similar to `yarn add` or `npm install` in the
+sense that it will add the module as a dependency to your `package.json`
+file with the latest version (`^`). You can specify semver requirements in
+the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
+this will be what you `package.json` will eventually include.
+
+---
+
+*Example*
+
+```typescript
+[ 'typescript', '@types/express' ]
+```
+
+
+##### `entrypoint`<sup>Optional</sup> <a name="entrypoint" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.entrypoint"></a>
+
+```typescript
+public readonly entrypoint: string;
+```
+
+- *Type:* string
+- *Default:* "lib/index.js"
+
+Module entrypoint (`main` in `package.json`).
+
+Set to an empty string to not include `main` in your package.json
+
+---
+
+##### `homepage`<sup>Optional</sup> <a name="homepage" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.homepage"></a>
+
+```typescript
+public readonly homepage: string;
+```
+
+- *Type:* string
+
+Package's Homepage / Website.
+
+---
+
+##### `keywords`<sup>Optional</sup> <a name="keywords" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.keywords"></a>
+
+```typescript
+public readonly keywords: string[];
+```
+
+- *Type:* string[]
+
+Keywords to include in `package.json`.
+
+---
+
+##### `license`<sup>Optional</sup> <a name="license" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.license"></a>
+
+```typescript
+public readonly license: string;
+```
+
+- *Type:* string
+- *Default:* "Apache-2.0"
+
+License's SPDX identifier.
+
+See https://github.com/projen/projen/tree/main/license-text for a list of supported licenses.
+Use the `licensed` option if you want to no license to be specified.
+
+---
+
+##### `licensed`<sup>Optional</sup> <a name="licensed" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.licensed"></a>
+
+```typescript
+public readonly licensed: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Indicates if a license should be added.
+
+---
+
+##### `maxNodeVersion`<sup>Optional</sup> <a name="maxNodeVersion" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.maxNodeVersion"></a>
+
+```typescript
+public readonly maxNodeVersion: string;
+```
+
+- *Type:* string
+- *Default:* no max
+
+Minimum node.js version to require via `engines` (inclusive).
+
+---
+
+##### `minNodeVersion`<sup>Optional</sup> <a name="minNodeVersion" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.minNodeVersion"></a>
+
+```typescript
+public readonly minNodeVersion: string;
+```
+
+- *Type:* string
+- *Default:* no "engines" specified
+
+Minimum Node.js version to require via package.json `engines` (inclusive).
+
+---
+
+##### `npmAccess`<sup>Optional</sup> <a name="npmAccess" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.npmAccess"></a>
+
+```typescript
+public readonly npmAccess: NpmAccess;
+```
+
+- *Type:* projen.javascript.NpmAccess
+- *Default:* for scoped packages (e.g. `foo@bar`), the default is `NpmAccess.RESTRICTED`, for non-scoped packages, the default is `NpmAccess.PUBLIC`.
+
+Access level of the npm package.
+
+---
+
+##### ~~`npmRegistry`~~<sup>Optional</sup> <a name="npmRegistry" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.npmRegistry"></a>
+
+- *Deprecated:* use `npmRegistryUrl` instead
+
+```typescript
+public readonly npmRegistry: string;
+```
+
+- *Type:* string
+
+The host name of the npm registry to publish to.
+
+Cannot be set together with `npmRegistryUrl`.
+
+---
+
+##### `npmRegistryUrl`<sup>Optional</sup> <a name="npmRegistryUrl" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.npmRegistryUrl"></a>
+
+```typescript
+public readonly npmRegistryUrl: string;
+```
+
+- *Type:* string
+- *Default:* "https://registry.npmjs.org"
+
+The base URL of the npm package registry.
+
+Must be a URL (e.g. start with "https://" or "http://")
+
+---
+
+##### `npmTokenSecret`<sup>Optional</sup> <a name="npmTokenSecret" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.npmTokenSecret"></a>
+
+```typescript
+public readonly npmTokenSecret: string;
+```
+
+- *Type:* string
+- *Default:* "NPM_TOKEN"
+
+GitHub secret which contains the NPM token to use when publishing packages.
+
+---
+
+##### `packageManager`<sup>Optional</sup> <a name="packageManager" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.packageManager"></a>
+
+```typescript
+public readonly packageManager: NodePackageManager;
+```
+
+- *Type:* projen.javascript.NodePackageManager
+- *Default:* NodePackageManager.YARN_CLASSIC
+
+The Node Package Manager used to execute scripts.
+
+---
+
+##### `packageName`<sup>Optional</sup> <a name="packageName" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.packageName"></a>
+
+```typescript
+public readonly packageName: string;
+```
+
+- *Type:* string
+- *Default:* defaults to project name
+
+The "name" in package.json.
+
+---
+
+##### `peerDependencyOptions`<sup>Optional</sup> <a name="peerDependencyOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.peerDependencyOptions"></a>
+
+```typescript
+public readonly peerDependencyOptions: PeerDependencyOptions;
+```
+
+- *Type:* projen.javascript.PeerDependencyOptions
+
+Options for `peerDeps`.
+
+---
+
+##### `peerDeps`<sup>Optional</sup> <a name="peerDeps" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.peerDeps"></a>
+
+```typescript
+public readonly peerDeps: string[];
+```
+
+- *Type:* string[]
+- *Default:* []
+
+Peer dependencies for this module.
+
+Dependencies listed here are required to
+be installed (and satisfied) by the _consumer_ of this library. Using peer
+dependencies allows you to ensure that only a single module of a certain
+library exists in the `node_modules` tree of your consumers.
+
+Note that prior to npm@7, peer dependencies are _not_ automatically
+installed, which means that adding peer dependencies to a library will be a
+breaking change for your customers.
+
+Unless `peerDependencyOptions.pinnedDevDependency` is disabled (it is
+enabled by default), projen will automatically add a dev dependency with a
+pinned version for each peer dependency. This will ensure that you build &
+test your module against the lowest peer version required.
+
+---
+
+##### `pnpmVersion`<sup>Optional</sup> <a name="pnpmVersion" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.pnpmVersion"></a>
+
+```typescript
+public readonly pnpmVersion: string;
+```
+
+- *Type:* string
+- *Default:* "7"
+
+The version of PNPM to use if using PNPM as a package manager.
+
+---
+
+##### `repository`<sup>Optional</sup> <a name="repository" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.repository"></a>
+
+```typescript
+public readonly repository: string;
+```
+
+- *Type:* string
+
+The repository is the location where the actual code for your package lives.
+
+See https://classic.yarnpkg.com/en/docs/package-json/#toc-repository
+
+---
+
+##### `repositoryDirectory`<sup>Optional</sup> <a name="repositoryDirectory" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.repositoryDirectory"></a>
+
+```typescript
+public readonly repositoryDirectory: string;
+```
+
+- *Type:* string
+
+If the package.json for your package is not in the root directory (for example if it is part of a monorepo), you can specify the directory in which it lives.
+
+---
+
+##### `scopedPackagesOptions`<sup>Optional</sup> <a name="scopedPackagesOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.scopedPackagesOptions"></a>
+
+```typescript
+public readonly scopedPackagesOptions: ScopedPackagesOptions[];
+```
+
+- *Type:* projen.javascript.ScopedPackagesOptions[]
+- *Default:* fetch all scoped packages from the public npm registry
+
+Options for privately hosted scoped packages.
+
+---
+
+##### ~~`scripts`~~<sup>Optional</sup> <a name="scripts" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.scripts"></a>
+
+- *Deprecated:* use `project.addTask()` or `package.setScript()`
+
+```typescript
+public readonly scripts: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+- *Default:* {}
+
+npm scripts to include.
+
+If a script has the same name as a standard script,
+the standard script will be overwritten.
+Also adds the script as a task.
+
+---
+
+##### `stability`<sup>Optional</sup> <a name="stability" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.stability"></a>
+
+```typescript
+public readonly stability: string;
+```
+
+- *Type:* string
+
+Package's Stability.
+
+---
+
+##### `yarnBerryOptions`<sup>Optional</sup> <a name="yarnBerryOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.yarnBerryOptions"></a>
+
+```typescript
+public readonly yarnBerryOptions: YarnBerryOptions;
+```
+
+- *Type:* projen.javascript.YarnBerryOptions
+- *Default:* Yarn Berry v4 with all default options
+
+Options for Yarn Berry.
+
+---
+
+##### `jsiiReleaseVersion`<sup>Optional</sup> <a name="jsiiReleaseVersion" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.jsiiReleaseVersion"></a>
+
+```typescript
+public readonly jsiiReleaseVersion: string;
+```
+
+- *Type:* string
+- *Default:* "latest"
+
+Version requirement of `publib` which is used to publish modules to npm.
+
+---
+
+##### `majorVersion`<sup>Optional</sup> <a name="majorVersion" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.majorVersion"></a>
+
+```typescript
+public readonly majorVersion: number;
+```
+
+- *Type:* number
+- *Default:* Major version is not enforced.
+
+Major version to release from the default branch.
+
+If this is specified, we bump the latest version of this major version line.
+If not specified, we bump the global latest version.
+
+---
+
+##### `minMajorVersion`<sup>Optional</sup> <a name="minMajorVersion" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.minMajorVersion"></a>
+
+```typescript
+public readonly minMajorVersion: number;
+```
+
+- *Type:* number
+- *Default:* No minimum version is being enforced
+
+Minimal Major version to release.
+
+This can be useful to set to 1, as breaking changes before the 1.x major
+release are not incrementing the major version number.
+
+Can not be set together with `majorVersion`.
+
+---
+
+##### `npmDistTag`<sup>Optional</sup> <a name="npmDistTag" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.npmDistTag"></a>
+
+```typescript
+public readonly npmDistTag: string;
+```
+
+- *Type:* string
+- *Default:* "latest"
+
+The npmDistTag to use when publishing from the default branch.
+
+To set the npm dist-tag for release branches, set the `npmDistTag` property
+for each branch.
+
+---
+
+##### `postBuildSteps`<sup>Optional</sup> <a name="postBuildSteps" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.postBuildSteps"></a>
+
+```typescript
+public readonly postBuildSteps: JobStep[];
+```
+
+- *Type:* projen.github.workflows.JobStep[]
+- *Default:* []
+
+Steps to execute after build as part of the release workflow.
+
+---
+
+##### `prerelease`<sup>Optional</sup> <a name="prerelease" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.prerelease"></a>
+
+```typescript
+public readonly prerelease: string;
+```
+
+- *Type:* string
+- *Default:* normal semantic versions
+
+Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pre").
+
+---
+
+##### `publishDryRun`<sup>Optional</sup> <a name="publishDryRun" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.publishDryRun"></a>
+
+```typescript
+public readonly publishDryRun: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Instead of actually publishing to package managers, just print the publishing command.
+
+---
+
+##### `publishTasks`<sup>Optional</sup> <a name="publishTasks" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.publishTasks"></a>
+
+```typescript
+public readonly publishTasks: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Define publishing tasks that can be executed manually as well as workflows.
+
+Normally, publishing only happens within automated workflows. Enable this
+in order to create a publishing task for each publishing activity.
+
+---
+
+##### `releasableCommits`<sup>Optional</sup> <a name="releasableCommits" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releasableCommits"></a>
+
+```typescript
+public readonly releasableCommits: ReleasableCommits;
+```
+
+- *Type:* projen.ReleasableCommits
+- *Default:* ReleasableCommits.everyCommit()
+
+Find commits that should be considered releasable Used to decide if a release is required.
+
+---
+
+##### `releaseBranches`<sup>Optional</sup> <a name="releaseBranches" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseBranches"></a>
+
+```typescript
+public readonly releaseBranches: {[ key: string ]: BranchOptions};
+```
+
+- *Type:* {[ key: string ]: projen.release.BranchOptions}
+- *Default:* no additional branches are used for release. you can use `addBranch()` to add additional branches.
+
+Defines additional release branches.
+
+A workflow will be created for each
+release branch which will publish releases from commits in this branch.
+Each release branch _must_ be assigned a major version number which is used
+to enforce that versions published from that branch always use that major
+version. If multiple branches are used, the `majorVersion` field must also
+be provided for the default branch.
+
+---
+
+##### ~~`releaseEveryCommit`~~<sup>Optional</sup> <a name="releaseEveryCommit" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseEveryCommit"></a>
+
+- *Deprecated:* Use `releaseTrigger: ReleaseTrigger.continuous()` instead
+
+```typescript
+public readonly releaseEveryCommit: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Automatically release new versions every commit to one of branches in `releaseBranches`.
+
+---
+
+##### `releaseFailureIssue`<sup>Optional</sup> <a name="releaseFailureIssue" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseFailureIssue"></a>
+
+```typescript
+public readonly releaseFailureIssue: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Create a github issue on every failed publishing task.
+
+---
+
+##### `releaseFailureIssueLabel`<sup>Optional</sup> <a name="releaseFailureIssueLabel" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseFailureIssueLabel"></a>
+
+```typescript
+public readonly releaseFailureIssueLabel: string;
+```
+
+- *Type:* string
+- *Default:* "failed-release"
+
+The label to apply to issues indicating publish failures.
+
+Only applies if `releaseFailureIssue` is true.
+
+---
+
+##### ~~`releaseSchedule`~~<sup>Optional</sup> <a name="releaseSchedule" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseSchedule"></a>
+
+- *Deprecated:* Use `releaseTrigger: ReleaseTrigger.scheduled()` instead
+
+```typescript
+public readonly releaseSchedule: string;
+```
+
+- *Type:* string
+- *Default:* no scheduled releases
+
+CRON schedule to trigger new releases.
+
+---
+
+##### `releaseTagPrefix`<sup>Optional</sup> <a name="releaseTagPrefix" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseTagPrefix"></a>
+
+```typescript
+public readonly releaseTagPrefix: string;
+```
+
+- *Type:* string
+- *Default:* "v"
+
+Automatically add the given prefix to release tags. Useful if you are releasing on multiple branches with overlapping version numbers.
+
+Note: this prefix is used to detect the latest tagged version
+when bumping, so if you change this on a project with an existing version
+history, you may need to manually tag your latest release
+with the new prefix.
+
+---
+
+##### `releaseTrigger`<sup>Optional</sup> <a name="releaseTrigger" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseTrigger"></a>
+
+```typescript
+public readonly releaseTrigger: ReleaseTrigger;
+```
+
+- *Type:* projen.release.ReleaseTrigger
+- *Default:* Continuous releases (`ReleaseTrigger.continuous()`)
+
+The release trigger to use.
+
+---
+
+##### `releaseWorkflowName`<sup>Optional</sup> <a name="releaseWorkflowName" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseWorkflowName"></a>
+
+```typescript
+public readonly releaseWorkflowName: string;
+```
+
+- *Type:* string
+- *Default:* "Release"
+
+The name of the default release workflow.
+
+---
+
+##### `releaseWorkflowSetupSteps`<sup>Optional</sup> <a name="releaseWorkflowSetupSteps" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseWorkflowSetupSteps"></a>
+
+```typescript
+public readonly releaseWorkflowSetupSteps: JobStep[];
+```
+
+- *Type:* projen.github.workflows.JobStep[]
+
+A set of workflow steps to execute in order to setup the workflow container.
+
+---
+
+##### `versionrcOptions`<sup>Optional</sup> <a name="versionrcOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.versionrcOptions"></a>
+
+```typescript
+public readonly versionrcOptions: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+- *Default:* standard configuration applicable for GitHub repositories
+
+Custom configuration used when creating changelog with standard-version package.
+
+Given values either append to default configuration or overwrite values in it.
+
+---
+
+##### `workflowContainerImage`<sup>Optional</sup> <a name="workflowContainerImage" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.workflowContainerImage"></a>
+
+```typescript
+public readonly workflowContainerImage: string;
+```
+
+- *Type:* string
+- *Default:* default image
+
+Container image to use for GitHub workflows.
+
+---
+
+##### `workflowRunsOn`<sup>Optional</sup> <a name="workflowRunsOn" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.workflowRunsOn"></a>
+
+```typescript
+public readonly workflowRunsOn: string[];
+```
+
+- *Type:* string[]
+- *Default:* ["ubuntu-latest"]
+
+Github Runner selection labels.
+
+---
+
+##### `workflowRunsOnGroup`<sup>Optional</sup> <a name="workflowRunsOnGroup" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.workflowRunsOnGroup"></a>
+
+```typescript
+public readonly workflowRunsOnGroup: GroupRunnerOptions;
+```
+
+- *Type:* projen.GroupRunnerOptions
+
+Github Runner Group selection options.
+
+---
+
+##### `defaultReleaseBranch`<sup>Required</sup> <a name="defaultReleaseBranch" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.defaultReleaseBranch"></a>
+
+```typescript
+public readonly defaultReleaseBranch: string;
+```
+
+- *Type:* string
+- *Default:* "main"
+
+The name of the main release branch.
+
+---
+
+##### `artifactsDirectory`<sup>Optional</sup> <a name="artifactsDirectory" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.artifactsDirectory"></a>
+
+```typescript
+public readonly artifactsDirectory: string;
+```
+
+- *Type:* string
+- *Default:* "dist"
+
+A directory which will contain build artifacts.
+
+---
+
+##### `autoApproveUpgrades`<sup>Optional</sup> <a name="autoApproveUpgrades" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.autoApproveUpgrades"></a>
+
+```typescript
+public readonly autoApproveUpgrades: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Automatically approve deps upgrade PRs, allowing them to be merged by mergify (if configued).
+
+Throw if set to true but `autoApproveOptions` are not defined.
+
+---
+
+##### `buildWorkflow`<sup>Optional</sup> <a name="buildWorkflow" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.buildWorkflow"></a>
+
+```typescript
+public readonly buildWorkflow: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true if not a subproject
+
+Define a GitHub workflow for building PRs.
+
+---
+
+##### `buildWorkflowTriggers`<sup>Optional</sup> <a name="buildWorkflowTriggers" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.buildWorkflowTriggers"></a>
+
+```typescript
+public readonly buildWorkflowTriggers: Triggers;
+```
+
+- *Type:* projen.github.workflows.Triggers
+- *Default:* "{ pullRequest: {}, workflowDispatch: {} }"
+
+Build workflow triggers.
+
+---
+
+##### `bundlerOptions`<sup>Optional</sup> <a name="bundlerOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.bundlerOptions"></a>
+
+```typescript
+public readonly bundlerOptions: BundlerOptions;
+```
+
+- *Type:* projen.javascript.BundlerOptions
+
+Options for `Bundler`.
+
+---
+
+##### `codeCov`<sup>Optional</sup> <a name="codeCov" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.codeCov"></a>
+
+```typescript
+public readonly codeCov: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Define a GitHub workflow step for sending code coverage metrics to https://codecov.io/ Uses codecov/codecov-action@v3 A secret is required for private repos. Configured with `@codeCovTokenSecret`.
+
+---
+
+##### `codeCovTokenSecret`<sup>Optional</sup> <a name="codeCovTokenSecret" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.codeCovTokenSecret"></a>
+
+```typescript
+public readonly codeCovTokenSecret: string;
+```
+
+- *Type:* string
+- *Default:* if this option is not specified, only public repositories are supported
+
+Define the secret name for a specified https://codecov.io/ token A secret is required to send coverage for private repositories.
+
+---
+
+##### `copyrightOwner`<sup>Optional</sup> <a name="copyrightOwner" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.copyrightOwner"></a>
+
+```typescript
+public readonly copyrightOwner: string;
+```
+
+- *Type:* string
+- *Default:* defaults to the value of authorName or "" if `authorName` is undefined.
+
+License copyright owner.
+
+---
+
+##### `copyrightPeriod`<sup>Optional</sup> <a name="copyrightPeriod" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.copyrightPeriod"></a>
+
+```typescript
+public readonly copyrightPeriod: string;
+```
+
+- *Type:* string
+- *Default:* current year
+
+The copyright years to put in the LICENSE file.
+
+---
+
+##### `dependabot`<sup>Optional</sup> <a name="dependabot" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.dependabot"></a>
+
+```typescript
+public readonly dependabot: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Use dependabot to handle dependency upgrades.
+
+Cannot be used in conjunction with `depsUpgrade`.
+
+---
+
+##### `dependabotOptions`<sup>Optional</sup> <a name="dependabotOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.dependabotOptions"></a>
+
+```typescript
+public readonly dependabotOptions: DependabotOptions;
+```
+
+- *Type:* projen.github.DependabotOptions
+- *Default:* default options
+
+Options for dependabot.
+
+---
+
+##### `depsUpgrade`<sup>Optional</sup> <a name="depsUpgrade" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.depsUpgrade"></a>
+
+```typescript
+public readonly depsUpgrade: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Use tasks and github workflows to handle dependency upgrades.
+
+Cannot be used in conjunction with `dependabot`.
+
+---
+
+##### `depsUpgradeOptions`<sup>Optional</sup> <a name="depsUpgradeOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.depsUpgradeOptions"></a>
+
+```typescript
+public readonly depsUpgradeOptions: UpgradeDependenciesOptions;
+```
+
+- *Type:* projen.javascript.UpgradeDependenciesOptions
+- *Default:* default options
+
+Options for `UpgradeDependencies`.
+
+---
+
+##### `gitignore`<sup>Optional</sup> <a name="gitignore" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.gitignore"></a>
+
+```typescript
+public readonly gitignore: string[];
+```
+
+- *Type:* string[]
+
+Additional entries to .gitignore.
+
+---
+
+##### `jest`<sup>Optional</sup> <a name="jest" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.jest"></a>
+
+```typescript
+public readonly jest: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Setup jest unit tests.
+
+---
+
+##### `jestOptions`<sup>Optional</sup> <a name="jestOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.jestOptions"></a>
+
+```typescript
+public readonly jestOptions: JestOptions;
+```
+
+- *Type:* projen.javascript.JestOptions
+- *Default:* default options
+
+Jest options.
+
+---
+
+##### `mutableBuild`<sup>Optional</sup> <a name="mutableBuild" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.mutableBuild"></a>
+
+```typescript
+public readonly mutableBuild: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Automatically update files modified during builds to pull-request branches.
+
+This means
+that any files synthesized by projen or e.g. test snapshots will always be up-to-date
+before a PR is merged.
+
+Implies that PR builds do not have anti-tamper checks.
+
+---
+
+##### ~~`npmignore`~~<sup>Optional</sup> <a name="npmignore" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.npmignore"></a>
+
+- *Deprecated:* - use `project.addPackageIgnore`
+
+```typescript
+public readonly npmignore: string[];
+```
+
+- *Type:* string[]
+
+Additional entries to .npmignore.
+
+---
+
+##### `npmignoreEnabled`<sup>Optional</sup> <a name="npmignoreEnabled" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.npmignoreEnabled"></a>
+
+```typescript
+public readonly npmignoreEnabled: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Defines an .npmignore file. Normally this is only needed for libraries that are packaged as tarballs.
+
+---
+
+##### `npmIgnoreOptions`<sup>Optional</sup> <a name="npmIgnoreOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.npmIgnoreOptions"></a>
+
+```typescript
+public readonly npmIgnoreOptions: IgnoreFileOptions;
+```
+
+- *Type:* projen.IgnoreFileOptions
+
+Configuration options for .npmignore file.
+
+---
+
+##### `package`<sup>Optional</sup> <a name="package" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.package"></a>
+
+```typescript
+public readonly package: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Defines a `package` task that will produce an npm tarball under the artifacts directory (e.g. `dist`).
+
+---
+
+##### `prettier`<sup>Optional</sup> <a name="prettier" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.prettier"></a>
+
+```typescript
+public readonly prettier: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Setup prettier.
+
+---
+
+##### `prettierOptions`<sup>Optional</sup> <a name="prettierOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.prettierOptions"></a>
+
+```typescript
+public readonly prettierOptions: PrettierOptions;
+```
+
+- *Type:* projen.javascript.PrettierOptions
+- *Default:* default options
+
+Prettier options.
+
+---
+
+##### `projenDevDependency`<sup>Optional</sup> <a name="projenDevDependency" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.projenDevDependency"></a>
+
+```typescript
+public readonly projenDevDependency: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Indicates of "projen" should be installed as a devDependency.
+
+---
+
+##### `projenrcJs`<sup>Optional</sup> <a name="projenrcJs" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.projenrcJs"></a>
+
+```typescript
+public readonly projenrcJs: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true if projenrcJson is false
+
+Generate (once) .projenrc.js (in JavaScript). Set to `false` in order to disable .projenrc.js generation.
+
+---
+
+##### `projenrcJsOptions`<sup>Optional</sup> <a name="projenrcJsOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.projenrcJsOptions"></a>
+
+```typescript
+public readonly projenrcJsOptions: ProjenrcOptions;
+```
+
+- *Type:* projen.javascript.ProjenrcOptions
+- *Default:* default options
+
+Options for .projenrc.js.
+
+---
+
+##### `projenVersion`<sup>Optional</sup> <a name="projenVersion" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.projenVersion"></a>
+
+```typescript
+public readonly projenVersion: string;
+```
+
+- *Type:* string
+- *Default:* Defaults to the latest version.
+
+Version of projen to install.
+
+---
+
+##### `pullRequestTemplate`<sup>Optional</sup> <a name="pullRequestTemplate" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.pullRequestTemplate"></a>
+
+```typescript
+public readonly pullRequestTemplate: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Include a GitHub pull request template.
+
+---
+
+##### `pullRequestTemplateContents`<sup>Optional</sup> <a name="pullRequestTemplateContents" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.pullRequestTemplateContents"></a>
+
+```typescript
+public readonly pullRequestTemplateContents: string[];
+```
+
+- *Type:* string[]
+- *Default:* default content
+
+The contents of the pull request template.
+
+---
+
+##### `release`<sup>Optional</sup> <a name="release" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.release"></a>
+
+```typescript
+public readonly release: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true (false for subprojects)
+
+Add release management to this project.
+
+---
+
+##### `releaseToNpm`<sup>Optional</sup> <a name="releaseToNpm" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseToNpm"></a>
+
+```typescript
+public readonly releaseToNpm: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Automatically release to npm when new versions are introduced.
+
+---
+
+##### ~~`releaseWorkflow`~~<sup>Optional</sup> <a name="releaseWorkflow" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.releaseWorkflow"></a>
+
+- *Deprecated:* see `release`.
+
+```typescript
+public readonly releaseWorkflow: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true if not a subproject
+
+DEPRECATED: renamed to `release`.
+
+---
+
+##### `workflowBootstrapSteps`<sup>Optional</sup> <a name="workflowBootstrapSteps" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.workflowBootstrapSteps"></a>
+
+```typescript
+public readonly workflowBootstrapSteps: JobStep[];
+```
+
+- *Type:* projen.github.workflows.JobStep[]
+- *Default:* "yarn install --frozen-lockfile && yarn projen"
+
+Workflow steps to use in order to bootstrap this repo.
+
+---
+
+##### `workflowGitIdentity`<sup>Optional</sup> <a name="workflowGitIdentity" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.workflowGitIdentity"></a>
+
+```typescript
+public readonly workflowGitIdentity: GitIdentity;
+```
+
+- *Type:* projen.github.GitIdentity
+- *Default:* GitHub Actions
+
+The git identity to use in workflows.
+
+---
+
+##### `workflowNodeVersion`<sup>Optional</sup> <a name="workflowNodeVersion" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.workflowNodeVersion"></a>
+
+```typescript
+public readonly workflowNodeVersion: string;
+```
+
+- *Type:* string
+- *Default:* same as `minNodeVersion`
+
+The node version to use in GitHub workflows.
+
+---
+
+##### `workflowPackageCache`<sup>Optional</sup> <a name="workflowPackageCache" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.workflowPackageCache"></a>
+
+```typescript
+public readonly workflowPackageCache: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Enable Node.js package cache in GitHub workflows.
+
+---
+
+##### `backport`<sup>Optional</sup> <a name="backport" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.backport"></a>
+
+```typescript
+public readonly backport: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Configure a backport workflow.
+
+---
+
+##### `backportBranches`<sup>Optional</sup> <a name="backportBranches" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.backportBranches"></a>
+
+```typescript
+public readonly backportBranches: string[];
+```
+
+- *Type:* string[]
+- *Default:* Will be derived from PR labels.
+
+Branches to backport to.
+
+---
+
+##### `repoName`<sup>Optional</sup> <a name="repoName" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.repoName"></a>
+
+```typescript
+public readonly repoName: string;
+```
+
+- *Type:* string
+- *Default:* the package name.
+
+The name of the repository inside the cdk8s-team org where the code of the project is locate in.
+
+---
+
+### Cdk8sTeamTypeScriptProjectOptions <a name="Cdk8sTeamTypeScriptProjectOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions"></a>
+
+Options for `Cdk8sTeamTypeScriptProject`.
+
+#### Initializer <a name="Initializer" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.Initializer"></a>
+
+```typescript
+import { Cdk8sTeamTypeScriptProjectOptions } from '@cdk8s/projen-common'
+
+const cdk8sTeamTypeScriptProjectOptions: Cdk8sTeamTypeScriptProjectOptions = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.name">name</a></code> | <code>string</code> | This is the name of your project. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.commitGenerated">commitGenerated</a></code> | <code>boolean</code> | Whether to commit the managed files by default. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.gitIgnoreOptions">gitIgnoreOptions</a></code> | <code>projen.IgnoreFileOptions</code> | Configuration options for .gitignore file. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.gitOptions">gitOptions</a></code> | <code>projen.GitOptions</code> | Configuration options for git. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.logging">logging</a></code> | <code>projen.LoggerOptions</code> | Configure logging options such as verbosity. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.outdir">outdir</a></code> | <code>string</code> | The root directory of the project. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.parent">parent</a></code> | <code>projen.Project</code> | The parent project, if this project is part of a bigger project. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenCommand">projenCommand</a></code> | <code>string</code> | The shell command to use in order to run the projen CLI. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenrcJson">projenrcJson</a></code> | <code>boolean</code> | Generate (once) .projenrc.json (in JSON). Set to `false` in order to disable .projenrc.json generation. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenrcJsonOptions">projenrcJsonOptions</a></code> | <code>projen.ProjenrcJsonOptions</code> | Options for .projenrc.json. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.renovatebot">renovatebot</a></code> | <code>boolean</code> | Use renovatebot to handle dependency upgrades. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.renovatebotOptions">renovatebotOptions</a></code> | <code>projen.RenovatebotOptions</code> | Options for renovatebot. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.autoApproveOptions">autoApproveOptions</a></code> | <code>projen.github.AutoApproveOptions</code> | Enable and configure the 'auto approve' workflow. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.autoMerge">autoMerge</a></code> | <code>boolean</code> | Enable automatic merging on GitHub. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.autoMergeOptions">autoMergeOptions</a></code> | <code>projen.github.AutoMergeOptions</code> | Configure options for automatic merging on GitHub. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.clobber">clobber</a></code> | <code>boolean</code> | Add a `clobber` task which resets the repo to origin. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.devContainer">devContainer</a></code> | <code>boolean</code> | Add a VSCode development environment (used for GitHub Codespaces). |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.github">github</a></code> | <code>boolean</code> | Enable GitHub integration. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.githubOptions">githubOptions</a></code> | <code>projen.github.GitHubOptions</code> | Options for GitHub integration. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.gitpod">gitpod</a></code> | <code>boolean</code> | Add a Gitpod development environment. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.mergify">mergify</a></code> | <code>boolean</code> | Whether mergify should be enabled on this repository or not. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.mergifyOptions">mergifyOptions</a></code> | <code>projen.github.MergifyOptions</code> | Options for mergify. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projectType">projectType</a></code> | <code>projen.ProjectType</code> | Which type of project this is (library/app). |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenCredentials">projenCredentials</a></code> | <code>projen.github.GithubCredentials</code> | Choose a method of providing GitHub API access for projen workflows. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenTokenSecret">projenTokenSecret</a></code> | <code>string</code> | The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.readme">readme</a></code> | <code>projen.SampleReadmeProps</code> | The README setup. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.stale">stale</a></code> | <code>boolean</code> | Auto-close of stale issues and pull request. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.staleOptions">staleOptions</a></code> | <code>projen.github.StaleOptions</code> | Auto-close stale issues and pull requests. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.vscode">vscode</a></code> | <code>boolean</code> | Enable VSCode integration. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.allowLibraryDependencies">allowLibraryDependencies</a></code> | <code>boolean</code> | Allow the project to include `peerDependencies` and `bundledDependencies`. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.authorEmail">authorEmail</a></code> | <code>string</code> | Author's e-mail. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.authorName">authorName</a></code> | <code>string</code> | Author's name. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.authorOrganization">authorOrganization</a></code> | <code>boolean</code> | Is the author an organization. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.authorUrl">authorUrl</a></code> | <code>string</code> | Author's URL / Website. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.autoDetectBin">autoDetectBin</a></code> | <code>boolean</code> | Automatically add all executables under the `bin` directory to your `package.json` file under the `bin` section. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.bin">bin</a></code> | <code>{[ key: string ]: string}</code> | Binary programs vended with your module. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.bugsEmail">bugsEmail</a></code> | <code>string</code> | The email address to which issues should be reported. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.bugsUrl">bugsUrl</a></code> | <code>string</code> | The url to your project's issue tracker. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.bundledDeps">bundledDeps</a></code> | <code>string[]</code> | List of dependencies to bundle into this module. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.codeArtifactOptions">codeArtifactOptions</a></code> | <code>projen.javascript.CodeArtifactOptions</code> | Options for npm packages using AWS CodeArtifact. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.deps">deps</a></code> | <code>string[]</code> | Runtime dependencies of this module. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.description">description</a></code> | <code>string</code> | The description is just a string that helps people understand the purpose of the package. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.devDeps">devDeps</a></code> | <code>string[]</code> | Build dependencies for this module. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.entrypoint">entrypoint</a></code> | <code>string</code> | Module entrypoint (`main` in `package.json`). |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.homepage">homepage</a></code> | <code>string</code> | Package's Homepage / Website. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.keywords">keywords</a></code> | <code>string[]</code> | Keywords to include in `package.json`. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.license">license</a></code> | <code>string</code> | License's SPDX identifier. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.licensed">licensed</a></code> | <code>boolean</code> | Indicates if a license should be added. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.maxNodeVersion">maxNodeVersion</a></code> | <code>string</code> | Minimum node.js version to require via `engines` (inclusive). |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.minNodeVersion">minNodeVersion</a></code> | <code>string</code> | Minimum Node.js version to require via package.json `engines` (inclusive). |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.npmAccess">npmAccess</a></code> | <code>projen.javascript.NpmAccess</code> | Access level of the npm package. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.npmRegistry">npmRegistry</a></code> | <code>string</code> | The host name of the npm registry to publish to. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.npmRegistryUrl">npmRegistryUrl</a></code> | <code>string</code> | The base URL of the npm package registry. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.npmTokenSecret">npmTokenSecret</a></code> | <code>string</code> | GitHub secret which contains the NPM token to use when publishing packages. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.packageManager">packageManager</a></code> | <code>projen.javascript.NodePackageManager</code> | The Node Package Manager used to execute scripts. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.packageName">packageName</a></code> | <code>string</code> | The "name" in package.json. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.peerDependencyOptions">peerDependencyOptions</a></code> | <code>projen.javascript.PeerDependencyOptions</code> | Options for `peerDeps`. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.peerDeps">peerDeps</a></code> | <code>string[]</code> | Peer dependencies for this module. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.pnpmVersion">pnpmVersion</a></code> | <code>string</code> | The version of PNPM to use if using PNPM as a package manager. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.repository">repository</a></code> | <code>string</code> | The repository is the location where the actual code for your package lives. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.repositoryDirectory">repositoryDirectory</a></code> | <code>string</code> | If the package.json for your package is not in the root directory (for example if it is part of a monorepo), you can specify the directory in which it lives. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.scopedPackagesOptions">scopedPackagesOptions</a></code> | <code>projen.javascript.ScopedPackagesOptions[]</code> | Options for privately hosted scoped packages. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.scripts">scripts</a></code> | <code>{[ key: string ]: string}</code> | npm scripts to include. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.stability">stability</a></code> | <code>string</code> | Package's Stability. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.yarnBerryOptions">yarnBerryOptions</a></code> | <code>projen.javascript.YarnBerryOptions</code> | Options for Yarn Berry. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.jsiiReleaseVersion">jsiiReleaseVersion</a></code> | <code>string</code> | Version requirement of `publib` which is used to publish modules to npm. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.majorVersion">majorVersion</a></code> | <code>number</code> | Major version to release from the default branch. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.minMajorVersion">minMajorVersion</a></code> | <code>number</code> | Minimal Major version to release. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.npmDistTag">npmDistTag</a></code> | <code>string</code> | The npmDistTag to use when publishing from the default branch. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.postBuildSteps">postBuildSteps</a></code> | <code>projen.github.workflows.JobStep[]</code> | Steps to execute after build as part of the release workflow. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.prerelease">prerelease</a></code> | <code>string</code> | Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pre"). |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.publishDryRun">publishDryRun</a></code> | <code>boolean</code> | Instead of actually publishing to package managers, just print the publishing command. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.publishTasks">publishTasks</a></code> | <code>boolean</code> | Define publishing tasks that can be executed manually as well as workflows. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releasableCommits">releasableCommits</a></code> | <code>projen.ReleasableCommits</code> | Find commits that should be considered releasable Used to decide if a release is required. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseBranches">releaseBranches</a></code> | <code>{[ key: string ]: projen.release.BranchOptions}</code> | Defines additional release branches. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseEveryCommit">releaseEveryCommit</a></code> | <code>boolean</code> | Automatically release new versions every commit to one of branches in `releaseBranches`. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseFailureIssue">releaseFailureIssue</a></code> | <code>boolean</code> | Create a github issue on every failed publishing task. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseFailureIssueLabel">releaseFailureIssueLabel</a></code> | <code>string</code> | The label to apply to issues indicating publish failures. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseSchedule">releaseSchedule</a></code> | <code>string</code> | CRON schedule to trigger new releases. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseTagPrefix">releaseTagPrefix</a></code> | <code>string</code> | Automatically add the given prefix to release tags. Useful if you are releasing on multiple branches with overlapping version numbers. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseTrigger">releaseTrigger</a></code> | <code>projen.release.ReleaseTrigger</code> | The release trigger to use. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseWorkflowName">releaseWorkflowName</a></code> | <code>string</code> | The name of the default release workflow. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseWorkflowSetupSteps">releaseWorkflowSetupSteps</a></code> | <code>projen.github.workflows.JobStep[]</code> | A set of workflow steps to execute in order to setup the workflow container. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.versionrcOptions">versionrcOptions</a></code> | <code>{[ key: string ]: any}</code> | Custom configuration used when creating changelog with standard-version package. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.workflowContainerImage">workflowContainerImage</a></code> | <code>string</code> | Container image to use for GitHub workflows. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.workflowRunsOn">workflowRunsOn</a></code> | <code>string[]</code> | Github Runner selection labels. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.workflowRunsOnGroup">workflowRunsOnGroup</a></code> | <code>projen.GroupRunnerOptions</code> | Github Runner Group selection options. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.defaultReleaseBranch">defaultReleaseBranch</a></code> | <code>string</code> | The name of the main release branch. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.artifactsDirectory">artifactsDirectory</a></code> | <code>string</code> | A directory which will contain build artifacts. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.autoApproveUpgrades">autoApproveUpgrades</a></code> | <code>boolean</code> | Automatically approve deps upgrade PRs, allowing them to be merged by mergify (if configued). |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.buildWorkflow">buildWorkflow</a></code> | <code>boolean</code> | Define a GitHub workflow for building PRs. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.buildWorkflowTriggers">buildWorkflowTriggers</a></code> | <code>projen.github.workflows.Triggers</code> | Build workflow triggers. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.bundlerOptions">bundlerOptions</a></code> | <code>projen.javascript.BundlerOptions</code> | Options for `Bundler`. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.codeCov">codeCov</a></code> | <code>boolean</code> | Define a GitHub workflow step for sending code coverage metrics to https://codecov.io/ Uses codecov/codecov-action@v3 A secret is required for private repos. Configured with `@codeCovTokenSecret`. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.codeCovTokenSecret">codeCovTokenSecret</a></code> | <code>string</code> | Define the secret name for a specified https://codecov.io/ token A secret is required to send coverage for private repositories. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.copyrightOwner">copyrightOwner</a></code> | <code>string</code> | License copyright owner. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.copyrightPeriod">copyrightPeriod</a></code> | <code>string</code> | The copyright years to put in the LICENSE file. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.dependabot">dependabot</a></code> | <code>boolean</code> | Use dependabot to handle dependency upgrades. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.dependabotOptions">dependabotOptions</a></code> | <code>projen.github.DependabotOptions</code> | Options for dependabot. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.depsUpgrade">depsUpgrade</a></code> | <code>boolean</code> | Use tasks and github workflows to handle dependency upgrades. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.depsUpgradeOptions">depsUpgradeOptions</a></code> | <code>projen.javascript.UpgradeDependenciesOptions</code> | Options for `UpgradeDependencies`. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.gitignore">gitignore</a></code> | <code>string[]</code> | Additional entries to .gitignore. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.jest">jest</a></code> | <code>boolean</code> | Setup jest unit tests. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.jestOptions">jestOptions</a></code> | <code>projen.javascript.JestOptions</code> | Jest options. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.mutableBuild">mutableBuild</a></code> | <code>boolean</code> | Automatically update files modified during builds to pull-request branches. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.npmignore">npmignore</a></code> | <code>string[]</code> | Additional entries to .npmignore. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.npmignoreEnabled">npmignoreEnabled</a></code> | <code>boolean</code> | Defines an .npmignore file. Normally this is only needed for libraries that are packaged as tarballs. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.npmIgnoreOptions">npmIgnoreOptions</a></code> | <code>projen.IgnoreFileOptions</code> | Configuration options for .npmignore file. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.package">package</a></code> | <code>boolean</code> | Defines a `package` task that will produce an npm tarball under the artifacts directory (e.g. `dist`). |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.prettier">prettier</a></code> | <code>boolean</code> | Setup prettier. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.prettierOptions">prettierOptions</a></code> | <code>projen.javascript.PrettierOptions</code> | Prettier options. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenDevDependency">projenDevDependency</a></code> | <code>boolean</code> | Indicates of "projen" should be installed as a devDependency. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenrcJs">projenrcJs</a></code> | <code>boolean</code> | Generate (once) .projenrc.js (in JavaScript). Set to `false` in order to disable .projenrc.js generation. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenrcJsOptions">projenrcJsOptions</a></code> | <code>projen.javascript.ProjenrcOptions</code> | Options for .projenrc.js. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenVersion">projenVersion</a></code> | <code>string</code> | Version of projen to install. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.pullRequestTemplate">pullRequestTemplate</a></code> | <code>boolean</code> | Include a GitHub pull request template. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.pullRequestTemplateContents">pullRequestTemplateContents</a></code> | <code>string[]</code> | The contents of the pull request template. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.release">release</a></code> | <code>boolean</code> | Add release management to this project. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseToNpm">releaseToNpm</a></code> | <code>boolean</code> | Automatically release to npm when new versions are introduced. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseWorkflow">releaseWorkflow</a></code> | <code>boolean</code> | DEPRECATED: renamed to `release`. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.workflowBootstrapSteps">workflowBootstrapSteps</a></code> | <code>projen.github.workflows.JobStep[]</code> | Workflow steps to use in order to bootstrap this repo. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.workflowGitIdentity">workflowGitIdentity</a></code> | <code>projen.github.GitIdentity</code> | The git identity to use in workflows. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.workflowNodeVersion">workflowNodeVersion</a></code> | <code>string</code> | The node version to use in GitHub workflows. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.workflowPackageCache">workflowPackageCache</a></code> | <code>boolean</code> | Enable Node.js package cache in GitHub workflows. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.disableTsconfig">disableTsconfig</a></code> | <code>boolean</code> | Do not generate a `tsconfig.json` file (used by jsii projects since tsconfig.json is generated by the jsii compiler). |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.disableTsconfigDev">disableTsconfigDev</a></code> | <code>boolean</code> | Do not generate a `tsconfig.dev.json` file. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.docgen">docgen</a></code> | <code>boolean</code> | Docgen by Typedoc. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.docsDirectory">docsDirectory</a></code> | <code>string</code> | Docs directory. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.entrypointTypes">entrypointTypes</a></code> | <code>string</code> | The .d.ts file that includes the type declarations for this module. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.eslint">eslint</a></code> | <code>boolean</code> | Setup eslint. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.eslintOptions">eslintOptions</a></code> | <code>projen.javascript.EslintOptions</code> | Eslint options. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.libdir">libdir</a></code> | <code>string</code> | Typescript  artifacts output directory. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenrcTs">projenrcTs</a></code> | <code>boolean</code> | Use TypeScript for your projenrc file (`.projenrc.ts`). |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenrcTsOptions">projenrcTsOptions</a></code> | <code>projen.typescript.ProjenrcOptions</code> | Options for .projenrc.ts. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.sampleCode">sampleCode</a></code> | <code>boolean</code> | Generate one-time sample in `src/` and `test/` if there are no files there. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.srcdir">srcdir</a></code> | <code>string</code> | Typescript sources directory. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.testdir">testdir</a></code> | <code>string</code> | Jest tests directory. Tests files should be named `xxx.test.ts`. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.tsconfig">tsconfig</a></code> | <code>projen.javascript.TypescriptConfigOptions</code> | Custom TSConfig. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.tsconfigDev">tsconfigDev</a></code> | <code>projen.javascript.TypescriptConfigOptions</code> | Custom tsconfig options for the development tsconfig.json file (used for testing). |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.tsconfigDevFile">tsconfigDevFile</a></code> | <code>string</code> | The name of the development tsconfig.json file. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.typescriptVersion">typescriptVersion</a></code> | <code>string</code> | TypeScript version to use. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.additionalCompilerDependencies">additionalCompilerDependencies</a></code> | <code>string[]</code> | Packages that compile the project apart from the typescript/jsii compiler. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.backport">backport</a></code> | <code>boolean</code> | Configure a backport workflow. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.backportBranches">backportBranches</a></code> | <code>string[]</code> | Branches to backport to. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.repoName">repoName</a></code> | <code>string</code> | The name of the repository inside the cdk8s-team org where the code of the project is locate in. |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+- *Default:* $BASEDIR
+
+This is the name of your project.
+
+---
+
+##### `commitGenerated`<sup>Optional</sup> <a name="commitGenerated" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.commitGenerated"></a>
+
+```typescript
+public readonly commitGenerated: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to commit the managed files by default.
+
+---
+
+##### `gitIgnoreOptions`<sup>Optional</sup> <a name="gitIgnoreOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.gitIgnoreOptions"></a>
+
+```typescript
+public readonly gitIgnoreOptions: IgnoreFileOptions;
+```
+
+- *Type:* projen.IgnoreFileOptions
+
+Configuration options for .gitignore file.
+
+---
+
+##### `gitOptions`<sup>Optional</sup> <a name="gitOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.gitOptions"></a>
+
+```typescript
+public readonly gitOptions: GitOptions;
+```
+
+- *Type:* projen.GitOptions
+
+Configuration options for git.
+
+---
+
+##### `logging`<sup>Optional</sup> <a name="logging" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.logging"></a>
+
+```typescript
+public readonly logging: LoggerOptions;
+```
+
+- *Type:* projen.LoggerOptions
+- *Default:* {}
+
+Configure logging options such as verbosity.
+
+---
+
+##### `outdir`<sup>Optional</sup> <a name="outdir" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.outdir"></a>
+
+```typescript
+public readonly outdir: string;
+```
+
+- *Type:* string
+- *Default:* "."
+
+The root directory of the project.
+
+Relative to this directory, all files are synthesized.
+
+If this project has a parent, this directory is relative to the parent
+directory and it cannot be the same as the parent or any of it's other
+subprojects.
+
+---
+
+##### `parent`<sup>Optional</sup> <a name="parent" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.parent"></a>
+
+```typescript
+public readonly parent: Project;
+```
+
+- *Type:* projen.Project
+
+The parent project, if this project is part of a bigger project.
+
+---
+
+##### `projenCommand`<sup>Optional</sup> <a name="projenCommand" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenCommand"></a>
+
+```typescript
+public readonly projenCommand: string;
+```
+
+- *Type:* string
+- *Default:* "npx projen"
+
+The shell command to use in order to run the projen CLI.
+
+Can be used to customize in special environments.
+
+---
+
+##### `projenrcJson`<sup>Optional</sup> <a name="projenrcJson" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenrcJson"></a>
+
+```typescript
+public readonly projenrcJson: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Generate (once) .projenrc.json (in JSON). Set to `false` in order to disable .projenrc.json generation.
+
+---
+
+##### `projenrcJsonOptions`<sup>Optional</sup> <a name="projenrcJsonOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenrcJsonOptions"></a>
+
+```typescript
+public readonly projenrcJsonOptions: ProjenrcJsonOptions;
+```
+
+- *Type:* projen.ProjenrcJsonOptions
+- *Default:* default options
+
+Options for .projenrc.json.
+
+---
+
+##### `renovatebot`<sup>Optional</sup> <a name="renovatebot" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.renovatebot"></a>
+
+```typescript
+public readonly renovatebot: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Use renovatebot to handle dependency upgrades.
+
+---
+
+##### `renovatebotOptions`<sup>Optional</sup> <a name="renovatebotOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.renovatebotOptions"></a>
+
+```typescript
+public readonly renovatebotOptions: RenovatebotOptions;
+```
+
+- *Type:* projen.RenovatebotOptions
+- *Default:* default options
+
+Options for renovatebot.
+
+---
+
+##### `autoApproveOptions`<sup>Optional</sup> <a name="autoApproveOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.autoApproveOptions"></a>
+
+```typescript
+public readonly autoApproveOptions: AutoApproveOptions;
+```
+
+- *Type:* projen.github.AutoApproveOptions
+- *Default:* auto approve is disabled
+
+Enable and configure the 'auto approve' workflow.
+
+---
+
+##### `autoMerge`<sup>Optional</sup> <a name="autoMerge" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.autoMerge"></a>
+
+```typescript
+public readonly autoMerge: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Enable automatic merging on GitHub.
+
+Has no effect if `github.mergify`
+is set to false.
+
+---
+
+##### `autoMergeOptions`<sup>Optional</sup> <a name="autoMergeOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.autoMergeOptions"></a>
+
+```typescript
+public readonly autoMergeOptions: AutoMergeOptions;
+```
+
+- *Type:* projen.github.AutoMergeOptions
+- *Default:* see defaults in `AutoMergeOptions`
+
+Configure options for automatic merging on GitHub.
+
+Has no effect if
+`github.mergify` or `autoMerge` is set to false.
+
+---
+
+##### `clobber`<sup>Optional</sup> <a name="clobber" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.clobber"></a>
+
+```typescript
+public readonly clobber: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true, but false for subprojects
+
+Add a `clobber` task which resets the repo to origin.
+
+---
+
+##### `devContainer`<sup>Optional</sup> <a name="devContainer" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.devContainer"></a>
+
+```typescript
+public readonly devContainer: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Add a VSCode development environment (used for GitHub Codespaces).
+
+---
+
+##### `github`<sup>Optional</sup> <a name="github" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.github"></a>
+
+```typescript
+public readonly github: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Enable GitHub integration.
+
+Enabled by default for root projects. Disabled for non-root projects.
+
+---
+
+##### `githubOptions`<sup>Optional</sup> <a name="githubOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.githubOptions"></a>
+
+```typescript
+public readonly githubOptions: GitHubOptions;
+```
+
+- *Type:* projen.github.GitHubOptions
+- *Default:* see GitHubOptions
+
+Options for GitHub integration.
+
+---
+
+##### `gitpod`<sup>Optional</sup> <a name="gitpod" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.gitpod"></a>
+
+```typescript
+public readonly gitpod: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Add a Gitpod development environment.
+
+---
+
+##### ~~`mergify`~~<sup>Optional</sup> <a name="mergify" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.mergify"></a>
+
+- *Deprecated:* use `githubOptions.mergify` instead
+
+```typescript
+public readonly mergify: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether mergify should be enabled on this repository or not.
+
+---
+
+##### ~~`mergifyOptions`~~<sup>Optional</sup> <a name="mergifyOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.mergifyOptions"></a>
+
+- *Deprecated:* use `githubOptions.mergifyOptions` instead
+
+```typescript
+public readonly mergifyOptions: MergifyOptions;
+```
+
+- *Type:* projen.github.MergifyOptions
+- *Default:* default options
+
+Options for mergify.
+
+---
+
+##### ~~`projectType`~~<sup>Optional</sup> <a name="projectType" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projectType"></a>
+
+- *Deprecated:* no longer supported at the base project level
+
+```typescript
+public readonly projectType: ProjectType;
+```
+
+- *Type:* projen.ProjectType
+- *Default:* ProjectType.UNKNOWN
+
+Which type of project this is (library/app).
+
+---
+
+##### `projenCredentials`<sup>Optional</sup> <a name="projenCredentials" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenCredentials"></a>
+
+```typescript
+public readonly projenCredentials: GithubCredentials;
+```
+
+- *Type:* projen.github.GithubCredentials
+- *Default:* use a personal access token named PROJEN_GITHUB_TOKEN
+
+Choose a method of providing GitHub API access for projen workflows.
+
+---
+
+##### ~~`projenTokenSecret`~~<sup>Optional</sup> <a name="projenTokenSecret" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenTokenSecret"></a>
+
+- *Deprecated:* use `projenCredentials`
+
+```typescript
+public readonly projenTokenSecret: string;
+```
+
+- *Type:* string
+- *Default:* "PROJEN_GITHUB_TOKEN"
+
+The name of a secret which includes a GitHub Personal Access Token to be used by projen workflows.
+
+This token needs to have the `repo`, `workflows`
+and `packages` scope.
+
+---
+
+##### `readme`<sup>Optional</sup> <a name="readme" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.readme"></a>
+
+```typescript
+public readonly readme: SampleReadmeProps;
+```
+
+- *Type:* projen.SampleReadmeProps
+- *Default:* { filename: 'README.md', contents: '# replace this' }
+
+The README setup.
+
+---
+
+*Example*
+
+```typescript
+"{ filename: 'readme.md', contents: '# title' }"
+```
+
+
+##### `stale`<sup>Optional</sup> <a name="stale" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.stale"></a>
+
+```typescript
+public readonly stale: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Auto-close of stale issues and pull request.
+
+See `staleOptions` for options.
+
+---
+
+##### `staleOptions`<sup>Optional</sup> <a name="staleOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.staleOptions"></a>
+
+```typescript
+public readonly staleOptions: StaleOptions;
+```
+
+- *Type:* projen.github.StaleOptions
+- *Default:* see defaults in `StaleOptions`
+
+Auto-close stale issues and pull requests.
+
+To disable set `stale` to `false`.
+
+---
+
+##### `vscode`<sup>Optional</sup> <a name="vscode" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.vscode"></a>
+
+```typescript
+public readonly vscode: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Enable VSCode integration.
+
+Enabled by default for root projects. Disabled for non-root projects.
+
+---
+
+##### `allowLibraryDependencies`<sup>Optional</sup> <a name="allowLibraryDependencies" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.allowLibraryDependencies"></a>
+
+```typescript
+public readonly allowLibraryDependencies: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Allow the project to include `peerDependencies` and `bundledDependencies`.
+
+This is normally only allowed for libraries. For apps, there's no meaning
+for specifying these.
+
+---
+
+##### `authorEmail`<sup>Optional</sup> <a name="authorEmail" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.authorEmail"></a>
+
+```typescript
+public readonly authorEmail: string;
+```
+
+- *Type:* string
+
+Author's e-mail.
+
+---
+
+##### `authorName`<sup>Optional</sup> <a name="authorName" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.authorName"></a>
+
+```typescript
+public readonly authorName: string;
+```
+
+- *Type:* string
+
+Author's name.
+
+---
+
+##### `authorOrganization`<sup>Optional</sup> <a name="authorOrganization" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.authorOrganization"></a>
+
+```typescript
+public readonly authorOrganization: boolean;
+```
+
+- *Type:* boolean
+
+Is the author an organization.
+
+---
+
+##### `authorUrl`<sup>Optional</sup> <a name="authorUrl" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.authorUrl"></a>
+
+```typescript
+public readonly authorUrl: string;
+```
+
+- *Type:* string
+
+Author's URL / Website.
+
+---
+
+##### `autoDetectBin`<sup>Optional</sup> <a name="autoDetectBin" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.autoDetectBin"></a>
+
+```typescript
+public readonly autoDetectBin: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Automatically add all executables under the `bin` directory to your `package.json` file under the `bin` section.
+
+---
+
+##### `bin`<sup>Optional</sup> <a name="bin" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.bin"></a>
+
+```typescript
+public readonly bin: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Binary programs vended with your module.
+
+You can use this option to add/customize how binaries are represented in
+your `package.json`, but unless `autoDetectBin` is `false`, every
+executable file under `bin` will automatically be added to this section.
+
+---
+
+##### `bugsEmail`<sup>Optional</sup> <a name="bugsEmail" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.bugsEmail"></a>
+
+```typescript
+public readonly bugsEmail: string;
+```
+
+- *Type:* string
+
+The email address to which issues should be reported.
+
+---
+
+##### `bugsUrl`<sup>Optional</sup> <a name="bugsUrl" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.bugsUrl"></a>
+
+```typescript
+public readonly bugsUrl: string;
+```
+
+- *Type:* string
+
+The url to your project's issue tracker.
+
+---
+
+##### `bundledDeps`<sup>Optional</sup> <a name="bundledDeps" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.bundledDeps"></a>
+
+```typescript
+public readonly bundledDeps: string[];
+```
+
+- *Type:* string[]
+
+List of dependencies to bundle into this module.
+
+These modules will be
+added both to the `dependencies` section and `bundledDependencies` section of
+your `package.json`.
+
+The recommendation is to only specify the module name here (e.g.
+`express`). This will behave similar to `yarn add` or `npm install` in the
+sense that it will add the module as a dependency to your `package.json`
+file with the latest version (`^`). You can specify semver requirements in
+the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
+this will be what you `package.json` will eventually include.
+
+---
+
+##### `codeArtifactOptions`<sup>Optional</sup> <a name="codeArtifactOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.codeArtifactOptions"></a>
+
+```typescript
+public readonly codeArtifactOptions: CodeArtifactOptions;
+```
+
+- *Type:* projen.javascript.CodeArtifactOptions
+- *Default:* undefined
+
+Options for npm packages using AWS CodeArtifact.
+
+This is required if publishing packages to, or installing scoped packages from AWS CodeArtifact
+
+---
+
+##### `deps`<sup>Optional</sup> <a name="deps" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.deps"></a>
+
+```typescript
+public readonly deps: string[];
+```
+
+- *Type:* string[]
+- *Default:* []
+
+Runtime dependencies of this module.
+
+The recommendation is to only specify the module name here (e.g.
+`express`). This will behave similar to `yarn add` or `npm install` in the
+sense that it will add the module as a dependency to your `package.json`
+file with the latest version (`^`). You can specify semver requirements in
+the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
+this will be what you `package.json` will eventually include.
+
+---
+
+*Example*
+
+```typescript
+[ 'express', 'lodash', 'foo@^2' ]
+```
+
+
+##### `description`<sup>Optional</sup> <a name="description" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.description"></a>
+
+```typescript
+public readonly description: string;
+```
+
+- *Type:* string
+
+The description is just a string that helps people understand the purpose of the package.
+
+It can be used when searching for packages in a package manager as well.
+See https://classic.yarnpkg.com/en/docs/package-json/#toc-description
+
+---
+
+##### `devDeps`<sup>Optional</sup> <a name="devDeps" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.devDeps"></a>
+
+```typescript
+public readonly devDeps: string[];
+```
+
+- *Type:* string[]
+- *Default:* []
+
+Build dependencies for this module.
+
+These dependencies will only be
+available in your build environment but will not be fetched when this
+module is consumed.
+
+The recommendation is to only specify the module name here (e.g.
+`express`). This will behave similar to `yarn add` or `npm install` in the
+sense that it will add the module as a dependency to your `package.json`
+file with the latest version (`^`). You can specify semver requirements in
+the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and
+this will be what you `package.json` will eventually include.
+
+---
+
+*Example*
+
+```typescript
+[ 'typescript', '@types/express' ]
+```
+
+
+##### `entrypoint`<sup>Optional</sup> <a name="entrypoint" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.entrypoint"></a>
+
+```typescript
+public readonly entrypoint: string;
+```
+
+- *Type:* string
+- *Default:* "lib/index.js"
+
+Module entrypoint (`main` in `package.json`).
+
+Set to an empty string to not include `main` in your package.json
+
+---
+
+##### `homepage`<sup>Optional</sup> <a name="homepage" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.homepage"></a>
+
+```typescript
+public readonly homepage: string;
+```
+
+- *Type:* string
+
+Package's Homepage / Website.
+
+---
+
+##### `keywords`<sup>Optional</sup> <a name="keywords" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.keywords"></a>
+
+```typescript
+public readonly keywords: string[];
+```
+
+- *Type:* string[]
+
+Keywords to include in `package.json`.
+
+---
+
+##### `license`<sup>Optional</sup> <a name="license" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.license"></a>
+
+```typescript
+public readonly license: string;
+```
+
+- *Type:* string
+- *Default:* "Apache-2.0"
+
+License's SPDX identifier.
+
+See https://github.com/projen/projen/tree/main/license-text for a list of supported licenses.
+Use the `licensed` option if you want to no license to be specified.
+
+---
+
+##### `licensed`<sup>Optional</sup> <a name="licensed" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.licensed"></a>
+
+```typescript
+public readonly licensed: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Indicates if a license should be added.
+
+---
+
+##### `maxNodeVersion`<sup>Optional</sup> <a name="maxNodeVersion" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.maxNodeVersion"></a>
+
+```typescript
+public readonly maxNodeVersion: string;
+```
+
+- *Type:* string
+- *Default:* no max
+
+Minimum node.js version to require via `engines` (inclusive).
+
+---
+
+##### `minNodeVersion`<sup>Optional</sup> <a name="minNodeVersion" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.minNodeVersion"></a>
+
+```typescript
+public readonly minNodeVersion: string;
+```
+
+- *Type:* string
+- *Default:* no "engines" specified
+
+Minimum Node.js version to require via package.json `engines` (inclusive).
+
+---
+
+##### `npmAccess`<sup>Optional</sup> <a name="npmAccess" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.npmAccess"></a>
+
+```typescript
+public readonly npmAccess: NpmAccess;
+```
+
+- *Type:* projen.javascript.NpmAccess
+- *Default:* for scoped packages (e.g. `foo@bar`), the default is `NpmAccess.RESTRICTED`, for non-scoped packages, the default is `NpmAccess.PUBLIC`.
+
+Access level of the npm package.
+
+---
+
+##### ~~`npmRegistry`~~<sup>Optional</sup> <a name="npmRegistry" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.npmRegistry"></a>
+
+- *Deprecated:* use `npmRegistryUrl` instead
+
+```typescript
+public readonly npmRegistry: string;
+```
+
+- *Type:* string
+
+The host name of the npm registry to publish to.
+
+Cannot be set together with `npmRegistryUrl`.
+
+---
+
+##### `npmRegistryUrl`<sup>Optional</sup> <a name="npmRegistryUrl" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.npmRegistryUrl"></a>
+
+```typescript
+public readonly npmRegistryUrl: string;
+```
+
+- *Type:* string
+- *Default:* "https://registry.npmjs.org"
+
+The base URL of the npm package registry.
+
+Must be a URL (e.g. start with "https://" or "http://")
+
+---
+
+##### `npmTokenSecret`<sup>Optional</sup> <a name="npmTokenSecret" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.npmTokenSecret"></a>
+
+```typescript
+public readonly npmTokenSecret: string;
+```
+
+- *Type:* string
+- *Default:* "NPM_TOKEN"
+
+GitHub secret which contains the NPM token to use when publishing packages.
+
+---
+
+##### `packageManager`<sup>Optional</sup> <a name="packageManager" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.packageManager"></a>
+
+```typescript
+public readonly packageManager: NodePackageManager;
+```
+
+- *Type:* projen.javascript.NodePackageManager
+- *Default:* NodePackageManager.YARN_CLASSIC
+
+The Node Package Manager used to execute scripts.
+
+---
+
+##### `packageName`<sup>Optional</sup> <a name="packageName" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.packageName"></a>
+
+```typescript
+public readonly packageName: string;
+```
+
+- *Type:* string
+- *Default:* defaults to project name
+
+The "name" in package.json.
+
+---
+
+##### `peerDependencyOptions`<sup>Optional</sup> <a name="peerDependencyOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.peerDependencyOptions"></a>
+
+```typescript
+public readonly peerDependencyOptions: PeerDependencyOptions;
+```
+
+- *Type:* projen.javascript.PeerDependencyOptions
+
+Options for `peerDeps`.
+
+---
+
+##### `peerDeps`<sup>Optional</sup> <a name="peerDeps" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.peerDeps"></a>
+
+```typescript
+public readonly peerDeps: string[];
+```
+
+- *Type:* string[]
+- *Default:* []
+
+Peer dependencies for this module.
+
+Dependencies listed here are required to
+be installed (and satisfied) by the _consumer_ of this library. Using peer
+dependencies allows you to ensure that only a single module of a certain
+library exists in the `node_modules` tree of your consumers.
+
+Note that prior to npm@7, peer dependencies are _not_ automatically
+installed, which means that adding peer dependencies to a library will be a
+breaking change for your customers.
+
+Unless `peerDependencyOptions.pinnedDevDependency` is disabled (it is
+enabled by default), projen will automatically add a dev dependency with a
+pinned version for each peer dependency. This will ensure that you build &
+test your module against the lowest peer version required.
+
+---
+
+##### `pnpmVersion`<sup>Optional</sup> <a name="pnpmVersion" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.pnpmVersion"></a>
+
+```typescript
+public readonly pnpmVersion: string;
+```
+
+- *Type:* string
+- *Default:* "7"
+
+The version of PNPM to use if using PNPM as a package manager.
+
+---
+
+##### `repository`<sup>Optional</sup> <a name="repository" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.repository"></a>
+
+```typescript
+public readonly repository: string;
+```
+
+- *Type:* string
+
+The repository is the location where the actual code for your package lives.
+
+See https://classic.yarnpkg.com/en/docs/package-json/#toc-repository
+
+---
+
+##### `repositoryDirectory`<sup>Optional</sup> <a name="repositoryDirectory" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.repositoryDirectory"></a>
+
+```typescript
+public readonly repositoryDirectory: string;
+```
+
+- *Type:* string
+
+If the package.json for your package is not in the root directory (for example if it is part of a monorepo), you can specify the directory in which it lives.
+
+---
+
+##### `scopedPackagesOptions`<sup>Optional</sup> <a name="scopedPackagesOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.scopedPackagesOptions"></a>
+
+```typescript
+public readonly scopedPackagesOptions: ScopedPackagesOptions[];
+```
+
+- *Type:* projen.javascript.ScopedPackagesOptions[]
+- *Default:* fetch all scoped packages from the public npm registry
+
+Options for privately hosted scoped packages.
+
+---
+
+##### ~~`scripts`~~<sup>Optional</sup> <a name="scripts" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.scripts"></a>
+
+- *Deprecated:* use `project.addTask()` or `package.setScript()`
+
+```typescript
+public readonly scripts: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+- *Default:* {}
+
+npm scripts to include.
+
+If a script has the same name as a standard script,
+the standard script will be overwritten.
+Also adds the script as a task.
+
+---
+
+##### `stability`<sup>Optional</sup> <a name="stability" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.stability"></a>
+
+```typescript
+public readonly stability: string;
+```
+
+- *Type:* string
+
+Package's Stability.
+
+---
+
+##### `yarnBerryOptions`<sup>Optional</sup> <a name="yarnBerryOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.yarnBerryOptions"></a>
+
+```typescript
+public readonly yarnBerryOptions: YarnBerryOptions;
+```
+
+- *Type:* projen.javascript.YarnBerryOptions
+- *Default:* Yarn Berry v4 with all default options
+
+Options for Yarn Berry.
+
+---
+
+##### `jsiiReleaseVersion`<sup>Optional</sup> <a name="jsiiReleaseVersion" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.jsiiReleaseVersion"></a>
+
+```typescript
+public readonly jsiiReleaseVersion: string;
+```
+
+- *Type:* string
+- *Default:* "latest"
+
+Version requirement of `publib` which is used to publish modules to npm.
+
+---
+
+##### `majorVersion`<sup>Optional</sup> <a name="majorVersion" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.majorVersion"></a>
+
+```typescript
+public readonly majorVersion: number;
+```
+
+- *Type:* number
+- *Default:* Major version is not enforced.
+
+Major version to release from the default branch.
+
+If this is specified, we bump the latest version of this major version line.
+If not specified, we bump the global latest version.
+
+---
+
+##### `minMajorVersion`<sup>Optional</sup> <a name="minMajorVersion" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.minMajorVersion"></a>
+
+```typescript
+public readonly minMajorVersion: number;
+```
+
+- *Type:* number
+- *Default:* No minimum version is being enforced
+
+Minimal Major version to release.
+
+This can be useful to set to 1, as breaking changes before the 1.x major
+release are not incrementing the major version number.
+
+Can not be set together with `majorVersion`.
+
+---
+
+##### `npmDistTag`<sup>Optional</sup> <a name="npmDistTag" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.npmDistTag"></a>
+
+```typescript
+public readonly npmDistTag: string;
+```
+
+- *Type:* string
+- *Default:* "latest"
+
+The npmDistTag to use when publishing from the default branch.
+
+To set the npm dist-tag for release branches, set the `npmDistTag` property
+for each branch.
+
+---
+
+##### `postBuildSteps`<sup>Optional</sup> <a name="postBuildSteps" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.postBuildSteps"></a>
+
+```typescript
+public readonly postBuildSteps: JobStep[];
+```
+
+- *Type:* projen.github.workflows.JobStep[]
+- *Default:* []
+
+Steps to execute after build as part of the release workflow.
+
+---
+
+##### `prerelease`<sup>Optional</sup> <a name="prerelease" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.prerelease"></a>
+
+```typescript
+public readonly prerelease: string;
+```
+
+- *Type:* string
+- *Default:* normal semantic versions
+
+Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pre").
+
+---
+
+##### `publishDryRun`<sup>Optional</sup> <a name="publishDryRun" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.publishDryRun"></a>
+
+```typescript
+public readonly publishDryRun: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Instead of actually publishing to package managers, just print the publishing command.
+
+---
+
+##### `publishTasks`<sup>Optional</sup> <a name="publishTasks" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.publishTasks"></a>
+
+```typescript
+public readonly publishTasks: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Define publishing tasks that can be executed manually as well as workflows.
+
+Normally, publishing only happens within automated workflows. Enable this
+in order to create a publishing task for each publishing activity.
+
+---
+
+##### `releasableCommits`<sup>Optional</sup> <a name="releasableCommits" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releasableCommits"></a>
+
+```typescript
+public readonly releasableCommits: ReleasableCommits;
+```
+
+- *Type:* projen.ReleasableCommits
+- *Default:* ReleasableCommits.everyCommit()
+
+Find commits that should be considered releasable Used to decide if a release is required.
+
+---
+
+##### `releaseBranches`<sup>Optional</sup> <a name="releaseBranches" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseBranches"></a>
+
+```typescript
+public readonly releaseBranches: {[ key: string ]: BranchOptions};
+```
+
+- *Type:* {[ key: string ]: projen.release.BranchOptions}
+- *Default:* no additional branches are used for release. you can use `addBranch()` to add additional branches.
+
+Defines additional release branches.
+
+A workflow will be created for each
+release branch which will publish releases from commits in this branch.
+Each release branch _must_ be assigned a major version number which is used
+to enforce that versions published from that branch always use that major
+version. If multiple branches are used, the `majorVersion` field must also
+be provided for the default branch.
+
+---
+
+##### ~~`releaseEveryCommit`~~<sup>Optional</sup> <a name="releaseEveryCommit" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseEveryCommit"></a>
+
+- *Deprecated:* Use `releaseTrigger: ReleaseTrigger.continuous()` instead
+
+```typescript
+public readonly releaseEveryCommit: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Automatically release new versions every commit to one of branches in `releaseBranches`.
+
+---
+
+##### `releaseFailureIssue`<sup>Optional</sup> <a name="releaseFailureIssue" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseFailureIssue"></a>
+
+```typescript
+public readonly releaseFailureIssue: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Create a github issue on every failed publishing task.
+
+---
+
+##### `releaseFailureIssueLabel`<sup>Optional</sup> <a name="releaseFailureIssueLabel" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseFailureIssueLabel"></a>
+
+```typescript
+public readonly releaseFailureIssueLabel: string;
+```
+
+- *Type:* string
+- *Default:* "failed-release"
+
+The label to apply to issues indicating publish failures.
+
+Only applies if `releaseFailureIssue` is true.
+
+---
+
+##### ~~`releaseSchedule`~~<sup>Optional</sup> <a name="releaseSchedule" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseSchedule"></a>
+
+- *Deprecated:* Use `releaseTrigger: ReleaseTrigger.scheduled()` instead
+
+```typescript
+public readonly releaseSchedule: string;
+```
+
+- *Type:* string
+- *Default:* no scheduled releases
+
+CRON schedule to trigger new releases.
+
+---
+
+##### `releaseTagPrefix`<sup>Optional</sup> <a name="releaseTagPrefix" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseTagPrefix"></a>
+
+```typescript
+public readonly releaseTagPrefix: string;
+```
+
+- *Type:* string
+- *Default:* "v"
+
+Automatically add the given prefix to release tags. Useful if you are releasing on multiple branches with overlapping version numbers.
+
+Note: this prefix is used to detect the latest tagged version
+when bumping, so if you change this on a project with an existing version
+history, you may need to manually tag your latest release
+with the new prefix.
+
+---
+
+##### `releaseTrigger`<sup>Optional</sup> <a name="releaseTrigger" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseTrigger"></a>
+
+```typescript
+public readonly releaseTrigger: ReleaseTrigger;
+```
+
+- *Type:* projen.release.ReleaseTrigger
+- *Default:* Continuous releases (`ReleaseTrigger.continuous()`)
+
+The release trigger to use.
+
+---
+
+##### `releaseWorkflowName`<sup>Optional</sup> <a name="releaseWorkflowName" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseWorkflowName"></a>
+
+```typescript
+public readonly releaseWorkflowName: string;
+```
+
+- *Type:* string
+- *Default:* "Release"
+
+The name of the default release workflow.
+
+---
+
+##### `releaseWorkflowSetupSteps`<sup>Optional</sup> <a name="releaseWorkflowSetupSteps" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseWorkflowSetupSteps"></a>
+
+```typescript
+public readonly releaseWorkflowSetupSteps: JobStep[];
+```
+
+- *Type:* projen.github.workflows.JobStep[]
+
+A set of workflow steps to execute in order to setup the workflow container.
+
+---
+
+##### `versionrcOptions`<sup>Optional</sup> <a name="versionrcOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.versionrcOptions"></a>
+
+```typescript
+public readonly versionrcOptions: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+- *Default:* standard configuration applicable for GitHub repositories
+
+Custom configuration used when creating changelog with standard-version package.
+
+Given values either append to default configuration or overwrite values in it.
+
+---
+
+##### `workflowContainerImage`<sup>Optional</sup> <a name="workflowContainerImage" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.workflowContainerImage"></a>
+
+```typescript
+public readonly workflowContainerImage: string;
+```
+
+- *Type:* string
+- *Default:* default image
+
+Container image to use for GitHub workflows.
+
+---
+
+##### `workflowRunsOn`<sup>Optional</sup> <a name="workflowRunsOn" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.workflowRunsOn"></a>
+
+```typescript
+public readonly workflowRunsOn: string[];
+```
+
+- *Type:* string[]
+- *Default:* ["ubuntu-latest"]
+
+Github Runner selection labels.
+
+---
+
+##### `workflowRunsOnGroup`<sup>Optional</sup> <a name="workflowRunsOnGroup" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.workflowRunsOnGroup"></a>
+
+```typescript
+public readonly workflowRunsOnGroup: GroupRunnerOptions;
+```
+
+- *Type:* projen.GroupRunnerOptions
+
+Github Runner Group selection options.
+
+---
+
+##### `defaultReleaseBranch`<sup>Required</sup> <a name="defaultReleaseBranch" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.defaultReleaseBranch"></a>
+
+```typescript
+public readonly defaultReleaseBranch: string;
+```
+
+- *Type:* string
+- *Default:* "main"
+
+The name of the main release branch.
+
+---
+
+##### `artifactsDirectory`<sup>Optional</sup> <a name="artifactsDirectory" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.artifactsDirectory"></a>
+
+```typescript
+public readonly artifactsDirectory: string;
+```
+
+- *Type:* string
+- *Default:* "dist"
+
+A directory which will contain build artifacts.
+
+---
+
+##### `autoApproveUpgrades`<sup>Optional</sup> <a name="autoApproveUpgrades" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.autoApproveUpgrades"></a>
+
+```typescript
+public readonly autoApproveUpgrades: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Automatically approve deps upgrade PRs, allowing them to be merged by mergify (if configued).
+
+Throw if set to true but `autoApproveOptions` are not defined.
+
+---
+
+##### `buildWorkflow`<sup>Optional</sup> <a name="buildWorkflow" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.buildWorkflow"></a>
+
+```typescript
+public readonly buildWorkflow: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true if not a subproject
+
+Define a GitHub workflow for building PRs.
+
+---
+
+##### `buildWorkflowTriggers`<sup>Optional</sup> <a name="buildWorkflowTriggers" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.buildWorkflowTriggers"></a>
+
+```typescript
+public readonly buildWorkflowTriggers: Triggers;
+```
+
+- *Type:* projen.github.workflows.Triggers
+- *Default:* "{ pullRequest: {}, workflowDispatch: {} }"
+
+Build workflow triggers.
+
+---
+
+##### `bundlerOptions`<sup>Optional</sup> <a name="bundlerOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.bundlerOptions"></a>
+
+```typescript
+public readonly bundlerOptions: BundlerOptions;
+```
+
+- *Type:* projen.javascript.BundlerOptions
+
+Options for `Bundler`.
+
+---
+
+##### `codeCov`<sup>Optional</sup> <a name="codeCov" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.codeCov"></a>
+
+```typescript
+public readonly codeCov: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Define a GitHub workflow step for sending code coverage metrics to https://codecov.io/ Uses codecov/codecov-action@v3 A secret is required for private repos. Configured with `@codeCovTokenSecret`.
+
+---
+
+##### `codeCovTokenSecret`<sup>Optional</sup> <a name="codeCovTokenSecret" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.codeCovTokenSecret"></a>
+
+```typescript
+public readonly codeCovTokenSecret: string;
+```
+
+- *Type:* string
+- *Default:* if this option is not specified, only public repositories are supported
+
+Define the secret name for a specified https://codecov.io/ token A secret is required to send coverage for private repositories.
+
+---
+
+##### `copyrightOwner`<sup>Optional</sup> <a name="copyrightOwner" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.copyrightOwner"></a>
+
+```typescript
+public readonly copyrightOwner: string;
+```
+
+- *Type:* string
+- *Default:* defaults to the value of authorName or "" if `authorName` is undefined.
+
+License copyright owner.
+
+---
+
+##### `copyrightPeriod`<sup>Optional</sup> <a name="copyrightPeriod" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.copyrightPeriod"></a>
+
+```typescript
+public readonly copyrightPeriod: string;
+```
+
+- *Type:* string
+- *Default:* current year
+
+The copyright years to put in the LICENSE file.
+
+---
+
+##### `dependabot`<sup>Optional</sup> <a name="dependabot" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.dependabot"></a>
+
+```typescript
+public readonly dependabot: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Use dependabot to handle dependency upgrades.
+
+Cannot be used in conjunction with `depsUpgrade`.
+
+---
+
+##### `dependabotOptions`<sup>Optional</sup> <a name="dependabotOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.dependabotOptions"></a>
+
+```typescript
+public readonly dependabotOptions: DependabotOptions;
+```
+
+- *Type:* projen.github.DependabotOptions
+- *Default:* default options
+
+Options for dependabot.
+
+---
+
+##### `depsUpgrade`<sup>Optional</sup> <a name="depsUpgrade" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.depsUpgrade"></a>
+
+```typescript
+public readonly depsUpgrade: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Use tasks and github workflows to handle dependency upgrades.
+
+Cannot be used in conjunction with `dependabot`.
+
+---
+
+##### `depsUpgradeOptions`<sup>Optional</sup> <a name="depsUpgradeOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.depsUpgradeOptions"></a>
+
+```typescript
+public readonly depsUpgradeOptions: UpgradeDependenciesOptions;
+```
+
+- *Type:* projen.javascript.UpgradeDependenciesOptions
+- *Default:* default options
+
+Options for `UpgradeDependencies`.
+
+---
+
+##### `gitignore`<sup>Optional</sup> <a name="gitignore" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.gitignore"></a>
+
+```typescript
+public readonly gitignore: string[];
+```
+
+- *Type:* string[]
+
+Additional entries to .gitignore.
+
+---
+
+##### `jest`<sup>Optional</sup> <a name="jest" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.jest"></a>
+
+```typescript
+public readonly jest: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Setup jest unit tests.
+
+---
+
+##### `jestOptions`<sup>Optional</sup> <a name="jestOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.jestOptions"></a>
+
+```typescript
+public readonly jestOptions: JestOptions;
+```
+
+- *Type:* projen.javascript.JestOptions
+- *Default:* default options
+
+Jest options.
+
+---
+
+##### `mutableBuild`<sup>Optional</sup> <a name="mutableBuild" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.mutableBuild"></a>
+
+```typescript
+public readonly mutableBuild: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Automatically update files modified during builds to pull-request branches.
+
+This means
+that any files synthesized by projen or e.g. test snapshots will always be up-to-date
+before a PR is merged.
+
+Implies that PR builds do not have anti-tamper checks.
+
+---
+
+##### ~~`npmignore`~~<sup>Optional</sup> <a name="npmignore" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.npmignore"></a>
+
+- *Deprecated:* - use `project.addPackageIgnore`
+
+```typescript
+public readonly npmignore: string[];
+```
+
+- *Type:* string[]
+
+Additional entries to .npmignore.
+
+---
+
+##### `npmignoreEnabled`<sup>Optional</sup> <a name="npmignoreEnabled" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.npmignoreEnabled"></a>
+
+```typescript
+public readonly npmignoreEnabled: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Defines an .npmignore file. Normally this is only needed for libraries that are packaged as tarballs.
+
+---
+
+##### `npmIgnoreOptions`<sup>Optional</sup> <a name="npmIgnoreOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.npmIgnoreOptions"></a>
+
+```typescript
+public readonly npmIgnoreOptions: IgnoreFileOptions;
+```
+
+- *Type:* projen.IgnoreFileOptions
+
+Configuration options for .npmignore file.
+
+---
+
+##### `package`<sup>Optional</sup> <a name="package" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.package"></a>
+
+```typescript
+public readonly package: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Defines a `package` task that will produce an npm tarball under the artifacts directory (e.g. `dist`).
+
+---
+
+##### `prettier`<sup>Optional</sup> <a name="prettier" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.prettier"></a>
+
+```typescript
+public readonly prettier: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Setup prettier.
+
+---
+
+##### `prettierOptions`<sup>Optional</sup> <a name="prettierOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.prettierOptions"></a>
+
+```typescript
+public readonly prettierOptions: PrettierOptions;
+```
+
+- *Type:* projen.javascript.PrettierOptions
+- *Default:* default options
+
+Prettier options.
+
+---
+
+##### `projenDevDependency`<sup>Optional</sup> <a name="projenDevDependency" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenDevDependency"></a>
+
+```typescript
+public readonly projenDevDependency: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Indicates of "projen" should be installed as a devDependency.
+
+---
+
+##### `projenrcJs`<sup>Optional</sup> <a name="projenrcJs" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenrcJs"></a>
+
+```typescript
+public readonly projenrcJs: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true if projenrcJson is false
+
+Generate (once) .projenrc.js (in JavaScript). Set to `false` in order to disable .projenrc.js generation.
+
+---
+
+##### `projenrcJsOptions`<sup>Optional</sup> <a name="projenrcJsOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenrcJsOptions"></a>
+
+```typescript
+public readonly projenrcJsOptions: ProjenrcOptions;
+```
+
+- *Type:* projen.javascript.ProjenrcOptions
+- *Default:* default options
+
+Options for .projenrc.js.
+
+---
+
+##### `projenVersion`<sup>Optional</sup> <a name="projenVersion" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenVersion"></a>
+
+```typescript
+public readonly projenVersion: string;
+```
+
+- *Type:* string
+- *Default:* Defaults to the latest version.
+
+Version of projen to install.
+
+---
+
+##### `pullRequestTemplate`<sup>Optional</sup> <a name="pullRequestTemplate" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.pullRequestTemplate"></a>
+
+```typescript
+public readonly pullRequestTemplate: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Include a GitHub pull request template.
+
+---
+
+##### `pullRequestTemplateContents`<sup>Optional</sup> <a name="pullRequestTemplateContents" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.pullRequestTemplateContents"></a>
+
+```typescript
+public readonly pullRequestTemplateContents: string[];
+```
+
+- *Type:* string[]
+- *Default:* default content
+
+The contents of the pull request template.
+
+---
+
+##### `release`<sup>Optional</sup> <a name="release" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.release"></a>
+
+```typescript
+public readonly release: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true (false for subprojects)
+
+Add release management to this project.
+
+---
+
+##### `releaseToNpm`<sup>Optional</sup> <a name="releaseToNpm" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseToNpm"></a>
+
+```typescript
+public readonly releaseToNpm: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Automatically release to npm when new versions are introduced.
+
+---
+
+##### ~~`releaseWorkflow`~~<sup>Optional</sup> <a name="releaseWorkflow" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.releaseWorkflow"></a>
+
+- *Deprecated:* see `release`.
+
+```typescript
+public readonly releaseWorkflow: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true if not a subproject
+
+DEPRECATED: renamed to `release`.
+
+---
+
+##### `workflowBootstrapSteps`<sup>Optional</sup> <a name="workflowBootstrapSteps" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.workflowBootstrapSteps"></a>
+
+```typescript
+public readonly workflowBootstrapSteps: JobStep[];
+```
+
+- *Type:* projen.github.workflows.JobStep[]
+- *Default:* "yarn install --frozen-lockfile && yarn projen"
+
+Workflow steps to use in order to bootstrap this repo.
+
+---
+
+##### `workflowGitIdentity`<sup>Optional</sup> <a name="workflowGitIdentity" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.workflowGitIdentity"></a>
+
+```typescript
+public readonly workflowGitIdentity: GitIdentity;
+```
+
+- *Type:* projen.github.GitIdentity
+- *Default:* GitHub Actions
+
+The git identity to use in workflows.
+
+---
+
+##### `workflowNodeVersion`<sup>Optional</sup> <a name="workflowNodeVersion" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.workflowNodeVersion"></a>
+
+```typescript
+public readonly workflowNodeVersion: string;
+```
+
+- *Type:* string
+- *Default:* same as `minNodeVersion`
+
+The node version to use in GitHub workflows.
+
+---
+
+##### `workflowPackageCache`<sup>Optional</sup> <a name="workflowPackageCache" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.workflowPackageCache"></a>
+
+```typescript
+public readonly workflowPackageCache: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Enable Node.js package cache in GitHub workflows.
+
+---
+
+##### `disableTsconfig`<sup>Optional</sup> <a name="disableTsconfig" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.disableTsconfig"></a>
+
+```typescript
+public readonly disableTsconfig: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Do not generate a `tsconfig.json` file (used by jsii projects since tsconfig.json is generated by the jsii compiler).
+
+---
+
+##### `disableTsconfigDev`<sup>Optional</sup> <a name="disableTsconfigDev" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.disableTsconfigDev"></a>
+
+```typescript
+public readonly disableTsconfigDev: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Do not generate a `tsconfig.dev.json` file.
+
+---
+
+##### `docgen`<sup>Optional</sup> <a name="docgen" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.docgen"></a>
+
+```typescript
+public readonly docgen: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Docgen by Typedoc.
+
+---
+
+##### `docsDirectory`<sup>Optional</sup> <a name="docsDirectory" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.docsDirectory"></a>
+
+```typescript
+public readonly docsDirectory: string;
+```
+
+- *Type:* string
+- *Default:* "docs"
+
+Docs directory.
+
+---
+
+##### `entrypointTypes`<sup>Optional</sup> <a name="entrypointTypes" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.entrypointTypes"></a>
+
+```typescript
+public readonly entrypointTypes: string;
+```
+
+- *Type:* string
+- *Default:* .d.ts file derived from the project's entrypoint (usually lib/index.d.ts)
+
+The .d.ts file that includes the type declarations for this module.
+
+---
+
+##### `eslint`<sup>Optional</sup> <a name="eslint" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.eslint"></a>
+
+```typescript
+public readonly eslint: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Setup eslint.
+
+---
+
+##### `eslintOptions`<sup>Optional</sup> <a name="eslintOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.eslintOptions"></a>
+
+```typescript
+public readonly eslintOptions: EslintOptions;
+```
+
+- *Type:* projen.javascript.EslintOptions
+- *Default:* opinionated default options
+
+Eslint options.
+
+---
+
+##### `libdir`<sup>Optional</sup> <a name="libdir" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.libdir"></a>
+
+```typescript
+public readonly libdir: string;
+```
+
+- *Type:* string
+- *Default:* "lib"
+
+Typescript  artifacts output directory.
+
+---
+
+##### `projenrcTs`<sup>Optional</sup> <a name="projenrcTs" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenrcTs"></a>
+
+```typescript
+public readonly projenrcTs: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Use TypeScript for your projenrc file (`.projenrc.ts`).
+
+---
+
+##### `projenrcTsOptions`<sup>Optional</sup> <a name="projenrcTsOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenrcTsOptions"></a>
+
+```typescript
+public readonly projenrcTsOptions: ProjenrcOptions;
+```
+
+- *Type:* projen.typescript.ProjenrcOptions
+
+Options for .projenrc.ts.
+
+---
+
+##### `sampleCode`<sup>Optional</sup> <a name="sampleCode" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.sampleCode"></a>
+
+```typescript
+public readonly sampleCode: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Generate one-time sample in `src/` and `test/` if there are no files there.
+
+---
+
+##### `srcdir`<sup>Optional</sup> <a name="srcdir" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.srcdir"></a>
+
+```typescript
+public readonly srcdir: string;
+```
+
+- *Type:* string
+- *Default:* "src"
+
+Typescript sources directory.
+
+---
+
+##### `testdir`<sup>Optional</sup> <a name="testdir" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.testdir"></a>
+
+```typescript
+public readonly testdir: string;
+```
+
+- *Type:* string
+- *Default:* "test"
+
+Jest tests directory. Tests files should be named `xxx.test.ts`.
+
+If this directory is under `srcdir` (e.g. `src/test`, `src/__tests__`),
+then tests are going to be compiled into `lib/` and executed as javascript.
+If the test directory is outside of `src`, then we configure jest to
+compile the code in-memory.
+
+---
+
+##### `tsconfig`<sup>Optional</sup> <a name="tsconfig" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.tsconfig"></a>
+
+```typescript
+public readonly tsconfig: TypescriptConfigOptions;
+```
+
+- *Type:* projen.javascript.TypescriptConfigOptions
+- *Default:* default options
+
+Custom TSConfig.
+
+---
+
+##### `tsconfigDev`<sup>Optional</sup> <a name="tsconfigDev" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.tsconfigDev"></a>
+
+```typescript
+public readonly tsconfigDev: TypescriptConfigOptions;
+```
+
+- *Type:* projen.javascript.TypescriptConfigOptions
+- *Default:* use the production tsconfig options
+
+Custom tsconfig options for the development tsconfig.json file (used for testing).
+
+---
+
+##### `tsconfigDevFile`<sup>Optional</sup> <a name="tsconfigDevFile" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.tsconfigDevFile"></a>
+
+```typescript
+public readonly tsconfigDevFile: string;
+```
+
+- *Type:* string
+- *Default:* "tsconfig.dev.json"
+
+The name of the development tsconfig.json file.
+
+---
+
+##### `typescriptVersion`<sup>Optional</sup> <a name="typescriptVersion" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.typescriptVersion"></a>
+
+```typescript
+public readonly typescriptVersion: string;
+```
+
+- *Type:* string
+- *Default:* "latest"
+
+TypeScript version to use.
+
+NOTE: Typescript is not semantically versioned and should remain on the
+same minor, so we recommend using a `~` dependency (e.g. `~1.2.3`).
+
+---
+
+##### `additionalCompilerDependencies`<sup>Optional</sup> <a name="additionalCompilerDependencies" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.additionalCompilerDependencies"></a>
+
+```typescript
+public readonly additionalCompilerDependencies: string[];
+```
+
+- *Type:* string[]
+- *Default:* No additional compiler dependencies.
+
+Packages that compile the project apart from the typescript/jsii compiler.
+
+Any package that produces a published artifact should be included in this list.
+
+---
+
+##### `backport`<sup>Optional</sup> <a name="backport" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.backport"></a>
+
+```typescript
+public readonly backport: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Configure a backport workflow.
+
+---
+
+##### `backportBranches`<sup>Optional</sup> <a name="backportBranches" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.backportBranches"></a>
+
+```typescript
+public readonly backportBranches: string[];
+```
+
+- *Type:* string[]
+- *Default:* Will be derived from PR labels.
+
+Branches to backport to.
+
+---
+
+##### `repoName`<sup>Optional</sup> <a name="repoName" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.repoName"></a>
+
+```typescript
+public readonly repoName: string;
+```
+
+- *Type:* string
+- *Default:* the package name.
+
+The name of the repository inside the cdk8s-team org where the code of the project is locate in.
+
+---
+
 
 
