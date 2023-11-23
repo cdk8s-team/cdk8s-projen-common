@@ -86,8 +86,12 @@ export function buildNodeProjectDefaultOptions(options: Cdk8sTeamNodeProjectOpti
   const depsUpgradeOptions: UpgradeDependenciesOptions = {
     taskName: 'upgrade-runtime-dependencies',
     pullRequestTitle: 'upgrade runtime dependencies',
-    // only include peer and runtime because we will created a non release trigerring PR for the rest
-    types: [DependencyType.PEER, DependencyType.RUNTIME, DependencyType.OPTIONAL],
+    // only include plain dependency because we will created a non release triggering PR for the rest
+    // NOTE: we explicitly do NOT upgrade PEER dependencies. We want the widest range of compatibility possible,
+    // and by bumping peer dependencies we force the customer to also unnecessarily upgrade, which they may not want
+    // to do. Never mind that peerDependencies are usually also devDependencies, so it doesn't make sense to upgrade
+    // them without also upgrading devDependencies.
+    types: [DependencyType.RUNTIME, DependencyType.OPTIONAL],
     workflowOptions: {
       schedule: UpgradeDependenciesSchedule.expressions([UPGRADE_RUNTIME_DEPENDENCIES_SCHEDULE]),
     },
