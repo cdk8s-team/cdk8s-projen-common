@@ -875,11 +875,6 @@ permissions-backup.acl
         "version": "^15",
       },
       Object {
-        "name": "npm-check-updates",
-        "type": "build",
-        "version": "^16",
-      },
-      Object {
         "name": "projen",
         "type": "build",
       },
@@ -1164,10 +1159,7 @@ permissions-backup.acl
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "yarn upgrade npm-check-updates",
-          },
-          Object {
-            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -1191,16 +1183,13 @@ permissions-backup.acl
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "yarn upgrade npm-check-updates",
-          },
-          Object {
-            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev --filter=constructs,jest,jest-junit,npm-check-updates,standard-version",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=constructs,jest,jest-junit,standard-version",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade constructs jest jest-junit npm-check-updates standard-version",
+            "exec": "yarn upgrade constructs jest jest-junit standard-version",
           },
           Object {
             "exec": "npx projen",
@@ -1520,7 +1509,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "constructs": "^10.0.0",
       "jest": "*",
       "jest-junit": "^15",
-      "npm-check-updates": "^16",
       "projen": "*",
       "standard-version": "^9",
     },
@@ -2332,11 +2320,6 @@ permissions-backup.acl
         "version": "^15",
       },
       Object {
-        "name": "npm-check-updates",
-        "type": "build",
-        "version": "^16",
-      },
-      Object {
         "name": "projen",
         "type": "build",
       },
@@ -2530,10 +2513,7 @@ permissions-backup.acl
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "yarn upgrade npm-check-updates",
-          },
-          Object {
-            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -2557,16 +2537,13 @@ permissions-backup.acl
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "yarn upgrade npm-check-updates",
-          },
-          Object {
-            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev --filter=constructs,jest,jest-junit,npm-check-updates",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=constructs,jest,jest-junit",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade constructs jest jest-junit npm-check-updates",
+            "exec": "yarn upgrade constructs jest jest-junit",
           },
           Object {
             "exec": "npx projen",
@@ -2886,7 +2863,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "constructs": "^10.0.0",
       "jest": "*",
       "jest-junit": "^15",
-      "npm-check-updates": "^16",
       "projen": "*",
     },
     "engines": Object {
@@ -3689,11 +3665,6 @@ permissions-backup.acl
         "version": "^15",
       },
       Object {
-        "name": "npm-check-updates",
-        "type": "build",
-        "version": "^16",
-      },
-      Object {
         "name": "projen",
         "type": "build",
       },
@@ -3887,10 +3858,7 @@ permissions-backup.acl
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "yarn upgrade npm-check-updates",
-          },
-          Object {
-            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -3914,16 +3882,13 @@ permissions-backup.acl
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "yarn upgrade npm-check-updates",
-          },
-          Object {
-            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev --filter=constructs,jest,jest-junit,npm-check-updates",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=constructs,jest,jest-junit",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade constructs jest jest-junit npm-check-updates",
+            "exec": "yarn upgrade constructs jest jest-junit",
           },
           Object {
             "exec": "npx projen",
@@ -4243,7 +4208,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "constructs": "^10.0.0",
       "jest": "*",
       "jest-junit": "^15",
-      "npm-check-updates": "^16",
       "projen": "*",
     },
     "engines": Object {
@@ -5046,11 +5010,6 @@ permissions-backup.acl
         "version": "^15",
       },
       Object {
-        "name": "npm-check-updates",
-        "type": "build",
-        "version": "^16",
-      },
-      Object {
         "name": "projen",
         "type": "build",
       },
@@ -5244,10 +5203,7 @@ permissions-backup.acl
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "yarn upgrade npm-check-updates",
-          },
-          Object {
-            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -5271,16 +5227,13 @@ permissions-backup.acl
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "yarn upgrade npm-check-updates",
-          },
-          Object {
-            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev --filter=constructs,jest,jest-junit,npm-check-updates",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=constructs,jest,jest-junit",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade constructs jest jest-junit npm-check-updates",
+            "exec": "yarn upgrade constructs jest jest-junit",
           },
           Object {
             "exec": "npx projen",
@@ -5600,7 +5553,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "constructs": "^10.0.0",
       "jest": "*",
       "jest-junit": "^15",
-      "npm-check-updates": "^16",
       "projen": "*",
     },
     "engines": Object {
@@ -6491,11 +6443,6 @@ permissions-backup.acl
         "version": "^15",
       },
       Object {
-        "name": "npm-check-updates",
-        "type": "build",
-        "version": "^16",
-      },
-      Object {
         "name": "projen",
         "type": "build",
       },
@@ -6754,10 +6701,7 @@ permissions-backup.acl
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "yarn upgrade npm-check-updates",
-          },
-          Object {
-            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -6781,16 +6725,13 @@ permissions-backup.acl
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "yarn upgrade npm-check-updates",
-          },
-          Object {
-            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev --filter=constructs,jest,jest-junit,npm-check-updates,standard-version",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=constructs,jest,jest-junit,standard-version",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade constructs jest jest-junit npm-check-updates standard-version",
+            "exec": "yarn upgrade constructs jest jest-junit standard-version",
           },
           Object {
             "exec": "npx projen",
@@ -7110,7 +7051,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "constructs": "^10.0.0",
       "jest": "*",
       "jest-junit": "^15",
-      "npm-check-updates": "^16",
       "projen": "*",
       "standard-version": "^9",
     },
@@ -8005,11 +7945,6 @@ permissions-backup.acl
         "version": "^15",
       },
       Object {
-        "name": "npm-check-updates",
-        "type": "build",
-        "version": "^16",
-      },
-      Object {
         "name": "projen",
         "type": "build",
       },
@@ -8268,10 +8203,7 @@ permissions-backup.acl
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "yarn upgrade npm-check-updates",
-          },
-          Object {
-            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -8295,16 +8227,13 @@ permissions-backup.acl
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "yarn upgrade npm-check-updates",
-          },
-          Object {
-            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev --filter=constructs,jest,jest-junit,npm-check-updates,standard-version",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=constructs,jest,jest-junit,standard-version",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade constructs jest jest-junit npm-check-updates standard-version",
+            "exec": "yarn upgrade constructs jest jest-junit standard-version",
           },
           Object {
             "exec": "npx projen",
@@ -8624,7 +8553,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "constructs": "^10.0.0",
       "jest": "*",
       "jest-junit": "^15",
-      "npm-check-updates": "^16",
       "projen": "*",
       "standard-version": "^9",
     },
@@ -9519,11 +9447,6 @@ permissions-backup.acl
         "version": "^15",
       },
       Object {
-        "name": "npm-check-updates",
-        "type": "build",
-        "version": "^16",
-      },
-      Object {
         "name": "projen",
         "type": "build",
       },
@@ -9782,10 +9705,7 @@ permissions-backup.acl
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "yarn upgrade npm-check-updates",
-          },
-          Object {
-            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -9809,16 +9729,13 @@ permissions-backup.acl
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "yarn upgrade npm-check-updates",
-          },
-          Object {
-            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev --filter=constructs,jest,jest-junit,npm-check-updates,standard-version",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=constructs,jest,jest-junit,standard-version",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade constructs jest jest-junit npm-check-updates standard-version",
+            "exec": "yarn upgrade constructs jest jest-junit standard-version",
           },
           Object {
             "exec": "npx projen",
@@ -10138,7 +10055,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "constructs": "^10.0.0",
       "jest": "*",
       "jest-junit": "^15",
-      "npm-check-updates": "^16",
       "projen": "*",
       "standard-version": "^9",
     },
@@ -11033,11 +10949,6 @@ permissions-backup.acl
         "version": "^15",
       },
       Object {
-        "name": "npm-check-updates",
-        "type": "build",
-        "version": "^16",
-      },
-      Object {
         "name": "projen",
         "type": "build",
       },
@@ -11296,10 +11207,7 @@ permissions-backup.acl
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "yarn upgrade npm-check-updates",
-          },
-          Object {
-            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -11323,16 +11231,13 @@ permissions-backup.acl
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "yarn upgrade npm-check-updates",
-          },
-          Object {
-            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev --filter=constructs,jest,jest-junit,npm-check-updates,standard-version",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=constructs,jest,jest-junit,standard-version",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade constructs jest jest-junit npm-check-updates standard-version",
+            "exec": "yarn upgrade constructs jest jest-junit standard-version",
           },
           Object {
             "exec": "npx projen",
@@ -11652,7 +11557,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "constructs": "^10.0.0",
       "jest": "*",
       "jest-junit": "^15",
-      "npm-check-updates": "^16",
       "projen": "*",
       "standard-version": "^9",
     },
@@ -12547,11 +12451,6 @@ permissions-backup.acl
         "version": "^15",
       },
       Object {
-        "name": "npm-check-updates",
-        "type": "build",
-        "version": "^16",
-      },
-      Object {
         "name": "projen",
         "type": "build",
       },
@@ -12810,10 +12709,7 @@ permissions-backup.acl
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "yarn upgrade npm-check-updates",
-          },
-          Object {
-            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -12837,16 +12733,13 @@ permissions-backup.acl
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "yarn upgrade npm-check-updates",
-          },
-          Object {
-            "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev --filter=constructs,jest,jest-junit,npm-check-updates,standard-version",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=constructs,jest,jest-junit,standard-version",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade constructs jest jest-junit npm-check-updates standard-version",
+            "exec": "yarn upgrade constructs jest jest-junit standard-version",
           },
           Object {
             "exec": "npx projen",
@@ -13166,7 +13059,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "constructs": "^10.0.0",
       "jest": "*",
       "jest-junit": "^15",
-      "npm-check-updates": "^16",
       "projen": "*",
       "standard-version": "^9",
     },
