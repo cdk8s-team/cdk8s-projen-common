@@ -101,7 +101,7 @@ export function buildNodeProjectDefaultOptions(options: Cdk8sTeamNodeProjectOpti
     // if release is enabled, default to releasing to npm as well
     releaseToNpm: options.release,
     minNodeVersion: '16.20.0',
-    workflowNodeVersion: '18.17.0',
+    workflowNodeVersion: 'lts/*',
     depsUpgradeOptions,
   };
 }
@@ -236,7 +236,7 @@ export function addComponents(project: NodeProject, repoName: string, branches?:
     configDeps.push('@cdk8s/projen-common');
   }
 
-  const configUpgrade = new UpgradeDependencies(project, {
+  new UpgradeDependencies(project, {
     include: configDeps,
     taskName: 'upgrade-configuration',
     pullRequestTitle: 'upgrade configuration',
@@ -246,7 +246,6 @@ export function addComponents(project: NodeProject, repoName: string, branches?:
       schedule: UpgradeDependenciesSchedule.expressions([UPGRADE_CONFIGURATION_SCHEDULE]),
     },
   });
-  configUpgrade.workflows.forEach(wf => wf.file?.addOverride('jobs.upgrade.steps.1.with.node-version', 'lts/*'));
 
   new UpgradeDependencies(project, {
     exclude: [...configDeps, ...(compilerDeps ?? [])],
