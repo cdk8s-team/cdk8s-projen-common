@@ -1901,12 +1901,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         "cobertura",
         "text",
       ],
-      "globals": Object {
-        "ts-jest": Object {
-          "tsconfig": "tsconfig.dev.json",
-        },
-      },
-      "preset": "ts-jest",
       "reporters": Array [
         "default",
         Array [
@@ -1923,6 +1917,14 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "testPathIgnorePatterns": Array [
         "/node_modules/",
       ],
+      "transform": Object {
+        "^.+\\\\.[t]sx?$": Array [
+          "ts-jest",
+          Object {
+            "tsconfig": "tsconfig.dev.json",
+          },
+        ],
+      },
       "watchPathIgnorePatterns": Array [
         "/node_modules/",
       ],
@@ -4021,12 +4023,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         "cobertura",
         "text",
       ],
-      "globals": Object {
-        "ts-jest": Object {
-          "tsconfig": "tsconfig.dev.json",
-        },
-      },
-      "preset": "ts-jest",
       "reporters": Array [
         "default",
         Array [
@@ -4043,6 +4039,14 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "testPathIgnorePatterns": Array [
         "/node_modules/",
       ],
+      "transform": Object {
+        "^.+\\\\.[t]sx?$": Array [
+          "ts-jest",
+          Object {
+            "tsconfig": "tsconfig.dev.json",
+          },
+        ],
+      },
       "watchPathIgnorePatterns": Array [
         "/node_modules/",
       ],
@@ -4807,7 +4811,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        with: {}
       - name: Download patch
         uses: actions/download-artifact@v3
         with:
@@ -4896,7 +4899,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        with: {}
       - name: Download patch
         uses: actions/download-artifact@v3
         with:
@@ -4985,7 +4987,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        with: {}
       - name: Download patch
         uses: actions/download-artifact@v3
         with:
@@ -5074,7 +5075,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        with: {}
       - name: Download patch
         uses: actions/download-artifact@v3
         with:
@@ -5910,12 +5910,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         "cobertura",
         "text",
       ],
-      "globals": Object {
-        "ts-jest": Object {
-          "tsconfig": "tsconfig.dev.json",
-        },
-      },
-      "preset": "ts-jest",
       "reporters": Array [
         "default",
         Array [
@@ -5932,6 +5926,14 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "testPathIgnorePatterns": Array [
         "/node_modules/",
       ],
+      "transform": Object {
+        "^.+\\\\.[t]sx?$": Array [
+          "ts-jest",
+          Object {
+            "tsconfig": "tsconfig.dev.json",
+          },
+        ],
+      },
       "watchPathIgnorePatterns": Array [
         "/node_modules/",
       ],
@@ -6688,7 +6690,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        with: {}
       - name: Download patch
         uses: actions/download-artifact@v3
         with:
@@ -6777,7 +6778,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        with: {}
       - name: Download patch
         uses: actions/download-artifact@v3
         with:
@@ -6866,7 +6866,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        with: {}
       - name: Download patch
         uses: actions/download-artifact@v3
         with:
@@ -6955,7 +6954,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        with: {}
       - name: Download patch
         uses: actions/download-artifact@v3
         with:
@@ -7791,12 +7789,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         "cobertura",
         "text",
       ],
-      "globals": Object {
-        "ts-jest": Object {
-          "tsconfig": "tsconfig.dev.json",
-        },
-      },
-      "preset": "ts-jest",
       "reporters": Array [
         "default",
         Array [
@@ -7813,6 +7805,14 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "testPathIgnorePatterns": Array [
         "/node_modules/",
       ],
+      "transform": Object {
+        "^.+\\\\.[t]sx?$": Array [
+          "ts-jest",
+          Object {
+            "tsconfig": "tsconfig.dev.json",
+          },
+        ],
+      },
       "watchPathIgnorePatterns": Array [
         "/node_modules/",
       ],
@@ -8569,7 +8569,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        with: {}
       - name: Download patch
         uses: actions/download-artifact@v3
         with:
@@ -8658,7 +8657,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        with: {}
       - name: Download patch
         uses: actions/download-artifact@v3
         with:
@@ -8747,7 +8745,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        with: {}
       - name: Download patch
         uses: actions/download-artifact@v3
         with:
@@ -8836,7 +8833,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        with: {}
       - name: Download patch
         uses: actions/download-artifact@v3
         with:
@@ -9672,12 +9668,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         "cobertura",
         "text",
       ],
-      "globals": Object {
-        "ts-jest": Object {
-          "tsconfig": "tsconfig.dev.json",
-        },
-      },
-      "preset": "ts-jest",
       "reporters": Array [
         "default",
         Array [
@@ -9694,6 +9684,14 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "testPathIgnorePatterns": Array [
         "/node_modules/",
       ],
+      "transform": Object {
+        "^.+\\\\.[t]sx?$": Array [
+          "ts-jest",
+          Object {
+            "tsconfig": "tsconfig.dev.json",
+          },
+        ],
+      },
       "watchPathIgnorePatterns": Array [
         "/node_modules/",
       ],
@@ -11710,12 +11708,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         "cobertura",
         "text",
       ],
-      "globals": Object {
-        "ts-jest": Object {
-          "tsconfig": "tsconfig.dev.json",
-        },
-      },
-      "preset": "ts-jest",
       "reporters": Array [
         "default",
         Array [
@@ -11732,6 +11724,14 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "testPathIgnorePatterns": Array [
         "/node_modules/",
       ],
+      "transform": Object {
+        "^.+\\\\.[t]sx?$": Array [
+          "ts-jest",
+          Object {
+            "tsconfig": "tsconfig.dev.json",
+          },
+        ],
+      },
       "watchPathIgnorePatterns": Array [
         "/node_modules/",
       ],
@@ -13751,12 +13751,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         "cobertura",
         "text",
       ],
-      "globals": Object {
-        "ts-jest": Object {
-          "tsconfig": "tsconfig.dev.json",
-        },
-      },
-      "preset": "ts-jest",
       "reporters": Array [
         "default",
         Array [
@@ -13773,6 +13767,14 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "testPathIgnorePatterns": Array [
         "/node_modules/",
       ],
+      "transform": Object {
+        "^.+\\\\.[t]sx?$": Array [
+          "ts-jest",
+          Object {
+            "tsconfig": "tsconfig.dev.json",
+          },
+        ],
+      },
       "watchPathIgnorePatterns": Array [
         "/node_modules/",
       ],
@@ -15792,12 +15794,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         "cobertura",
         "text",
       ],
-      "globals": Object {
-        "ts-jest": Object {
-          "tsconfig": "tsconfig.dev.json",
-        },
-      },
-      "preset": "ts-jest",
       "reporters": Array [
         "default",
         Array [
@@ -15814,6 +15810,14 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "testPathIgnorePatterns": Array [
         "/node_modules/",
       ],
+      "transform": Object {
+        "^.+\\\\.[t]sx?$": Array [
+          "ts-jest",
+          Object {
+            "tsconfig": "tsconfig.dev.json",
+          },
+        ],
+      },
       "watchPathIgnorePatterns": Array [
         "/node_modules/",
       ],
@@ -17833,12 +17837,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         "cobertura",
         "text",
       ],
-      "globals": Object {
-        "ts-jest": Object {
-          "tsconfig": "tsconfig.dev.json",
-        },
-      },
-      "preset": "ts-jest",
       "reporters": Array [
         "default",
         Array [
@@ -17855,6 +17853,14 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "testPathIgnorePatterns": Array [
         "/node_modules/",
       ],
+      "transform": Object {
+        "^.+\\\\.[t]sx?$": Array [
+          "ts-jest",
+          Object {
+            "tsconfig": "tsconfig.dev.json",
+          },
+        ],
+      },
       "watchPathIgnorePatterns": Array [
         "/node_modules/",
       ],
@@ -19874,12 +19880,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         "cobertura",
         "text",
       ],
-      "globals": Object {
-        "ts-jest": Object {
-          "tsconfig": "tsconfig.dev.json",
-        },
-      },
-      "preset": "ts-jest",
       "reporters": Array [
         "default",
         Array [
@@ -19896,6 +19896,14 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "testPathIgnorePatterns": Array [
         "/node_modules/",
       ],
+      "transform": Object {
+        "^.+\\\\.[t]sx?$": Array [
+          "ts-jest",
+          Object {
+            "tsconfig": "tsconfig.dev.json",
+          },
+        ],
+      },
       "watchPathIgnorePatterns": Array [
         "/node_modules/",
       ],
