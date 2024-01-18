@@ -44,7 +44,6 @@ export interface Cdk8sTeamTypeScriptProjectOptions extends typescript.TypeScript
 export class Cdk8sTeamTypeScriptProject extends typescript.TypeScriptProject {
 
   constructor(options: Cdk8sTeamTypeScriptProjectOptions) {
-
     node.validateOptions(options);
     node.validateProjectName(options);
 

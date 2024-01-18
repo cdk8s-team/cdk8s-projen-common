@@ -31,6 +31,7 @@ export const fixedOptionsKeys = [
   'autoApproveOptions',
   'autoApproveUpgrades',
   'releasableCommits',
+  'workflowNodeVersion',
 
   // this is deprecated in favor of 'release'.
   // lets disallow using it.
@@ -75,6 +76,9 @@ export function buildNodeProjectFixedOptions(options: Cdk8sTeamNodeProjectOption
     autoApproveUpgrades: true,
     releaseWorkflow: options.release,
     releasableCommits: ReleasableCommits.exec(releasableCommitsCmd.join(' --grep ')),
+
+    // This is the version we actually run GitHub workflows on
+    workflowNodeVersion: '18.12.0',
   };
 }
 
@@ -100,6 +104,9 @@ export function buildNodeProjectDefaultOptions(options: Cdk8sTeamNodeProjectOpti
   return {
     // if release is enabled, default to releasing to npm as well
     releaseToNpm: options.release,
+
+    // This is the minimum version that our consumers should have
+    // (moving this to 18.x requires moving off of TypeScript 4/jsii-compiler 1)
     minNodeVersion: '16.20.0',
     workflowNodeVersion: 'lts/*',
     depsUpgradeOptions,
