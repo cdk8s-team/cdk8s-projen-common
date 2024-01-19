@@ -4,7 +4,7 @@ const project = new src.Cdk8sTeamJsiiProject({
   name: '@cdk8s/projen-common',
   description: 'Common projen configuration shared between cdk8s-team org projects.',
 
-  // Must use >=, <, because ^ does not have correct semantics for 0.* versions
+  // Must use >=, <, because ^ does not have correct semantics for 0.x versions
   peerDeps: ['projen@>=0.79.2 <1'],
   deps: ['codemaker'],
   bundledDeps: ['codemaker', 'deepmerge'],
