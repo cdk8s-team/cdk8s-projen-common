@@ -107,7 +107,7 @@ export function buildNodeProjectDefaultOptions(options: Cdk8sTeamNodeProjectOpti
 
     // This is the minimum version that our consumers should have
     // (moving this to 18.x requires moving off of TypeScript 4/jsii-compiler 1)
-    minNodeVersion: '16.20.0',
+    minNodeVersion: '17.9.1',
     workflowNodeVersion: 'lts/*',
     depsUpgradeOptions,
   };

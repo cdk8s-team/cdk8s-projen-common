@@ -1523,7 +1523,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "standard-version": "^9",
     },
     "engines": Object {
-      "node": ">= 16.20.0",
+      "node": ">= 17.9.1",
     },
     "jest": Object {
       "clearMocks": true,
@@ -4217,7 +4217,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "projen": "*",
     },
     "engines": Object {
-      "node": ">= 16.20.0",
+      "node": ">= 17.9.1",
     },
     "jest": Object {
       "clearMocks": true,
@@ -5560,7 +5560,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "projen": "*",
     },
     "engines": Object {
-      "node": ">= 16.20.0",
+      "node": ">= 17.9.1",
     },
     "jest": Object {
       "clearMocks": true,
@@ -7069,7 +7069,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "standard-version": "^9",
     },
     "engines": Object {
-      "node": ">= 16.20.0",
+      "node": ">= 17.9.1",
     },
     "jest": Object {
       "clearMocks": true,
@@ -8581,7 +8581,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "standard-version": "^9",
     },
     "engines": Object {
-      "node": ">= 16.20.0",
+      "node": ">= 17.9.1",
     },
     "jest": Object {
       "clearMocks": true,
@@ -10093,7 +10093,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "standard-version": "^9",
     },
     "engines": Object {
-      "node": ">= 16.20.0",
+      "node": ">= 17.9.1",
     },
     "jest": Object {
       "clearMocks": true,
@@ -11605,7 +11605,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "standard-version": "^9",
     },
     "engines": Object {
-      "node": ">= 16.20.0",
+      "node": ">= 17.9.1",
     },
     "jest": Object {
       "clearMocks": true,
@@ -13117,7 +13117,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "standard-version": "^9",
     },
     "engines": Object {
-      "node": ">= 16.20.0",
+      "node": ">= 17.9.1",
     },
     "jest": Object {
       "clearMocks": true,
