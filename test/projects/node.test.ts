@@ -1,4 +1,4 @@
-import { Testing } from 'projen';
+import { TaskRuntime, Testing } from 'projen';
 import * as src from '../../src';
 
 test('deps upgrade options are merged', () => {
@@ -153,3 +153,18 @@ test('can configure backport', () => {
 
   expect(Testing.synth(project)).toMatchSnapshot();
 });
+
+test('upgrade-runtime-dependencies includes bundled', () => {
+
+  const project = new src.Cdk8sTeamNodeProject({
+    name: 'root',
+    defaultReleaseBranch: 'main',
+    bundledDeps: ['bundled1'],
+  });
+
+  const tasks = Testing.synth(project)[TaskRuntime.MANIFEST_FILE].tasks;
+
+  expect(tasks['upgrade-runtime-dependencies'].steps[2].exec).toStrictEqual('yarn upgrade bundled1');
+
+});
+
