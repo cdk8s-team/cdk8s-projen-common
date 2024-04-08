@@ -342,13 +342,13 @@
       },
       "steps": [
         {
-          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=prod,optional --filter=codemaker"
+          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=prod,optional --filter=codemaker,deepmerge"
         },
         {
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade codemaker"
+          "exec": "yarn upgrade codemaker deepmerge"
         },
         {
           "exec": "npx projen"
