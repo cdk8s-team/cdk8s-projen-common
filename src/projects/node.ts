@@ -95,7 +95,7 @@ export function buildNodeProjectDefaultOptions(options: Cdk8sTeamNodeProjectOpti
     // and by bumping peer dependencies we force the customer to also unnecessarily upgrade, which they may not want
     // to do. Never mind that peerDependencies are usually also devDependencies, so it doesn't make sense to upgrade
     // them without also upgrading devDependencies.
-    types: [DependencyType.RUNTIME, DependencyType.OPTIONAL],
+    types: [DependencyType.RUNTIME, DependencyType.OPTIONAL, DependencyType.BUNDLED],
     workflowOptions: {
       schedule: UpgradeDependenciesSchedule.expressions([UPGRADE_RUNTIME_DEPENDENCIES_SCHEDULE]),
     },
