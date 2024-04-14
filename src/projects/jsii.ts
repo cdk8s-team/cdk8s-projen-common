@@ -1,6 +1,6 @@
 import * as maker from 'codemaker';
 import * as deepmerge from 'deepmerge';
-import { cdk } from 'projen';
+import { DependencyType, cdk } from 'projen';
 import * as node from './node';
 import * as ts from './typescript';
 import { Backport } from '../components/backport/backport';
@@ -111,6 +111,13 @@ export class Cdk8sTeamJsiiProject extends cdk.JsiiProject {
     // prevent upgrading the typescript version used by downlevel-dts because
     // it depends on typescript@next - which causes daily identical releases.
     this.package.addPackageResolutions('**/downlevel-dts/**/typescript@~5.2.2');
+
+    // prevent upgrading @types/node because crypto and events broke their type definitions.
+    // see https://github.com/cdk8s-team/cdk8s-projen-common/actions/runs/8672468454/job/23782820098?pr=727
+    // hopefully by the time we actually need to upgrade, it will already be fixed.
+    this.deps.removeDependency('@types/node^16');
+    this.deps.addDependency('@types/node@16.18.78', DependencyType.BUILD);
+
   }
 }
 
