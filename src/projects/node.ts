@@ -247,6 +247,7 @@ export function addComponents(project: NodeProject, repoName: string, branches?:
     include: configDeps,
     taskName: 'upgrade-configuration',
     pullRequestTitle: 'upgrade configuration',
+    types: [DependencyType.BUILD],
     workflowOptions: {
       branches,
       labels: ['auto-approve'],
