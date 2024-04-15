@@ -2004,7 +2004,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -4629,7 +4629,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -6607,7 +6607,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -8732,7 +8732,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -10700,7 +10700,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -12825,7 +12825,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -14793,7 +14793,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -16918,7 +16918,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -19459,7 +19459,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -22005,7 +22005,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -24549,7 +24549,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -27095,7 +27095,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -29641,7 +29641,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",

@@ -1534,7 +1534,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -3677,7 +3677,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -5576,7 +5576,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -7466,7 +7466,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -9356,7 +9356,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -11416,7 +11416,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -13480,7 +13480,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -15544,7 +15544,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -17608,7 +17608,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -19672,7 +19672,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
