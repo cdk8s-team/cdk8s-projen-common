@@ -52,9 +52,7 @@ export class Backport extends Component {
     });
 
     // pinning because of https://github.com/sqren/backport/issues/451
-    // optional because it requires node 16 which is only available in the
-    // backport workflow environment.
-    project.addFields({ optionalDependencies: { backport: '8.5.0' } });
+    project.addDevDeps('backport@8.5.0');
 
     // backport task to branches based on pr labels (i.e not branch specific)
     const backportTask = this.createTask(project);
