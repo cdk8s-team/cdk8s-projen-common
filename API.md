@@ -4378,6 +4378,173 @@ public readonly DEFAULT_TS_JEST_TRANFORM_PATTERN: string;
 
 ---
 
+### Triage <a name="Triage" id="@cdk8s/projen-common.Triage"></a>
+
+Add a Triage workflow to our repos.
+
+> [https://github.com/marketplace/actions/add-to-github-projects](https://github.com/marketplace/actions/add-to-github-projects)
+
+#### Initializers <a name="Initializers" id="@cdk8s/projen-common.Triage.Initializer"></a>
+
+```typescript
+import { Triage } from '@cdk8s/projen-common'
+
+new Triage(project: NodeProject, props: TriageProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdk8s/projen-common.Triage.Initializer.parameter.project">project</a></code> | <code>projen.javascript.NodeProject</code> | *No description.* |
+| <code><a href="#@cdk8s/projen-common.Triage.Initializer.parameter.props">props</a></code> | <code><a href="#@cdk8s/projen-common.TriageProps">TriageProps</a></code> | *No description.* |
+
+---
+
+##### `project`<sup>Required</sup> <a name="project" id="@cdk8s/projen-common.Triage.Initializer.parameter.project"></a>
+
+- *Type:* projen.javascript.NodeProject
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@cdk8s/projen-common.Triage.Initializer.parameter.props"></a>
+
+- *Type:* <a href="#@cdk8s/projen-common.TriageProps">TriageProps</a>
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdk8s/projen-common.Triage.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@cdk8s/projen-common.Triage.postSynthesize">postSynthesize</a></code> | Called after synthesis. |
+| <code><a href="#@cdk8s/projen-common.Triage.preSynthesize">preSynthesize</a></code> | Called before synthesis. |
+| <code><a href="#@cdk8s/projen-common.Triage.synthesize">synthesize</a></code> | Synthesizes files to the project output directory. |
+
+---
+
+##### `toString` <a name="toString" id="@cdk8s/projen-common.Triage.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `postSynthesize` <a name="postSynthesize" id="@cdk8s/projen-common.Triage.postSynthesize"></a>
+
+```typescript
+public postSynthesize(): void
+```
+
+Called after synthesis.
+
+Order is *not* guaranteed.
+
+##### `preSynthesize` <a name="preSynthesize" id="@cdk8s/projen-common.Triage.preSynthesize"></a>
+
+```typescript
+public preSynthesize(): void
+```
+
+Called before synthesis.
+
+##### `synthesize` <a name="synthesize" id="@cdk8s/projen-common.Triage.synthesize"></a>
+
+```typescript
+public synthesize(): void
+```
+
+Synthesizes files to the project output directory.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@cdk8s/projen-common.Triage.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+| <code><a href="#@cdk8s/projen-common.Triage.isComponent">isComponent</a></code> | Test whether the given construct is a component. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@cdk8s/projen-common.Triage.isConstruct"></a>
+
+```typescript
+import { Triage } from '@cdk8s/projen-common'
+
+Triage.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@cdk8s/projen-common.Triage.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+##### `isComponent` <a name="isComponent" id="@cdk8s/projen-common.Triage.isComponent"></a>
+
+```typescript
+import { Triage } from '@cdk8s/projen-common'
+
+Triage.isComponent(x: any)
+```
+
+Test whether the given construct is a component.
+
+###### `x`<sup>Required</sup> <a name="x" id="@cdk8s/projen-common.Triage.isComponent.parameter.x"></a>
+
+- *Type:* any
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdk8s/projen-common.Triage.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@cdk8s/projen-common.Triage.property.project">project</a></code> | <code>projen.Project</code> | *No description.* |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@cdk8s/projen-common.Triage.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `project`<sup>Required</sup> <a name="project" id="@cdk8s/projen-common.Triage.property.project"></a>
+
+```typescript
+public readonly project: Project;
+```
+
+- *Type:* projen.Project
+
+---
+
+
 ## Structs <a name="Structs" id="Structs"></a>
 
 ### Cdk8sTeamJsiiProjectOptions <a name="Cdk8sTeamJsiiProjectOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions"></a>
@@ -4551,6 +4718,7 @@ const cdk8sTeamJsiiProjectOptions: Cdk8sTeamJsiiProjectOptions = { ... }
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.backport">backport</a></code> | <code>boolean</code> | Configure a backport workflow. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.backportBranches">backportBranches</a></code> | <code>string[]</code> | Branches to backport to. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.repoName">repoName</a></code> | <code>string</code> | The name of the repository inside the cdk8s-team org where the code of the project is locate in. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.triageOptions">triageOptions</a></code> | <code><a href="#@cdk8s/projen-common.TriageOptions">TriageOptions</a></code> | Options for the `triage` workflow. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.golang">golang</a></code> | <code>boolean</code> | Publish Golang bindings to GitHub. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.golangBranch">golangBranch</a></code> | <code>string</code> | Name of the branch in the golang repository to publish to. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.jsiiVersion">jsiiVersion</a></code> | <code>string</code> | JSII version to use. |
@@ -6671,6 +6839,19 @@ The name of the repository inside the cdk8s-team org where the code of the proje
 
 ---
 
+##### `triageOptions`<sup>Optional</sup> <a name="triageOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.triageOptions"></a>
+
+```typescript
+public readonly triageOptions: TriageOptions;
+```
+
+- *Type:* <a href="#@cdk8s/projen-common.TriageOptions">TriageOptions</a>
+- *Default:* no custom options.
+
+Options for the `triage` workflow.
+
+---
+
 ##### `golang`<sup>Optional</sup> <a name="golang" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.golang"></a>
 
 ```typescript
@@ -6895,6 +7076,7 @@ const cdk8sTeamNodeProjectOptions: Cdk8sTeamNodeProjectOptions = { ... }
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.backport">backport</a></code> | <code>boolean</code> | Configure a backport workflow. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.backportBranches">backportBranches</a></code> | <code>string[]</code> | Branches to backport to. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.repoName">repoName</a></code> | <code>string</code> | The name of the repository inside the cdk8s-team org where the code of the project is locate in. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.triageOptions">triageOptions</a></code> | <code><a href="#@cdk8s/projen-common.TriageOptions">TriageOptions</a></code> | Options for the `triage` workflow. |
 
 ---
 
@@ -8754,6 +8936,19 @@ The name of the repository inside the cdk8s-team org where the code of the proje
 
 ---
 
+##### `triageOptions`<sup>Optional</sup> <a name="triageOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.triageOptions"></a>
+
+```typescript
+public readonly triageOptions: TriageOptions;
+```
+
+- *Type:* <a href="#@cdk8s/projen-common.TriageOptions">TriageOptions</a>
+- *Default:* no custom options.
+
+Options for the `triage` workflow.
+
+---
+
 ### Cdk8sTeamTypeScriptProjectOptions <a name="Cdk8sTeamTypeScriptProjectOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions"></a>
 
 Options for `Cdk8sTeamTypeScriptProject`.
@@ -8919,6 +9114,7 @@ const cdk8sTeamTypeScriptProjectOptions: Cdk8sTeamTypeScriptProjectOptions = { .
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.backport">backport</a></code> | <code>boolean</code> | Configure a backport workflow. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.backportBranches">backportBranches</a></code> | <code>string[]</code> | Branches to backport to. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.repoName">repoName</a></code> | <code>string</code> | The name of the repository inside the cdk8s-team org where the code of the project is locate in. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.triageOptions">triageOptions</a></code> | <code><a href="#@cdk8s/projen-common.TriageOptions">TriageOptions</a></code> | Options for the `triage` workflow. |
 
 ---
 
@@ -11030,6 +11226,154 @@ public readonly repoName: string;
 - *Default:* the package name.
 
 The name of the repository inside the cdk8s-team org where the code of the project is locate in.
+
+---
+
+##### `triageOptions`<sup>Optional</sup> <a name="triageOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.triageOptions"></a>
+
+```typescript
+public readonly triageOptions: TriageOptions;
+```
+
+- *Type:* <a href="#@cdk8s/projen-common.TriageOptions">TriageOptions</a>
+- *Default:* no custom options.
+
+Options for the `triage` workflow.
+
+---
+
+### CommonComponentsOptions <a name="CommonComponentsOptions" id="@cdk8s/projen-common.CommonComponentsOptions"></a>
+
+Options for `addComponents`.
+
+#### Initializer <a name="Initializer" id="@cdk8s/projen-common.CommonComponentsOptions.Initializer"></a>
+
+```typescript
+import { CommonComponentsOptions } from '@cdk8s/projen-common'
+
+const commonComponentsOptions: CommonComponentsOptions = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdk8s/projen-common.CommonComponentsOptions.property.branches">branches</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@cdk8s/projen-common.CommonComponentsOptions.property.compilerDeps">compilerDeps</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@cdk8s/projen-common.CommonComponentsOptions.property.triageOptions">triageOptions</a></code> | <code><a href="#@cdk8s/projen-common.TriageOptions">TriageOptions</a></code> | *No description.* |
+
+---
+
+##### `branches`<sup>Optional</sup> <a name="branches" id="@cdk8s/projen-common.CommonComponentsOptions.property.branches"></a>
+
+```typescript
+public readonly branches: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `compilerDeps`<sup>Optional</sup> <a name="compilerDeps" id="@cdk8s/projen-common.CommonComponentsOptions.property.compilerDeps"></a>
+
+```typescript
+public readonly compilerDeps: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `triageOptions`<sup>Optional</sup> <a name="triageOptions" id="@cdk8s/projen-common.CommonComponentsOptions.property.triageOptions"></a>
+
+```typescript
+public readonly triageOptions: TriageOptions;
+```
+
+- *Type:* <a href="#@cdk8s/projen-common.TriageOptions">TriageOptions</a>
+
+---
+
+### TriageOptions <a name="TriageOptions" id="@cdk8s/projen-common.TriageOptions"></a>
+
+Options for `Triage`.
+
+#### Initializer <a name="Initializer" id="@cdk8s/projen-common.TriageOptions.Initializer"></a>
+
+```typescript
+import { TriageOptions } from '@cdk8s/projen-common'
+
+const triageOptions: TriageOptions = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdk8s/projen-common.TriageOptions.property.prLabels">prLabels</a></code> | <code>string[]</code> | A list of labels automatically added to PRs. |
+
+---
+
+##### `prLabels`<sup>Optional</sup> <a name="prLabels" id="@cdk8s/projen-common.TriageOptions.property.prLabels"></a>
+
+```typescript
+public readonly prLabels: string[];
+```
+
+- *Type:* string[]
+- *Default:* no labels.
+
+A list of labels automatically added to PRs.
+
+Automation PRs are excluded.
+
+---
+
+### TriageProps <a name="TriageProps" id="@cdk8s/projen-common.TriageProps"></a>
+
+Props for `Triage`.
+
+#### Initializer <a name="Initializer" id="@cdk8s/projen-common.TriageProps.Initializer"></a>
+
+```typescript
+import { TriageProps } from '@cdk8s/projen-common'
+
+const triageProps: TriageProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@cdk8s/projen-common.TriageProps.property.prLabels">prLabels</a></code> | <code>string[]</code> | A list of labels automatically added to PRs. |
+| <code><a href="#@cdk8s/projen-common.TriageProps.property.repoName">repoName</a></code> | <code>string</code> | The repository name. |
+
+---
+
+##### `prLabels`<sup>Optional</sup> <a name="prLabels" id="@cdk8s/projen-common.TriageProps.property.prLabels"></a>
+
+```typescript
+public readonly prLabels: string[];
+```
+
+- *Type:* string[]
+- *Default:* no labels.
+
+A list of labels automatically added to PRs.
+
+Automation PRs are excluded.
+
+---
+
+##### `repoName`<sup>Required</sup> <a name="repoName" id="@cdk8s/projen-common.TriageProps.property.repoName"></a>
+
+```typescript
+public readonly repoName: string;
+```
+
+- *Type:* string
+
+The repository name.
 
 ---
 

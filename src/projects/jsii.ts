@@ -102,7 +102,11 @@ export class Cdk8sTeamJsiiProject extends cdk.JsiiProject {
       'jsii-rosetta',
       'typescript'];
 
-    node.addComponents(this, repoName, finalOptions.depsUpgradeOptions?.workflowOptions?.branches, compilerDependencies);
+    node.addComponents(this, repoName, {
+      branches: finalOptions.depsUpgradeOptions?.workflowOptions?.branches,
+      compilerDeps: compilerDependencies,
+      triageOptions: options.triageOptions,
+    });
 
     if (options.backport ?? false) {
       new Backport(this, { branches: options.backportBranches, repoName });
