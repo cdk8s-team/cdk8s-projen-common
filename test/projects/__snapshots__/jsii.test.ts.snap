@@ -4139,6 +4139,11 @@ tsconfig.tsbuildinfo
         "version": "^6",
       },
       Object {
+        "name": "backport",
+        "type": "build",
+        "version": "8.5.0",
+      },
+      Object {
         "name": "constructs",
         "type": "build",
         "version": "^10.0.0",
@@ -4659,7 +4664,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff standard-version ts-jest",
+            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser backport constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff standard-version ts-jest",
           },
           Object {
             "exec": "npx projen",
@@ -4990,6 +4995,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "@types/node": "16.18.78",
       "@typescript-eslint/eslint-plugin": "^6",
       "@typescript-eslint/parser": "^6",
+      "backport": "8.5.0",
       "constructs": "^10.0.0",
       "eslint": "^8",
       "eslint-import-resolver-typescript": "*",
@@ -5079,9 +5085,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "license": "Apache-2.0",
     "main": "lib/index.js",
     "name": "root",
-    "optionalDependencies": Object {
-      "backport": "8.5.0",
-    },
     "repository": Object {
       "type": "git",
       "url": "https://github.com/cdk8s-team/root.git",
