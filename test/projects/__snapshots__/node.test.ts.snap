@@ -881,7 +881,6 @@ permissions-backup.acl
       Object {
         "name": "backport",
         "type": "build",
-        "version": "8.5.0",
       },
       Object {
         "name": "constructs",
@@ -1206,7 +1205,7 @@ permissions-backup.acl
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=jest",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=backport,jest",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -1529,7 +1528,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "organization": false,
     },
     "devDependencies": Object {
-      "backport": "8.5.0",
+      "backport": "*",
       "constructs": "^10.0.0",
       "jest": "*",
       "jest-junit": "^15",

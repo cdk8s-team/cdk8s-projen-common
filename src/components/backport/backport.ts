@@ -51,8 +51,7 @@ export class Backport extends Component {
       },
     });
 
-    // pinning because of https://github.com/sqren/backport/issues/451
-    project.addDevDeps('backport@8.5.0');
+    project.addDevDeps('backport');
 
     // backport task to branches based on pr labels (i.e not branch specific)
     const backportTask = this.createTask(project);
