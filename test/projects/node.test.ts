@@ -1,6 +1,20 @@
 import { TaskRuntime, Testing } from 'projen';
 import * as src from '../../src';
 
+test('can configure triage pr labels', () => {
+
+  const project = new src.Cdk8sTeamNodeProject({
+    name: 'root',
+    defaultReleaseBranch: 'main',
+    triageOptions: {
+      prLabels: ['label1', 'label2'],
+    },
+  });
+
+  const snapshot = Testing.synth(project);
+  expect(snapshot['.github/workflows/triage.yml']).toMatchSnapshot();
+});
+
 test('deps upgrade options are merged', () => {
 
   const project = new src.Cdk8sTeamNodeProject({

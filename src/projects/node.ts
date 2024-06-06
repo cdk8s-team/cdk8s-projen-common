@@ -8,7 +8,7 @@ import { GitHooks } from '../components/git-hooks/git-hooks';
 import { IssueTemplates } from '../components/issue-templates/issue-templates';
 import { Security } from '../components/security/security';
 import { Stale } from '../components/stale/stale';
-import { Triage } from '../components/triage/triage';
+import { Triage, TriageOptions } from '../components/triage/triage';
 
 export const NAME_PREFIX = 'cdk8s-';
 export const SCOPE = '@cdk8s/';
@@ -145,6 +145,14 @@ export interface Cdk8sTeamNodeProjectOptions extends javascript.NodeProjectOptio
    * @default - Will be derived from PR labels.
    */
   readonly backportBranches?: string[];
+
+  /**
+   * Options for the `triage` workflow.
+   *
+   * @default - no custom options.
+   */
+  readonly triageOptions?: TriageOptions;
+
 }
 
 /**
@@ -169,7 +177,10 @@ export class Cdk8sTeamNodeProject extends javascript.NodeProject {
 
     const repoName = options.repoName ?? buildRepositoryName(options.name);
 
-    addComponents(this, repoName, finalOptions.depsUpgradeOptions?.workflowOptions?.branches);
+    addComponents(this, repoName, {
+      branches: finalOptions.depsUpgradeOptions?.workflowOptions?.branches,
+      triageOptions: options.triageOptions,
+    });
 
     if (options.backport ?? false) {
       new Backport(this, { branches: options.backportBranches, repoName });
@@ -226,16 +237,25 @@ export function validateProjectName(options: Cdk8sTeamNodeProjectOptions) {
 }
 
 /**
+ * Options for `addComponents`.
+ */
+export interface CommonComponentsOptions {
+  readonly branches?: string[];
+  readonly compilerDeps?: string[];
+  readonly triageOptions?: TriageOptions;
+}
+
+/**
  * Add common components to the project.
  */
-export function addComponents(project: NodeProject, repoName: string, branches?: string[], compilerDeps?: string[]) {
+export function addComponents(project: NodeProject, repoName: string, options: CommonComponentsOptions) {
 
   new CodeOfConductMD(project);
   new DCO(project);
   new GitHooks(project);
   new IssueTemplates(project, { repoName });
   new Security(project);
-  new Triage(project, { repoName });
+  new Triage(project, { repoName, ...options.triageOptions });
   new Stale(project);
 
   const configDeps = ['projen'];
@@ -249,31 +269,31 @@ export function addComponents(project: NodeProject, repoName: string, branches?:
     pullRequestTitle: 'upgrade configuration',
     types: [DependencyType.BUILD],
     workflowOptions: {
-      branches,
+      branches: options.branches,
       labels: ['auto-approve'],
       schedule: UpgradeDependenciesSchedule.expressions([UPGRADE_CONFIGURATION_SCHEDULE]),
     },
   });
 
   new UpgradeDependencies(project, {
-    exclude: [...configDeps, ...(compilerDeps ?? [])],
+    exclude: [...configDeps, ...(options.compilerDeps ?? [])],
     taskName: 'upgrade-dev-dependencies',
     pullRequestTitle: 'upgrade dev dependencies',
     workflowOptions: {
-      branches,
+      branches: options.branches,
       labels: ['auto-approve'],
       schedule: UpgradeDependenciesSchedule.expressions([UPGRADE_DEV_DEPENDENCIES_SCHEDULE]),
     },
     types: [DependencyType.BUILD, DependencyType.BUNDLED, DependencyType.DEVENV, DependencyType.TEST],
   });
 
-  if (compilerDeps && compilerDeps.length > 0) {
+  if (options.compilerDeps && options.compilerDeps.length > 0) {
     new UpgradeDependencies(project, {
-      include: compilerDeps,
+      include: options.compilerDeps,
       taskName: 'upgrade-compiler-dependencies',
       pullRequestTitle: 'upgrade compiler dependencies',
       workflowOptions: {
-        branches,
+        branches: options.branches,
         labels: ['auto-approve'],
         schedule: UpgradeDependenciesSchedule.expressions([UPGRADE_COMPILER_DEPENDENCIES_SCHEDULE]),
       },

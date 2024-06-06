@@ -1,6 +1,7 @@
 import * as deepmerge from 'deepmerge';
 import { DependencyType, typescript } from 'projen';
 import * as node from './node';
+import { TriageOptions } from '../components';
 import { Backport } from '../components/backport/backport';
 
 /**
@@ -36,6 +37,14 @@ export interface Cdk8sTeamTypeScriptProjectOptions extends typescript.TypeScript
    * @default - No additional compiler dependencies.
    */
   readonly additionalCompilerDependencies?: string[];
+
+  /**
+   * Options for the `triage` workflow.
+   *
+   * @default - no custom options.
+   */
+  readonly triageOptions?: TriageOptions;
+
 }
 
 /**
@@ -61,7 +70,11 @@ export class Cdk8sTeamTypeScriptProject extends typescript.TypeScriptProject {
 
     const compilerDependencies = [...(options.additionalCompilerDependencies ?? []), 'typescript'];
 
-    node.addComponents(this, repoName, finalOptions.depsUpgradeOptions?.workflowOptions?.branches, compilerDependencies);
+    node.addComponents(this, repoName, {
+      branches: finalOptions.depsUpgradeOptions?.workflowOptions?.branches,
+      compilerDeps: compilerDependencies,
+      triageOptions: options.triageOptions,
+    });
 
     if (options.backport ?? false) {
       new Backport(this, { branches: options.backportBranches, repoName });
