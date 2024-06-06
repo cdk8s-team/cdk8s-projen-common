@@ -4141,7 +4141,6 @@ tsconfig.tsbuildinfo
       Object {
         "name": "backport",
         "type": "build",
-        "version": "8.5.0",
       },
       Object {
         "name": "constructs",
@@ -4658,7 +4657,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=eslint-import-resolver-typescript,eslint-plugin-import,jsii-diff",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev --filter=backport,eslint-import-resolver-typescript,eslint-plugin-import,jsii-diff",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -4995,7 +4994,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "@types/node": "16.18.78",
       "@typescript-eslint/eslint-plugin": "^6",
       "@typescript-eslint/parser": "^6",
-      "backport": "8.5.0",
+      "backport": "*",
       "constructs": "^10.0.0",
       "eslint": "^8",
       "eslint-import-resolver-typescript": "*",
