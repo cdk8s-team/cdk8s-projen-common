@@ -6,6 +6,9 @@ const project = new src.Cdk8sTeamJsiiProject({
 
   // Must use >=, <, because ^ does not have correct semantics for 0.x versions
   peerDeps: ['projen@>=0.81.0 <1'],
+  peerDependencyOptions: {
+    pinnedDevDependency: false,
+  },
   deps: ['codemaker'],
   bundledDeps: ['codemaker', 'deepmerge'],
   projenrcTs: true,

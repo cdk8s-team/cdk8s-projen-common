@@ -110,6 +110,9 @@ Object {
       "dot-notation": Array [
         "error",
       ],
+      "import/no-duplicates": Array [
+        "error",
+      ],
       "import/no-extraneous-dependencies": Array [
         "error",
         Object {
@@ -158,9 +161,6 @@ Object {
         },
       ],
       "no-bitwise": Array [
-        "error",
-      ],
-      "no-duplicate-imports": Array [
         "error",
       ],
       "no-multi-spaces": Array [
@@ -527,7 +527,7 @@ jobs:
     permissions: {}
     if: \\"! needs.build.outputs.self_mutation_happened\\"
     steps:
-      - uses: actions/setup-java@v3
+      - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 11.x
@@ -587,7 +587,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-      - uses: actions/setup-dotnet@v3
+      - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 3.x
       - name: Download build artifacts
@@ -615,7 +615,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-      - uses: actions/setup-go@v3
+      - uses: actions/setup-go@v5
         with:
           go-version: ^1.16.0
       - name: Download build artifacts
@@ -723,7 +723,13 @@ jobs:
           overwrite: true
   release_github:
     name: Publish to GitHub Releases
-    needs: release
+    needs:
+      - release
+      - release_npm
+      - release_maven
+      - release_pypi
+      - release_nuget
+      - release_golang
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -748,7 +754,7 @@ jobs:
         env:
           GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: \${{ github.repository }}
-          GITHUB_REF: \${{ github.ref }}
+          GITHUB_REF: \${{ github.sha }}
         run: errout=$(mktemp); gh release create $(cat dist/releasetag.txt) -R $GITHUB_REPOSITORY -F dist/changelog.md -t $(cat dist/releasetag.txt) --target $GITHUB_REF 2> $errout && true; exitcode=$?; if [ $exitcode -ne 0 ] && ! grep -q \\"Release.tag_name already exists\\" $errout; then cat $errout; exit $exitcode; fi
   release_npm:
     name: Publish to npm
@@ -793,7 +799,7 @@ jobs:
       contents: read
     if: needs.release.outputs.tag_exists != 'true' && needs.release.outputs.latest_commit == github.sha
     steps:
-      - uses: actions/setup-java@v3
+      - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 11.x
@@ -870,7 +876,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-      - uses: actions/setup-dotnet@v3
+      - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 3.x
       - name: Download build artifacts
@@ -904,7 +910,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-      - uses: actions/setup-go@v3
+      - uses: actions/setup-go@v5
         with:
           go-version: ^1.16.0
       - name: Download build artifacts
@@ -1532,12 +1538,12 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@typescript-eslint/eslint-plugin",
         "type": "build",
-        "version": "^6",
+        "version": "^7",
       },
       Object {
         "name": "@typescript-eslint/parser",
         "type": "build",
-        "version": "^6",
+        "version": "^7",
       },
       Object {
         "name": "constructs",
@@ -1938,7 +1944,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "test",
         "steps": Array [
           Object {
-            "exec": "jest --passWithNoTests --coverageProvider=v8 --updateSnapshot",
+            "exec": "jest --passWithNoTests --updateSnapshot",
             "receiveArgs": true,
           },
           Object {
@@ -2363,8 +2369,8 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "devDependencies": Object {
       "@types/jest": "^27",
       "@types/node": "16.18.78",
-      "@typescript-eslint/eslint-plugin": "^6",
-      "@typescript-eslint/parser": "^6",
+      "@typescript-eslint/eslint-plugin": "^7",
+      "@typescript-eslint/parser": "^7",
       "constructs": "^10.0.0",
       "eslint": "^8",
       "eslint-import-resolver-typescript": "*",
@@ -2391,6 +2397,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "coveragePathIgnorePatterns": Array [
         "/node_modules/",
       ],
+      "coverageProvider": "v8",
       "coverageReporters": Array [
         "json",
         "lcov",
@@ -2415,7 +2422,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       ],
       "testMatch": Array [
         "<rootDir>/src/**/__tests__/**/*.ts?(x)",
-        "<rootDir>/(test|src)/**/*(*.)@(spec|test).ts?(x)",
+        "<rootDir>/@(test|src)/**/*(*.)@(spec|test).ts?(x)",
       ],
       "testPathIgnorePatterns": Array [
         "/node_modules/",
@@ -2454,6 +2461,9 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "license": "Apache-2.0",
     "main": "lib/index.js",
     "name": "root",
+    "publishConfig": Object {
+      "access": "public",
+    },
     "repository": Object {
       "type": "git",
       "url": "https://github.com/cdk8s-team/root.git",
@@ -2673,6 +2683,9 @@ Object {
       "dot-notation": Array [
         "error",
       ],
+      "import/no-duplicates": Array [
+        "error",
+      ],
       "import/no-extraneous-dependencies": Array [
         "error",
         Object {
@@ -2721,9 +2734,6 @@ Object {
         },
       ],
       "no-bitwise": Array [
-        "error",
-      ],
-      "no-duplicate-imports": Array [
         "error",
       ],
       "no-multi-spaces": Array [
@@ -3124,7 +3134,7 @@ jobs:
     permissions: {}
     if: \\"! needs.build.outputs.self_mutation_happened\\"
     steps:
-      - uses: actions/setup-java@v3
+      - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 11.x
@@ -3184,7 +3194,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-      - uses: actions/setup-dotnet@v3
+      - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 3.x
       - name: Download build artifacts
@@ -3212,7 +3222,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-      - uses: actions/setup-go@v3
+      - uses: actions/setup-go@v5
         with:
           go-version: ^1.16.0
       - name: Download build artifacts
@@ -3320,7 +3330,13 @@ jobs:
           overwrite: true
   release_github:
     name: Publish to GitHub Releases
-    needs: release
+    needs:
+      - release
+      - release_npm
+      - release_maven
+      - release_pypi
+      - release_nuget
+      - release_golang
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -3345,7 +3361,7 @@ jobs:
         env:
           GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: \${{ github.repository }}
-          GITHUB_REF: \${{ github.ref }}
+          GITHUB_REF: \${{ github.sha }}
         run: errout=$(mktemp); gh release create $(cat dist/releasetag.txt) -R $GITHUB_REPOSITORY -F dist/changelog.md -t $(cat dist/releasetag.txt) --target $GITHUB_REF 2> $errout && true; exitcode=$?; if [ $exitcode -ne 0 ] && ! grep -q \\"Release.tag_name already exists\\" $errout; then cat $errout; exit $exitcode; fi
   release_npm:
     name: Publish to npm
@@ -3390,7 +3406,7 @@ jobs:
       contents: read
     if: needs.release.outputs.tag_exists != 'true' && needs.release.outputs.latest_commit == github.sha
     steps:
-      - uses: actions/setup-java@v3
+      - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 11.x
@@ -3467,7 +3483,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-      - uses: actions/setup-dotnet@v3
+      - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 3.x
       - name: Download build artifacts
@@ -3501,7 +3517,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-      - uses: actions/setup-go@v3
+      - uses: actions/setup-go@v5
         with:
           go-version: ^1.16.0
       - name: Download build artifacts
@@ -4131,12 +4147,12 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@typescript-eslint/eslint-plugin",
         "type": "build",
-        "version": "^6",
+        "version": "^7",
       },
       Object {
         "name": "@typescript-eslint/parser",
         "type": "build",
-        "version": "^6",
+        "version": "^7",
       },
       Object {
         "name": "backport",
@@ -4567,7 +4583,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "test",
         "steps": Array [
           Object {
-            "exec": "jest --passWithNoTests --coverageProvider=v8 --updateSnapshot",
+            "exec": "jest --passWithNoTests --updateSnapshot",
             "receiveArgs": true,
           },
           Object {
@@ -4992,8 +5008,8 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "devDependencies": Object {
       "@types/jest": "^27",
       "@types/node": "16.18.78",
-      "@typescript-eslint/eslint-plugin": "^6",
-      "@typescript-eslint/parser": "^6",
+      "@typescript-eslint/eslint-plugin": "^7",
+      "@typescript-eslint/parser": "^7",
       "backport": "*",
       "constructs": "^10.0.0",
       "eslint": "^8",
@@ -5021,6 +5037,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "coveragePathIgnorePatterns": Array [
         "/node_modules/",
       ],
+      "coverageProvider": "v8",
       "coverageReporters": Array [
         "json",
         "lcov",
@@ -5045,7 +5062,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       ],
       "testMatch": Array [
         "<rootDir>/src/**/__tests__/**/*.ts?(x)",
-        "<rootDir>/(test|src)/**/*(*.)@(spec|test).ts?(x)",
+        "<rootDir>/@(test|src)/**/*(*.)@(spec|test).ts?(x)",
       ],
       "testPathIgnorePatterns": Array [
         "/node_modules/",
@@ -5084,6 +5101,9 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "license": "Apache-2.0",
     "main": "lib/index.js",
     "name": "root",
+    "publishConfig": Object {
+      "access": "public",
+    },
     "repository": Object {
       "type": "git",
       "url": "https://github.com/cdk8s-team/root.git",
@@ -5326,6 +5346,9 @@ Object {
       "dot-notation": Array [
         "error",
       ],
+      "import/no-duplicates": Array [
+        "error",
+      ],
       "import/no-extraneous-dependencies": Array [
         "error",
         Object {
@@ -5374,9 +5397,6 @@ Object {
         },
       ],
       "no-bitwise": Array [
-        "error",
-      ],
-      "no-duplicate-imports": Array [
         "error",
       ],
       "no-multi-spaces": Array [
@@ -6302,12 +6322,12 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@typescript-eslint/eslint-plugin",
         "type": "build",
-        "version": "^6",
+        "version": "^7",
       },
       Object {
         "name": "@typescript-eslint/parser",
         "type": "build",
-        "version": "^6",
+        "version": "^7",
       },
       Object {
         "name": "constructs",
@@ -6598,7 +6618,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "test",
         "steps": Array [
           Object {
-            "exec": "jest --passWithNoTests --coverageProvider=v8 --updateSnapshot",
+            "exec": "jest --passWithNoTests --updateSnapshot",
             "receiveArgs": true,
           },
           Object {
@@ -7006,8 +7026,8 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "devDependencies": Object {
       "@types/jest": "^27",
       "@types/node": "16.18.78",
-      "@typescript-eslint/eslint-plugin": "^6",
-      "@typescript-eslint/parser": "^6",
+      "@typescript-eslint/eslint-plugin": "^7",
+      "@typescript-eslint/parser": "^7",
       "constructs": "^10.0.0",
       "eslint": "^8",
       "eslint-import-resolver-typescript": "*",
@@ -7033,6 +7053,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "coveragePathIgnorePatterns": Array [
         "/node_modules/",
       ],
+      "coverageProvider": "v8",
       "coverageReporters": Array [
         "json",
         "lcov",
@@ -7057,7 +7078,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       ],
       "testMatch": Array [
         "<rootDir>/src/**/__tests__/**/*.ts?(x)",
-        "<rootDir>/(test|src)/**/*(*.)@(spec|test).ts?(x)",
+        "<rootDir>/@(test|src)/**/*(*.)@(spec|test).ts?(x)",
       ],
       "testPathIgnorePatterns": Array [
         "/node_modules/",
@@ -7077,6 +7098,9 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "license": "Apache-2.0",
     "main": "lib/index.js",
     "name": "cdk8s-sample",
+    "publishConfig": Object {
+      "access": "public",
+    },
     "repository": Object {
       "type": "git",
       "url": "https://github.com/cdk8s-team/custom-repo-name.git",
@@ -7271,6 +7295,9 @@ Object {
       "dot-notation": Array [
         "error",
       ],
+      "import/no-duplicates": Array [
+        "error",
+      ],
       "import/no-extraneous-dependencies": Array [
         "error",
         Object {
@@ -7319,9 +7346,6 @@ Object {
         },
       ],
       "no-bitwise": Array [
-        "error",
-      ],
-      "no-duplicate-imports": Array [
         "error",
       ],
       "no-multi-spaces": Array [
@@ -7662,7 +7686,7 @@ jobs:
     permissions: {}
     if: \\"! needs.build.outputs.self_mutation_happened\\"
     steps:
-      - uses: actions/setup-java@v3
+      - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 11.x
@@ -7722,7 +7746,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-      - uses: actions/setup-dotnet@v3
+      - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 3.x
       - name: Download build artifacts
@@ -7750,7 +7774,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-      - uses: actions/setup-go@v3
+      - uses: actions/setup-go@v5
         with:
           go-version: ^1.16.0
       - name: Download build artifacts
@@ -8377,12 +8401,12 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@typescript-eslint/eslint-plugin",
         "type": "build",
-        "version": "^6",
+        "version": "^7",
       },
       Object {
         "name": "@typescript-eslint/parser",
         "type": "build",
-        "version": "^6",
+        "version": "^7",
       },
       Object {
         "name": "constructs",
@@ -8723,7 +8747,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "test",
         "steps": Array [
           Object {
-            "exec": "jest --passWithNoTests --coverageProvider=v8 --updateSnapshot",
+            "exec": "jest --passWithNoTests --updateSnapshot",
             "receiveArgs": true,
           },
           Object {
@@ -9131,8 +9155,8 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "devDependencies": Object {
       "@types/jest": "^27",
       "@types/node": "16.18.78",
-      "@typescript-eslint/eslint-plugin": "^6",
-      "@typescript-eslint/parser": "^6",
+      "@typescript-eslint/eslint-plugin": "^7",
+      "@typescript-eslint/parser": "^7",
       "constructs": "^10.0.0",
       "eslint": "^8",
       "eslint-import-resolver-typescript": "*",
@@ -9158,6 +9182,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "coveragePathIgnorePatterns": Array [
         "/node_modules/",
       ],
+      "coverageProvider": "v8",
       "coverageReporters": Array [
         "json",
         "lcov",
@@ -9182,7 +9207,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       ],
       "testMatch": Array [
         "<rootDir>/src/**/__tests__/**/*.ts?(x)",
-        "<rootDir>/(test|src)/**/*(*.)@(spec|test).ts?(x)",
+        "<rootDir>/@(test|src)/**/*(*.)@(spec|test).ts?(x)",
       ],
       "testPathIgnorePatterns": Array [
         "/node_modules/",
@@ -9221,6 +9246,9 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "license": "Apache-2.0",
     "main": "lib/index.js",
     "name": "cdk8s-sample",
+    "publishConfig": Object {
+      "access": "public",
+    },
     "repository": Object {
       "type": "git",
       "url": "https://github.com/cdk8s-team/custom-repo-name.git",
@@ -9419,6 +9447,9 @@ Object {
       "dot-notation": Array [
         "error",
       ],
+      "import/no-duplicates": Array [
+        "error",
+      ],
       "import/no-extraneous-dependencies": Array [
         "error",
         Object {
@@ -9467,9 +9498,6 @@ Object {
         },
       ],
       "no-bitwise": Array [
-        "error",
-      ],
-      "no-duplicate-imports": Array [
         "error",
       ],
       "no-multi-spaces": Array [
@@ -10395,12 +10423,12 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@typescript-eslint/eslint-plugin",
         "type": "build",
-        "version": "^6",
+        "version": "^7",
       },
       Object {
         "name": "@typescript-eslint/parser",
         "type": "build",
-        "version": "^6",
+        "version": "^7",
       },
       Object {
         "name": "constructs",
@@ -10691,7 +10719,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "test",
         "steps": Array [
           Object {
-            "exec": "jest --passWithNoTests --coverageProvider=v8 --updateSnapshot",
+            "exec": "jest --passWithNoTests --updateSnapshot",
             "receiveArgs": true,
           },
           Object {
@@ -11099,8 +11127,8 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "devDependencies": Object {
       "@types/jest": "^27",
       "@types/node": "16.18.78",
-      "@typescript-eslint/eslint-plugin": "^6",
-      "@typescript-eslint/parser": "^6",
+      "@typescript-eslint/eslint-plugin": "^7",
+      "@typescript-eslint/parser": "^7",
       "constructs": "^10.0.0",
       "eslint": "^8",
       "eslint-import-resolver-typescript": "*",
@@ -11126,6 +11154,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "coveragePathIgnorePatterns": Array [
         "/node_modules/",
       ],
+      "coverageProvider": "v8",
       "coverageReporters": Array [
         "json",
         "lcov",
@@ -11150,7 +11179,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       ],
       "testMatch": Array [
         "<rootDir>/src/**/__tests__/**/*.ts?(x)",
-        "<rootDir>/(test|src)/**/*(*.)@(spec|test).ts?(x)",
+        "<rootDir>/@(test|src)/**/*(*.)@(spec|test).ts?(x)",
       ],
       "testPathIgnorePatterns": Array [
         "/node_modules/",
@@ -11170,6 +11199,9 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "license": "Apache-2.0",
     "main": "lib/index.js",
     "name": "root",
+    "publishConfig": Object {
+      "access": "public",
+    },
     "repository": Object {
       "type": "git",
       "url": "https://github.com/cdk8s-team/custom-repo-name.git",
@@ -11364,6 +11396,9 @@ Object {
       "dot-notation": Array [
         "error",
       ],
+      "import/no-duplicates": Array [
+        "error",
+      ],
       "import/no-extraneous-dependencies": Array [
         "error",
         Object {
@@ -11412,9 +11447,6 @@ Object {
         },
       ],
       "no-bitwise": Array [
-        "error",
-      ],
-      "no-duplicate-imports": Array [
         "error",
       ],
       "no-multi-spaces": Array [
@@ -11755,7 +11787,7 @@ jobs:
     permissions: {}
     if: \\"! needs.build.outputs.self_mutation_happened\\"
     steps:
-      - uses: actions/setup-java@v3
+      - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 11.x
@@ -11815,7 +11847,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-      - uses: actions/setup-dotnet@v3
+      - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 3.x
       - name: Download build artifacts
@@ -11843,7 +11875,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-      - uses: actions/setup-go@v3
+      - uses: actions/setup-go@v5
         with:
           go-version: ^1.16.0
       - name: Download build artifacts
@@ -12470,12 +12502,12 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@typescript-eslint/eslint-plugin",
         "type": "build",
-        "version": "^6",
+        "version": "^7",
       },
       Object {
         "name": "@typescript-eslint/parser",
         "type": "build",
-        "version": "^6",
+        "version": "^7",
       },
       Object {
         "name": "constructs",
@@ -12816,7 +12848,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "test",
         "steps": Array [
           Object {
-            "exec": "jest --passWithNoTests --coverageProvider=v8 --updateSnapshot",
+            "exec": "jest --passWithNoTests --updateSnapshot",
             "receiveArgs": true,
           },
           Object {
@@ -13224,8 +13256,8 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "devDependencies": Object {
       "@types/jest": "^27",
       "@types/node": "16.18.78",
-      "@typescript-eslint/eslint-plugin": "^6",
-      "@typescript-eslint/parser": "^6",
+      "@typescript-eslint/eslint-plugin": "^7",
+      "@typescript-eslint/parser": "^7",
       "constructs": "^10.0.0",
       "eslint": "^8",
       "eslint-import-resolver-typescript": "*",
@@ -13251,6 +13283,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "coveragePathIgnorePatterns": Array [
         "/node_modules/",
       ],
+      "coverageProvider": "v8",
       "coverageReporters": Array [
         "json",
         "lcov",
@@ -13275,7 +13308,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       ],
       "testMatch": Array [
         "<rootDir>/src/**/__tests__/**/*.ts?(x)",
-        "<rootDir>/(test|src)/**/*(*.)@(spec|test).ts?(x)",
+        "<rootDir>/@(test|src)/**/*(*.)@(spec|test).ts?(x)",
       ],
       "testPathIgnorePatterns": Array [
         "/node_modules/",
@@ -13314,6 +13347,9 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "license": "Apache-2.0",
     "main": "lib/index.js",
     "name": "root",
+    "publishConfig": Object {
+      "access": "public",
+    },
     "repository": Object {
       "type": "git",
       "url": "https://github.com/cdk8s-team/custom-repo-name.git",
@@ -13512,6 +13548,9 @@ Object {
       "dot-notation": Array [
         "error",
       ],
+      "import/no-duplicates": Array [
+        "error",
+      ],
       "import/no-extraneous-dependencies": Array [
         "error",
         Object {
@@ -13560,9 +13599,6 @@ Object {
         },
       ],
       "no-bitwise": Array [
-        "error",
-      ],
-      "no-duplicate-imports": Array [
         "error",
       ],
       "no-multi-spaces": Array [
@@ -14488,12 +14524,12 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@typescript-eslint/eslint-plugin",
         "type": "build",
-        "version": "^6",
+        "version": "^7",
       },
       Object {
         "name": "@typescript-eslint/parser",
         "type": "build",
-        "version": "^6",
+        "version": "^7",
       },
       Object {
         "name": "constructs",
@@ -14784,7 +14820,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "test",
         "steps": Array [
           Object {
-            "exec": "jest --passWithNoTests --coverageProvider=v8 --updateSnapshot",
+            "exec": "jest --passWithNoTests --updateSnapshot",
             "receiveArgs": true,
           },
           Object {
@@ -15192,8 +15228,8 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "devDependencies": Object {
       "@types/jest": "^27",
       "@types/node": "16.18.78",
-      "@typescript-eslint/eslint-plugin": "^6",
-      "@typescript-eslint/parser": "^6",
+      "@typescript-eslint/eslint-plugin": "^7",
+      "@typescript-eslint/parser": "^7",
       "constructs": "^10.0.0",
       "eslint": "^8",
       "eslint-import-resolver-typescript": "*",
@@ -15219,6 +15255,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "coveragePathIgnorePatterns": Array [
         "/node_modules/",
       ],
+      "coverageProvider": "v8",
       "coverageReporters": Array [
         "json",
         "lcov",
@@ -15243,7 +15280,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       ],
       "testMatch": Array [
         "<rootDir>/src/**/__tests__/**/*.ts?(x)",
-        "<rootDir>/(test|src)/**/*(*.)@(spec|test).ts?(x)",
+        "<rootDir>/@(test|src)/**/*(*.)@(spec|test).ts?(x)",
       ],
       "testPathIgnorePatterns": Array [
         "/node_modules/",
@@ -15457,6 +15494,9 @@ Object {
       "dot-notation": Array [
         "error",
       ],
+      "import/no-duplicates": Array [
+        "error",
+      ],
       "import/no-extraneous-dependencies": Array [
         "error",
         Object {
@@ -15505,9 +15545,6 @@ Object {
         },
       ],
       "no-bitwise": Array [
-        "error",
-      ],
-      "no-duplicate-imports": Array [
         "error",
       ],
       "no-multi-spaces": Array [
@@ -15848,7 +15885,7 @@ jobs:
     permissions: {}
     if: \\"! needs.build.outputs.self_mutation_happened\\"
     steps:
-      - uses: actions/setup-java@v3
+      - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 11.x
@@ -15908,7 +15945,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-      - uses: actions/setup-dotnet@v3
+      - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 3.x
       - name: Download build artifacts
@@ -15936,7 +15973,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-      - uses: actions/setup-go@v3
+      - uses: actions/setup-go@v5
         with:
           go-version: ^1.16.0
       - name: Download build artifacts
@@ -16563,12 +16600,12 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@typescript-eslint/eslint-plugin",
         "type": "build",
-        "version": "^6",
+        "version": "^7",
       },
       Object {
         "name": "@typescript-eslint/parser",
         "type": "build",
-        "version": "^6",
+        "version": "^7",
       },
       Object {
         "name": "constructs",
@@ -16909,7 +16946,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "test",
         "steps": Array [
           Object {
-            "exec": "jest --passWithNoTests --coverageProvider=v8 --updateSnapshot",
+            "exec": "jest --passWithNoTests --updateSnapshot",
             "receiveArgs": true,
           },
           Object {
@@ -17317,8 +17354,8 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "devDependencies": Object {
       "@types/jest": "^27",
       "@types/node": "16.18.78",
-      "@typescript-eslint/eslint-plugin": "^6",
-      "@typescript-eslint/parser": "^6",
+      "@typescript-eslint/eslint-plugin": "^7",
+      "@typescript-eslint/parser": "^7",
       "constructs": "^10.0.0",
       "eslint": "^8",
       "eslint-import-resolver-typescript": "*",
@@ -17344,6 +17381,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "coveragePathIgnorePatterns": Array [
         "/node_modules/",
       ],
+      "coverageProvider": "v8",
       "coverageReporters": Array [
         "json",
         "lcov",
@@ -17368,7 +17406,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       ],
       "testMatch": Array [
         "<rootDir>/src/**/__tests__/**/*.ts?(x)",
-        "<rootDir>/(test|src)/**/*(*.)@(spec|test).ts?(x)",
+        "<rootDir>/@(test|src)/**/*(*.)@(spec|test).ts?(x)",
       ],
       "testPathIgnorePatterns": Array [
         "/node_modules/",
@@ -17605,6 +17643,9 @@ Object {
       "dot-notation": Array [
         "error",
       ],
+      "import/no-duplicates": Array [
+        "error",
+      ],
       "import/no-extraneous-dependencies": Array [
         "error",
         Object {
@@ -17653,9 +17694,6 @@ Object {
         },
       ],
       "no-bitwise": Array [
-        "error",
-      ],
-      "no-duplicate-imports": Array [
         "error",
       ],
       "no-multi-spaces": Array [
@@ -18022,7 +18060,7 @@ jobs:
     permissions: {}
     if: \\"! needs.build.outputs.self_mutation_happened\\"
     steps:
-      - uses: actions/setup-java@v3
+      - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 11.x
@@ -18082,7 +18120,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-      - uses: actions/setup-dotnet@v3
+      - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 3.x
       - name: Download build artifacts
@@ -18110,7 +18148,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-      - uses: actions/setup-go@v3
+      - uses: actions/setup-go@v5
         with:
           go-version: ^1.16.0
       - name: Download build artifacts
@@ -18218,7 +18256,13 @@ jobs:
           overwrite: true
   release_github:
     name: Publish to GitHub Releases
-    needs: release
+    needs:
+      - release
+      - release_npm
+      - release_maven
+      - release_pypi
+      - release_nuget
+      - release_golang
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -18243,7 +18287,7 @@ jobs:
         env:
           GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: \${{ github.repository }}
-          GITHUB_REF: \${{ github.ref }}
+          GITHUB_REF: \${{ github.sha }}
         run: errout=$(mktemp); gh release create $(cat dist/releasetag.txt) -R $GITHUB_REPOSITORY -F dist/changelog.md -t $(cat dist/releasetag.txt) --target $GITHUB_REF 2> $errout && true; exitcode=$?; if [ $exitcode -ne 0 ] && ! grep -q \\"Release.tag_name already exists\\" $errout; then cat $errout; exit $exitcode; fi
   release_npm:
     name: Publish to npm
@@ -18288,7 +18332,7 @@ jobs:
       contents: read
     if: needs.release.outputs.tag_exists != 'true' && needs.release.outputs.latest_commit == github.sha
     steps:
-      - uses: actions/setup-java@v3
+      - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 11.x
@@ -18365,7 +18409,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-      - uses: actions/setup-dotnet@v3
+      - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 3.x
       - name: Download build artifacts
@@ -18399,7 +18443,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-      - uses: actions/setup-go@v3
+      - uses: actions/setup-go@v5
         with:
           go-version: ^1.16.0
       - name: Download build artifacts
@@ -19027,12 +19071,12 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@typescript-eslint/eslint-plugin",
         "type": "build",
-        "version": "^6",
+        "version": "^7",
       },
       Object {
         "name": "@typescript-eslint/parser",
         "type": "build",
-        "version": "^6",
+        "version": "^7",
       },
       Object {
         "name": "constructs",
@@ -19433,7 +19477,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "test",
         "steps": Array [
           Object {
-            "exec": "jest --passWithNoTests --coverageProvider=v8 --updateSnapshot",
+            "exec": "jest --passWithNoTests --updateSnapshot",
             "receiveArgs": true,
           },
           Object {
@@ -19858,8 +19902,8 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "devDependencies": Object {
       "@types/jest": "^27",
       "@types/node": "16.18.78",
-      "@typescript-eslint/eslint-plugin": "^6",
-      "@typescript-eslint/parser": "^6",
+      "@typescript-eslint/eslint-plugin": "^7",
+      "@typescript-eslint/parser": "^7",
       "constructs": "^10.0.0",
       "eslint": "^8",
       "eslint-import-resolver-typescript": "*",
@@ -19886,6 +19930,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "coveragePathIgnorePatterns": Array [
         "/node_modules/",
       ],
+      "coverageProvider": "v8",
       "coverageReporters": Array [
         "json",
         "lcov",
@@ -19910,7 +19955,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       ],
       "testMatch": Array [
         "<rootDir>/src/**/__tests__/**/*.ts?(x)",
-        "<rootDir>/(test|src)/**/*(*.)@(spec|test).ts?(x)",
+        "<rootDir>/@(test|src)/**/*(*.)@(spec|test).ts?(x)",
       ],
       "testPathIgnorePatterns": Array [
         "/node_modules/",
@@ -19949,6 +19994,9 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "license": "Apache-2.0",
     "main": "lib/index.js",
     "name": "cdk8s-sample",
+    "publishConfig": Object {
+      "access": "public",
+    },
     "repository": Object {
       "type": "git",
       "url": "https://github.com/cdk8s-team/cdk8s-sample.git",
@@ -20151,6 +20199,9 @@ Object {
       "dot-notation": Array [
         "error",
       ],
+      "import/no-duplicates": Array [
+        "error",
+      ],
       "import/no-extraneous-dependencies": Array [
         "error",
         Object {
@@ -20199,9 +20250,6 @@ Object {
         },
       ],
       "no-bitwise": Array [
-        "error",
-      ],
-      "no-duplicate-imports": Array [
         "error",
       ],
       "no-multi-spaces": Array [
@@ -20568,7 +20616,7 @@ jobs:
     permissions: {}
     if: \\"! needs.build.outputs.self_mutation_happened\\"
     steps:
-      - uses: actions/setup-java@v3
+      - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 11.x
@@ -20628,7 +20676,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-      - uses: actions/setup-dotnet@v3
+      - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 3.x
       - name: Download build artifacts
@@ -20656,7 +20704,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-      - uses: actions/setup-go@v3
+      - uses: actions/setup-go@v5
         with:
           go-version: ^1.16.0
       - name: Download build artifacts
@@ -20764,7 +20812,13 @@ jobs:
           overwrite: true
   release_github:
     name: Publish to GitHub Releases
-    needs: release
+    needs:
+      - release
+      - release_npm
+      - release_maven
+      - release_pypi
+      - release_nuget
+      - release_golang
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -20789,7 +20843,7 @@ jobs:
         env:
           GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: \${{ github.repository }}
-          GITHUB_REF: \${{ github.ref }}
+          GITHUB_REF: \${{ github.sha }}
         run: errout=$(mktemp); gh release create $(cat dist/releasetag.txt) -R $GITHUB_REPOSITORY -F dist/changelog.md -t $(cat dist/releasetag.txt) --target $GITHUB_REF 2> $errout && true; exitcode=$?; if [ $exitcode -ne 0 ] && ! grep -q \\"Release.tag_name already exists\\" $errout; then cat $errout; exit $exitcode; fi
   release_npm:
     name: Publish to npm
@@ -20834,7 +20888,7 @@ jobs:
       contents: read
     if: needs.release.outputs.tag_exists != 'true' && needs.release.outputs.latest_commit == github.sha
     steps:
-      - uses: actions/setup-java@v3
+      - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 11.x
@@ -20911,7 +20965,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-      - uses: actions/setup-dotnet@v3
+      - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 3.x
       - name: Download build artifacts
@@ -20945,7 +20999,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-      - uses: actions/setup-go@v3
+      - uses: actions/setup-go@v5
         with:
           go-version: ^1.16.0
       - name: Download build artifacts
@@ -21573,12 +21627,12 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@typescript-eslint/eslint-plugin",
         "type": "build",
-        "version": "^6",
+        "version": "^7",
       },
       Object {
         "name": "@typescript-eslint/parser",
         "type": "build",
-        "version": "^6",
+        "version": "^7",
       },
       Object {
         "name": "constructs",
@@ -21979,7 +22033,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "test",
         "steps": Array [
           Object {
-            "exec": "jest --passWithNoTests --coverageProvider=v8 --updateSnapshot",
+            "exec": "jest --passWithNoTests --updateSnapshot",
             "receiveArgs": true,
           },
           Object {
@@ -22404,8 +22458,8 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "devDependencies": Object {
       "@types/jest": "^27",
       "@types/node": "16.18.78",
-      "@typescript-eslint/eslint-plugin": "^6",
-      "@typescript-eslint/parser": "^6",
+      "@typescript-eslint/eslint-plugin": "^7",
+      "@typescript-eslint/parser": "^7",
       "constructs": "^10.0.0",
       "eslint": "^8",
       "eslint-import-resolver-typescript": "*",
@@ -22432,6 +22486,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "coveragePathIgnorePatterns": Array [
         "/node_modules/",
       ],
+      "coverageProvider": "v8",
       "coverageReporters": Array [
         "json",
         "lcov",
@@ -22456,7 +22511,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       ],
       "testMatch": Array [
         "<rootDir>/src/**/__tests__/**/*.ts?(x)",
-        "<rootDir>/(test|src)/**/*(*.)@(spec|test).ts?(x)",
+        "<rootDir>/@(test|src)/**/*(*.)@(spec|test).ts?(x)",
       ],
       "testPathIgnorePatterns": Array [
         "/node_modules/",
@@ -22495,6 +22550,9 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "license": "Apache-2.0",
     "main": "lib/index.js",
     "name": "root",
+    "publishConfig": Object {
+      "access": "public",
+    },
     "repository": Object {
       "type": "git",
       "url": "https://github.com/cdk8s-team/root.git",
@@ -22697,6 +22755,9 @@ Object {
       "dot-notation": Array [
         "error",
       ],
+      "import/no-duplicates": Array [
+        "error",
+      ],
       "import/no-extraneous-dependencies": Array [
         "error",
         Object {
@@ -22745,9 +22806,6 @@ Object {
         },
       ],
       "no-bitwise": Array [
-        "error",
-      ],
-      "no-duplicate-imports": Array [
         "error",
       ],
       "no-multi-spaces": Array [
@@ -23114,7 +23172,7 @@ jobs:
     permissions: {}
     if: \\"! needs.build.outputs.self_mutation_happened\\"
     steps:
-      - uses: actions/setup-java@v3
+      - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 11.x
@@ -23174,7 +23232,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-      - uses: actions/setup-dotnet@v3
+      - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 3.x
       - name: Download build artifacts
@@ -23202,7 +23260,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-      - uses: actions/setup-go@v3
+      - uses: actions/setup-go@v5
         with:
           go-version: ^1.16.0
       - name: Download build artifacts
@@ -23310,7 +23368,13 @@ jobs:
           overwrite: true
   release_github:
     name: Publish to GitHub Releases
-    needs: release
+    needs:
+      - release
+      - release_npm
+      - release_maven
+      - release_pypi
+      - release_nuget
+      - release_golang
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -23335,7 +23399,7 @@ jobs:
         env:
           GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: \${{ github.repository }}
-          GITHUB_REF: \${{ github.ref }}
+          GITHUB_REF: \${{ github.sha }}
         run: errout=$(mktemp); gh release create $(cat dist/releasetag.txt) -R $GITHUB_REPOSITORY -F dist/changelog.md -t $(cat dist/releasetag.txt) --target $GITHUB_REF 2> $errout && true; exitcode=$?; if [ $exitcode -ne 0 ] && ! grep -q \\"Release.tag_name already exists\\" $errout; then cat $errout; exit $exitcode; fi
   release_npm:
     name: Publish to npm
@@ -23378,7 +23442,7 @@ jobs:
       contents: read
     if: needs.release.outputs.tag_exists != 'true' && needs.release.outputs.latest_commit == github.sha
     steps:
-      - uses: actions/setup-java@v3
+      - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 11.x
@@ -23455,7 +23519,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-      - uses: actions/setup-dotnet@v3
+      - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 3.x
       - name: Download build artifacts
@@ -23489,7 +23553,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-      - uses: actions/setup-go@v3
+      - uses: actions/setup-go@v5
         with:
           go-version: ^1.16.0
       - name: Download build artifacts
@@ -24117,12 +24181,12 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@typescript-eslint/eslint-plugin",
         "type": "build",
-        "version": "^6",
+        "version": "^7",
       },
       Object {
         "name": "@typescript-eslint/parser",
         "type": "build",
-        "version": "^6",
+        "version": "^7",
       },
       Object {
         "name": "constructs",
@@ -24523,7 +24587,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "test",
         "steps": Array [
           Object {
-            "exec": "jest --passWithNoTests --coverageProvider=v8 --updateSnapshot",
+            "exec": "jest --passWithNoTests --updateSnapshot",
             "receiveArgs": true,
           },
           Object {
@@ -24948,8 +25012,8 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "devDependencies": Object {
       "@types/jest": "^27",
       "@types/node": "16.18.78",
-      "@typescript-eslint/eslint-plugin": "^6",
-      "@typescript-eslint/parser": "^6",
+      "@typescript-eslint/eslint-plugin": "^7",
+      "@typescript-eslint/parser": "^7",
       "constructs": "^10.0.0",
       "eslint": "^8",
       "eslint-import-resolver-typescript": "*",
@@ -24976,6 +25040,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "coveragePathIgnorePatterns": Array [
         "/node_modules/",
       ],
+      "coverageProvider": "v8",
       "coverageReporters": Array [
         "json",
         "lcov",
@@ -25000,7 +25065,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       ],
       "testMatch": Array [
         "<rootDir>/src/**/__tests__/**/*.ts?(x)",
-        "<rootDir>/(test|src)/**/*(*.)@(spec|test).ts?(x)",
+        "<rootDir>/@(test|src)/**/*(*.)@(spec|test).ts?(x)",
       ],
       "testPathIgnorePatterns": Array [
         "/node_modules/",
@@ -25241,6 +25306,9 @@ Object {
       "dot-notation": Array [
         "error",
       ],
+      "import/no-duplicates": Array [
+        "error",
+      ],
       "import/no-extraneous-dependencies": Array [
         "error",
         Object {
@@ -25289,9 +25357,6 @@ Object {
         },
       ],
       "no-bitwise": Array [
-        "error",
-      ],
-      "no-duplicate-imports": Array [
         "error",
       ],
       "no-multi-spaces": Array [
@@ -25658,7 +25723,7 @@ jobs:
     permissions: {}
     if: \\"! needs.build.outputs.self_mutation_happened\\"
     steps:
-      - uses: actions/setup-java@v3
+      - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 11.x
@@ -25718,7 +25783,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-      - uses: actions/setup-dotnet@v3
+      - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 3.x
       - name: Download build artifacts
@@ -25746,7 +25811,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-      - uses: actions/setup-go@v3
+      - uses: actions/setup-go@v5
         with:
           go-version: ^1.16.0
       - name: Download build artifacts
@@ -25854,7 +25919,13 @@ jobs:
           overwrite: true
   release_github:
     name: Publish to GitHub Releases
-    needs: release
+    needs:
+      - release
+      - release_npm
+      - release_maven
+      - release_pypi
+      - release_nuget
+      - release_golang
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -25879,7 +25950,7 @@ jobs:
         env:
           GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: \${{ github.repository }}
-          GITHUB_REF: \${{ github.ref }}
+          GITHUB_REF: \${{ github.sha }}
         run: errout=$(mktemp); gh release create $(cat dist/releasetag.txt) -R $GITHUB_REPOSITORY -F dist/changelog.md -t $(cat dist/releasetag.txt) --target $GITHUB_REF 2> $errout && true; exitcode=$?; if [ $exitcode -ne 0 ] && ! grep -q \\"Release.tag_name already exists\\" $errout; then cat $errout; exit $exitcode; fi
   release_npm:
     name: Publish to npm
@@ -25924,7 +25995,7 @@ jobs:
       contents: read
     if: needs.release.outputs.tag_exists != 'true' && needs.release.outputs.latest_commit == github.sha
     steps:
-      - uses: actions/setup-java@v3
+      - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 11.x
@@ -26001,7 +26072,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-      - uses: actions/setup-dotnet@v3
+      - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 3.x
       - name: Download build artifacts
@@ -26035,7 +26106,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-      - uses: actions/setup-go@v3
+      - uses: actions/setup-go@v5
         with:
           go-version: ^1.16.0
       - name: Download build artifacts
@@ -26663,12 +26734,12 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@typescript-eslint/eslint-plugin",
         "type": "build",
-        "version": "^6",
+        "version": "^7",
       },
       Object {
         "name": "@typescript-eslint/parser",
         "type": "build",
-        "version": "^6",
+        "version": "^7",
       },
       Object {
         "name": "constructs",
@@ -27069,7 +27140,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "test",
         "steps": Array [
           Object {
-            "exec": "jest --passWithNoTests --coverageProvider=v8 --updateSnapshot",
+            "exec": "jest --passWithNoTests --updateSnapshot",
             "receiveArgs": true,
           },
           Object {
@@ -27494,8 +27565,8 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "devDependencies": Object {
       "@types/jest": "^27",
       "@types/node": "16.18.78",
-      "@typescript-eslint/eslint-plugin": "^6",
-      "@typescript-eslint/parser": "^6",
+      "@typescript-eslint/eslint-plugin": "^7",
+      "@typescript-eslint/parser": "^7",
       "constructs": "^10.0.0",
       "eslint": "^8",
       "eslint-import-resolver-typescript": "*",
@@ -27522,6 +27593,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "coveragePathIgnorePatterns": Array [
         "/node_modules/",
       ],
+      "coverageProvider": "v8",
       "coverageReporters": Array [
         "json",
         "lcov",
@@ -27546,7 +27618,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       ],
       "testMatch": Array [
         "<rootDir>/src/**/__tests__/**/*.ts?(x)",
-        "<rootDir>/(test|src)/**/*(*.)@(spec|test).ts?(x)",
+        "<rootDir>/@(test|src)/**/*(*.)@(spec|test).ts?(x)",
       ],
       "testPathIgnorePatterns": Array [
         "/node_modules/",
@@ -27585,6 +27657,9 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "license": "Apache-2.0",
     "main": "lib/index.js",
     "name": "cdk8s",
+    "publishConfig": Object {
+      "access": "public",
+    },
     "repository": Object {
       "type": "git",
       "url": "https://github.com/cdk8s-team/cdk8s.git",
@@ -27787,6 +27862,9 @@ Object {
       "dot-notation": Array [
         "error",
       ],
+      "import/no-duplicates": Array [
+        "error",
+      ],
       "import/no-extraneous-dependencies": Array [
         "error",
         Object {
@@ -27835,9 +27913,6 @@ Object {
         },
       ],
       "no-bitwise": Array [
-        "error",
-      ],
-      "no-duplicate-imports": Array [
         "error",
       ],
       "no-multi-spaces": Array [
@@ -28204,7 +28279,7 @@ jobs:
     permissions: {}
     if: \\"! needs.build.outputs.self_mutation_happened\\"
     steps:
-      - uses: actions/setup-java@v3
+      - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 11.x
@@ -28264,7 +28339,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-      - uses: actions/setup-dotnet@v3
+      - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 3.x
       - name: Download build artifacts
@@ -28292,7 +28367,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-      - uses: actions/setup-go@v3
+      - uses: actions/setup-go@v5
         with:
           go-version: ^1.16.0
       - name: Download build artifacts
@@ -28400,7 +28475,13 @@ jobs:
           overwrite: true
   release_github:
     name: Publish to GitHub Releases
-    needs: release
+    needs:
+      - release
+      - release_npm
+      - release_maven
+      - release_pypi
+      - release_nuget
+      - release_golang
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -28425,7 +28506,7 @@ jobs:
         env:
           GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: \${{ github.repository }}
-          GITHUB_REF: \${{ github.ref }}
+          GITHUB_REF: \${{ github.sha }}
         run: errout=$(mktemp); gh release create $(cat dist/releasetag.txt) -R $GITHUB_REPOSITORY -F dist/changelog.md -t $(cat dist/releasetag.txt) --target $GITHUB_REF 2> $errout && true; exitcode=$?; if [ $exitcode -ne 0 ] && ! grep -q \\"Release.tag_name already exists\\" $errout; then cat $errout; exit $exitcode; fi
   release_npm:
     name: Publish to npm
@@ -28470,7 +28551,7 @@ jobs:
       contents: read
     if: needs.release.outputs.tag_exists != 'true' && needs.release.outputs.latest_commit == github.sha
     steps:
-      - uses: actions/setup-java@v3
+      - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 11.x
@@ -28547,7 +28628,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-      - uses: actions/setup-dotnet@v3
+      - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 3.x
       - name: Download build artifacts
@@ -28581,7 +28662,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-      - uses: actions/setup-go@v3
+      - uses: actions/setup-go@v5
         with:
           go-version: ^1.16.0
       - name: Download build artifacts
@@ -29209,12 +29290,12 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@typescript-eslint/eslint-plugin",
         "type": "build",
-        "version": "^6",
+        "version": "^7",
       },
       Object {
         "name": "@typescript-eslint/parser",
         "type": "build",
-        "version": "^6",
+        "version": "^7",
       },
       Object {
         "name": "constructs",
@@ -29615,7 +29696,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "test",
         "steps": Array [
           Object {
-            "exec": "jest --passWithNoTests --coverageProvider=v8 --updateSnapshot",
+            "exec": "jest --passWithNoTests --updateSnapshot",
             "receiveArgs": true,
           },
           Object {
@@ -30040,8 +30121,8 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "devDependencies": Object {
       "@types/jest": "^27",
       "@types/node": "16.18.78",
-      "@typescript-eslint/eslint-plugin": "^6",
-      "@typescript-eslint/parser": "^6",
+      "@typescript-eslint/eslint-plugin": "^7",
+      "@typescript-eslint/parser": "^7",
       "constructs": "^10.0.0",
       "eslint": "^8",
       "eslint-import-resolver-typescript": "*",
@@ -30068,6 +30149,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "coveragePathIgnorePatterns": Array [
         "/node_modules/",
       ],
+      "coverageProvider": "v8",
       "coverageReporters": Array [
         "json",
         "lcov",
@@ -30092,7 +30174,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       ],
       "testMatch": Array [
         "<rootDir>/src/**/__tests__/**/*.ts?(x)",
-        "<rootDir>/(test|src)/**/*(*.)@(spec|test).ts?(x)",
+        "<rootDir>/@(test|src)/**/*(*.)@(spec|test).ts?(x)",
       ],
       "testPathIgnorePatterns": Array [
         "/node_modules/",
@@ -30131,6 +30213,9 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "license": "Apache-2.0",
     "main": "lib/index.js",
     "name": "root",
+    "publishConfig": Object {
+      "access": "public",
+    },
     "repository": Object {
       "type": "git",
       "url": "https://github.com/cdk8s-team/root.git",
