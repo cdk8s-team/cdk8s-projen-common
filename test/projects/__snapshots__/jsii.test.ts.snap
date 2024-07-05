@@ -802,7 +802,7 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: 11.x
+          java-version: 20.x
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
@@ -878,7 +878,7 @@ jobs:
           node-version: lts/*
       - uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 3.x
+          dotnet-version: 6.x
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
@@ -912,7 +912,7 @@ jobs:
           node-version: lts/*
       - uses: actions/setup-go@v5
         with:
-          go-version: ^1.16.0
+          go-version: ^1.18.0
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
@@ -3409,7 +3409,7 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: 11.x
+          java-version: 20.x
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
@@ -3485,7 +3485,7 @@ jobs:
           node-version: lts/*
       - uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 3.x
+          dotnet-version: 6.x
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
@@ -3519,7 +3519,7 @@ jobs:
           node-version: lts/*
       - uses: actions/setup-go@v5
         with:
-          go-version: ^1.16.0
+          go-version: ^1.18.0
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
@@ -18335,7 +18335,7 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: 11.x
+          java-version: 20.x
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
@@ -18411,7 +18411,7 @@ jobs:
           node-version: lts/*
       - uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 3.x
+          dotnet-version: 6.x
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
@@ -18445,7 +18445,7 @@ jobs:
           node-version: lts/*
       - uses: actions/setup-go@v5
         with:
-          go-version: ^1.16.0
+          go-version: ^1.18.0
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
@@ -20891,7 +20891,7 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: 11.x
+          java-version: 20.x
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
@@ -20967,7 +20967,7 @@ jobs:
           node-version: lts/*
       - uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 3.x
+          dotnet-version: 6.x
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
@@ -21001,7 +21001,7 @@ jobs:
           node-version: lts/*
       - uses: actions/setup-go@v5
         with:
-          go-version: ^1.16.0
+          go-version: ^1.18.0
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
@@ -23445,7 +23445,7 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: 11.x
+          java-version: 20.x
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
@@ -23521,7 +23521,7 @@ jobs:
           node-version: lts/*
       - uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 3.x
+          dotnet-version: 6.x
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
@@ -23555,7 +23555,7 @@ jobs:
           node-version: lts/*
       - uses: actions/setup-go@v5
         with:
-          go-version: ^1.16.0
+          go-version: ^1.18.0
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
@@ -25998,7 +25998,7 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: 11.x
+          java-version: 20.x
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
@@ -26074,7 +26074,7 @@ jobs:
           node-version: lts/*
       - uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 3.x
+          dotnet-version: 6.x
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
@@ -26108,7 +26108,7 @@ jobs:
           node-version: lts/*
       - uses: actions/setup-go@v5
         with:
-          go-version: ^1.16.0
+          go-version: ^1.18.0
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
@@ -28554,7 +28554,7 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: 11.x
+          java-version: 20.x
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
@@ -28630,7 +28630,7 @@ jobs:
           node-version: lts/*
       - uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 3.x
+          dotnet-version: 6.x
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
@@ -28664,7 +28664,7 @@ jobs:
           node-version: lts/*
       - uses: actions/setup-go@v5
         with:
-          go-version: ^1.16.0
+          go-version: ^1.18.0
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
