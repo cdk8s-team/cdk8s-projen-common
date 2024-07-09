@@ -529,8 +529,8 @@ jobs:
     steps:
       - uses: actions/setup-java@v4
         with:
-          distribution: temurin
-          java-version: 20.x
+          distribution: corretto
+          java-version: \\"11\\"
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
@@ -801,8 +801,8 @@ jobs:
     steps:
       - uses: actions/setup-java@v4
         with:
-          distribution: temurin
-          java-version: 20.x
+          distribution: corretto
+          java-version: \\"11\\"
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
@@ -2421,8 +2421,8 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         ],
       ],
       "testMatch": Array [
-        "<rootDir>/src/**/__tests__/**/*.ts?(x)",
-        "<rootDir>/@(test|src)/**/*(*.)@(spec|test).ts?(x)",
+        "<rootDir>/@(src|test)/**/?(*.)+(spec|test).ts?(x)",
+        "<rootDir>/@(src|test)/**/__tests__/**/*.ts?(x)",
       ],
       "testPathIgnorePatterns": Array [
         "/node_modules/",
@@ -3136,8 +3136,8 @@ jobs:
     steps:
       - uses: actions/setup-java@v4
         with:
-          distribution: temurin
-          java-version: 20.x
+          distribution: corretto
+          java-version: \\"11\\"
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
@@ -3408,8 +3408,8 @@ jobs:
     steps:
       - uses: actions/setup-java@v4
         with:
-          distribution: temurin
-          java-version: 20.x
+          distribution: corretto
+          java-version: \\"11\\"
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
@@ -5061,8 +5061,8 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         ],
       ],
       "testMatch": Array [
-        "<rootDir>/src/**/__tests__/**/*.ts?(x)",
-        "<rootDir>/@(test|src)/**/*(*.)@(spec|test).ts?(x)",
+        "<rootDir>/@(src|test)/**/?(*.)+(spec|test).ts?(x)",
+        "<rootDir>/@(src|test)/**/__tests__/**/*.ts?(x)",
       ],
       "testPathIgnorePatterns": Array [
         "/node_modules/",
@@ -7077,8 +7077,8 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         ],
       ],
       "testMatch": Array [
-        "<rootDir>/src/**/__tests__/**/*.ts?(x)",
-        "<rootDir>/@(test|src)/**/*(*.)@(spec|test).ts?(x)",
+        "<rootDir>/@(src|test)/**/?(*.)+(spec|test).ts?(x)",
+        "<rootDir>/@(src|test)/**/__tests__/**/*.ts?(x)",
       ],
       "testPathIgnorePatterns": Array [
         "/node_modules/",
@@ -7688,8 +7688,8 @@ jobs:
     steps:
       - uses: actions/setup-java@v4
         with:
-          distribution: temurin
-          java-version: 20.x
+          distribution: corretto
+          java-version: \\"11\\"
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
@@ -9206,8 +9206,8 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         ],
       ],
       "testMatch": Array [
-        "<rootDir>/src/**/__tests__/**/*.ts?(x)",
-        "<rootDir>/@(test|src)/**/*(*.)@(spec|test).ts?(x)",
+        "<rootDir>/@(src|test)/**/?(*.)+(spec|test).ts?(x)",
+        "<rootDir>/@(src|test)/**/__tests__/**/*.ts?(x)",
       ],
       "testPathIgnorePatterns": Array [
         "/node_modules/",
@@ -11178,8 +11178,8 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         ],
       ],
       "testMatch": Array [
-        "<rootDir>/src/**/__tests__/**/*.ts?(x)",
-        "<rootDir>/@(test|src)/**/*(*.)@(spec|test).ts?(x)",
+        "<rootDir>/@(src|test)/**/?(*.)+(spec|test).ts?(x)",
+        "<rootDir>/@(src|test)/**/__tests__/**/*.ts?(x)",
       ],
       "testPathIgnorePatterns": Array [
         "/node_modules/",
@@ -11789,8 +11789,8 @@ jobs:
     steps:
       - uses: actions/setup-java@v4
         with:
-          distribution: temurin
-          java-version: 20.x
+          distribution: corretto
+          java-version: \\"11\\"
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
@@ -13307,8 +13307,8 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         ],
       ],
       "testMatch": Array [
-        "<rootDir>/src/**/__tests__/**/*.ts?(x)",
-        "<rootDir>/@(test|src)/**/*(*.)@(spec|test).ts?(x)",
+        "<rootDir>/@(src|test)/**/?(*.)+(spec|test).ts?(x)",
+        "<rootDir>/@(src|test)/**/__tests__/**/*.ts?(x)",
       ],
       "testPathIgnorePatterns": Array [
         "/node_modules/",
@@ -15279,8 +15279,8 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         ],
       ],
       "testMatch": Array [
-        "<rootDir>/src/**/__tests__/**/*.ts?(x)",
-        "<rootDir>/@(test|src)/**/*(*.)@(spec|test).ts?(x)",
+        "<rootDir>/@(src|test)/**/?(*.)+(spec|test).ts?(x)",
+        "<rootDir>/@(src|test)/**/__tests__/**/*.ts?(x)",
       ],
       "testPathIgnorePatterns": Array [
         "/node_modules/",
@@ -15887,8 +15887,8 @@ jobs:
     steps:
       - uses: actions/setup-java@v4
         with:
-          distribution: temurin
-          java-version: 20.x
+          distribution: corretto
+          java-version: \\"11\\"
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
@@ -17405,8 +17405,8 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         ],
       ],
       "testMatch": Array [
-        "<rootDir>/src/**/__tests__/**/*.ts?(x)",
-        "<rootDir>/@(test|src)/**/*(*.)@(spec|test).ts?(x)",
+        "<rootDir>/@(src|test)/**/?(*.)+(spec|test).ts?(x)",
+        "<rootDir>/@(src|test)/**/__tests__/**/*.ts?(x)",
       ],
       "testPathIgnorePatterns": Array [
         "/node_modules/",
@@ -18062,8 +18062,8 @@ jobs:
     steps:
       - uses: actions/setup-java@v4
         with:
-          distribution: temurin
-          java-version: 20.x
+          distribution: corretto
+          java-version: \\"11\\"
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
@@ -18334,8 +18334,8 @@ jobs:
     steps:
       - uses: actions/setup-java@v4
         with:
-          distribution: temurin
-          java-version: 20.x
+          distribution: corretto
+          java-version: \\"11\\"
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
@@ -19954,8 +19954,8 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         ],
       ],
       "testMatch": Array [
-        "<rootDir>/src/**/__tests__/**/*.ts?(x)",
-        "<rootDir>/@(test|src)/**/*(*.)@(spec|test).ts?(x)",
+        "<rootDir>/@(src|test)/**/?(*.)+(spec|test).ts?(x)",
+        "<rootDir>/@(src|test)/**/__tests__/**/*.ts?(x)",
       ],
       "testPathIgnorePatterns": Array [
         "/node_modules/",
@@ -20618,8 +20618,8 @@ jobs:
     steps:
       - uses: actions/setup-java@v4
         with:
-          distribution: temurin
-          java-version: 20.x
+          distribution: corretto
+          java-version: \\"11\\"
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
@@ -20890,8 +20890,8 @@ jobs:
     steps:
       - uses: actions/setup-java@v4
         with:
-          distribution: temurin
-          java-version: 20.x
+          distribution: corretto
+          java-version: \\"11\\"
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
@@ -22510,8 +22510,8 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         ],
       ],
       "testMatch": Array [
-        "<rootDir>/src/**/__tests__/**/*.ts?(x)",
-        "<rootDir>/@(test|src)/**/*(*.)@(spec|test).ts?(x)",
+        "<rootDir>/@(src|test)/**/?(*.)+(spec|test).ts?(x)",
+        "<rootDir>/@(src|test)/**/__tests__/**/*.ts?(x)",
       ],
       "testPathIgnorePatterns": Array [
         "/node_modules/",
@@ -23174,8 +23174,8 @@ jobs:
     steps:
       - uses: actions/setup-java@v4
         with:
-          distribution: temurin
-          java-version: 20.x
+          distribution: corretto
+          java-version: \\"11\\"
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
@@ -23444,8 +23444,8 @@ jobs:
     steps:
       - uses: actions/setup-java@v4
         with:
-          distribution: temurin
-          java-version: 20.x
+          distribution: corretto
+          java-version: \\"11\\"
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
@@ -25064,8 +25064,8 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         ],
       ],
       "testMatch": Array [
-        "<rootDir>/src/**/__tests__/**/*.ts?(x)",
-        "<rootDir>/@(test|src)/**/*(*.)@(spec|test).ts?(x)",
+        "<rootDir>/@(src|test)/**/?(*.)+(spec|test).ts?(x)",
+        "<rootDir>/@(src|test)/**/__tests__/**/*.ts?(x)",
       ],
       "testPathIgnorePatterns": Array [
         "/node_modules/",
@@ -25725,8 +25725,8 @@ jobs:
     steps:
       - uses: actions/setup-java@v4
         with:
-          distribution: temurin
-          java-version: 20.x
+          distribution: corretto
+          java-version: \\"11\\"
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
@@ -25997,8 +25997,8 @@ jobs:
     steps:
       - uses: actions/setup-java@v4
         with:
-          distribution: temurin
-          java-version: 20.x
+          distribution: corretto
+          java-version: \\"11\\"
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
@@ -27617,8 +27617,8 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         ],
       ],
       "testMatch": Array [
-        "<rootDir>/src/**/__tests__/**/*.ts?(x)",
-        "<rootDir>/@(test|src)/**/*(*.)@(spec|test).ts?(x)",
+        "<rootDir>/@(src|test)/**/?(*.)+(spec|test).ts?(x)",
+        "<rootDir>/@(src|test)/**/__tests__/**/*.ts?(x)",
       ],
       "testPathIgnorePatterns": Array [
         "/node_modules/",
@@ -28281,8 +28281,8 @@ jobs:
     steps:
       - uses: actions/setup-java@v4
         with:
-          distribution: temurin
-          java-version: 20.x
+          distribution: corretto
+          java-version: \\"11\\"
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
@@ -28553,8 +28553,8 @@ jobs:
     steps:
       - uses: actions/setup-java@v4
         with:
-          distribution: temurin
-          java-version: 20.x
+          distribution: corretto
+          java-version: \\"11\\"
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
@@ -30173,8 +30173,8 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         ],
       ],
       "testMatch": Array [
-        "<rootDir>/src/**/__tests__/**/*.ts?(x)",
-        "<rootDir>/@(test|src)/**/*(*.)@(spec|test).ts?(x)",
+        "<rootDir>/@(src|test)/**/?(*.)+(spec|test).ts?(x)",
+        "<rootDir>/@(src|test)/**/__tests__/**/*.ts?(x)",
       ],
       "testPathIgnorePatterns": Array [
         "/node_modules/",

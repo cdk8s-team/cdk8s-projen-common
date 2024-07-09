@@ -1564,7 +1564,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       ],
       "testMatch": Array [
         "**/__tests__/**/*.[jt]s?(x)",
-        "**/?(*.)+(spec|test).[tj]s?(x)",
+        "**/?(*.)+(spec|test).[jt]s?(x)",
       ],
       "testPathIgnorePatterns": Array [
         "/node_modules/",
@@ -2961,7 +2961,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       ],
       "testMatch": Array [
         "**/__tests__/**/*.[jt]s?(x)",
-        "**/?(*.)+(spec|test).[tj]s?(x)",
+        "**/?(*.)+(spec|test).[jt]s?(x)",
       ],
       "testPathIgnorePatterns": Array [
         "/node_modules/",
@@ -4315,7 +4315,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       ],
       "testMatch": Array [
         "**/__tests__/**/*.[jt]s?(x)",
-        "**/?(*.)+(spec|test).[tj]s?(x)",
+        "**/?(*.)+(spec|test).[jt]s?(x)",
       ],
       "testPathIgnorePatterns": Array [
         "/node_modules/",
@@ -5669,7 +5669,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       ],
       "testMatch": Array [
         "**/__tests__/**/*.[jt]s?(x)",
-        "**/?(*.)+(spec|test).[tj]s?(x)",
+        "**/?(*.)+(spec|test).[jt]s?(x)",
       ],
       "testPathIgnorePatterns": Array [
         "/node_modules/",
@@ -7187,7 +7187,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       ],
       "testMatch": Array [
         "**/__tests__/**/*.[jt]s?(x)",
-        "**/?(*.)+(spec|test).[tj]s?(x)",
+        "**/?(*.)+(spec|test).[jt]s?(x)",
       ],
       "testPathIgnorePatterns": Array [
         "/node_modules/",
@@ -8711,7 +8711,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       ],
       "testMatch": Array [
         "**/__tests__/**/*.[jt]s?(x)",
-        "**/?(*.)+(spec|test).[tj]s?(x)",
+        "**/?(*.)+(spec|test).[jt]s?(x)",
       ],
       "testPathIgnorePatterns": Array [
         "/node_modules/",
@@ -10235,7 +10235,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       ],
       "testMatch": Array [
         "**/__tests__/**/*.[jt]s?(x)",
-        "**/?(*.)+(spec|test).[tj]s?(x)",
+        "**/?(*.)+(spec|test).[jt]s?(x)",
       ],
       "testPathIgnorePatterns": Array [
         "/node_modules/",
@@ -11756,7 +11756,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       ],
       "testMatch": Array [
         "**/__tests__/**/*.[jt]s?(x)",
-        "**/?(*.)+(spec|test).[tj]s?(x)",
+        "**/?(*.)+(spec|test).[jt]s?(x)",
       ],
       "testPathIgnorePatterns": Array [
         "/node_modules/",
@@ -13280,7 +13280,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       ],
       "testMatch": Array [
         "**/__tests__/**/*.[jt]s?(x)",
-        "**/?(*.)+(spec|test).[tj]s?(x)",
+        "**/?(*.)+(spec|test).[jt]s?(x)",
       ],
       "testPathIgnorePatterns": Array [
         "/node_modules/",
