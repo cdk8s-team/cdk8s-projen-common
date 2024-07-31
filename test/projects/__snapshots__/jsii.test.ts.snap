@@ -1702,7 +1702,7 @@ tsconfig.tsbuildinfo
           "BUMPFILE": "dist/version.txt",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
+          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep \\"^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+\\" --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -1828,7 +1828,12 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "package",
         "steps": Array [
           Object {
-            "exec": "if [ ! -z \${CI} ]; then rsync -a . .repo --exclude .git --exclude node_modules && rm -rf dist && mv .repo dist; else npx projen package-all; fi",
+            "condition": "node -e \\"if (!process.env.CI) process.exit(1)\\"",
+            "exec": "rsync -a . .repo --exclude .git --exclude node_modules && rm -rf dist && mv .repo dist",
+          },
+          Object {
+            "condition": "node -e \\"if (process.env.CI) process.exit(1)\\"",
+            "spawn": "package-all",
           },
         ],
       },
@@ -1967,7 +1972,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
           "BUMPFILE": "dist/version.txt",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
+          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep \\"^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+\\" --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -2421,7 +2426,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         ],
       ],
       "testMatch": Array [
-        "<rootDir>/@(src|test)/**/?(*.)+(spec|test).ts?(x)",
+        "<rootDir>/@(src|test)/**/*(*.)@(spec|test).ts?(x)",
         "<rootDir>/@(src|test)/**/__tests__/**/*.ts?(x)",
       ],
       "testPathIgnorePatterns": Array [
@@ -4341,7 +4346,7 @@ tsconfig.tsbuildinfo
           "BUMPFILE": "dist/version.txt",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
+          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep \\"^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+\\" --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -4467,7 +4472,12 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "package",
         "steps": Array [
           Object {
-            "exec": "if [ ! -z \${CI} ]; then rsync -a . .repo --exclude .git --exclude node_modules && rm -rf dist && mv .repo dist; else npx projen package-all; fi",
+            "condition": "node -e \\"if (!process.env.CI) process.exit(1)\\"",
+            "exec": "rsync -a . .repo --exclude .git --exclude node_modules && rm -rf dist && mv .repo dist",
+          },
+          Object {
+            "condition": "node -e \\"if (process.env.CI) process.exit(1)\\"",
+            "spawn": "package-all",
           },
         ],
       },
@@ -4606,7 +4616,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
           "BUMPFILE": "dist/version.txt",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
+          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep \\"^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+\\" --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -5061,7 +5071,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         ],
       ],
       "testMatch": Array [
-        "<rootDir>/@(src|test)/**/?(*.)+(spec|test).ts?(x)",
+        "<rootDir>/@(src|test)/**/*(*.)@(spec|test).ts?(x)",
         "<rootDir>/@(src|test)/**/__tests__/**/*.ts?(x)",
       ],
       "testPathIgnorePatterns": Array [
@@ -6588,7 +6598,12 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "package",
         "steps": Array [
           Object {
-            "exec": "if [ ! -z \${CI} ]; then rsync -a . .repo --exclude .git --exclude node_modules && rm -rf dist && mv .repo dist; else npx projen package-all; fi",
+            "condition": "node -e \\"if (!process.env.CI) process.exit(1)\\"",
+            "exec": "rsync -a . .repo --exclude .git --exclude node_modules && rm -rf dist && mv .repo dist",
+          },
+          Object {
+            "condition": "node -e \\"if (process.env.CI) process.exit(1)\\"",
+            "spawn": "package-all",
           },
         ],
       },
@@ -7077,7 +7092,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         ],
       ],
       "testMatch": Array [
-        "<rootDir>/@(src|test)/**/?(*.)+(spec|test).ts?(x)",
+        "<rootDir>/@(src|test)/**/*(*.)@(spec|test).ts?(x)",
         "<rootDir>/@(src|test)/**/__tests__/**/*.ts?(x)",
       ],
       "testPathIgnorePatterns": Array [
@@ -8667,7 +8682,12 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "package",
         "steps": Array [
           Object {
-            "exec": "if [ ! -z \${CI} ]; then rsync -a . .repo --exclude .git --exclude node_modules && rm -rf dist && mv .repo dist; else npx projen package-all; fi",
+            "condition": "node -e \\"if (!process.env.CI) process.exit(1)\\"",
+            "exec": "rsync -a . .repo --exclude .git --exclude node_modules && rm -rf dist && mv .repo dist",
+          },
+          Object {
+            "condition": "node -e \\"if (process.env.CI) process.exit(1)\\"",
+            "spawn": "package-all",
           },
         ],
       },
@@ -9206,7 +9226,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         ],
       ],
       "testMatch": Array [
-        "<rootDir>/@(src|test)/**/?(*.)+(spec|test).ts?(x)",
+        "<rootDir>/@(src|test)/**/*(*.)@(spec|test).ts?(x)",
         "<rootDir>/@(src|test)/**/__tests__/**/*.ts?(x)",
       ],
       "testPathIgnorePatterns": Array [
@@ -10689,7 +10709,12 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "package",
         "steps": Array [
           Object {
-            "exec": "if [ ! -z \${CI} ]; then rsync -a . .repo --exclude .git --exclude node_modules && rm -rf dist && mv .repo dist; else npx projen package-all; fi",
+            "condition": "node -e \\"if (!process.env.CI) process.exit(1)\\"",
+            "exec": "rsync -a . .repo --exclude .git --exclude node_modules && rm -rf dist && mv .repo dist",
+          },
+          Object {
+            "condition": "node -e \\"if (process.env.CI) process.exit(1)\\"",
+            "spawn": "package-all",
           },
         ],
       },
@@ -11178,7 +11203,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         ],
       ],
       "testMatch": Array [
-        "<rootDir>/@(src|test)/**/?(*.)+(spec|test).ts?(x)",
+        "<rootDir>/@(src|test)/**/*(*.)@(spec|test).ts?(x)",
         "<rootDir>/@(src|test)/**/__tests__/**/*.ts?(x)",
       ],
       "testPathIgnorePatterns": Array [
@@ -12768,7 +12793,12 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "package",
         "steps": Array [
           Object {
-            "exec": "if [ ! -z \${CI} ]; then rsync -a . .repo --exclude .git --exclude node_modules && rm -rf dist && mv .repo dist; else npx projen package-all; fi",
+            "condition": "node -e \\"if (!process.env.CI) process.exit(1)\\"",
+            "exec": "rsync -a . .repo --exclude .git --exclude node_modules && rm -rf dist && mv .repo dist",
+          },
+          Object {
+            "condition": "node -e \\"if (process.env.CI) process.exit(1)\\"",
+            "spawn": "package-all",
           },
         ],
       },
@@ -13307,7 +13337,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         ],
       ],
       "testMatch": Array [
-        "<rootDir>/@(src|test)/**/?(*.)+(spec|test).ts?(x)",
+        "<rootDir>/@(src|test)/**/*(*.)@(spec|test).ts?(x)",
         "<rootDir>/@(src|test)/**/__tests__/**/*.ts?(x)",
       ],
       "testPathIgnorePatterns": Array [
@@ -14790,7 +14820,12 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "package",
         "steps": Array [
           Object {
-            "exec": "if [ ! -z \${CI} ]; then rsync -a . .repo --exclude .git --exclude node_modules && rm -rf dist && mv .repo dist; else npx projen package-all; fi",
+            "condition": "node -e \\"if (!process.env.CI) process.exit(1)\\"",
+            "exec": "rsync -a . .repo --exclude .git --exclude node_modules && rm -rf dist && mv .repo dist",
+          },
+          Object {
+            "condition": "node -e \\"if (process.env.CI) process.exit(1)\\"",
+            "spawn": "package-all",
           },
         ],
       },
@@ -15279,7 +15314,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         ],
       ],
       "testMatch": Array [
-        "<rootDir>/@(src|test)/**/?(*.)+(spec|test).ts?(x)",
+        "<rootDir>/@(src|test)/**/*(*.)@(spec|test).ts?(x)",
         "<rootDir>/@(src|test)/**/__tests__/**/*.ts?(x)",
       ],
       "testPathIgnorePatterns": Array [
@@ -16866,7 +16901,12 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "package",
         "steps": Array [
           Object {
-            "exec": "if [ ! -z \${CI} ]; then rsync -a . .repo --exclude .git --exclude node_modules && rm -rf dist && mv .repo dist; else npx projen package-all; fi",
+            "condition": "node -e \\"if (!process.env.CI) process.exit(1)\\"",
+            "exec": "rsync -a . .repo --exclude .git --exclude node_modules && rm -rf dist && mv .repo dist",
+          },
+          Object {
+            "condition": "node -e \\"if (process.env.CI) process.exit(1)\\"",
+            "spawn": "package-all",
           },
         ],
       },
@@ -17405,7 +17445,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         ],
       ],
       "testMatch": Array [
-        "<rootDir>/@(src|test)/**/?(*.)+(spec|test).ts?(x)",
+        "<rootDir>/@(src|test)/**/*(*.)@(spec|test).ts?(x)",
         "<rootDir>/@(src|test)/**/__tests__/**/*.ts?(x)",
       ],
       "testPathIgnorePatterns": Array [
@@ -19235,7 +19275,7 @@ tsconfig.tsbuildinfo
           "BUMPFILE": "dist/version.txt",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
+          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep \\"^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+\\" --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -19361,7 +19401,12 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "package",
         "steps": Array [
           Object {
-            "exec": "if [ ! -z \${CI} ]; then rsync -a . .repo --exclude .git --exclude node_modules && rm -rf dist && mv .repo dist; else npx projen package-all; fi",
+            "condition": "node -e \\"if (!process.env.CI) process.exit(1)\\"",
+            "exec": "rsync -a . .repo --exclude .git --exclude node_modules && rm -rf dist && mv .repo dist",
+          },
+          Object {
+            "condition": "node -e \\"if (process.env.CI) process.exit(1)\\"",
+            "spawn": "package-all",
           },
         ],
       },
@@ -19500,7 +19545,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
           "BUMPFILE": "dist/version.txt",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
+          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep \\"^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+\\" --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -19954,7 +19999,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         ],
       ],
       "testMatch": Array [
-        "<rootDir>/@(src|test)/**/?(*.)+(spec|test).ts?(x)",
+        "<rootDir>/@(src|test)/**/*(*.)@(spec|test).ts?(x)",
         "<rootDir>/@(src|test)/**/__tests__/**/*.ts?(x)",
       ],
       "testPathIgnorePatterns": Array [
@@ -21791,7 +21836,7 @@ tsconfig.tsbuildinfo
           "BUMPFILE": "dist/version.txt",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
+          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep \\"^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+\\" --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -21917,7 +21962,12 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "package",
         "steps": Array [
           Object {
-            "exec": "if [ ! -z \${CI} ]; then rsync -a . .repo --exclude .git --exclude node_modules && rm -rf dist && mv .repo dist; else npx projen package-all; fi",
+            "condition": "node -e \\"if (!process.env.CI) process.exit(1)\\"",
+            "exec": "rsync -a . .repo --exclude .git --exclude node_modules && rm -rf dist && mv .repo dist",
+          },
+          Object {
+            "condition": "node -e \\"if (process.env.CI) process.exit(1)\\"",
+            "spawn": "package-all",
           },
         ],
       },
@@ -22056,7 +22106,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
           "BUMPFILE": "dist/version.txt",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
+          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep \\"^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+\\" --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -22510,7 +22560,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         ],
       ],
       "testMatch": Array [
-        "<rootDir>/@(src|test)/**/?(*.)+(spec|test).ts?(x)",
+        "<rootDir>/@(src|test)/**/*(*.)@(spec|test).ts?(x)",
         "<rootDir>/@(src|test)/**/__tests__/**/*.ts?(x)",
       ],
       "testPathIgnorePatterns": Array [
@@ -24345,7 +24395,7 @@ tsconfig.tsbuildinfo
           "BUMPFILE": "dist/version.txt",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
+          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep \\"^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+\\" --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -24471,7 +24521,12 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "package",
         "steps": Array [
           Object {
-            "exec": "if [ ! -z \${CI} ]; then rsync -a . .repo --exclude .git --exclude node_modules && rm -rf dist && mv .repo dist; else npx projen package-all; fi",
+            "condition": "node -e \\"if (!process.env.CI) process.exit(1)\\"",
+            "exec": "rsync -a . .repo --exclude .git --exclude node_modules && rm -rf dist && mv .repo dist",
+          },
+          Object {
+            "condition": "node -e \\"if (process.env.CI) process.exit(1)\\"",
+            "spawn": "package-all",
           },
         ],
       },
@@ -24610,7 +24665,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
           "BUMPFILE": "dist/version.txt",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
+          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep \\"^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+\\" --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -25064,7 +25119,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         ],
       ],
       "testMatch": Array [
-        "<rootDir>/@(src|test)/**/?(*.)+(spec|test).ts?(x)",
+        "<rootDir>/@(src|test)/**/*(*.)@(spec|test).ts?(x)",
         "<rootDir>/@(src|test)/**/__tests__/**/*.ts?(x)",
       ],
       "testPathIgnorePatterns": Array [
@@ -26898,7 +26953,7 @@ tsconfig.tsbuildinfo
           "BUMPFILE": "dist/version.txt",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
+          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep \\"^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+\\" --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -27024,7 +27079,12 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "package",
         "steps": Array [
           Object {
-            "exec": "if [ ! -z \${CI} ]; then rsync -a . .repo --exclude .git --exclude node_modules && rm -rf dist && mv .repo dist; else npx projen package-all; fi",
+            "condition": "node -e \\"if (!process.env.CI) process.exit(1)\\"",
+            "exec": "rsync -a . .repo --exclude .git --exclude node_modules && rm -rf dist && mv .repo dist",
+          },
+          Object {
+            "condition": "node -e \\"if (process.env.CI) process.exit(1)\\"",
+            "spawn": "package-all",
           },
         ],
       },
@@ -27163,7 +27223,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
           "BUMPFILE": "dist/version.txt",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
+          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep \\"^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+\\" --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -27617,7 +27677,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         ],
       ],
       "testMatch": Array [
-        "<rootDir>/@(src|test)/**/?(*.)+(spec|test).ts?(x)",
+        "<rootDir>/@(src|test)/**/*(*.)@(spec|test).ts?(x)",
         "<rootDir>/@(src|test)/**/__tests__/**/*.ts?(x)",
       ],
       "testPathIgnorePatterns": Array [
@@ -29454,7 +29514,7 @@ tsconfig.tsbuildinfo
           "BUMPFILE": "dist/version.txt",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
+          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep \\"^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+\\" --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -29580,7 +29640,12 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "package",
         "steps": Array [
           Object {
-            "exec": "if [ ! -z \${CI} ]; then rsync -a . .repo --exclude .git --exclude node_modules && rm -rf dist && mv .repo dist; else npx projen package-all; fi",
+            "condition": "node -e \\"if (!process.env.CI) process.exit(1)\\"",
+            "exec": "rsync -a . .repo --exclude .git --exclude node_modules && rm -rf dist && mv .repo dist",
+          },
+          Object {
+            "condition": "node -e \\"if (process.env.CI) process.exit(1)\\"",
+            "spawn": "package-all",
           },
         ],
       },
@@ -29719,7 +29784,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
           "BUMPFILE": "dist/version.txt",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
+          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep \\"^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+\\" --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -30173,7 +30238,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         ],
       ],
       "testMatch": Array [
-        "<rootDir>/@(src|test)/**/?(*.)+(spec|test).ts?(x)",
+        "<rootDir>/@(src|test)/**/*(*.)@(spec|test).ts?(x)",
         "<rootDir>/@(src|test)/**/__tests__/**/*.ts?(x)",
       ],
       "testPathIgnorePatterns": Array [
