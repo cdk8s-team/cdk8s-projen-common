@@ -122,6 +122,8 @@ export class Cdk8sTeamJsiiProject extends cdk.JsiiProject {
     this.deps.removeDependency('@types/node^16');
     this.deps.addDependency('@types/node@16.18.78', DependencyType.BUILD);
 
+    node.limitReleaseConcurrency(this);
+
   }
 }
 

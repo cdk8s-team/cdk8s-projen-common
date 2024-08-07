@@ -86,5 +86,7 @@ export class Cdk8sTeamTypeScriptProject extends typescript.TypeScriptProject {
     this.deps.removeDependency('@types/node');
     this.deps.addDependency('@types/node@16.18.78', DependencyType.BUILD);
 
+    node.limitReleaseConcurrency(this);
+
   }
 }
