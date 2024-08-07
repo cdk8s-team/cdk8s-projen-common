@@ -1,5 +1,5 @@
 import * as deepmerge from 'deepmerge';
-import { DependencyType, ReleasableCommits, javascript } from 'projen';
+import { DependencyType, JsonPatch, Project, ReleasableCommits, javascript } from 'projen';
 import { NodeProject, NodeProjectOptions, UpgradeDependencies, UpgradeDependenciesOptions, UpgradeDependenciesSchedule } from 'projen/lib/javascript';
 import { Backport } from '../components/backport/backport';
 import { CodeOfConductMD } from '../components/code-of-conduct/code-of-conduct';
@@ -185,6 +185,8 @@ export class Cdk8sTeamNodeProject extends javascript.NodeProject {
     if (options.backport ?? false) {
       new Backport(this, { branches: options.backportBranches, repoName });
     }
+
+    limitReleaseConcurrency(this);
   }
 }
 
@@ -301,4 +303,16 @@ export function addComponents(project: NodeProject, repoName: string, options: C
     });
   }
 
+}
+
+// see https://github.com/projen/projen/pull/3763
+export function limitReleaseConcurrency(project: Project) {
+
+  const regex = /^\.github\/workflows\/release/;
+  const releaseWorkflows = project.files.filter(f => regex.test(f.path));
+
+  for (const releaseWorkflow of releaseWorkflows) {
+    const objectFile = project.tryFindObjectFile(releaseWorkflow.path)!;
+    objectFile.patch(JsonPatch.add('/concurrency', { 'group': '${{ github.workflow }}', 'cancel-in-progress': false }));
+  }
 }
