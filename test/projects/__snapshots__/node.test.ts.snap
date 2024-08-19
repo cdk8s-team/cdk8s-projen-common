@@ -1000,7 +1000,7 @@ permissions-backup.acl
         ],
       },
       "bump": Object {
-        "condition": "! git log --oneline -1 | grep -q \\"chore(release):\\"",
+        "condition": "git log --oneline -1 | grep -qv \\"chore(release):\\"",
         "description": "Bumps version based on latest git tag and generates a changelog entry",
         "env": Object {
           "BUMPFILE": "dist/version.txt",
@@ -6627,7 +6627,7 @@ permissions-backup.acl
         ],
       },
       "bump": Object {
-        "condition": "! git log --oneline -1 | grep -q \\"chore(release):\\"",
+        "condition": "git log --oneline -1 | grep -qv \\"chore(release):\\"",
         "description": "Bumps version based on latest git tag and generates a changelog entry",
         "env": Object {
           "BUMPFILE": "dist/version.txt",
@@ -8154,7 +8154,7 @@ permissions-backup.acl
         ],
       },
       "bump": Object {
-        "condition": "! git log --oneline -1 | grep -q \\"chore(release):\\"",
+        "condition": "git log --oneline -1 | grep -qv \\"chore(release):\\"",
         "description": "Bumps version based on latest git tag and generates a changelog entry",
         "env": Object {
           "BUMPFILE": "dist/version.txt",
@@ -9681,7 +9681,7 @@ permissions-backup.acl
         ],
       },
       "bump": Object {
-        "condition": "! git log --oneline -1 | grep -q \\"chore(release):\\"",
+        "condition": "git log --oneline -1 | grep -qv \\"chore(release):\\"",
         "description": "Bumps version based on latest git tag and generates a changelog entry",
         "env": Object {
           "BUMPFILE": "dist/version.txt",
@@ -11205,7 +11205,7 @@ permissions-backup.acl
         ],
       },
       "bump": Object {
-        "condition": "! git log --oneline -1 | grep -q \\"chore(release):\\"",
+        "condition": "git log --oneline -1 | grep -qv \\"chore(release):\\"",
         "description": "Bumps version based on latest git tag and generates a changelog entry",
         "env": Object {
           "BUMPFILE": "dist/version.txt",
@@ -12732,7 +12732,7 @@ permissions-backup.acl
         ],
       },
       "bump": Object {
-        "condition": "! git log --oneline -1 | grep -q \\"chore(release):\\"",
+        "condition": "git log --oneline -1 | grep -qv \\"chore(release):\\"",
         "description": "Bumps version based on latest git tag and generates a changelog entry",
         "env": Object {
           "BUMPFILE": "dist/version.txt",
