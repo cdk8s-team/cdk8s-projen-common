@@ -1550,6 +1550,11 @@ tsconfig.tsbuildinfo
         "version": "^7",
       },
       Object {
+        "name": "commit-and-tag-version",
+        "type": "build",
+        "version": "^12",
+      },
+      Object {
         "name": "constructs",
         "type": "build",
         "version": "^10.0.0",
@@ -1602,11 +1607,6 @@ tsconfig.tsbuildinfo
       Object {
         "name": "projen",
         "type": "build",
-      },
-      Object {
-        "name": "standard-version",
-        "type": "build",
-        "version": "^9",
       },
       Object {
         "name": "ts-jest",
@@ -1704,6 +1704,7 @@ tsconfig.tsbuildinfo
         "description": "Bumps version based on latest git tag and generates a changelog entry",
         "env": Object {
           "BUMPFILE": "dist/version.txt",
+          "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
           "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep \\"^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+\\" --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
@@ -1974,6 +1975,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "description": "Restores version to 0.0.0",
         "env": Object {
           "BUMPFILE": "dist/version.txt",
+          "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
           "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep \\"^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+\\" --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
@@ -2049,7 +2051,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff standard-version ts-jest",
+            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser commit-and-tag-version constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff ts-jest",
           },
           Object {
             "exec": "npx projen",
@@ -2380,6 +2382,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "@types/node": "16.18.78",
       "@typescript-eslint/eslint-plugin": "^7",
       "@typescript-eslint/parser": "^7",
+      "commit-and-tag-version": "^12",
       "constructs": "^10.0.0",
       "eslint": "^8",
       "eslint-import-resolver-typescript": "*",
@@ -2392,7 +2395,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "jsii-pacmak": "*",
       "jsii-rosetta": "1.x",
       "projen": "*",
-      "standard-version": "^9",
       "ts-jest": "^27",
       "typescript": "*",
     },
@@ -4172,6 +4174,11 @@ tsconfig.tsbuildinfo
         "type": "build",
       },
       Object {
+        "name": "commit-and-tag-version",
+        "type": "build",
+        "version": "^12",
+      },
+      Object {
         "name": "constructs",
         "type": "build",
         "version": "^10.0.0",
@@ -4224,11 +4231,6 @@ tsconfig.tsbuildinfo
       Object {
         "name": "projen",
         "type": "build",
-      },
-      Object {
-        "name": "standard-version",
-        "type": "build",
-        "version": "^9",
       },
       Object {
         "name": "ts-jest",
@@ -4352,6 +4354,7 @@ tsconfig.tsbuildinfo
         "description": "Bumps version based on latest git tag and generates a changelog entry",
         "env": Object {
           "BUMPFILE": "dist/version.txt",
+          "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
           "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep \\"^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+\\" --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
@@ -4622,6 +4625,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "description": "Restores version to 0.0.0",
         "env": Object {
           "BUMPFILE": "dist/version.txt",
+          "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
           "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep \\"^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+\\" --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
@@ -4697,7 +4701,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser backport constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff standard-version ts-jest",
+            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser backport commit-and-tag-version constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff ts-jest",
           },
           Object {
             "exec": "npx projen",
@@ -5029,6 +5033,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "@typescript-eslint/eslint-plugin": "^7",
       "@typescript-eslint/parser": "^7",
       "backport": "*",
+      "commit-and-tag-version": "^12",
       "constructs": "^10.0.0",
       "eslint": "^8",
       "eslint-import-resolver-typescript": "*",
@@ -5041,7 +5046,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "jsii-pacmak": "*",
       "jsii-rosetta": "1.x",
       "projen": "*",
-      "standard-version": "^9",
       "ts-jest": "^27",
       "typescript": "*",
     },
@@ -19137,6 +19141,11 @@ tsconfig.tsbuildinfo
         "version": "^7",
       },
       Object {
+        "name": "commit-and-tag-version",
+        "type": "build",
+        "version": "^12",
+      },
+      Object {
         "name": "constructs",
         "type": "build",
         "version": "^10.0.0",
@@ -19189,11 +19198,6 @@ tsconfig.tsbuildinfo
       Object {
         "name": "projen",
         "type": "build",
-      },
-      Object {
-        "name": "standard-version",
-        "type": "build",
-        "version": "^9",
       },
       Object {
         "name": "ts-jest",
@@ -19291,6 +19295,7 @@ tsconfig.tsbuildinfo
         "description": "Bumps version based on latest git tag and generates a changelog entry",
         "env": Object {
           "BUMPFILE": "dist/version.txt",
+          "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
           "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep \\"^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+\\" --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
@@ -19561,6 +19566,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "description": "Restores version to 0.0.0",
         "env": Object {
           "BUMPFILE": "dist/version.txt",
+          "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
           "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep \\"^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+\\" --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
@@ -19636,7 +19642,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff standard-version ts-jest",
+            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser commit-and-tag-version constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff ts-jest",
           },
           Object {
             "exec": "npx projen",
@@ -19967,6 +19973,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "@types/node": "16.18.78",
       "@typescript-eslint/eslint-plugin": "^7",
       "@typescript-eslint/parser": "^7",
+      "commit-and-tag-version": "^12",
       "constructs": "^10.0.0",
       "eslint": "^8",
       "eslint-import-resolver-typescript": "*",
@@ -19979,7 +19986,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "jsii-pacmak": "*",
       "jsii-rosetta": "1.x",
       "projen": "*",
-      "standard-version": "^9",
       "ts-jest": "^27",
       "typescript": "*",
     },
@@ -21702,6 +21708,11 @@ tsconfig.tsbuildinfo
         "version": "^7",
       },
       Object {
+        "name": "commit-and-tag-version",
+        "type": "build",
+        "version": "^12",
+      },
+      Object {
         "name": "constructs",
         "type": "build",
         "version": "^10.0.0",
@@ -21754,11 +21765,6 @@ tsconfig.tsbuildinfo
       Object {
         "name": "projen",
         "type": "build",
-      },
-      Object {
-        "name": "standard-version",
-        "type": "build",
-        "version": "^9",
       },
       Object {
         "name": "ts-jest",
@@ -21856,6 +21862,7 @@ tsconfig.tsbuildinfo
         "description": "Bumps version based on latest git tag and generates a changelog entry",
         "env": Object {
           "BUMPFILE": "dist/version.txt",
+          "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
           "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep \\"^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+\\" --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
@@ -22126,6 +22133,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "description": "Restores version to 0.0.0",
         "env": Object {
           "BUMPFILE": "dist/version.txt",
+          "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
           "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep \\"^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+\\" --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
@@ -22201,7 +22209,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff standard-version ts-jest",
+            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser commit-and-tag-version constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff ts-jest",
           },
           Object {
             "exec": "npx projen",
@@ -22532,6 +22540,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "@types/node": "16.18.78",
       "@typescript-eslint/eslint-plugin": "^7",
       "@typescript-eslint/parser": "^7",
+      "commit-and-tag-version": "^12",
       "constructs": "^10.0.0",
       "eslint": "^8",
       "eslint-import-resolver-typescript": "*",
@@ -22544,7 +22553,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "jsii-pacmak": "*",
       "jsii-rosetta": "1.x",
       "projen": "*",
-      "standard-version": "^9",
       "ts-jest": "^27",
       "typescript": "*",
     },
@@ -24265,6 +24273,11 @@ tsconfig.tsbuildinfo
         "version": "^7",
       },
       Object {
+        "name": "commit-and-tag-version",
+        "type": "build",
+        "version": "^12",
+      },
+      Object {
         "name": "constructs",
         "type": "build",
         "version": "^10.0.0",
@@ -24317,11 +24330,6 @@ tsconfig.tsbuildinfo
       Object {
         "name": "projen",
         "type": "build",
-      },
-      Object {
-        "name": "standard-version",
-        "type": "build",
-        "version": "^9",
       },
       Object {
         "name": "ts-jest",
@@ -24419,6 +24427,7 @@ tsconfig.tsbuildinfo
         "description": "Bumps version based on latest git tag and generates a changelog entry",
         "env": Object {
           "BUMPFILE": "dist/version.txt",
+          "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
           "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep \\"^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+\\" --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
@@ -24689,6 +24698,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "description": "Restores version to 0.0.0",
         "env": Object {
           "BUMPFILE": "dist/version.txt",
+          "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
           "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep \\"^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+\\" --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
@@ -24764,7 +24774,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff standard-version ts-jest",
+            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser commit-and-tag-version constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff ts-jest",
           },
           Object {
             "exec": "npx projen",
@@ -25095,6 +25105,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "@types/node": "16.18.78",
       "@typescript-eslint/eslint-plugin": "^7",
       "@typescript-eslint/parser": "^7",
+      "commit-and-tag-version": "^12",
       "constructs": "^10.0.0",
       "eslint": "^8",
       "eslint-import-resolver-typescript": "*",
@@ -25107,7 +25118,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "jsii-pacmak": "*",
       "jsii-rosetta": "1.x",
       "projen": "*",
-      "standard-version": "^9",
       "ts-jest": "^27",
       "typescript": "*",
     },
@@ -26827,6 +26837,11 @@ tsconfig.tsbuildinfo
         "version": "^7",
       },
       Object {
+        "name": "commit-and-tag-version",
+        "type": "build",
+        "version": "^12",
+      },
+      Object {
         "name": "constructs",
         "type": "build",
         "version": "^10.0.0",
@@ -26879,11 +26894,6 @@ tsconfig.tsbuildinfo
       Object {
         "name": "projen",
         "type": "build",
-      },
-      Object {
-        "name": "standard-version",
-        "type": "build",
-        "version": "^9",
       },
       Object {
         "name": "ts-jest",
@@ -26981,6 +26991,7 @@ tsconfig.tsbuildinfo
         "description": "Bumps version based on latest git tag and generates a changelog entry",
         "env": Object {
           "BUMPFILE": "dist/version.txt",
+          "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
           "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep \\"^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+\\" --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
@@ -27251,6 +27262,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "description": "Restores version to 0.0.0",
         "env": Object {
           "BUMPFILE": "dist/version.txt",
+          "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
           "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep \\"^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+\\" --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
@@ -27326,7 +27338,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff standard-version ts-jest",
+            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser commit-and-tag-version constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff ts-jest",
           },
           Object {
             "exec": "npx projen",
@@ -27657,6 +27669,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "@types/node": "16.18.78",
       "@typescript-eslint/eslint-plugin": "^7",
       "@typescript-eslint/parser": "^7",
+      "commit-and-tag-version": "^12",
       "constructs": "^10.0.0",
       "eslint": "^8",
       "eslint-import-resolver-typescript": "*",
@@ -27669,7 +27682,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "jsii-pacmak": "*",
       "jsii-rosetta": "1.x",
       "projen": "*",
-      "standard-version": "^9",
       "ts-jest": "^27",
       "typescript": "*",
     },
@@ -29392,6 +29404,11 @@ tsconfig.tsbuildinfo
         "version": "^7",
       },
       Object {
+        "name": "commit-and-tag-version",
+        "type": "build",
+        "version": "^12",
+      },
+      Object {
         "name": "constructs",
         "type": "build",
         "version": "^10.0.0",
@@ -29444,11 +29461,6 @@ tsconfig.tsbuildinfo
       Object {
         "name": "projen",
         "type": "build",
-      },
-      Object {
-        "name": "standard-version",
-        "type": "build",
-        "version": "^9",
       },
       Object {
         "name": "ts-jest",
@@ -29546,6 +29558,7 @@ tsconfig.tsbuildinfo
         "description": "Bumps version based on latest git tag and generates a changelog entry",
         "env": Object {
           "BUMPFILE": "dist/version.txt",
+          "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
           "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep \\"^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+\\" --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
@@ -29816,6 +29829,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "description": "Restores version to 0.0.0",
         "env": Object {
           "BUMPFILE": "dist/version.txt",
+          "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
           "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep \\"^(feat|fix){1}(\\\\([^()[:space:]]+\\\\))?(!)?:[[:blank:]]+.+\\" --grep 'chore\\\\(deps\\\\): upgrade runtime dependencies' --grep 'chore\\\\(deps\\\\): upgrade compiler dependencies'",
@@ -29891,7 +29905,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff standard-version ts-jest",
+            "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser commit-and-tag-version constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff ts-jest",
           },
           Object {
             "exec": "npx projen",
@@ -30222,6 +30236,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "@types/node": "16.18.78",
       "@typescript-eslint/eslint-plugin": "^7",
       "@typescript-eslint/parser": "^7",
+      "commit-and-tag-version": "^12",
       "constructs": "^10.0.0",
       "eslint": "^8",
       "eslint-import-resolver-typescript": "*",
@@ -30234,7 +30249,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "jsii-pacmak": "*",
       "jsii-rosetta": "1.x",
       "projen": "*",
-      "standard-version": "^9",
       "ts-jest": "^27",
       "typescript": "*",
     },
