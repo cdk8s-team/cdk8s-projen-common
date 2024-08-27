@@ -1,7 +1,3 @@
-# @cdk8s/projen-common
-
-Common configuration for projen-managed projects in the cdk8s-team GitHub org.
-
 # API Reference <a name="API Reference" id="api-reference"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>
