@@ -1589,6 +1589,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jsii-docgen",
         "type": "build",
+        "version": "^10.5.0",
       },
       Object {
         "name": "jsii-pacmak",
@@ -2391,7 +2392,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "jest-junit": "^15",
       "jsii": "1.x",
       "jsii-diff": "*",
-      "jsii-docgen": "*",
+      "jsii-docgen": "^10.5.0",
       "jsii-pacmak": "*",
       "jsii-rosetta": "1.x",
       "projen": "*",
@@ -4213,6 +4214,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jsii-docgen",
         "type": "build",
+        "version": "^10.5.0",
       },
       Object {
         "name": "jsii-pacmak",
@@ -5042,7 +5044,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "jest-junit": "^15",
       "jsii": "1.x",
       "jsii-diff": "*",
-      "jsii-docgen": "*",
+      "jsii-docgen": "^10.5.0",
       "jsii-pacmak": "*",
       "jsii-rosetta": "1.x",
       "projen": "*",
@@ -6387,6 +6389,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jsii-docgen",
         "type": "build",
+        "version": "^10.5.0",
       },
       Object {
         "name": "jsii-pacmak",
@@ -7064,7 +7067,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "jest-junit": "^15",
       "jsii": "1.x",
       "jsii-diff": "*",
-      "jsii-docgen": "*",
+      "jsii-docgen": "^10.5.0",
       "jsii-pacmak": "*",
       "jsii-rosetta": "1.x",
       "projen": "*",
@@ -8472,6 +8475,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jsii-docgen",
         "type": "build",
+        "version": "^10.5.0",
       },
       Object {
         "name": "jsii-pacmak",
@@ -9199,7 +9203,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "jest-junit": "^15",
       "jsii": "1.x",
       "jsii-diff": "*",
-      "jsii-docgen": "*",
+      "jsii-docgen": "^10.5.0",
       "jsii-pacmak": "*",
       "jsii-rosetta": "1.x",
       "projen": "*",
@@ -10500,6 +10504,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jsii-docgen",
         "type": "build",
+        "version": "^10.5.0",
       },
       Object {
         "name": "jsii-pacmak",
@@ -11177,7 +11182,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "jest-junit": "^15",
       "jsii": "1.x",
       "jsii-diff": "*",
-      "jsii-docgen": "*",
+      "jsii-docgen": "^10.5.0",
       "jsii-pacmak": "*",
       "jsii-rosetta": "1.x",
       "projen": "*",
@@ -12585,6 +12590,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jsii-docgen",
         "type": "build",
+        "version": "^10.5.0",
       },
       Object {
         "name": "jsii-pacmak",
@@ -13312,7 +13318,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "jest-junit": "^15",
       "jsii": "1.x",
       "jsii-diff": "*",
-      "jsii-docgen": "*",
+      "jsii-docgen": "^10.5.0",
       "jsii-pacmak": "*",
       "jsii-rosetta": "1.x",
       "projen": "*",
@@ -14613,6 +14619,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jsii-docgen",
         "type": "build",
+        "version": "^10.5.0",
       },
       Object {
         "name": "jsii-pacmak",
@@ -15290,7 +15297,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "jest-junit": "^15",
       "jsii": "1.x",
       "jsii-diff": "*",
-      "jsii-docgen": "*",
+      "jsii-docgen": "^10.5.0",
       "jsii-pacmak": "*",
       "jsii-rosetta": "1.x",
       "projen": "*",
@@ -16695,6 +16702,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jsii-docgen",
         "type": "build",
+        "version": "^10.5.0",
       },
       Object {
         "name": "jsii-pacmak",
@@ -17422,7 +17430,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "jest-junit": "^15",
       "jsii": "1.x",
       "jsii-diff": "*",
-      "jsii-docgen": "*",
+      "jsii-docgen": "^10.5.0",
       "jsii-pacmak": "*",
       "jsii-rosetta": "1.x",
       "projen": "*",
@@ -19180,6 +19188,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jsii-docgen",
         "type": "build",
+        "version": "^10.5.0",
       },
       Object {
         "name": "jsii-pacmak",
@@ -19982,7 +19991,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "jest-junit": "^15",
       "jsii": "1.x",
       "jsii-diff": "*",
-      "jsii-docgen": "*",
+      "jsii-docgen": "^10.5.0",
       "jsii-pacmak": "*",
       "jsii-rosetta": "1.x",
       "projen": "*",
@@ -21747,6 +21756,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jsii-docgen",
         "type": "build",
+        "version": "^10.5.0",
       },
       Object {
         "name": "jsii-pacmak",
@@ -22549,7 +22559,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "jest-junit": "^15",
       "jsii": "1.x",
       "jsii-diff": "*",
-      "jsii-docgen": "*",
+      "jsii-docgen": "^10.5.0",
       "jsii-pacmak": "*",
       "jsii-rosetta": "1.x",
       "projen": "*",
@@ -24312,6 +24322,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jsii-docgen",
         "type": "build",
+        "version": "^10.5.0",
       },
       Object {
         "name": "jsii-pacmak",
@@ -25114,7 +25125,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "jest-junit": "^15",
       "jsii": "1.x",
       "jsii-diff": "*",
-      "jsii-docgen": "*",
+      "jsii-docgen": "^10.5.0",
       "jsii-pacmak": "*",
       "jsii-rosetta": "1.x",
       "projen": "*",
@@ -26876,6 +26887,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jsii-docgen",
         "type": "build",
+        "version": "^10.5.0",
       },
       Object {
         "name": "jsii-pacmak",
@@ -27678,7 +27690,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "jest-junit": "^15",
       "jsii": "1.x",
       "jsii-diff": "*",
-      "jsii-docgen": "*",
+      "jsii-docgen": "^10.5.0",
       "jsii-pacmak": "*",
       "jsii-rosetta": "1.x",
       "projen": "*",
@@ -29443,6 +29455,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jsii-docgen",
         "type": "build",
+        "version": "^10.5.0",
       },
       Object {
         "name": "jsii-pacmak",
@@ -30245,7 +30258,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "jest-junit": "^15",
       "jsii": "1.x",
       "jsii-diff": "*",
-      "jsii-docgen": "*",
+      "jsii-docgen": "^10.5.0",
       "jsii-pacmak": "*",
       "jsii-rosetta": "1.x",
       "projen": "*",
