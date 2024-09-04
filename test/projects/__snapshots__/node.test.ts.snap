@@ -258,20 +258,20 @@ jobs:
         id: self_mutation
         run: |-
           git add .
-          git diff --staged --patch --exit-code > .repo.patch || echo \\"self_mutation_happened=true\\" >> $GITHUB_OUTPUT
+          git diff --staged --patch --exit-code > repo.patch || echo \\"self_mutation_happened=true\\" >> $GITHUB_OUTPUT
         working-directory: ./
       - name: Upload patch
         if: steps.self_mutation.outputs.self_mutation_happened
         uses: actions/upload-artifact@v4.3.6
         with:
-          name: .repo.patch
-          path: .repo.patch
+          name: repo.patch
+          path: repo.patch
           overwrite: true
       - name: Fail build on mutation
         if: steps.self_mutation.outputs.self_mutation_happened
         run: |-
           echo \\"::error::Files were changed during build (see build log). If this was triggered from a fork, you will need to update your branch.\\"
-          cat .repo.patch
+          cat repo.patch
           exit 1
   self-mutation:
     needs: build
@@ -289,10 +289,10 @@ jobs:
       - name: Download patch
         uses: actions/download-artifact@v4
         with:
-          name: .repo.patch
+          name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
-        run: '[ -s \${{ runner.temp }}/.repo.patch ] && git apply \${{ runner.temp }}/.repo.patch || echo \\"Empty patch. Skipping.\\"'
+        run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo \\"Empty patch. Skipping.\\"'
       - name: Set git identity
         run: |-
           git config user.name \\"github-actions\\"
@@ -531,14 +531,14 @@ jobs:
         id: create_patch
         run: |-
           git add .
-          git diff --staged --patch --exit-code > .repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
+          git diff --staged --patch --exit-code > repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
         working-directory: ./
       - name: Upload patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v4.3.6
         with:
-          name: .repo.patch
-          path: .repo.patch
+          name: repo.patch
+          path: repo.patch
           overwrite: true
   pr:
     name: Create Pull Request
@@ -555,10 +555,10 @@ jobs:
       - name: Download patch
         uses: actions/download-artifact@v4
         with:
-          name: .repo.patch
+          name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
-        run: '[ -s \${{ runner.temp }}/.repo.patch ] && git apply \${{ runner.temp }}/.repo.patch || echo \\"Empty patch. Skipping.\\"'
+        run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo \\"Empty patch. Skipping.\\"'
       - name: Set git identity
         run: |-
           git config user.name \\"github-actions\\"
@@ -625,14 +625,14 @@ jobs:
         id: create_patch
         run: |-
           git add .
-          git diff --staged --patch --exit-code > .repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
+          git diff --staged --patch --exit-code > repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
         working-directory: ./
       - name: Upload patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v4.3.6
         with:
-          name: .repo.patch
-          path: .repo.patch
+          name: repo.patch
+          path: repo.patch
           overwrite: true
   pr:
     name: Create Pull Request
@@ -649,10 +649,10 @@ jobs:
       - name: Download patch
         uses: actions/download-artifact@v4
         with:
-          name: .repo.patch
+          name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
-        run: '[ -s \${{ runner.temp }}/.repo.patch ] && git apply \${{ runner.temp }}/.repo.patch || echo \\"Empty patch. Skipping.\\"'
+        run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo \\"Empty patch. Skipping.\\"'
       - name: Set git identity
         run: |-
           git config user.name \\"github-actions\\"
@@ -719,14 +719,14 @@ jobs:
         id: create_patch
         run: |-
           git add .
-          git diff --staged --patch --exit-code > .repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
+          git diff --staged --patch --exit-code > repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
         working-directory: ./
       - name: Upload patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v4.3.6
         with:
-          name: .repo.patch
-          path: .repo.patch
+          name: repo.patch
+          path: repo.patch
           overwrite: true
   pr:
     name: Create Pull Request
@@ -743,10 +743,10 @@ jobs:
       - name: Download patch
         uses: actions/download-artifact@v4
         with:
-          name: .repo.patch
+          name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
-        run: '[ -s \${{ runner.temp }}/.repo.patch ] && git apply \${{ runner.temp }}/.repo.patch || echo \\"Empty patch. Skipping.\\"'
+        run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo \\"Empty patch. Skipping.\\"'
       - name: Set git identity
         run: |-
           git config user.name \\"github-actions\\"
@@ -1860,20 +1860,20 @@ jobs:
         id: self_mutation
         run: |-
           git add .
-          git diff --staged --patch --exit-code > .repo.patch || echo \\"self_mutation_happened=true\\" >> $GITHUB_OUTPUT
+          git diff --staged --patch --exit-code > repo.patch || echo \\"self_mutation_happened=true\\" >> $GITHUB_OUTPUT
         working-directory: ./
       - name: Upload patch
         if: steps.self_mutation.outputs.self_mutation_happened
         uses: actions/upload-artifact@v4.3.6
         with:
-          name: .repo.patch
-          path: .repo.patch
+          name: repo.patch
+          path: repo.patch
           overwrite: true
       - name: Fail build on mutation
         if: steps.self_mutation.outputs.self_mutation_happened
         run: |-
           echo \\"::error::Files were changed during build (see build log). If this was triggered from a fork, you will need to update your branch.\\"
-          cat .repo.patch
+          cat repo.patch
           exit 1
   self-mutation:
     needs: build
@@ -1891,10 +1891,10 @@ jobs:
       - name: Download patch
         uses: actions/download-artifact@v4
         with:
-          name: .repo.patch
+          name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
-        run: '[ -s \${{ runner.temp }}/.repo.patch ] && git apply \${{ runner.temp }}/.repo.patch || echo \\"Empty patch. Skipping.\\"'
+        run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo \\"Empty patch. Skipping.\\"'
       - name: Set git identity
         run: |-
           git config user.name \\"github-actions\\"
@@ -2045,14 +2045,14 @@ jobs:
         id: create_patch
         run: |-
           git add .
-          git diff --staged --patch --exit-code > .repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
+          git diff --staged --patch --exit-code > repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
         working-directory: ./
       - name: Upload patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v4.3.6
         with:
-          name: .repo.patch
-          path: .repo.patch
+          name: repo.patch
+          path: repo.patch
           overwrite: true
   pr:
     name: Create Pull Request
@@ -2067,10 +2067,10 @@ jobs:
       - name: Download patch
         uses: actions/download-artifact@v4
         with:
-          name: .repo.patch
+          name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
-        run: '[ -s \${{ runner.temp }}/.repo.patch ] && git apply \${{ runner.temp }}/.repo.patch || echo \\"Empty patch. Skipping.\\"'
+        run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo \\"Empty patch. Skipping.\\"'
       - name: Set git identity
         run: |-
           git config user.name \\"github-actions\\"
@@ -2135,14 +2135,14 @@ jobs:
         id: create_patch
         run: |-
           git add .
-          git diff --staged --patch --exit-code > .repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
+          git diff --staged --patch --exit-code > repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
         working-directory: ./
       - name: Upload patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v4.3.6
         with:
-          name: .repo.patch
-          path: .repo.patch
+          name: repo.patch
+          path: repo.patch
           overwrite: true
   pr:
     name: Create Pull Request
@@ -2157,10 +2157,10 @@ jobs:
       - name: Download patch
         uses: actions/download-artifact@v4
         with:
-          name: .repo.patch
+          name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
-        run: '[ -s \${{ runner.temp }}/.repo.patch ] && git apply \${{ runner.temp }}/.repo.patch || echo \\"Empty patch. Skipping.\\"'
+        run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo \\"Empty patch. Skipping.\\"'
       - name: Set git identity
         run: |-
           git config user.name \\"github-actions\\"
@@ -2225,14 +2225,14 @@ jobs:
         id: create_patch
         run: |-
           git add .
-          git diff --staged --patch --exit-code > .repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
+          git diff --staged --patch --exit-code > repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
         working-directory: ./
       - name: Upload patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v4.3.6
         with:
-          name: .repo.patch
-          path: .repo.patch
+          name: repo.patch
+          path: repo.patch
           overwrite: true
   pr:
     name: Create Pull Request
@@ -2247,10 +2247,10 @@ jobs:
       - name: Download patch
         uses: actions/download-artifact@v4
         with:
-          name: .repo.patch
+          name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
-        run: '[ -s \${{ runner.temp }}/.repo.patch ] && git apply \${{ runner.temp }}/.repo.patch || echo \\"Empty patch. Skipping.\\"'
+        run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo \\"Empty patch. Skipping.\\"'
       - name: Set git identity
         run: |-
           git config user.name \\"github-actions\\"
@@ -3215,20 +3215,20 @@ jobs:
         id: self_mutation
         run: |-
           git add .
-          git diff --staged --patch --exit-code > .repo.patch || echo \\"self_mutation_happened=true\\" >> $GITHUB_OUTPUT
+          git diff --staged --patch --exit-code > repo.patch || echo \\"self_mutation_happened=true\\" >> $GITHUB_OUTPUT
         working-directory: ./
       - name: Upload patch
         if: steps.self_mutation.outputs.self_mutation_happened
         uses: actions/upload-artifact@v4.3.6
         with:
-          name: .repo.patch
-          path: .repo.patch
+          name: repo.patch
+          path: repo.patch
           overwrite: true
       - name: Fail build on mutation
         if: steps.self_mutation.outputs.self_mutation_happened
         run: |-
           echo \\"::error::Files were changed during build (see build log). If this was triggered from a fork, you will need to update your branch.\\"
-          cat .repo.patch
+          cat repo.patch
           exit 1
   self-mutation:
     needs: build
@@ -3246,10 +3246,10 @@ jobs:
       - name: Download patch
         uses: actions/download-artifact@v4
         with:
-          name: .repo.patch
+          name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
-        run: '[ -s \${{ runner.temp }}/.repo.patch ] && git apply \${{ runner.temp }}/.repo.patch || echo \\"Empty patch. Skipping.\\"'
+        run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo \\"Empty patch. Skipping.\\"'
       - name: Set git identity
         run: |-
           git config user.name \\"github-actions\\"
@@ -3400,14 +3400,14 @@ jobs:
         id: create_patch
         run: |-
           git add .
-          git diff --staged --patch --exit-code > .repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
+          git diff --staged --patch --exit-code > repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
         working-directory: ./
       - name: Upload patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v4.3.6
         with:
-          name: .repo.patch
-          path: .repo.patch
+          name: repo.patch
+          path: repo.patch
           overwrite: true
   pr:
     name: Create Pull Request
@@ -3422,10 +3422,10 @@ jobs:
       - name: Download patch
         uses: actions/download-artifact@v4
         with:
-          name: .repo.patch
+          name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
-        run: '[ -s \${{ runner.temp }}/.repo.patch ] && git apply \${{ runner.temp }}/.repo.patch || echo \\"Empty patch. Skipping.\\"'
+        run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo \\"Empty patch. Skipping.\\"'
       - name: Set git identity
         run: |-
           git config user.name \\"github-actions\\"
@@ -3490,14 +3490,14 @@ jobs:
         id: create_patch
         run: |-
           git add .
-          git diff --staged --patch --exit-code > .repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
+          git diff --staged --patch --exit-code > repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
         working-directory: ./
       - name: Upload patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v4.3.6
         with:
-          name: .repo.patch
-          path: .repo.patch
+          name: repo.patch
+          path: repo.patch
           overwrite: true
   pr:
     name: Create Pull Request
@@ -3512,10 +3512,10 @@ jobs:
       - name: Download patch
         uses: actions/download-artifact@v4
         with:
-          name: .repo.patch
+          name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
-        run: '[ -s \${{ runner.temp }}/.repo.patch ] && git apply \${{ runner.temp }}/.repo.patch || echo \\"Empty patch. Skipping.\\"'
+        run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo \\"Empty patch. Skipping.\\"'
       - name: Set git identity
         run: |-
           git config user.name \\"github-actions\\"
@@ -3580,14 +3580,14 @@ jobs:
         id: create_patch
         run: |-
           git add .
-          git diff --staged --patch --exit-code > .repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
+          git diff --staged --patch --exit-code > repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
         working-directory: ./
       - name: Upload patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v4.3.6
         with:
-          name: .repo.patch
-          path: .repo.patch
+          name: repo.patch
+          path: repo.patch
           overwrite: true
   pr:
     name: Create Pull Request
@@ -3602,10 +3602,10 @@ jobs:
       - name: Download patch
         uses: actions/download-artifact@v4
         with:
-          name: .repo.patch
+          name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
-        run: '[ -s \${{ runner.temp }}/.repo.patch ] && git apply \${{ runner.temp }}/.repo.patch || echo \\"Empty patch. Skipping.\\"'
+        run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo \\"Empty patch. Skipping.\\"'
       - name: Set git identity
         run: |-
           git config user.name \\"github-actions\\"
@@ -4570,20 +4570,20 @@ jobs:
         id: self_mutation
         run: |-
           git add .
-          git diff --staged --patch --exit-code > .repo.patch || echo \\"self_mutation_happened=true\\" >> $GITHUB_OUTPUT
+          git diff --staged --patch --exit-code > repo.patch || echo \\"self_mutation_happened=true\\" >> $GITHUB_OUTPUT
         working-directory: ./
       - name: Upload patch
         if: steps.self_mutation.outputs.self_mutation_happened
         uses: actions/upload-artifact@v4.3.6
         with:
-          name: .repo.patch
-          path: .repo.patch
+          name: repo.patch
+          path: repo.patch
           overwrite: true
       - name: Fail build on mutation
         if: steps.self_mutation.outputs.self_mutation_happened
         run: |-
           echo \\"::error::Files were changed during build (see build log). If this was triggered from a fork, you will need to update your branch.\\"
-          cat .repo.patch
+          cat repo.patch
           exit 1
   self-mutation:
     needs: build
@@ -4601,10 +4601,10 @@ jobs:
       - name: Download patch
         uses: actions/download-artifact@v4
         with:
-          name: .repo.patch
+          name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
-        run: '[ -s \${{ runner.temp }}/.repo.patch ] && git apply \${{ runner.temp }}/.repo.patch || echo \\"Empty patch. Skipping.\\"'
+        run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo \\"Empty patch. Skipping.\\"'
       - name: Set git identity
         run: |-
           git config user.name \\"github-actions\\"
@@ -4755,14 +4755,14 @@ jobs:
         id: create_patch
         run: |-
           git add .
-          git diff --staged --patch --exit-code > .repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
+          git diff --staged --patch --exit-code > repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
         working-directory: ./
       - name: Upload patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v4.3.6
         with:
-          name: .repo.patch
-          path: .repo.patch
+          name: repo.patch
+          path: repo.patch
           overwrite: true
   pr:
     name: Create Pull Request
@@ -4777,10 +4777,10 @@ jobs:
       - name: Download patch
         uses: actions/download-artifact@v4
         with:
-          name: .repo.patch
+          name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
-        run: '[ -s \${{ runner.temp }}/.repo.patch ] && git apply \${{ runner.temp }}/.repo.patch || echo \\"Empty patch. Skipping.\\"'
+        run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo \\"Empty patch. Skipping.\\"'
       - name: Set git identity
         run: |-
           git config user.name \\"github-actions\\"
@@ -4845,14 +4845,14 @@ jobs:
         id: create_patch
         run: |-
           git add .
-          git diff --staged --patch --exit-code > .repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
+          git diff --staged --patch --exit-code > repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
         working-directory: ./
       - name: Upload patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v4.3.6
         with:
-          name: .repo.patch
-          path: .repo.patch
+          name: repo.patch
+          path: repo.patch
           overwrite: true
   pr:
     name: Create Pull Request
@@ -4867,10 +4867,10 @@ jobs:
       - name: Download patch
         uses: actions/download-artifact@v4
         with:
-          name: .repo.patch
+          name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
-        run: '[ -s \${{ runner.temp }}/.repo.patch ] && git apply \${{ runner.temp }}/.repo.patch || echo \\"Empty patch. Skipping.\\"'
+        run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo \\"Empty patch. Skipping.\\"'
       - name: Set git identity
         run: |-
           git config user.name \\"github-actions\\"
@@ -4935,14 +4935,14 @@ jobs:
         id: create_patch
         run: |-
           git add .
-          git diff --staged --patch --exit-code > .repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
+          git diff --staged --patch --exit-code > repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
         working-directory: ./
       - name: Upload patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v4.3.6
         with:
-          name: .repo.patch
-          path: .repo.patch
+          name: repo.patch
+          path: repo.patch
           overwrite: true
   pr:
     name: Create Pull Request
@@ -4957,10 +4957,10 @@ jobs:
       - name: Download patch
         uses: actions/download-artifact@v4
         with:
-          name: .repo.patch
+          name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
-        run: '[ -s \${{ runner.temp }}/.repo.patch ] && git apply \${{ runner.temp }}/.repo.patch || echo \\"Empty patch. Skipping.\\"'
+        run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo \\"Empty patch. Skipping.\\"'
       - name: Set git identity
         run: |-
           git config user.name \\"github-actions\\"
@@ -5923,20 +5923,20 @@ jobs:
         id: self_mutation
         run: |-
           git add .
-          git diff --staged --patch --exit-code > .repo.patch || echo \\"self_mutation_happened=true\\" >> $GITHUB_OUTPUT
+          git diff --staged --patch --exit-code > repo.patch || echo \\"self_mutation_happened=true\\" >> $GITHUB_OUTPUT
         working-directory: ./
       - name: Upload patch
         if: steps.self_mutation.outputs.self_mutation_happened
         uses: actions/upload-artifact@v4.3.6
         with:
-          name: .repo.patch
-          path: .repo.patch
+          name: repo.patch
+          path: repo.patch
           overwrite: true
       - name: Fail build on mutation
         if: steps.self_mutation.outputs.self_mutation_happened
         run: |-
           echo \\"::error::Files were changed during build (see build log). If this was triggered from a fork, you will need to update your branch.\\"
-          cat .repo.patch
+          cat repo.patch
           exit 1
   self-mutation:
     needs: build
@@ -5954,10 +5954,10 @@ jobs:
       - name: Download patch
         uses: actions/download-artifact@v4
         with:
-          name: .repo.patch
+          name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
-        run: '[ -s \${{ runner.temp }}/.repo.patch ] && git apply \${{ runner.temp }}/.repo.patch || echo \\"Empty patch. Skipping.\\"'
+        run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo \\"Empty patch. Skipping.\\"'
       - name: Set git identity
         run: |-
           git config user.name \\"github-actions\\"
@@ -6196,14 +6196,14 @@ jobs:
         id: create_patch
         run: |-
           git add .
-          git diff --staged --patch --exit-code > .repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
+          git diff --staged --patch --exit-code > repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
         working-directory: ./
       - name: Upload patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v4.3.6
         with:
-          name: .repo.patch
-          path: .repo.patch
+          name: repo.patch
+          path: repo.patch
           overwrite: true
   pr:
     name: Create Pull Request
@@ -6220,10 +6220,10 @@ jobs:
       - name: Download patch
         uses: actions/download-artifact@v4
         with:
-          name: .repo.patch
+          name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
-        run: '[ -s \${{ runner.temp }}/.repo.patch ] && git apply \${{ runner.temp }}/.repo.patch || echo \\"Empty patch. Skipping.\\"'
+        run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo \\"Empty patch. Skipping.\\"'
       - name: Set git identity
         run: |-
           git config user.name \\"github-actions\\"
@@ -6290,14 +6290,14 @@ jobs:
         id: create_patch
         run: |-
           git add .
-          git diff --staged --patch --exit-code > .repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
+          git diff --staged --patch --exit-code > repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
         working-directory: ./
       - name: Upload patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v4.3.6
         with:
-          name: .repo.patch
-          path: .repo.patch
+          name: repo.patch
+          path: repo.patch
           overwrite: true
   pr:
     name: Create Pull Request
@@ -6314,10 +6314,10 @@ jobs:
       - name: Download patch
         uses: actions/download-artifact@v4
         with:
-          name: .repo.patch
+          name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
-        run: '[ -s \${{ runner.temp }}/.repo.patch ] && git apply \${{ runner.temp }}/.repo.patch || echo \\"Empty patch. Skipping.\\"'
+        run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo \\"Empty patch. Skipping.\\"'
       - name: Set git identity
         run: |-
           git config user.name \\"github-actions\\"
@@ -6384,14 +6384,14 @@ jobs:
         id: create_patch
         run: |-
           git add .
-          git diff --staged --patch --exit-code > .repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
+          git diff --staged --patch --exit-code > repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
         working-directory: ./
       - name: Upload patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v4.3.6
         with:
-          name: .repo.patch
-          path: .repo.patch
+          name: repo.patch
+          path: repo.patch
           overwrite: true
   pr:
     name: Create Pull Request
@@ -6408,10 +6408,10 @@ jobs:
       - name: Download patch
         uses: actions/download-artifact@v4
         with:
-          name: .repo.patch
+          name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
-        run: '[ -s \${{ runner.temp }}/.repo.patch ] && git apply \${{ runner.temp }}/.repo.patch || echo \\"Empty patch. Skipping.\\"'
+        run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo \\"Empty patch. Skipping.\\"'
       - name: Set git identity
         run: |-
           git config user.name \\"github-actions\\"
@@ -7453,20 +7453,20 @@ jobs:
         id: self_mutation
         run: |-
           git add .
-          git diff --staged --patch --exit-code > .repo.patch || echo \\"self_mutation_happened=true\\" >> $GITHUB_OUTPUT
+          git diff --staged --patch --exit-code > repo.patch || echo \\"self_mutation_happened=true\\" >> $GITHUB_OUTPUT
         working-directory: ./
       - name: Upload patch
         if: steps.self_mutation.outputs.self_mutation_happened
         uses: actions/upload-artifact@v4.3.6
         with:
-          name: .repo.patch
-          path: .repo.patch
+          name: repo.patch
+          path: repo.patch
           overwrite: true
       - name: Fail build on mutation
         if: steps.self_mutation.outputs.self_mutation_happened
         run: |-
           echo \\"::error::Files were changed during build (see build log). If this was triggered from a fork, you will need to update your branch.\\"
-          cat .repo.patch
+          cat repo.patch
           exit 1
   self-mutation:
     needs: build
@@ -7484,10 +7484,10 @@ jobs:
       - name: Download patch
         uses: actions/download-artifact@v4
         with:
-          name: .repo.patch
+          name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
-        run: '[ -s \${{ runner.temp }}/.repo.patch ] && git apply \${{ runner.temp }}/.repo.patch || echo \\"Empty patch. Skipping.\\"'
+        run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo \\"Empty patch. Skipping.\\"'
       - name: Set git identity
         run: |-
           git config user.name \\"github-actions\\"
@@ -7726,14 +7726,14 @@ jobs:
         id: create_patch
         run: |-
           git add .
-          git diff --staged --patch --exit-code > .repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
+          git diff --staged --patch --exit-code > repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
         working-directory: ./
       - name: Upload patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v4.3.6
         with:
-          name: .repo.patch
-          path: .repo.patch
+          name: repo.patch
+          path: repo.patch
           overwrite: true
   pr:
     name: Create Pull Request
@@ -7750,10 +7750,10 @@ jobs:
       - name: Download patch
         uses: actions/download-artifact@v4
         with:
-          name: .repo.patch
+          name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
-        run: '[ -s \${{ runner.temp }}/.repo.patch ] && git apply \${{ runner.temp }}/.repo.patch || echo \\"Empty patch. Skipping.\\"'
+        run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo \\"Empty patch. Skipping.\\"'
       - name: Set git identity
         run: |-
           git config user.name \\"github-actions\\"
@@ -7820,14 +7820,14 @@ jobs:
         id: create_patch
         run: |-
           git add .
-          git diff --staged --patch --exit-code > .repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
+          git diff --staged --patch --exit-code > repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
         working-directory: ./
       - name: Upload patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v4.3.6
         with:
-          name: .repo.patch
-          path: .repo.patch
+          name: repo.patch
+          path: repo.patch
           overwrite: true
   pr:
     name: Create Pull Request
@@ -7844,10 +7844,10 @@ jobs:
       - name: Download patch
         uses: actions/download-artifact@v4
         with:
-          name: .repo.patch
+          name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
-        run: '[ -s \${{ runner.temp }}/.repo.patch ] && git apply \${{ runner.temp }}/.repo.patch || echo \\"Empty patch. Skipping.\\"'
+        run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo \\"Empty patch. Skipping.\\"'
       - name: Set git identity
         run: |-
           git config user.name \\"github-actions\\"
@@ -7914,14 +7914,14 @@ jobs:
         id: create_patch
         run: |-
           git add .
-          git diff --staged --patch --exit-code > .repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
+          git diff --staged --patch --exit-code > repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
         working-directory: ./
       - name: Upload patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v4.3.6
         with:
-          name: .repo.patch
-          path: .repo.patch
+          name: repo.patch
+          path: repo.patch
           overwrite: true
   pr:
     name: Create Pull Request
@@ -7938,10 +7938,10 @@ jobs:
       - name: Download patch
         uses: actions/download-artifact@v4
         with:
-          name: .repo.patch
+          name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
-        run: '[ -s \${{ runner.temp }}/.repo.patch ] && git apply \${{ runner.temp }}/.repo.patch || echo \\"Empty patch. Skipping.\\"'
+        run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo \\"Empty patch. Skipping.\\"'
       - name: Set git identity
         run: |-
           git config user.name \\"github-actions\\"
@@ -8983,20 +8983,20 @@ jobs:
         id: self_mutation
         run: |-
           git add .
-          git diff --staged --patch --exit-code > .repo.patch || echo \\"self_mutation_happened=true\\" >> $GITHUB_OUTPUT
+          git diff --staged --patch --exit-code > repo.patch || echo \\"self_mutation_happened=true\\" >> $GITHUB_OUTPUT
         working-directory: ./
       - name: Upload patch
         if: steps.self_mutation.outputs.self_mutation_happened
         uses: actions/upload-artifact@v4.3.6
         with:
-          name: .repo.patch
-          path: .repo.patch
+          name: repo.patch
+          path: repo.patch
           overwrite: true
       - name: Fail build on mutation
         if: steps.self_mutation.outputs.self_mutation_happened
         run: |-
           echo \\"::error::Files were changed during build (see build log). If this was triggered from a fork, you will need to update your branch.\\"
-          cat .repo.patch
+          cat repo.patch
           exit 1
   self-mutation:
     needs: build
@@ -9014,10 +9014,10 @@ jobs:
       - name: Download patch
         uses: actions/download-artifact@v4
         with:
-          name: .repo.patch
+          name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
-        run: '[ -s \${{ runner.temp }}/.repo.patch ] && git apply \${{ runner.temp }}/.repo.patch || echo \\"Empty patch. Skipping.\\"'
+        run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo \\"Empty patch. Skipping.\\"'
       - name: Set git identity
         run: |-
           git config user.name \\"github-actions\\"
@@ -9256,14 +9256,14 @@ jobs:
         id: create_patch
         run: |-
           git add .
-          git diff --staged --patch --exit-code > .repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
+          git diff --staged --patch --exit-code > repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
         working-directory: ./
       - name: Upload patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v4.3.6
         with:
-          name: .repo.patch
-          path: .repo.patch
+          name: repo.patch
+          path: repo.patch
           overwrite: true
   pr:
     name: Create Pull Request
@@ -9280,10 +9280,10 @@ jobs:
       - name: Download patch
         uses: actions/download-artifact@v4
         with:
-          name: .repo.patch
+          name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
-        run: '[ -s \${{ runner.temp }}/.repo.patch ] && git apply \${{ runner.temp }}/.repo.patch || echo \\"Empty patch. Skipping.\\"'
+        run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo \\"Empty patch. Skipping.\\"'
       - name: Set git identity
         run: |-
           git config user.name \\"github-actions\\"
@@ -9350,14 +9350,14 @@ jobs:
         id: create_patch
         run: |-
           git add .
-          git diff --staged --patch --exit-code > .repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
+          git diff --staged --patch --exit-code > repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
         working-directory: ./
       - name: Upload patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v4.3.6
         with:
-          name: .repo.patch
-          path: .repo.patch
+          name: repo.patch
+          path: repo.patch
           overwrite: true
   pr:
     name: Create Pull Request
@@ -9374,10 +9374,10 @@ jobs:
       - name: Download patch
         uses: actions/download-artifact@v4
         with:
-          name: .repo.patch
+          name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
-        run: '[ -s \${{ runner.temp }}/.repo.patch ] && git apply \${{ runner.temp }}/.repo.patch || echo \\"Empty patch. Skipping.\\"'
+        run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo \\"Empty patch. Skipping.\\"'
       - name: Set git identity
         run: |-
           git config user.name \\"github-actions\\"
@@ -9444,14 +9444,14 @@ jobs:
         id: create_patch
         run: |-
           git add .
-          git diff --staged --patch --exit-code > .repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
+          git diff --staged --patch --exit-code > repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
         working-directory: ./
       - name: Upload patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v4.3.6
         with:
-          name: .repo.patch
-          path: .repo.patch
+          name: repo.patch
+          path: repo.patch
           overwrite: true
   pr:
     name: Create Pull Request
@@ -9468,10 +9468,10 @@ jobs:
       - name: Download patch
         uses: actions/download-artifact@v4
         with:
-          name: .repo.patch
+          name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
-        run: '[ -s \${{ runner.temp }}/.repo.patch ] && git apply \${{ runner.temp }}/.repo.patch || echo \\"Empty patch. Skipping.\\"'
+        run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo \\"Empty patch. Skipping.\\"'
       - name: Set git identity
         run: |-
           git config user.name \\"github-actions\\"
@@ -10510,20 +10510,20 @@ jobs:
         id: self_mutation
         run: |-
           git add .
-          git diff --staged --patch --exit-code > .repo.patch || echo \\"self_mutation_happened=true\\" >> $GITHUB_OUTPUT
+          git diff --staged --patch --exit-code > repo.patch || echo \\"self_mutation_happened=true\\" >> $GITHUB_OUTPUT
         working-directory: ./
       - name: Upload patch
         if: steps.self_mutation.outputs.self_mutation_happened
         uses: actions/upload-artifact@v4.3.6
         with:
-          name: .repo.patch
-          path: .repo.patch
+          name: repo.patch
+          path: repo.patch
           overwrite: true
       - name: Fail build on mutation
         if: steps.self_mutation.outputs.self_mutation_happened
         run: |-
           echo \\"::error::Files were changed during build (see build log). If this was triggered from a fork, you will need to update your branch.\\"
-          cat .repo.patch
+          cat repo.patch
           exit 1
   self-mutation:
     needs: build
@@ -10541,10 +10541,10 @@ jobs:
       - name: Download patch
         uses: actions/download-artifact@v4
         with:
-          name: .repo.patch
+          name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
-        run: '[ -s \${{ runner.temp }}/.repo.patch ] && git apply \${{ runner.temp }}/.repo.patch || echo \\"Empty patch. Skipping.\\"'
+        run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo \\"Empty patch. Skipping.\\"'
       - name: Set git identity
         run: |-
           git config user.name \\"github-actions\\"
@@ -10783,14 +10783,14 @@ jobs:
         id: create_patch
         run: |-
           git add .
-          git diff --staged --patch --exit-code > .repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
+          git diff --staged --patch --exit-code > repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
         working-directory: ./
       - name: Upload patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v4.3.6
         with:
-          name: .repo.patch
-          path: .repo.patch
+          name: repo.patch
+          path: repo.patch
           overwrite: true
   pr:
     name: Create Pull Request
@@ -10807,10 +10807,10 @@ jobs:
       - name: Download patch
         uses: actions/download-artifact@v4
         with:
-          name: .repo.patch
+          name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
-        run: '[ -s \${{ runner.temp }}/.repo.patch ] && git apply \${{ runner.temp }}/.repo.patch || echo \\"Empty patch. Skipping.\\"'
+        run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo \\"Empty patch. Skipping.\\"'
       - name: Set git identity
         run: |-
           git config user.name \\"github-actions\\"
@@ -10877,14 +10877,14 @@ jobs:
         id: create_patch
         run: |-
           git add .
-          git diff --staged --patch --exit-code > .repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
+          git diff --staged --patch --exit-code > repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
         working-directory: ./
       - name: Upload patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v4.3.6
         with:
-          name: .repo.patch
-          path: .repo.patch
+          name: repo.patch
+          path: repo.patch
           overwrite: true
   pr:
     name: Create Pull Request
@@ -10901,10 +10901,10 @@ jobs:
       - name: Download patch
         uses: actions/download-artifact@v4
         with:
-          name: .repo.patch
+          name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
-        run: '[ -s \${{ runner.temp }}/.repo.patch ] && git apply \${{ runner.temp }}/.repo.patch || echo \\"Empty patch. Skipping.\\"'
+        run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo \\"Empty patch. Skipping.\\"'
       - name: Set git identity
         run: |-
           git config user.name \\"github-actions\\"
@@ -10971,14 +10971,14 @@ jobs:
         id: create_patch
         run: |-
           git add .
-          git diff --staged --patch --exit-code > .repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
+          git diff --staged --patch --exit-code > repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
         working-directory: ./
       - name: Upload patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v4.3.6
         with:
-          name: .repo.patch
-          path: .repo.patch
+          name: repo.patch
+          path: repo.patch
           overwrite: true
   pr:
     name: Create Pull Request
@@ -10995,10 +10995,10 @@ jobs:
       - name: Download patch
         uses: actions/download-artifact@v4
         with:
-          name: .repo.patch
+          name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
-        run: '[ -s \${{ runner.temp }}/.repo.patch ] && git apply \${{ runner.temp }}/.repo.patch || echo \\"Empty patch. Skipping.\\"'
+        run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo \\"Empty patch. Skipping.\\"'
       - name: Set git identity
         run: |-
           git config user.name \\"github-actions\\"
@@ -12040,20 +12040,20 @@ jobs:
         id: self_mutation
         run: |-
           git add .
-          git diff --staged --patch --exit-code > .repo.patch || echo \\"self_mutation_happened=true\\" >> $GITHUB_OUTPUT
+          git diff --staged --patch --exit-code > repo.patch || echo \\"self_mutation_happened=true\\" >> $GITHUB_OUTPUT
         working-directory: ./
       - name: Upload patch
         if: steps.self_mutation.outputs.self_mutation_happened
         uses: actions/upload-artifact@v4.3.6
         with:
-          name: .repo.patch
-          path: .repo.patch
+          name: repo.patch
+          path: repo.patch
           overwrite: true
       - name: Fail build on mutation
         if: steps.self_mutation.outputs.self_mutation_happened
         run: |-
           echo \\"::error::Files were changed during build (see build log). If this was triggered from a fork, you will need to update your branch.\\"
-          cat .repo.patch
+          cat repo.patch
           exit 1
   self-mutation:
     needs: build
@@ -12071,10 +12071,10 @@ jobs:
       - name: Download patch
         uses: actions/download-artifact@v4
         with:
-          name: .repo.patch
+          name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
-        run: '[ -s \${{ runner.temp }}/.repo.patch ] && git apply \${{ runner.temp }}/.repo.patch || echo \\"Empty patch. Skipping.\\"'
+        run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo \\"Empty patch. Skipping.\\"'
       - name: Set git identity
         run: |-
           git config user.name \\"github-actions\\"
@@ -12313,14 +12313,14 @@ jobs:
         id: create_patch
         run: |-
           git add .
-          git diff --staged --patch --exit-code > .repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
+          git diff --staged --patch --exit-code > repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
         working-directory: ./
       - name: Upload patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v4.3.6
         with:
-          name: .repo.patch
-          path: .repo.patch
+          name: repo.patch
+          path: repo.patch
           overwrite: true
   pr:
     name: Create Pull Request
@@ -12337,10 +12337,10 @@ jobs:
       - name: Download patch
         uses: actions/download-artifact@v4
         with:
-          name: .repo.patch
+          name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
-        run: '[ -s \${{ runner.temp }}/.repo.patch ] && git apply \${{ runner.temp }}/.repo.patch || echo \\"Empty patch. Skipping.\\"'
+        run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo \\"Empty patch. Skipping.\\"'
       - name: Set git identity
         run: |-
           git config user.name \\"github-actions\\"
@@ -12407,14 +12407,14 @@ jobs:
         id: create_patch
         run: |-
           git add .
-          git diff --staged --patch --exit-code > .repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
+          git diff --staged --patch --exit-code > repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
         working-directory: ./
       - name: Upload patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v4.3.6
         with:
-          name: .repo.patch
-          path: .repo.patch
+          name: repo.patch
+          path: repo.patch
           overwrite: true
   pr:
     name: Create Pull Request
@@ -12431,10 +12431,10 @@ jobs:
       - name: Download patch
         uses: actions/download-artifact@v4
         with:
-          name: .repo.patch
+          name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
-        run: '[ -s \${{ runner.temp }}/.repo.patch ] && git apply \${{ runner.temp }}/.repo.patch || echo \\"Empty patch. Skipping.\\"'
+        run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo \\"Empty patch. Skipping.\\"'
       - name: Set git identity
         run: |-
           git config user.name \\"github-actions\\"
@@ -12501,14 +12501,14 @@ jobs:
         id: create_patch
         run: |-
           git add .
-          git diff --staged --patch --exit-code > .repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
+          git diff --staged --patch --exit-code > repo.patch || echo \\"patch_created=true\\" >> $GITHUB_OUTPUT
         working-directory: ./
       - name: Upload patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v4.3.6
         with:
-          name: .repo.patch
-          path: .repo.patch
+          name: repo.patch
+          path: repo.patch
           overwrite: true
   pr:
     name: Create Pull Request
@@ -12525,10 +12525,10 @@ jobs:
       - name: Download patch
         uses: actions/download-artifact@v4
         with:
-          name: .repo.patch
+          name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
-        run: '[ -s \${{ runner.temp }}/.repo.patch ] && git apply \${{ runner.temp }}/.repo.patch || echo \\"Empty patch. Skipping.\\"'
+        run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo \\"Empty patch. Skipping.\\"'
       - name: Set git identity
         run: |-
           git config user.name \\"github-actions\\"
