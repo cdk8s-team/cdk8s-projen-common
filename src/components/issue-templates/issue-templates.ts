@@ -50,7 +50,7 @@ export class IssueTemplates extends Component {
         {
           name: 'Open a cdk8s issue',
           url: 'https://github.com/cdk8s-team/cdk8s/issues/new/choose',
-          about: 'All cdk8s issues are tracked in the cdk8s repository. Follow the link to open an issue on an subject.',
+          about: 'All cdk8s issues are tracked in the cdk8s repository.',
         },
       );
     }
