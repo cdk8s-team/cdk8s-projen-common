@@ -59,23 +59,7 @@ export class IssueTemplates extends Component {
     new YamlFile(this.project, '.github/ISSUE_TEMPLATE/config.yml', {
       obj: {
         blank_issues_enabled: false,
-        contact_links: [
-          {
-            name: 'Slack Community Support @ cdk.dev',
-            url: 'https://cdk-dev.slack.com/archives/C0184GCBY4X',
-            about: 'Please ask and answer questions here.',
-          },
-          {
-            name: 'Slack Community Support @ cncf.io',
-            url: 'https://cloud-native.slack.com/archives/C02KCDACGTT',
-            about: 'Please ask and answer questions here.',
-          },
-          {
-            name: 'GitHub Community Support',
-            url: `https://github.com/cdk8s-team/${repoName}/discussions`,
-            about: 'Please ask and answer questions here.',
-          },
-        ],
+        contact_links: contactLinks,
       },
     });
 
