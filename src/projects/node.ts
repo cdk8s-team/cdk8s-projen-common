@@ -1,6 +1,6 @@
 import * as deepmerge from 'deepmerge';
 import { DependencyType, JsonPatch, Project, ReleasableCommits, javascript } from 'projen';
-import { NodeProject, NodeProjectOptions, UpgradeDependencies, UpgradeDependenciesOptions, UpgradeDependenciesSchedule } from 'projen/lib/javascript';
+import * as github from './github';
 import { Backport } from '../components/backport/backport';
 import { CodeOfConductMD } from '../components/code-of-conduct/code-of-conduct';
 import { DCO } from '../components/dco/devco';
@@ -87,7 +87,7 @@ export function buildNodeProjectFixedOptions(options: Cdk8sTeamNodeProjectOption
  */
 export function buildNodeProjectDefaultOptions(options: Cdk8sTeamNodeProjectOptions): Pick<javascript.NodeProjectOptions, defaultOptionsKeysType> {
 
-  const depsUpgradeOptions: UpgradeDependenciesOptions = {
+  const depsUpgradeOptions: javascript.UpgradeDependenciesOptions = {
     taskName: 'upgrade-runtime-dependencies',
     pullRequestTitle: 'upgrade runtime dependencies',
     // only include plain dependency because we will created a non release triggering PR for the rest
@@ -97,7 +97,7 @@ export function buildNodeProjectDefaultOptions(options: Cdk8sTeamNodeProjectOpti
     // them without also upgrading devDependencies.
     types: [DependencyType.RUNTIME, DependencyType.OPTIONAL, DependencyType.BUNDLED],
     workflowOptions: {
-      schedule: UpgradeDependenciesSchedule.expressions([UPGRADE_RUNTIME_DEPENDENCIES_SCHEDULE]),
+      schedule: javascript.UpgradeDependenciesSchedule.expressions([UPGRADE_RUNTIME_DEPENDENCIES_SCHEDULE]),
     },
   };
 
@@ -167,11 +167,13 @@ export class Cdk8sTeamNodeProject extends javascript.NodeProject {
 
     const fixedOptions = buildNodeProjectFixedOptions(options);
     const defaultOptions = buildNodeProjectDefaultOptions(options);
+    const defaultGitHubOptions = github.buildGitHubDefaultOptions(options);
 
-    const finalOptions: NodeProjectOptions = deepmerge.all([{
+    const finalOptions: javascript.NodeProjectOptions = deepmerge.all([{
       ...fixedOptions,
       ...defaultOptions,
-    }, options]) as NodeProjectOptions;
+      githubOptions: defaultGitHubOptions,
+    }, options]) as javascript.NodeProjectOptions;
 
     super(finalOptions);
 
@@ -250,7 +252,7 @@ export interface CommonComponentsOptions {
 /**
  * Add common components to the project.
  */
-export function addComponents(project: NodeProject, repoName: string, options: CommonComponentsOptions) {
+export function addComponents(project: javascript.NodeProject, repoName: string, options: CommonComponentsOptions) {
 
   new CodeOfConductMD(project);
   new DCO(project);
@@ -265,7 +267,7 @@ export function addComponents(project: NodeProject, repoName: string, options: C
     configDeps.push('@cdk8s/projen-common');
   }
 
-  new UpgradeDependencies(project, {
+  new javascript.UpgradeDependencies(project, {
     include: configDeps,
     taskName: 'upgrade-configuration',
     pullRequestTitle: 'upgrade configuration',
@@ -273,31 +275,31 @@ export function addComponents(project: NodeProject, repoName: string, options: C
     workflowOptions: {
       branches: options.branches,
       labels: ['auto-approve'],
-      schedule: UpgradeDependenciesSchedule.expressions([UPGRADE_CONFIGURATION_SCHEDULE]),
+      schedule: javascript.UpgradeDependenciesSchedule.expressions([UPGRADE_CONFIGURATION_SCHEDULE]),
     },
   });
 
-  new UpgradeDependencies(project, {
+  new javascript.UpgradeDependencies(project, {
     exclude: [...configDeps, ...(options.compilerDeps ?? [])],
     taskName: 'upgrade-dev-dependencies',
     pullRequestTitle: 'upgrade dev dependencies',
     workflowOptions: {
       branches: options.branches,
       labels: ['auto-approve'],
-      schedule: UpgradeDependenciesSchedule.expressions([UPGRADE_DEV_DEPENDENCIES_SCHEDULE]),
+      schedule: javascript.UpgradeDependenciesSchedule.expressions([UPGRADE_DEV_DEPENDENCIES_SCHEDULE]),
     },
     types: [DependencyType.BUILD, DependencyType.BUNDLED, DependencyType.DEVENV, DependencyType.TEST],
   });
 
   if (options.compilerDeps && options.compilerDeps.length > 0) {
-    new UpgradeDependencies(project, {
+    new javascript.UpgradeDependencies(project, {
       include: options.compilerDeps,
       taskName: 'upgrade-compiler-dependencies',
       pullRequestTitle: 'upgrade compiler dependencies',
       workflowOptions: {
         branches: options.branches,
         labels: ['auto-approve'],
-        schedule: UpgradeDependenciesSchedule.expressions([UPGRADE_COMPILER_DEPENDENCIES_SCHEDULE]),
+        schedule: javascript.UpgradeDependenciesSchedule.expressions([UPGRADE_COMPILER_DEPENDENCIES_SCHEDULE]),
       },
       types: [DependencyType.BUILD],
     });

@@ -1,5 +1,6 @@
 import * as deepmerge from 'deepmerge';
 import { DependencyType, typescript } from 'projen';
+import * as github from './github';
 import * as node from './node';
 import { TriageOptions } from '../components';
 import { Backport } from '../components/backport/backport';
@@ -58,10 +59,12 @@ export class Cdk8sTeamTypeScriptProject extends typescript.TypeScriptProject {
 
     const fixedNodeOptions = node.buildNodeProjectFixedOptions(options);
     const defaultNodeOptions = node.buildNodeProjectDefaultOptions(options);
+    const defaultGitHubOptions = github.buildGitHubDefaultOptions(options);
 
     const finalOptions = deepmerge.all([{
       ...fixedNodeOptions,
       ...defaultNodeOptions,
+      githubOptions: defaultGitHubOptions,
     }, options]) as typescript.TypeScriptProjectOptions;
 
     super(finalOptions);
@@ -87,6 +90,5 @@ export class Cdk8sTeamTypeScriptProject extends typescript.TypeScriptProject {
     this.deps.addDependency('@types/node@16.18.78', DependencyType.BUILD);
 
     node.limitReleaseConcurrency(this);
-
   }
 }
