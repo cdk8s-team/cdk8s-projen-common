@@ -1,6 +1,7 @@
 import * as maker from 'codemaker';
 import * as deepmerge from 'deepmerge';
 import { DependencyType, cdk } from 'projen';
+import * as github from './github';
 import * as node from './node';
 import * as ts from './typescript';
 import { Backport } from '../components/backport/backport';
@@ -73,6 +74,7 @@ export class Cdk8sTeamJsiiProject extends cdk.JsiiProject {
 
     const fixedNodeOptions = node.buildNodeProjectFixedOptions(options);
     const defaultNodeOptions = node.buildNodeProjectDefaultOptions(options);
+    const defaultGitHubOptions = github.buildGitHubDefaultOptions(options);
     const repoName = options.repoName ?? node.buildRepositoryName(options.name);
 
     const golangBranch = options.golangBranch ?? 'main';
@@ -91,6 +93,7 @@ export class Cdk8sTeamJsiiProject extends cdk.JsiiProject {
       publishToGo: golang ? golangTarget(repoName, golangBranch) : undefined,
       ...fixedNodeOptions,
       ...defaultNodeOptions,
+      githubOptions: defaultGitHubOptions,
     }, options]) as cdk.JsiiProjectOptions;
 
     super(finalOptions);
