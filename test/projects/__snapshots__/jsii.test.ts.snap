@@ -1498,7 +1498,6 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@types/jest",
         "type": "build",
-        "version": "^27",
       },
       Object {
         "name": "@types/node",
@@ -1539,14 +1538,13 @@ tsconfig.tsbuildinfo
         "version": "^9",
       },
       Object {
+        "name": "jest",
+        "type": "build",
+      },
+      Object {
         "name": "jest-junit",
         "type": "build",
         "version": "^15",
-      },
-      Object {
-        "name": "jest",
-        "type": "build",
-        "version": "^27",
       },
       Object {
         "name": "jsii-diff",
@@ -1564,12 +1562,12 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jsii-rosetta",
         "type": "build",
-        "version": "1.x",
+        "version": "~5.6.0",
       },
       Object {
         "name": "jsii",
         "type": "build",
-        "version": "1.x",
+        "version": "~5.6.0",
       },
       Object {
         "name": "projen",
@@ -1578,21 +1576,10 @@ tsconfig.tsbuildinfo
       Object {
         "name": "ts-jest",
         "type": "build",
-        "version": "^27",
       },
       Object {
         "name": "typescript",
         "type": "build",
-      },
-      Object {
-        "name": "@types/babel__traverse",
-        "type": "override",
-        "version": "7.18.2",
-      },
-      Object {
-        "name": "@types/prettier",
-        "type": "override",
-        "version": "2.6.0",
       },
       Object {
         "name": "**/downlevel-dts/**/typescript",
@@ -2013,13 +2000,13 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=eslint-import-resolver-typescript,eslint-plugin-import,jsii-diff",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser commit-and-tag-version constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff ts-jest",
+            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser commit-and-tag-version constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit jsii-diff ts-jest",
           },
           Object {
             "exec": "npx projen",
@@ -2347,7 +2334,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     },
     "devDependencies": Object {
       "@stylistic/eslint-plugin": "^2",
-      "@types/jest": "^27",
+      "@types/jest": "*",
       "@types/node": "16.18.78",
       "@typescript-eslint/eslint-plugin": "^8",
       "@typescript-eslint/parser": "^8",
@@ -2356,15 +2343,15 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint": "^9",
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
-      "jest": "^27",
+      "jest": "*",
       "jest-junit": "^15",
-      "jsii": "1.x",
+      "jsii": "~5.6.0",
       "jsii-diff": "*",
       "jsii-docgen": "^10.5.0",
       "jsii-pacmak": "*",
-      "jsii-rosetta": "1.x",
+      "jsii-rosetta": "~5.6.0",
       "projen": "*",
-      "ts-jest": "^27",
+      "ts-jest": "*",
       "typescript": "*",
     },
     "engines": Object {
@@ -2385,12 +2372,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         "cobertura",
         "text",
       ],
-      "globals": Object {
-        "ts-jest": Object {
-          "tsconfig": "tsconfig.dev.json",
-        },
-      },
-      "preset": "ts-jest",
       "reporters": Array [
         "default",
         Array [
@@ -2407,6 +2388,14 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "testPathIgnorePatterns": Array [
         "/node_modules/",
       ],
+      "transform": Object {
+        "^.+\\\\.[t]sx?$": Array [
+          "ts-jest",
+          Object {
+            "tsconfig": "tsconfig.dev.json",
+          },
+        ],
+      },
       "watchPathIgnorePatterns": Array [
         "/node_modules/",
       ],
@@ -2450,8 +2439,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     },
     "resolutions": Object {
       "**/downlevel-dts/**/typescript": "~5.2.2",
-      "@types/babel__traverse": "7.18.2",
-      "@types/prettier": "2.6.0",
     },
     "scripts": Object {
       "build": "npx projen build",
@@ -4082,7 +4069,6 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@types/jest",
         "type": "build",
-        "version": "^27",
       },
       Object {
         "name": "@types/node",
@@ -4123,14 +4109,13 @@ tsconfig.tsbuildinfo
         "version": "^9",
       },
       Object {
+        "name": "jest",
+        "type": "build",
+      },
+      Object {
         "name": "jest-junit",
         "type": "build",
         "version": "^15",
-      },
-      Object {
-        "name": "jest",
-        "type": "build",
-        "version": "^27",
       },
       Object {
         "name": "jsii-diff",
@@ -4148,12 +4133,12 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jsii-rosetta",
         "type": "build",
-        "version": "1.x",
+        "version": "~5.6.0",
       },
       Object {
         "name": "jsii",
         "type": "build",
-        "version": "1.x",
+        "version": "~5.6.0",
       },
       Object {
         "name": "projen",
@@ -4162,21 +4147,10 @@ tsconfig.tsbuildinfo
       Object {
         "name": "ts-jest",
         "type": "build",
-        "version": "^27",
       },
       Object {
         "name": "typescript",
         "type": "build",
-      },
-      Object {
-        "name": "@types/babel__traverse",
-        "type": "override",
-        "version": "7.18.2",
-      },
-      Object {
-        "name": "@types/prettier",
-        "type": "override",
-        "version": "2.6.0",
       },
       Object {
         "name": "**/downlevel-dts/**/typescript",
@@ -4599,13 +4573,13 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=eslint-import-resolver-typescript,eslint-plugin-import,jsii-diff",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser commit-and-tag-version constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff ts-jest",
+            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser commit-and-tag-version constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit jsii-diff ts-jest",
           },
           Object {
             "exec": "npx projen",
@@ -4933,7 +4907,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     },
     "devDependencies": Object {
       "@stylistic/eslint-plugin": "^2",
-      "@types/jest": "^27",
+      "@types/jest": "*",
       "@types/node": "16.18.78",
       "@typescript-eslint/eslint-plugin": "^8",
       "@typescript-eslint/parser": "^8",
@@ -4942,15 +4916,15 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint": "^9",
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
-      "jest": "^27",
+      "jest": "*",
       "jest-junit": "^15",
-      "jsii": "1.x",
+      "jsii": "~5.6.0",
       "jsii-diff": "*",
       "jsii-docgen": "^10.5.0",
       "jsii-pacmak": "*",
-      "jsii-rosetta": "1.x",
+      "jsii-rosetta": "~5.6.0",
       "projen": "*",
-      "ts-jest": "^27",
+      "ts-jest": "*",
       "typescript": "*",
     },
     "engines": Object {
@@ -4971,12 +4945,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         "cobertura",
         "text",
       ],
-      "globals": Object {
-        "ts-jest": Object {
-          "tsconfig": "tsconfig.dev.json",
-        },
-      },
-      "preset": "ts-jest",
       "reporters": Array [
         "default",
         Array [
@@ -4993,6 +4961,14 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "testPathIgnorePatterns": Array [
         "/node_modules/",
       ],
+      "transform": Object {
+        "^.+\\\\.[t]sx?$": Array [
+          "ts-jest",
+          Object {
+            "tsconfig": "tsconfig.dev.json",
+          },
+        ],
+      },
       "watchPathIgnorePatterns": Array [
         "/node_modules/",
       ],
@@ -5036,8 +5012,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     },
     "resolutions": Object {
       "**/downlevel-dts/**/typescript": "~5.2.2",
-      "@types/babel__traverse": "7.18.2",
-      "@types/prettier": "2.6.0",
     },
     "scripts": Object {
       "build": "npx projen build",
@@ -6142,7 +6116,6 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@types/jest",
         "type": "build",
-        "version": "^27",
       },
       Object {
         "name": "@types/node",
@@ -6178,14 +6151,13 @@ tsconfig.tsbuildinfo
         "version": "^9",
       },
       Object {
+        "name": "jest",
+        "type": "build",
+      },
+      Object {
         "name": "jest-junit",
         "type": "build",
         "version": "^15",
-      },
-      Object {
-        "name": "jest",
-        "type": "build",
-        "version": "^27",
       },
       Object {
         "name": "jsii-diff",
@@ -6203,12 +6175,12 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jsii-rosetta",
         "type": "build",
-        "version": "1.x",
+        "version": "~5.6.0",
       },
       Object {
         "name": "jsii",
         "type": "build",
-        "version": "1.x",
+        "version": "~5.6.0",
       },
       Object {
         "name": "projen",
@@ -6217,21 +6189,10 @@ tsconfig.tsbuildinfo
       Object {
         "name": "ts-jest",
         "type": "build",
-        "version": "^27",
       },
       Object {
         "name": "typescript",
         "type": "build",
-      },
-      Object {
-        "name": "@types/babel__traverse",
-        "type": "override",
-        "version": "7.18.2",
-      },
-      Object {
-        "name": "@types/prettier",
-        "type": "override",
-        "version": "2.6.0",
       },
       Object {
         "name": "**/downlevel-dts/**/typescript",
@@ -6542,13 +6503,13 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=eslint-import-resolver-typescript,eslint-plugin-import,jsii-diff",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff ts-jest",
+            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit jsii-diff ts-jest",
           },
           Object {
             "exec": "npx projen",
@@ -6876,7 +6837,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     },
     "devDependencies": Object {
       "@stylistic/eslint-plugin": "^2",
-      "@types/jest": "^27",
+      "@types/jest": "*",
       "@types/node": "16.18.78",
       "@typescript-eslint/eslint-plugin": "^8",
       "@typescript-eslint/parser": "^8",
@@ -6884,15 +6845,15 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint": "^9",
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
-      "jest": "^27",
+      "jest": "*",
       "jest-junit": "^15",
-      "jsii": "1.x",
+      "jsii": "~5.6.0",
       "jsii-diff": "*",
       "jsii-docgen": "^10.5.0",
       "jsii-pacmak": "*",
-      "jsii-rosetta": "1.x",
+      "jsii-rosetta": "~5.6.0",
       "projen": "*",
-      "ts-jest": "^27",
+      "ts-jest": "*",
       "typescript": "*",
     },
     "engines": Object {
@@ -6913,12 +6874,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         "cobertura",
         "text",
       ],
-      "globals": Object {
-        "ts-jest": Object {
-          "tsconfig": "tsconfig.dev.json",
-        },
-      },
-      "preset": "ts-jest",
       "reporters": Array [
         "default",
         Array [
@@ -6935,6 +6890,14 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "testPathIgnorePatterns": Array [
         "/node_modules/",
       ],
+      "transform": Object {
+        "^.+\\\\.[t]sx?$": Array [
+          "ts-jest",
+          Object {
+            "tsconfig": "tsconfig.dev.json",
+          },
+        ],
+      },
       "watchPathIgnorePatterns": Array [
         "/node_modules/",
       ],
@@ -6959,8 +6922,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     },
     "resolutions": Object {
       "**/downlevel-dts/**/typescript": "~5.2.2",
-      "@types/babel__traverse": "7.18.2",
-      "@types/prettier": "2.6.0",
     },
     "scripts": Object {
       "build": "npx projen build",
@@ -8178,7 +8139,6 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@types/jest",
         "type": "build",
-        "version": "^27",
       },
       Object {
         "name": "@types/node",
@@ -8214,14 +8174,13 @@ tsconfig.tsbuildinfo
         "version": "^9",
       },
       Object {
+        "name": "jest",
+        "type": "build",
+      },
+      Object {
         "name": "jest-junit",
         "type": "build",
         "version": "^15",
-      },
-      Object {
-        "name": "jest",
-        "type": "build",
-        "version": "^27",
       },
       Object {
         "name": "jsii-diff",
@@ -8239,12 +8198,12 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jsii-rosetta",
         "type": "build",
-        "version": "1.x",
+        "version": "~5.6.0",
       },
       Object {
         "name": "jsii",
         "type": "build",
-        "version": "1.x",
+        "version": "~5.6.0",
       },
       Object {
         "name": "projen",
@@ -8253,21 +8212,10 @@ tsconfig.tsbuildinfo
       Object {
         "name": "ts-jest",
         "type": "build",
-        "version": "^27",
       },
       Object {
         "name": "typescript",
         "type": "build",
-      },
-      Object {
-        "name": "@types/babel__traverse",
-        "type": "override",
-        "version": "7.18.2",
-      },
-      Object {
-        "name": "@types/prettier",
-        "type": "override",
-        "version": "2.6.0",
       },
       Object {
         "name": "**/downlevel-dts/**/typescript",
@@ -8626,13 +8574,13 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=eslint-import-resolver-typescript,eslint-plugin-import,jsii-diff",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff ts-jest",
+            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit jsii-diff ts-jest",
           },
           Object {
             "exec": "npx projen",
@@ -8960,7 +8908,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     },
     "devDependencies": Object {
       "@stylistic/eslint-plugin": "^2",
-      "@types/jest": "^27",
+      "@types/jest": "*",
       "@types/node": "16.18.78",
       "@typescript-eslint/eslint-plugin": "^8",
       "@typescript-eslint/parser": "^8",
@@ -8968,15 +8916,15 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint": "^9",
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
-      "jest": "^27",
+      "jest": "*",
       "jest-junit": "^15",
-      "jsii": "1.x",
+      "jsii": "~5.6.0",
       "jsii-diff": "*",
       "jsii-docgen": "^10.5.0",
       "jsii-pacmak": "*",
-      "jsii-rosetta": "1.x",
+      "jsii-rosetta": "~5.6.0",
       "projen": "*",
-      "ts-jest": "^27",
+      "ts-jest": "*",
       "typescript": "*",
     },
     "engines": Object {
@@ -8997,12 +8945,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         "cobertura",
         "text",
       ],
-      "globals": Object {
-        "ts-jest": Object {
-          "tsconfig": "tsconfig.dev.json",
-        },
-      },
-      "preset": "ts-jest",
       "reporters": Array [
         "default",
         Array [
@@ -9019,6 +8961,14 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "testPathIgnorePatterns": Array [
         "/node_modules/",
       ],
+      "transform": Object {
+        "^.+\\\\.[t]sx?$": Array [
+          "ts-jest",
+          Object {
+            "tsconfig": "tsconfig.dev.json",
+          },
+        ],
+      },
       "watchPathIgnorePatterns": Array [
         "/node_modules/",
       ],
@@ -9062,8 +9012,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     },
     "resolutions": Object {
       "**/downlevel-dts/**/typescript": "~5.2.2",
-      "@types/babel__traverse": "7.18.2",
-      "@types/prettier": "2.6.0",
     },
     "scripts": Object {
       "build": "npx projen build",
@@ -10127,7 +10075,6 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@types/jest",
         "type": "build",
-        "version": "^27",
       },
       Object {
         "name": "@types/node",
@@ -10163,14 +10110,13 @@ tsconfig.tsbuildinfo
         "version": "^9",
       },
       Object {
+        "name": "jest",
+        "type": "build",
+      },
+      Object {
         "name": "jest-junit",
         "type": "build",
         "version": "^15",
-      },
-      Object {
-        "name": "jest",
-        "type": "build",
-        "version": "^27",
       },
       Object {
         "name": "jsii-diff",
@@ -10188,12 +10134,12 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jsii-rosetta",
         "type": "build",
-        "version": "1.x",
+        "version": "~5.6.0",
       },
       Object {
         "name": "jsii",
         "type": "build",
-        "version": "1.x",
+        "version": "~5.6.0",
       },
       Object {
         "name": "projen",
@@ -10202,21 +10148,10 @@ tsconfig.tsbuildinfo
       Object {
         "name": "ts-jest",
         "type": "build",
-        "version": "^27",
       },
       Object {
         "name": "typescript",
         "type": "build",
-      },
-      Object {
-        "name": "@types/babel__traverse",
-        "type": "override",
-        "version": "7.18.2",
-      },
-      Object {
-        "name": "@types/prettier",
-        "type": "override",
-        "version": "2.6.0",
       },
       Object {
         "name": "**/downlevel-dts/**/typescript",
@@ -10527,13 +10462,13 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=eslint-import-resolver-typescript,eslint-plugin-import,jsii-diff",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff ts-jest",
+            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit jsii-diff ts-jest",
           },
           Object {
             "exec": "npx projen",
@@ -10861,7 +10796,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     },
     "devDependencies": Object {
       "@stylistic/eslint-plugin": "^2",
-      "@types/jest": "^27",
+      "@types/jest": "*",
       "@types/node": "16.18.78",
       "@typescript-eslint/eslint-plugin": "^8",
       "@typescript-eslint/parser": "^8",
@@ -10869,15 +10804,15 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint": "^9",
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
-      "jest": "^27",
+      "jest": "*",
       "jest-junit": "^15",
-      "jsii": "1.x",
+      "jsii": "~5.6.0",
       "jsii-diff": "*",
       "jsii-docgen": "^10.5.0",
       "jsii-pacmak": "*",
-      "jsii-rosetta": "1.x",
+      "jsii-rosetta": "~5.6.0",
       "projen": "*",
-      "ts-jest": "^27",
+      "ts-jest": "*",
       "typescript": "*",
     },
     "engines": Object {
@@ -10898,12 +10833,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         "cobertura",
         "text",
       ],
-      "globals": Object {
-        "ts-jest": Object {
-          "tsconfig": "tsconfig.dev.json",
-        },
-      },
-      "preset": "ts-jest",
       "reporters": Array [
         "default",
         Array [
@@ -10920,6 +10849,14 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "testPathIgnorePatterns": Array [
         "/node_modules/",
       ],
+      "transform": Object {
+        "^.+\\\\.[t]sx?$": Array [
+          "ts-jest",
+          Object {
+            "tsconfig": "tsconfig.dev.json",
+          },
+        ],
+      },
       "watchPathIgnorePatterns": Array [
         "/node_modules/",
       ],
@@ -10944,8 +10881,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     },
     "resolutions": Object {
       "**/downlevel-dts/**/typescript": "~5.2.2",
-      "@types/babel__traverse": "7.18.2",
-      "@types/prettier": "2.6.0",
     },
     "scripts": Object {
       "build": "npx projen build",
@@ -12163,7 +12098,6 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@types/jest",
         "type": "build",
-        "version": "^27",
       },
       Object {
         "name": "@types/node",
@@ -12199,14 +12133,13 @@ tsconfig.tsbuildinfo
         "version": "^9",
       },
       Object {
+        "name": "jest",
+        "type": "build",
+      },
+      Object {
         "name": "jest-junit",
         "type": "build",
         "version": "^15",
-      },
-      Object {
-        "name": "jest",
-        "type": "build",
-        "version": "^27",
       },
       Object {
         "name": "jsii-diff",
@@ -12224,12 +12157,12 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jsii-rosetta",
         "type": "build",
-        "version": "1.x",
+        "version": "~5.6.0",
       },
       Object {
         "name": "jsii",
         "type": "build",
-        "version": "1.x",
+        "version": "~5.6.0",
       },
       Object {
         "name": "projen",
@@ -12238,21 +12171,10 @@ tsconfig.tsbuildinfo
       Object {
         "name": "ts-jest",
         "type": "build",
-        "version": "^27",
       },
       Object {
         "name": "typescript",
         "type": "build",
-      },
-      Object {
-        "name": "@types/babel__traverse",
-        "type": "override",
-        "version": "7.18.2",
-      },
-      Object {
-        "name": "@types/prettier",
-        "type": "override",
-        "version": "2.6.0",
       },
       Object {
         "name": "**/downlevel-dts/**/typescript",
@@ -12611,13 +12533,13 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=eslint-import-resolver-typescript,eslint-plugin-import,jsii-diff",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff ts-jest",
+            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit jsii-diff ts-jest",
           },
           Object {
             "exec": "npx projen",
@@ -12945,7 +12867,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     },
     "devDependencies": Object {
       "@stylistic/eslint-plugin": "^2",
-      "@types/jest": "^27",
+      "@types/jest": "*",
       "@types/node": "16.18.78",
       "@typescript-eslint/eslint-plugin": "^8",
       "@typescript-eslint/parser": "^8",
@@ -12953,15 +12875,15 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint": "^9",
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
-      "jest": "^27",
+      "jest": "*",
       "jest-junit": "^15",
-      "jsii": "1.x",
+      "jsii": "~5.6.0",
       "jsii-diff": "*",
       "jsii-docgen": "^10.5.0",
       "jsii-pacmak": "*",
-      "jsii-rosetta": "1.x",
+      "jsii-rosetta": "~5.6.0",
       "projen": "*",
-      "ts-jest": "^27",
+      "ts-jest": "*",
       "typescript": "*",
     },
     "engines": Object {
@@ -12982,12 +12904,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         "cobertura",
         "text",
       ],
-      "globals": Object {
-        "ts-jest": Object {
-          "tsconfig": "tsconfig.dev.json",
-        },
-      },
-      "preset": "ts-jest",
       "reporters": Array [
         "default",
         Array [
@@ -13004,6 +12920,14 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "testPathIgnorePatterns": Array [
         "/node_modules/",
       ],
+      "transform": Object {
+        "^.+\\\\.[t]sx?$": Array [
+          "ts-jest",
+          Object {
+            "tsconfig": "tsconfig.dev.json",
+          },
+        ],
+      },
       "watchPathIgnorePatterns": Array [
         "/node_modules/",
       ],
@@ -13047,8 +12971,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     },
     "resolutions": Object {
       "**/downlevel-dts/**/typescript": "~5.2.2",
-      "@types/babel__traverse": "7.18.2",
-      "@types/prettier": "2.6.0",
     },
     "scripts": Object {
       "build": "npx projen build",
@@ -14112,7 +14034,6 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@types/jest",
         "type": "build",
-        "version": "^27",
       },
       Object {
         "name": "@types/node",
@@ -14148,14 +14069,13 @@ tsconfig.tsbuildinfo
         "version": "^9",
       },
       Object {
+        "name": "jest",
+        "type": "build",
+      },
+      Object {
         "name": "jest-junit",
         "type": "build",
         "version": "^15",
-      },
-      Object {
-        "name": "jest",
-        "type": "build",
-        "version": "^27",
       },
       Object {
         "name": "jsii-diff",
@@ -14173,12 +14093,12 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jsii-rosetta",
         "type": "build",
-        "version": "1.x",
+        "version": "~5.6.0",
       },
       Object {
         "name": "jsii",
         "type": "build",
-        "version": "1.x",
+        "version": "~5.6.0",
       },
       Object {
         "name": "projen",
@@ -14187,21 +14107,10 @@ tsconfig.tsbuildinfo
       Object {
         "name": "ts-jest",
         "type": "build",
-        "version": "^27",
       },
       Object {
         "name": "typescript",
         "type": "build",
-      },
-      Object {
-        "name": "@types/babel__traverse",
-        "type": "override",
-        "version": "7.18.2",
-      },
-      Object {
-        "name": "@types/prettier",
-        "type": "override",
-        "version": "2.6.0",
       },
       Object {
         "name": "**/downlevel-dts/**/typescript",
@@ -14512,13 +14421,13 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=eslint-import-resolver-typescript,eslint-plugin-import,jsii-diff",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff ts-jest",
+            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit jsii-diff ts-jest",
           },
           Object {
             "exec": "npx projen",
@@ -14846,7 +14755,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     },
     "devDependencies": Object {
       "@stylistic/eslint-plugin": "^2",
-      "@types/jest": "^27",
+      "@types/jest": "*",
       "@types/node": "16.18.78",
       "@typescript-eslint/eslint-plugin": "^8",
       "@typescript-eslint/parser": "^8",
@@ -14854,15 +14763,15 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint": "^9",
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
-      "jest": "^27",
+      "jest": "*",
       "jest-junit": "^15",
-      "jsii": "1.x",
+      "jsii": "~5.6.0",
       "jsii-diff": "*",
       "jsii-docgen": "^10.5.0",
       "jsii-pacmak": "*",
-      "jsii-rosetta": "1.x",
+      "jsii-rosetta": "~5.6.0",
       "projen": "*",
-      "ts-jest": "^27",
+      "ts-jest": "*",
       "typescript": "*",
     },
     "engines": Object {
@@ -14883,12 +14792,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         "cobertura",
         "text",
       ],
-      "globals": Object {
-        "ts-jest": Object {
-          "tsconfig": "tsconfig.dev.json",
-        },
-      },
-      "preset": "ts-jest",
       "reporters": Array [
         "default",
         Array [
@@ -14905,6 +14808,14 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "testPathIgnorePatterns": Array [
         "/node_modules/",
       ],
+      "transform": Object {
+        "^.+\\\\.[t]sx?$": Array [
+          "ts-jest",
+          Object {
+            "tsconfig": "tsconfig.dev.json",
+          },
+        ],
+      },
       "watchPathIgnorePatterns": Array [
         "/node_modules/",
       ],
@@ -14926,8 +14837,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     },
     "resolutions": Object {
       "**/downlevel-dts/**/typescript": "~5.2.2",
-      "@types/babel__traverse": "7.18.2",
-      "@types/prettier": "2.6.0",
     },
     "scripts": Object {
       "build": "npx projen build",
@@ -16145,7 +16054,6 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@types/jest",
         "type": "build",
-        "version": "^27",
       },
       Object {
         "name": "@types/node",
@@ -16181,14 +16089,13 @@ tsconfig.tsbuildinfo
         "version": "^9",
       },
       Object {
+        "name": "jest",
+        "type": "build",
+      },
+      Object {
         "name": "jest-junit",
         "type": "build",
         "version": "^15",
-      },
-      Object {
-        "name": "jest",
-        "type": "build",
-        "version": "^27",
       },
       Object {
         "name": "jsii-diff",
@@ -16206,12 +16113,12 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jsii-rosetta",
         "type": "build",
-        "version": "1.x",
+        "version": "~5.6.0",
       },
       Object {
         "name": "jsii",
         "type": "build",
-        "version": "1.x",
+        "version": "~5.6.0",
       },
       Object {
         "name": "projen",
@@ -16220,21 +16127,10 @@ tsconfig.tsbuildinfo
       Object {
         "name": "ts-jest",
         "type": "build",
-        "version": "^27",
       },
       Object {
         "name": "typescript",
         "type": "build",
-      },
-      Object {
-        "name": "@types/babel__traverse",
-        "type": "override",
-        "version": "7.18.2",
-      },
-      Object {
-        "name": "@types/prettier",
-        "type": "override",
-        "version": "2.6.0",
       },
       Object {
         "name": "**/downlevel-dts/**/typescript",
@@ -16593,13 +16489,13 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=eslint-import-resolver-typescript,eslint-plugin-import,jsii-diff",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff ts-jest",
+            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit jsii-diff ts-jest",
           },
           Object {
             "exec": "npx projen",
@@ -16927,7 +16823,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     },
     "devDependencies": Object {
       "@stylistic/eslint-plugin": "^2",
-      "@types/jest": "^27",
+      "@types/jest": "*",
       "@types/node": "16.18.78",
       "@typescript-eslint/eslint-plugin": "^8",
       "@typescript-eslint/parser": "^8",
@@ -16935,15 +16831,15 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint": "^9",
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
-      "jest": "^27",
+      "jest": "*",
       "jest-junit": "^15",
-      "jsii": "1.x",
+      "jsii": "~5.6.0",
       "jsii-diff": "*",
       "jsii-docgen": "^10.5.0",
       "jsii-pacmak": "*",
-      "jsii-rosetta": "1.x",
+      "jsii-rosetta": "~5.6.0",
       "projen": "*",
-      "ts-jest": "^27",
+      "ts-jest": "*",
       "typescript": "*",
     },
     "engines": Object {
@@ -16964,12 +16860,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         "cobertura",
         "text",
       ],
-      "globals": Object {
-        "ts-jest": Object {
-          "tsconfig": "tsconfig.dev.json",
-        },
-      },
-      "preset": "ts-jest",
       "reporters": Array [
         "default",
         Array [
@@ -16986,6 +16876,14 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "testPathIgnorePatterns": Array [
         "/node_modules/",
       ],
+      "transform": Object {
+        "^.+\\\\.[t]sx?$": Array [
+          "ts-jest",
+          Object {
+            "tsconfig": "tsconfig.dev.json",
+          },
+        ],
+      },
       "watchPathIgnorePatterns": Array [
         "/node_modules/",
       ],
@@ -17026,8 +16924,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     },
     "resolutions": Object {
       "**/downlevel-dts/**/typescript": "~5.2.2",
-      "@types/babel__traverse": "7.18.2",
-      "@types/prettier": "2.6.0",
     },
     "scripts": Object {
       "build": "npx projen build",
@@ -18607,7 +18503,6 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@types/jest",
         "type": "build",
-        "version": "^27",
       },
       Object {
         "name": "@types/node",
@@ -18648,14 +18543,13 @@ tsconfig.tsbuildinfo
         "version": "^9",
       },
       Object {
+        "name": "jest",
+        "type": "build",
+      },
+      Object {
         "name": "jest-junit",
         "type": "build",
         "version": "^15",
-      },
-      Object {
-        "name": "jest",
-        "type": "build",
-        "version": "^27",
       },
       Object {
         "name": "jsii-diff",
@@ -18673,12 +18567,12 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jsii-rosetta",
         "type": "build",
-        "version": "1.x",
+        "version": "~5.6.0",
       },
       Object {
         "name": "jsii",
         "type": "build",
-        "version": "1.x",
+        "version": "~5.6.0",
       },
       Object {
         "name": "projen",
@@ -18687,21 +18581,10 @@ tsconfig.tsbuildinfo
       Object {
         "name": "ts-jest",
         "type": "build",
-        "version": "^27",
       },
       Object {
         "name": "typescript",
         "type": "build",
-      },
-      Object {
-        "name": "@types/babel__traverse",
-        "type": "override",
-        "version": "7.18.2",
-      },
-      Object {
-        "name": "@types/prettier",
-        "type": "override",
-        "version": "2.6.0",
       },
       Object {
         "name": "**/downlevel-dts/**/typescript",
@@ -19122,13 +19005,13 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=eslint-import-resolver-typescript,eslint-plugin-import,jsii-diff",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser commit-and-tag-version constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff ts-jest",
+            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser commit-and-tag-version constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit jsii-diff ts-jest",
           },
           Object {
             "exec": "npx projen",
@@ -19456,7 +19339,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     },
     "devDependencies": Object {
       "@stylistic/eslint-plugin": "^2",
-      "@types/jest": "^27",
+      "@types/jest": "*",
       "@types/node": "16.18.78",
       "@typescript-eslint/eslint-plugin": "^8",
       "@typescript-eslint/parser": "^8",
@@ -19465,15 +19348,15 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint": "^9",
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
-      "jest": "^27",
+      "jest": "*",
       "jest-junit": "^15",
-      "jsii": "1.x",
+      "jsii": "~5.6.0",
       "jsii-diff": "*",
       "jsii-docgen": "^10.5.0",
       "jsii-pacmak": "*",
-      "jsii-rosetta": "1.x",
+      "jsii-rosetta": "~5.6.0",
       "projen": "*",
-      "ts-jest": "^27",
+      "ts-jest": "*",
       "typescript": "*",
     },
     "engines": Object {
@@ -19494,12 +19377,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         "cobertura",
         "text",
       ],
-      "globals": Object {
-        "ts-jest": Object {
-          "tsconfig": "tsconfig.dev.json",
-        },
-      },
-      "preset": "ts-jest",
       "reporters": Array [
         "default",
         Array [
@@ -19516,6 +19393,14 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "testPathIgnorePatterns": Array [
         "/node_modules/",
       ],
+      "transform": Object {
+        "^.+\\\\.[t]sx?$": Array [
+          "ts-jest",
+          Object {
+            "tsconfig": "tsconfig.dev.json",
+          },
+        ],
+      },
       "watchPathIgnorePatterns": Array [
         "/node_modules/",
       ],
@@ -19559,8 +19444,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     },
     "resolutions": Object {
       "**/downlevel-dts/**/typescript": "~5.2.2",
-      "@types/babel__traverse": "7.18.2",
-      "@types/prettier": "2.6.0",
     },
     "scripts": Object {
       "build": "npx projen build",
@@ -21143,7 +21026,6 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@types/jest",
         "type": "build",
-        "version": "^27",
       },
       Object {
         "name": "@types/node",
@@ -21184,14 +21066,13 @@ tsconfig.tsbuildinfo
         "version": "^9",
       },
       Object {
+        "name": "jest",
+        "type": "build",
+      },
+      Object {
         "name": "jest-junit",
         "type": "build",
         "version": "^15",
-      },
-      Object {
-        "name": "jest",
-        "type": "build",
-        "version": "^27",
       },
       Object {
         "name": "jsii-diff",
@@ -21209,12 +21090,12 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jsii-rosetta",
         "type": "build",
-        "version": "1.x",
+        "version": "~5.6.0",
       },
       Object {
         "name": "jsii",
         "type": "build",
-        "version": "1.x",
+        "version": "~5.6.0",
       },
       Object {
         "name": "projen",
@@ -21223,21 +21104,10 @@ tsconfig.tsbuildinfo
       Object {
         "name": "ts-jest",
         "type": "build",
-        "version": "^27",
       },
       Object {
         "name": "typescript",
         "type": "build",
-      },
-      Object {
-        "name": "@types/babel__traverse",
-        "type": "override",
-        "version": "7.18.2",
-      },
-      Object {
-        "name": "@types/prettier",
-        "type": "override",
-        "version": "2.6.0",
       },
       Object {
         "name": "**/downlevel-dts/**/typescript",
@@ -21658,13 +21528,13 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=eslint-import-resolver-typescript,eslint-plugin-import,jsii-diff",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser commit-and-tag-version constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff ts-jest",
+            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser commit-and-tag-version constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit jsii-diff ts-jest",
           },
           Object {
             "exec": "npx projen",
@@ -21992,7 +21862,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     },
     "devDependencies": Object {
       "@stylistic/eslint-plugin": "^2",
-      "@types/jest": "^27",
+      "@types/jest": "*",
       "@types/node": "16.18.78",
       "@typescript-eslint/eslint-plugin": "^8",
       "@typescript-eslint/parser": "^8",
@@ -22001,15 +21871,15 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint": "^9",
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
-      "jest": "^27",
+      "jest": "*",
       "jest-junit": "^15",
-      "jsii": "1.x",
+      "jsii": "~5.6.0",
       "jsii-diff": "*",
       "jsii-docgen": "^10.5.0",
       "jsii-pacmak": "*",
-      "jsii-rosetta": "1.x",
+      "jsii-rosetta": "~5.6.0",
       "projen": "*",
-      "ts-jest": "^27",
+      "ts-jest": "*",
       "typescript": "*",
     },
     "engines": Object {
@@ -22030,12 +21900,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         "cobertura",
         "text",
       ],
-      "globals": Object {
-        "ts-jest": Object {
-          "tsconfig": "tsconfig.dev.json",
-        },
-      },
-      "preset": "ts-jest",
       "reporters": Array [
         "default",
         Array [
@@ -22052,6 +21916,14 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "testPathIgnorePatterns": Array [
         "/node_modules/",
       ],
+      "transform": Object {
+        "^.+\\\\.[t]sx?$": Array [
+          "ts-jest",
+          Object {
+            "tsconfig": "tsconfig.dev.json",
+          },
+        ],
+      },
       "watchPathIgnorePatterns": Array [
         "/node_modules/",
       ],
@@ -22095,8 +21967,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     },
     "resolutions": Object {
       "**/downlevel-dts/**/typescript": "~5.2.2",
-      "@types/babel__traverse": "7.18.2",
-      "@types/prettier": "2.6.0",
     },
     "scripts": Object {
       "build": "npx projen build",
@@ -23677,7 +23547,6 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@types/jest",
         "type": "build",
-        "version": "^27",
       },
       Object {
         "name": "@types/node",
@@ -23718,14 +23587,13 @@ tsconfig.tsbuildinfo
         "version": "^9",
       },
       Object {
+        "name": "jest",
+        "type": "build",
+      },
+      Object {
         "name": "jest-junit",
         "type": "build",
         "version": "^15",
-      },
-      Object {
-        "name": "jest",
-        "type": "build",
-        "version": "^27",
       },
       Object {
         "name": "jsii-diff",
@@ -23743,12 +23611,12 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jsii-rosetta",
         "type": "build",
-        "version": "1.x",
+        "version": "~5.6.0",
       },
       Object {
         "name": "jsii",
         "type": "build",
-        "version": "1.x",
+        "version": "~5.6.0",
       },
       Object {
         "name": "projen",
@@ -23757,21 +23625,10 @@ tsconfig.tsbuildinfo
       Object {
         "name": "ts-jest",
         "type": "build",
-        "version": "^27",
       },
       Object {
         "name": "typescript",
         "type": "build",
-      },
-      Object {
-        "name": "@types/babel__traverse",
-        "type": "override",
-        "version": "7.18.2",
-      },
-      Object {
-        "name": "@types/prettier",
-        "type": "override",
-        "version": "2.6.0",
       },
       Object {
         "name": "**/downlevel-dts/**/typescript",
@@ -24192,13 +24049,13 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=eslint-import-resolver-typescript,eslint-plugin-import,jsii-diff",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser commit-and-tag-version constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff ts-jest",
+            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser commit-and-tag-version constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit jsii-diff ts-jest",
           },
           Object {
             "exec": "npx projen",
@@ -24526,7 +24383,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     },
     "devDependencies": Object {
       "@stylistic/eslint-plugin": "^2",
-      "@types/jest": "^27",
+      "@types/jest": "*",
       "@types/node": "16.18.78",
       "@typescript-eslint/eslint-plugin": "^8",
       "@typescript-eslint/parser": "^8",
@@ -24535,15 +24392,15 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint": "^9",
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
-      "jest": "^27",
+      "jest": "*",
       "jest-junit": "^15",
-      "jsii": "1.x",
+      "jsii": "~5.6.0",
       "jsii-diff": "*",
       "jsii-docgen": "^10.5.0",
       "jsii-pacmak": "*",
-      "jsii-rosetta": "1.x",
+      "jsii-rosetta": "~5.6.0",
       "projen": "*",
-      "ts-jest": "^27",
+      "ts-jest": "*",
       "typescript": "*",
     },
     "engines": Object {
@@ -24564,12 +24421,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         "cobertura",
         "text",
       ],
-      "globals": Object {
-        "ts-jest": Object {
-          "tsconfig": "tsconfig.dev.json",
-        },
-      },
-      "preset": "ts-jest",
       "reporters": Array [
         "default",
         Array [
@@ -24586,6 +24437,14 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "testPathIgnorePatterns": Array [
         "/node_modules/",
       ],
+      "transform": Object {
+        "^.+\\\\.[t]sx?$": Array [
+          "ts-jest",
+          Object {
+            "tsconfig": "tsconfig.dev.json",
+          },
+        ],
+      },
       "watchPathIgnorePatterns": Array [
         "/node_modules/",
       ],
@@ -24626,8 +24485,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     },
     "resolutions": Object {
       "**/downlevel-dts/**/typescript": "~5.2.2",
-      "@types/babel__traverse": "7.18.2",
-      "@types/prettier": "2.6.0",
     },
     "scripts": Object {
       "build": "npx projen build",
@@ -26311,7 +26168,6 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@types/jest",
         "type": "build",
-        "version": "^27",
       },
       Object {
         "name": "@types/node",
@@ -26352,14 +26208,13 @@ tsconfig.tsbuildinfo
         "version": "^9",
       },
       Object {
+        "name": "jest",
+        "type": "build",
+      },
+      Object {
         "name": "jest-junit",
         "type": "build",
         "version": "^15",
-      },
-      Object {
-        "name": "jest",
-        "type": "build",
-        "version": "^27",
       },
       Object {
         "name": "jsii-diff",
@@ -26377,12 +26232,12 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jsii-rosetta",
         "type": "build",
-        "version": "1.x",
+        "version": "~5.6.0",
       },
       Object {
         "name": "jsii",
         "type": "build",
-        "version": "1.x",
+        "version": "~5.6.0",
       },
       Object {
         "name": "projen",
@@ -26391,21 +26246,10 @@ tsconfig.tsbuildinfo
       Object {
         "name": "ts-jest",
         "type": "build",
-        "version": "^27",
       },
       Object {
         "name": "typescript",
         "type": "build",
-      },
-      Object {
-        "name": "@types/babel__traverse",
-        "type": "override",
-        "version": "7.18.2",
-      },
-      Object {
-        "name": "@types/prettier",
-        "type": "override",
-        "version": "2.6.0",
       },
       Object {
         "name": "**/downlevel-dts/**/typescript",
@@ -26828,13 +26672,13 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=eslint-import-resolver-typescript,eslint-plugin-import,jsii-diff",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser commit-and-tag-version constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff ts-jest",
+            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser commit-and-tag-version constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit jsii-diff ts-jest",
           },
           Object {
             "exec": "npx projen",
@@ -27162,7 +27006,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     },
     "devDependencies": Object {
       "@stylistic/eslint-plugin": "^2",
-      "@types/jest": "^27",
+      "@types/jest": "*",
       "@types/node": "16.18.78",
       "@typescript-eslint/eslint-plugin": "^8",
       "@typescript-eslint/parser": "^8",
@@ -27171,15 +27015,15 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint": "^9",
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
-      "jest": "^27",
+      "jest": "*",
       "jest-junit": "^15",
-      "jsii": "1.x",
+      "jsii": "~5.6.0",
       "jsii-diff": "*",
       "jsii-docgen": "^10.5.0",
       "jsii-pacmak": "*",
-      "jsii-rosetta": "1.x",
+      "jsii-rosetta": "~5.6.0",
       "projen": "*",
-      "ts-jest": "^27",
+      "ts-jest": "*",
       "typescript": "*",
     },
     "engines": Object {
@@ -27200,12 +27044,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         "cobertura",
         "text",
       ],
-      "globals": Object {
-        "ts-jest": Object {
-          "tsconfig": "tsconfig.dev.json",
-        },
-      },
-      "preset": "ts-jest",
       "reporters": Array [
         "default",
         Array [
@@ -27222,6 +27060,14 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "testPathIgnorePatterns": Array [
         "/node_modules/",
       ],
+      "transform": Object {
+        "^.+\\\\.[t]sx?$": Array [
+          "ts-jest",
+          Object {
+            "tsconfig": "tsconfig.dev.json",
+          },
+        ],
+      },
       "watchPathIgnorePatterns": Array [
         "/node_modules/",
       ],
@@ -27265,8 +27111,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     },
     "resolutions": Object {
       "**/downlevel-dts/**/typescript": "~5.2.2",
-      "@types/babel__traverse": "7.18.2",
-      "@types/prettier": "2.6.0",
     },
     "scripts": Object {
       "build": "npx projen build",
@@ -28849,7 +28693,6 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@types/jest",
         "type": "build",
-        "version": "^27",
       },
       Object {
         "name": "@types/node",
@@ -28890,14 +28733,13 @@ tsconfig.tsbuildinfo
         "version": "^9",
       },
       Object {
+        "name": "jest",
+        "type": "build",
+      },
+      Object {
         "name": "jest-junit",
         "type": "build",
         "version": "^15",
-      },
-      Object {
-        "name": "jest",
-        "type": "build",
-        "version": "^27",
       },
       Object {
         "name": "jsii-diff",
@@ -28915,12 +28757,12 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jsii-rosetta",
         "type": "build",
-        "version": "1.x",
+        "version": "~5.6.0",
       },
       Object {
         "name": "jsii",
         "type": "build",
-        "version": "1.x",
+        "version": "~5.6.0",
       },
       Object {
         "name": "projen",
@@ -28929,21 +28771,10 @@ tsconfig.tsbuildinfo
       Object {
         "name": "ts-jest",
         "type": "build",
-        "version": "^27",
       },
       Object {
         "name": "typescript",
         "type": "build",
-      },
-      Object {
-        "name": "@types/babel__traverse",
-        "type": "override",
-        "version": "7.18.2",
-      },
-      Object {
-        "name": "@types/prettier",
-        "type": "override",
-        "version": "2.6.0",
       },
       Object {
         "name": "**/downlevel-dts/**/typescript",
@@ -29364,13 +29195,13 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=eslint-import-resolver-typescript,eslint-plugin-import,jsii-diff",
+            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
           },
           Object {
-            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser commit-and-tag-version constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff ts-jest",
+            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser commit-and-tag-version constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit jsii-diff ts-jest",
           },
           Object {
             "exec": "npx projen",
@@ -29698,7 +29529,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     },
     "devDependencies": Object {
       "@stylistic/eslint-plugin": "^2",
-      "@types/jest": "^27",
+      "@types/jest": "*",
       "@types/node": "16.18.78",
       "@typescript-eslint/eslint-plugin": "^8",
       "@typescript-eslint/parser": "^8",
@@ -29707,15 +29538,15 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint": "^9",
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
-      "jest": "^27",
+      "jest": "*",
       "jest-junit": "^15",
-      "jsii": "1.x",
+      "jsii": "~5.6.0",
       "jsii-diff": "*",
       "jsii-docgen": "^10.5.0",
       "jsii-pacmak": "*",
-      "jsii-rosetta": "1.x",
+      "jsii-rosetta": "~5.6.0",
       "projen": "*",
-      "ts-jest": "^27",
+      "ts-jest": "*",
       "typescript": "*",
     },
     "engines": Object {
@@ -29736,12 +29567,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
         "cobertura",
         "text",
       ],
-      "globals": Object {
-        "ts-jest": Object {
-          "tsconfig": "tsconfig.dev.json",
-        },
-      },
-      "preset": "ts-jest",
       "reporters": Array [
         "default",
         Array [
@@ -29758,6 +29583,14 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "testPathIgnorePatterns": Array [
         "/node_modules/",
       ],
+      "transform": Object {
+        "^.+\\\\.[t]sx?$": Array [
+          "ts-jest",
+          Object {
+            "tsconfig": "tsconfig.dev.json",
+          },
+        ],
+      },
       "watchPathIgnorePatterns": Array [
         "/node_modules/",
       ],
@@ -29801,8 +29634,6 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     },
     "resolutions": Object {
       "**/downlevel-dts/**/typescript": "~5.2.2",
-      "@types/babel__traverse": "7.18.2",
-      "@types/prettier": "2.6.0",
     },
     "scripts": Object {
       "build": "npx projen build",
