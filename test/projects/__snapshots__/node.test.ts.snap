@@ -793,7 +793,7 @@ permissions-backup.acl
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^15",
+        "version": "^16",
       },
       Object {
         "name": "projen",
@@ -1401,7 +1401,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "commit-and-tag-version": "^12",
       "constructs": "^10.0.0",
       "jest": "*",
-      "jest-junit": "^15",
+      "jest-junit": "^16",
       "projen": "*",
     },
     "engines": Object {
@@ -2151,7 +2151,7 @@ permissions-backup.acl
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^15",
+        "version": "^16",
       },
       Object {
         "name": "projen",
@@ -2694,7 +2694,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "devDependencies": Object {
       "constructs": "^10.0.0",
       "jest": "*",
-      "jest-junit": "^15",
+      "jest-junit": "^16",
       "projen": "*",
     },
     "engines": Object {
@@ -3403,7 +3403,7 @@ permissions-backup.acl
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^15",
+        "version": "^16",
       },
       Object {
         "name": "projen",
@@ -3946,7 +3946,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "devDependencies": Object {
       "constructs": "^10.0.0",
       "jest": "*",
-      "jest-junit": "^15",
+      "jest-junit": "^16",
       "projen": "*",
     },
     "engines": Object {
@@ -4655,7 +4655,7 @@ permissions-backup.acl
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^15",
+        "version": "^16",
       },
       Object {
         "name": "projen",
@@ -5198,7 +5198,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "devDependencies": Object {
       "constructs": "^10.0.0",
       "jest": "*",
-      "jest-junit": "^15",
+      "jest-junit": "^16",
       "projen": "*",
     },
     "engines": Object {
@@ -6013,7 +6013,7 @@ permissions-backup.acl
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^15",
+        "version": "^16",
       },
       Object {
         "name": "projen",
@@ -6619,7 +6619,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "commit-and-tag-version": "^12",
       "constructs": "^10.0.0",
       "jest": "*",
-      "jest-junit": "^15",
+      "jest-junit": "^16",
       "projen": "*",
     },
     "engines": Object {
@@ -7440,7 +7440,7 @@ permissions-backup.acl
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^15",
+        "version": "^16",
       },
       Object {
         "name": "projen",
@@ -8046,7 +8046,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "commit-and-tag-version": "^12",
       "constructs": "^10.0.0",
       "jest": "*",
-      "jest-junit": "^15",
+      "jest-junit": "^16",
       "projen": "*",
     },
     "engines": Object {
@@ -8867,7 +8867,7 @@ permissions-backup.acl
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^15",
+        "version": "^16",
       },
       Object {
         "name": "projen",
@@ -9473,7 +9473,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "commit-and-tag-version": "^12",
       "constructs": "^10.0.0",
       "jest": "*",
-      "jest-junit": "^15",
+      "jest-junit": "^16",
       "projen": "*",
     },
     "engines": Object {
@@ -10392,7 +10392,7 @@ permissions-backup.acl
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^15",
+        "version": "^16",
       },
       Object {
         "name": "projen",
@@ -11000,7 +11000,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "commit-and-tag-version": "^12",
       "constructs": "^10.0.0",
       "jest": "*",
-      "jest-junit": "^15",
+      "jest-junit": "^16",
       "projen": "*",
     },
     "engines": Object {
@@ -11821,7 +11821,7 @@ permissions-backup.acl
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^15",
+        "version": "^16",
       },
       Object {
         "name": "projen",
@@ -12427,7 +12427,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "commit-and-tag-version": "^12",
       "constructs": "^10.0.0",
       "jest": "*",
-      "jest-junit": "^15",
+      "jest-junit": "^16",
       "projen": "*",
     },
     "engines": Object {
