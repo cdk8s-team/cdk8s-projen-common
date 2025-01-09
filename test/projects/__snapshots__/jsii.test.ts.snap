@@ -1544,7 +1544,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^15",
+        "version": "^16",
       },
       Object {
         "name": "jsii-diff",
@@ -2344,7 +2344,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
-      "jest-junit": "^15",
+      "jest-junit": "^16",
       "jsii": "~5.6.0",
       "jsii-diff": "*",
       "jsii-docgen": "^10.5.0",
@@ -4115,7 +4115,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^15",
+        "version": "^16",
       },
       Object {
         "name": "jsii-diff",
@@ -4917,7 +4917,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
-      "jest-junit": "^15",
+      "jest-junit": "^16",
       "jsii": "~5.6.0",
       "jsii-diff": "*",
       "jsii-docgen": "^10.5.0",
@@ -6157,7 +6157,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^15",
+        "version": "^16",
       },
       Object {
         "name": "jsii-diff",
@@ -6846,7 +6846,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
-      "jest-junit": "^15",
+      "jest-junit": "^16",
       "jsii": "~5.6.0",
       "jsii-diff": "*",
       "jsii-docgen": "^10.5.0",
@@ -8180,7 +8180,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^15",
+        "version": "^16",
       },
       Object {
         "name": "jsii-diff",
@@ -8917,7 +8917,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
-      "jest-junit": "^15",
+      "jest-junit": "^16",
       "jsii": "~5.6.0",
       "jsii-diff": "*",
       "jsii-docgen": "^10.5.0",
@@ -10116,7 +10116,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^15",
+        "version": "^16",
       },
       Object {
         "name": "jsii-diff",
@@ -10805,7 +10805,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
-      "jest-junit": "^15",
+      "jest-junit": "^16",
       "jsii": "~5.6.0",
       "jsii-diff": "*",
       "jsii-docgen": "^10.5.0",
@@ -12139,7 +12139,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^15",
+        "version": "^16",
       },
       Object {
         "name": "jsii-diff",
@@ -12876,7 +12876,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
-      "jest-junit": "^15",
+      "jest-junit": "^16",
       "jsii": "~5.6.0",
       "jsii-diff": "*",
       "jsii-docgen": "^10.5.0",
@@ -14075,7 +14075,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^15",
+        "version": "^16",
       },
       Object {
         "name": "jsii-diff",
@@ -14764,7 +14764,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
-      "jest-junit": "^15",
+      "jest-junit": "^16",
       "jsii": "~5.6.0",
       "jsii-diff": "*",
       "jsii-docgen": "^10.5.0",
@@ -16095,7 +16095,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^15",
+        "version": "^16",
       },
       Object {
         "name": "jsii-diff",
@@ -16832,7 +16832,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
-      "jest-junit": "^15",
+      "jest-junit": "^16",
       "jsii": "~5.6.0",
       "jsii-diff": "*",
       "jsii-docgen": "^10.5.0",
@@ -18549,7 +18549,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^15",
+        "version": "^16",
       },
       Object {
         "name": "jsii-diff",
@@ -19349,7 +19349,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
-      "jest-junit": "^15",
+      "jest-junit": "^16",
       "jsii": "~5.6.0",
       "jsii-diff": "*",
       "jsii-docgen": "^10.5.0",
@@ -21072,7 +21072,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^15",
+        "version": "^16",
       },
       Object {
         "name": "jsii-diff",
@@ -21872,7 +21872,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
-      "jest-junit": "^15",
+      "jest-junit": "^16",
       "jsii": "~5.6.0",
       "jsii-diff": "*",
       "jsii-docgen": "^10.5.0",
@@ -23593,7 +23593,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^15",
+        "version": "^16",
       },
       Object {
         "name": "jsii-diff",
@@ -24393,7 +24393,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
-      "jest-junit": "^15",
+      "jest-junit": "^16",
       "jsii": "~5.6.0",
       "jsii-diff": "*",
       "jsii-docgen": "^10.5.0",
@@ -26214,7 +26214,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^15",
+        "version": "^16",
       },
       Object {
         "name": "jsii-diff",
@@ -27016,7 +27016,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
-      "jest-junit": "^15",
+      "jest-junit": "^16",
       "jsii": "~5.6.0",
       "jsii-diff": "*",
       "jsii-docgen": "^10.5.0",
@@ -28739,7 +28739,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^15",
+        "version": "^16",
       },
       Object {
         "name": "jsii-diff",
@@ -29539,7 +29539,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
-      "jest-junit": "^15",
+      "jest-junit": "^16",
       "jsii": "~5.6.0",
       "jsii-diff": "*",
       "jsii-docgen": "^10.5.0",

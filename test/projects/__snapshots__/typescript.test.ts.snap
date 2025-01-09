@@ -1133,7 +1133,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^15",
+        "version": "^16",
       },
       Object {
         "name": "projen",
@@ -1813,7 +1813,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
-      "jest-junit": "^15",
+      "jest-junit": "^16",
       "projen": "*",
       "ts-jest": "*",
       "typescript": "*",
@@ -3162,7 +3162,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^15",
+        "version": "^16",
       },
       Object {
         "name": "projen",
@@ -3844,7 +3844,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
-      "jest-junit": "^15",
+      "jest-junit": "^16",
       "projen": "*",
       "ts-jest": "*",
       "typescript": "*",
@@ -5070,7 +5070,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^15",
+        "version": "^16",
       },
       Object {
         "name": "projen",
@@ -5687,7 +5687,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
-      "jest-junit": "^15",
+      "jest-junit": "^16",
       "projen": "*",
       "ts-jest": "*",
       "typescript": "*",
@@ -6872,7 +6872,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^15",
+        "version": "^16",
       },
       Object {
         "name": "projen",
@@ -7489,7 +7489,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
-      "jest-junit": "^15",
+      "jest-junit": "^16",
       "projen": "*",
       "ts-jest": "*",
       "typescript": "*",
@@ -8671,7 +8671,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^15",
+        "version": "^16",
       },
       Object {
         "name": "projen",
@@ -9288,7 +9288,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
-      "jest-junit": "^15",
+      "jest-junit": "^16",
       "projen": "*",
       "ts-jest": "*",
       "typescript": "*",
@@ -10586,7 +10586,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^15",
+        "version": "^16",
       },
       Object {
         "name": "projen",
@@ -11266,7 +11266,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
-      "jest-junit": "^15",
+      "jest-junit": "^16",
       "projen": "*",
       "ts-jest": "*",
       "typescript": "*",
@@ -12567,7 +12567,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^15",
+        "version": "^16",
       },
       Object {
         "name": "projen",
@@ -13247,7 +13247,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
-      "jest-junit": "^15",
+      "jest-junit": "^16",
       "projen": "*",
       "ts-jest": "*",
       "typescript": "*",
@@ -14545,7 +14545,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^15",
+        "version": "^16",
       },
       Object {
         "name": "projen",
@@ -15225,7 +15225,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
-      "jest-junit": "^15",
+      "jest-junit": "^16",
       "projen": "*",
       "ts-jest": "*",
       "typescript": "*",
@@ -16627,7 +16627,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^15",
+        "version": "^16",
       },
       Object {
         "name": "projen",
@@ -17309,7 +17309,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
-      "jest-junit": "^15",
+      "jest-junit": "^16",
       "projen": "*",
       "ts-jest": "*",
       "typescript": "*",
@@ -18610,7 +18610,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^15",
+        "version": "^16",
       },
       Object {
         "name": "projen",
@@ -19290,7 +19290,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
-      "jest-junit": "^15",
+      "jest-junit": "^16",
       "projen": "*",
       "ts-jest": "*",
       "typescript": "*",
