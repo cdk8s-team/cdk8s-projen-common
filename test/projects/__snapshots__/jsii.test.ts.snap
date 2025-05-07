@@ -42,11 +42,101 @@ Object {
     ],
     "root": true,
     "rules": Object {
+      "@stylistic/array-bracket-newline": Array [
+        "error",
+        "consistent",
+      ],
+      "@stylistic/array-bracket-spacing": Array [
+        "error",
+        "never",
+      ],
+      "@stylistic/brace-style": Array [
+        "error",
+        "1tbs",
+        Object {
+          "allowSingleLine": true,
+        },
+      ],
+      "@stylistic/comma-dangle": Array [
+        "error",
+        "always-multiline",
+      ],
+      "@stylistic/comma-spacing": Array [
+        "error",
+        Object {
+          "after": true,
+          "before": false,
+        },
+      ],
       "@stylistic/indent": Array [
         "error",
         2,
       ],
+      "@stylistic/key-spacing": Array [
+        "error",
+      ],
+      "@stylistic/keyword-spacing": Array [
+        "error",
+      ],
+      "@stylistic/max-len": Array [
+        "error",
+        Object {
+          "code": 150,
+          "ignoreComments": true,
+          "ignoreRegExpLiterals": true,
+          "ignoreStrings": true,
+          "ignoreTemplateLiterals": true,
+          "ignoreUrls": true,
+        },
+      ],
       "@stylistic/member-delimiter-style": Array [
+        "error",
+      ],
+      "@stylistic/no-multi-spaces": Array [
+        "error",
+        Object {
+          "ignoreEOLComments": false,
+        },
+      ],
+      "@stylistic/no-multiple-empty-lines": Array [
+        "error",
+      ],
+      "@stylistic/no-trailing-spaces": Array [
+        "error",
+      ],
+      "@stylistic/object-curly-newline": Array [
+        "error",
+        Object {
+          "consistent": true,
+          "multiline": true,
+        },
+      ],
+      "@stylistic/object-curly-spacing": Array [
+        "error",
+        "always",
+      ],
+      "@stylistic/object-property-newline": Array [
+        "error",
+        Object {
+          "allowAllPropertiesOnSameLine": true,
+        },
+      ],
+      "@stylistic/quote-props": Array [
+        "error",
+        "consistent-as-needed",
+      ],
+      "@stylistic/quotes": Array [
+        "error",
+        "single",
+        Object {
+          "avoidEscape": true,
+        },
+      ],
+      "@stylistic/semi": Array [
+        "error",
+        "always",
+      ],
+      "@stylistic/space-before-blocks": Array [
         "error",
       ],
       "@typescript-eslint/member-ordering": Array [
@@ -65,44 +155,10 @@ Object {
           ],
         },
       ],
-      "@typescript-eslint/no-floating-promises": Array [
-        "error",
-      ],
-      "@typescript-eslint/no-require-imports": Array [
-        "error",
-      ],
-      "@typescript-eslint/no-shadow": Array [
-        "error",
-      ],
-      "@typescript-eslint/return-await": Array [
-        "error",
-      ],
-      "array-bracket-newline": Array [
-        "error",
-        "consistent",
-      ],
-      "array-bracket-spacing": Array [
-        "error",
-        "never",
-      ],
-      "brace-style": Array [
-        "error",
-        "1tbs",
-        Object {
-          "allowSingleLine": true,
-        },
-      ],
-      "comma-dangle": Array [
-        "error",
-        "always-multiline",
-      ],
-      "comma-spacing": Array [
-        "error",
-        Object {
-          "after": true,
-          "before": false,
-        },
-      ],
+      "@typescript-eslint/no-floating-promises": "error",
+      "@typescript-eslint/no-require-imports": "error",
+      "@typescript-eslint/no-shadow": "error",
+      "@typescript-eslint/return-await": "error",
       "curly": Array [
         "error",
         "multi-line",
@@ -141,36 +197,7 @@ Object {
           ],
         },
       ],
-      "indent": Array [
-        "off",
-      ],
-      "key-spacing": Array [
-        "error",
-      ],
-      "keyword-spacing": Array [
-        "error",
-      ],
-      "max-len": Array [
-        "error",
-        Object {
-          "code": 150,
-          "ignoreComments": true,
-          "ignoreRegExpLiterals": true,
-          "ignoreStrings": true,
-          "ignoreTemplateLiterals": true,
-          "ignoreUrls": true,
-        },
-      ],
       "no-bitwise": Array [
-        "error",
-      ],
-      "no-multi-spaces": Array [
-        "error",
-        Object {
-          "ignoreEOLComments": false,
-        },
-      ],
-      "no-multiple-empty-lines": Array [
         "error",
       ],
       "no-return-await": Array [
@@ -178,44 +205,6 @@ Object {
       ],
       "no-shadow": Array [
         "off",
-      ],
-      "no-trailing-spaces": Array [
-        "error",
-      ],
-      "object-curly-newline": Array [
-        "error",
-        Object {
-          "consistent": true,
-          "multiline": true,
-        },
-      ],
-      "object-curly-spacing": Array [
-        "error",
-        "always",
-      ],
-      "object-property-newline": Array [
-        "error",
-        Object {
-          "allowAllPropertiesOnSameLine": true,
-        },
-      ],
-      "quote-props": Array [
-        "error",
-        "consistent-as-needed",
-      ],
-      "quotes": Array [
-        "error",
-        "single",
-        Object {
-          "avoidEscape": true,
-        },
-      ],
-      "semi": Array [
-        "error",
-        "always",
-      ],
-      "space-before-blocks": Array [
-        "error",
       ],
     },
     "settings": Object {
@@ -2576,11 +2565,101 @@ Object {
     ],
     "root": true,
     "rules": Object {
+      "@stylistic/array-bracket-newline": Array [
+        "error",
+        "consistent",
+      ],
+      "@stylistic/array-bracket-spacing": Array [
+        "error",
+        "never",
+      ],
+      "@stylistic/brace-style": Array [
+        "error",
+        "1tbs",
+        Object {
+          "allowSingleLine": true,
+        },
+      ],
+      "@stylistic/comma-dangle": Array [
+        "error",
+        "always-multiline",
+      ],
+      "@stylistic/comma-spacing": Array [
+        "error",
+        Object {
+          "after": true,
+          "before": false,
+        },
+      ],
       "@stylistic/indent": Array [
         "error",
         2,
       ],
+      "@stylistic/key-spacing": Array [
+        "error",
+      ],
+      "@stylistic/keyword-spacing": Array [
+        "error",
+      ],
+      "@stylistic/max-len": Array [
+        "error",
+        Object {
+          "code": 150,
+          "ignoreComments": true,
+          "ignoreRegExpLiterals": true,
+          "ignoreStrings": true,
+          "ignoreTemplateLiterals": true,
+          "ignoreUrls": true,
+        },
+      ],
       "@stylistic/member-delimiter-style": Array [
+        "error",
+      ],
+      "@stylistic/no-multi-spaces": Array [
+        "error",
+        Object {
+          "ignoreEOLComments": false,
+        },
+      ],
+      "@stylistic/no-multiple-empty-lines": Array [
+        "error",
+      ],
+      "@stylistic/no-trailing-spaces": Array [
+        "error",
+      ],
+      "@stylistic/object-curly-newline": Array [
+        "error",
+        Object {
+          "consistent": true,
+          "multiline": true,
+        },
+      ],
+      "@stylistic/object-curly-spacing": Array [
+        "error",
+        "always",
+      ],
+      "@stylistic/object-property-newline": Array [
+        "error",
+        Object {
+          "allowAllPropertiesOnSameLine": true,
+        },
+      ],
+      "@stylistic/quote-props": Array [
+        "error",
+        "consistent-as-needed",
+      ],
+      "@stylistic/quotes": Array [
+        "error",
+        "single",
+        Object {
+          "avoidEscape": true,
+        },
+      ],
+      "@stylistic/semi": Array [
+        "error",
+        "always",
+      ],
+      "@stylistic/space-before-blocks": Array [
         "error",
       ],
       "@typescript-eslint/member-ordering": Array [
@@ -2599,44 +2678,10 @@ Object {
           ],
         },
       ],
-      "@typescript-eslint/no-floating-promises": Array [
-        "error",
-      ],
-      "@typescript-eslint/no-require-imports": Array [
-        "error",
-      ],
-      "@typescript-eslint/no-shadow": Array [
-        "error",
-      ],
-      "@typescript-eslint/return-await": Array [
-        "error",
-      ],
-      "array-bracket-newline": Array [
-        "error",
-        "consistent",
-      ],
-      "array-bracket-spacing": Array [
-        "error",
-        "never",
-      ],
-      "brace-style": Array [
-        "error",
-        "1tbs",
-        Object {
-          "allowSingleLine": true,
-        },
-      ],
-      "comma-dangle": Array [
-        "error",
-        "always-multiline",
-      ],
-      "comma-spacing": Array [
-        "error",
-        Object {
-          "after": true,
-          "before": false,
-        },
-      ],
+      "@typescript-eslint/no-floating-promises": "error",
+      "@typescript-eslint/no-require-imports": "error",
+      "@typescript-eslint/no-shadow": "error",
+      "@typescript-eslint/return-await": "error",
       "curly": Array [
         "error",
         "multi-line",
@@ -2675,36 +2720,7 @@ Object {
           ],
         },
       ],
-      "indent": Array [
-        "off",
-      ],
-      "key-spacing": Array [
-        "error",
-      ],
-      "keyword-spacing": Array [
-        "error",
-      ],
-      "max-len": Array [
-        "error",
-        Object {
-          "code": 150,
-          "ignoreComments": true,
-          "ignoreRegExpLiterals": true,
-          "ignoreStrings": true,
-          "ignoreTemplateLiterals": true,
-          "ignoreUrls": true,
-        },
-      ],
       "no-bitwise": Array [
-        "error",
-      ],
-      "no-multi-spaces": Array [
-        "error",
-        Object {
-          "ignoreEOLComments": false,
-        },
-      ],
-      "no-multiple-empty-lines": Array [
         "error",
       ],
       "no-return-await": Array [
@@ -2712,44 +2728,6 @@ Object {
       ],
       "no-shadow": Array [
         "off",
-      ],
-      "no-trailing-spaces": Array [
-        "error",
-      ],
-      "object-curly-newline": Array [
-        "error",
-        Object {
-          "consistent": true,
-          "multiline": true,
-        },
-      ],
-      "object-curly-spacing": Array [
-        "error",
-        "always",
-      ],
-      "object-property-newline": Array [
-        "error",
-        Object {
-          "allowAllPropertiesOnSameLine": true,
-        },
-      ],
-      "quote-props": Array [
-        "error",
-        "consistent-as-needed",
-      ],
-      "quotes": Array [
-        "error",
-        "single",
-        Object {
-          "avoidEscape": true,
-        },
-      ],
-      "semi": Array [
-        "error",
-        "always",
-      ],
-      "space-before-blocks": Array [
-        "error",
       ],
     },
     "settings": Object {
@@ -5172,11 +5150,101 @@ Object {
     ],
     "root": true,
     "rules": Object {
+      "@stylistic/array-bracket-newline": Array [
+        "error",
+        "consistent",
+      ],
+      "@stylistic/array-bracket-spacing": Array [
+        "error",
+        "never",
+      ],
+      "@stylistic/brace-style": Array [
+        "error",
+        "1tbs",
+        Object {
+          "allowSingleLine": true,
+        },
+      ],
+      "@stylistic/comma-dangle": Array [
+        "error",
+        "always-multiline",
+      ],
+      "@stylistic/comma-spacing": Array [
+        "error",
+        Object {
+          "after": true,
+          "before": false,
+        },
+      ],
       "@stylistic/indent": Array [
         "error",
         2,
       ],
+      "@stylistic/key-spacing": Array [
+        "error",
+      ],
+      "@stylistic/keyword-spacing": Array [
+        "error",
+      ],
+      "@stylistic/max-len": Array [
+        "error",
+        Object {
+          "code": 150,
+          "ignoreComments": true,
+          "ignoreRegExpLiterals": true,
+          "ignoreStrings": true,
+          "ignoreTemplateLiterals": true,
+          "ignoreUrls": true,
+        },
+      ],
       "@stylistic/member-delimiter-style": Array [
+        "error",
+      ],
+      "@stylistic/no-multi-spaces": Array [
+        "error",
+        Object {
+          "ignoreEOLComments": false,
+        },
+      ],
+      "@stylistic/no-multiple-empty-lines": Array [
+        "error",
+      ],
+      "@stylistic/no-trailing-spaces": Array [
+        "error",
+      ],
+      "@stylistic/object-curly-newline": Array [
+        "error",
+        Object {
+          "consistent": true,
+          "multiline": true,
+        },
+      ],
+      "@stylistic/object-curly-spacing": Array [
+        "error",
+        "always",
+      ],
+      "@stylistic/object-property-newline": Array [
+        "error",
+        Object {
+          "allowAllPropertiesOnSameLine": true,
+        },
+      ],
+      "@stylistic/quote-props": Array [
+        "error",
+        "consistent-as-needed",
+      ],
+      "@stylistic/quotes": Array [
+        "error",
+        "single",
+        Object {
+          "avoidEscape": true,
+        },
+      ],
+      "@stylistic/semi": Array [
+        "error",
+        "always",
+      ],
+      "@stylistic/space-before-blocks": Array [
         "error",
       ],
       "@typescript-eslint/member-ordering": Array [
@@ -5195,44 +5263,10 @@ Object {
           ],
         },
       ],
-      "@typescript-eslint/no-floating-promises": Array [
-        "error",
-      ],
-      "@typescript-eslint/no-require-imports": Array [
-        "error",
-      ],
-      "@typescript-eslint/no-shadow": Array [
-        "error",
-      ],
-      "@typescript-eslint/return-await": Array [
-        "error",
-      ],
-      "array-bracket-newline": Array [
-        "error",
-        "consistent",
-      ],
-      "array-bracket-spacing": Array [
-        "error",
-        "never",
-      ],
-      "brace-style": Array [
-        "error",
-        "1tbs",
-        Object {
-          "allowSingleLine": true,
-        },
-      ],
-      "comma-dangle": Array [
-        "error",
-        "always-multiline",
-      ],
-      "comma-spacing": Array [
-        "error",
-        Object {
-          "after": true,
-          "before": false,
-        },
-      ],
+      "@typescript-eslint/no-floating-promises": "error",
+      "@typescript-eslint/no-require-imports": "error",
+      "@typescript-eslint/no-shadow": "error",
+      "@typescript-eslint/return-await": "error",
       "curly": Array [
         "error",
         "multi-line",
@@ -5271,36 +5305,7 @@ Object {
           ],
         },
       ],
-      "indent": Array [
-        "off",
-      ],
-      "key-spacing": Array [
-        "error",
-      ],
-      "keyword-spacing": Array [
-        "error",
-      ],
-      "max-len": Array [
-        "error",
-        Object {
-          "code": 150,
-          "ignoreComments": true,
-          "ignoreRegExpLiterals": true,
-          "ignoreStrings": true,
-          "ignoreTemplateLiterals": true,
-          "ignoreUrls": true,
-        },
-      ],
       "no-bitwise": Array [
-        "error",
-      ],
-      "no-multi-spaces": Array [
-        "error",
-        Object {
-          "ignoreEOLComments": false,
-        },
-      ],
-      "no-multiple-empty-lines": Array [
         "error",
       ],
       "no-return-await": Array [
@@ -5308,44 +5313,6 @@ Object {
       ],
       "no-shadow": Array [
         "off",
-      ],
-      "no-trailing-spaces": Array [
-        "error",
-      ],
-      "object-curly-newline": Array [
-        "error",
-        Object {
-          "consistent": true,
-          "multiline": true,
-        },
-      ],
-      "object-curly-spacing": Array [
-        "error",
-        "always",
-      ],
-      "object-property-newline": Array [
-        "error",
-        Object {
-          "allowAllPropertiesOnSameLine": true,
-        },
-      ],
-      "quote-props": Array [
-        "error",
-        "consistent-as-needed",
-      ],
-      "quotes": Array [
-        "error",
-        "single",
-        Object {
-          "avoidEscape": true,
-        },
-      ],
-      "semi": Array [
-        "error",
-        "always",
-      ],
-      "space-before-blocks": Array [
-        "error",
       ],
     },
     "settings": Object {
@@ -7037,11 +7004,101 @@ Object {
     ],
     "root": true,
     "rules": Object {
+      "@stylistic/array-bracket-newline": Array [
+        "error",
+        "consistent",
+      ],
+      "@stylistic/array-bracket-spacing": Array [
+        "error",
+        "never",
+      ],
+      "@stylistic/brace-style": Array [
+        "error",
+        "1tbs",
+        Object {
+          "allowSingleLine": true,
+        },
+      ],
+      "@stylistic/comma-dangle": Array [
+        "error",
+        "always-multiline",
+      ],
+      "@stylistic/comma-spacing": Array [
+        "error",
+        Object {
+          "after": true,
+          "before": false,
+        },
+      ],
       "@stylistic/indent": Array [
         "error",
         2,
       ],
+      "@stylistic/key-spacing": Array [
+        "error",
+      ],
+      "@stylistic/keyword-spacing": Array [
+        "error",
+      ],
+      "@stylistic/max-len": Array [
+        "error",
+        Object {
+          "code": 150,
+          "ignoreComments": true,
+          "ignoreRegExpLiterals": true,
+          "ignoreStrings": true,
+          "ignoreTemplateLiterals": true,
+          "ignoreUrls": true,
+        },
+      ],
       "@stylistic/member-delimiter-style": Array [
+        "error",
+      ],
+      "@stylistic/no-multi-spaces": Array [
+        "error",
+        Object {
+          "ignoreEOLComments": false,
+        },
+      ],
+      "@stylistic/no-multiple-empty-lines": Array [
+        "error",
+      ],
+      "@stylistic/no-trailing-spaces": Array [
+        "error",
+      ],
+      "@stylistic/object-curly-newline": Array [
+        "error",
+        Object {
+          "consistent": true,
+          "multiline": true,
+        },
+      ],
+      "@stylistic/object-curly-spacing": Array [
+        "error",
+        "always",
+      ],
+      "@stylistic/object-property-newline": Array [
+        "error",
+        Object {
+          "allowAllPropertiesOnSameLine": true,
+        },
+      ],
+      "@stylistic/quote-props": Array [
+        "error",
+        "consistent-as-needed",
+      ],
+      "@stylistic/quotes": Array [
+        "error",
+        "single",
+        Object {
+          "avoidEscape": true,
+        },
+      ],
+      "@stylistic/semi": Array [
+        "error",
+        "always",
+      ],
+      "@stylistic/space-before-blocks": Array [
         "error",
       ],
       "@typescript-eslint/member-ordering": Array [
@@ -7060,44 +7117,10 @@ Object {
           ],
         },
       ],
-      "@typescript-eslint/no-floating-promises": Array [
-        "error",
-      ],
-      "@typescript-eslint/no-require-imports": Array [
-        "error",
-      ],
-      "@typescript-eslint/no-shadow": Array [
-        "error",
-      ],
-      "@typescript-eslint/return-await": Array [
-        "error",
-      ],
-      "array-bracket-newline": Array [
-        "error",
-        "consistent",
-      ],
-      "array-bracket-spacing": Array [
-        "error",
-        "never",
-      ],
-      "brace-style": Array [
-        "error",
-        "1tbs",
-        Object {
-          "allowSingleLine": true,
-        },
-      ],
-      "comma-dangle": Array [
-        "error",
-        "always-multiline",
-      ],
-      "comma-spacing": Array [
-        "error",
-        Object {
-          "after": true,
-          "before": false,
-        },
-      ],
+      "@typescript-eslint/no-floating-promises": "error",
+      "@typescript-eslint/no-require-imports": "error",
+      "@typescript-eslint/no-shadow": "error",
+      "@typescript-eslint/return-await": "error",
       "curly": Array [
         "error",
         "multi-line",
@@ -7136,36 +7159,7 @@ Object {
           ],
         },
       ],
-      "indent": Array [
-        "off",
-      ],
-      "key-spacing": Array [
-        "error",
-      ],
-      "keyword-spacing": Array [
-        "error",
-      ],
-      "max-len": Array [
-        "error",
-        Object {
-          "code": 150,
-          "ignoreComments": true,
-          "ignoreRegExpLiterals": true,
-          "ignoreStrings": true,
-          "ignoreTemplateLiterals": true,
-          "ignoreUrls": true,
-        },
-      ],
       "no-bitwise": Array [
-        "error",
-      ],
-      "no-multi-spaces": Array [
-        "error",
-        Object {
-          "ignoreEOLComments": false,
-        },
-      ],
-      "no-multiple-empty-lines": Array [
         "error",
       ],
       "no-return-await": Array [
@@ -7173,44 +7167,6 @@ Object {
       ],
       "no-shadow": Array [
         "off",
-      ],
-      "no-trailing-spaces": Array [
-        "error",
-      ],
-      "object-curly-newline": Array [
-        "error",
-        Object {
-          "consistent": true,
-          "multiline": true,
-        },
-      ],
-      "object-curly-spacing": Array [
-        "error",
-        "always",
-      ],
-      "object-property-newline": Array [
-        "error",
-        Object {
-          "allowAllPropertiesOnSameLine": true,
-        },
-      ],
-      "quote-props": Array [
-        "error",
-        "consistent-as-needed",
-      ],
-      "quotes": Array [
-        "error",
-        "single",
-        Object {
-          "avoidEscape": true,
-        },
-      ],
-      "semi": Array [
-        "error",
-        "always",
-      ],
-      "space-before-blocks": Array [
-        "error",
       ],
     },
     "settings": Object {
@@ -9131,11 +9087,101 @@ Object {
     ],
     "root": true,
     "rules": Object {
+      "@stylistic/array-bracket-newline": Array [
+        "error",
+        "consistent",
+      ],
+      "@stylistic/array-bracket-spacing": Array [
+        "error",
+        "never",
+      ],
+      "@stylistic/brace-style": Array [
+        "error",
+        "1tbs",
+        Object {
+          "allowSingleLine": true,
+        },
+      ],
+      "@stylistic/comma-dangle": Array [
+        "error",
+        "always-multiline",
+      ],
+      "@stylistic/comma-spacing": Array [
+        "error",
+        Object {
+          "after": true,
+          "before": false,
+        },
+      ],
       "@stylistic/indent": Array [
         "error",
         2,
       ],
+      "@stylistic/key-spacing": Array [
+        "error",
+      ],
+      "@stylistic/keyword-spacing": Array [
+        "error",
+      ],
+      "@stylistic/max-len": Array [
+        "error",
+        Object {
+          "code": 150,
+          "ignoreComments": true,
+          "ignoreRegExpLiterals": true,
+          "ignoreStrings": true,
+          "ignoreTemplateLiterals": true,
+          "ignoreUrls": true,
+        },
+      ],
       "@stylistic/member-delimiter-style": Array [
+        "error",
+      ],
+      "@stylistic/no-multi-spaces": Array [
+        "error",
+        Object {
+          "ignoreEOLComments": false,
+        },
+      ],
+      "@stylistic/no-multiple-empty-lines": Array [
+        "error",
+      ],
+      "@stylistic/no-trailing-spaces": Array [
+        "error",
+      ],
+      "@stylistic/object-curly-newline": Array [
+        "error",
+        Object {
+          "consistent": true,
+          "multiline": true,
+        },
+      ],
+      "@stylistic/object-curly-spacing": Array [
+        "error",
+        "always",
+      ],
+      "@stylistic/object-property-newline": Array [
+        "error",
+        Object {
+          "allowAllPropertiesOnSameLine": true,
+        },
+      ],
+      "@stylistic/quote-props": Array [
+        "error",
+        "consistent-as-needed",
+      ],
+      "@stylistic/quotes": Array [
+        "error",
+        "single",
+        Object {
+          "avoidEscape": true,
+        },
+      ],
+      "@stylistic/semi": Array [
+        "error",
+        "always",
+      ],
+      "@stylistic/space-before-blocks": Array [
         "error",
       ],
       "@typescript-eslint/member-ordering": Array [
@@ -9154,44 +9200,10 @@ Object {
           ],
         },
       ],
-      "@typescript-eslint/no-floating-promises": Array [
-        "error",
-      ],
-      "@typescript-eslint/no-require-imports": Array [
-        "error",
-      ],
-      "@typescript-eslint/no-shadow": Array [
-        "error",
-      ],
-      "@typescript-eslint/return-await": Array [
-        "error",
-      ],
-      "array-bracket-newline": Array [
-        "error",
-        "consistent",
-      ],
-      "array-bracket-spacing": Array [
-        "error",
-        "never",
-      ],
-      "brace-style": Array [
-        "error",
-        "1tbs",
-        Object {
-          "allowSingleLine": true,
-        },
-      ],
-      "comma-dangle": Array [
-        "error",
-        "always-multiline",
-      ],
-      "comma-spacing": Array [
-        "error",
-        Object {
-          "after": true,
-          "before": false,
-        },
-      ],
+      "@typescript-eslint/no-floating-promises": "error",
+      "@typescript-eslint/no-require-imports": "error",
+      "@typescript-eslint/no-shadow": "error",
+      "@typescript-eslint/return-await": "error",
       "curly": Array [
         "error",
         "multi-line",
@@ -9230,36 +9242,7 @@ Object {
           ],
         },
       ],
-      "indent": Array [
-        "off",
-      ],
-      "key-spacing": Array [
-        "error",
-      ],
-      "keyword-spacing": Array [
-        "error",
-      ],
-      "max-len": Array [
-        "error",
-        Object {
-          "code": 150,
-          "ignoreComments": true,
-          "ignoreRegExpLiterals": true,
-          "ignoreStrings": true,
-          "ignoreTemplateLiterals": true,
-          "ignoreUrls": true,
-        },
-      ],
       "no-bitwise": Array [
-        "error",
-      ],
-      "no-multi-spaces": Array [
-        "error",
-        Object {
-          "ignoreEOLComments": false,
-        },
-      ],
-      "no-multiple-empty-lines": Array [
         "error",
       ],
       "no-return-await": Array [
@@ -9267,44 +9250,6 @@ Object {
       ],
       "no-shadow": Array [
         "off",
-      ],
-      "no-trailing-spaces": Array [
-        "error",
-      ],
-      "object-curly-newline": Array [
-        "error",
-        Object {
-          "consistent": true,
-          "multiline": true,
-        },
-      ],
-      "object-curly-spacing": Array [
-        "error",
-        "always",
-      ],
-      "object-property-newline": Array [
-        "error",
-        Object {
-          "allowAllPropertiesOnSameLine": true,
-        },
-      ],
-      "quote-props": Array [
-        "error",
-        "consistent-as-needed",
-      ],
-      "quotes": Array [
-        "error",
-        "single",
-        Object {
-          "avoidEscape": true,
-        },
-      ],
-      "semi": Array [
-        "error",
-        "always",
-      ],
-      "space-before-blocks": Array [
-        "error",
       ],
     },
     "settings": Object {
@@ -10996,11 +10941,101 @@ Object {
     ],
     "root": true,
     "rules": Object {
+      "@stylistic/array-bracket-newline": Array [
+        "error",
+        "consistent",
+      ],
+      "@stylistic/array-bracket-spacing": Array [
+        "error",
+        "never",
+      ],
+      "@stylistic/brace-style": Array [
+        "error",
+        "1tbs",
+        Object {
+          "allowSingleLine": true,
+        },
+      ],
+      "@stylistic/comma-dangle": Array [
+        "error",
+        "always-multiline",
+      ],
+      "@stylistic/comma-spacing": Array [
+        "error",
+        Object {
+          "after": true,
+          "before": false,
+        },
+      ],
       "@stylistic/indent": Array [
         "error",
         2,
       ],
+      "@stylistic/key-spacing": Array [
+        "error",
+      ],
+      "@stylistic/keyword-spacing": Array [
+        "error",
+      ],
+      "@stylistic/max-len": Array [
+        "error",
+        Object {
+          "code": 150,
+          "ignoreComments": true,
+          "ignoreRegExpLiterals": true,
+          "ignoreStrings": true,
+          "ignoreTemplateLiterals": true,
+          "ignoreUrls": true,
+        },
+      ],
       "@stylistic/member-delimiter-style": Array [
+        "error",
+      ],
+      "@stylistic/no-multi-spaces": Array [
+        "error",
+        Object {
+          "ignoreEOLComments": false,
+        },
+      ],
+      "@stylistic/no-multiple-empty-lines": Array [
+        "error",
+      ],
+      "@stylistic/no-trailing-spaces": Array [
+        "error",
+      ],
+      "@stylistic/object-curly-newline": Array [
+        "error",
+        Object {
+          "consistent": true,
+          "multiline": true,
+        },
+      ],
+      "@stylistic/object-curly-spacing": Array [
+        "error",
+        "always",
+      ],
+      "@stylistic/object-property-newline": Array [
+        "error",
+        Object {
+          "allowAllPropertiesOnSameLine": true,
+        },
+      ],
+      "@stylistic/quote-props": Array [
+        "error",
+        "consistent-as-needed",
+      ],
+      "@stylistic/quotes": Array [
+        "error",
+        "single",
+        Object {
+          "avoidEscape": true,
+        },
+      ],
+      "@stylistic/semi": Array [
+        "error",
+        "always",
+      ],
+      "@stylistic/space-before-blocks": Array [
         "error",
       ],
       "@typescript-eslint/member-ordering": Array [
@@ -11019,44 +11054,10 @@ Object {
           ],
         },
       ],
-      "@typescript-eslint/no-floating-promises": Array [
-        "error",
-      ],
-      "@typescript-eslint/no-require-imports": Array [
-        "error",
-      ],
-      "@typescript-eslint/no-shadow": Array [
-        "error",
-      ],
-      "@typescript-eslint/return-await": Array [
-        "error",
-      ],
-      "array-bracket-newline": Array [
-        "error",
-        "consistent",
-      ],
-      "array-bracket-spacing": Array [
-        "error",
-        "never",
-      ],
-      "brace-style": Array [
-        "error",
-        "1tbs",
-        Object {
-          "allowSingleLine": true,
-        },
-      ],
-      "comma-dangle": Array [
-        "error",
-        "always-multiline",
-      ],
-      "comma-spacing": Array [
-        "error",
-        Object {
-          "after": true,
-          "before": false,
-        },
-      ],
+      "@typescript-eslint/no-floating-promises": "error",
+      "@typescript-eslint/no-require-imports": "error",
+      "@typescript-eslint/no-shadow": "error",
+      "@typescript-eslint/return-await": "error",
       "curly": Array [
         "error",
         "multi-line",
@@ -11095,36 +11096,7 @@ Object {
           ],
         },
       ],
-      "indent": Array [
-        "off",
-      ],
-      "key-spacing": Array [
-        "error",
-      ],
-      "keyword-spacing": Array [
-        "error",
-      ],
-      "max-len": Array [
-        "error",
-        Object {
-          "code": 150,
-          "ignoreComments": true,
-          "ignoreRegExpLiterals": true,
-          "ignoreStrings": true,
-          "ignoreTemplateLiterals": true,
-          "ignoreUrls": true,
-        },
-      ],
       "no-bitwise": Array [
-        "error",
-      ],
-      "no-multi-spaces": Array [
-        "error",
-        Object {
-          "ignoreEOLComments": false,
-        },
-      ],
-      "no-multiple-empty-lines": Array [
         "error",
       ],
       "no-return-await": Array [
@@ -11132,44 +11104,6 @@ Object {
       ],
       "no-shadow": Array [
         "off",
-      ],
-      "no-trailing-spaces": Array [
-        "error",
-      ],
-      "object-curly-newline": Array [
-        "error",
-        Object {
-          "consistent": true,
-          "multiline": true,
-        },
-      ],
-      "object-curly-spacing": Array [
-        "error",
-        "always",
-      ],
-      "object-property-newline": Array [
-        "error",
-        Object {
-          "allowAllPropertiesOnSameLine": true,
-        },
-      ],
-      "quote-props": Array [
-        "error",
-        "consistent-as-needed",
-      ],
-      "quotes": Array [
-        "error",
-        "single",
-        Object {
-          "avoidEscape": true,
-        },
-      ],
-      "semi": Array [
-        "error",
-        "always",
-      ],
-      "space-before-blocks": Array [
-        "error",
       ],
     },
     "settings": Object {
@@ -13090,11 +13024,101 @@ Object {
     ],
     "root": true,
     "rules": Object {
+      "@stylistic/array-bracket-newline": Array [
+        "error",
+        "consistent",
+      ],
+      "@stylistic/array-bracket-spacing": Array [
+        "error",
+        "never",
+      ],
+      "@stylistic/brace-style": Array [
+        "error",
+        "1tbs",
+        Object {
+          "allowSingleLine": true,
+        },
+      ],
+      "@stylistic/comma-dangle": Array [
+        "error",
+        "always-multiline",
+      ],
+      "@stylistic/comma-spacing": Array [
+        "error",
+        Object {
+          "after": true,
+          "before": false,
+        },
+      ],
       "@stylistic/indent": Array [
         "error",
         2,
       ],
+      "@stylistic/key-spacing": Array [
+        "error",
+      ],
+      "@stylistic/keyword-spacing": Array [
+        "error",
+      ],
+      "@stylistic/max-len": Array [
+        "error",
+        Object {
+          "code": 150,
+          "ignoreComments": true,
+          "ignoreRegExpLiterals": true,
+          "ignoreStrings": true,
+          "ignoreTemplateLiterals": true,
+          "ignoreUrls": true,
+        },
+      ],
       "@stylistic/member-delimiter-style": Array [
+        "error",
+      ],
+      "@stylistic/no-multi-spaces": Array [
+        "error",
+        Object {
+          "ignoreEOLComments": false,
+        },
+      ],
+      "@stylistic/no-multiple-empty-lines": Array [
+        "error",
+      ],
+      "@stylistic/no-trailing-spaces": Array [
+        "error",
+      ],
+      "@stylistic/object-curly-newline": Array [
+        "error",
+        Object {
+          "consistent": true,
+          "multiline": true,
+        },
+      ],
+      "@stylistic/object-curly-spacing": Array [
+        "error",
+        "always",
+      ],
+      "@stylistic/object-property-newline": Array [
+        "error",
+        Object {
+          "allowAllPropertiesOnSameLine": true,
+        },
+      ],
+      "@stylistic/quote-props": Array [
+        "error",
+        "consistent-as-needed",
+      ],
+      "@stylistic/quotes": Array [
+        "error",
+        "single",
+        Object {
+          "avoidEscape": true,
+        },
+      ],
+      "@stylistic/semi": Array [
+        "error",
+        "always",
+      ],
+      "@stylistic/space-before-blocks": Array [
         "error",
       ],
       "@typescript-eslint/member-ordering": Array [
@@ -13113,44 +13137,10 @@ Object {
           ],
         },
       ],
-      "@typescript-eslint/no-floating-promises": Array [
-        "error",
-      ],
-      "@typescript-eslint/no-require-imports": Array [
-        "error",
-      ],
-      "@typescript-eslint/no-shadow": Array [
-        "error",
-      ],
-      "@typescript-eslint/return-await": Array [
-        "error",
-      ],
-      "array-bracket-newline": Array [
-        "error",
-        "consistent",
-      ],
-      "array-bracket-spacing": Array [
-        "error",
-        "never",
-      ],
-      "brace-style": Array [
-        "error",
-        "1tbs",
-        Object {
-          "allowSingleLine": true,
-        },
-      ],
-      "comma-dangle": Array [
-        "error",
-        "always-multiline",
-      ],
-      "comma-spacing": Array [
-        "error",
-        Object {
-          "after": true,
-          "before": false,
-        },
-      ],
+      "@typescript-eslint/no-floating-promises": "error",
+      "@typescript-eslint/no-require-imports": "error",
+      "@typescript-eslint/no-shadow": "error",
+      "@typescript-eslint/return-await": "error",
       "curly": Array [
         "error",
         "multi-line",
@@ -13189,36 +13179,7 @@ Object {
           ],
         },
       ],
-      "indent": Array [
-        "off",
-      ],
-      "key-spacing": Array [
-        "error",
-      ],
-      "keyword-spacing": Array [
-        "error",
-      ],
-      "max-len": Array [
-        "error",
-        Object {
-          "code": 150,
-          "ignoreComments": true,
-          "ignoreRegExpLiterals": true,
-          "ignoreStrings": true,
-          "ignoreTemplateLiterals": true,
-          "ignoreUrls": true,
-        },
-      ],
       "no-bitwise": Array [
-        "error",
-      ],
-      "no-multi-spaces": Array [
-        "error",
-        Object {
-          "ignoreEOLComments": false,
-        },
-      ],
-      "no-multiple-empty-lines": Array [
         "error",
       ],
       "no-return-await": Array [
@@ -13226,44 +13187,6 @@ Object {
       ],
       "no-shadow": Array [
         "off",
-      ],
-      "no-trailing-spaces": Array [
-        "error",
-      ],
-      "object-curly-newline": Array [
-        "error",
-        Object {
-          "consistent": true,
-          "multiline": true,
-        },
-      ],
-      "object-curly-spacing": Array [
-        "error",
-        "always",
-      ],
-      "object-property-newline": Array [
-        "error",
-        Object {
-          "allowAllPropertiesOnSameLine": true,
-        },
-      ],
-      "quote-props": Array [
-        "error",
-        "consistent-as-needed",
-      ],
-      "quotes": Array [
-        "error",
-        "single",
-        Object {
-          "avoidEscape": true,
-        },
-      ],
-      "semi": Array [
-        "error",
-        "always",
-      ],
-      "space-before-blocks": Array [
-        "error",
       ],
     },
     "settings": Object {
@@ -14952,11 +14875,101 @@ Object {
     ],
     "root": true,
     "rules": Object {
+      "@stylistic/array-bracket-newline": Array [
+        "error",
+        "consistent",
+      ],
+      "@stylistic/array-bracket-spacing": Array [
+        "error",
+        "never",
+      ],
+      "@stylistic/brace-style": Array [
+        "error",
+        "1tbs",
+        Object {
+          "allowSingleLine": true,
+        },
+      ],
+      "@stylistic/comma-dangle": Array [
+        "error",
+        "always-multiline",
+      ],
+      "@stylistic/comma-spacing": Array [
+        "error",
+        Object {
+          "after": true,
+          "before": false,
+        },
+      ],
       "@stylistic/indent": Array [
         "error",
         2,
       ],
+      "@stylistic/key-spacing": Array [
+        "error",
+      ],
+      "@stylistic/keyword-spacing": Array [
+        "error",
+      ],
+      "@stylistic/max-len": Array [
+        "error",
+        Object {
+          "code": 150,
+          "ignoreComments": true,
+          "ignoreRegExpLiterals": true,
+          "ignoreStrings": true,
+          "ignoreTemplateLiterals": true,
+          "ignoreUrls": true,
+        },
+      ],
       "@stylistic/member-delimiter-style": Array [
+        "error",
+      ],
+      "@stylistic/no-multi-spaces": Array [
+        "error",
+        Object {
+          "ignoreEOLComments": false,
+        },
+      ],
+      "@stylistic/no-multiple-empty-lines": Array [
+        "error",
+      ],
+      "@stylistic/no-trailing-spaces": Array [
+        "error",
+      ],
+      "@stylistic/object-curly-newline": Array [
+        "error",
+        Object {
+          "consistent": true,
+          "multiline": true,
+        },
+      ],
+      "@stylistic/object-curly-spacing": Array [
+        "error",
+        "always",
+      ],
+      "@stylistic/object-property-newline": Array [
+        "error",
+        Object {
+          "allowAllPropertiesOnSameLine": true,
+        },
+      ],
+      "@stylistic/quote-props": Array [
+        "error",
+        "consistent-as-needed",
+      ],
+      "@stylistic/quotes": Array [
+        "error",
+        "single",
+        Object {
+          "avoidEscape": true,
+        },
+      ],
+      "@stylistic/semi": Array [
+        "error",
+        "always",
+      ],
+      "@stylistic/space-before-blocks": Array [
         "error",
       ],
       "@typescript-eslint/member-ordering": Array [
@@ -14975,44 +14988,10 @@ Object {
           ],
         },
       ],
-      "@typescript-eslint/no-floating-promises": Array [
-        "error",
-      ],
-      "@typescript-eslint/no-require-imports": Array [
-        "error",
-      ],
-      "@typescript-eslint/no-shadow": Array [
-        "error",
-      ],
-      "@typescript-eslint/return-await": Array [
-        "error",
-      ],
-      "array-bracket-newline": Array [
-        "error",
-        "consistent",
-      ],
-      "array-bracket-spacing": Array [
-        "error",
-        "never",
-      ],
-      "brace-style": Array [
-        "error",
-        "1tbs",
-        Object {
-          "allowSingleLine": true,
-        },
-      ],
-      "comma-dangle": Array [
-        "error",
-        "always-multiline",
-      ],
-      "comma-spacing": Array [
-        "error",
-        Object {
-          "after": true,
-          "before": false,
-        },
-      ],
+      "@typescript-eslint/no-floating-promises": "error",
+      "@typescript-eslint/no-require-imports": "error",
+      "@typescript-eslint/no-shadow": "error",
+      "@typescript-eslint/return-await": "error",
       "curly": Array [
         "error",
         "multi-line",
@@ -15051,36 +15030,7 @@ Object {
           ],
         },
       ],
-      "indent": Array [
-        "off",
-      ],
-      "key-spacing": Array [
-        "error",
-      ],
-      "keyword-spacing": Array [
-        "error",
-      ],
-      "max-len": Array [
-        "error",
-        Object {
-          "code": 150,
-          "ignoreComments": true,
-          "ignoreRegExpLiterals": true,
-          "ignoreStrings": true,
-          "ignoreTemplateLiterals": true,
-          "ignoreUrls": true,
-        },
-      ],
       "no-bitwise": Array [
-        "error",
-      ],
-      "no-multi-spaces": Array [
-        "error",
-        Object {
-          "ignoreEOLComments": false,
-        },
-      ],
-      "no-multiple-empty-lines": Array [
         "error",
       ],
       "no-return-await": Array [
@@ -15088,44 +15038,6 @@ Object {
       ],
       "no-shadow": Array [
         "off",
-      ],
-      "no-trailing-spaces": Array [
-        "error",
-      ],
-      "object-curly-newline": Array [
-        "error",
-        Object {
-          "consistent": true,
-          "multiline": true,
-        },
-      ],
-      "object-curly-spacing": Array [
-        "error",
-        "always",
-      ],
-      "object-property-newline": Array [
-        "error",
-        Object {
-          "allowAllPropertiesOnSameLine": true,
-        },
-      ],
-      "quote-props": Array [
-        "error",
-        "consistent-as-needed",
-      ],
-      "quotes": Array [
-        "error",
-        "single",
-        Object {
-          "avoidEscape": true,
-        },
-      ],
-      "semi": Array [
-        "error",
-        "always",
-      ],
-      "space-before-blocks": Array [
-        "error",
       ],
     },
     "settings": Object {
@@ -17043,11 +16955,101 @@ Object {
     ],
     "root": true,
     "rules": Object {
+      "@stylistic/array-bracket-newline": Array [
+        "error",
+        "consistent",
+      ],
+      "@stylistic/array-bracket-spacing": Array [
+        "error",
+        "never",
+      ],
+      "@stylistic/brace-style": Array [
+        "error",
+        "1tbs",
+        Object {
+          "allowSingleLine": true,
+        },
+      ],
+      "@stylistic/comma-dangle": Array [
+        "error",
+        "always-multiline",
+      ],
+      "@stylistic/comma-spacing": Array [
+        "error",
+        Object {
+          "after": true,
+          "before": false,
+        },
+      ],
       "@stylistic/indent": Array [
         "error",
         2,
       ],
+      "@stylistic/key-spacing": Array [
+        "error",
+      ],
+      "@stylistic/keyword-spacing": Array [
+        "error",
+      ],
+      "@stylistic/max-len": Array [
+        "error",
+        Object {
+          "code": 150,
+          "ignoreComments": true,
+          "ignoreRegExpLiterals": true,
+          "ignoreStrings": true,
+          "ignoreTemplateLiterals": true,
+          "ignoreUrls": true,
+        },
+      ],
       "@stylistic/member-delimiter-style": Array [
+        "error",
+      ],
+      "@stylistic/no-multi-spaces": Array [
+        "error",
+        Object {
+          "ignoreEOLComments": false,
+        },
+      ],
+      "@stylistic/no-multiple-empty-lines": Array [
+        "error",
+      ],
+      "@stylistic/no-trailing-spaces": Array [
+        "error",
+      ],
+      "@stylistic/object-curly-newline": Array [
+        "error",
+        Object {
+          "consistent": true,
+          "multiline": true,
+        },
+      ],
+      "@stylistic/object-curly-spacing": Array [
+        "error",
+        "always",
+      ],
+      "@stylistic/object-property-newline": Array [
+        "error",
+        Object {
+          "allowAllPropertiesOnSameLine": true,
+        },
+      ],
+      "@stylistic/quote-props": Array [
+        "error",
+        "consistent-as-needed",
+      ],
+      "@stylistic/quotes": Array [
+        "error",
+        "single",
+        Object {
+          "avoidEscape": true,
+        },
+      ],
+      "@stylistic/semi": Array [
+        "error",
+        "always",
+      ],
+      "@stylistic/space-before-blocks": Array [
         "error",
       ],
       "@typescript-eslint/member-ordering": Array [
@@ -17066,44 +17068,10 @@ Object {
           ],
         },
       ],
-      "@typescript-eslint/no-floating-promises": Array [
-        "error",
-      ],
-      "@typescript-eslint/no-require-imports": Array [
-        "error",
-      ],
-      "@typescript-eslint/no-shadow": Array [
-        "error",
-      ],
-      "@typescript-eslint/return-await": Array [
-        "error",
-      ],
-      "array-bracket-newline": Array [
-        "error",
-        "consistent",
-      ],
-      "array-bracket-spacing": Array [
-        "error",
-        "never",
-      ],
-      "brace-style": Array [
-        "error",
-        "1tbs",
-        Object {
-          "allowSingleLine": true,
-        },
-      ],
-      "comma-dangle": Array [
-        "error",
-        "always-multiline",
-      ],
-      "comma-spacing": Array [
-        "error",
-        Object {
-          "after": true,
-          "before": false,
-        },
-      ],
+      "@typescript-eslint/no-floating-promises": "error",
+      "@typescript-eslint/no-require-imports": "error",
+      "@typescript-eslint/no-shadow": "error",
+      "@typescript-eslint/return-await": "error",
       "curly": Array [
         "error",
         "multi-line",
@@ -17142,36 +17110,7 @@ Object {
           ],
         },
       ],
-      "indent": Array [
-        "off",
-      ],
-      "key-spacing": Array [
-        "error",
-      ],
-      "keyword-spacing": Array [
-        "error",
-      ],
-      "max-len": Array [
-        "error",
-        Object {
-          "code": 150,
-          "ignoreComments": true,
-          "ignoreRegExpLiterals": true,
-          "ignoreStrings": true,
-          "ignoreTemplateLiterals": true,
-          "ignoreUrls": true,
-        },
-      ],
       "no-bitwise": Array [
-        "error",
-      ],
-      "no-multi-spaces": Array [
-        "error",
-        Object {
-          "ignoreEOLComments": false,
-        },
-      ],
-      "no-multiple-empty-lines": Array [
         "error",
       ],
       "no-return-await": Array [
@@ -17179,44 +17118,6 @@ Object {
       ],
       "no-shadow": Array [
         "off",
-      ],
-      "no-trailing-spaces": Array [
-        "error",
-      ],
-      "object-curly-newline": Array [
-        "error",
-        Object {
-          "consistent": true,
-          "multiline": true,
-        },
-      ],
-      "object-curly-spacing": Array [
-        "error",
-        "always",
-      ],
-      "object-property-newline": Array [
-        "error",
-        Object {
-          "allowAllPropertiesOnSameLine": true,
-        },
-      ],
-      "quote-props": Array [
-        "error",
-        "consistent-as-needed",
-      ],
-      "quotes": Array [
-        "error",
-        "single",
-        Object {
-          "avoidEscape": true,
-        },
-      ],
-      "semi": Array [
-        "error",
-        "always",
-      ],
-      "space-before-blocks": Array [
-        "error",
       ],
     },
     "settings": Object {
@@ -19564,11 +19465,101 @@ Object {
     ],
     "root": true,
     "rules": Object {
+      "@stylistic/array-bracket-newline": Array [
+        "error",
+        "consistent",
+      ],
+      "@stylistic/array-bracket-spacing": Array [
+        "error",
+        "never",
+      ],
+      "@stylistic/brace-style": Array [
+        "error",
+        "1tbs",
+        Object {
+          "allowSingleLine": true,
+        },
+      ],
+      "@stylistic/comma-dangle": Array [
+        "error",
+        "always-multiline",
+      ],
+      "@stylistic/comma-spacing": Array [
+        "error",
+        Object {
+          "after": true,
+          "before": false,
+        },
+      ],
       "@stylistic/indent": Array [
         "error",
         2,
       ],
+      "@stylistic/key-spacing": Array [
+        "error",
+      ],
+      "@stylistic/keyword-spacing": Array [
+        "error",
+      ],
+      "@stylistic/max-len": Array [
+        "error",
+        Object {
+          "code": 150,
+          "ignoreComments": true,
+          "ignoreRegExpLiterals": true,
+          "ignoreStrings": true,
+          "ignoreTemplateLiterals": true,
+          "ignoreUrls": true,
+        },
+      ],
       "@stylistic/member-delimiter-style": Array [
+        "error",
+      ],
+      "@stylistic/no-multi-spaces": Array [
+        "error",
+        Object {
+          "ignoreEOLComments": false,
+        },
+      ],
+      "@stylistic/no-multiple-empty-lines": Array [
+        "error",
+      ],
+      "@stylistic/no-trailing-spaces": Array [
+        "error",
+      ],
+      "@stylistic/object-curly-newline": Array [
+        "error",
+        Object {
+          "consistent": true,
+          "multiline": true,
+        },
+      ],
+      "@stylistic/object-curly-spacing": Array [
+        "error",
+        "always",
+      ],
+      "@stylistic/object-property-newline": Array [
+        "error",
+        Object {
+          "allowAllPropertiesOnSameLine": true,
+        },
+      ],
+      "@stylistic/quote-props": Array [
+        "error",
+        "consistent-as-needed",
+      ],
+      "@stylistic/quotes": Array [
+        "error",
+        "single",
+        Object {
+          "avoidEscape": true,
+        },
+      ],
+      "@stylistic/semi": Array [
+        "error",
+        "always",
+      ],
+      "@stylistic/space-before-blocks": Array [
         "error",
       ],
       "@typescript-eslint/member-ordering": Array [
@@ -19587,44 +19578,10 @@ Object {
           ],
         },
       ],
-      "@typescript-eslint/no-floating-promises": Array [
-        "error",
-      ],
-      "@typescript-eslint/no-require-imports": Array [
-        "error",
-      ],
-      "@typescript-eslint/no-shadow": Array [
-        "error",
-      ],
-      "@typescript-eslint/return-await": Array [
-        "error",
-      ],
-      "array-bracket-newline": Array [
-        "error",
-        "consistent",
-      ],
-      "array-bracket-spacing": Array [
-        "error",
-        "never",
-      ],
-      "brace-style": Array [
-        "error",
-        "1tbs",
-        Object {
-          "allowSingleLine": true,
-        },
-      ],
-      "comma-dangle": Array [
-        "error",
-        "always-multiline",
-      ],
-      "comma-spacing": Array [
-        "error",
-        Object {
-          "after": true,
-          "before": false,
-        },
-      ],
+      "@typescript-eslint/no-floating-promises": "error",
+      "@typescript-eslint/no-require-imports": "error",
+      "@typescript-eslint/no-shadow": "error",
+      "@typescript-eslint/return-await": "error",
       "curly": Array [
         "error",
         "multi-line",
@@ -19663,36 +19620,7 @@ Object {
           ],
         },
       ],
-      "indent": Array [
-        "off",
-      ],
-      "key-spacing": Array [
-        "error",
-      ],
-      "keyword-spacing": Array [
-        "error",
-      ],
-      "max-len": Array [
-        "error",
-        Object {
-          "code": 150,
-          "ignoreComments": true,
-          "ignoreRegExpLiterals": true,
-          "ignoreStrings": true,
-          "ignoreTemplateLiterals": true,
-          "ignoreUrls": true,
-        },
-      ],
       "no-bitwise": Array [
-        "error",
-      ],
-      "no-multi-spaces": Array [
-        "error",
-        Object {
-          "ignoreEOLComments": false,
-        },
-      ],
-      "no-multiple-empty-lines": Array [
         "error",
       ],
       "no-return-await": Array [
@@ -19700,44 +19628,6 @@ Object {
       ],
       "no-shadow": Array [
         "off",
-      ],
-      "no-trailing-spaces": Array [
-        "error",
-      ],
-      "object-curly-newline": Array [
-        "error",
-        Object {
-          "consistent": true,
-          "multiline": true,
-        },
-      ],
-      "object-curly-spacing": Array [
-        "error",
-        "always",
-      ],
-      "object-property-newline": Array [
-        "error",
-        Object {
-          "allowAllPropertiesOnSameLine": true,
-        },
-      ],
-      "quote-props": Array [
-        "error",
-        "consistent-as-needed",
-      ],
-      "quotes": Array [
-        "error",
-        "single",
-        Object {
-          "avoidEscape": true,
-        },
-      ],
-      "semi": Array [
-        "error",
-        "always",
-      ],
-      "space-before-blocks": Array [
-        "error",
       ],
     },
     "settings": Object {
@@ -22085,11 +21975,101 @@ Object {
     ],
     "root": true,
     "rules": Object {
+      "@stylistic/array-bracket-newline": Array [
+        "error",
+        "consistent",
+      ],
+      "@stylistic/array-bracket-spacing": Array [
+        "error",
+        "never",
+      ],
+      "@stylistic/brace-style": Array [
+        "error",
+        "1tbs",
+        Object {
+          "allowSingleLine": true,
+        },
+      ],
+      "@stylistic/comma-dangle": Array [
+        "error",
+        "always-multiline",
+      ],
+      "@stylistic/comma-spacing": Array [
+        "error",
+        Object {
+          "after": true,
+          "before": false,
+        },
+      ],
       "@stylistic/indent": Array [
         "error",
         2,
       ],
+      "@stylistic/key-spacing": Array [
+        "error",
+      ],
+      "@stylistic/keyword-spacing": Array [
+        "error",
+      ],
+      "@stylistic/max-len": Array [
+        "error",
+        Object {
+          "code": 150,
+          "ignoreComments": true,
+          "ignoreRegExpLiterals": true,
+          "ignoreStrings": true,
+          "ignoreTemplateLiterals": true,
+          "ignoreUrls": true,
+        },
+      ],
       "@stylistic/member-delimiter-style": Array [
+        "error",
+      ],
+      "@stylistic/no-multi-spaces": Array [
+        "error",
+        Object {
+          "ignoreEOLComments": false,
+        },
+      ],
+      "@stylistic/no-multiple-empty-lines": Array [
+        "error",
+      ],
+      "@stylistic/no-trailing-spaces": Array [
+        "error",
+      ],
+      "@stylistic/object-curly-newline": Array [
+        "error",
+        Object {
+          "consistent": true,
+          "multiline": true,
+        },
+      ],
+      "@stylistic/object-curly-spacing": Array [
+        "error",
+        "always",
+      ],
+      "@stylistic/object-property-newline": Array [
+        "error",
+        Object {
+          "allowAllPropertiesOnSameLine": true,
+        },
+      ],
+      "@stylistic/quote-props": Array [
+        "error",
+        "consistent-as-needed",
+      ],
+      "@stylistic/quotes": Array [
+        "error",
+        "single",
+        Object {
+          "avoidEscape": true,
+        },
+      ],
+      "@stylistic/semi": Array [
+        "error",
+        "always",
+      ],
+      "@stylistic/space-before-blocks": Array [
         "error",
       ],
       "@typescript-eslint/member-ordering": Array [
@@ -22108,44 +22088,10 @@ Object {
           ],
         },
       ],
-      "@typescript-eslint/no-floating-promises": Array [
-        "error",
-      ],
-      "@typescript-eslint/no-require-imports": Array [
-        "error",
-      ],
-      "@typescript-eslint/no-shadow": Array [
-        "error",
-      ],
-      "@typescript-eslint/return-await": Array [
-        "error",
-      ],
-      "array-bracket-newline": Array [
-        "error",
-        "consistent",
-      ],
-      "array-bracket-spacing": Array [
-        "error",
-        "never",
-      ],
-      "brace-style": Array [
-        "error",
-        "1tbs",
-        Object {
-          "allowSingleLine": true,
-        },
-      ],
-      "comma-dangle": Array [
-        "error",
-        "always-multiline",
-      ],
-      "comma-spacing": Array [
-        "error",
-        Object {
-          "after": true,
-          "before": false,
-        },
-      ],
+      "@typescript-eslint/no-floating-promises": "error",
+      "@typescript-eslint/no-require-imports": "error",
+      "@typescript-eslint/no-shadow": "error",
+      "@typescript-eslint/return-await": "error",
       "curly": Array [
         "error",
         "multi-line",
@@ -22184,36 +22130,7 @@ Object {
           ],
         },
       ],
-      "indent": Array [
-        "off",
-      ],
-      "key-spacing": Array [
-        "error",
-      ],
-      "keyword-spacing": Array [
-        "error",
-      ],
-      "max-len": Array [
-        "error",
-        Object {
-          "code": 150,
-          "ignoreComments": true,
-          "ignoreRegExpLiterals": true,
-          "ignoreStrings": true,
-          "ignoreTemplateLiterals": true,
-          "ignoreUrls": true,
-        },
-      ],
       "no-bitwise": Array [
-        "error",
-      ],
-      "no-multi-spaces": Array [
-        "error",
-        Object {
-          "ignoreEOLComments": false,
-        },
-      ],
-      "no-multiple-empty-lines": Array [
         "error",
       ],
       "no-return-await": Array [
@@ -22221,44 +22138,6 @@ Object {
       ],
       "no-shadow": Array [
         "off",
-      ],
-      "no-trailing-spaces": Array [
-        "error",
-      ],
-      "object-curly-newline": Array [
-        "error",
-        Object {
-          "consistent": true,
-          "multiline": true,
-        },
-      ],
-      "object-curly-spacing": Array [
-        "error",
-        "always",
-      ],
-      "object-property-newline": Array [
-        "error",
-        Object {
-          "allowAllPropertiesOnSameLine": true,
-        },
-      ],
-      "quote-props": Array [
-        "error",
-        "consistent-as-needed",
-      ],
-      "quotes": Array [
-        "error",
-        "single",
-        Object {
-          "avoidEscape": true,
-        },
-      ],
-      "semi": Array [
-        "error",
-        "always",
-      ],
-      "space-before-blocks": Array [
-        "error",
       ],
     },
     "settings": Object {
@@ -24601,11 +24480,101 @@ Object {
     ],
     "root": true,
     "rules": Object {
+      "@stylistic/array-bracket-newline": Array [
+        "error",
+        "consistent",
+      ],
+      "@stylistic/array-bracket-spacing": Array [
+        "error",
+        "never",
+      ],
+      "@stylistic/brace-style": Array [
+        "error",
+        "1tbs",
+        Object {
+          "allowSingleLine": true,
+        },
+      ],
+      "@stylistic/comma-dangle": Array [
+        "error",
+        "always-multiline",
+      ],
+      "@stylistic/comma-spacing": Array [
+        "error",
+        Object {
+          "after": true,
+          "before": false,
+        },
+      ],
       "@stylistic/indent": Array [
         "error",
         2,
       ],
+      "@stylistic/key-spacing": Array [
+        "error",
+      ],
+      "@stylistic/keyword-spacing": Array [
+        "error",
+      ],
+      "@stylistic/max-len": Array [
+        "error",
+        Object {
+          "code": 150,
+          "ignoreComments": true,
+          "ignoreRegExpLiterals": true,
+          "ignoreStrings": true,
+          "ignoreTemplateLiterals": true,
+          "ignoreUrls": true,
+        },
+      ],
       "@stylistic/member-delimiter-style": Array [
+        "error",
+      ],
+      "@stylistic/no-multi-spaces": Array [
+        "error",
+        Object {
+          "ignoreEOLComments": false,
+        },
+      ],
+      "@stylistic/no-multiple-empty-lines": Array [
+        "error",
+      ],
+      "@stylistic/no-trailing-spaces": Array [
+        "error",
+      ],
+      "@stylistic/object-curly-newline": Array [
+        "error",
+        Object {
+          "consistent": true,
+          "multiline": true,
+        },
+      ],
+      "@stylistic/object-curly-spacing": Array [
+        "error",
+        "always",
+      ],
+      "@stylistic/object-property-newline": Array [
+        "error",
+        Object {
+          "allowAllPropertiesOnSameLine": true,
+        },
+      ],
+      "@stylistic/quote-props": Array [
+        "error",
+        "consistent-as-needed",
+      ],
+      "@stylistic/quotes": Array [
+        "error",
+        "single",
+        Object {
+          "avoidEscape": true,
+        },
+      ],
+      "@stylistic/semi": Array [
+        "error",
+        "always",
+      ],
+      "@stylistic/space-before-blocks": Array [
         "error",
       ],
       "@typescript-eslint/member-ordering": Array [
@@ -24624,44 +24593,10 @@ Object {
           ],
         },
       ],
-      "@typescript-eslint/no-floating-promises": Array [
-        "error",
-      ],
-      "@typescript-eslint/no-require-imports": Array [
-        "error",
-      ],
-      "@typescript-eslint/no-shadow": Array [
-        "error",
-      ],
-      "@typescript-eslint/return-await": Array [
-        "error",
-      ],
-      "array-bracket-newline": Array [
-        "error",
-        "consistent",
-      ],
-      "array-bracket-spacing": Array [
-        "error",
-        "never",
-      ],
-      "brace-style": Array [
-        "error",
-        "1tbs",
-        Object {
-          "allowSingleLine": true,
-        },
-      ],
-      "comma-dangle": Array [
-        "error",
-        "always-multiline",
-      ],
-      "comma-spacing": Array [
-        "error",
-        Object {
-          "after": true,
-          "before": false,
-        },
-      ],
+      "@typescript-eslint/no-floating-promises": "error",
+      "@typescript-eslint/no-require-imports": "error",
+      "@typescript-eslint/no-shadow": "error",
+      "@typescript-eslint/return-await": "error",
       "curly": Array [
         "error",
         "multi-line",
@@ -24700,36 +24635,7 @@ Object {
           ],
         },
       ],
-      "indent": Array [
-        "off",
-      ],
-      "key-spacing": Array [
-        "error",
-      ],
-      "keyword-spacing": Array [
-        "error",
-      ],
-      "max-len": Array [
-        "error",
-        Object {
-          "code": 150,
-          "ignoreComments": true,
-          "ignoreRegExpLiterals": true,
-          "ignoreStrings": true,
-          "ignoreTemplateLiterals": true,
-          "ignoreUrls": true,
-        },
-      ],
       "no-bitwise": Array [
-        "error",
-      ],
-      "no-multi-spaces": Array [
-        "error",
-        Object {
-          "ignoreEOLComments": false,
-        },
-      ],
-      "no-multiple-empty-lines": Array [
         "error",
       ],
       "no-return-await": Array [
@@ -24737,44 +24643,6 @@ Object {
       ],
       "no-shadow": Array [
         "off",
-      ],
-      "no-trailing-spaces": Array [
-        "error",
-      ],
-      "object-curly-newline": Array [
-        "error",
-        Object {
-          "consistent": true,
-          "multiline": true,
-        },
-      ],
-      "object-curly-spacing": Array [
-        "error",
-        "always",
-      ],
-      "object-property-newline": Array [
-        "error",
-        Object {
-          "allowAllPropertiesOnSameLine": true,
-        },
-      ],
-      "quote-props": Array [
-        "error",
-        "consistent-as-needed",
-      ],
-      "quotes": Array [
-        "error",
-        "single",
-        Object {
-          "avoidEscape": true,
-        },
-      ],
-      "semi": Array [
-        "error",
-        "always",
-      ],
-      "space-before-blocks": Array [
-        "error",
       ],
     },
     "settings": Object {
@@ -27225,11 +27093,101 @@ Object {
     ],
     "root": true,
     "rules": Object {
+      "@stylistic/array-bracket-newline": Array [
+        "error",
+        "consistent",
+      ],
+      "@stylistic/array-bracket-spacing": Array [
+        "error",
+        "never",
+      ],
+      "@stylistic/brace-style": Array [
+        "error",
+        "1tbs",
+        Object {
+          "allowSingleLine": true,
+        },
+      ],
+      "@stylistic/comma-dangle": Array [
+        "error",
+        "always-multiline",
+      ],
+      "@stylistic/comma-spacing": Array [
+        "error",
+        Object {
+          "after": true,
+          "before": false,
+        },
+      ],
       "@stylistic/indent": Array [
         "error",
         2,
       ],
+      "@stylistic/key-spacing": Array [
+        "error",
+      ],
+      "@stylistic/keyword-spacing": Array [
+        "error",
+      ],
+      "@stylistic/max-len": Array [
+        "error",
+        Object {
+          "code": 150,
+          "ignoreComments": true,
+          "ignoreRegExpLiterals": true,
+          "ignoreStrings": true,
+          "ignoreTemplateLiterals": true,
+          "ignoreUrls": true,
+        },
+      ],
       "@stylistic/member-delimiter-style": Array [
+        "error",
+      ],
+      "@stylistic/no-multi-spaces": Array [
+        "error",
+        Object {
+          "ignoreEOLComments": false,
+        },
+      ],
+      "@stylistic/no-multiple-empty-lines": Array [
+        "error",
+      ],
+      "@stylistic/no-trailing-spaces": Array [
+        "error",
+      ],
+      "@stylistic/object-curly-newline": Array [
+        "error",
+        Object {
+          "consistent": true,
+          "multiline": true,
+        },
+      ],
+      "@stylistic/object-curly-spacing": Array [
+        "error",
+        "always",
+      ],
+      "@stylistic/object-property-newline": Array [
+        "error",
+        Object {
+          "allowAllPropertiesOnSameLine": true,
+        },
+      ],
+      "@stylistic/quote-props": Array [
+        "error",
+        "consistent-as-needed",
+      ],
+      "@stylistic/quotes": Array [
+        "error",
+        "single",
+        Object {
+          "avoidEscape": true,
+        },
+      ],
+      "@stylistic/semi": Array [
+        "error",
+        "always",
+      ],
+      "@stylistic/space-before-blocks": Array [
         "error",
       ],
       "@typescript-eslint/member-ordering": Array [
@@ -27248,44 +27206,10 @@ Object {
           ],
         },
       ],
-      "@typescript-eslint/no-floating-promises": Array [
-        "error",
-      ],
-      "@typescript-eslint/no-require-imports": Array [
-        "error",
-      ],
-      "@typescript-eslint/no-shadow": Array [
-        "error",
-      ],
-      "@typescript-eslint/return-await": Array [
-        "error",
-      ],
-      "array-bracket-newline": Array [
-        "error",
-        "consistent",
-      ],
-      "array-bracket-spacing": Array [
-        "error",
-        "never",
-      ],
-      "brace-style": Array [
-        "error",
-        "1tbs",
-        Object {
-          "allowSingleLine": true,
-        },
-      ],
-      "comma-dangle": Array [
-        "error",
-        "always-multiline",
-      ],
-      "comma-spacing": Array [
-        "error",
-        Object {
-          "after": true,
-          "before": false,
-        },
-      ],
+      "@typescript-eslint/no-floating-promises": "error",
+      "@typescript-eslint/no-require-imports": "error",
+      "@typescript-eslint/no-shadow": "error",
+      "@typescript-eslint/return-await": "error",
       "curly": Array [
         "error",
         "multi-line",
@@ -27324,36 +27248,7 @@ Object {
           ],
         },
       ],
-      "indent": Array [
-        "off",
-      ],
-      "key-spacing": Array [
-        "error",
-      ],
-      "keyword-spacing": Array [
-        "error",
-      ],
-      "max-len": Array [
-        "error",
-        Object {
-          "code": 150,
-          "ignoreComments": true,
-          "ignoreRegExpLiterals": true,
-          "ignoreStrings": true,
-          "ignoreTemplateLiterals": true,
-          "ignoreUrls": true,
-        },
-      ],
       "no-bitwise": Array [
-        "error",
-      ],
-      "no-multi-spaces": Array [
-        "error",
-        Object {
-          "ignoreEOLComments": false,
-        },
-      ],
-      "no-multiple-empty-lines": Array [
         "error",
       ],
       "no-return-await": Array [
@@ -27361,44 +27256,6 @@ Object {
       ],
       "no-shadow": Array [
         "off",
-      ],
-      "no-trailing-spaces": Array [
-        "error",
-      ],
-      "object-curly-newline": Array [
-        "error",
-        Object {
-          "consistent": true,
-          "multiline": true,
-        },
-      ],
-      "object-curly-spacing": Array [
-        "error",
-        "always",
-      ],
-      "object-property-newline": Array [
-        "error",
-        Object {
-          "allowAllPropertiesOnSameLine": true,
-        },
-      ],
-      "quote-props": Array [
-        "error",
-        "consistent-as-needed",
-      ],
-      "quotes": Array [
-        "error",
-        "single",
-        Object {
-          "avoidEscape": true,
-        },
-      ],
-      "semi": Array [
-        "error",
-        "always",
-      ],
-      "space-before-blocks": Array [
-        "error",
       ],
     },
     "settings": Object {
