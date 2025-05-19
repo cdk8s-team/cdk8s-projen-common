@@ -18,5 +18,10 @@ export function buildGitHubDefaultOptions(options: Cdk8sTeamNodeProjectOptions):
   return {
     mergify: options.githubOptions?.mergify ?? false,
     mergeQueue: options.githubOptions?.mergeQueue ?? true,
+    pullRequestLintOptions: options.githubOptions?.pullRequestLintOptions?.semanticTitleOptions ?? {
+      semanticTitleOptions: {
+        types: ['feat', 'fix', 'chore', 'docs'],
+      },
+    },
   };
 }
