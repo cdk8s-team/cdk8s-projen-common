@@ -83,7 +83,7 @@ export class Cdk8sTeamJsiiProject extends cdk.JsiiProject {
     const maven = options.maven ?? true;
     const nuget = options.nuget ?? true;
 
-    const finalOptions = deepmerge.all([{
+    const finalOptions: cdk.JsiiProjectOptions = deepmerge.all([{
       author: fixedNodeOptions.authorName!,
       repositoryUrl: fixedNodeOptions.repository!,
       authorAddress: 'https://aws.amazon.com',
@@ -145,6 +145,9 @@ function javaTarget(name: string): cdk.JsiiJavaTarget {
     mavenArtifactId: repoName,
     mavenGroupId: 'org.cdk8s',
     javaPackage: `org.cdk8s${pkg ? `.${pkg}` : ''}`,
+
+    // Publish to the new Maven compatibility endpoint (https://github.com/cdklabs/publib/blob/main/README.md#maven)
+    mavenServerId: 'central-ossrh',
   };
 }
 
