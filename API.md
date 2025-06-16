@@ -700,6 +700,7 @@ When given a project, this it the project itself.
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.property.packageManager">packageManager</a></code> | <code>projen.javascript.NodePackageManager</code> | The package manager to use. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.property.runScriptCommand">runScriptCommand</a></code> | <code>string</code> | The command to use to run scripts (e.g. `yarn run` or `npm run` depends on the package manager). |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.property.autoMerge">autoMerge</a></code> | <code>projen.github.AutoMerge</code> | Component that sets up mergify for merging approved pull requests. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.property.biome">biome</a></code> | <code>projen.javascript.Biome</code> | *No description.* |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.property.buildWorkflow">buildWorkflow</a></code> | <code>projen.build.BuildWorkflow</code> | The PR build GitHub workflow. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.property.buildWorkflowJobId">buildWorkflowJobId</a></code> | <code>string</code> | The job ID of the build workflow. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.property.jest">jest</a></code> | <code>projen.javascript.Jest</code> | The Jest configuration (if enabled). |
@@ -1231,6 +1232,16 @@ public readonly autoMerge: AutoMerge;
 - *Type:* projen.github.AutoMerge
 
 Component that sets up mergify for merging approved pull requests.
+
+---
+
+##### `biome`<sup>Optional</sup> <a name="biome" id="@cdk8s/projen-common.Cdk8sTeamJsiiProject.property.biome"></a>
+
+```typescript
+public readonly biome: Biome;
+```
+
+- *Type:* projen.javascript.Biome
 
 ---
 
@@ -2205,6 +2216,7 @@ When given a project, this it the project itself.
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.property.packageManager">packageManager</a></code> | <code>projen.javascript.NodePackageManager</code> | The package manager to use. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.property.runScriptCommand">runScriptCommand</a></code> | <code>string</code> | The command to use to run scripts (e.g. `yarn run` or `npm run` depends on the package manager). |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.property.autoMerge">autoMerge</a></code> | <code>projen.github.AutoMerge</code> | Component that sets up mergify for merging approved pull requests. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.property.biome">biome</a></code> | <code>projen.javascript.Biome</code> | *No description.* |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.property.buildWorkflow">buildWorkflow</a></code> | <code>projen.build.BuildWorkflow</code> | The PR build GitHub workflow. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.property.buildWorkflowJobId">buildWorkflowJobId</a></code> | <code>string</code> | The job ID of the build workflow. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.property.jest">jest</a></code> | <code>projen.javascript.Jest</code> | The Jest configuration (if enabled). |
@@ -2726,6 +2738,16 @@ public readonly autoMerge: AutoMerge;
 - *Type:* projen.github.AutoMerge
 
 Component that sets up mergify for merging approved pull requests.
+
+---
+
+##### `biome`<sup>Optional</sup> <a name="biome" id="@cdk8s/projen-common.Cdk8sTeamNodeProject.property.biome"></a>
+
+```typescript
+public readonly biome: Biome;
+```
+
+- *Type:* projen.javascript.Biome
 
 ---
 
@@ -3579,6 +3601,7 @@ When given a project, this it the project itself.
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.packageManager">packageManager</a></code> | <code>projen.javascript.NodePackageManager</code> | The package manager to use. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.runScriptCommand">runScriptCommand</a></code> | <code>string</code> | The command to use to run scripts (e.g. `yarn run` or `npm run` depends on the package manager). |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.autoMerge">autoMerge</a></code> | <code>projen.github.AutoMerge</code> | Component that sets up mergify for merging approved pull requests. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.biome">biome</a></code> | <code>projen.javascript.Biome</code> | *No description.* |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.buildWorkflow">buildWorkflow</a></code> | <code>projen.build.BuildWorkflow</code> | The PR build GitHub workflow. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.buildWorkflowJobId">buildWorkflowJobId</a></code> | <code>string</code> | The job ID of the build workflow. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.jest">jest</a></code> | <code>projen.javascript.Jest</code> | The Jest configuration (if enabled). |
@@ -4110,6 +4133,16 @@ public readonly autoMerge: AutoMerge;
 - *Type:* projen.github.AutoMerge
 
 Component that sets up mergify for merging approved pull requests.
+
+---
+
+##### `biome`<sup>Optional</sup> <a name="biome" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.biome"></a>
+
+```typescript
+public readonly biome: Biome;
+```
+
+- *Type:* projen.javascript.Biome
 
 ---
 
@@ -4671,6 +4704,8 @@ const cdk8sTeamJsiiProjectOptions: Cdk8sTeamJsiiProjectOptions = { ... }
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.defaultReleaseBranch">defaultReleaseBranch</a></code> | <code>string</code> | The name of the main release branch. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.artifactsDirectory">artifactsDirectory</a></code> | <code>string</code> | A directory which will contain build artifacts. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.autoApproveUpgrades">autoApproveUpgrades</a></code> | <code>boolean</code> | Automatically approve deps upgrade PRs, allowing them to be merged by mergify (if configued). |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.biome">biome</a></code> | <code>boolean</code> | Setup Biome. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.biomeOptions">biomeOptions</a></code> | <code>projen.javascript.BiomeOptions</code> | Biome options. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.buildWorkflow">buildWorkflow</a></code> | <code>boolean</code> | Define a GitHub workflow for building PRs. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.buildWorkflowOptions">buildWorkflowOptions</a></code> | <code>projen.javascript.BuildWorkflowOptions</code> | Options for PR build workflow. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.buildWorkflowTriggers">buildWorkflowTriggers</a></code> | <code>projen.github.workflows.Triggers</code> | Build workflow triggers. |
@@ -6149,6 +6184,32 @@ Throw if set to true but `autoApproveOptions` are not defined.
 
 ---
 
+##### `biome`<sup>Optional</sup> <a name="biome" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.biome"></a>
+
+```typescript
+public readonly biome: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Setup Biome.
+
+---
+
+##### `biomeOptions`<sup>Optional</sup> <a name="biomeOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.biomeOptions"></a>
+
+```typescript
+public readonly biomeOptions: BiomeOptions;
+```
+
+- *Type:* projen.javascript.BiomeOptions
+- *Default:* default options
+
+Biome options.
+
+---
+
 ##### `buildWorkflow`<sup>Optional</sup> <a name="buildWorkflow" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.buildWorkflow"></a>
 
 ```typescript
@@ -7129,6 +7190,8 @@ const cdk8sTeamNodeProjectOptions: Cdk8sTeamNodeProjectOptions = { ... }
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.defaultReleaseBranch">defaultReleaseBranch</a></code> | <code>string</code> | The name of the main release branch. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.artifactsDirectory">artifactsDirectory</a></code> | <code>string</code> | A directory which will contain build artifacts. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.autoApproveUpgrades">autoApproveUpgrades</a></code> | <code>boolean</code> | Automatically approve deps upgrade PRs, allowing them to be merged by mergify (if configued). |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.biome">biome</a></code> | <code>boolean</code> | Setup Biome. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.biomeOptions">biomeOptions</a></code> | <code>projen.javascript.BiomeOptions</code> | Biome options. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.buildWorkflow">buildWorkflow</a></code> | <code>boolean</code> | Define a GitHub workflow for building PRs. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.buildWorkflowOptions">buildWorkflowOptions</a></code> | <code>projen.javascript.BuildWorkflowOptions</code> | Options for PR build workflow. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.buildWorkflowTriggers">buildWorkflowTriggers</a></code> | <code>projen.github.workflows.Triggers</code> | Build workflow triggers. |
@@ -8582,6 +8645,32 @@ Throw if set to true but `autoApproveOptions` are not defined.
 
 ---
 
+##### `biome`<sup>Optional</sup> <a name="biome" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.biome"></a>
+
+```typescript
+public readonly biome: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Setup Biome.
+
+---
+
+##### `biomeOptions`<sup>Optional</sup> <a name="biomeOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.biomeOptions"></a>
+
+```typescript
+public readonly biomeOptions: BiomeOptions;
+```
+
+- *Type:* projen.javascript.BiomeOptions
+- *Default:* default options
+
+Biome options.
+
+---
+
 ##### `buildWorkflow`<sup>Optional</sup> <a name="buildWorkflow" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.buildWorkflow"></a>
 
 ```typescript
@@ -9229,6 +9318,8 @@ const cdk8sTeamTypeScriptProjectOptions: Cdk8sTeamTypeScriptProjectOptions = { .
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.defaultReleaseBranch">defaultReleaseBranch</a></code> | <code>string</code> | The name of the main release branch. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.artifactsDirectory">artifactsDirectory</a></code> | <code>string</code> | A directory which will contain build artifacts. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.autoApproveUpgrades">autoApproveUpgrades</a></code> | <code>boolean</code> | Automatically approve deps upgrade PRs, allowing them to be merged by mergify (if configued). |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.biome">biome</a></code> | <code>boolean</code> | Setup Biome. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.biomeOptions">biomeOptions</a></code> | <code>projen.javascript.BiomeOptions</code> | Biome options. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.buildWorkflow">buildWorkflow</a></code> | <code>boolean</code> | Define a GitHub workflow for building PRs. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.buildWorkflowOptions">buildWorkflowOptions</a></code> | <code>projen.javascript.BuildWorkflowOptions</code> | Options for PR build workflow. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.buildWorkflowTriggers">buildWorkflowTriggers</a></code> | <code>projen.github.workflows.Triggers</code> | Build workflow triggers. |
@@ -10698,6 +10789,32 @@ public readonly autoApproveUpgrades: boolean;
 Automatically approve deps upgrade PRs, allowing them to be merged by mergify (if configued).
 
 Throw if set to true but `autoApproveOptions` are not defined.
+
+---
+
+##### `biome`<sup>Optional</sup> <a name="biome" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.biome"></a>
+
+```typescript
+public readonly biome: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Setup Biome.
+
+---
+
+##### `biomeOptions`<sup>Optional</sup> <a name="biomeOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.biomeOptions"></a>
+
+```typescript
+public readonly biomeOptions: BiomeOptions;
+```
+
+- *Type:* projen.javascript.BiomeOptions
+- *Default:* default options
+
+Biome options.
 
 ---
 
