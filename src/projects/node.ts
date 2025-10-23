@@ -36,6 +36,9 @@ export const fixedOptionsKeys = [
   // this is deprecated in favor of 'release'.
   // lets disallow using it.
   'releaseWorkflow',
+
+  'npmTrustedPublishing',
+  'releaseEnvironment',
 ] as const;
 export type fixedOptionsKeysType = typeof fixedOptionsKeys[number];
 
@@ -79,6 +82,8 @@ export function buildNodeProjectFixedOptions(options: Cdk8sTeamNodeProjectOption
 
     // This is the version we actually run GitHub workflows on
     workflowNodeVersion: '18.12.0',
+    npmTrustedPublishing: true,
+    releaseEnvironment: 'release',
   };
 }
 

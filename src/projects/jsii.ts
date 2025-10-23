@@ -135,6 +135,7 @@ function pythonTarget(name: string): cdk.JsiiPythonTarget {
   return {
     distName: repoName,
     module: repoName.replace(/-/g, '_'),
+    trustedPublishing: true,
   };
 }
 
@@ -151,13 +152,14 @@ function javaTarget(name: string): cdk.JsiiJavaTarget {
   };
 }
 
-function dotnetTarget(name: string) : cdk.JsiiDotNetTarget {
+function dotnetTarget(name: string): cdk.JsiiDotNetTarget {
   const repoName = node.buildRepositoryName(name);
   const artifact = repoName.substring(node.NAME_PREFIX.length);
   const pkg = code.toPascalCase(artifact).replace(/-/g, '');
   return {
     dotNetNamespace: `Org.Cdk8s${pkg ? `.${pkg}` : ''}`,
     packageId: `Org.Cdk8s${pkg ? `.${pkg}` : ''}`,
+    trustedPublishing: true,
   };
 }
 
