@@ -729,7 +729,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v5
         with:
-          node-version: lts/*
+          node-version: 24.x
       - name: Download build artifacts
         uses: actions/download-artifact@v5
         with:
@@ -757,7 +757,7 @@ jobs:
           NPM_DIST_TAG: latest
           NPM_REGISTRY: registry.npmjs.org
           NPM_CONFIG_PROVENANCE: \\"true\\"
-          NPM_TOKEN: \${{ secrets.NPM_TOKEN }}
+          NPM_TRUSTED_PUBLISHER: \\"true\\"
         run: npx -p publib@latest publib-npm
   release_maven:
     name: Publish to Maven Central
@@ -811,6 +811,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      id-token: write
     if: needs.release.outputs.tag_exists != 'true' && needs.release.outputs.latest_commit == github.sha
     steps:
       - uses: actions/setup-node@v5
@@ -843,8 +844,7 @@ jobs:
         run: mv .repo/dist dist
       - name: Release
         env:
-          TWINE_USERNAME: \${{ secrets.TWINE_USERNAME }}
-          TWINE_PASSWORD: \${{ secrets.TWINE_PASSWORD }}
+          PYPI_TRUSTED_PUBLISHER: \\"true\\"
         run: npx -p publib@latest publib-pypi
   release_nuget:
     name: Publish to NuGet Gallery
@@ -852,6 +852,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      id-token: write
     if: needs.release.outputs.tag_exists != 'true' && needs.release.outputs.latest_commit == github.sha
     steps:
       - uses: actions/setup-node@v5
@@ -884,7 +885,8 @@ jobs:
         run: mv .repo/dist dist
       - name: Release
         env:
-          NUGET_API_KEY: \${{ secrets.NUGET_API_KEY }}
+          NUGET_TRUSTED_PUBLISHER: \\"true\\"
+          NUGET_USERNAME: \${{ secrets.NUGET_USERNAME }}
         run: npx -p publib@latest publib-nuget
   release_golang:
     name: Publish to GitHub Go Module Repository
@@ -3293,7 +3295,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v5
         with:
-          node-version: lts/*
+          node-version: 24.x
       - name: Download build artifacts
         uses: actions/download-artifact@v5
         with:
@@ -3321,7 +3323,7 @@ jobs:
           NPM_DIST_TAG: latest
           NPM_REGISTRY: registry.npmjs.org
           NPM_CONFIG_PROVENANCE: \\"true\\"
-          NPM_TOKEN: \${{ secrets.NPM_TOKEN }}
+          NPM_TRUSTED_PUBLISHER: \\"true\\"
         run: npx -p publib@latest publib-npm
   release_maven:
     name: Publish to Maven Central
@@ -3375,6 +3377,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      id-token: write
     if: needs.release.outputs.tag_exists != 'true' && needs.release.outputs.latest_commit == github.sha
     steps:
       - uses: actions/setup-node@v5
@@ -3407,8 +3410,7 @@ jobs:
         run: mv .repo/dist dist
       - name: Release
         env:
-          TWINE_USERNAME: \${{ secrets.TWINE_USERNAME }}
-          TWINE_PASSWORD: \${{ secrets.TWINE_PASSWORD }}
+          PYPI_TRUSTED_PUBLISHER: \\"true\\"
         run: npx -p publib@latest publib-pypi
   release_nuget:
     name: Publish to NuGet Gallery
@@ -3416,6 +3418,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      id-token: write
     if: needs.release.outputs.tag_exists != 'true' && needs.release.outputs.latest_commit == github.sha
     steps:
       - uses: actions/setup-node@v5
@@ -3448,7 +3451,8 @@ jobs:
         run: mv .repo/dist dist
       - name: Release
         env:
-          NUGET_API_KEY: \${{ secrets.NUGET_API_KEY }}
+          NUGET_TRUSTED_PUBLISHER: \\"true\\"
+          NUGET_USERNAME: \${{ secrets.NUGET_USERNAME }}
         run: npx -p publib@latest publib-nuget
   release_golang:
     name: Publish to GitHub Go Module Repository
@@ -17695,7 +17699,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v5
         with:
-          node-version: lts/*
+          node-version: 24.x
       - name: Download build artifacts
         uses: actions/download-artifact@v5
         with:
@@ -17723,7 +17727,7 @@ jobs:
           NPM_DIST_TAG: latest
           NPM_REGISTRY: registry.npmjs.org
           NPM_CONFIG_PROVENANCE: \\"true\\"
-          NPM_TOKEN: \${{ secrets.NPM_TOKEN }}
+          NPM_TRUSTED_PUBLISHER: \\"true\\"
         run: npx -p publib@latest publib-npm
   release_maven:
     name: Publish to Maven Central
@@ -17777,6 +17781,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      id-token: write
     if: needs.release.outputs.tag_exists != 'true' && needs.release.outputs.latest_commit == github.sha
     steps:
       - uses: actions/setup-node@v5
@@ -17809,8 +17814,7 @@ jobs:
         run: mv .repo/dist dist
       - name: Release
         env:
-          TWINE_USERNAME: \${{ secrets.TWINE_USERNAME }}
-          TWINE_PASSWORD: \${{ secrets.TWINE_PASSWORD }}
+          PYPI_TRUSTED_PUBLISHER: \\"true\\"
         run: npx -p publib@latest publib-pypi
   release_nuget:
     name: Publish to NuGet Gallery
@@ -17818,6 +17822,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      id-token: write
     if: needs.release.outputs.tag_exists != 'true' && needs.release.outputs.latest_commit == github.sha
     steps:
       - uses: actions/setup-node@v5
@@ -17850,7 +17855,8 @@ jobs:
         run: mv .repo/dist dist
       - name: Release
         env:
-          NUGET_API_KEY: \${{ secrets.NUGET_API_KEY }}
+          NUGET_TRUSTED_PUBLISHER: \\"true\\"
+          NUGET_USERNAME: \${{ secrets.NUGET_USERNAME }}
         run: npx -p publib@latest publib-nuget
   release_golang:
     name: Publish to GitHub Go Module Repository
@@ -20213,7 +20219,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v5
         with:
-          node-version: lts/*
+          node-version: 24.x
       - name: Download build artifacts
         uses: actions/download-artifact@v5
         with:
@@ -20241,7 +20247,7 @@ jobs:
           NPM_DIST_TAG: latest
           NPM_REGISTRY: registry.npmjs.org
           NPM_CONFIG_PROVENANCE: \\"true\\"
-          NPM_TOKEN: \${{ secrets.NPM_TOKEN }}
+          NPM_TRUSTED_PUBLISHER: \\"true\\"
         run: npx -p publib@latest publib-npm
   release_maven:
     name: Publish to Maven Central
@@ -20295,6 +20301,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      id-token: write
     if: needs.release.outputs.tag_exists != 'true' && needs.release.outputs.latest_commit == github.sha
     steps:
       - uses: actions/setup-node@v5
@@ -20327,8 +20334,7 @@ jobs:
         run: mv .repo/dist dist
       - name: Release
         env:
-          TWINE_USERNAME: \${{ secrets.TWINE_USERNAME }}
-          TWINE_PASSWORD: \${{ secrets.TWINE_PASSWORD }}
+          PYPI_TRUSTED_PUBLISHER: \\"true\\"
         run: npx -p publib@latest publib-pypi
   release_nuget:
     name: Publish to NuGet Gallery
@@ -20336,6 +20342,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      id-token: write
     if: needs.release.outputs.tag_exists != 'true' && needs.release.outputs.latest_commit == github.sha
     steps:
       - uses: actions/setup-node@v5
@@ -20368,7 +20375,8 @@ jobs:
         run: mv .repo/dist dist
       - name: Release
         env:
-          NUGET_API_KEY: \${{ secrets.NUGET_API_KEY }}
+          NUGET_TRUSTED_PUBLISHER: \\"true\\"
+          NUGET_USERNAME: \${{ secrets.NUGET_USERNAME }}
         run: npx -p publib@latest publib-nuget
   release_golang:
     name: Publish to GitHub Go Module Repository
@@ -22725,12 +22733,13 @@ jobs:
     needs: release
     runs-on: ubuntu-latest
     permissions:
+      id-token: write
       contents: read
     if: needs.release.outputs.tag_exists != 'true' && needs.release.outputs.latest_commit == github.sha
     steps:
       - uses: actions/setup-node@v5
         with:
-          node-version: lts/*
+          node-version: 24.x
       - name: Download build artifacts
         uses: actions/download-artifact@v5
         with:
@@ -22757,7 +22766,7 @@ jobs:
         env:
           NPM_DIST_TAG: latest
           NPM_REGISTRY: registry.npmjs.org
-          NPM_TOKEN: \${{ secrets.NPM_TOKEN }}
+          NPM_TRUSTED_PUBLISHER: \\"true\\"
         run: npx -p publib@latest publib-npm
   release_maven:
     name: Publish to Maven Central
@@ -22811,6 +22820,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      id-token: write
     if: needs.release.outputs.tag_exists != 'true' && needs.release.outputs.latest_commit == github.sha
     steps:
       - uses: actions/setup-node@v5
@@ -22843,8 +22853,7 @@ jobs:
         run: mv .repo/dist dist
       - name: Release
         env:
-          TWINE_USERNAME: \${{ secrets.TWINE_USERNAME }}
-          TWINE_PASSWORD: \${{ secrets.TWINE_PASSWORD }}
+          PYPI_TRUSTED_PUBLISHER: \\"true\\"
         run: npx -p publib@latest publib-pypi
   release_nuget:
     name: Publish to NuGet Gallery
@@ -22852,6 +22861,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      id-token: write
     if: needs.release.outputs.tag_exists != 'true' && needs.release.outputs.latest_commit == github.sha
     steps:
       - uses: actions/setup-node@v5
@@ -22884,7 +22894,8 @@ jobs:
         run: mv .repo/dist dist
       - name: Release
         env:
-          NUGET_API_KEY: \${{ secrets.NUGET_API_KEY }}
+          NUGET_TRUSTED_PUBLISHER: \\"true\\"
+          NUGET_USERNAME: \${{ secrets.NUGET_USERNAME }}
         run: npx -p publib@latest publib-nuget
   release_golang:
     name: Publish to GitHub Go Module Repository
@@ -25343,7 +25354,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v5
         with:
-          node-version: lts/*
+          node-version: 24.x
       - name: Download build artifacts
         uses: actions/download-artifact@v5
         with:
@@ -25371,7 +25382,7 @@ jobs:
           NPM_DIST_TAG: latest
           NPM_REGISTRY: registry.npmjs.org
           NPM_CONFIG_PROVENANCE: \\"true\\"
-          NPM_TOKEN: \${{ secrets.NPM_TOKEN }}
+          NPM_TRUSTED_PUBLISHER: \\"true\\"
         run: npx -p publib@latest publib-npm
   release_maven:
     name: Publish to Maven Central
@@ -25425,6 +25436,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      id-token: write
     if: needs.release.outputs.tag_exists != 'true' && needs.release.outputs.latest_commit == github.sha
     steps:
       - uses: actions/setup-node@v5
@@ -25457,8 +25469,7 @@ jobs:
         run: mv .repo/dist dist
       - name: Release
         env:
-          TWINE_USERNAME: \${{ secrets.TWINE_USERNAME }}
-          TWINE_PASSWORD: \${{ secrets.TWINE_PASSWORD }}
+          PYPI_TRUSTED_PUBLISHER: \\"true\\"
         run: npx -p publib@latest publib-pypi
   release_nuget:
     name: Publish to NuGet Gallery
@@ -25466,6 +25477,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      id-token: write
     if: needs.release.outputs.tag_exists != 'true' && needs.release.outputs.latest_commit == github.sha
     steps:
       - uses: actions/setup-node@v5
@@ -25498,7 +25510,8 @@ jobs:
         run: mv .repo/dist dist
       - name: Release
         env:
-          NUGET_API_KEY: \${{ secrets.NUGET_API_KEY }}
+          NUGET_TRUSTED_PUBLISHER: \\"true\\"
+          NUGET_USERNAME: \${{ secrets.NUGET_USERNAME }}
         run: npx -p publib@latest publib-nuget
   release_golang:
     name: Publish to GitHub Go Module Repository
@@ -27865,7 +27878,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v5
         with:
-          node-version: lts/*
+          node-version: 24.x
       - name: Download build artifacts
         uses: actions/download-artifact@v5
         with:
@@ -27893,7 +27906,7 @@ jobs:
           NPM_DIST_TAG: latest
           NPM_REGISTRY: registry.npmjs.org
           NPM_CONFIG_PROVENANCE: \\"true\\"
-          NPM_TOKEN: \${{ secrets.NPM_TOKEN }}
+          NPM_TRUSTED_PUBLISHER: \\"true\\"
         run: npx -p publib@latest publib-npm
   release_maven:
     name: Publish to Maven Central
@@ -27947,6 +27960,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      id-token: write
     if: needs.release.outputs.tag_exists != 'true' && needs.release.outputs.latest_commit == github.sha
     steps:
       - uses: actions/setup-node@v5
@@ -27979,8 +27993,7 @@ jobs:
         run: mv .repo/dist dist
       - name: Release
         env:
-          TWINE_USERNAME: \${{ secrets.TWINE_USERNAME }}
-          TWINE_PASSWORD: \${{ secrets.TWINE_PASSWORD }}
+          PYPI_TRUSTED_PUBLISHER: \\"true\\"
         run: npx -p publib@latest publib-pypi
   release_nuget:
     name: Publish to NuGet Gallery
@@ -27988,6 +28001,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      id-token: write
     if: needs.release.outputs.tag_exists != 'true' && needs.release.outputs.latest_commit == github.sha
     steps:
       - uses: actions/setup-node@v5
@@ -28020,7 +28034,8 @@ jobs:
         run: mv .repo/dist dist
       - name: Release
         env:
-          NUGET_API_KEY: \${{ secrets.NUGET_API_KEY }}
+          NUGET_TRUSTED_PUBLISHER: \\"true\\"
+          NUGET_USERNAME: \${{ secrets.NUGET_USERNAME }}
         run: npx -p publib@latest publib-nuget
   release_golang:
     name: Publish to GitHub Go Module Repository
