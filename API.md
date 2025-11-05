@@ -4706,6 +4706,8 @@ const cdk8sTeamJsiiProjectOptions: Cdk8sTeamJsiiProjectOptions = { ... }
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.workflowRunsOnGroup">workflowRunsOnGroup</a></code> | <code>projen.GroupRunnerOptions</code> | Github Runner Group selection options. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.defaultReleaseBranch">defaultReleaseBranch</a></code> | <code>string</code> | The name of the main release branch. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.artifactsDirectory">artifactsDirectory</a></code> | <code>string</code> | A directory which will contain build artifacts. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.auditDeps">auditDeps</a></code> | <code>boolean</code> | Run security audit on dependencies. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.auditDepsOptions">auditDepsOptions</a></code> | <code>projen.javascript.AuditOptions</code> | Security audit options. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.autoApproveUpgrades">autoApproveUpgrades</a></code> | <code>boolean</code> | Automatically approve deps upgrade PRs, allowing them to be merged by mergify (if configued). |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.biome">biome</a></code> | <code>boolean</code> | Setup Biome. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.biomeOptions">biomeOptions</a></code> | <code>projen.javascript.BiomeOptions</code> | Biome options. |
@@ -6217,6 +6219,36 @@ A directory which will contain build artifacts.
 
 ---
 
+##### `auditDeps`<sup>Optional</sup> <a name="auditDeps" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.auditDeps"></a>
+
+```typescript
+public readonly auditDeps: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Run security audit on dependencies.
+
+When enabled, creates an "audit" task that checks for known security vulnerabilities
+in dependencies. By default, runs during every build and checks for "high" severity
+vulnerabilities or above in all dependencies (including dev dependencies).
+
+---
+
+##### `auditDepsOptions`<sup>Optional</sup> <a name="auditDepsOptions" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.auditDepsOptions"></a>
+
+```typescript
+public readonly auditDepsOptions: AuditOptions;
+```
+
+- *Type:* projen.javascript.AuditOptions
+- *Default:* default options
+
+Security audit options.
+
+---
+
 ##### `autoApproveUpgrades`<sup>Optional</sup> <a name="autoApproveUpgrades" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.autoApproveUpgrades"></a>
 
 ```typescript
@@ -7240,6 +7272,8 @@ const cdk8sTeamNodeProjectOptions: Cdk8sTeamNodeProjectOptions = { ... }
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.workflowRunsOnGroup">workflowRunsOnGroup</a></code> | <code>projen.GroupRunnerOptions</code> | Github Runner Group selection options. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.defaultReleaseBranch">defaultReleaseBranch</a></code> | <code>string</code> | The name of the main release branch. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.artifactsDirectory">artifactsDirectory</a></code> | <code>string</code> | A directory which will contain build artifacts. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.auditDeps">auditDeps</a></code> | <code>boolean</code> | Run security audit on dependencies. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.auditDepsOptions">auditDepsOptions</a></code> | <code>projen.javascript.AuditOptions</code> | Security audit options. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.autoApproveUpgrades">autoApproveUpgrades</a></code> | <code>boolean</code> | Automatically approve deps upgrade PRs, allowing them to be merged by mergify (if configued). |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.biome">biome</a></code> | <code>boolean</code> | Setup Biome. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.biomeOptions">biomeOptions</a></code> | <code>projen.javascript.BiomeOptions</code> | Biome options. |
@@ -8726,6 +8760,36 @@ A directory which will contain build artifacts.
 
 ---
 
+##### `auditDeps`<sup>Optional</sup> <a name="auditDeps" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.auditDeps"></a>
+
+```typescript
+public readonly auditDeps: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Run security audit on dependencies.
+
+When enabled, creates an "audit" task that checks for known security vulnerabilities
+in dependencies. By default, runs during every build and checks for "high" severity
+vulnerabilities or above in all dependencies (including dev dependencies).
+
+---
+
+##### `auditDepsOptions`<sup>Optional</sup> <a name="auditDepsOptions" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.auditDepsOptions"></a>
+
+```typescript
+public readonly auditDepsOptions: AuditOptions;
+```
+
+- *Type:* projen.javascript.AuditOptions
+- *Default:* default options
+
+Security audit options.
+
+---
+
 ##### `autoApproveUpgrades`<sup>Optional</sup> <a name="autoApproveUpgrades" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.autoApproveUpgrades"></a>
 
 ```typescript
@@ -9416,6 +9480,8 @@ const cdk8sTeamTypeScriptProjectOptions: Cdk8sTeamTypeScriptProjectOptions = { .
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.workflowRunsOnGroup">workflowRunsOnGroup</a></code> | <code>projen.GroupRunnerOptions</code> | Github Runner Group selection options. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.defaultReleaseBranch">defaultReleaseBranch</a></code> | <code>string</code> | The name of the main release branch. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.artifactsDirectory">artifactsDirectory</a></code> | <code>string</code> | A directory which will contain build artifacts. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.auditDeps">auditDeps</a></code> | <code>boolean</code> | Run security audit on dependencies. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.auditDepsOptions">auditDepsOptions</a></code> | <code>projen.javascript.AuditOptions</code> | Security audit options. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.autoApproveUpgrades">autoApproveUpgrades</a></code> | <code>boolean</code> | Automatically approve deps upgrade PRs, allowing them to be merged by mergify (if configued). |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.biome">biome</a></code> | <code>boolean</code> | Setup Biome. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.biomeOptions">biomeOptions</a></code> | <code>projen.javascript.BiomeOptions</code> | Biome options. |
@@ -10918,6 +10984,36 @@ public readonly artifactsDirectory: string;
 - *Default:* "dist"
 
 A directory which will contain build artifacts.
+
+---
+
+##### `auditDeps`<sup>Optional</sup> <a name="auditDeps" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.auditDeps"></a>
+
+```typescript
+public readonly auditDeps: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Run security audit on dependencies.
+
+When enabled, creates an "audit" task that checks for known security vulnerabilities
+in dependencies. By default, runs during every build and checks for "high" severity
+vulnerabilities or above in all dependencies (including dev dependencies).
+
+---
+
+##### `auditDepsOptions`<sup>Optional</sup> <a name="auditDepsOptions" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.auditDepsOptions"></a>
+
+```typescript
+public readonly auditDepsOptions: AuditOptions;
+```
+
+- *Type:* projen.javascript.AuditOptions
+- *Default:* default options
+
+Security audit options.
 
 ---
 
