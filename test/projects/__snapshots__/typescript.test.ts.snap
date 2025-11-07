@@ -1417,7 +1417,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-compiler-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=comp1,typescript",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=comp1,typescript",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -1441,7 +1441,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -1465,7 +1465,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -3444,7 +3444,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-compiler-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=typescript",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=typescript",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -3468,7 +3468,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -3492,7 +3492,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -5283,7 +5283,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-compiler-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=typescript",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=typescript",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -5307,7 +5307,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -5331,7 +5331,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -7080,7 +7080,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-compiler-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=typescript",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=typescript",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -7104,7 +7104,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -7128,7 +7128,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -8874,7 +8874,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-compiler-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=typescript",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=typescript",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -8898,7 +8898,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -8922,7 +8922,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -10846,7 +10846,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-compiler-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=typescript",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=typescript",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -10870,7 +10870,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -10894,7 +10894,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -12822,7 +12822,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-compiler-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=typescript",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=typescript",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -12846,7 +12846,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -12870,7 +12870,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -14795,7 +14795,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-compiler-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=typescript",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=typescript",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -14819,7 +14819,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -14843,7 +14843,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -16874,7 +16874,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-compiler-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=typescript",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=typescript",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -16898,7 +16898,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -16922,7 +16922,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -18850,7 +18850,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-compiler-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=typescript",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=typescript",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -18874,7 +18874,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -18898,7 +18898,7 @@ tsconfig.tsbuildinfo
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",

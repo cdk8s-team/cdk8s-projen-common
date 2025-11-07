@@ -1955,7 +1955,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-compiler-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=comp1,jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=comp1,jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -1979,7 +1979,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -2003,7 +2003,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -4532,7 +4532,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-compiler-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -4556,7 +4556,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -4580,7 +4580,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -6457,7 +6457,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-compiler-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -6481,7 +6481,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -6505,7 +6505,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -8523,7 +8523,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-compiler-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -8547,7 +8547,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -8571,7 +8571,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -10406,7 +10406,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-compiler-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -10430,7 +10430,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -10454,7 +10454,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -12472,7 +12472,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-compiler-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -12496,7 +12496,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -12520,7 +12520,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -14355,7 +14355,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-compiler-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -14379,7 +14379,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -14403,7 +14403,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -16418,7 +16418,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-compiler-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -16442,7 +16442,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -16466,7 +16466,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -18937,7 +18937,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-compiler-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -18961,7 +18961,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -18985,7 +18985,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -21463,7 +21463,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-compiler-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -21487,7 +21487,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -21511,7 +21511,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -23988,7 +23988,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-compiler-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -24012,7 +24012,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -24036,7 +24036,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -26614,7 +26614,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-compiler-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -26638,7 +26638,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -26662,7 +26662,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -29140,7 +29140,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-compiler-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -29164,7 +29164,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-configuration",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
           },
           Object {
             "exec": "yarn install --check-files",
@@ -29188,7 +29188,7 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-dev-dependencies",
         "steps": Array [
           Object {
-            "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
+            "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
           },
           Object {
             "exec": "yarn install --check-files",
