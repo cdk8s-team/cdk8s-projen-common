@@ -731,7 +731,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v5
         with:
-          node-version: 24.x
+          node-version: lts/*
       - name: Download build artifacts
         uses: actions/download-artifact@v5
         with:
@@ -3303,7 +3303,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v5
         with:
-          node-version: 24.x
+          node-version: lts/*
       - name: Download build artifacts
         uses: actions/download-artifact@v5
         with:
@@ -17713,7 +17713,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v5
         with:
-          node-version: 24.x
+          node-version: lts/*
       - name: Download build artifacts
         uses: actions/download-artifact@v5
         with:
@@ -20239,7 +20239,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v5
         with:
-          node-version: 24.x
+          node-version: lts/*
       - name: Download build artifacts
         uses: actions/download-artifact@v5
         with:
@@ -22765,7 +22765,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v5
         with:
-          node-version: 24.x
+          node-version: lts/*
       - name: Download build artifacts
         uses: actions/download-artifact@v5
         with:
@@ -25386,7 +25386,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v5
         with:
-          node-version: 24.x
+          node-version: lts/*
       - name: Download build artifacts
         uses: actions/download-artifact@v5
         with:
@@ -27916,7 +27916,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v5
         with:
-          node-version: 24.x
+          node-version: lts/*
       - name: Download build artifacts
         uses: actions/download-artifact@v5
         with:
