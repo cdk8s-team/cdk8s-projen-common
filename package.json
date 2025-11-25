@@ -64,7 +64,7 @@
     "projen": ">=0.81.0 <1"
   },
   "dependencies": {
-    "codemaker": "^1.119.0",
+    "codemaker": "^1.120.0",
     "deepmerge": "^4.3.1"
   },
   "bundledDependencies": [
