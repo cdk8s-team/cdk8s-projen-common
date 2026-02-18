@@ -29,6 +29,7 @@ new Cdk8sTeamJsiiProject(options: Cdk8sTeamJsiiProjectOptions)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.addExcludeFromCleanup">addExcludeFromCleanup</a></code> | Exclude the matching files from pre-synth cleanup. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.addGitIgnore">addGitIgnore</a></code> | Adds a .gitignore pattern. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.addPackageIgnore">addPackageIgnore</a></code> | Adds patterns to be ignored by npm. |
@@ -68,6 +69,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@cdk8s/projen-common.Cdk8sTeamJsiiProject.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@cdk8s/projen-common.Cdk8sTeamJsiiProject.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addExcludeFromCleanup` <a name="addExcludeFromCleanup" id="@cdk8s/projen-common.Cdk8sTeamJsiiProject.addExcludeFromCleanup"></a>
 
@@ -1545,6 +1567,7 @@ new Cdk8sTeamNodeProject(options: Cdk8sTeamNodeProjectOptions)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.addExcludeFromCleanup">addExcludeFromCleanup</a></code> | Exclude the matching files from pre-synth cleanup. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.addGitIgnore">addGitIgnore</a></code> | Adds a .gitignore pattern. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProject.addPackageIgnore">addPackageIgnore</a></code> | Adds patterns to be ignored by npm. |
@@ -1584,6 +1607,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@cdk8s/projen-common.Cdk8sTeamNodeProject.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@cdk8s/projen-common.Cdk8sTeamNodeProject.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addExcludeFromCleanup` <a name="addExcludeFromCleanup" id="@cdk8s/projen-common.Cdk8sTeamNodeProject.addExcludeFromCleanup"></a>
 
@@ -2930,6 +2974,7 @@ new Cdk8sTeamTypeScriptProject(options: Cdk8sTeamTypeScriptProjectOptions)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addExcludeFromCleanup">addExcludeFromCleanup</a></code> | Exclude the matching files from pre-synth cleanup. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addGitIgnore">addGitIgnore</a></code> | Adds a .gitignore pattern. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addPackageIgnore">addPackageIgnore</a></code> | Adds patterns to be ignored by npm. |
@@ -2969,6 +3014,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addExcludeFromCleanup` <a name="addExcludeFromCleanup" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.addExcludeFromCleanup"></a>
 
@@ -4457,6 +4523,7 @@ new Triage(project: NodeProject, props: TriageProps)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@cdk8s/projen-common.Triage.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@cdk8s/projen-common.Triage.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@cdk8s/projen-common.Triage.postSynthesize">postSynthesize</a></code> | Called after synthesis. |
 | <code><a href="#@cdk8s/projen-common.Triage.preSynthesize">preSynthesize</a></code> | Called before synthesis. |
 | <code><a href="#@cdk8s/projen-common.Triage.synthesize">synthesize</a></code> | Synthesizes files to the project output directory. |
@@ -4470,6 +4537,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@cdk8s/projen-common.Triage.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@cdk8s/projen-common.Triage.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `postSynthesize` <a name="postSynthesize" id="@cdk8s/projen-common.Triage.postSynthesize"></a>
 
