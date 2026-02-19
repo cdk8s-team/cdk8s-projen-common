@@ -57,11 +57,16 @@ export class Cdk8sTeamTypeScriptProject extends typescript.TypeScriptProject {
     node.validateOptions(options);
     node.validateProjectName(options);
 
+    const defaultTypeScriptOptions = {
+      typescriptVersion: '~5.9',
+    } satisfies Partial<typescript.TypeScriptProjectOptions>;
+
     const fixedNodeOptions = node.buildNodeProjectFixedOptions(options);
     const defaultNodeOptions = node.buildNodeProjectDefaultOptions(options);
     const defaultGitHubOptions = github.buildGitHubDefaultOptions(options);
 
     const finalOptions = deepmerge.all([{
+      ...defaultTypeScriptOptions,
       ...fixedNodeOptions,
       ...defaultNodeOptions,
       githubOptions: defaultGitHubOptions,

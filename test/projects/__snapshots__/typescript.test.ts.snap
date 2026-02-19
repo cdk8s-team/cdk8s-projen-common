@@ -1140,6 +1140,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "typescript",
         "type": "build",
+        "version": "~5.9",
       },
     ],
   },
@@ -1811,7 +1812,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "jest-junit": "^16",
       "projen": "*",
       "ts-jest": "*",
-      "typescript": "*",
+      "typescript": "~5.9",
     },
     "engines": Object {
       "node": ">= 16.20.0",
@@ -3165,6 +3166,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "typescript",
         "type": "build",
+        "version": "~5.9",
       },
     ],
   },
@@ -3838,7 +3840,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "jest-junit": "^16",
       "projen": "*",
       "ts-jest": "*",
-      "typescript": "*",
+      "typescript": "~5.9",
     },
     "engines": Object {
       "node": ">= 16.20.0",
@@ -5068,6 +5070,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "typescript",
         "type": "build",
+        "version": "~5.9",
       },
     ],
   },
@@ -5676,7 +5679,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "jest-junit": "^16",
       "projen": "*",
       "ts-jest": "*",
-      "typescript": "*",
+      "typescript": "~5.9",
     },
     "engines": Object {
       "node": ">= 16.20.0",
@@ -6865,6 +6868,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "typescript",
         "type": "build",
+        "version": "~5.9",
       },
     ],
   },
@@ -7473,7 +7477,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "jest-junit": "^16",
       "projen": "*",
       "ts-jest": "*",
-      "typescript": "*",
+      "typescript": "~5.9",
     },
     "engines": Object {
       "node": ">= 16.20.0",
@@ -8659,6 +8663,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "typescript",
         "type": "build",
+        "version": "~5.9",
       },
     ],
   },
@@ -9267,7 +9272,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "jest-junit": "^16",
       "projen": "*",
       "ts-jest": "*",
-      "typescript": "*",
+      "typescript": "~5.9",
     },
     "engines": Object {
       "node": ">= 16.20.0",
@@ -10569,6 +10574,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "typescript",
         "type": "build",
+        "version": "~5.9",
       },
     ],
   },
@@ -11240,7 +11246,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "jest-junit": "^16",
       "projen": "*",
       "ts-jest": "*",
-      "typescript": "*",
+      "typescript": "~5.9",
     },
     "engines": Object {
       "node": ">= 16.20.0",
@@ -12545,6 +12551,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "typescript",
         "type": "build",
+        "version": "~5.9",
       },
     ],
   },
@@ -13216,7 +13223,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "jest-junit": "^16",
       "projen": "*",
       "ts-jest": "*",
-      "typescript": "*",
+      "typescript": "~5.9",
     },
     "engines": Object {
       "node": ">= 16.20.0",
@@ -14518,6 +14525,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "typescript",
         "type": "build",
+        "version": "~5.9",
       },
     ],
   },
@@ -15189,7 +15197,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "jest-junit": "^16",
       "projen": "*",
       "ts-jest": "*",
-      "typescript": "*",
+      "typescript": "~5.9",
     },
     "engines": Object {
       "node": ">= 16.20.0",
@@ -16595,6 +16603,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "typescript",
         "type": "build",
+        "version": "~5.9",
       },
     ],
   },
@@ -17268,7 +17277,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "jest-junit": "^16",
       "projen": "*",
       "ts-jest": "*",
-      "typescript": "*",
+      "typescript": "~5.9",
     },
     "engines": Object {
       "node": ">= 16.20.0",
@@ -18573,6 +18582,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "typescript",
         "type": "build",
+        "version": "~5.9",
       },
     ],
   },
@@ -19244,7 +19254,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "jest-junit": "^16",
       "projen": "*",
       "ts-jest": "*",
-      "typescript": "*",
+      "typescript": "~5.9",
     },
     "engines": Object {
       "node": ">= 16.20.0",
