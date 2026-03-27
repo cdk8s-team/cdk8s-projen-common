@@ -1085,7 +1085,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@types/node",
         "type": "build",
-        "version": "16.18.78",
+        "version": "^16",
       },
       Object {
         "name": "@typescript-eslint/eslint-plugin",
@@ -1800,7 +1800,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "devDependencies": Object {
       "@stylistic/eslint-plugin": "^2",
       "@types/jest": "*",
-      "@types/node": "16.18.78",
+      "@types/node": "^16",
       "@typescript-eslint/eslint-plugin": "^8",
       "@typescript-eslint/parser": "^8",
       "commit-and-tag-version": "^12",
@@ -3111,7 +3111,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@types/node",
         "type": "build",
-        "version": "16.18.78",
+        "version": "^16",
       },
       Object {
         "name": "@typescript-eslint/eslint-plugin",
@@ -3828,7 +3828,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "devDependencies": Object {
       "@stylistic/eslint-plugin": "^2",
       "@types/jest": "*",
-      "@types/node": "16.18.78",
+      "@types/node": "^16",
       "@typescript-eslint/eslint-plugin": "^8",
       "@typescript-eslint/parser": "^8",
       "commit-and-tag-version": "^12",
@@ -5020,7 +5020,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@types/node",
         "type": "build",
-        "version": "16.18.78",
+        "version": "^16",
       },
       Object {
         "name": "@typescript-eslint/eslint-plugin",
@@ -5668,7 +5668,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "devDependencies": Object {
       "@stylistic/eslint-plugin": "^2",
       "@types/jest": "*",
-      "@types/node": "16.18.78",
+      "@types/node": "^16",
       "@typescript-eslint/eslint-plugin": "^8",
       "@typescript-eslint/parser": "^8",
       "constructs": "^10.0.0",
@@ -6818,7 +6818,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@types/node",
         "type": "build",
-        "version": "16.18.78",
+        "version": "^16",
       },
       Object {
         "name": "@typescript-eslint/eslint-plugin",
@@ -7466,7 +7466,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "devDependencies": Object {
       "@stylistic/eslint-plugin": "^2",
       "@types/jest": "*",
-      "@types/node": "16.18.78",
+      "@types/node": "^16",
       "@typescript-eslint/eslint-plugin": "^8",
       "@typescript-eslint/parser": "^8",
       "constructs": "^10.0.0",
@@ -8613,7 +8613,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@types/node",
         "type": "build",
-        "version": "16.18.78",
+        "version": "^16",
       },
       Object {
         "name": "@typescript-eslint/eslint-plugin",
@@ -9261,7 +9261,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "devDependencies": Object {
       "@stylistic/eslint-plugin": "^2",
       "@types/jest": "*",
-      "@types/node": "16.18.78",
+      "@types/node": "^16",
       "@typescript-eslint/eslint-plugin": "^8",
       "@typescript-eslint/parser": "^8",
       "constructs": "^10.0.0",
@@ -10519,7 +10519,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@types/node",
         "type": "build",
-        "version": "16.18.78",
+        "version": "^16",
       },
       Object {
         "name": "@typescript-eslint/eslint-plugin",
@@ -11234,7 +11234,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "devDependencies": Object {
       "@stylistic/eslint-plugin": "^2",
       "@types/jest": "*",
-      "@types/node": "16.18.78",
+      "@types/node": "^16",
       "@typescript-eslint/eslint-plugin": "^8",
       "@typescript-eslint/parser": "^8",
       "commit-and-tag-version": "^12",
@@ -12496,7 +12496,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@types/node",
         "type": "build",
-        "version": "16.18.78",
+        "version": "^16",
       },
       Object {
         "name": "@typescript-eslint/eslint-plugin",
@@ -13211,7 +13211,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "devDependencies": Object {
       "@stylistic/eslint-plugin": "^2",
       "@types/jest": "*",
-      "@types/node": "16.18.78",
+      "@types/node": "^16",
       "@typescript-eslint/eslint-plugin": "^8",
       "@typescript-eslint/parser": "^8",
       "commit-and-tag-version": "^12",
@@ -14470,7 +14470,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@types/node",
         "type": "build",
-        "version": "16.18.78",
+        "version": "^16",
       },
       Object {
         "name": "@typescript-eslint/eslint-plugin",
@@ -15185,7 +15185,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "devDependencies": Object {
       "@stylistic/eslint-plugin": "^2",
       "@types/jest": "*",
-      "@types/node": "16.18.78",
+      "@types/node": "^16",
       "@typescript-eslint/eslint-plugin": "^8",
       "@typescript-eslint/parser": "^8",
       "commit-and-tag-version": "^12",
@@ -16548,7 +16548,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@types/node",
         "type": "build",
-        "version": "16.18.78",
+        "version": "^16",
       },
       Object {
         "name": "@typescript-eslint/eslint-plugin",
@@ -17265,7 +17265,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "devDependencies": Object {
       "@stylistic/eslint-plugin": "^2",
       "@types/jest": "*",
-      "@types/node": "16.18.78",
+      "@types/node": "^16",
       "@typescript-eslint/eslint-plugin": "^8",
       "@typescript-eslint/parser": "^8",
       "commit-and-tag-version": "^12",
@@ -18527,7 +18527,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "@types/node",
         "type": "build",
-        "version": "16.18.78",
+        "version": "^16",
       },
       Object {
         "name": "@typescript-eslint/eslint-plugin",
@@ -19242,7 +19242,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
     "devDependencies": Object {
       "@stylistic/eslint-plugin": "^2",
       "@types/jest": "*",
-      "@types/node": "16.18.78",
+      "@types/node": "^16",
       "@typescript-eslint/eslint-plugin": "^8",
       "@typescript-eslint/parser": "^8",
       "commit-and-tag-version": "^12",
