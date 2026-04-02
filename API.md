@@ -4728,6 +4728,7 @@ const cdk8sTeamJsiiProjectOptions: Cdk8sTeamJsiiProjectOptions = { ... }
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.stale">stale</a></code> | <code>boolean</code> | Auto-close of stale issues and pull request. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.staleOptions">staleOptions</a></code> | <code>projen.github.StaleOptions</code> | Auto-close stale issues and pull requests. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.vscode">vscode</a></code> | <code>boolean</code> | Enable VSCode integration. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.addPackageManagerToDevEngines">addPackageManagerToDevEngines</a></code> | <code>boolean</code> | Automatically add the resolved `packageManager` to `devEngines.packageManager` in `package.json`. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.allowLibraryDependencies">allowLibraryDependencies</a></code> | <code>boolean</code> | Allow the project to include `peerDependencies` and `bundledDependencies`. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.authorEmail">authorEmail</a></code> | <code>string</code> | Author's e-mail. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.authorName">authorName</a></code> | <code>string</code> | Author's name. |
@@ -4740,9 +4741,11 @@ const cdk8sTeamJsiiProjectOptions: Cdk8sTeamJsiiProjectOptions = { ... }
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.bundledDeps">bundledDeps</a></code> | <code>string[]</code> | List of dependencies to bundle into this module. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.bunVersion">bunVersion</a></code> | <code>string</code> | The version of Bun to use if using Bun as a package manager. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.codeArtifactOptions">codeArtifactOptions</a></code> | <code>projen.javascript.CodeArtifactOptions</code> | Options for npm packages using AWS CodeArtifact. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.deleteOrphanedLockFiles">deleteOrphanedLockFiles</a></code> | <code>boolean</code> | Automatically delete lockfiles from package managers that are not the active one. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.deps">deps</a></code> | <code>string[]</code> | Runtime dependencies of this module. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.description">description</a></code> | <code>string</code> | The description is just a string that helps people understand the purpose of the package. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.devDeps">devDeps</a></code> | <code>string[]</code> | Build dependencies for this module. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.devEngines">devEngines</a></code> | <code>projen.javascript.DevEngines</code> | Configure the `devEngines` field in `package.json`. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.entrypoint">entrypoint</a></code> | <code>string</code> | Module entrypoint (`main` in `package.json`). |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.homepage">homepage</a></code> | <code>string</code> | Package's Homepage / Website. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.keywords">keywords</a></code> | <code>string[]</code> | Keywords to include in `package.json`. |
@@ -5295,6 +5298,19 @@ Enabled by default for root projects. Disabled for non-root projects.
 
 ---
 
+##### `addPackageManagerToDevEngines`<sup>Optional</sup> <a name="addPackageManagerToDevEngines" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.addPackageManagerToDevEngines"></a>
+
+```typescript
+public readonly addPackageManagerToDevEngines: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Automatically add the resolved `packageManager` to `devEngines.packageManager` in `package.json`.
+
+---
+
 ##### `allowLibraryDependencies`<sup>Optional</sup> <a name="allowLibraryDependencies" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.allowLibraryDependencies"></a>
 
 ```typescript
@@ -5463,6 +5479,24 @@ This is required if publishing packages to, or installing scoped packages from A
 
 ---
 
+##### `deleteOrphanedLockFiles`<sup>Optional</sup> <a name="deleteOrphanedLockFiles" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.deleteOrphanedLockFiles"></a>
+
+```typescript
+public readonly deleteOrphanedLockFiles: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Automatically delete lockfiles from package managers that are not the active one.
+
+Only triggered when the lockfile for the configured package
+manager already exists.
+
+This is useful when migrating between package managers to avoid conflicts.
+
+---
+
 ##### `deps`<sup>Optional</sup> <a name="deps" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.deps"></a>
 
 ```typescript
@@ -5535,6 +5569,24 @@ this will be what you `package.json` will eventually include.
 [ 'typescript', '@types/express' ]
 ```
 
+
+##### `devEngines`<sup>Optional</sup> <a name="devEngines" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.devEngines"></a>
+
+```typescript
+public readonly devEngines: DevEngines;
+```
+
+- *Type:* projen.javascript.DevEngines
+
+Configure the `devEngines` field in `package.json`.
+
+The `devEngines.packageManager` field is automatically populated based on
+the resolved `packageManager` value. Any fields provided here are merged
+with the auto-populated `packageManager` entry.
+
+> [https://docs.npmjs.com/cli/v10/configuring-npm/package-json#devengines](https://docs.npmjs.com/cli/v10/configuring-npm/package-json#devengines)
+
+---
 
 ##### `entrypoint`<sup>Optional</sup> <a name="entrypoint" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.entrypoint"></a>
 
@@ -5744,7 +5796,7 @@ public readonly packageManager: NodePackageManager;
 ```
 
 - *Type:* projen.javascript.NodePackageManager
-- *Default:* NodePackageManager.YARN_CLASSIC
+- *Default:* Detected from the calling process or `YARN_CLASSIC` if detection fails.
 
 The Node Package Manager used to execute scripts.
 
@@ -7308,6 +7360,7 @@ const cdk8sTeamNodeProjectOptions: Cdk8sTeamNodeProjectOptions = { ... }
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.stale">stale</a></code> | <code>boolean</code> | Auto-close of stale issues and pull request. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.staleOptions">staleOptions</a></code> | <code>projen.github.StaleOptions</code> | Auto-close stale issues and pull requests. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.vscode">vscode</a></code> | <code>boolean</code> | Enable VSCode integration. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.addPackageManagerToDevEngines">addPackageManagerToDevEngines</a></code> | <code>boolean</code> | Automatically add the resolved `packageManager` to `devEngines.packageManager` in `package.json`. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.allowLibraryDependencies">allowLibraryDependencies</a></code> | <code>boolean</code> | Allow the project to include `peerDependencies` and `bundledDependencies`. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.authorEmail">authorEmail</a></code> | <code>string</code> | Author's e-mail. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.authorName">authorName</a></code> | <code>string</code> | Author's name. |
@@ -7320,9 +7373,11 @@ const cdk8sTeamNodeProjectOptions: Cdk8sTeamNodeProjectOptions = { ... }
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.bundledDeps">bundledDeps</a></code> | <code>string[]</code> | List of dependencies to bundle into this module. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.bunVersion">bunVersion</a></code> | <code>string</code> | The version of Bun to use if using Bun as a package manager. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.codeArtifactOptions">codeArtifactOptions</a></code> | <code>projen.javascript.CodeArtifactOptions</code> | Options for npm packages using AWS CodeArtifact. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.deleteOrphanedLockFiles">deleteOrphanedLockFiles</a></code> | <code>boolean</code> | Automatically delete lockfiles from package managers that are not the active one. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.deps">deps</a></code> | <code>string[]</code> | Runtime dependencies of this module. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.description">description</a></code> | <code>string</code> | The description is just a string that helps people understand the purpose of the package. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.devDeps">devDeps</a></code> | <code>string[]</code> | Build dependencies for this module. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.devEngines">devEngines</a></code> | <code>projen.javascript.DevEngines</code> | Configure the `devEngines` field in `package.json`. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.entrypoint">entrypoint</a></code> | <code>string</code> | Module entrypoint (`main` in `package.json`). |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.homepage">homepage</a></code> | <code>string</code> | Package's Homepage / Website. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.keywords">keywords</a></code> | <code>string[]</code> | Keywords to include in `package.json`. |
@@ -7850,6 +7905,19 @@ Enabled by default for root projects. Disabled for non-root projects.
 
 ---
 
+##### `addPackageManagerToDevEngines`<sup>Optional</sup> <a name="addPackageManagerToDevEngines" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.addPackageManagerToDevEngines"></a>
+
+```typescript
+public readonly addPackageManagerToDevEngines: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Automatically add the resolved `packageManager` to `devEngines.packageManager` in `package.json`.
+
+---
+
 ##### `allowLibraryDependencies`<sup>Optional</sup> <a name="allowLibraryDependencies" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.allowLibraryDependencies"></a>
 
 ```typescript
@@ -8018,6 +8086,24 @@ This is required if publishing packages to, or installing scoped packages from A
 
 ---
 
+##### `deleteOrphanedLockFiles`<sup>Optional</sup> <a name="deleteOrphanedLockFiles" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.deleteOrphanedLockFiles"></a>
+
+```typescript
+public readonly deleteOrphanedLockFiles: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Automatically delete lockfiles from package managers that are not the active one.
+
+Only triggered when the lockfile for the configured package
+manager already exists.
+
+This is useful when migrating between package managers to avoid conflicts.
+
+---
+
 ##### `deps`<sup>Optional</sup> <a name="deps" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.deps"></a>
 
 ```typescript
@@ -8090,6 +8176,24 @@ this will be what you `package.json` will eventually include.
 [ 'typescript', '@types/express' ]
 ```
 
+
+##### `devEngines`<sup>Optional</sup> <a name="devEngines" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.devEngines"></a>
+
+```typescript
+public readonly devEngines: DevEngines;
+```
+
+- *Type:* projen.javascript.DevEngines
+
+Configure the `devEngines` field in `package.json`.
+
+The `devEngines.packageManager` field is automatically populated based on
+the resolved `packageManager` value. Any fields provided here are merged
+with the auto-populated `packageManager` entry.
+
+> [https://docs.npmjs.com/cli/v10/configuring-npm/package-json#devengines](https://docs.npmjs.com/cli/v10/configuring-npm/package-json#devengines)
+
+---
 
 ##### `entrypoint`<sup>Optional</sup> <a name="entrypoint" id="@cdk8s/projen-common.Cdk8sTeamNodeProjectOptions.property.entrypoint"></a>
 
@@ -8299,7 +8403,7 @@ public readonly packageManager: NodePackageManager;
 ```
 
 - *Type:* projen.javascript.NodePackageManager
-- *Default:* NodePackageManager.YARN_CLASSIC
+- *Default:* Detected from the calling process or `YARN_CLASSIC` if detection fails.
 
 The Node Package Manager used to execute scripts.
 
@@ -9530,6 +9634,7 @@ const cdk8sTeamTypeScriptProjectOptions: Cdk8sTeamTypeScriptProjectOptions = { .
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.stale">stale</a></code> | <code>boolean</code> | Auto-close of stale issues and pull request. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.staleOptions">staleOptions</a></code> | <code>projen.github.StaleOptions</code> | Auto-close stale issues and pull requests. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.vscode">vscode</a></code> | <code>boolean</code> | Enable VSCode integration. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.addPackageManagerToDevEngines">addPackageManagerToDevEngines</a></code> | <code>boolean</code> | Automatically add the resolved `packageManager` to `devEngines.packageManager` in `package.json`. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.allowLibraryDependencies">allowLibraryDependencies</a></code> | <code>boolean</code> | Allow the project to include `peerDependencies` and `bundledDependencies`. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.authorEmail">authorEmail</a></code> | <code>string</code> | Author's e-mail. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.authorName">authorName</a></code> | <code>string</code> | Author's name. |
@@ -9542,9 +9647,11 @@ const cdk8sTeamTypeScriptProjectOptions: Cdk8sTeamTypeScriptProjectOptions = { .
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.bundledDeps">bundledDeps</a></code> | <code>string[]</code> | List of dependencies to bundle into this module. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.bunVersion">bunVersion</a></code> | <code>string</code> | The version of Bun to use if using Bun as a package manager. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.codeArtifactOptions">codeArtifactOptions</a></code> | <code>projen.javascript.CodeArtifactOptions</code> | Options for npm packages using AWS CodeArtifact. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.deleteOrphanedLockFiles">deleteOrphanedLockFiles</a></code> | <code>boolean</code> | Automatically delete lockfiles from package managers that are not the active one. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.deps">deps</a></code> | <code>string[]</code> | Runtime dependencies of this module. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.description">description</a></code> | <code>string</code> | The description is just a string that helps people understand the purpose of the package. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.devDeps">devDeps</a></code> | <code>string[]</code> | Build dependencies for this module. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.devEngines">devEngines</a></code> | <code>projen.javascript.DevEngines</code> | Configure the `devEngines` field in `package.json`. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.entrypoint">entrypoint</a></code> | <code>string</code> | Module entrypoint (`main` in `package.json`). |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.homepage">homepage</a></code> | <code>string</code> | Package's Homepage / Website. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.keywords">keywords</a></code> | <code>string[]</code> | Keywords to include in `package.json`. |
@@ -10091,6 +10198,19 @@ Enabled by default for root projects. Disabled for non-root projects.
 
 ---
 
+##### `addPackageManagerToDevEngines`<sup>Optional</sup> <a name="addPackageManagerToDevEngines" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.addPackageManagerToDevEngines"></a>
+
+```typescript
+public readonly addPackageManagerToDevEngines: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Automatically add the resolved `packageManager` to `devEngines.packageManager` in `package.json`.
+
+---
+
 ##### `allowLibraryDependencies`<sup>Optional</sup> <a name="allowLibraryDependencies" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.allowLibraryDependencies"></a>
 
 ```typescript
@@ -10259,6 +10379,24 @@ This is required if publishing packages to, or installing scoped packages from A
 
 ---
 
+##### `deleteOrphanedLockFiles`<sup>Optional</sup> <a name="deleteOrphanedLockFiles" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.deleteOrphanedLockFiles"></a>
+
+```typescript
+public readonly deleteOrphanedLockFiles: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Automatically delete lockfiles from package managers that are not the active one.
+
+Only triggered when the lockfile for the configured package
+manager already exists.
+
+This is useful when migrating between package managers to avoid conflicts.
+
+---
+
 ##### `deps`<sup>Optional</sup> <a name="deps" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.deps"></a>
 
 ```typescript
@@ -10331,6 +10469,24 @@ this will be what you `package.json` will eventually include.
 [ 'typescript', '@types/express' ]
 ```
 
+
+##### `devEngines`<sup>Optional</sup> <a name="devEngines" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.devEngines"></a>
+
+```typescript
+public readonly devEngines: DevEngines;
+```
+
+- *Type:* projen.javascript.DevEngines
+
+Configure the `devEngines` field in `package.json`.
+
+The `devEngines.packageManager` field is automatically populated based on
+the resolved `packageManager` value. Any fields provided here are merged
+with the auto-populated `packageManager` entry.
+
+> [https://docs.npmjs.com/cli/v10/configuring-npm/package-json#devengines](https://docs.npmjs.com/cli/v10/configuring-npm/package-json#devengines)
+
+---
 
 ##### `entrypoint`<sup>Optional</sup> <a name="entrypoint" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.entrypoint"></a>
 
@@ -10540,7 +10696,7 @@ public readonly packageManager: NodePackageManager;
 ```
 
 - *Type:* projen.javascript.NodePackageManager
-- *Default:* NodePackageManager.YARN_CLASSIC
+- *Default:* Detected from the calling process or `YARN_CLASSIC` if detection fails.
 
 The Node Package Manager used to execute scripts.
 
