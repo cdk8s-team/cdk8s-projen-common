@@ -446,7 +446,12 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Dry run (skip actual publishing)
+        required: false
+        type: boolean
 concurrency:
   group: \${{ github.workflow }}
   cancel-in-progress: false
@@ -523,6 +528,7 @@ jobs:
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
       - name: Release
+        if: \${{ !inputs.dry_run }}
         env:
           GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
         run: errout=$(mktemp); gh release create $(cat dist/releasetag.txt) -R $GITHUB_REPOSITORY -F dist/changelog.md -t $(cat dist/releasetag.txt) --target $GITHUB_SHA 2> $errout && true; exitcode=$?; if [ $exitcode -ne 0 ] && ! grep -q \\"Release.tag_name already exists\\" $errout; then cat $errout; exit $exitcode; fi
@@ -1136,7 +1142,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^16",
+        "version": "^17",
       },
       Object {
         "name": "projen",
@@ -1818,7 +1824,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
-      "jest-junit": "^16",
+      "jest-junit": "^17",
       "projen": "*",
       "ts-jest": "*",
       "typescript": "~5.9",
@@ -2486,7 +2492,12 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Dry run (skip actual publishing)
+        required: false
+        type: boolean
 concurrency:
   group: \${{ github.workflow }}
   cancel-in-progress: false
@@ -2563,6 +2574,7 @@ jobs:
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
       - name: Release
+        if: \${{ !inputs.dry_run }}
         env:
           GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
         run: errout=$(mktemp); gh release create $(cat dist/releasetag.txt) -R $GITHUB_REPOSITORY -F dist/changelog.md -t $(cat dist/releasetag.txt) --target $GITHUB_SHA 2> $errout && true; exitcode=$?; if [ $exitcode -ne 0 ] && ! grep -q \\"Release.tag_name already exists\\" $errout; then cat $errout; exit $exitcode; fi
@@ -3179,7 +3191,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^16",
+        "version": "^17",
       },
       Object {
         "name": "projen",
@@ -3863,7 +3875,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
-      "jest-junit": "^16",
+      "jest-junit": "^17",
       "projen": "*",
       "ts-jest": "*",
       "typescript": "~5.9",
@@ -5098,7 +5110,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^16",
+        "version": "^17",
       },
       Object {
         "name": "projen",
@@ -5717,7 +5729,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
-      "jest-junit": "^16",
+      "jest-junit": "^17",
       "projen": "*",
       "ts-jest": "*",
       "typescript": "~5.9",
@@ -6911,7 +6923,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^16",
+        "version": "^17",
       },
       Object {
         "name": "projen",
@@ -7530,7 +7542,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
-      "jest-junit": "^16",
+      "jest-junit": "^17",
       "projen": "*",
       "ts-jest": "*",
       "typescript": "~5.9",
@@ -8721,7 +8733,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^16",
+        "version": "^17",
       },
       Object {
         "name": "projen",
@@ -9340,7 +9352,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
-      "jest-junit": "^16",
+      "jest-junit": "^17",
       "projen": "*",
       "ts-jest": "*",
       "typescript": "~5.9",
@@ -9959,7 +9971,12 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Dry run (skip actual publishing)
+        required: false
+        type: boolean
 concurrency:
   group: \${{ github.workflow }}
   cancel-in-progress: false
@@ -10036,6 +10053,7 @@ jobs:
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
       - name: Release
+        if: \${{ !inputs.dry_run }}
         env:
           GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
         run: errout=$(mktemp); gh release create $(cat dist/releasetag.txt) -R $GITHUB_REPOSITORY -F dist/changelog.md -t $(cat dist/releasetag.txt) --target $GITHUB_SHA 2> $errout && true; exitcode=$?; if [ $exitcode -ne 0 ] && ! grep -q \\"Release.tag_name already exists\\" $errout; then cat $errout; exit $exitcode; fi
@@ -10649,7 +10667,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^16",
+        "version": "^17",
       },
       Object {
         "name": "projen",
@@ -11331,7 +11349,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
-      "jest-junit": "^16",
+      "jest-junit": "^17",
       "projen": "*",
       "ts-jest": "*",
       "typescript": "~5.9",
@@ -11953,7 +11971,12 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Dry run (skip actual publishing)
+        required: false
+        type: boolean
 concurrency:
   group: \${{ github.workflow }}
   cancel-in-progress: false
@@ -12030,6 +12053,7 @@ jobs:
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
       - name: Release
+        if: \${{ !inputs.dry_run }}
         env:
           GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
         run: errout=$(mktemp); gh release create $(cat dist/releasetag.txt) -R $GITHUB_REPOSITORY -F dist/changelog.md -t $(cat dist/releasetag.txt) --target $GITHUB_SHA 2> $errout && true; exitcode=$?; if [ $exitcode -ne 0 ] && ! grep -q \\"Release.tag_name already exists\\" $errout; then cat $errout; exit $exitcode; fi
@@ -12643,7 +12667,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^16",
+        "version": "^17",
       },
       Object {
         "name": "projen",
@@ -13325,7 +13349,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
-      "jest-junit": "^16",
+      "jest-junit": "^17",
       "projen": "*",
       "ts-jest": "*",
       "typescript": "~5.9",
@@ -13944,7 +13968,12 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Dry run (skip actual publishing)
+        required: false
+        type: boolean
 concurrency:
   group: \${{ github.workflow }}
   cancel-in-progress: false
@@ -14021,6 +14050,7 @@ jobs:
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
       - name: Release
+        if: \${{ !inputs.dry_run }}
         env:
           GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
         run: errout=$(mktemp); gh release create $(cat dist/releasetag.txt) -R $GITHUB_REPOSITORY -F dist/changelog.md -t $(cat dist/releasetag.txt) --target $GITHUB_SHA 2> $errout && true; exitcode=$?; if [ $exitcode -ne 0 ] && ! grep -q \\"Release.tag_name already exists\\" $errout; then cat $errout; exit $exitcode; fi
@@ -14634,7 +14664,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^16",
+        "version": "^17",
       },
       Object {
         "name": "projen",
@@ -15316,7 +15346,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
-      "jest-junit": "^16",
+      "jest-junit": "^17",
       "projen": "*",
       "ts-jest": "*",
       "typescript": "~5.9",
@@ -16037,7 +16067,12 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Dry run (skip actual publishing)
+        required: false
+        type: boolean
 concurrency:
   group: \${{ github.workflow }}
   cancel-in-progress: false
@@ -16114,6 +16149,7 @@ jobs:
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
       - name: Release
+        if: \${{ !inputs.dry_run }}
         env:
           GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
         run: errout=$(mktemp); gh release create $(cat dist/releasetag.txt) -R $GITHUB_REPOSITORY -F dist/changelog.md -t $(cat dist/releasetag.txt) --target $GITHUB_SHA 2> $errout && true; exitcode=$?; if [ $exitcode -ne 0 ] && ! grep -q \\"Release.tag_name already exists\\" $errout; then cat $errout; exit $exitcode; fi
@@ -16729,7 +16765,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^16",
+        "version": "^17",
       },
       Object {
         "name": "projen",
@@ -17413,7 +17449,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
-      "jest-junit": "^16",
+      "jest-junit": "^17",
       "projen": "*",
       "ts-jest": "*",
       "typescript": "~5.9",
@@ -18035,7 +18071,12 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Dry run (skip actual publishing)
+        required: false
+        type: boolean
 concurrency:
   group: \${{ github.workflow }}
   cancel-in-progress: false
@@ -18112,6 +18153,7 @@ jobs:
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
       - name: Release
+        if: \${{ !inputs.dry_run }}
         env:
           GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
         run: errout=$(mktemp); gh release create $(cat dist/releasetag.txt) -R $GITHUB_REPOSITORY -F dist/changelog.md -t $(cat dist/releasetag.txt) --target $GITHUB_SHA 2> $errout && true; exitcode=$?; if [ $exitcode -ne 0 ] && ! grep -q \\"Release.tag_name already exists\\" $errout; then cat $errout; exit $exitcode; fi
@@ -18725,7 +18767,7 @@ tsconfig.tsbuildinfo
       Object {
         "name": "jest-junit",
         "type": "build",
-        "version": "^16",
+        "version": "^17",
       },
       Object {
         "name": "projen",
@@ -19407,7 +19449,7 @@ echo \\"Configured core.hooksPath to \${hooksdir}\\"
       "eslint-import-resolver-typescript": "*",
       "eslint-plugin-import": "*",
       "jest": "*",
-      "jest-junit": "^16",
+      "jest-junit": "^17",
       "projen": "*",
       "ts-jest": "*",
       "typescript": "~5.9",
