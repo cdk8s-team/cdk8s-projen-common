@@ -518,7 +518,7 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: lts/*
-          package-manager-cache: \\"false\\"
+          package-manager-cache: false
       - name: Download build artifacts
         uses: actions/download-artifact@v8
         with:
@@ -2564,7 +2564,7 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: lts/*
-          package-manager-cache: \\"false\\"
+          package-manager-cache: false
       - name: Download build artifacts
         uses: actions/download-artifact@v8
         with:
@@ -10043,7 +10043,7 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: lts/*
-          package-manager-cache: \\"false\\"
+          package-manager-cache: false
       - name: Download build artifacts
         uses: actions/download-artifact@v8
         with:
@@ -12043,7 +12043,7 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: lts/*
-          package-manager-cache: \\"false\\"
+          package-manager-cache: false
       - name: Download build artifacts
         uses: actions/download-artifact@v8
         with:
@@ -14040,7 +14040,7 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: lts/*
-          package-manager-cache: \\"false\\"
+          package-manager-cache: false
       - name: Download build artifacts
         uses: actions/download-artifact@v8
         with:
@@ -16139,7 +16139,7 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: lts/*
-          package-manager-cache: \\"false\\"
+          package-manager-cache: false
       - name: Download build artifacts
         uses: actions/download-artifact@v8
         with:
@@ -18143,7 +18143,7 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: lts/*
-          package-manager-cache: \\"false\\"
+          package-manager-cache: false
       - name: Download build artifacts
         uses: actions/download-artifact@v8
         with:
