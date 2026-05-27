@@ -160,7 +160,6 @@ jobs:
       contents: write
     outputs:
       self_mutation_happened: \${{ steps.self_mutation.outputs.self_mutation_happened }}
-      artifact_id: \${{ steps.upload_artifact.outputs.artifact-id }}
     env:
       CI: \\"true\\"
     steps:
@@ -1650,7 +1649,6 @@ jobs:
       contents: write
     outputs:
       self_mutation_happened: \${{ steps.self_mutation.outputs.self_mutation_happened }}
-      artifact_id: \${{ steps.upload_artifact.outputs.artifact-id }}
     env:
       CI: \\"true\\"
     steps:
@@ -2913,7 +2911,6 @@ jobs:
       contents: write
     outputs:
       self_mutation_happened: \${{ steps.self_mutation.outputs.self_mutation_happened }}
-      artifact_id: \${{ steps.upload_artifact.outputs.artifact-id }}
     env:
       CI: \\"true\\"
     steps:
@@ -4176,7 +4173,6 @@ jobs:
       contents: write
     outputs:
       self_mutation_happened: \${{ steps.self_mutation.outputs.self_mutation_happened }}
-      artifact_id: \${{ steps.upload_artifact.outputs.artifact-id }}
     env:
       CI: \\"true\\"
     steps:
@@ -5437,7 +5433,6 @@ jobs:
       contents: write
     outputs:
       self_mutation_happened: \${{ steps.self_mutation.outputs.self_mutation_happened }}
-      artifact_id: \${{ steps.upload_artifact.outputs.artifact-id }}
     env:
       CI: \\"true\\"
     steps:
@@ -6885,7 +6880,6 @@ jobs:
       contents: write
     outputs:
       self_mutation_happened: \${{ steps.self_mutation.outputs.self_mutation_happened }}
-      artifact_id: \${{ steps.upload_artifact.outputs.artifact-id }}
     env:
       CI: \\"true\\"
     steps:
@@ -8333,7 +8327,6 @@ jobs:
       contents: write
     outputs:
       self_mutation_happened: \${{ steps.self_mutation.outputs.self_mutation_happened }}
-      artifact_id: \${{ steps.upload_artifact.outputs.artifact-id }}
     env:
       CI: \\"true\\"
     steps:
@@ -9877,7 +9870,6 @@ jobs:
       contents: write
     outputs:
       self_mutation_happened: \${{ steps.self_mutation.outputs.self_mutation_happened }}
-      artifact_id: \${{ steps.upload_artifact.outputs.artifact-id }}
     env:
       CI: \\"true\\"
     steps:
@@ -11329,7 +11321,6 @@ jobs:
       contents: write
     outputs:
       self_mutation_happened: \${{ steps.self_mutation.outputs.self_mutation_happened }}
-      artifact_id: \${{ steps.upload_artifact.outputs.artifact-id }}
     env:
       CI: \\"true\\"
     steps:
