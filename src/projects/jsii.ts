@@ -122,8 +122,8 @@ export class Cdk8sTeamJsiiProject extends cdk.JsiiProject {
     // prevent upgrading @types/node because crypto and events broke their type definitions.
     // see https://github.com/cdk8s-team/cdk8s-projen-common/actions/runs/8672468454/job/23782820098?pr=727
     // hopefully by the time we actually need to upgrade, it will already be fixed.
-    this.deps.removeDependency('@types/node^16');
-    this.deps.addDependency('@types/node@16.18.78', DependencyType.BUILD);
+    this.deps.removeDependency('@types/node@^16');
+    this.deps.addDependency('@types/node@^18', DependencyType.BUILD);
 
     node.limitReleaseConcurrency(this);
 

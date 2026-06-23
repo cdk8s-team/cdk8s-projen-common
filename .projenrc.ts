@@ -5,12 +5,14 @@ const project = new src.Cdk8sTeamJsiiProject({
   description: 'Common projen configuration shared between cdk8s-team org projects.',
 
   // Must use >=, <, because ^ does not have correct semantics for 0.x versions
-  peerDeps: ['projen@>=0.81.0 <1'],
+  peerDeps: ['projen@>=0.100.0 <1'],
   peerDependencyOptions: {
     pinnedDevDependency: false,
   },
   deps: ['codemaker'],
   bundledDeps: ['codemaker', 'deepmerge'],
+  jsiiVersion: '5.9.x',
+  typescriptVersion: '5.9.x',
   projenrcTs: true,
   defaultReleaseBranch: 'main',
   pypi: false,
