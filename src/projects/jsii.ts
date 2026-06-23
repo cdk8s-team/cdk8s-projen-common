@@ -103,8 +103,7 @@ export class Cdk8sTeamJsiiProject extends cdk.JsiiProject {
       'jsii-docgen',
       'jsii-pacmak',
       'jsii-rosetta',
-      'typescript'
-    ];
+      'typescript'];
 
     node.addComponents(this, repoName, {
       branches: finalOptions.depsUpgradeOptions?.workflowOptions?.branches,
