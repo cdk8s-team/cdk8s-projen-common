@@ -11,6 +11,8 @@ const project = new src.Cdk8sTeamJsiiProject({
   },
   deps: ['codemaker'],
   bundledDeps: ['codemaker', 'deepmerge'],
+  jsiiVersion: '5.9.x',
+  typescriptVersion: '5.9.x',
   projenrcTs: true,
   defaultReleaseBranch: 'main',
   pypi: false,
