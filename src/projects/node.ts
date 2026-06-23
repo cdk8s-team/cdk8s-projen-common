@@ -32,11 +32,6 @@ export const fixedOptionsKeys = [
   'autoApproveUpgrades',
   'releasableCommits',
   'workflowNodeVersion',
-
-  // this is deprecated in favor of 'release'.
-  // lets disallow using it.
-  'releaseWorkflow',
-
   'npmTrustedPublishing',
   'releaseEnvironment',
 ] as const;
@@ -77,7 +72,6 @@ export function buildNodeProjectFixedOptions(options: Cdk8sTeamNodeProjectOption
       secret: 'GITHUB_TOKEN',
     },
     autoApproveUpgrades: true,
-    releaseWorkflow: options.release,
     releasableCommits: ReleasableCommits.exec(releasableCommitsCmd.join(' --grep ')),
 
     // This is the version we actually run GitHub workflows on

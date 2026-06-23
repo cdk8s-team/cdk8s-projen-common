@@ -1,4 +1,4 @@
-import { TaskRuntime, Testing } from 'projen';
+import { Testing } from 'projen';
 import * as src from '../../src';
 
 test('can configure triage pr labels', () => {
@@ -23,7 +23,7 @@ test('upgrade-runtime-dependencies includes bundled', () => {
     bundledDeps: ['bundled1'],
   });
 
-  const tasks = Testing.synth(project)[TaskRuntime.MANIFEST_FILE].tasks;
+  const tasks = Testing.synth(project)['.projen/tasks.json'].tasks;
 
   expect(tasks['upgrade-runtime-dependencies'].steps[2].exec).toStrictEqual('yarn upgrade bundled1');
 

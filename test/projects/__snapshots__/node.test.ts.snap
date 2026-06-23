@@ -861,6 +861,7 @@ permissions-backup.acl
     "env": Object {
       "PATH": "$(npx -c \\"node --print process.env.PATH\\")",
     },
+    "manifestVersion": 1,
     "tasks": Object {
       "build": Object {
         "description": "Full release build",
@@ -2226,6 +2227,7 @@ permissions-backup.acl
     "env": Object {
       "PATH": "$(npx -c \\"node --print process.env.PATH\\")",
     },
+    "manifestVersion": 1,
     "tasks": Object {
       "build": Object {
         "description": "Full release build",
@@ -3488,6 +3490,7 @@ permissions-backup.acl
     "env": Object {
       "PATH": "$(npx -c \\"node --print process.env.PATH\\")",
     },
+    "manifestVersion": 1,
     "tasks": Object {
       "build": Object {
         "description": "Full release build",
@@ -4750,6 +4753,7 @@ permissions-backup.acl
     "env": Object {
       "PATH": "$(npx -c \\"node --print process.env.PATH\\")",
     },
+    "manifestVersion": 1,
     "tasks": Object {
       "build": Object {
         "description": "Full release build",
@@ -6130,6 +6134,7 @@ permissions-backup.acl
     "env": Object {
       "PATH": "$(npx -c \\"node --print process.env.PATH\\")",
     },
+    "manifestVersion": 1,
     "tasks": Object {
       "build": Object {
         "description": "Full release build",
@@ -7578,6 +7583,7 @@ permissions-backup.acl
     "env": Object {
       "PATH": "$(npx -c \\"node --print process.env.PATH\\")",
     },
+    "manifestVersion": 1,
     "tasks": Object {
       "build": Object {
         "description": "Full release build",
@@ -9026,6 +9032,7 @@ permissions-backup.acl
     "env": Object {
       "PATH": "$(npx -c \\"node --print process.env.PATH\\")",
     },
+    "manifestVersion": 1,
     "tasks": Object {
       "build": Object {
         "description": "Full release build",
@@ -10574,6 +10581,7 @@ permissions-backup.acl
     "env": Object {
       "PATH": "$(npx -c \\"node --print process.env.PATH\\")",
     },
+    "manifestVersion": 1,
     "tasks": Object {
       "build": Object {
         "description": "Full release build",
@@ -12022,6 +12030,7 @@ permissions-backup.acl
     "env": Object {
       "PATH": "$(npx -c \\"node --print process.env.PATH\\")",
     },
+    "manifestVersion": 1,
     "tasks": Object {
       "build": Object {
         "description": "Full release build",
