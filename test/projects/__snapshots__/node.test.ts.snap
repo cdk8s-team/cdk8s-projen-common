@@ -861,7 +861,7 @@ permissions-backup.acl
     "env": {
       "PATH": "$(npx -c "node --print process.env.PATH")",
     },
-    "manifestVersion": 1,
+    "manifestVersion": 2,
     "tasks": {
       "build": {
         "description": "Full release build",
@@ -947,7 +947,10 @@ permissions-backup.acl
         "name": "default",
         "steps": [
           {
-            "exec": "node .projenrc.js",
+            "execArgs": [
+              "node",
+              ".projenrc.js",
+            ],
           },
         ],
       },
@@ -986,10 +989,19 @@ permissions-backup.acl
         "name": "package",
         "steps": [
           {
-            "exec": "mkdir -p dist/js",
+            "execArgs": [
+              "mkdir",
+              "-p",
+              "dist/js",
+            ],
           },
           {
-            "exec": "npm pack --pack-destination dist/js",
+            "execArgs": [
+              "npm",
+              "pack",
+              "--pack-destination",
+              "dist/js",
+            ],
           },
         ],
       },
@@ -1122,7 +1134,10 @@ permissions-backup.acl
         "name": "upgrade-runtime-dependencies",
         "steps": [
           {
-            "exec": "echo No dependencies to upgrade.",
+            "execArgs": [
+              "echo",
+              "No dependencies to upgrade.",
+            ],
           },
         ],
       },
@@ -2227,7 +2242,7 @@ permissions-backup.acl
     "env": {
       "PATH": "$(npx -c "node --print process.env.PATH")",
     },
-    "manifestVersion": 1,
+    "manifestVersion": 2,
     "tasks": {
       "build": {
         "description": "Full release build",
@@ -2294,7 +2309,10 @@ permissions-backup.acl
         "name": "default",
         "steps": [
           {
-            "exec": "node .projenrc.js",
+            "execArgs": [
+              "node",
+              ".projenrc.js",
+            ],
           },
         ],
       },
@@ -2333,10 +2351,19 @@ permissions-backup.acl
         "name": "package",
         "steps": [
           {
-            "exec": "mkdir -p dist/js",
+            "execArgs": [
+              "mkdir",
+              "-p",
+              "dist/js",
+            ],
           },
           {
-            "exec": "npm pack --pack-destination dist/js",
+            "execArgs": [
+              "npm",
+              "pack",
+              "--pack-destination",
+              "dist/js",
+            ],
           },
         ],
       },
@@ -2427,7 +2454,10 @@ permissions-backup.acl
         "name": "upgrade-runtime-dependencies",
         "steps": [
           {
-            "exec": "echo No dependencies to upgrade.",
+            "execArgs": [
+              "echo",
+              "No dependencies to upgrade.",
+            ],
           },
         ],
       },
@@ -3490,7 +3520,7 @@ permissions-backup.acl
     "env": {
       "PATH": "$(npx -c "node --print process.env.PATH")",
     },
-    "manifestVersion": 1,
+    "manifestVersion": 2,
     "tasks": {
       "build": {
         "description": "Full release build",
@@ -3557,7 +3587,10 @@ permissions-backup.acl
         "name": "default",
         "steps": [
           {
-            "exec": "node .projenrc.js",
+            "execArgs": [
+              "node",
+              ".projenrc.js",
+            ],
           },
         ],
       },
@@ -3596,10 +3629,19 @@ permissions-backup.acl
         "name": "package",
         "steps": [
           {
-            "exec": "mkdir -p dist/js",
+            "execArgs": [
+              "mkdir",
+              "-p",
+              "dist/js",
+            ],
           },
           {
-            "exec": "npm pack --pack-destination dist/js",
+            "execArgs": [
+              "npm",
+              "pack",
+              "--pack-destination",
+              "dist/js",
+            ],
           },
         ],
       },
@@ -3690,7 +3732,10 @@ permissions-backup.acl
         "name": "upgrade-runtime-dependencies",
         "steps": [
           {
-            "exec": "echo No dependencies to upgrade.",
+            "execArgs": [
+              "echo",
+              "No dependencies to upgrade.",
+            ],
           },
         ],
       },
@@ -4753,7 +4798,7 @@ permissions-backup.acl
     "env": {
       "PATH": "$(npx -c "node --print process.env.PATH")",
     },
-    "manifestVersion": 1,
+    "manifestVersion": 2,
     "tasks": {
       "build": {
         "description": "Full release build",
@@ -4820,7 +4865,10 @@ permissions-backup.acl
         "name": "default",
         "steps": [
           {
-            "exec": "node .projenrc.js",
+            "execArgs": [
+              "node",
+              ".projenrc.js",
+            ],
           },
         ],
       },
@@ -4859,10 +4907,19 @@ permissions-backup.acl
         "name": "package",
         "steps": [
           {
-            "exec": "mkdir -p dist/js",
+            "execArgs": [
+              "mkdir",
+              "-p",
+              "dist/js",
+            ],
           },
           {
-            "exec": "npm pack --pack-destination dist/js",
+            "execArgs": [
+              "npm",
+              "pack",
+              "--pack-destination",
+              "dist/js",
+            ],
           },
         ],
       },
@@ -4953,7 +5010,10 @@ permissions-backup.acl
         "name": "upgrade-runtime-dependencies",
         "steps": [
           {
-            "exec": "echo No dependencies to upgrade.",
+            "execArgs": [
+              "echo",
+              "No dependencies to upgrade.",
+            ],
           },
         ],
       },
@@ -6134,7 +6194,7 @@ permissions-backup.acl
     "env": {
       "PATH": "$(npx -c "node --print process.env.PATH")",
     },
-    "manifestVersion": 1,
+    "manifestVersion": 2,
     "tasks": {
       "build": {
         "description": "Full release build",
@@ -6220,7 +6280,10 @@ permissions-backup.acl
         "name": "default",
         "steps": [
           {
-            "exec": "node .projenrc.js",
+            "execArgs": [
+              "node",
+              ".projenrc.js",
+            ],
           },
         ],
       },
@@ -6259,10 +6322,19 @@ permissions-backup.acl
         "name": "package",
         "steps": [
           {
-            "exec": "mkdir -p dist/js",
+            "execArgs": [
+              "mkdir",
+              "-p",
+              "dist/js",
+            ],
           },
           {
-            "exec": "npm pack --pack-destination dist/js",
+            "execArgs": [
+              "npm",
+              "pack",
+              "--pack-destination",
+              "dist/js",
+            ],
           },
         ],
       },
@@ -6395,7 +6467,10 @@ permissions-backup.acl
         "name": "upgrade-runtime-dependencies",
         "steps": [
           {
-            "exec": "echo No dependencies to upgrade.",
+            "execArgs": [
+              "echo",
+              "No dependencies to upgrade.",
+            ],
           },
         ],
       },
@@ -7583,7 +7658,7 @@ permissions-backup.acl
     "env": {
       "PATH": "$(npx -c "node --print process.env.PATH")",
     },
-    "manifestVersion": 1,
+    "manifestVersion": 2,
     "tasks": {
       "build": {
         "description": "Full release build",
@@ -7669,7 +7744,10 @@ permissions-backup.acl
         "name": "default",
         "steps": [
           {
-            "exec": "node .projenrc.js",
+            "execArgs": [
+              "node",
+              ".projenrc.js",
+            ],
           },
         ],
       },
@@ -7708,10 +7786,19 @@ permissions-backup.acl
         "name": "package",
         "steps": [
           {
-            "exec": "mkdir -p dist/js",
+            "execArgs": [
+              "mkdir",
+              "-p",
+              "dist/js",
+            ],
           },
           {
-            "exec": "npm pack --pack-destination dist/js",
+            "execArgs": [
+              "npm",
+              "pack",
+              "--pack-destination",
+              "dist/js",
+            ],
           },
         ],
       },
@@ -7844,7 +7931,10 @@ permissions-backup.acl
         "name": "upgrade-runtime-dependencies",
         "steps": [
           {
-            "exec": "echo No dependencies to upgrade.",
+            "execArgs": [
+              "echo",
+              "No dependencies to upgrade.",
+            ],
           },
         ],
       },
@@ -9032,7 +9122,7 @@ permissions-backup.acl
     "env": {
       "PATH": "$(npx -c "node --print process.env.PATH")",
     },
-    "manifestVersion": 1,
+    "manifestVersion": 2,
     "tasks": {
       "build": {
         "description": "Full release build",
@@ -9118,7 +9208,10 @@ permissions-backup.acl
         "name": "default",
         "steps": [
           {
-            "exec": "node .projenrc.js",
+            "execArgs": [
+              "node",
+              ".projenrc.js",
+            ],
           },
         ],
       },
@@ -9157,10 +9250,19 @@ permissions-backup.acl
         "name": "package",
         "steps": [
           {
-            "exec": "mkdir -p dist/js",
+            "execArgs": [
+              "mkdir",
+              "-p",
+              "dist/js",
+            ],
           },
           {
-            "exec": "npm pack --pack-destination dist/js",
+            "execArgs": [
+              "npm",
+              "pack",
+              "--pack-destination",
+              "dist/js",
+            ],
           },
         ],
       },
@@ -9293,7 +9395,10 @@ permissions-backup.acl
         "name": "upgrade-runtime-dependencies",
         "steps": [
           {
-            "exec": "echo No dependencies to upgrade.",
+            "execArgs": [
+              "echo",
+              "No dependencies to upgrade.",
+            ],
           },
         ],
       },
@@ -10581,7 +10686,7 @@ permissions-backup.acl
     "env": {
       "PATH": "$(npx -c "node --print process.env.PATH")",
     },
-    "manifestVersion": 1,
+    "manifestVersion": 2,
     "tasks": {
       "build": {
         "description": "Full release build",
@@ -10667,7 +10772,10 @@ permissions-backup.acl
         "name": "default",
         "steps": [
           {
-            "exec": "node .projenrc.js",
+            "execArgs": [
+              "node",
+              ".projenrc.js",
+            ],
           },
         ],
       },
@@ -10706,10 +10814,19 @@ permissions-backup.acl
         "name": "package",
         "steps": [
           {
-            "exec": "mkdir -p dist/js",
+            "execArgs": [
+              "mkdir",
+              "-p",
+              "dist/js",
+            ],
           },
           {
-            "exec": "npm pack --pack-destination dist/js",
+            "execArgs": [
+              "npm",
+              "pack",
+              "--pack-destination",
+              "dist/js",
+            ],
           },
         ],
       },
@@ -10842,7 +10959,10 @@ permissions-backup.acl
         "name": "upgrade-runtime-dependencies",
         "steps": [
           {
-            "exec": "echo No dependencies to upgrade.",
+            "execArgs": [
+              "echo",
+              "No dependencies to upgrade.",
+            ],
           },
         ],
       },
@@ -12030,7 +12150,7 @@ permissions-backup.acl
     "env": {
       "PATH": "$(npx -c "node --print process.env.PATH")",
     },
-    "manifestVersion": 1,
+    "manifestVersion": 2,
     "tasks": {
       "build": {
         "description": "Full release build",
@@ -12116,7 +12236,10 @@ permissions-backup.acl
         "name": "default",
         "steps": [
           {
-            "exec": "node .projenrc.js",
+            "execArgs": [
+              "node",
+              ".projenrc.js",
+            ],
           },
         ],
       },
@@ -12155,10 +12278,19 @@ permissions-backup.acl
         "name": "package",
         "steps": [
           {
-            "exec": "mkdir -p dist/js",
+            "execArgs": [
+              "mkdir",
+              "-p",
+              "dist/js",
+            ],
           },
           {
-            "exec": "npm pack --pack-destination dist/js",
+            "execArgs": [
+              "npm",
+              "pack",
+              "--pack-destination",
+              "dist/js",
+            ],
           },
         ],
       },
@@ -12291,7 +12423,10 @@ permissions-backup.acl
         "name": "upgrade-runtime-dependencies",
         "steps": [
           {
-            "exec": "echo No dependencies to upgrade.",
+            "execArgs": [
+              "echo",
+              "No dependencies to upgrade.",
+            ],
           },
         ],
       },
