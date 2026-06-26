@@ -1202,7 +1202,7 @@ tsconfig.tsbuildinfo
     "env": {
       "PATH": "$(npx -c "node --print process.env.PATH")",
     },
-    "manifestVersion": 1,
+    "manifestVersion": 2,
     "tasks": {
       "build": {
         "description": "Full release build",
@@ -1284,7 +1284,10 @@ tsconfig.tsbuildinfo
         "name": "compile",
         "steps": [
           {
-            "exec": "tsc --build",
+            "execArgs": [
+              "tsc",
+              "--build",
+            ],
           },
         ],
       },
@@ -1293,7 +1296,10 @@ tsconfig.tsbuildinfo
         "name": "default",
         "steps": [
           {
-            "exec": "node .projenrc.js",
+            "execArgs": [
+              "node",
+              ".projenrc.js",
+            ],
           },
         ],
       },
@@ -1346,10 +1352,19 @@ tsconfig.tsbuildinfo
         "name": "package",
         "steps": [
           {
-            "exec": "mkdir -p dist/js",
+            "execArgs": [
+              "mkdir",
+              "-p",
+              "dist/js",
+            ],
           },
           {
-            "exec": "npm pack --pack-destination dist/js",
+            "execArgs": [
+              "npm",
+              "pack",
+              "--pack-destination",
+              "dist/js",
+            ],
           },
         ],
       },
@@ -1509,7 +1524,10 @@ tsconfig.tsbuildinfo
         "name": "upgrade-runtime-dependencies",
         "steps": [
           {
-            "exec": "echo No dependencies to upgrade.",
+            "execArgs": [
+              "echo",
+              "No dependencies to upgrade.",
+            ],
           },
         ],
       },
@@ -1518,7 +1536,11 @@ tsconfig.tsbuildinfo
         "name": "watch",
         "steps": [
           {
-            "exec": "tsc --build -w",
+            "execArgs": [
+              "tsc",
+              "--build",
+              "-w",
+            ],
           },
         ],
       },
@@ -3228,7 +3250,7 @@ tsconfig.tsbuildinfo
     "env": {
       "PATH": "$(npx -c "node --print process.env.PATH")",
     },
-    "manifestVersion": 1,
+    "manifestVersion": 2,
     "tasks": {
       "build": {
         "description": "Full release build",
@@ -3310,7 +3332,10 @@ tsconfig.tsbuildinfo
         "name": "compile",
         "steps": [
           {
-            "exec": "tsc --build",
+            "execArgs": [
+              "tsc",
+              "--build",
+            ],
           },
         ],
       },
@@ -3319,7 +3344,10 @@ tsconfig.tsbuildinfo
         "name": "default",
         "steps": [
           {
-            "exec": "node .projenrc.js",
+            "execArgs": [
+              "node",
+              ".projenrc.js",
+            ],
           },
         ],
       },
@@ -3372,10 +3400,19 @@ tsconfig.tsbuildinfo
         "name": "package",
         "steps": [
           {
-            "exec": "mkdir -p dist/js",
+            "execArgs": [
+              "mkdir",
+              "-p",
+              "dist/js",
+            ],
           },
           {
-            "exec": "npm pack --pack-destination dist/js",
+            "execArgs": [
+              "npm",
+              "pack",
+              "--pack-destination",
+              "dist/js",
+            ],
           },
         ],
       },
@@ -3535,7 +3572,10 @@ tsconfig.tsbuildinfo
         "name": "upgrade-runtime-dependencies",
         "steps": [
           {
-            "exec": "echo No dependencies to upgrade.",
+            "execArgs": [
+              "echo",
+              "No dependencies to upgrade.",
+            ],
           },
         ],
       },
@@ -3544,7 +3584,11 @@ tsconfig.tsbuildinfo
         "name": "watch",
         "steps": [
           {
-            "exec": "tsc --build -w",
+            "execArgs": [
+              "tsc",
+              "--build",
+              "-w",
+            ],
           },
         ],
       },
@@ -5116,7 +5160,7 @@ tsconfig.tsbuildinfo
     "env": {
       "PATH": "$(npx -c "node --print process.env.PATH")",
     },
-    "manifestVersion": 1,
+    "manifestVersion": 2,
     "tasks": {
       "build": {
         "description": "Full release build",
@@ -5179,7 +5223,10 @@ tsconfig.tsbuildinfo
         "name": "compile",
         "steps": [
           {
-            "exec": "tsc --build",
+            "execArgs": [
+              "tsc",
+              "--build",
+            ],
           },
         ],
       },
@@ -5188,7 +5235,10 @@ tsconfig.tsbuildinfo
         "name": "default",
         "steps": [
           {
-            "exec": "node .projenrc.js",
+            "execArgs": [
+              "node",
+              ".projenrc.js",
+            ],
           },
         ],
       },
@@ -5241,10 +5291,19 @@ tsconfig.tsbuildinfo
         "name": "package",
         "steps": [
           {
-            "exec": "mkdir -p dist/js",
+            "execArgs": [
+              "mkdir",
+              "-p",
+              "dist/js",
+            ],
           },
           {
-            "exec": "npm pack --pack-destination dist/js",
+            "execArgs": [
+              "npm",
+              "pack",
+              "--pack-destination",
+              "dist/js",
+            ],
           },
         ],
       },
@@ -5362,7 +5421,10 @@ tsconfig.tsbuildinfo
         "name": "upgrade-runtime-dependencies",
         "steps": [
           {
-            "exec": "echo No dependencies to upgrade.",
+            "execArgs": [
+              "echo",
+              "No dependencies to upgrade.",
+            ],
           },
         ],
       },
@@ -5371,7 +5433,11 @@ tsconfig.tsbuildinfo
         "name": "watch",
         "steps": [
           {
-            "exec": "tsc --build -w",
+            "execArgs": [
+              "tsc",
+              "--build",
+              "-w",
+            ],
           },
         ],
       },
@@ -6901,7 +6967,7 @@ tsconfig.tsbuildinfo
     "env": {
       "PATH": "$(npx -c "node --print process.env.PATH")",
     },
-    "manifestVersion": 1,
+    "manifestVersion": 2,
     "tasks": {
       "build": {
         "description": "Full release build",
@@ -6964,7 +7030,10 @@ tsconfig.tsbuildinfo
         "name": "compile",
         "steps": [
           {
-            "exec": "tsc --build",
+            "execArgs": [
+              "tsc",
+              "--build",
+            ],
           },
         ],
       },
@@ -6973,7 +7042,10 @@ tsconfig.tsbuildinfo
         "name": "default",
         "steps": [
           {
-            "exec": "node .projenrc.js",
+            "execArgs": [
+              "node",
+              ".projenrc.js",
+            ],
           },
         ],
       },
@@ -7026,10 +7098,19 @@ tsconfig.tsbuildinfo
         "name": "package",
         "steps": [
           {
-            "exec": "mkdir -p dist/js",
+            "execArgs": [
+              "mkdir",
+              "-p",
+              "dist/js",
+            ],
           },
           {
-            "exec": "npm pack --pack-destination dist/js",
+            "execArgs": [
+              "npm",
+              "pack",
+              "--pack-destination",
+              "dist/js",
+            ],
           },
         ],
       },
@@ -7147,7 +7228,10 @@ tsconfig.tsbuildinfo
         "name": "upgrade-runtime-dependencies",
         "steps": [
           {
-            "exec": "echo No dependencies to upgrade.",
+            "execArgs": [
+              "echo",
+              "No dependencies to upgrade.",
+            ],
           },
         ],
       },
@@ -7156,7 +7240,11 @@ tsconfig.tsbuildinfo
         "name": "watch",
         "steps": [
           {
-            "exec": "tsc --build -w",
+            "execArgs": [
+              "tsc",
+              "--build",
+              "-w",
+            ],
           },
         ],
       },
@@ -8683,7 +8771,7 @@ tsconfig.tsbuildinfo
     "env": {
       "PATH": "$(npx -c "node --print process.env.PATH")",
     },
-    "manifestVersion": 1,
+    "manifestVersion": 2,
     "tasks": {
       "build": {
         "description": "Full release build",
@@ -8746,7 +8834,10 @@ tsconfig.tsbuildinfo
         "name": "compile",
         "steps": [
           {
-            "exec": "tsc --build",
+            "execArgs": [
+              "tsc",
+              "--build",
+            ],
           },
         ],
       },
@@ -8755,7 +8846,10 @@ tsconfig.tsbuildinfo
         "name": "default",
         "steps": [
           {
-            "exec": "node .projenrc.js",
+            "execArgs": [
+              "node",
+              ".projenrc.js",
+            ],
           },
         ],
       },
@@ -8808,10 +8902,19 @@ tsconfig.tsbuildinfo
         "name": "package",
         "steps": [
           {
-            "exec": "mkdir -p dist/js",
+            "execArgs": [
+              "mkdir",
+              "-p",
+              "dist/js",
+            ],
           },
           {
-            "exec": "npm pack --pack-destination dist/js",
+            "execArgs": [
+              "npm",
+              "pack",
+              "--pack-destination",
+              "dist/js",
+            ],
           },
         ],
       },
@@ -8929,7 +9032,10 @@ tsconfig.tsbuildinfo
         "name": "upgrade-runtime-dependencies",
         "steps": [
           {
-            "exec": "echo No dependencies to upgrade.",
+            "execArgs": [
+              "echo",
+              "No dependencies to upgrade.",
+            ],
           },
         ],
       },
@@ -8938,7 +9044,11 @@ tsconfig.tsbuildinfo
         "name": "watch",
         "steps": [
           {
-            "exec": "tsc --build -w",
+            "execArgs": [
+              "tsc",
+              "--build",
+              "-w",
+            ],
           },
         ],
       },
@@ -10593,7 +10703,7 @@ tsconfig.tsbuildinfo
     "env": {
       "PATH": "$(npx -c "node --print process.env.PATH")",
     },
-    "manifestVersion": 1,
+    "manifestVersion": 2,
     "tasks": {
       "build": {
         "description": "Full release build",
@@ -10675,7 +10785,10 @@ tsconfig.tsbuildinfo
         "name": "compile",
         "steps": [
           {
-            "exec": "tsc --build",
+            "execArgs": [
+              "tsc",
+              "--build",
+            ],
           },
         ],
       },
@@ -10684,7 +10797,10 @@ tsconfig.tsbuildinfo
         "name": "default",
         "steps": [
           {
-            "exec": "node .projenrc.js",
+            "execArgs": [
+              "node",
+              ".projenrc.js",
+            ],
           },
         ],
       },
@@ -10737,10 +10853,19 @@ tsconfig.tsbuildinfo
         "name": "package",
         "steps": [
           {
-            "exec": "mkdir -p dist/js",
+            "execArgs": [
+              "mkdir",
+              "-p",
+              "dist/js",
+            ],
           },
           {
-            "exec": "npm pack --pack-destination dist/js",
+            "execArgs": [
+              "npm",
+              "pack",
+              "--pack-destination",
+              "dist/js",
+            ],
           },
         ],
       },
@@ -10900,7 +11025,10 @@ tsconfig.tsbuildinfo
         "name": "upgrade-runtime-dependencies",
         "steps": [
           {
-            "exec": "echo No dependencies to upgrade.",
+            "execArgs": [
+              "echo",
+              "No dependencies to upgrade.",
+            ],
           },
         ],
       },
@@ -10909,7 +11037,11 @@ tsconfig.tsbuildinfo
         "name": "watch",
         "steps": [
           {
-            "exec": "tsc --build -w",
+            "execArgs": [
+              "tsc",
+              "--build",
+              "-w",
+            ],
           },
         ],
       },
@@ -12568,7 +12700,7 @@ tsconfig.tsbuildinfo
     "env": {
       "PATH": "$(npx -c "node --print process.env.PATH")",
     },
-    "manifestVersion": 1,
+    "manifestVersion": 2,
     "tasks": {
       "build": {
         "description": "Full release build",
@@ -12650,7 +12782,10 @@ tsconfig.tsbuildinfo
         "name": "compile",
         "steps": [
           {
-            "exec": "tsc --build",
+            "execArgs": [
+              "tsc",
+              "--build",
+            ],
           },
         ],
       },
@@ -12659,7 +12794,10 @@ tsconfig.tsbuildinfo
         "name": "default",
         "steps": [
           {
-            "exec": "node .projenrc.js",
+            "execArgs": [
+              "node",
+              ".projenrc.js",
+            ],
           },
         ],
       },
@@ -12712,10 +12850,19 @@ tsconfig.tsbuildinfo
         "name": "package",
         "steps": [
           {
-            "exec": "mkdir -p dist/js",
+            "execArgs": [
+              "mkdir",
+              "-p",
+              "dist/js",
+            ],
           },
           {
-            "exec": "npm pack --pack-destination dist/js",
+            "execArgs": [
+              "npm",
+              "pack",
+              "--pack-destination",
+              "dist/js",
+            ],
           },
         ],
       },
@@ -12875,7 +13022,10 @@ tsconfig.tsbuildinfo
         "name": "upgrade-runtime-dependencies",
         "steps": [
           {
-            "exec": "echo No dependencies to upgrade.",
+            "execArgs": [
+              "echo",
+              "No dependencies to upgrade.",
+            ],
           },
         ],
       },
@@ -12884,7 +13034,11 @@ tsconfig.tsbuildinfo
         "name": "watch",
         "steps": [
           {
-            "exec": "tsc --build -w",
+            "execArgs": [
+              "tsc",
+              "--build",
+              "-w",
+            ],
           },
         ],
       },
@@ -14540,7 +14694,7 @@ tsconfig.tsbuildinfo
     "env": {
       "PATH": "$(npx -c "node --print process.env.PATH")",
     },
-    "manifestVersion": 1,
+    "manifestVersion": 2,
     "tasks": {
       "build": {
         "description": "Full release build",
@@ -14622,7 +14776,10 @@ tsconfig.tsbuildinfo
         "name": "compile",
         "steps": [
           {
-            "exec": "tsc --build",
+            "execArgs": [
+              "tsc",
+              "--build",
+            ],
           },
         ],
       },
@@ -14631,7 +14788,10 @@ tsconfig.tsbuildinfo
         "name": "default",
         "steps": [
           {
-            "exec": "node .projenrc.js",
+            "execArgs": [
+              "node",
+              ".projenrc.js",
+            ],
           },
         ],
       },
@@ -14684,10 +14844,19 @@ tsconfig.tsbuildinfo
         "name": "package",
         "steps": [
           {
-            "exec": "mkdir -p dist/js",
+            "execArgs": [
+              "mkdir",
+              "-p",
+              "dist/js",
+            ],
           },
           {
-            "exec": "npm pack --pack-destination dist/js",
+            "execArgs": [
+              "npm",
+              "pack",
+              "--pack-destination",
+              "dist/js",
+            ],
           },
         ],
       },
@@ -14847,7 +15016,10 @@ tsconfig.tsbuildinfo
         "name": "upgrade-runtime-dependencies",
         "steps": [
           {
-            "exec": "echo No dependencies to upgrade.",
+            "execArgs": [
+              "echo",
+              "No dependencies to upgrade.",
+            ],
           },
         ],
       },
@@ -14856,7 +15028,11 @@ tsconfig.tsbuildinfo
         "name": "watch",
         "steps": [
           {
-            "exec": "tsc --build -w",
+            "execArgs": [
+              "tsc",
+              "--build",
+              "-w",
+            ],
           },
         ],
       },
@@ -16618,7 +16794,7 @@ tsconfig.tsbuildinfo
     "env": {
       "PATH": "$(npx -c "node --print process.env.PATH")",
     },
-    "manifestVersion": 1,
+    "manifestVersion": 2,
     "tasks": {
       "build": {
         "description": "Full release build",
@@ -16700,7 +16876,10 @@ tsconfig.tsbuildinfo
         "name": "compile",
         "steps": [
           {
-            "exec": "tsc --build",
+            "execArgs": [
+              "tsc",
+              "--build",
+            ],
           },
         ],
       },
@@ -16709,7 +16888,10 @@ tsconfig.tsbuildinfo
         "name": "default",
         "steps": [
           {
-            "exec": "node .projenrc.js",
+            "execArgs": [
+              "node",
+              ".projenrc.js",
+            ],
           },
         ],
       },
@@ -16762,10 +16944,19 @@ tsconfig.tsbuildinfo
         "name": "package",
         "steps": [
           {
-            "exec": "mkdir -p dist/js",
+            "execArgs": [
+              "mkdir",
+              "-p",
+              "dist/js",
+            ],
           },
           {
-            "exec": "npm pack --pack-destination dist/js",
+            "execArgs": [
+              "npm",
+              "pack",
+              "--pack-destination",
+              "dist/js",
+            ],
           },
         ],
       },
@@ -16925,7 +17116,10 @@ tsconfig.tsbuildinfo
         "name": "upgrade-runtime-dependencies",
         "steps": [
           {
-            "exec": "echo No dependencies to upgrade.",
+            "execArgs": [
+              "echo",
+              "No dependencies to upgrade.",
+            ],
           },
         ],
       },
@@ -16934,7 +17128,11 @@ tsconfig.tsbuildinfo
         "name": "watch",
         "steps": [
           {
-            "exec": "tsc --build -w",
+            "execArgs": [
+              "tsc",
+              "--build",
+              "-w",
+            ],
           },
         ],
       },
@@ -18593,7 +18791,7 @@ tsconfig.tsbuildinfo
     "env": {
       "PATH": "$(npx -c "node --print process.env.PATH")",
     },
-    "manifestVersion": 1,
+    "manifestVersion": 2,
     "tasks": {
       "build": {
         "description": "Full release build",
@@ -18675,7 +18873,10 @@ tsconfig.tsbuildinfo
         "name": "compile",
         "steps": [
           {
-            "exec": "tsc --build",
+            "execArgs": [
+              "tsc",
+              "--build",
+            ],
           },
         ],
       },
@@ -18684,7 +18885,10 @@ tsconfig.tsbuildinfo
         "name": "default",
         "steps": [
           {
-            "exec": "node .projenrc.js",
+            "execArgs": [
+              "node",
+              ".projenrc.js",
+            ],
           },
         ],
       },
@@ -18737,10 +18941,19 @@ tsconfig.tsbuildinfo
         "name": "package",
         "steps": [
           {
-            "exec": "mkdir -p dist/js",
+            "execArgs": [
+              "mkdir",
+              "-p",
+              "dist/js",
+            ],
           },
           {
-            "exec": "npm pack --pack-destination dist/js",
+            "execArgs": [
+              "npm",
+              "pack",
+              "--pack-destination",
+              "dist/js",
+            ],
           },
         ],
       },
@@ -18900,7 +19113,10 @@ tsconfig.tsbuildinfo
         "name": "upgrade-runtime-dependencies",
         "steps": [
           {
-            "exec": "echo No dependencies to upgrade.",
+            "execArgs": [
+              "echo",
+              "No dependencies to upgrade.",
+            ],
           },
         ],
       },
@@ -18909,7 +19125,11 @@ tsconfig.tsbuildinfo
         "name": "watch",
         "steps": [
           {
-            "exec": "tsc --build -w",
+            "execArgs": [
+              "tsc",
+              "--build",
+              "-w",
+            ],
           },
         ],
       },
