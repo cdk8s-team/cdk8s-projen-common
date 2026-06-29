@@ -1202,7 +1202,7 @@ tsconfig.tsbuildinfo
     "env": {
       "PATH": "$(npx -c "node --print process.env.PATH")",
     },
-    "manifestVersion": 2,
+    "manifestVersion": 3,
     "tasks": {
       "build": {
         "description": "Full release build",
@@ -1236,7 +1236,7 @@ tsconfig.tsbuildinfo
           "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep "^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+" --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
+          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -1433,7 +1433,7 @@ tsconfig.tsbuildinfo
           "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep "^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+" --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
+          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -3250,7 +3250,7 @@ tsconfig.tsbuildinfo
     "env": {
       "PATH": "$(npx -c "node --print process.env.PATH")",
     },
-    "manifestVersion": 2,
+    "manifestVersion": 3,
     "tasks": {
       "build": {
         "description": "Full release build",
@@ -3284,7 +3284,7 @@ tsconfig.tsbuildinfo
           "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep "^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+" --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
+          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -3481,7 +3481,7 @@ tsconfig.tsbuildinfo
           "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep "^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+" --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
+          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -5160,7 +5160,7 @@ tsconfig.tsbuildinfo
     "env": {
       "PATH": "$(npx -c "node --print process.env.PATH")",
     },
-    "manifestVersion": 2,
+    "manifestVersion": 3,
     "tasks": {
       "build": {
         "description": "Full release build",
@@ -6967,7 +6967,7 @@ tsconfig.tsbuildinfo
     "env": {
       "PATH": "$(npx -c "node --print process.env.PATH")",
     },
-    "manifestVersion": 2,
+    "manifestVersion": 3,
     "tasks": {
       "build": {
         "description": "Full release build",
@@ -8771,7 +8771,7 @@ tsconfig.tsbuildinfo
     "env": {
       "PATH": "$(npx -c "node --print process.env.PATH")",
     },
-    "manifestVersion": 2,
+    "manifestVersion": 3,
     "tasks": {
       "build": {
         "description": "Full release build",
@@ -10703,7 +10703,7 @@ tsconfig.tsbuildinfo
     "env": {
       "PATH": "$(npx -c "node --print process.env.PATH")",
     },
-    "manifestVersion": 2,
+    "manifestVersion": 3,
     "tasks": {
       "build": {
         "description": "Full release build",
@@ -10737,7 +10737,7 @@ tsconfig.tsbuildinfo
           "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep "^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+" --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
+          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -10934,7 +10934,7 @@ tsconfig.tsbuildinfo
           "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep "^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+" --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
+          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -12700,7 +12700,7 @@ tsconfig.tsbuildinfo
     "env": {
       "PATH": "$(npx -c "node --print process.env.PATH")",
     },
-    "manifestVersion": 2,
+    "manifestVersion": 3,
     "tasks": {
       "build": {
         "description": "Full release build",
@@ -12734,7 +12734,7 @@ tsconfig.tsbuildinfo
           "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep "^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+" --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
+          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -12931,7 +12931,7 @@ tsconfig.tsbuildinfo
           "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep "^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+" --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
+          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -14694,7 +14694,7 @@ tsconfig.tsbuildinfo
     "env": {
       "PATH": "$(npx -c "node --print process.env.PATH")",
     },
-    "manifestVersion": 2,
+    "manifestVersion": 3,
     "tasks": {
       "build": {
         "description": "Full release build",
@@ -14728,7 +14728,7 @@ tsconfig.tsbuildinfo
           "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep "^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+" --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
+          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -14925,7 +14925,7 @@ tsconfig.tsbuildinfo
           "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep "^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+" --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
+          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -16794,7 +16794,7 @@ tsconfig.tsbuildinfo
     "env": {
       "PATH": "$(npx -c "node --print process.env.PATH")",
     },
-    "manifestVersion": 2,
+    "manifestVersion": 3,
     "tasks": {
       "build": {
         "description": "Full release build",
@@ -16828,7 +16828,7 @@ tsconfig.tsbuildinfo
           "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep "^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+" --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
+          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -17025,7 +17025,7 @@ tsconfig.tsbuildinfo
           "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep "^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+" --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
+          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -18791,7 +18791,7 @@ tsconfig.tsbuildinfo
     "env": {
       "PATH": "$(npx -c "node --print process.env.PATH")",
     },
-    "manifestVersion": 2,
+    "manifestVersion": 3,
     "tasks": {
       "build": {
         "description": "Full release build",
@@ -18825,7 +18825,7 @@ tsconfig.tsbuildinfo
           "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep "^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+" --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
+          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -19022,7 +19022,7 @@ tsconfig.tsbuildinfo
           "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep "^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+" --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
+          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
