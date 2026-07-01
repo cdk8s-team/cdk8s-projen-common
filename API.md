@@ -648,6 +648,7 @@ When given a project, this it the project itself.
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.property.upgradeWorkflow">upgradeWorkflow</a></code> | <code>projen.javascript.UpgradeDependencies</code> | The upgrade workflow. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.property.docsDirectory">docsDirectory</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.property.libdir">libdir</a></code> | <code>string</code> | The directory in which compiled .js files reside. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.property.runner">runner</a></code> | <code>projen.typescript.TypeScriptRunner</code> | The TypeScript runner used for executing TypeScript files. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.property.srcdir">srcdir</a></code> | <code>string</code> | The directory in which the .ts sources reside. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.property.testdir">testdir</a></code> | <code>string</code> | The directory in which tests reside. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProject.property.tsconfigDev">tsconfigDev</a></code> | <code>projen.javascript.TypescriptConfig</code> | A typescript configuration file which covers all files (sources, tests, projen). |
@@ -1251,6 +1252,18 @@ public readonly libdir: string;
 - *Type:* string
 
 The directory in which compiled .js files reside.
+
+---
+
+##### `runner`<sup>Required</sup> <a name="runner" id="@cdk8s/projen-common.Cdk8sTeamJsiiProject.property.runner"></a>
+
+```typescript
+public readonly runner: TypeScriptRunner;
+```
+
+- *Type:* projen.typescript.TypeScriptRunner
+
+The TypeScript runner used for executing TypeScript files.
 
 ---
 
@@ -3265,6 +3278,7 @@ When given a project, this it the project itself.
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.upgradeWorkflow">upgradeWorkflow</a></code> | <code>projen.javascript.UpgradeDependencies</code> | The upgrade workflow. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.docsDirectory">docsDirectory</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.libdir">libdir</a></code> | <code>string</code> | The directory in which compiled .js files reside. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.runner">runner</a></code> | <code>projen.typescript.TypeScriptRunner</code> | The TypeScript runner used for executing TypeScript files. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.srcdir">srcdir</a></code> | <code>string</code> | The directory in which the .ts sources reside. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.testdir">testdir</a></code> | <code>string</code> | The directory in which tests reside. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.tsconfigDev">tsconfigDev</a></code> | <code>projen.javascript.TypescriptConfig</code> | A typescript configuration file which covers all files (sources, tests, projen). |
@@ -3871,6 +3885,18 @@ The directory in which compiled .js files reside.
 
 ---
 
+##### `runner`<sup>Required</sup> <a name="runner" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.runner"></a>
+
+```typescript
+public readonly runner: TypeScriptRunner;
+```
+
+- *Type:* projen.typescript.TypeScriptRunner
+
+The TypeScript runner used for executing TypeScript files.
+
+---
+
 ##### `srcdir`<sup>Required</sup> <a name="srcdir" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.property.srcdir"></a>
 
 ```typescript
@@ -4345,6 +4371,7 @@ const cdk8sTeamJsiiProjectOptions: Cdk8sTeamJsiiProjectOptions = { ... }
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.libdir">libdir</a></code> | <code>string</code> | Typescript  artifacts output directory. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenrcTs">projenrcTs</a></code> | <code>boolean</code> | Use TypeScript for your projenrc file (`.projenrc.ts`). |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.projenrcTsOptions">projenrcTsOptions</a></code> | <code>projen.typescript.ProjenrcOptions</code> | Options for .projenrc.ts. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.runner">runner</a></code> | <code>projen.typescript.TypeScriptRunner</code> | The TypeScript runner to use for executing TypeScript files. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.sampleCode">sampleCode</a></code> | <code>boolean</code> | Generate one-time sample in `src/` and `test/` if there are no files there. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.srcdir">srcdir</a></code> | <code>string</code> | Typescript sources directory. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.testdir">testdir</a></code> | <code>string</code> | Jest tests directory. Tests files should be named `xxx.test.ts`. |
@@ -6358,6 +6385,22 @@ public readonly projenrcTsOptions: ProjenrcOptions;
 - *Type:* projen.typescript.ProjenrcOptions
 
 Options for .projenrc.ts.
+
+---
+
+##### `runner`<sup>Optional</sup> <a name="runner" id="@cdk8s/projen-common.Cdk8sTeamJsiiProjectOptions.property.runner"></a>
+
+```typescript
+public readonly runner: TypeScriptRunner;
+```
+
+- *Type:* projen.typescript.TypeScriptRunner
+- *Default:* TypeScriptRunner.tsNode()
+
+The TypeScript runner to use for executing TypeScript files.
+
+This is a project-level setting that components (e.g. projenrc) will
+use as their default runner.
 
 ---
 
@@ -8845,6 +8888,7 @@ const cdk8sTeamTypeScriptProjectOptions: Cdk8sTeamTypeScriptProjectOptions = { .
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.libdir">libdir</a></code> | <code>string</code> | Typescript  artifacts output directory. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenrcTs">projenrcTs</a></code> | <code>boolean</code> | Use TypeScript for your projenrc file (`.projenrc.ts`). |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.projenrcTsOptions">projenrcTsOptions</a></code> | <code>projen.typescript.ProjenrcOptions</code> | Options for .projenrc.ts. |
+| <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.runner">runner</a></code> | <code>projen.typescript.TypeScriptRunner</code> | The TypeScript runner to use for executing TypeScript files. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.sampleCode">sampleCode</a></code> | <code>boolean</code> | Generate one-time sample in `src/` and `test/` if there are no files there. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.srcdir">srcdir</a></code> | <code>string</code> | Typescript sources directory. |
 | <code><a href="#@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.testdir">testdir</a></code> | <code>string</code> | Jest tests directory. Tests files should be named `xxx.test.ts`. |
@@ -10852,6 +10896,22 @@ public readonly projenrcTsOptions: ProjenrcOptions;
 - *Type:* projen.typescript.ProjenrcOptions
 
 Options for .projenrc.ts.
+
+---
+
+##### `runner`<sup>Optional</sup> <a name="runner" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProjectOptions.property.runner"></a>
+
+```typescript
+public readonly runner: TypeScriptRunner;
+```
+
+- *Type:* projen.typescript.TypeScriptRunner
+- *Default:* TypeScriptRunner.tsNode()
+
+The TypeScript runner to use for executing TypeScript files.
+
+This is a project-level setting that components (e.g. projenrc) will
+use as their default runner.
 
 ---
 
