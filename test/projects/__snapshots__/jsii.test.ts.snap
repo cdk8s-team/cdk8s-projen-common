@@ -695,8 +695,10 @@ jobs:
           cat $GITHUB_OUTPUT
       - name: Check for new commits
         id: git_remote
+        env:
+          GITHUB_REF: \${{ github.ref }}
         run: |-
-          echo "latest_commit=$(git ls-remote origin -h \${{ github.ref }} | cut -f1)" >> $GITHUB_OUTPUT
+          echo "latest_commit=$(git ls-remote origin -h "$GITHUB_REF" | cut -f1)" >> $GITHUB_OUTPUT
           cat $GITHUB_OUTPUT
         shell: bash
       - name: Backup artifact permissions
@@ -1623,11 +1625,6 @@ tsconfig.tsbuildinfo
         "name": "typescript",
         "type": "build",
       },
-      {
-        "name": "**/downlevel-dts/**/typescript",
-        "type": "override",
-        "version": "~5.2.2",
-      },
     ],
   },
   ".projen/files.json": {
@@ -1696,21 +1693,42 @@ tsconfig.tsbuildinfo
         ],
       },
       "bump": {
-        "condition": "git log --oneline -1 | grep -qv "chore(release):"",
+        "condition": "git log --oneline -1 | grep -v "chore(release):" > /dev/null",
         "description": "Bumps version based on latest git tag and generates a changelog entry",
         "env": {
           "BUMPFILE": "dist/version.txt",
           "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
         "name": "bump",
         "steps": [
           {
-            "builtin": "release/bump-version",
+            "builtin": "release/resolve-latest-tag",
+            "outputEnv": "LATEST_TAG",
+          },
+          {
+            "condition": "git rev-parse --verify --quiet "refs/tags/$LATEST_TAG"",
+            "outputEnv": "RELEASABLE_COMMITS",
+            "spawn": "bump:releasable-commits",
+          },
+          {
+            "builtin": "release/suggest-version-bump",
+            "outputEnv": "SUGGESTED_BUMP",
+          },
+          {
+            "builtin": "release/apply-version-bump",
+          },
+        ],
+      },
+      "bump:releasable-commits": {
+        "description": "Print the releasable commits since the latest release",
+        "name": "bump:releasable-commits",
+        "steps": [
+          {
+            "exec": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           },
         ],
       },
@@ -2010,7 +2028,6 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
           "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -2029,13 +2046,31 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-compiler-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=comp1,jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=comp1,jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade comp1 jsii jsii-docgen jsii-pacmak jsii-rosetta typescript",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "comp1",
+              "jsii",
+              "jsii-docgen",
+              "jsii-pacmak",
+              "jsii-rosetta",
+              "typescript",
+            ],
           },
           {
             "exec": "npx projen",
@@ -2053,13 +2088,27 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-configuration",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=projen,@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade projen @cdk8s/projen-common",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "projen",
+              "@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "npx projen",
@@ -2077,13 +2126,39 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-dev-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev,prod",
+              "--filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser commit-and-tag-version constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit jsii-diff ts-jest",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "@stylistic/eslint-plugin",
+              "@types/jest",
+              "@types/node",
+              "@typescript-eslint/eslint-plugin",
+              "@typescript-eslint/parser",
+              "commit-and-tag-version",
+              "constructs",
+              "eslint-import-resolver-typescript",
+              "eslint-plugin-import",
+              "eslint",
+              "jest",
+              "jest-junit",
+              "jsii-diff",
+              "ts-jest",
+            ],
           },
           {
             "exec": "npx projen",
@@ -2515,12 +2590,10 @@ echo "Configured core.hooksPath to \${hooksdir}"
       "type": "git",
       "url": "https://github.com/cdk8s-team/root.git",
     },
-    "resolutions": {
-      "**/downlevel-dts/**/typescript": "~5.2.2",
-    },
     "scripts": {
       "build": "projen build",
       "bump": "projen bump",
+      "bump:releasable-commits": "projen bump:releasable-commits",
       "clobber": "projen clobber",
       "compat": "projen compat",
       "compile": "projen compile",
@@ -2560,6 +2633,7 @@ echo "Configured core.hooksPath to \${hooksdir}"
 }",
   "test/tsconfig.json": {
     "compilerOptions": {
+      "isolatedModules": true,
       "noEmit": true,
       "rootDir": "..",
       "stripInternal": true,
@@ -3357,8 +3431,10 @@ jobs:
           cat $GITHUB_OUTPUT
       - name: Check for new commits
         id: git_remote
+        env:
+          GITHUB_REF: \${{ github.ref }}
         run: |-
-          echo "latest_commit=$(git ls-remote origin -h \${{ github.ref }} | cut -f1)" >> $GITHUB_OUTPUT
+          echo "latest_commit=$(git ls-remote origin -h "$GITHUB_REF" | cut -f1)" >> $GITHUB_OUTPUT
           cat $GITHUB_OUTPUT
         shell: bash
       - name: Backup artifact permissions
@@ -4288,11 +4364,6 @@ tsconfig.tsbuildinfo
         "name": "typescript",
         "type": "build",
       },
-      {
-        "name": "**/downlevel-dts/**/typescript",
-        "type": "override",
-        "version": "~5.2.2",
-      },
     ],
   },
   ".projen/files.json": {
@@ -4363,21 +4434,42 @@ tsconfig.tsbuildinfo
         ],
       },
       "bump": {
-        "condition": "git log --oneline -1 | grep -qv "chore(release):"",
+        "condition": "git log --oneline -1 | grep -v "chore(release):" > /dev/null",
         "description": "Bumps version based on latest git tag and generates a changelog entry",
         "env": {
           "BUMPFILE": "dist/version.txt",
           "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
         "name": "bump",
         "steps": [
           {
-            "builtin": "release/bump-version",
+            "builtin": "release/resolve-latest-tag",
+            "outputEnv": "LATEST_TAG",
+          },
+          {
+            "condition": "git rev-parse --verify --quiet "refs/tags/$LATEST_TAG"",
+            "outputEnv": "RELEASABLE_COMMITS",
+            "spawn": "bump:releasable-commits",
+          },
+          {
+            "builtin": "release/suggest-version-bump",
+            "outputEnv": "SUGGESTED_BUMP",
+          },
+          {
+            "builtin": "release/apply-version-bump",
+          },
+        ],
+      },
+      "bump:releasable-commits": {
+        "description": "Print the releasable commits since the latest release",
+        "name": "bump:releasable-commits",
+        "steps": [
+          {
+            "exec": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           },
         ],
       },
@@ -4677,7 +4769,6 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
           "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -4696,13 +4787,30 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-compiler-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade jsii jsii-docgen jsii-pacmak jsii-rosetta typescript",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "jsii",
+              "jsii-docgen",
+              "jsii-pacmak",
+              "jsii-rosetta",
+              "typescript",
+            ],
           },
           {
             "exec": "npx projen",
@@ -4720,13 +4828,27 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-configuration",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=projen,@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade projen @cdk8s/projen-common",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "projen",
+              "@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "npx projen",
@@ -4744,13 +4866,39 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-dev-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev,prod",
+              "--filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser commit-and-tag-version constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit jsii-diff ts-jest",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "@stylistic/eslint-plugin",
+              "@types/jest",
+              "@types/node",
+              "@typescript-eslint/eslint-plugin",
+              "@typescript-eslint/parser",
+              "commit-and-tag-version",
+              "constructs",
+              "eslint-import-resolver-typescript",
+              "eslint-plugin-import",
+              "eslint",
+              "jest",
+              "jest-junit",
+              "jsii-diff",
+              "ts-jest",
+            ],
           },
           {
             "exec": "npx projen",
@@ -5182,12 +5330,10 @@ echo "Configured core.hooksPath to \${hooksdir}"
       "type": "git",
       "url": "https://github.com/cdk8s-team/root.git",
     },
-    "resolutions": {
-      "**/downlevel-dts/**/typescript": "~5.2.2",
-    },
     "scripts": {
       "build": "projen build",
       "bump": "projen bump",
+      "bump:releasable-commits": "projen bump:releasable-commits",
       "clobber": "projen clobber",
       "compat": "projen compat",
       "compile": "projen compile",
@@ -5227,6 +5373,7 @@ echo "Configured core.hooksPath to \${hooksdir}"
 }",
   "test/tsconfig.json": {
     "compilerOptions": {
+      "isolatedModules": true,
       "noEmit": true,
       "rootDir": "..",
       "stripInternal": true,
@@ -6383,11 +6530,6 @@ tsconfig.tsbuildinfo
         "name": "typescript",
         "type": "build",
       },
-      {
-        "name": "**/downlevel-dts/**/typescript",
-        "type": "override",
-        "version": "~5.2.2",
-      },
     ],
   },
   ".projen/files.json": {
@@ -6659,13 +6801,30 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-compiler-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade jsii jsii-docgen jsii-pacmak jsii-rosetta typescript",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "jsii",
+              "jsii-docgen",
+              "jsii-pacmak",
+              "jsii-rosetta",
+              "typescript",
+            ],
           },
           {
             "exec": "npx projen",
@@ -6683,13 +6842,27 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-configuration",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=projen,@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade projen @cdk8s/projen-common",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "projen",
+              "@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "npx projen",
@@ -6707,13 +6880,38 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-dev-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev,prod",
+              "--filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit jsii-diff ts-jest",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "@stylistic/eslint-plugin",
+              "@types/jest",
+              "@types/node",
+              "@typescript-eslint/eslint-plugin",
+              "@typescript-eslint/parser",
+              "constructs",
+              "eslint-import-resolver-typescript",
+              "eslint-plugin-import",
+              "eslint",
+              "jest",
+              "jest-junit",
+              "jsii-diff",
+              "ts-jest",
+            ],
           },
           {
             "exec": "npx projen",
@@ -7125,9 +7323,6 @@ echo "Configured core.hooksPath to \${hooksdir}"
       "type": "git",
       "url": "https://github.com/cdk8s-team/custom-repo-name.git",
     },
-    "resolutions": {
-      "**/downlevel-dts/**/typescript": "~5.2.2",
-    },
     "scripts": {
       "build": "projen build",
       "clobber": "projen clobber",
@@ -7163,6 +7358,7 @@ echo "Configured core.hooksPath to \${hooksdir}"
 }",
   "test/tsconfig.json": {
     "compilerOptions": {
+      "isolatedModules": true,
       "noEmit": true,
       "rootDir": "..",
       "stripInternal": true,
@@ -8447,11 +8643,6 @@ tsconfig.tsbuildinfo
         "name": "typescript",
         "type": "build",
       },
-      {
-        "name": "**/downlevel-dts/**/typescript",
-        "type": "override",
-        "version": "~5.2.2",
-      },
     ],
   },
   ".projen/files.json": {
@@ -8791,13 +8982,30 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-compiler-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade jsii jsii-docgen jsii-pacmak jsii-rosetta typescript",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "jsii",
+              "jsii-docgen",
+              "jsii-pacmak",
+              "jsii-rosetta",
+              "typescript",
+            ],
           },
           {
             "exec": "npx projen",
@@ -8815,13 +9023,27 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-configuration",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=projen,@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade projen @cdk8s/projen-common",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "projen",
+              "@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "npx projen",
@@ -8839,13 +9061,38 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-dev-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev,prod",
+              "--filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit jsii-diff ts-jest",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "@stylistic/eslint-plugin",
+              "@types/jest",
+              "@types/node",
+              "@typescript-eslint/eslint-plugin",
+              "@typescript-eslint/parser",
+              "constructs",
+              "eslint-import-resolver-typescript",
+              "eslint-plugin-import",
+              "eslint",
+              "jest",
+              "jest-junit",
+              "jsii-diff",
+              "ts-jest",
+            ],
           },
           {
             "exec": "npx projen",
@@ -9276,9 +9523,6 @@ echo "Configured core.hooksPath to \${hooksdir}"
       "type": "git",
       "url": "https://github.com/cdk8s-team/custom-repo-name.git",
     },
-    "resolutions": {
-      "**/downlevel-dts/**/typescript": "~5.2.2",
-    },
     "scripts": {
       "build": "projen build",
       "clobber": "projen clobber",
@@ -9318,6 +9562,7 @@ echo "Configured core.hooksPath to \${hooksdir}"
 }",
   "test/tsconfig.json": {
     "compilerOptions": {
+      "isolatedModules": true,
       "noEmit": true,
       "rootDir": "..",
       "stripInternal": true,
@@ -10436,11 +10681,6 @@ tsconfig.tsbuildinfo
         "name": "typescript",
         "type": "build",
       },
-      {
-        "name": "**/downlevel-dts/**/typescript",
-        "type": "override",
-        "version": "~5.2.2",
-      },
     ],
   },
   ".projen/files.json": {
@@ -10712,13 +10952,30 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-compiler-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade jsii jsii-docgen jsii-pacmak jsii-rosetta typescript",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "jsii",
+              "jsii-docgen",
+              "jsii-pacmak",
+              "jsii-rosetta",
+              "typescript",
+            ],
           },
           {
             "exec": "npx projen",
@@ -10736,13 +10993,27 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-configuration",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=projen,@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade projen @cdk8s/projen-common",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "projen",
+              "@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "npx projen",
@@ -10760,13 +11031,38 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-dev-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev,prod",
+              "--filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit jsii-diff ts-jest",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "@stylistic/eslint-plugin",
+              "@types/jest",
+              "@types/node",
+              "@typescript-eslint/eslint-plugin",
+              "@typescript-eslint/parser",
+              "constructs",
+              "eslint-import-resolver-typescript",
+              "eslint-plugin-import",
+              "eslint",
+              "jest",
+              "jest-junit",
+              "jsii-diff",
+              "ts-jest",
+            ],
           },
           {
             "exec": "npx projen",
@@ -11178,9 +11474,6 @@ echo "Configured core.hooksPath to \${hooksdir}"
       "type": "git",
       "url": "https://github.com/cdk8s-team/custom-repo-name.git",
     },
-    "resolutions": {
-      "**/downlevel-dts/**/typescript": "~5.2.2",
-    },
     "scripts": {
       "build": "projen build",
       "clobber": "projen clobber",
@@ -11216,6 +11509,7 @@ echo "Configured core.hooksPath to \${hooksdir}"
 }",
   "test/tsconfig.json": {
     "compilerOptions": {
+      "isolatedModules": true,
       "noEmit": true,
       "rootDir": "..",
       "stripInternal": true,
@@ -12500,11 +12794,6 @@ tsconfig.tsbuildinfo
         "name": "typescript",
         "type": "build",
       },
-      {
-        "name": "**/downlevel-dts/**/typescript",
-        "type": "override",
-        "version": "~5.2.2",
-      },
     ],
   },
   ".projen/files.json": {
@@ -12844,13 +13133,30 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-compiler-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade jsii jsii-docgen jsii-pacmak jsii-rosetta typescript",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "jsii",
+              "jsii-docgen",
+              "jsii-pacmak",
+              "jsii-rosetta",
+              "typescript",
+            ],
           },
           {
             "exec": "npx projen",
@@ -12868,13 +13174,27 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-configuration",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=projen,@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade projen @cdk8s/projen-common",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "projen",
+              "@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "npx projen",
@@ -12892,13 +13212,38 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-dev-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev,prod",
+              "--filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit jsii-diff ts-jest",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "@stylistic/eslint-plugin",
+              "@types/jest",
+              "@types/node",
+              "@typescript-eslint/eslint-plugin",
+              "@typescript-eslint/parser",
+              "constructs",
+              "eslint-import-resolver-typescript",
+              "eslint-plugin-import",
+              "eslint",
+              "jest",
+              "jest-junit",
+              "jsii-diff",
+              "ts-jest",
+            ],
           },
           {
             "exec": "npx projen",
@@ -13329,9 +13674,6 @@ echo "Configured core.hooksPath to \${hooksdir}"
       "type": "git",
       "url": "https://github.com/cdk8s-team/custom-repo-name.git",
     },
-    "resolutions": {
-      "**/downlevel-dts/**/typescript": "~5.2.2",
-    },
     "scripts": {
       "build": "projen build",
       "clobber": "projen clobber",
@@ -13371,6 +13713,7 @@ echo "Configured core.hooksPath to \${hooksdir}"
 }",
   "test/tsconfig.json": {
     "compilerOptions": {
+      "isolatedModules": true,
       "noEmit": true,
       "rootDir": "..",
       "stripInternal": true,
@@ -14489,11 +14832,6 @@ tsconfig.tsbuildinfo
         "name": "typescript",
         "type": "build",
       },
-      {
-        "name": "**/downlevel-dts/**/typescript",
-        "type": "override",
-        "version": "~5.2.2",
-      },
     ],
   },
   ".projen/files.json": {
@@ -14765,13 +15103,30 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-compiler-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade jsii jsii-docgen jsii-pacmak jsii-rosetta typescript",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "jsii",
+              "jsii-docgen",
+              "jsii-pacmak",
+              "jsii-rosetta",
+              "typescript",
+            ],
           },
           {
             "exec": "npx projen",
@@ -14789,13 +15144,27 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-configuration",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=projen,@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade projen @cdk8s/projen-common",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "projen",
+              "@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "npx projen",
@@ -14813,13 +15182,38 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-dev-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev,prod",
+              "--filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit jsii-diff ts-jest",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "@stylistic/eslint-plugin",
+              "@types/jest",
+              "@types/node",
+              "@typescript-eslint/eslint-plugin",
+              "@typescript-eslint/parser",
+              "constructs",
+              "eslint-import-resolver-typescript",
+              "eslint-plugin-import",
+              "eslint",
+              "jest",
+              "jest-junit",
+              "jsii-diff",
+              "ts-jest",
+            ],
           },
           {
             "exec": "npx projen",
@@ -15228,9 +15622,6 @@ echo "Configured core.hooksPath to \${hooksdir}"
       "type": "git",
       "url": "https://github.com/cdk8s-team/custom-repo-name.git",
     },
-    "resolutions": {
-      "**/downlevel-dts/**/typescript": "~5.2.2",
-    },
     "scripts": {
       "build": "projen build",
       "clobber": "projen clobber",
@@ -15266,6 +15657,7 @@ echo "Configured core.hooksPath to \${hooksdir}"
 }",
   "test/tsconfig.json": {
     "compilerOptions": {
+      "isolatedModules": true,
       "noEmit": true,
       "rootDir": "..",
       "stripInternal": true,
@@ -16550,11 +16942,6 @@ tsconfig.tsbuildinfo
         "name": "typescript",
         "type": "build",
       },
-      {
-        "name": "**/downlevel-dts/**/typescript",
-        "type": "override",
-        "version": "~5.2.2",
-      },
     ],
   },
   ".projen/files.json": {
@@ -16894,13 +17281,30 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-compiler-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade jsii jsii-docgen jsii-pacmak jsii-rosetta typescript",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "jsii",
+              "jsii-docgen",
+              "jsii-pacmak",
+              "jsii-rosetta",
+              "typescript",
+            ],
           },
           {
             "exec": "npx projen",
@@ -16918,13 +17322,27 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-configuration",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=projen,@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade projen @cdk8s/projen-common",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "projen",
+              "@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "npx projen",
@@ -16942,13 +17360,38 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-dev-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev,prod",
+              "--filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit jsii-diff ts-jest",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "@stylistic/eslint-plugin",
+              "@types/jest",
+              "@types/node",
+              "@typescript-eslint/eslint-plugin",
+              "@typescript-eslint/parser",
+              "constructs",
+              "eslint-import-resolver-typescript",
+              "eslint-plugin-import",
+              "eslint",
+              "jest",
+              "jest-junit",
+              "jsii-diff",
+              "ts-jest",
+            ],
           },
           {
             "exec": "npx projen",
@@ -17376,9 +17819,6 @@ echo "Configured core.hooksPath to \${hooksdir}"
       "type": "git",
       "url": "https://github.com/cdk8s-team/custom-repo-name.git",
     },
-    "resolutions": {
-      "**/downlevel-dts/**/typescript": "~5.2.2",
-    },
     "scripts": {
       "build": "projen build",
       "clobber": "projen clobber",
@@ -17418,6 +17858,7 @@ echo "Configured core.hooksPath to \${hooksdir}"
 }",
   "test/tsconfig.json": {
     "compilerOptions": {
+      "isolatedModules": true,
       "noEmit": true,
       "rootDir": "..",
       "stripInternal": true,
@@ -18169,8 +18610,10 @@ jobs:
           cat $GITHUB_OUTPUT
       - name: Check for new commits
         id: git_remote
+        env:
+          GITHUB_REF: \${{ github.ref }}
         run: |-
-          echo "latest_commit=$(git ls-remote origin -h \${{ github.ref }} | cut -f1)" >> $GITHUB_OUTPUT
+          echo "latest_commit=$(git ls-remote origin -h "$GITHUB_REF" | cut -f1)" >> $GITHUB_OUTPUT
           cat $GITHUB_OUTPUT
         shell: bash
       - name: Backup artifact permissions
@@ -19097,11 +19540,6 @@ tsconfig.tsbuildinfo
         "name": "typescript",
         "type": "build",
       },
-      {
-        "name": "**/downlevel-dts/**/typescript",
-        "type": "override",
-        "version": "~5.2.2",
-      },
     ],
   },
   ".projen/files.json": {
@@ -19170,21 +19608,42 @@ tsconfig.tsbuildinfo
         ],
       },
       "bump": {
-        "condition": "git log --oneline -1 | grep -qv "chore(release):"",
+        "condition": "git log --oneline -1 | grep -v "chore(release):" > /dev/null",
         "description": "Bumps version based on latest git tag and generates a changelog entry",
         "env": {
           "BUMPFILE": "dist/version.txt",
           "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
         "name": "bump",
         "steps": [
           {
-            "builtin": "release/bump-version",
+            "builtin": "release/resolve-latest-tag",
+            "outputEnv": "LATEST_TAG",
+          },
+          {
+            "condition": "git rev-parse --verify --quiet "refs/tags/$LATEST_TAG"",
+            "outputEnv": "RELEASABLE_COMMITS",
+            "spawn": "bump:releasable-commits",
+          },
+          {
+            "builtin": "release/suggest-version-bump",
+            "outputEnv": "SUGGESTED_BUMP",
+          },
+          {
+            "builtin": "release/apply-version-bump",
+          },
+        ],
+      },
+      "bump:releasable-commits": {
+        "description": "Print the releasable commits since the latest release",
+        "name": "bump:releasable-commits",
+        "steps": [
+          {
+            "exec": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           },
         ],
       },
@@ -19484,7 +19943,6 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
           "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -19503,13 +19961,30 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-compiler-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade jsii jsii-docgen jsii-pacmak jsii-rosetta typescript",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "jsii",
+              "jsii-docgen",
+              "jsii-pacmak",
+              "jsii-rosetta",
+              "typescript",
+            ],
           },
           {
             "exec": "npx projen",
@@ -19527,13 +20002,27 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-configuration",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=projen,@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade projen @cdk8s/projen-common",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "projen",
+              "@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "npx projen",
@@ -19551,13 +20040,39 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-dev-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev,prod",
+              "--filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser commit-and-tag-version constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit jsii-diff ts-jest",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "@stylistic/eslint-plugin",
+              "@types/jest",
+              "@types/node",
+              "@typescript-eslint/eslint-plugin",
+              "@typescript-eslint/parser",
+              "commit-and-tag-version",
+              "constructs",
+              "eslint-import-resolver-typescript",
+              "eslint-plugin-import",
+              "eslint",
+              "jest",
+              "jest-junit",
+              "jsii-diff",
+              "ts-jest",
+            ],
           },
           {
             "exec": "npx projen",
@@ -19989,12 +20504,10 @@ echo "Configured core.hooksPath to \${hooksdir}"
       "type": "git",
       "url": "https://github.com/cdk8s-team/cdk8s-sample.git",
     },
-    "resolutions": {
-      "**/downlevel-dts/**/typescript": "~5.2.2",
-    },
     "scripts": {
       "build": "projen build",
       "bump": "projen bump",
+      "bump:releasable-commits": "projen bump:releasable-commits",
       "clobber": "projen clobber",
       "compat": "projen compat",
       "compile": "projen compile",
@@ -20034,6 +20547,7 @@ echo "Configured core.hooksPath to \${hooksdir}"
 }",
   "test/tsconfig.json": {
     "compilerOptions": {
+      "isolatedModules": true,
       "noEmit": true,
       "rootDir": "..",
       "stripInternal": true,
@@ -20785,8 +21299,10 @@ jobs:
           cat $GITHUB_OUTPUT
       - name: Check for new commits
         id: git_remote
+        env:
+          GITHUB_REF: \${{ github.ref }}
         run: |-
-          echo "latest_commit=$(git ls-remote origin -h \${{ github.ref }} | cut -f1)" >> $GITHUB_OUTPUT
+          echo "latest_commit=$(git ls-remote origin -h "$GITHUB_REF" | cut -f1)" >> $GITHUB_OUTPUT
           cat $GITHUB_OUTPUT
         shell: bash
       - name: Backup artifact permissions
@@ -21713,11 +22229,6 @@ tsconfig.tsbuildinfo
         "name": "typescript",
         "type": "build",
       },
-      {
-        "name": "**/downlevel-dts/**/typescript",
-        "type": "override",
-        "version": "~5.2.2",
-      },
     ],
   },
   ".projen/files.json": {
@@ -21786,21 +22297,42 @@ tsconfig.tsbuildinfo
         ],
       },
       "bump": {
-        "condition": "git log --oneline -1 | grep -qv "chore(release):"",
+        "condition": "git log --oneline -1 | grep -v "chore(release):" > /dev/null",
         "description": "Bumps version based on latest git tag and generates a changelog entry",
         "env": {
           "BUMPFILE": "dist/version.txt",
           "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
         "name": "bump",
         "steps": [
           {
-            "builtin": "release/bump-version",
+            "builtin": "release/resolve-latest-tag",
+            "outputEnv": "LATEST_TAG",
+          },
+          {
+            "condition": "git rev-parse --verify --quiet "refs/tags/$LATEST_TAG"",
+            "outputEnv": "RELEASABLE_COMMITS",
+            "spawn": "bump:releasable-commits",
+          },
+          {
+            "builtin": "release/suggest-version-bump",
+            "outputEnv": "SUGGESTED_BUMP",
+          },
+          {
+            "builtin": "release/apply-version-bump",
+          },
+        ],
+      },
+      "bump:releasable-commits": {
+        "description": "Print the releasable commits since the latest release",
+        "name": "bump:releasable-commits",
+        "steps": [
+          {
+            "exec": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           },
         ],
       },
@@ -22100,7 +22632,6 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
           "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -22119,13 +22650,30 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-compiler-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade jsii jsii-docgen jsii-pacmak jsii-rosetta typescript",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "jsii",
+              "jsii-docgen",
+              "jsii-pacmak",
+              "jsii-rosetta",
+              "typescript",
+            ],
           },
           {
             "exec": "npx projen",
@@ -22143,13 +22691,27 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-configuration",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=projen,@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade projen @cdk8s/projen-common",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "projen",
+              "@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "npx projen",
@@ -22167,13 +22729,39 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-dev-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev,prod",
+              "--filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser commit-and-tag-version constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit jsii-diff ts-jest",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "@stylistic/eslint-plugin",
+              "@types/jest",
+              "@types/node",
+              "@typescript-eslint/eslint-plugin",
+              "@typescript-eslint/parser",
+              "commit-and-tag-version",
+              "constructs",
+              "eslint-import-resolver-typescript",
+              "eslint-plugin-import",
+              "eslint",
+              "jest",
+              "jest-junit",
+              "jsii-diff",
+              "ts-jest",
+            ],
           },
           {
             "exec": "npx projen",
@@ -22605,12 +23193,10 @@ echo "Configured core.hooksPath to \${hooksdir}"
       "type": "git",
       "url": "https://github.com/cdk8s-team/root.git",
     },
-    "resolutions": {
-      "**/downlevel-dts/**/typescript": "~5.2.2",
-    },
     "scripts": {
       "build": "projen build",
       "bump": "projen bump",
+      "bump:releasable-commits": "projen bump:releasable-commits",
       "clobber": "projen clobber",
       "compat": "projen compat",
       "compile": "projen compile",
@@ -22650,6 +23236,7 @@ echo "Configured core.hooksPath to \${hooksdir}"
 }",
   "test/tsconfig.json": {
     "compilerOptions": {
+      "isolatedModules": true,
       "noEmit": true,
       "rootDir": "..",
       "stripInternal": true,
@@ -23401,8 +23988,10 @@ jobs:
           cat $GITHUB_OUTPUT
       - name: Check for new commits
         id: git_remote
+        env:
+          GITHUB_REF: \${{ github.ref }}
         run: |-
-          echo "latest_commit=$(git ls-remote origin -h \${{ github.ref }} | cut -f1)" >> $GITHUB_OUTPUT
+          echo "latest_commit=$(git ls-remote origin -h "$GITHUB_REF" | cut -f1)" >> $GITHUB_OUTPUT
           cat $GITHUB_OUTPUT
         shell: bash
       - name: Backup artifact permissions
@@ -24328,11 +24917,6 @@ tsconfig.tsbuildinfo
         "name": "typescript",
         "type": "build",
       },
-      {
-        "name": "**/downlevel-dts/**/typescript",
-        "type": "override",
-        "version": "~5.2.2",
-      },
     ],
   },
   ".projen/files.json": {
@@ -24401,21 +24985,42 @@ tsconfig.tsbuildinfo
         ],
       },
       "bump": {
-        "condition": "git log --oneline -1 | grep -qv "chore(release):"",
+        "condition": "git log --oneline -1 | grep -v "chore(release):" > /dev/null",
         "description": "Bumps version based on latest git tag and generates a changelog entry",
         "env": {
           "BUMPFILE": "dist/version.txt",
           "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
         "name": "bump",
         "steps": [
           {
-            "builtin": "release/bump-version",
+            "builtin": "release/resolve-latest-tag",
+            "outputEnv": "LATEST_TAG",
+          },
+          {
+            "condition": "git rev-parse --verify --quiet "refs/tags/$LATEST_TAG"",
+            "outputEnv": "RELEASABLE_COMMITS",
+            "spawn": "bump:releasable-commits",
+          },
+          {
+            "builtin": "release/suggest-version-bump",
+            "outputEnv": "SUGGESTED_BUMP",
+          },
+          {
+            "builtin": "release/apply-version-bump",
+          },
+        ],
+      },
+      "bump:releasable-commits": {
+        "description": "Print the releasable commits since the latest release",
+        "name": "bump:releasable-commits",
+        "steps": [
+          {
+            "exec": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           },
         ],
       },
@@ -24715,7 +25320,6 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
           "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -24734,13 +25338,30 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-compiler-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade jsii jsii-docgen jsii-pacmak jsii-rosetta typescript",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "jsii",
+              "jsii-docgen",
+              "jsii-pacmak",
+              "jsii-rosetta",
+              "typescript",
+            ],
           },
           {
             "exec": "npx projen",
@@ -24758,13 +25379,27 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-configuration",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=projen,@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade projen @cdk8s/projen-common",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "projen",
+              "@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "npx projen",
@@ -24782,13 +25417,39 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-dev-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev,prod",
+              "--filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser commit-and-tag-version constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit jsii-diff ts-jest",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "@stylistic/eslint-plugin",
+              "@types/jest",
+              "@types/node",
+              "@typescript-eslint/eslint-plugin",
+              "@typescript-eslint/parser",
+              "commit-and-tag-version",
+              "constructs",
+              "eslint-import-resolver-typescript",
+              "eslint-plugin-import",
+              "eslint",
+              "jest",
+              "jest-junit",
+              "jsii-diff",
+              "ts-jest",
+            ],
           },
           {
             "exec": "npx projen",
@@ -25217,12 +25878,10 @@ echo "Configured core.hooksPath to \${hooksdir}"
       "type": "git",
       "url": "https://github.com/cdk8s-team/cdk8s-sample.git",
     },
-    "resolutions": {
-      "**/downlevel-dts/**/typescript": "~5.2.2",
-    },
     "scripts": {
       "build": "projen build",
       "bump": "projen bump",
+      "bump:releasable-commits": "projen bump:releasable-commits",
       "clobber": "projen clobber",
       "compat": "projen compat",
       "compile": "projen compile",
@@ -25262,6 +25921,7 @@ echo "Configured core.hooksPath to \${hooksdir}"
 }",
   "test/tsconfig.json": {
     "compilerOptions": {
+      "isolatedModules": true,
       "noEmit": true,
       "rootDir": "..",
       "stripInternal": true,
@@ -26112,8 +26772,10 @@ jobs:
           cat $GITHUB_OUTPUT
       - name: Check for new commits
         id: git_remote
+        env:
+          GITHUB_REF: \${{ github.ref }}
         run: |-
-          echo "latest_commit=$(git ls-remote origin -h \${{ github.ref }} | cut -f1)" >> $GITHUB_OUTPUT
+          echo "latest_commit=$(git ls-remote origin -h "$GITHUB_REF" | cut -f1)" >> $GITHUB_OUTPUT
           cat $GITHUB_OUTPUT
         shell: bash
       - name: Backup artifact permissions
@@ -27042,11 +27704,6 @@ tsconfig.tsbuildinfo
         "name": "typescript",
         "type": "build",
       },
-      {
-        "name": "**/downlevel-dts/**/typescript",
-        "type": "override",
-        "version": "~5.2.2",
-      },
     ],
   },
   ".projen/files.json": {
@@ -27117,21 +27774,42 @@ tsconfig.tsbuildinfo
         ],
       },
       "bump": {
-        "condition": "git log --oneline -1 | grep -qv "chore(release):"",
+        "condition": "git log --oneline -1 | grep -v "chore(release):" > /dev/null",
         "description": "Bumps version based on latest git tag and generates a changelog entry",
         "env": {
           "BUMPFILE": "dist/version.txt",
           "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
         "name": "bump",
         "steps": [
           {
-            "builtin": "release/bump-version",
+            "builtin": "release/resolve-latest-tag",
+            "outputEnv": "LATEST_TAG",
+          },
+          {
+            "condition": "git rev-parse --verify --quiet "refs/tags/$LATEST_TAG"",
+            "outputEnv": "RELEASABLE_COMMITS",
+            "spawn": "bump:releasable-commits",
+          },
+          {
+            "builtin": "release/suggest-version-bump",
+            "outputEnv": "SUGGESTED_BUMP",
+          },
+          {
+            "builtin": "release/apply-version-bump",
+          },
+        ],
+      },
+      "bump:releasable-commits": {
+        "description": "Print the releasable commits since the latest release",
+        "name": "bump:releasable-commits",
+        "steps": [
+          {
+            "exec": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           },
         ],
       },
@@ -27431,7 +28109,6 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
           "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -27450,13 +28127,30 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-compiler-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade jsii jsii-docgen jsii-pacmak jsii-rosetta typescript",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "jsii",
+              "jsii-docgen",
+              "jsii-pacmak",
+              "jsii-rosetta",
+              "typescript",
+            ],
           },
           {
             "exec": "npx projen",
@@ -27474,13 +28168,27 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-configuration",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=projen,@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade projen @cdk8s/projen-common",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "projen",
+              "@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "npx projen",
@@ -27498,13 +28206,39 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-dev-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev,prod",
+              "--filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser commit-and-tag-version constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit jsii-diff ts-jest",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "@stylistic/eslint-plugin",
+              "@types/jest",
+              "@types/node",
+              "@typescript-eslint/eslint-plugin",
+              "@typescript-eslint/parser",
+              "commit-and-tag-version",
+              "constructs",
+              "eslint-import-resolver-typescript",
+              "eslint-plugin-import",
+              "eslint",
+              "jest",
+              "jest-junit",
+              "jsii-diff",
+              "ts-jest",
+            ],
           },
           {
             "exec": "npx projen",
@@ -27936,12 +28670,10 @@ echo "Configured core.hooksPath to \${hooksdir}"
       "type": "git",
       "url": "https://github.com/cdk8s-team/cdk8s.git",
     },
-    "resolutions": {
-      "**/downlevel-dts/**/typescript": "~5.2.2",
-    },
     "scripts": {
       "build": "projen build",
       "bump": "projen bump",
+      "bump:releasable-commits": "projen bump:releasable-commits",
       "clobber": "projen clobber",
       "compat": "projen compat",
       "compile": "projen compile",
@@ -27981,6 +28713,7 @@ echo "Configured core.hooksPath to \${hooksdir}"
 }",
   "test/tsconfig.json": {
     "compilerOptions": {
+      "isolatedModules": true,
       "noEmit": true,
       "rootDir": "..",
       "stripInternal": true,
@@ -28732,8 +29465,10 @@ jobs:
           cat $GITHUB_OUTPUT
       - name: Check for new commits
         id: git_remote
+        env:
+          GITHUB_REF: \${{ github.ref }}
         run: |-
-          echo "latest_commit=$(git ls-remote origin -h \${{ github.ref }} | cut -f1)" >> $GITHUB_OUTPUT
+          echo "latest_commit=$(git ls-remote origin -h "$GITHUB_REF" | cut -f1)" >> $GITHUB_OUTPUT
           cat $GITHUB_OUTPUT
         shell: bash
       - name: Backup artifact permissions
@@ -29660,11 +30395,6 @@ tsconfig.tsbuildinfo
         "name": "typescript",
         "type": "build",
       },
-      {
-        "name": "**/downlevel-dts/**/typescript",
-        "type": "override",
-        "version": "~5.2.2",
-      },
     ],
   },
   ".projen/files.json": {
@@ -29733,21 +30463,42 @@ tsconfig.tsbuildinfo
         ],
       },
       "bump": {
-        "condition": "git log --oneline -1 | grep -qv "chore(release):"",
+        "condition": "git log --oneline -1 | grep -v "chore(release):" > /dev/null",
         "description": "Bumps version based on latest git tag and generates a changelog entry",
         "env": {
           "BUMPFILE": "dist/version.txt",
           "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
         "name": "bump",
         "steps": [
           {
-            "builtin": "release/bump-version",
+            "builtin": "release/resolve-latest-tag",
+            "outputEnv": "LATEST_TAG",
+          },
+          {
+            "condition": "git rev-parse --verify --quiet "refs/tags/$LATEST_TAG"",
+            "outputEnv": "RELEASABLE_COMMITS",
+            "spawn": "bump:releasable-commits",
+          },
+          {
+            "builtin": "release/suggest-version-bump",
+            "outputEnv": "SUGGESTED_BUMP",
+          },
+          {
+            "builtin": "release/apply-version-bump",
+          },
+        ],
+      },
+      "bump:releasable-commits": {
+        "description": "Print the releasable commits since the latest release",
+        "name": "bump:releasable-commits",
+        "steps": [
+          {
+            "exec": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           },
         ],
       },
@@ -30047,7 +30798,6 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
           "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -30066,13 +30816,30 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-compiler-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=jsii,jsii-docgen,jsii-pacmak,jsii-rosetta,typescript",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade jsii jsii-docgen jsii-pacmak jsii-rosetta typescript",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "jsii",
+              "jsii-docgen",
+              "jsii-pacmak",
+              "jsii-rosetta",
+              "typescript",
+            ],
           },
           {
             "exec": "npx projen",
@@ -30090,13 +30857,27 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-configuration",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=projen,@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade projen @cdk8s/projen-common",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "projen",
+              "@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "npx projen",
@@ -30114,13 +30895,39 @@ UNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .c
         "name": "upgrade-dev-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev,prod",
+              "--filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,ts-jest",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser commit-and-tag-version constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit jsii-diff ts-jest",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "@stylistic/eslint-plugin",
+              "@types/jest",
+              "@types/node",
+              "@typescript-eslint/eslint-plugin",
+              "@typescript-eslint/parser",
+              "commit-and-tag-version",
+              "constructs",
+              "eslint-import-resolver-typescript",
+              "eslint-plugin-import",
+              "eslint",
+              "jest",
+              "jest-junit",
+              "jsii-diff",
+              "ts-jest",
+            ],
           },
           {
             "exec": "npx projen",
@@ -30552,12 +31359,10 @@ echo "Configured core.hooksPath to \${hooksdir}"
       "type": "git",
       "url": "https://github.com/cdk8s-team/root.git",
     },
-    "resolutions": {
-      "**/downlevel-dts/**/typescript": "~5.2.2",
-    },
     "scripts": {
       "build": "projen build",
       "bump": "projen bump",
+      "bump:releasable-commits": "projen bump:releasable-commits",
       "clobber": "projen clobber",
       "compat": "projen compat",
       "compile": "projen compile",
@@ -30597,6 +31402,7 @@ echo "Configured core.hooksPath to \${hooksdir}"
 }",
   "test/tsconfig.json": {
     "compilerOptions": {
+      "isolatedModules": true,
       "noEmit": true,
       "rootDir": "..",
       "stripInternal": true,

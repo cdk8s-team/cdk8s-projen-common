@@ -51,15 +51,15 @@
     "eslint-plugin-import": "^2.32.0",
     "jest": "^29",
     "jest-junit": "^17",
-    "jsii": "5.9.x",
+    "jsii": "6.0.x",
     "jsii-diff": "^1.139.0",
     "jsii-docgen": "^10.5.0",
     "jsii-pacmak": "^1.139.0",
-    "jsii-rosetta": "5.9.x",
+    "jsii-rosetta": "6.0.x",
     "projen": "^0.101.20",
     "ts-jest": "^29",
     "ts-node": "^10.9.2",
-    "typescript": "5.9.x"
+    "typescript": "6.0.x"
   },
   "peerDependencies": {
     "projen": ">=0.100.0 <1"
@@ -72,9 +72,6 @@
     "codemaker",
     "deepmerge"
   ],
-  "resolutions": {
-    "**/downlevel-dts/**/typescript": "~5.2.2"
-  },
   "main": "lib/index.js",
   "license": "Apache-2.0",
   "stability": "stable",

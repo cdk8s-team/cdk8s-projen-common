@@ -115,10 +115,6 @@ export class Cdk8sTeamJsiiProject extends cdk.JsiiProject {
       new Backport(this, { branches: options.backportBranches, repoName });
     }
 
-    // prevent upgrading the typescript version used by downlevel-dts because
-    // it depends on typescript@next - which causes daily identical releases.
-    this.package.addPackageResolutions('**/downlevel-dts/**/typescript@~5.2.2');
-
     // prevent upgrading @types/node because crypto and events broke their type definitions.
     // see https://github.com/cdk8s-team/cdk8s-projen-common/actions/runs/8672468454/job/23782820098?pr=727
     // hopefully by the time we actually need to upgrade, it will already be fixed.

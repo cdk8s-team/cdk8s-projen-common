@@ -71,12 +71,12 @@
     },
     {
       "name": "jsii-rosetta",
-      "version": "5.9.x",
+      "version": "6.0.x",
       "type": "build"
     },
     {
       "name": "jsii",
-      "version": "5.9.x",
+      "version": "6.0.x",
       "type": "build"
     },
     {
@@ -93,7 +93,7 @@
     },
     {
       "name": "typescript",
-      "version": "5.9.x",
+      "version": "6.0.x",
       "type": "build"
     },
     {
@@ -103,11 +103,6 @@
     {
       "name": "deepmerge",
       "type": "bundled"
-    },
-    {
-      "name": "**/downlevel-dts/**/typescript",
-      "version": "~5.2.2",
-      "type": "override"
     },
     {
       "name": "projen",

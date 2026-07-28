@@ -493,8 +493,10 @@ jobs:
           cat $GITHUB_OUTPUT
       - name: Check for new commits
         id: git_remote
+        env:
+          GITHUB_REF: \${{ github.ref }}
         run: |-
-          echo "latest_commit=$(git ls-remote origin -h \${{ github.ref }} | cut -f1)" >> $GITHUB_OUTPUT
+          echo "latest_commit=$(git ls-remote origin -h "$GITHUB_REF" | cut -f1)" >> $GITHUB_OUTPUT
           cat $GITHUB_OUTPUT
         shell: bash
       - name: Backup artifact permissions
@@ -1229,21 +1231,42 @@ tsconfig.tsbuildinfo
         ],
       },
       "bump": {
-        "condition": "git log --oneline -1 | grep -qv "chore(release):"",
+        "condition": "git log --oneline -1 | grep -v "chore(release):" > /dev/null",
         "description": "Bumps version based on latest git tag and generates a changelog entry",
         "env": {
           "BUMPFILE": "dist/version.txt",
           "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
         "name": "bump",
         "steps": [
           {
-            "builtin": "release/bump-version",
+            "builtin": "release/resolve-latest-tag",
+            "outputEnv": "LATEST_TAG",
+          },
+          {
+            "condition": "git rev-parse --verify --quiet "refs/tags/$LATEST_TAG"",
+            "outputEnv": "RELEASABLE_COMMITS",
+            "spawn": "bump:releasable-commits",
+          },
+          {
+            "builtin": "release/suggest-version-bump",
+            "outputEnv": "SUGGESTED_BUMP",
+          },
+          {
+            "builtin": "release/apply-version-bump",
+          },
+        ],
+      },
+      "bump:releasable-commits": {
+        "description": "Print the releasable commits since the latest release",
+        "name": "bump:releasable-commits",
+        "steps": [
+          {
+            "exec": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           },
         ],
       },
@@ -1433,7 +1456,6 @@ tsconfig.tsbuildinfo
           "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -1452,13 +1474,27 @@ tsconfig.tsbuildinfo
         "name": "upgrade-compiler-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=comp1,typescript",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=comp1,typescript",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade comp1 typescript",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "comp1",
+              "typescript",
+            ],
           },
           {
             "exec": "npx projen",
@@ -1476,13 +1512,27 @@ tsconfig.tsbuildinfo
         "name": "upgrade-configuration",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=projen,@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade projen @cdk8s/projen-common",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "projen",
+              "@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "npx projen",
@@ -1500,13 +1550,38 @@ tsconfig.tsbuildinfo
         "name": "upgrade-dev-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev,prod",
+              "--filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser commit-and-tag-version constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit ts-jest",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "@stylistic/eslint-plugin",
+              "@types/jest",
+              "@types/node",
+              "@typescript-eslint/eslint-plugin",
+              "@typescript-eslint/parser",
+              "commit-and-tag-version",
+              "constructs",
+              "eslint-import-resolver-typescript",
+              "eslint-plugin-import",
+              "eslint",
+              "jest",
+              "jest-junit",
+              "ts-jest",
+            ],
           },
           {
             "exec": "npx projen",
@@ -1914,6 +1989,7 @@ echo "Configured core.hooksPath to \${hooksdir}"
     "scripts": {
       "build": "projen build",
       "bump": "projen bump",
+      "bump:releasable-commits": "projen bump:releasable-commits",
       "clobber": "projen clobber",
       "compile": "projen compile",
       "default": "projen default",
@@ -2536,8 +2612,10 @@ jobs:
           cat $GITHUB_OUTPUT
       - name: Check for new commits
         id: git_remote
+        env:
+          GITHUB_REF: \${{ github.ref }}
         run: |-
-          echo "latest_commit=$(git ls-remote origin -h \${{ github.ref }} | cut -f1)" >> $GITHUB_OUTPUT
+          echo "latest_commit=$(git ls-remote origin -h "$GITHUB_REF" | cut -f1)" >> $GITHUB_OUTPUT
           cat $GITHUB_OUTPUT
         shell: bash
       - name: Backup artifact permissions
@@ -3277,21 +3355,42 @@ tsconfig.tsbuildinfo
         ],
       },
       "bump": {
-        "condition": "git log --oneline -1 | grep -qv "chore(release):"",
+        "condition": "git log --oneline -1 | grep -v "chore(release):" > /dev/null",
         "description": "Bumps version based on latest git tag and generates a changelog entry",
         "env": {
           "BUMPFILE": "dist/version.txt",
           "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
         "name": "bump",
         "steps": [
           {
-            "builtin": "release/bump-version",
+            "builtin": "release/resolve-latest-tag",
+            "outputEnv": "LATEST_TAG",
+          },
+          {
+            "condition": "git rev-parse --verify --quiet "refs/tags/$LATEST_TAG"",
+            "outputEnv": "RELEASABLE_COMMITS",
+            "spawn": "bump:releasable-commits",
+          },
+          {
+            "builtin": "release/suggest-version-bump",
+            "outputEnv": "SUGGESTED_BUMP",
+          },
+          {
+            "builtin": "release/apply-version-bump",
+          },
+        ],
+      },
+      "bump:releasable-commits": {
+        "description": "Print the releasable commits since the latest release",
+        "name": "bump:releasable-commits",
+        "steps": [
+          {
+            "exec": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           },
         ],
       },
@@ -3481,7 +3580,6 @@ tsconfig.tsbuildinfo
           "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -3500,13 +3598,26 @@ tsconfig.tsbuildinfo
         "name": "upgrade-compiler-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=typescript",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=typescript",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade typescript",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "typescript",
+            ],
           },
           {
             "exec": "npx projen",
@@ -3524,13 +3635,27 @@ tsconfig.tsbuildinfo
         "name": "upgrade-configuration",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=projen,@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade projen @cdk8s/projen-common",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "projen",
+              "@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "npx projen",
@@ -3548,13 +3673,38 @@ tsconfig.tsbuildinfo
         "name": "upgrade-dev-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev,prod",
+              "--filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser commit-and-tag-version constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit ts-jest",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "@stylistic/eslint-plugin",
+              "@types/jest",
+              "@types/node",
+              "@typescript-eslint/eslint-plugin",
+              "@typescript-eslint/parser",
+              "commit-and-tag-version",
+              "constructs",
+              "eslint-import-resolver-typescript",
+              "eslint-plugin-import",
+              "eslint",
+              "jest",
+              "jest-junit",
+              "ts-jest",
+            ],
           },
           {
             "exec": "npx projen",
@@ -3962,6 +4112,7 @@ echo "Configured core.hooksPath to \${hooksdir}"
     "scripts": {
       "build": "projen build",
       "bump": "projen bump",
+      "bump:releasable-commits": "projen bump:releasable-commits",
       "clobber": "projen clobber",
       "compile": "projen compile",
       "default": "projen default",
@@ -5349,13 +5500,26 @@ tsconfig.tsbuildinfo
         "name": "upgrade-compiler-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=typescript",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=typescript",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade typescript",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "typescript",
+            ],
           },
           {
             "exec": "npx projen",
@@ -5373,13 +5537,27 @@ tsconfig.tsbuildinfo
         "name": "upgrade-configuration",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=projen,@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade projen @cdk8s/projen-common",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "projen",
+              "@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "npx projen",
@@ -5397,13 +5575,37 @@ tsconfig.tsbuildinfo
         "name": "upgrade-dev-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev,prod",
+              "--filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit ts-jest",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "@stylistic/eslint-plugin",
+              "@types/jest",
+              "@types/node",
+              "@typescript-eslint/eslint-plugin",
+              "@typescript-eslint/parser",
+              "constructs",
+              "eslint-import-resolver-typescript",
+              "eslint-plugin-import",
+              "eslint",
+              "jest",
+              "jest-junit",
+              "ts-jest",
+            ],
           },
           {
             "exec": "npx projen",
@@ -7156,13 +7358,26 @@ tsconfig.tsbuildinfo
         "name": "upgrade-compiler-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=typescript",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=typescript",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade typescript",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "typescript",
+            ],
           },
           {
             "exec": "npx projen",
@@ -7180,13 +7395,27 @@ tsconfig.tsbuildinfo
         "name": "upgrade-configuration",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=projen,@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade projen @cdk8s/projen-common",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "projen",
+              "@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "npx projen",
@@ -7204,13 +7433,37 @@ tsconfig.tsbuildinfo
         "name": "upgrade-dev-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev,prod",
+              "--filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit ts-jest",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "@stylistic/eslint-plugin",
+              "@types/jest",
+              "@types/node",
+              "@typescript-eslint/eslint-plugin",
+              "@typescript-eslint/parser",
+              "constructs",
+              "eslint-import-resolver-typescript",
+              "eslint-plugin-import",
+              "eslint",
+              "jest",
+              "jest-junit",
+              "ts-jest",
+            ],
           },
           {
             "exec": "npx projen",
@@ -8960,13 +9213,26 @@ tsconfig.tsbuildinfo
         "name": "upgrade-compiler-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=typescript",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=typescript",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade typescript",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "typescript",
+            ],
           },
           {
             "exec": "npx projen",
@@ -8984,13 +9250,27 @@ tsconfig.tsbuildinfo
         "name": "upgrade-configuration",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=projen,@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade projen @cdk8s/projen-common",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "projen",
+              "@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "npx projen",
@@ -9008,13 +9288,37 @@ tsconfig.tsbuildinfo
         "name": "upgrade-dev-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev,prod",
+              "--filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit ts-jest",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "@stylistic/eslint-plugin",
+              "@types/jest",
+              "@types/node",
+              "@typescript-eslint/eslint-plugin",
+              "@typescript-eslint/parser",
+              "constructs",
+              "eslint-import-resolver-typescript",
+              "eslint-plugin-import",
+              "eslint",
+              "jest",
+              "jest-junit",
+              "ts-jest",
+            ],
           },
           {
             "exec": "npx projen",
@@ -9994,8 +10298,10 @@ jobs:
           cat $GITHUB_OUTPUT
       - name: Check for new commits
         id: git_remote
+        env:
+          GITHUB_REF: \${{ github.ref }}
         run: |-
-          echo "latest_commit=$(git ls-remote origin -h \${{ github.ref }} | cut -f1)" >> $GITHUB_OUTPUT
+          echo "latest_commit=$(git ls-remote origin -h "$GITHUB_REF" | cut -f1)" >> $GITHUB_OUTPUT
           cat $GITHUB_OUTPUT
         shell: bash
       - name: Backup artifact permissions
@@ -10730,21 +11036,42 @@ tsconfig.tsbuildinfo
         ],
       },
       "bump": {
-        "condition": "git log --oneline -1 | grep -qv "chore(release):"",
+        "condition": "git log --oneline -1 | grep -v "chore(release):" > /dev/null",
         "description": "Bumps version based on latest git tag and generates a changelog entry",
         "env": {
           "BUMPFILE": "dist/version.txt",
           "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
         "name": "bump",
         "steps": [
           {
-            "builtin": "release/bump-version",
+            "builtin": "release/resolve-latest-tag",
+            "outputEnv": "LATEST_TAG",
+          },
+          {
+            "condition": "git rev-parse --verify --quiet "refs/tags/$LATEST_TAG"",
+            "outputEnv": "RELEASABLE_COMMITS",
+            "spawn": "bump:releasable-commits",
+          },
+          {
+            "builtin": "release/suggest-version-bump",
+            "outputEnv": "SUGGESTED_BUMP",
+          },
+          {
+            "builtin": "release/apply-version-bump",
+          },
+        ],
+      },
+      "bump:releasable-commits": {
+        "description": "Print the releasable commits since the latest release",
+        "name": "bump:releasable-commits",
+        "steps": [
+          {
+            "exec": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           },
         ],
       },
@@ -10934,7 +11261,6 @@ tsconfig.tsbuildinfo
           "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -10953,13 +11279,26 @@ tsconfig.tsbuildinfo
         "name": "upgrade-compiler-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=typescript",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=typescript",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade typescript",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "typescript",
+            ],
           },
           {
             "exec": "npx projen",
@@ -10977,13 +11316,27 @@ tsconfig.tsbuildinfo
         "name": "upgrade-configuration",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=projen,@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade projen @cdk8s/projen-common",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "projen",
+              "@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "npx projen",
@@ -11001,13 +11354,38 @@ tsconfig.tsbuildinfo
         "name": "upgrade-dev-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev,prod",
+              "--filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser commit-and-tag-version constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit ts-jest",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "@stylistic/eslint-plugin",
+              "@types/jest",
+              "@types/node",
+              "@typescript-eslint/eslint-plugin",
+              "@typescript-eslint/parser",
+              "commit-and-tag-version",
+              "constructs",
+              "eslint-import-resolver-typescript",
+              "eslint-plugin-import",
+              "eslint",
+              "jest",
+              "jest-junit",
+              "ts-jest",
+            ],
           },
           {
             "exec": "npx projen",
@@ -11415,6 +11793,7 @@ echo "Configured core.hooksPath to \${hooksdir}"
     "scripts": {
       "build": "projen build",
       "bump": "projen bump",
+      "bump:releasable-commits": "projen bump:releasable-commits",
       "clobber": "projen clobber",
       "compile": "projen compile",
       "default": "projen default",
@@ -11991,8 +12370,10 @@ jobs:
           cat $GITHUB_OUTPUT
       - name: Check for new commits
         id: git_remote
+        env:
+          GITHUB_REF: \${{ github.ref }}
         run: |-
-          echo "latest_commit=$(git ls-remote origin -h \${{ github.ref }} | cut -f1)" >> $GITHUB_OUTPUT
+          echo "latest_commit=$(git ls-remote origin -h "$GITHUB_REF" | cut -f1)" >> $GITHUB_OUTPUT
           cat $GITHUB_OUTPUT
         shell: bash
       - name: Backup artifact permissions
@@ -12727,21 +13108,42 @@ tsconfig.tsbuildinfo
         ],
       },
       "bump": {
-        "condition": "git log --oneline -1 | grep -qv "chore(release):"",
+        "condition": "git log --oneline -1 | grep -v "chore(release):" > /dev/null",
         "description": "Bumps version based on latest git tag and generates a changelog entry",
         "env": {
           "BUMPFILE": "dist/version.txt",
           "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
         "name": "bump",
         "steps": [
           {
-            "builtin": "release/bump-version",
+            "builtin": "release/resolve-latest-tag",
+            "outputEnv": "LATEST_TAG",
+          },
+          {
+            "condition": "git rev-parse --verify --quiet "refs/tags/$LATEST_TAG"",
+            "outputEnv": "RELEASABLE_COMMITS",
+            "spawn": "bump:releasable-commits",
+          },
+          {
+            "builtin": "release/suggest-version-bump",
+            "outputEnv": "SUGGESTED_BUMP",
+          },
+          {
+            "builtin": "release/apply-version-bump",
+          },
+        ],
+      },
+      "bump:releasable-commits": {
+        "description": "Print the releasable commits since the latest release",
+        "name": "bump:releasable-commits",
+        "steps": [
+          {
+            "exec": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           },
         ],
       },
@@ -12931,7 +13333,6 @@ tsconfig.tsbuildinfo
           "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -12950,13 +13351,26 @@ tsconfig.tsbuildinfo
         "name": "upgrade-compiler-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=typescript",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=typescript",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade typescript",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "typescript",
+            ],
           },
           {
             "exec": "npx projen",
@@ -12974,13 +13388,27 @@ tsconfig.tsbuildinfo
         "name": "upgrade-configuration",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=projen,@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade projen @cdk8s/projen-common",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "projen",
+              "@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "npx projen",
@@ -12998,13 +13426,38 @@ tsconfig.tsbuildinfo
         "name": "upgrade-dev-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev,prod",
+              "--filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser commit-and-tag-version constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit ts-jest",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "@stylistic/eslint-plugin",
+              "@types/jest",
+              "@types/node",
+              "@typescript-eslint/eslint-plugin",
+              "@typescript-eslint/parser",
+              "commit-and-tag-version",
+              "constructs",
+              "eslint-import-resolver-typescript",
+              "eslint-plugin-import",
+              "eslint",
+              "jest",
+              "jest-junit",
+              "ts-jest",
+            ],
           },
           {
             "exec": "npx projen",
@@ -13409,6 +13862,7 @@ echo "Configured core.hooksPath to \${hooksdir}"
     "scripts": {
       "build": "projen build",
       "bump": "projen bump",
+      "bump:releasable-commits": "projen bump:releasable-commits",
       "clobber": "projen clobber",
       "compile": "projen compile",
       "default": "projen default",
@@ -13985,8 +14439,10 @@ jobs:
           cat $GITHUB_OUTPUT
       - name: Check for new commits
         id: git_remote
+        env:
+          GITHUB_REF: \${{ github.ref }}
         run: |-
-          echo "latest_commit=$(git ls-remote origin -h \${{ github.ref }} | cut -f1)" >> $GITHUB_OUTPUT
+          echo "latest_commit=$(git ls-remote origin -h "$GITHUB_REF" | cut -f1)" >> $GITHUB_OUTPUT
           cat $GITHUB_OUTPUT
         shell: bash
       - name: Backup artifact permissions
@@ -14721,21 +15177,42 @@ tsconfig.tsbuildinfo
         ],
       },
       "bump": {
-        "condition": "git log --oneline -1 | grep -qv "chore(release):"",
+        "condition": "git log --oneline -1 | grep -v "chore(release):" > /dev/null",
         "description": "Bumps version based on latest git tag and generates a changelog entry",
         "env": {
           "BUMPFILE": "dist/version.txt",
           "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
         "name": "bump",
         "steps": [
           {
-            "builtin": "release/bump-version",
+            "builtin": "release/resolve-latest-tag",
+            "outputEnv": "LATEST_TAG",
+          },
+          {
+            "condition": "git rev-parse --verify --quiet "refs/tags/$LATEST_TAG"",
+            "outputEnv": "RELEASABLE_COMMITS",
+            "spawn": "bump:releasable-commits",
+          },
+          {
+            "builtin": "release/suggest-version-bump",
+            "outputEnv": "SUGGESTED_BUMP",
+          },
+          {
+            "builtin": "release/apply-version-bump",
+          },
+        ],
+      },
+      "bump:releasable-commits": {
+        "description": "Print the releasable commits since the latest release",
+        "name": "bump:releasable-commits",
+        "steps": [
+          {
+            "exec": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           },
         ],
       },
@@ -14925,7 +15402,6 @@ tsconfig.tsbuildinfo
           "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -14944,13 +15420,26 @@ tsconfig.tsbuildinfo
         "name": "upgrade-compiler-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=typescript",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=typescript",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade typescript",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "typescript",
+            ],
           },
           {
             "exec": "npx projen",
@@ -14968,13 +15457,27 @@ tsconfig.tsbuildinfo
         "name": "upgrade-configuration",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=projen,@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade projen @cdk8s/projen-common",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "projen",
+              "@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "npx projen",
@@ -14992,13 +15495,38 @@ tsconfig.tsbuildinfo
         "name": "upgrade-dev-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev,prod",
+              "--filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser commit-and-tag-version constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit ts-jest",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "@stylistic/eslint-plugin",
+              "@types/jest",
+              "@types/node",
+              "@typescript-eslint/eslint-plugin",
+              "@typescript-eslint/parser",
+              "commit-and-tag-version",
+              "constructs",
+              "eslint-import-resolver-typescript",
+              "eslint-plugin-import",
+              "eslint",
+              "jest",
+              "jest-junit",
+              "ts-jest",
+            ],
           },
           {
             "exec": "npx projen",
@@ -15406,6 +15934,7 @@ echo "Configured core.hooksPath to \${hooksdir}"
     "scripts": {
       "build": "projen build",
       "bump": "projen bump",
+      "bump:releasable-commits": "projen bump:releasable-commits",
       "clobber": "projen clobber",
       "compile": "projen compile",
       "default": "projen default",
@@ -16081,8 +16610,10 @@ jobs:
           cat $GITHUB_OUTPUT
       - name: Check for new commits
         id: git_remote
+        env:
+          GITHUB_REF: \${{ github.ref }}
         run: |-
-          echo "latest_commit=$(git ls-remote origin -h \${{ github.ref }} | cut -f1)" >> $GITHUB_OUTPUT
+          echo "latest_commit=$(git ls-remote origin -h "$GITHUB_REF" | cut -f1)" >> $GITHUB_OUTPUT
           cat $GITHUB_OUTPUT
         shell: bash
       - name: Backup artifact permissions
@@ -16821,21 +17352,42 @@ tsconfig.tsbuildinfo
         ],
       },
       "bump": {
-        "condition": "git log --oneline -1 | grep -qv "chore(release):"",
+        "condition": "git log --oneline -1 | grep -v "chore(release):" > /dev/null",
         "description": "Bumps version based on latest git tag and generates a changelog entry",
         "env": {
           "BUMPFILE": "dist/version.txt",
           "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
         "name": "bump",
         "steps": [
           {
-            "builtin": "release/bump-version",
+            "builtin": "release/resolve-latest-tag",
+            "outputEnv": "LATEST_TAG",
+          },
+          {
+            "condition": "git rev-parse --verify --quiet "refs/tags/$LATEST_TAG"",
+            "outputEnv": "RELEASABLE_COMMITS",
+            "spawn": "bump:releasable-commits",
+          },
+          {
+            "builtin": "release/suggest-version-bump",
+            "outputEnv": "SUGGESTED_BUMP",
+          },
+          {
+            "builtin": "release/apply-version-bump",
+          },
+        ],
+      },
+      "bump:releasable-commits": {
+        "description": "Print the releasable commits since the latest release",
+        "name": "bump:releasable-commits",
+        "steps": [
+          {
+            "exec": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           },
         ],
       },
@@ -17025,7 +17577,6 @@ tsconfig.tsbuildinfo
           "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -17044,13 +17595,26 @@ tsconfig.tsbuildinfo
         "name": "upgrade-compiler-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=typescript",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=typescript",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade typescript",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "typescript",
+            ],
           },
           {
             "exec": "npx projen",
@@ -17068,13 +17632,27 @@ tsconfig.tsbuildinfo
         "name": "upgrade-configuration",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=projen,@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade projen @cdk8s/projen-common",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "projen",
+              "@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "npx projen",
@@ -17092,13 +17670,38 @@ tsconfig.tsbuildinfo
         "name": "upgrade-dev-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev,prod",
+              "--filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser commit-and-tag-version constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit ts-jest",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "@stylistic/eslint-plugin",
+              "@types/jest",
+              "@types/node",
+              "@typescript-eslint/eslint-plugin",
+              "@typescript-eslint/parser",
+              "commit-and-tag-version",
+              "constructs",
+              "eslint-import-resolver-typescript",
+              "eslint-plugin-import",
+              "eslint",
+              "jest",
+              "jest-junit",
+              "ts-jest",
+            ],
           },
           {
             "exec": "npx projen",
@@ -17506,6 +18109,7 @@ echo "Configured core.hooksPath to \${hooksdir}"
     "scripts": {
       "build": "projen build",
       "bump": "projen bump",
+      "bump:releasable-commits": "projen bump:releasable-commits",
       "clobber": "projen clobber",
       "compile": "projen compile",
       "default": "projen default",
@@ -18082,8 +18686,10 @@ jobs:
           cat $GITHUB_OUTPUT
       - name: Check for new commits
         id: git_remote
+        env:
+          GITHUB_REF: \${{ github.ref }}
         run: |-
-          echo "latest_commit=$(git ls-remote origin -h \${{ github.ref }} | cut -f1)" >> $GITHUB_OUTPUT
+          echo "latest_commit=$(git ls-remote origin -h "$GITHUB_REF" | cut -f1)" >> $GITHUB_OUTPUT
           cat $GITHUB_OUTPUT
         shell: bash
       - name: Backup artifact permissions
@@ -18818,21 +19424,42 @@ tsconfig.tsbuildinfo
         ],
       },
       "bump": {
-        "condition": "git log --oneline -1 | grep -qv "chore(release):"",
+        "condition": "git log --oneline -1 | grep -v "chore(release):" > /dev/null",
         "description": "Bumps version based on latest git tag and generates a changelog entry",
         "env": {
           "BUMPFILE": "dist/version.txt",
           "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
         "name": "bump",
         "steps": [
           {
-            "builtin": "release/bump-version",
+            "builtin": "release/resolve-latest-tag",
+            "outputEnv": "LATEST_TAG",
+          },
+          {
+            "condition": "git rev-parse --verify --quiet "refs/tags/$LATEST_TAG"",
+            "outputEnv": "RELEASABLE_COMMITS",
+            "spawn": "bump:releasable-commits",
+          },
+          {
+            "builtin": "release/suggest-version-bump",
+            "outputEnv": "SUGGESTED_BUMP",
+          },
+          {
+            "builtin": "release/apply-version-bump",
+          },
+        ],
+      },
+      "bump:releasable-commits": {
+        "description": "Print the releasable commits since the latest release",
+        "name": "bump:releasable-commits",
+        "steps": [
+          {
+            "exec": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           },
         ],
       },
@@ -19022,7 +19649,6 @@ tsconfig.tsbuildinfo
           "BUMP_PACKAGE": "commit-and-tag-version@^12",
           "CHANGELOG": "dist/changelog.md",
           "OUTFILE": "package.json",
-          "RELEASABLE_COMMITS": "git log --no-merges --oneline $LATEST_TAG..HEAD -E --grep '^(feat|fix){1}(\\([^()[:space:]]+\\))?(!)?:[[:blank:]]+.+' --grep 'chore\\(deps\\): upgrade runtime dependencies' --grep 'chore\\(deps\\): upgrade compiler dependencies'",
           "RELEASETAG": "dist/releasetag.txt",
           "RELEASE_TAG_PREFIX": "",
         },
@@ -19041,13 +19667,26 @@ tsconfig.tsbuildinfo
         "name": "upgrade-compiler-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=typescript",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=typescript",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade typescript",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "typescript",
+            ],
           },
           {
             "exec": "npx projen",
@@ -19065,13 +19704,27 @@ tsconfig.tsbuildinfo
         "name": "upgrade-configuration",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=projen,@cdk8s/projen-common",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev",
+              "--filter=projen,@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade projen @cdk8s/projen-common",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "projen",
+              "@cdk8s/projen-common",
+            ],
           },
           {
             "exec": "npx projen",
@@ -19089,13 +19742,38 @@ tsconfig.tsbuildinfo
         "name": "upgrade-dev-dependencies",
         "steps": [
           {
-            "exec": "npx npm-check-updates@20 --upgrade --target=minor --peer --no-deprecated --dep=dev --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest",
+            "execArgs": [
+              "npx",
+              "npm-check-updates@20",
+              "--upgrade",
+              "--target=minor",
+              "--peer",
+              "--no-deprecated",
+              "--dep=dev,prod",
+              "--filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest",
+            ],
           },
           {
             "exec": "yarn install --check-files",
           },
           {
-            "exec": "yarn upgrade @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser commit-and-tag-version constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit ts-jest",
+            "execArgs": [
+              "yarn",
+              "upgrade",
+              "@stylistic/eslint-plugin",
+              "@types/jest",
+              "@types/node",
+              "@typescript-eslint/eslint-plugin",
+              "@typescript-eslint/parser",
+              "commit-and-tag-version",
+              "constructs",
+              "eslint-import-resolver-typescript",
+              "eslint-plugin-import",
+              "eslint",
+              "jest",
+              "jest-junit",
+              "ts-jest",
+            ],
           },
           {
             "exec": "npx projen",
@@ -19503,6 +20181,7 @@ echo "Configured core.hooksPath to \${hooksdir}"
     "scripts": {
       "build": "projen build",
       "bump": "projen bump",
+      "bump:releasable-commits": "projen bump:releasable-commits",
       "clobber": "projen clobber",
       "compile": "projen compile",
       "default": "projen default",
