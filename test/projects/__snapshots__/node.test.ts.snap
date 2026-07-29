@@ -86,7 +86,8 @@ jobs:
       pull-requests: write
     if: contains(github.event.pull_request.labels.*.name, 'auto-approve') && (github.event.pull_request.user.login == 'cdk8s-automation')
     steps:
-      - env:
+      - id: auto_08f238e2
+        env:
           GH_TOKEN: \${{ secrets.GITHUB_TOKEN }}
           GH_REPO: \${{ github.repository }}
           PR_NUMBER: \${{ github.event.pull_request.number }}
@@ -109,7 +110,8 @@ jobs:
       pull-requests: write
       contents: write
     steps:
-      - uses: peter-evans/enable-pull-request-automerge@v3
+      - id: auto_edce8315
+        uses: peter-evans/enable-pull-request-automerge@v3
         with:
           token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
           pull-request-number: \${{ github.event.number }}
@@ -140,6 +142,7 @@ jobs:
           echo "matched=$matched" >> $GITHUB_OUTPUT
         shell: bash
       - name: Backport Action
+        id: backport_action
         if: fromJSON(steps.check_labels.outputs.matched) > 0
         uses: sqren/backport-github-action@v11.0.0
         with:
@@ -205,23 +208,28 @@ jobs:
     if: always() && needs.build.outputs.self_mutation_happened && !(github.event.pull_request.head.repo.full_name != github.repository)
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
           ref: \${{ github.event.pull_request.head.ref }}
           repository: \${{ github.event.pull_request.head.repo.full_name }}
       - name: Download patch
+        id: download_patch
         uses: actions/download-artifact@v8
         with:
           name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
+        id: apply_patch
         run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo "Empty patch. Skipping."'
       - name: Set git identity
+        id: set_git_identity
         run: |-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
       - name: Push changes
+        id: push_changes
         env:
           PULL_REQUEST_REF: \${{ github.event.pull_request.head.ref }}
         run: |-
@@ -250,7 +258,8 @@ jobs:
       pull-requests: write
     if: (github.event_name == 'pull_request' || github.event_name == 'pull_request_target')
     steps:
-      - uses: amannn/action-semantic-pull-request@v6
+      - id: auto_5940c89f
+        uses: amannn/action-semantic-pull-request@v6
         env:
           GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
         with:
@@ -291,21 +300,26 @@ jobs:
       CI: "true"
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - name: Set git identity
+        id: set_git_identity
         run: |-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
       - name: Setup Node.js
+        id: setup_node_js
         uses: actions/setup-node@v6
         with:
           node-version: lts/*
           package-manager-cache: false
       - name: Install dependencies
+        id: install_dependencies
         run: yarn install --check-files --frozen-lockfile
       - name: release
+        id: release
         run: npx projen release
       - name: Check if version has already been tagged
         id: check_tag_exists
@@ -322,6 +336,7 @@ jobs:
           cat $GITHUB_OUTPUT
         shell: bash
       - name: Backup artifact permissions
+        id: backup_artifact_permissions
         if: \${{ steps.git_remote.outputs.latest_commit == github.sha }}
         run: cd dist && getfacl -R . > permissions-backup.acl
         continue-on-error: true
@@ -347,14 +362,17 @@ jobs:
           node-version: lts/*
           package-manager-cache: false
       - name: Download build artifacts
+        id: download_build_artifacts
         uses: actions/download-artifact@v8
         with:
           artifact-ids: \${{ needs.release.outputs.artifact_id }}
           path: dist
       - name: Restore build artifact permissions
+        id: restore_build_artifact_permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
       - name: Release
+        id: release
         if: \${{ !inputs.dry_run }}
         env:
           GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
@@ -375,6 +393,7 @@ jobs:
       issues: write
     steps:
       - name: scan
+        id: scan
         uses: cdk8s-team/cdk8s-dependabot-security-alerts@main
         env:
           GITHUB_TOKEN: \${{ secrets.PROJEN_GITHUB_TOKEN }}
@@ -397,7 +416,8 @@ jobs:
       pull-requests: write
       contents: read
     steps:
-      - uses: aws-actions/stale-issue-cleanup@v6
+      - id: auto_25639be8
+        uses: aws-actions/stale-issue-cleanup@v6
         with:
           ancient-issue-message: This issue has not received any attention in 1 year and will be closed soon. If you want to keep it open, please leave a comment below @mentioning a maintainer.
           stale-issue-message: This issue has not received a response in a while and will be closed soon. If you want to keep it open, please leave a comment below @mentioning a maintainer.
@@ -434,7 +454,8 @@ jobs:
       pull-requests: write
     if: (github.repository == 'cdk8s-team/root') && (github.event.issue || (github.event.pull_request.user.login != 'cdk8s-automation' && github.event.pull_request.head.repo.full_name == github.repository))
     steps:
-      - uses: actions/add-to-project@v0.4.0
+      - id: auto_55c00d88
+        uses: actions/add-to-project@v0.4.0
         with:
           project-url: https://github.com/orgs/cdk8s-team/projects/12
           github-token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
@@ -456,17 +477,21 @@ jobs:
       patch_created: \${{ steps.create_patch.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           ref: main
       - name: Setup Node.js
+        id: setup_node_js
         uses: actions/setup-node@v6
         with:
           node-version: lts/*
           package-manager-cache: false
       - name: Install dependencies
+        id: install_dependencies
         run: yarn install --check-files --frozen-lockfile
       - name: Upgrade dependencies
+        id: upgrade_dependencies
         run: npx projen upgrade-configuration
       - name: Find mutations
         id: create_patch
@@ -476,6 +501,7 @@ jobs:
         shell: bash
         working-directory: ./
       - name: Upload patch
+        id: upload_patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v7
         with:
@@ -491,17 +517,21 @@ jobs:
     if: \${{ needs.upgrade.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           ref: main
       - name: Download patch
+        id: download_patch
         uses: actions/download-artifact@v8
         with:
           name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
+        id: apply_patch
         run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo "Empty patch. Skipping."'
       - name: Set git identity
+        id: set_git_identity
         run: |-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -552,17 +582,21 @@ jobs:
       patch_created: \${{ steps.create_patch.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           ref: main
       - name: Setup Node.js
+        id: setup_node_js
         uses: actions/setup-node@v6
         with:
           node-version: lts/*
           package-manager-cache: false
       - name: Install dependencies
+        id: install_dependencies
         run: yarn install --check-files --frozen-lockfile
       - name: Upgrade dependencies
+        id: upgrade_dependencies
         run: npx projen upgrade-dev-dependencies
       - name: Find mutations
         id: create_patch
@@ -572,6 +606,7 @@ jobs:
         shell: bash
         working-directory: ./
       - name: Upload patch
+        id: upload_patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v7
         with:
@@ -587,17 +622,21 @@ jobs:
     if: \${{ needs.upgrade.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           ref: main
       - name: Download patch
+        id: download_patch
         uses: actions/download-artifact@v8
         with:
           name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
+        id: apply_patch
         run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo "Empty patch. Skipping."'
       - name: Set git identity
+        id: set_git_identity
         run: |-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -648,17 +687,21 @@ jobs:
       patch_created: \${{ steps.create_patch.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           ref: main
       - name: Setup Node.js
+        id: setup_node_js
         uses: actions/setup-node@v6
         with:
           node-version: lts/*
           package-manager-cache: false
       - name: Install dependencies
+        id: install_dependencies
         run: yarn install --check-files --frozen-lockfile
       - name: Upgrade dependencies
+        id: upgrade_dependencies
         run: npx projen upgrade-runtime-dependencies
       - name: Find mutations
         id: create_patch
@@ -668,6 +711,7 @@ jobs:
         shell: bash
         working-directory: ./
       - name: Upload patch
+        id: upload_patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v7
         with:
@@ -683,17 +727,21 @@ jobs:
     if: \${{ needs.upgrade.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           ref: main
       - name: Download patch
+        id: download_patch
         uses: actions/download-artifact@v8
         with:
           name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
+        id: apply_patch
         run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo "Empty patch. Skipping."'
       - name: Set git identity
+        id: set_git_identity
         run: |-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -1588,7 +1636,8 @@ jobs:
       pull-requests: write
     if: (github.repository == 'cdk8s-team/root') && (github.event.issue || (github.event.pull_request.user.login != 'cdk8s-automation' && github.event.pull_request.head.repo.full_name == github.repository))
     steps:
-      - uses: actions/add-to-project@v0.4.0
+      - id: auto_55c00d88
+        uses: actions/add-to-project@v0.4.0
         with:
           project-url: https://github.com/orgs/cdk8s-team/projects/12
           github-token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
@@ -1598,7 +1647,8 @@ jobs:
       pull-requests: write
     if: (github.repository == 'cdk8s-team/root') && (github.event.pull_request && github.event.pull_request.user.login != 'cdk8s-automation')
     steps:
-      - uses: actions-ecosystem/action-add-labels@v1
+      - id: auto_53d8bdad
+        uses: actions-ecosystem/action-add-labels@v1
         with:
           labels: |-
             label1
@@ -1677,7 +1727,8 @@ jobs:
       pull-requests: write
     if: contains(github.event.pull_request.labels.*.name, 'auto-approve') && (github.event.pull_request.user.login == 'cdk8s-automation')
     steps:
-      - env:
+      - id: auto_08f238e2
+        env:
           GH_TOKEN: \${{ secrets.GITHUB_TOKEN }}
           GH_REPO: \${{ github.repository }}
           PR_NUMBER: \${{ github.event.pull_request.number }}
@@ -1700,7 +1751,8 @@ jobs:
       pull-requests: write
       contents: write
     steps:
-      - uses: peter-evans/enable-pull-request-automerge@v3
+      - id: auto_edce8315
+        uses: peter-evans/enable-pull-request-automerge@v3
         with:
           token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
           pull-request-number: \${{ github.event.number }}
@@ -1765,23 +1817,28 @@ jobs:
     if: always() && needs.build.outputs.self_mutation_happened && !(github.event.pull_request.head.repo.full_name != github.repository)
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
           ref: \${{ github.event.pull_request.head.ref }}
           repository: \${{ github.event.pull_request.head.repo.full_name }}
       - name: Download patch
+        id: download_patch
         uses: actions/download-artifact@v8
         with:
           name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
+        id: apply_patch
         run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo "Empty patch. Skipping."'
       - name: Set git identity
+        id: set_git_identity
         run: |-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
       - name: Push changes
+        id: push_changes
         env:
           PULL_REQUEST_REF: \${{ github.event.pull_request.head.ref }}
         run: |-
@@ -1810,7 +1867,8 @@ jobs:
       pull-requests: write
     if: (github.event_name == 'pull_request' || github.event_name == 'pull_request_target')
     steps:
-      - uses: amannn/action-semantic-pull-request@v6
+      - id: auto_5940c89f
+        uses: amannn/action-semantic-pull-request@v6
         env:
           GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
         with:
@@ -1836,6 +1894,7 @@ jobs:
       issues: write
     steps:
       - name: scan
+        id: scan
         uses: cdk8s-team/cdk8s-dependabot-security-alerts@main
         env:
           GITHUB_TOKEN: \${{ secrets.PROJEN_GITHUB_TOKEN }}
@@ -1858,7 +1917,8 @@ jobs:
       pull-requests: write
       contents: read
     steps:
-      - uses: aws-actions/stale-issue-cleanup@v6
+      - id: auto_25639be8
+        uses: aws-actions/stale-issue-cleanup@v6
         with:
           ancient-issue-message: This issue has not received any attention in 1 year and will be closed soon. If you want to keep it open, please leave a comment below @mentioning a maintainer.
           stale-issue-message: This issue has not received a response in a while and will be closed soon. If you want to keep it open, please leave a comment below @mentioning a maintainer.
@@ -1895,7 +1955,8 @@ jobs:
       pull-requests: write
     if: (github.repository == 'cdk8s-team/custom-repo-name') && (github.event.issue || (github.event.pull_request.user.login != 'cdk8s-automation' && github.event.pull_request.head.repo.full_name == github.repository))
     steps:
-      - uses: actions/add-to-project@v0.4.0
+      - id: auto_55c00d88
+        uses: actions/add-to-project@v0.4.0
         with:
           project-url: https://github.com/orgs/cdk8s-team/projects/12
           github-token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
@@ -1917,15 +1978,19 @@ jobs:
       patch_created: \${{ steps.create_patch.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
       - name: Setup Node.js
+        id: setup_node_js
         uses: actions/setup-node@v6
         with:
           node-version: lts/*
           package-manager-cache: false
       - name: Install dependencies
+        id: install_dependencies
         run: yarn install --check-files --frozen-lockfile
       - name: Upgrade dependencies
+        id: upgrade_dependencies
         run: npx projen upgrade-configuration
       - name: Find mutations
         id: create_patch
@@ -1935,6 +2000,7 @@ jobs:
         shell: bash
         working-directory: ./
       - name: Upload patch
+        id: upload_patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v7
         with:
@@ -1950,15 +2016,19 @@ jobs:
     if: \${{ needs.upgrade.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
       - name: Download patch
+        id: download_patch
         uses: actions/download-artifact@v8
         with:
           name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
+        id: apply_patch
         run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo "Empty patch. Skipping."'
       - name: Set git identity
+        id: set_git_identity
         run: |-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -2009,15 +2079,19 @@ jobs:
       patch_created: \${{ steps.create_patch.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
       - name: Setup Node.js
+        id: setup_node_js
         uses: actions/setup-node@v6
         with:
           node-version: lts/*
           package-manager-cache: false
       - name: Install dependencies
+        id: install_dependencies
         run: yarn install --check-files --frozen-lockfile
       - name: Upgrade dependencies
+        id: upgrade_dependencies
         run: npx projen upgrade-dev-dependencies
       - name: Find mutations
         id: create_patch
@@ -2027,6 +2101,7 @@ jobs:
         shell: bash
         working-directory: ./
       - name: Upload patch
+        id: upload_patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v7
         with:
@@ -2042,15 +2117,19 @@ jobs:
     if: \${{ needs.upgrade.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
       - name: Download patch
+        id: download_patch
         uses: actions/download-artifact@v8
         with:
           name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
+        id: apply_patch
         run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo "Empty patch. Skipping."'
       - name: Set git identity
+        id: set_git_identity
         run: |-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -2101,15 +2180,19 @@ jobs:
       patch_created: \${{ steps.create_patch.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
       - name: Setup Node.js
+        id: setup_node_js
         uses: actions/setup-node@v6
         with:
           node-version: lts/*
           package-manager-cache: false
       - name: Install dependencies
+        id: install_dependencies
         run: yarn install --check-files --frozen-lockfile
       - name: Upgrade dependencies
+        id: upgrade_dependencies
         run: npx projen upgrade-runtime-dependencies
       - name: Find mutations
         id: create_patch
@@ -2119,6 +2202,7 @@ jobs:
         shell: bash
         working-directory: ./
       - name: Upload patch
+        id: upload_patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v7
         with:
@@ -2134,15 +2218,19 @@ jobs:
     if: \${{ needs.upgrade.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
       - name: Download patch
+        id: download_patch
         uses: actions/download-artifact@v8
         with:
           name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
+        id: apply_patch
         run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo "Empty patch. Skipping."'
       - name: Set git identity
+        id: set_git_identity
         run: |-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -2985,7 +3073,8 @@ jobs:
       pull-requests: write
     if: contains(github.event.pull_request.labels.*.name, 'auto-approve') && (github.event.pull_request.user.login == 'cdk8s-automation')
     steps:
-      - env:
+      - id: auto_08f238e2
+        env:
           GH_TOKEN: \${{ secrets.GITHUB_TOKEN }}
           GH_REPO: \${{ github.repository }}
           PR_NUMBER: \${{ github.event.pull_request.number }}
@@ -3008,7 +3097,8 @@ jobs:
       pull-requests: write
       contents: write
     steps:
-      - uses: peter-evans/enable-pull-request-automerge@v3
+      - id: auto_edce8315
+        uses: peter-evans/enable-pull-request-automerge@v3
         with:
           token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
           pull-request-number: \${{ github.event.number }}
@@ -3073,23 +3163,28 @@ jobs:
     if: always() && needs.build.outputs.self_mutation_happened && !(github.event.pull_request.head.repo.full_name != github.repository)
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
           ref: \${{ github.event.pull_request.head.ref }}
           repository: \${{ github.event.pull_request.head.repo.full_name }}
       - name: Download patch
+        id: download_patch
         uses: actions/download-artifact@v8
         with:
           name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
+        id: apply_patch
         run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo "Empty patch. Skipping."'
       - name: Set git identity
+        id: set_git_identity
         run: |-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
       - name: Push changes
+        id: push_changes
         env:
           PULL_REQUEST_REF: \${{ github.event.pull_request.head.ref }}
         run: |-
@@ -3118,7 +3213,8 @@ jobs:
       pull-requests: write
     if: (github.event_name == 'pull_request' || github.event_name == 'pull_request_target')
     steps:
-      - uses: amannn/action-semantic-pull-request@v6
+      - id: auto_5940c89f
+        uses: amannn/action-semantic-pull-request@v6
         env:
           GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
         with:
@@ -3144,6 +3240,7 @@ jobs:
       issues: write
     steps:
       - name: scan
+        id: scan
         uses: cdk8s-team/cdk8s-dependabot-security-alerts@main
         env:
           GITHUB_TOKEN: \${{ secrets.PROJEN_GITHUB_TOKEN }}
@@ -3166,7 +3263,8 @@ jobs:
       pull-requests: write
       contents: read
     steps:
-      - uses: aws-actions/stale-issue-cleanup@v6
+      - id: auto_25639be8
+        uses: aws-actions/stale-issue-cleanup@v6
         with:
           ancient-issue-message: This issue has not received any attention in 1 year and will be closed soon. If you want to keep it open, please leave a comment below @mentioning a maintainer.
           stale-issue-message: This issue has not received a response in a while and will be closed soon. If you want to keep it open, please leave a comment below @mentioning a maintainer.
@@ -3203,7 +3301,8 @@ jobs:
       pull-requests: write
     if: (github.repository == 'cdk8s-team/custom-repo-name') && (github.event.issue || (github.event.pull_request.user.login != 'cdk8s-automation' && github.event.pull_request.head.repo.full_name == github.repository))
     steps:
-      - uses: actions/add-to-project@v0.4.0
+      - id: auto_55c00d88
+        uses: actions/add-to-project@v0.4.0
         with:
           project-url: https://github.com/orgs/cdk8s-team/projects/12
           github-token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
@@ -3225,15 +3324,19 @@ jobs:
       patch_created: \${{ steps.create_patch.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
       - name: Setup Node.js
+        id: setup_node_js
         uses: actions/setup-node@v6
         with:
           node-version: lts/*
           package-manager-cache: false
       - name: Install dependencies
+        id: install_dependencies
         run: yarn install --check-files --frozen-lockfile
       - name: Upgrade dependencies
+        id: upgrade_dependencies
         run: npx projen upgrade-configuration
       - name: Find mutations
         id: create_patch
@@ -3243,6 +3346,7 @@ jobs:
         shell: bash
         working-directory: ./
       - name: Upload patch
+        id: upload_patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v7
         with:
@@ -3258,15 +3362,19 @@ jobs:
     if: \${{ needs.upgrade.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
       - name: Download patch
+        id: download_patch
         uses: actions/download-artifact@v8
         with:
           name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
+        id: apply_patch
         run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo "Empty patch. Skipping."'
       - name: Set git identity
+        id: set_git_identity
         run: |-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -3317,15 +3425,19 @@ jobs:
       patch_created: \${{ steps.create_patch.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
       - name: Setup Node.js
+        id: setup_node_js
         uses: actions/setup-node@v6
         with:
           node-version: lts/*
           package-manager-cache: false
       - name: Install dependencies
+        id: install_dependencies
         run: yarn install --check-files --frozen-lockfile
       - name: Upgrade dependencies
+        id: upgrade_dependencies
         run: npx projen upgrade-dev-dependencies
       - name: Find mutations
         id: create_patch
@@ -3335,6 +3447,7 @@ jobs:
         shell: bash
         working-directory: ./
       - name: Upload patch
+        id: upload_patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v7
         with:
@@ -3350,15 +3463,19 @@ jobs:
     if: \${{ needs.upgrade.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
       - name: Download patch
+        id: download_patch
         uses: actions/download-artifact@v8
         with:
           name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
+        id: apply_patch
         run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo "Empty patch. Skipping."'
       - name: Set git identity
+        id: set_git_identity
         run: |-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -3409,15 +3526,19 @@ jobs:
       patch_created: \${{ steps.create_patch.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
       - name: Setup Node.js
+        id: setup_node_js
         uses: actions/setup-node@v6
         with:
           node-version: lts/*
           package-manager-cache: false
       - name: Install dependencies
+        id: install_dependencies
         run: yarn install --check-files --frozen-lockfile
       - name: Upgrade dependencies
+        id: upgrade_dependencies
         run: npx projen upgrade-runtime-dependencies
       - name: Find mutations
         id: create_patch
@@ -3427,6 +3548,7 @@ jobs:
         shell: bash
         working-directory: ./
       - name: Upload patch
+        id: upload_patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v7
         with:
@@ -3442,15 +3564,19 @@ jobs:
     if: \${{ needs.upgrade.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
       - name: Download patch
+        id: download_patch
         uses: actions/download-artifact@v8
         with:
           name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
+        id: apply_patch
         run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo "Empty patch. Skipping."'
       - name: Set git identity
+        id: set_git_identity
         run: |-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -4293,7 +4419,8 @@ jobs:
       pull-requests: write
     if: contains(github.event.pull_request.labels.*.name, 'auto-approve') && (github.event.pull_request.user.login == 'cdk8s-automation')
     steps:
-      - env:
+      - id: auto_08f238e2
+        env:
           GH_TOKEN: \${{ secrets.GITHUB_TOKEN }}
           GH_REPO: \${{ github.repository }}
           PR_NUMBER: \${{ github.event.pull_request.number }}
@@ -4316,7 +4443,8 @@ jobs:
       pull-requests: write
       contents: write
     steps:
-      - uses: peter-evans/enable-pull-request-automerge@v3
+      - id: auto_edce8315
+        uses: peter-evans/enable-pull-request-automerge@v3
         with:
           token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
           pull-request-number: \${{ github.event.number }}
@@ -4381,23 +4509,28 @@ jobs:
     if: always() && needs.build.outputs.self_mutation_happened && !(github.event.pull_request.head.repo.full_name != github.repository)
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
           ref: \${{ github.event.pull_request.head.ref }}
           repository: \${{ github.event.pull_request.head.repo.full_name }}
       - name: Download patch
+        id: download_patch
         uses: actions/download-artifact@v8
         with:
           name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
+        id: apply_patch
         run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo "Empty patch. Skipping."'
       - name: Set git identity
+        id: set_git_identity
         run: |-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
       - name: Push changes
+        id: push_changes
         env:
           PULL_REQUEST_REF: \${{ github.event.pull_request.head.ref }}
         run: |-
@@ -4426,7 +4559,8 @@ jobs:
       pull-requests: write
     if: (github.event_name == 'pull_request' || github.event_name == 'pull_request_target')
     steps:
-      - uses: amannn/action-semantic-pull-request@v6
+      - id: auto_5940c89f
+        uses: amannn/action-semantic-pull-request@v6
         env:
           GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
         with:
@@ -4452,6 +4586,7 @@ jobs:
       issues: write
     steps:
       - name: scan
+        id: scan
         uses: cdk8s-team/cdk8s-dependabot-security-alerts@main
         env:
           GITHUB_TOKEN: \${{ secrets.PROJEN_GITHUB_TOKEN }}
@@ -4474,7 +4609,8 @@ jobs:
       pull-requests: write
       contents: read
     steps:
-      - uses: aws-actions/stale-issue-cleanup@v6
+      - id: auto_25639be8
+        uses: aws-actions/stale-issue-cleanup@v6
         with:
           ancient-issue-message: This issue has not received any attention in 1 year and will be closed soon. If you want to keep it open, please leave a comment below @mentioning a maintainer.
           stale-issue-message: This issue has not received a response in a while and will be closed soon. If you want to keep it open, please leave a comment below @mentioning a maintainer.
@@ -4511,7 +4647,8 @@ jobs:
       pull-requests: write
     if: (github.repository == 'cdk8s-team/custom-repo-name') && (github.event.issue || (github.event.pull_request.user.login != 'cdk8s-automation' && github.event.pull_request.head.repo.full_name == github.repository))
     steps:
-      - uses: actions/add-to-project@v0.4.0
+      - id: auto_55c00d88
+        uses: actions/add-to-project@v0.4.0
         with:
           project-url: https://github.com/orgs/cdk8s-team/projects/12
           github-token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
@@ -4533,15 +4670,19 @@ jobs:
       patch_created: \${{ steps.create_patch.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
       - name: Setup Node.js
+        id: setup_node_js
         uses: actions/setup-node@v6
         with:
           node-version: lts/*
           package-manager-cache: false
       - name: Install dependencies
+        id: install_dependencies
         run: yarn install --check-files --frozen-lockfile
       - name: Upgrade dependencies
+        id: upgrade_dependencies
         run: npx projen upgrade-configuration
       - name: Find mutations
         id: create_patch
@@ -4551,6 +4692,7 @@ jobs:
         shell: bash
         working-directory: ./
       - name: Upload patch
+        id: upload_patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v7
         with:
@@ -4566,15 +4708,19 @@ jobs:
     if: \${{ needs.upgrade.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
       - name: Download patch
+        id: download_patch
         uses: actions/download-artifact@v8
         with:
           name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
+        id: apply_patch
         run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo "Empty patch. Skipping."'
       - name: Set git identity
+        id: set_git_identity
         run: |-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -4625,15 +4771,19 @@ jobs:
       patch_created: \${{ steps.create_patch.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
       - name: Setup Node.js
+        id: setup_node_js
         uses: actions/setup-node@v6
         with:
           node-version: lts/*
           package-manager-cache: false
       - name: Install dependencies
+        id: install_dependencies
         run: yarn install --check-files --frozen-lockfile
       - name: Upgrade dependencies
+        id: upgrade_dependencies
         run: npx projen upgrade-dev-dependencies
       - name: Find mutations
         id: create_patch
@@ -4643,6 +4793,7 @@ jobs:
         shell: bash
         working-directory: ./
       - name: Upload patch
+        id: upload_patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v7
         with:
@@ -4658,15 +4809,19 @@ jobs:
     if: \${{ needs.upgrade.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
       - name: Download patch
+        id: download_patch
         uses: actions/download-artifact@v8
         with:
           name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
+        id: apply_patch
         run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo "Empty patch. Skipping."'
       - name: Set git identity
+        id: set_git_identity
         run: |-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -4717,15 +4872,19 @@ jobs:
       patch_created: \${{ steps.create_patch.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
       - name: Setup Node.js
+        id: setup_node_js
         uses: actions/setup-node@v6
         with:
           node-version: lts/*
           package-manager-cache: false
       - name: Install dependencies
+        id: install_dependencies
         run: yarn install --check-files --frozen-lockfile
       - name: Upgrade dependencies
+        id: upgrade_dependencies
         run: npx projen upgrade-runtime-dependencies
       - name: Find mutations
         id: create_patch
@@ -4735,6 +4894,7 @@ jobs:
         shell: bash
         working-directory: ./
       - name: Upload patch
+        id: upload_patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v7
         with:
@@ -4750,15 +4910,19 @@ jobs:
     if: \${{ needs.upgrade.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
       - name: Download patch
+        id: download_patch
         uses: actions/download-artifact@v8
         with:
           name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
+        id: apply_patch
         run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo "Empty patch. Skipping."'
       - name: Set git identity
+        id: set_git_identity
         run: |-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -5599,7 +5763,8 @@ jobs:
       pull-requests: write
     if: contains(github.event.pull_request.labels.*.name, 'auto-approve') && (github.event.pull_request.user.login == 'cdk8s-automation')
     steps:
-      - env:
+      - id: auto_08f238e2
+        env:
           GH_TOKEN: \${{ secrets.GITHUB_TOKEN }}
           GH_REPO: \${{ github.repository }}
           PR_NUMBER: \${{ github.event.pull_request.number }}
@@ -5622,7 +5787,8 @@ jobs:
       pull-requests: write
       contents: write
     steps:
-      - uses: peter-evans/enable-pull-request-automerge@v3
+      - id: auto_edce8315
+        uses: peter-evans/enable-pull-request-automerge@v3
         with:
           token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
           pull-request-number: \${{ github.event.number }}
@@ -5687,23 +5853,28 @@ jobs:
     if: always() && needs.build.outputs.self_mutation_happened && !(github.event.pull_request.head.repo.full_name != github.repository)
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
           ref: \${{ github.event.pull_request.head.ref }}
           repository: \${{ github.event.pull_request.head.repo.full_name }}
       - name: Download patch
+        id: download_patch
         uses: actions/download-artifact@v8
         with:
           name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
+        id: apply_patch
         run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo "Empty patch. Skipping."'
       - name: Set git identity
+        id: set_git_identity
         run: |-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
       - name: Push changes
+        id: push_changes
         env:
           PULL_REQUEST_REF: \${{ github.event.pull_request.head.ref }}
         run: |-
@@ -5732,7 +5903,8 @@ jobs:
       pull-requests: write
     if: (github.event_name == 'pull_request' || github.event_name == 'pull_request_target')
     steps:
-      - uses: amannn/action-semantic-pull-request@v6
+      - id: auto_5940c89f
+        uses: amannn/action-semantic-pull-request@v6
         env:
           GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
         with:
@@ -5773,21 +5945,26 @@ jobs:
       CI: "true"
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - name: Set git identity
+        id: set_git_identity
         run: |-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
       - name: Setup Node.js
+        id: setup_node_js
         uses: actions/setup-node@v6
         with:
           node-version: lts/*
           package-manager-cache: false
       - name: Install dependencies
+        id: install_dependencies
         run: yarn install --check-files --frozen-lockfile
       - name: release
+        id: release
         run: npx projen release
       - name: Check if version has already been tagged
         id: check_tag_exists
@@ -5804,6 +5981,7 @@ jobs:
           cat $GITHUB_OUTPUT
         shell: bash
       - name: Backup artifact permissions
+        id: backup_artifact_permissions
         if: \${{ steps.git_remote.outputs.latest_commit == github.sha }}
         run: cd dist && getfacl -R . > permissions-backup.acl
         continue-on-error: true
@@ -5829,14 +6007,17 @@ jobs:
           node-version: lts/*
           package-manager-cache: false
       - name: Download build artifacts
+        id: download_build_artifacts
         uses: actions/download-artifact@v8
         with:
           artifact-ids: \${{ needs.release.outputs.artifact_id }}
           path: dist
       - name: Restore build artifact permissions
+        id: restore_build_artifact_permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
       - name: Release
+        id: release
         if: \${{ !inputs.dry_run }}
         env:
           GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
@@ -5857,6 +6038,7 @@ jobs:
       issues: write
     steps:
       - name: scan
+        id: scan
         uses: cdk8s-team/cdk8s-dependabot-security-alerts@main
         env:
           GITHUB_TOKEN: \${{ secrets.PROJEN_GITHUB_TOKEN }}
@@ -5879,7 +6061,8 @@ jobs:
       pull-requests: write
       contents: read
     steps:
-      - uses: aws-actions/stale-issue-cleanup@v6
+      - id: auto_25639be8
+        uses: aws-actions/stale-issue-cleanup@v6
         with:
           ancient-issue-message: This issue has not received any attention in 1 year and will be closed soon. If you want to keep it open, please leave a comment below @mentioning a maintainer.
           stale-issue-message: This issue has not received a response in a while and will be closed soon. If you want to keep it open, please leave a comment below @mentioning a maintainer.
@@ -5916,7 +6099,8 @@ jobs:
       pull-requests: write
     if: (github.repository == 'cdk8s-team/cdk8s-sample') && (github.event.issue || (github.event.pull_request.user.login != 'cdk8s-automation' && github.event.pull_request.head.repo.full_name == github.repository))
     steps:
-      - uses: actions/add-to-project@v0.4.0
+      - id: auto_55c00d88
+        uses: actions/add-to-project@v0.4.0
         with:
           project-url: https://github.com/orgs/cdk8s-team/projects/12
           github-token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
@@ -5938,17 +6122,21 @@ jobs:
       patch_created: \${{ steps.create_patch.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           ref: main
       - name: Setup Node.js
+        id: setup_node_js
         uses: actions/setup-node@v6
         with:
           node-version: lts/*
           package-manager-cache: false
       - name: Install dependencies
+        id: install_dependencies
         run: yarn install --check-files --frozen-lockfile
       - name: Upgrade dependencies
+        id: upgrade_dependencies
         run: npx projen upgrade-configuration
       - name: Find mutations
         id: create_patch
@@ -5958,6 +6146,7 @@ jobs:
         shell: bash
         working-directory: ./
       - name: Upload patch
+        id: upload_patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v7
         with:
@@ -5973,17 +6162,21 @@ jobs:
     if: \${{ needs.upgrade.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           ref: main
       - name: Download patch
+        id: download_patch
         uses: actions/download-artifact@v8
         with:
           name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
+        id: apply_patch
         run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo "Empty patch. Skipping."'
       - name: Set git identity
+        id: set_git_identity
         run: |-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -6034,17 +6227,21 @@ jobs:
       patch_created: \${{ steps.create_patch.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           ref: main
       - name: Setup Node.js
+        id: setup_node_js
         uses: actions/setup-node@v6
         with:
           node-version: lts/*
           package-manager-cache: false
       - name: Install dependencies
+        id: install_dependencies
         run: yarn install --check-files --frozen-lockfile
       - name: Upgrade dependencies
+        id: upgrade_dependencies
         run: npx projen upgrade-dev-dependencies
       - name: Find mutations
         id: create_patch
@@ -6054,6 +6251,7 @@ jobs:
         shell: bash
         working-directory: ./
       - name: Upload patch
+        id: upload_patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v7
         with:
@@ -6069,17 +6267,21 @@ jobs:
     if: \${{ needs.upgrade.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           ref: main
       - name: Download patch
+        id: download_patch
         uses: actions/download-artifact@v8
         with:
           name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
+        id: apply_patch
         run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo "Empty patch. Skipping."'
       - name: Set git identity
+        id: set_git_identity
         run: |-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -6130,17 +6332,21 @@ jobs:
       patch_created: \${{ steps.create_patch.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           ref: main
       - name: Setup Node.js
+        id: setup_node_js
         uses: actions/setup-node@v6
         with:
           node-version: lts/*
           package-manager-cache: false
       - name: Install dependencies
+        id: install_dependencies
         run: yarn install --check-files --frozen-lockfile
       - name: Upgrade dependencies
+        id: upgrade_dependencies
         run: npx projen upgrade-runtime-dependencies
       - name: Find mutations
         id: create_patch
@@ -6150,6 +6356,7 @@ jobs:
         shell: bash
         working-directory: ./
       - name: Upload patch
+        id: upload_patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v7
         with:
@@ -6165,17 +6372,21 @@ jobs:
     if: \${{ needs.upgrade.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           ref: main
       - name: Download patch
+        id: download_patch
         uses: actions/download-artifact@v8
         with:
           name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
+        id: apply_patch
         run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo "Empty patch. Skipping."'
       - name: Set git identity
+        id: set_git_identity
         run: |-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -7117,7 +7328,8 @@ jobs:
       pull-requests: write
     if: contains(github.event.pull_request.labels.*.name, 'auto-approve') && (github.event.pull_request.user.login == 'cdk8s-automation')
     steps:
-      - env:
+      - id: auto_08f238e2
+        env:
           GH_TOKEN: \${{ secrets.GITHUB_TOKEN }}
           GH_REPO: \${{ github.repository }}
           PR_NUMBER: \${{ github.event.pull_request.number }}
@@ -7140,7 +7352,8 @@ jobs:
       pull-requests: write
       contents: write
     steps:
-      - uses: peter-evans/enable-pull-request-automerge@v3
+      - id: auto_edce8315
+        uses: peter-evans/enable-pull-request-automerge@v3
         with:
           token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
           pull-request-number: \${{ github.event.number }}
@@ -7205,23 +7418,28 @@ jobs:
     if: always() && needs.build.outputs.self_mutation_happened && !(github.event.pull_request.head.repo.full_name != github.repository)
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
           ref: \${{ github.event.pull_request.head.ref }}
           repository: \${{ github.event.pull_request.head.repo.full_name }}
       - name: Download patch
+        id: download_patch
         uses: actions/download-artifact@v8
         with:
           name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
+        id: apply_patch
         run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo "Empty patch. Skipping."'
       - name: Set git identity
+        id: set_git_identity
         run: |-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
       - name: Push changes
+        id: push_changes
         env:
           PULL_REQUEST_REF: \${{ github.event.pull_request.head.ref }}
         run: |-
@@ -7250,7 +7468,8 @@ jobs:
       pull-requests: write
     if: (github.event_name == 'pull_request' || github.event_name == 'pull_request_target')
     steps:
-      - uses: amannn/action-semantic-pull-request@v6
+      - id: auto_5940c89f
+        uses: amannn/action-semantic-pull-request@v6
         env:
           GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
         with:
@@ -7291,21 +7510,26 @@ jobs:
       CI: "true"
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - name: Set git identity
+        id: set_git_identity
         run: |-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
       - name: Setup Node.js
+        id: setup_node_js
         uses: actions/setup-node@v6
         with:
           node-version: lts/*
           package-manager-cache: false
       - name: Install dependencies
+        id: install_dependencies
         run: yarn install --check-files --frozen-lockfile
       - name: release
+        id: release
         run: npx projen release
       - name: Check if version has already been tagged
         id: check_tag_exists
@@ -7322,6 +7546,7 @@ jobs:
           cat $GITHUB_OUTPUT
         shell: bash
       - name: Backup artifact permissions
+        id: backup_artifact_permissions
         if: \${{ steps.git_remote.outputs.latest_commit == github.sha }}
         run: cd dist && getfacl -R . > permissions-backup.acl
         continue-on-error: true
@@ -7347,14 +7572,17 @@ jobs:
           node-version: lts/*
           package-manager-cache: false
       - name: Download build artifacts
+        id: download_build_artifacts
         uses: actions/download-artifact@v8
         with:
           artifact-ids: \${{ needs.release.outputs.artifact_id }}
           path: dist
       - name: Restore build artifact permissions
+        id: restore_build_artifact_permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
       - name: Release
+        id: release
         if: \${{ !inputs.dry_run }}
         env:
           GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
@@ -7375,6 +7603,7 @@ jobs:
       issues: write
     steps:
       - name: scan
+        id: scan
         uses: cdk8s-team/cdk8s-dependabot-security-alerts@main
         env:
           GITHUB_TOKEN: \${{ secrets.PROJEN_GITHUB_TOKEN }}
@@ -7397,7 +7626,8 @@ jobs:
       pull-requests: write
       contents: read
     steps:
-      - uses: aws-actions/stale-issue-cleanup@v6
+      - id: auto_25639be8
+        uses: aws-actions/stale-issue-cleanup@v6
         with:
           ancient-issue-message: This issue has not received any attention in 1 year and will be closed soon. If you want to keep it open, please leave a comment below @mentioning a maintainer.
           stale-issue-message: This issue has not received a response in a while and will be closed soon. If you want to keep it open, please leave a comment below @mentioning a maintainer.
@@ -7434,7 +7664,8 @@ jobs:
       pull-requests: write
     if: (github.repository == 'cdk8s-team/root') && (github.event.issue || (github.event.pull_request.user.login != 'cdk8s-automation' && github.event.pull_request.head.repo.full_name == github.repository))
     steps:
-      - uses: actions/add-to-project@v0.4.0
+      - id: auto_55c00d88
+        uses: actions/add-to-project@v0.4.0
         with:
           project-url: https://github.com/orgs/cdk8s-team/projects/12
           github-token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
@@ -7456,17 +7687,21 @@ jobs:
       patch_created: \${{ steps.create_patch.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           ref: main
       - name: Setup Node.js
+        id: setup_node_js
         uses: actions/setup-node@v6
         with:
           node-version: lts/*
           package-manager-cache: false
       - name: Install dependencies
+        id: install_dependencies
         run: yarn install --check-files --frozen-lockfile
       - name: Upgrade dependencies
+        id: upgrade_dependencies
         run: npx projen upgrade-configuration
       - name: Find mutations
         id: create_patch
@@ -7476,6 +7711,7 @@ jobs:
         shell: bash
         working-directory: ./
       - name: Upload patch
+        id: upload_patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v7
         with:
@@ -7491,17 +7727,21 @@ jobs:
     if: \${{ needs.upgrade.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           ref: main
       - name: Download patch
+        id: download_patch
         uses: actions/download-artifact@v8
         with:
           name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
+        id: apply_patch
         run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo "Empty patch. Skipping."'
       - name: Set git identity
+        id: set_git_identity
         run: |-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -7552,17 +7792,21 @@ jobs:
       patch_created: \${{ steps.create_patch.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           ref: main
       - name: Setup Node.js
+        id: setup_node_js
         uses: actions/setup-node@v6
         with:
           node-version: lts/*
           package-manager-cache: false
       - name: Install dependencies
+        id: install_dependencies
         run: yarn install --check-files --frozen-lockfile
       - name: Upgrade dependencies
+        id: upgrade_dependencies
         run: npx projen upgrade-dev-dependencies
       - name: Find mutations
         id: create_patch
@@ -7572,6 +7816,7 @@ jobs:
         shell: bash
         working-directory: ./
       - name: Upload patch
+        id: upload_patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v7
         with:
@@ -7587,17 +7832,21 @@ jobs:
     if: \${{ needs.upgrade.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           ref: main
       - name: Download patch
+        id: download_patch
         uses: actions/download-artifact@v8
         with:
           name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
+        id: apply_patch
         run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo "Empty patch. Skipping."'
       - name: Set git identity
+        id: set_git_identity
         run: |-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -7648,17 +7897,21 @@ jobs:
       patch_created: \${{ steps.create_patch.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           ref: main
       - name: Setup Node.js
+        id: setup_node_js
         uses: actions/setup-node@v6
         with:
           node-version: lts/*
           package-manager-cache: false
       - name: Install dependencies
+        id: install_dependencies
         run: yarn install --check-files --frozen-lockfile
       - name: Upgrade dependencies
+        id: upgrade_dependencies
         run: npx projen upgrade-runtime-dependencies
       - name: Find mutations
         id: create_patch
@@ -7668,6 +7921,7 @@ jobs:
         shell: bash
         working-directory: ./
       - name: Upload patch
+        id: upload_patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v7
         with:
@@ -7683,17 +7937,21 @@ jobs:
     if: \${{ needs.upgrade.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           ref: main
       - name: Download patch
+        id: download_patch
         uses: actions/download-artifact@v8
         with:
           name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
+        id: apply_patch
         run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo "Empty patch. Skipping."'
       - name: Set git identity
+        id: set_git_identity
         run: |-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -8635,7 +8893,8 @@ jobs:
       pull-requests: write
     if: contains(github.event.pull_request.labels.*.name, 'auto-approve') && (github.event.pull_request.user.login == 'cdk8s-automation')
     steps:
-      - env:
+      - id: auto_08f238e2
+        env:
           GH_TOKEN: \${{ secrets.GITHUB_TOKEN }}
           GH_REPO: \${{ github.repository }}
           PR_NUMBER: \${{ github.event.pull_request.number }}
@@ -8658,7 +8917,8 @@ jobs:
       pull-requests: write
       contents: write
     steps:
-      - uses: peter-evans/enable-pull-request-automerge@v3
+      - id: auto_edce8315
+        uses: peter-evans/enable-pull-request-automerge@v3
         with:
           token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
           pull-request-number: \${{ github.event.number }}
@@ -8723,23 +8983,28 @@ jobs:
     if: always() && needs.build.outputs.self_mutation_happened && !(github.event.pull_request.head.repo.full_name != github.repository)
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
           ref: \${{ github.event.pull_request.head.ref }}
           repository: \${{ github.event.pull_request.head.repo.full_name }}
       - name: Download patch
+        id: download_patch
         uses: actions/download-artifact@v8
         with:
           name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
+        id: apply_patch
         run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo "Empty patch. Skipping."'
       - name: Set git identity
+        id: set_git_identity
         run: |-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
       - name: Push changes
+        id: push_changes
         env:
           PULL_REQUEST_REF: \${{ github.event.pull_request.head.ref }}
         run: |-
@@ -8768,7 +9033,8 @@ jobs:
       pull-requests: write
     if: (github.event_name == 'pull_request' || github.event_name == 'pull_request_target')
     steps:
-      - uses: amannn/action-semantic-pull-request@v6
+      - id: auto_5940c89f
+        uses: amannn/action-semantic-pull-request@v6
         env:
           GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
         with:
@@ -8809,21 +9075,26 @@ jobs:
       CI: "true"
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - name: Set git identity
+        id: set_git_identity
         run: |-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
       - name: Setup Node.js
+        id: setup_node_js
         uses: actions/setup-node@v6
         with:
           node-version: lts/*
           package-manager-cache: false
       - name: Install dependencies
+        id: install_dependencies
         run: yarn install --check-files --frozen-lockfile
       - name: release
+        id: release
         run: npx projen release
       - name: Check if version has already been tagged
         id: check_tag_exists
@@ -8840,6 +9111,7 @@ jobs:
           cat $GITHUB_OUTPUT
         shell: bash
       - name: Backup artifact permissions
+        id: backup_artifact_permissions
         if: \${{ steps.git_remote.outputs.latest_commit == github.sha }}
         run: cd dist && getfacl -R . > permissions-backup.acl
         continue-on-error: true
@@ -8865,14 +9137,17 @@ jobs:
           node-version: lts/*
           package-manager-cache: false
       - name: Download build artifacts
+        id: download_build_artifacts
         uses: actions/download-artifact@v8
         with:
           artifact-ids: \${{ needs.release.outputs.artifact_id }}
           path: dist
       - name: Restore build artifact permissions
+        id: restore_build_artifact_permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
       - name: Release
+        id: release
         if: \${{ !inputs.dry_run }}
         env:
           GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
@@ -8893,6 +9168,7 @@ jobs:
       issues: write
     steps:
       - name: scan
+        id: scan
         uses: cdk8s-team/cdk8s-dependabot-security-alerts@main
         env:
           GITHUB_TOKEN: \${{ secrets.PROJEN_GITHUB_TOKEN }}
@@ -8915,7 +9191,8 @@ jobs:
       pull-requests: write
       contents: read
     steps:
-      - uses: aws-actions/stale-issue-cleanup@v6
+      - id: auto_25639be8
+        uses: aws-actions/stale-issue-cleanup@v6
         with:
           ancient-issue-message: This issue has not received any attention in 1 year and will be closed soon. If you want to keep it open, please leave a comment below @mentioning a maintainer.
           stale-issue-message: This issue has not received a response in a while and will be closed soon. If you want to keep it open, please leave a comment below @mentioning a maintainer.
@@ -8952,7 +9229,8 @@ jobs:
       pull-requests: write
     if: (github.repository == 'cdk8s-team/cdk8s-sample') && (github.event.issue || (github.event.pull_request.user.login != 'cdk8s-automation' && github.event.pull_request.head.repo.full_name == github.repository))
     steps:
-      - uses: actions/add-to-project@v0.4.0
+      - id: auto_55c00d88
+        uses: actions/add-to-project@v0.4.0
         with:
           project-url: https://github.com/orgs/cdk8s-team/projects/12
           github-token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
@@ -8974,17 +9252,21 @@ jobs:
       patch_created: \${{ steps.create_patch.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           ref: main
       - name: Setup Node.js
+        id: setup_node_js
         uses: actions/setup-node@v6
         with:
           node-version: lts/*
           package-manager-cache: false
       - name: Install dependencies
+        id: install_dependencies
         run: yarn install --check-files --frozen-lockfile
       - name: Upgrade dependencies
+        id: upgrade_dependencies
         run: npx projen upgrade-configuration
       - name: Find mutations
         id: create_patch
@@ -8994,6 +9276,7 @@ jobs:
         shell: bash
         working-directory: ./
       - name: Upload patch
+        id: upload_patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v7
         with:
@@ -9009,17 +9292,21 @@ jobs:
     if: \${{ needs.upgrade.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           ref: main
       - name: Download patch
+        id: download_patch
         uses: actions/download-artifact@v8
         with:
           name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
+        id: apply_patch
         run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo "Empty patch. Skipping."'
       - name: Set git identity
+        id: set_git_identity
         run: |-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -9070,17 +9357,21 @@ jobs:
       patch_created: \${{ steps.create_patch.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           ref: main
       - name: Setup Node.js
+        id: setup_node_js
         uses: actions/setup-node@v6
         with:
           node-version: lts/*
           package-manager-cache: false
       - name: Install dependencies
+        id: install_dependencies
         run: yarn install --check-files --frozen-lockfile
       - name: Upgrade dependencies
+        id: upgrade_dependencies
         run: npx projen upgrade-dev-dependencies
       - name: Find mutations
         id: create_patch
@@ -9090,6 +9381,7 @@ jobs:
         shell: bash
         working-directory: ./
       - name: Upload patch
+        id: upload_patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v7
         with:
@@ -9105,17 +9397,21 @@ jobs:
     if: \${{ needs.upgrade.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           ref: main
       - name: Download patch
+        id: download_patch
         uses: actions/download-artifact@v8
         with:
           name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
+        id: apply_patch
         run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo "Empty patch. Skipping."'
       - name: Set git identity
+        id: set_git_identity
         run: |-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -9166,17 +9462,21 @@ jobs:
       patch_created: \${{ steps.create_patch.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           ref: main
       - name: Setup Node.js
+        id: setup_node_js
         uses: actions/setup-node@v6
         with:
           node-version: lts/*
           package-manager-cache: false
       - name: Install dependencies
+        id: install_dependencies
         run: yarn install --check-files --frozen-lockfile
       - name: Upgrade dependencies
+        id: upgrade_dependencies
         run: npx projen upgrade-runtime-dependencies
       - name: Find mutations
         id: create_patch
@@ -9186,6 +9486,7 @@ jobs:
         shell: bash
         working-directory: ./
       - name: Upload patch
+        id: upload_patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v7
         with:
@@ -9201,17 +9502,21 @@ jobs:
     if: \${{ needs.upgrade.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           ref: main
       - name: Download patch
+        id: download_patch
         uses: actions/download-artifact@v8
         with:
           name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
+        id: apply_patch
         run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo "Empty patch. Skipping."'
       - name: Set git identity
+        id: set_git_identity
         run: |-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -10249,7 +10554,8 @@ jobs:
       pull-requests: write
     if: contains(github.event.pull_request.labels.*.name, 'auto-approve') && (github.event.pull_request.user.login == 'cdk8s-automation')
     steps:
-      - env:
+      - id: auto_08f238e2
+        env:
           GH_TOKEN: \${{ secrets.GITHUB_TOKEN }}
           GH_REPO: \${{ github.repository }}
           PR_NUMBER: \${{ github.event.pull_request.number }}
@@ -10272,7 +10578,8 @@ jobs:
       pull-requests: write
       contents: write
     steps:
-      - uses: peter-evans/enable-pull-request-automerge@v3
+      - id: auto_edce8315
+        uses: peter-evans/enable-pull-request-automerge@v3
         with:
           token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
           pull-request-number: \${{ github.event.number }}
@@ -10337,23 +10644,28 @@ jobs:
     if: always() && needs.build.outputs.self_mutation_happened && !(github.event.pull_request.head.repo.full_name != github.repository)
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
           ref: \${{ github.event.pull_request.head.ref }}
           repository: \${{ github.event.pull_request.head.repo.full_name }}
       - name: Download patch
+        id: download_patch
         uses: actions/download-artifact@v8
         with:
           name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
+        id: apply_patch
         run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo "Empty patch. Skipping."'
       - name: Set git identity
+        id: set_git_identity
         run: |-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
       - name: Push changes
+        id: push_changes
         env:
           PULL_REQUEST_REF: \${{ github.event.pull_request.head.ref }}
         run: |-
@@ -10382,7 +10694,8 @@ jobs:
       pull-requests: write
     if: (github.event_name == 'pull_request' || github.event_name == 'pull_request_target')
     steps:
-      - uses: amannn/action-semantic-pull-request@v6
+      - id: auto_5940c89f
+        uses: amannn/action-semantic-pull-request@v6
         env:
           GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
         with:
@@ -10423,21 +10736,26 @@ jobs:
       CI: "true"
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - name: Set git identity
+        id: set_git_identity
         run: |-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
       - name: Setup Node.js
+        id: setup_node_js
         uses: actions/setup-node@v6
         with:
           node-version: lts/*
           package-manager-cache: false
       - name: Install dependencies
+        id: install_dependencies
         run: yarn install --check-files --frozen-lockfile
       - name: release
+        id: release
         run: npx projen release
       - name: Check if version has already been tagged
         id: check_tag_exists
@@ -10454,6 +10772,7 @@ jobs:
           cat $GITHUB_OUTPUT
         shell: bash
       - name: Backup artifact permissions
+        id: backup_artifact_permissions
         if: \${{ steps.git_remote.outputs.latest_commit == github.sha }}
         run: cd dist && getfacl -R . > permissions-backup.acl
         continue-on-error: true
@@ -10479,14 +10798,17 @@ jobs:
           node-version: lts/*
           package-manager-cache: false
       - name: Download build artifacts
+        id: download_build_artifacts
         uses: actions/download-artifact@v8
         with:
           artifact-ids: \${{ needs.release.outputs.artifact_id }}
           path: dist
       - name: Restore build artifact permissions
+        id: restore_build_artifact_permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
       - name: Release
+        id: release
         if: \${{ !inputs.dry_run }}
         env:
           GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
@@ -10507,6 +10829,7 @@ jobs:
       issues: write
     steps:
       - name: scan
+        id: scan
         uses: cdk8s-team/cdk8s-dependabot-security-alerts@main
         env:
           GITHUB_TOKEN: \${{ secrets.PROJEN_GITHUB_TOKEN }}
@@ -10529,7 +10852,8 @@ jobs:
       pull-requests: write
       contents: read
     steps:
-      - uses: aws-actions/stale-issue-cleanup@v6
+      - id: auto_25639be8
+        uses: aws-actions/stale-issue-cleanup@v6
         with:
           ancient-issue-message: This issue has not received any attention in 1 year and will be closed soon. If you want to keep it open, please leave a comment below @mentioning a maintainer.
           stale-issue-message: This issue has not received a response in a while and will be closed soon. If you want to keep it open, please leave a comment below @mentioning a maintainer.
@@ -10566,7 +10890,8 @@ jobs:
       pull-requests: write
     if: (github.repository == 'cdk8s-team/cdk8s') && (github.event.issue || (github.event.pull_request.user.login != 'cdk8s-automation' && github.event.pull_request.head.repo.full_name == github.repository))
     steps:
-      - uses: actions/add-to-project@v0.4.0
+      - id: auto_55c00d88
+        uses: actions/add-to-project@v0.4.0
         with:
           project-url: https://github.com/orgs/cdk8s-team/projects/12
           github-token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
@@ -10588,17 +10913,21 @@ jobs:
       patch_created: \${{ steps.create_patch.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           ref: main
       - name: Setup Node.js
+        id: setup_node_js
         uses: actions/setup-node@v6
         with:
           node-version: lts/*
           package-manager-cache: false
       - name: Install dependencies
+        id: install_dependencies
         run: yarn install --check-files --frozen-lockfile
       - name: Upgrade dependencies
+        id: upgrade_dependencies
         run: npx projen upgrade-configuration
       - name: Find mutations
         id: create_patch
@@ -10608,6 +10937,7 @@ jobs:
         shell: bash
         working-directory: ./
       - name: Upload patch
+        id: upload_patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v7
         with:
@@ -10623,17 +10953,21 @@ jobs:
     if: \${{ needs.upgrade.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           ref: main
       - name: Download patch
+        id: download_patch
         uses: actions/download-artifact@v8
         with:
           name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
+        id: apply_patch
         run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo "Empty patch. Skipping."'
       - name: Set git identity
+        id: set_git_identity
         run: |-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -10684,17 +11018,21 @@ jobs:
       patch_created: \${{ steps.create_patch.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           ref: main
       - name: Setup Node.js
+        id: setup_node_js
         uses: actions/setup-node@v6
         with:
           node-version: lts/*
           package-manager-cache: false
       - name: Install dependencies
+        id: install_dependencies
         run: yarn install --check-files --frozen-lockfile
       - name: Upgrade dependencies
+        id: upgrade_dependencies
         run: npx projen upgrade-dev-dependencies
       - name: Find mutations
         id: create_patch
@@ -10704,6 +11042,7 @@ jobs:
         shell: bash
         working-directory: ./
       - name: Upload patch
+        id: upload_patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v7
         with:
@@ -10719,17 +11058,21 @@ jobs:
     if: \${{ needs.upgrade.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           ref: main
       - name: Download patch
+        id: download_patch
         uses: actions/download-artifact@v8
         with:
           name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
+        id: apply_patch
         run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo "Empty patch. Skipping."'
       - name: Set git identity
+        id: set_git_identity
         run: |-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -10780,17 +11123,21 @@ jobs:
       patch_created: \${{ steps.create_patch.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           ref: main
       - name: Setup Node.js
+        id: setup_node_js
         uses: actions/setup-node@v6
         with:
           node-version: lts/*
           package-manager-cache: false
       - name: Install dependencies
+        id: install_dependencies
         run: yarn install --check-files --frozen-lockfile
       - name: Upgrade dependencies
+        id: upgrade_dependencies
         run: npx projen upgrade-runtime-dependencies
       - name: Find mutations
         id: create_patch
@@ -10800,6 +11147,7 @@ jobs:
         shell: bash
         working-directory: ./
       - name: Upload patch
+        id: upload_patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v7
         with:
@@ -10815,17 +11163,21 @@ jobs:
     if: \${{ needs.upgrade.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           ref: main
       - name: Download patch
+        id: download_patch
         uses: actions/download-artifact@v8
         with:
           name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
+        id: apply_patch
         run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo "Empty patch. Skipping."'
       - name: Set git identity
+        id: set_git_identity
         run: |-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -11771,7 +12123,8 @@ jobs:
       pull-requests: write
     if: contains(github.event.pull_request.labels.*.name, 'auto-approve') && (github.event.pull_request.user.login == 'cdk8s-automation')
     steps:
-      - env:
+      - id: auto_08f238e2
+        env:
           GH_TOKEN: \${{ secrets.GITHUB_TOKEN }}
           GH_REPO: \${{ github.repository }}
           PR_NUMBER: \${{ github.event.pull_request.number }}
@@ -11794,7 +12147,8 @@ jobs:
       pull-requests: write
       contents: write
     steps:
-      - uses: peter-evans/enable-pull-request-automerge@v3
+      - id: auto_edce8315
+        uses: peter-evans/enable-pull-request-automerge@v3
         with:
           token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
           pull-request-number: \${{ github.event.number }}
@@ -11859,23 +12213,28 @@ jobs:
     if: always() && needs.build.outputs.self_mutation_happened && !(github.event.pull_request.head.repo.full_name != github.repository)
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
           ref: \${{ github.event.pull_request.head.ref }}
           repository: \${{ github.event.pull_request.head.repo.full_name }}
       - name: Download patch
+        id: download_patch
         uses: actions/download-artifact@v8
         with:
           name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
+        id: apply_patch
         run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo "Empty patch. Skipping."'
       - name: Set git identity
+        id: set_git_identity
         run: |-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
       - name: Push changes
+        id: push_changes
         env:
           PULL_REQUEST_REF: \${{ github.event.pull_request.head.ref }}
         run: |-
@@ -11904,7 +12263,8 @@ jobs:
       pull-requests: write
     if: (github.event_name == 'pull_request' || github.event_name == 'pull_request_target')
     steps:
-      - uses: amannn/action-semantic-pull-request@v6
+      - id: auto_5940c89f
+        uses: amannn/action-semantic-pull-request@v6
         env:
           GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
         with:
@@ -11945,21 +12305,26 @@ jobs:
       CI: "true"
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - name: Set git identity
+        id: set_git_identity
         run: |-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
       - name: Setup Node.js
+        id: setup_node_js
         uses: actions/setup-node@v6
         with:
           node-version: lts/*
           package-manager-cache: false
       - name: Install dependencies
+        id: install_dependencies
         run: yarn install --check-files --frozen-lockfile
       - name: release
+        id: release
         run: npx projen release
       - name: Check if version has already been tagged
         id: check_tag_exists
@@ -11976,6 +12341,7 @@ jobs:
           cat $GITHUB_OUTPUT
         shell: bash
       - name: Backup artifact permissions
+        id: backup_artifact_permissions
         if: \${{ steps.git_remote.outputs.latest_commit == github.sha }}
         run: cd dist && getfacl -R . > permissions-backup.acl
         continue-on-error: true
@@ -12001,14 +12367,17 @@ jobs:
           node-version: lts/*
           package-manager-cache: false
       - name: Download build artifacts
+        id: download_build_artifacts
         uses: actions/download-artifact@v8
         with:
           artifact-ids: \${{ needs.release.outputs.artifact_id }}
           path: dist
       - name: Restore build artifact permissions
+        id: restore_build_artifact_permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
       - name: Release
+        id: release
         if: \${{ !inputs.dry_run }}
         env:
           GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
@@ -12029,6 +12398,7 @@ jobs:
       issues: write
     steps:
       - name: scan
+        id: scan
         uses: cdk8s-team/cdk8s-dependabot-security-alerts@main
         env:
           GITHUB_TOKEN: \${{ secrets.PROJEN_GITHUB_TOKEN }}
@@ -12051,7 +12421,8 @@ jobs:
       pull-requests: write
       contents: read
     steps:
-      - uses: aws-actions/stale-issue-cleanup@v6
+      - id: auto_25639be8
+        uses: aws-actions/stale-issue-cleanup@v6
         with:
           ancient-issue-message: This issue has not received any attention in 1 year and will be closed soon. If you want to keep it open, please leave a comment below @mentioning a maintainer.
           stale-issue-message: This issue has not received a response in a while and will be closed soon. If you want to keep it open, please leave a comment below @mentioning a maintainer.
@@ -12088,7 +12459,8 @@ jobs:
       pull-requests: write
     if: (github.repository == 'cdk8s-team/root') && (github.event.issue || (github.event.pull_request.user.login != 'cdk8s-automation' && github.event.pull_request.head.repo.full_name == github.repository))
     steps:
-      - uses: actions/add-to-project@v0.4.0
+      - id: auto_55c00d88
+        uses: actions/add-to-project@v0.4.0
         with:
           project-url: https://github.com/orgs/cdk8s-team/projects/12
           github-token: \${{ secrets.PROJEN_GITHUB_TOKEN }}
@@ -12110,17 +12482,21 @@ jobs:
       patch_created: \${{ steps.create_patch.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           ref: main
       - name: Setup Node.js
+        id: setup_node_js
         uses: actions/setup-node@v6
         with:
           node-version: lts/*
           package-manager-cache: false
       - name: Install dependencies
+        id: install_dependencies
         run: yarn install --check-files --frozen-lockfile
       - name: Upgrade dependencies
+        id: upgrade_dependencies
         run: npx projen upgrade-configuration
       - name: Find mutations
         id: create_patch
@@ -12130,6 +12506,7 @@ jobs:
         shell: bash
         working-directory: ./
       - name: Upload patch
+        id: upload_patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v7
         with:
@@ -12145,17 +12522,21 @@ jobs:
     if: \${{ needs.upgrade.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           ref: main
       - name: Download patch
+        id: download_patch
         uses: actions/download-artifact@v8
         with:
           name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
+        id: apply_patch
         run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo "Empty patch. Skipping."'
       - name: Set git identity
+        id: set_git_identity
         run: |-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -12206,17 +12587,21 @@ jobs:
       patch_created: \${{ steps.create_patch.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           ref: main
       - name: Setup Node.js
+        id: setup_node_js
         uses: actions/setup-node@v6
         with:
           node-version: lts/*
           package-manager-cache: false
       - name: Install dependencies
+        id: install_dependencies
         run: yarn install --check-files --frozen-lockfile
       - name: Upgrade dependencies
+        id: upgrade_dependencies
         run: npx projen upgrade-dev-dependencies
       - name: Find mutations
         id: create_patch
@@ -12226,6 +12611,7 @@ jobs:
         shell: bash
         working-directory: ./
       - name: Upload patch
+        id: upload_patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v7
         with:
@@ -12241,17 +12627,21 @@ jobs:
     if: \${{ needs.upgrade.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           ref: main
       - name: Download patch
+        id: download_patch
         uses: actions/download-artifact@v8
         with:
           name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
+        id: apply_patch
         run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo "Empty patch. Skipping."'
       - name: Set git identity
+        id: set_git_identity
         run: |-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -12302,17 +12692,21 @@ jobs:
       patch_created: \${{ steps.create_patch.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           ref: main
       - name: Setup Node.js
+        id: setup_node_js
         uses: actions/setup-node@v6
         with:
           node-version: lts/*
           package-manager-cache: false
       - name: Install dependencies
+        id: install_dependencies
         run: yarn install --check-files --frozen-lockfile
       - name: Upgrade dependencies
+        id: upgrade_dependencies
         run: npx projen upgrade-runtime-dependencies
       - name: Find mutations
         id: create_patch
@@ -12322,6 +12716,7 @@ jobs:
         shell: bash
         working-directory: ./
       - name: Upload patch
+        id: upload_patch
         if: steps.create_patch.outputs.patch_created
         uses: actions/upload-artifact@v7
         with:
@@ -12337,17 +12732,21 @@ jobs:
     if: \${{ needs.upgrade.outputs.patch_created }}
     steps:
       - name: Checkout
+        id: checkout
         uses: actions/checkout@v6
         with:
           ref: main
       - name: Download patch
+        id: download_patch
         uses: actions/download-artifact@v8
         with:
           name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
+        id: apply_patch
         run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo "Empty patch. Skipping."'
       - name: Set git identity
+        id: set_git_identity
         run: |-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
