@@ -178,7 +178,7 @@ test('upgrade-runtime-dependencies includes bundled', () => {
 
   const tasks = Testing.synth(project)['.projen/tasks.json'].tasks;
 
-  expect(tasks['upgrade-runtime-dependencies'].steps[2].exec).toStrictEqual('yarn upgrade bundled1');
+  expect(tasks['upgrade-runtime-dependencies'].steps[2].execArgs).toStrictEqual(['yarn', 'upgrade', 'bundled1']);
 
 });
 
