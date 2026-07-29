@@ -8,6 +8,7 @@ import { Cdk8sTeamNodeProjectOptions } from './node';
 export const defaultOptionsKeys = [
   'mergify',
   'mergeQueue',
+  'pullRequestLintOptions',
 ] as const;
 export type defaultOptionsKeysType = typeof defaultOptionsKeys[number];
 
@@ -18,5 +19,10 @@ export function buildGitHubDefaultOptions(options: Cdk8sTeamNodeProjectOptions):
   return {
     mergify: options.githubOptions?.mergify ?? false,
     mergeQueue: options.githubOptions?.mergeQueue ?? true,
+    pullRequestLintOptions: {
+      semanticTitleOptions: options.githubOptions?.pullRequestLintOptions?.semanticTitleOptions ?? {
+        types: ['feat', 'fix', 'chore', 'docs'],
+      },
+    },
   };
 }
