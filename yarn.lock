@@ -3680,9 +3680,9 @@ jsii-rosetta@6.0.x:
     yargs "^17.7.3"
 
 jsii@6.0.x, jsii@~6.0.0:
-  version "6.0.6"
-  resolved "https://registry.yarnpkg.com/jsii/-/jsii-6.0.6.tgz#13ba0e096180818a30f7d802eeed8b83d12212d5"
-  integrity sha512-U4/JuFC9N0GcXDSF9NMJfFw96EcDK8CHnfhrFIBW66d0TQtF4AW+1x67pLSgWoQTiaC8HiXhQhJh4p4O4yGIvA==
+  version "6.0.7"
+  resolved "https://registry.yarnpkg.com/jsii/-/jsii-6.0.7.tgz#fe8e7cb00b9cad117c34684e81d155c9cb427855"
+  integrity sha512-nrxb6K20iPJgXo2AexBshYDd+dNsBcoH1//30pNg4Hk1YLaSDVEAtbvrNg2XXTSi9bvcvuEarq9IEFGeHnC/5w==
   dependencies:
     "@jsii/check-node" "1.139.0"
     "@jsii/spec" "1.139.0"
@@ -3693,7 +3693,7 @@ jsii@6.0.x, jsii@~6.0.0:
     semver "^7.8.5"
     semver-intersect "^1.5.0"
     sort-json "^2.0.1"
-    spdx-license-list "^6.11.0"
+    spdx-license-list "^6.12.0"
     typescript "~6.0"
     yargs "^17.7.3"
 
@@ -4810,7 +4810,7 @@ spdx-license-ids@^3.0.0:
   resolved "https://registry.yarnpkg.com/spdx-license-ids/-/spdx-license-ids-3.0.23.tgz#b069e687b1291a32f126893ed76a27a745ee2133"
   integrity sha512-CWLcCCH7VLu13TgOH+r8p1O/Znwhqv/dbb6lqWy67G+pT1kHmeD/+V36AVb/vq8QMIQwVShJ6Ssl5FPh0fuSdw==
 
-spdx-license-list@^6.11.0:
+spdx-license-list@^6.11.0, spdx-license-list@^6.12.0:
   version "6.12.0"
   resolved "https://registry.yarnpkg.com/spdx-license-list/-/spdx-license-list-6.12.0.tgz#20b9ae77c3410ad08720bcd5cf562e9d4eeebadb"
   integrity sha512-+nUYqm3aZMSHbjsthK+i/HHI2okTElCvqwUd4k8QcSk+FTGgjq+fsdFj2wZOaX6XmR2JdWhf/NeflNnvKOjcnQ==
