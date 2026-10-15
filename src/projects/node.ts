@@ -20,6 +20,12 @@ const UPGRADE_DEV_DEPENDENCIES_SCHEDULE = '0 9 * * *';
 const UPGRADE_COMPILER_DEPENDENCIES_SCHEDULE = '0 12 * * *';
 const UPGRADE_CONFIGURATION_SCHEDULE = '0 15 * * *';
 
+// the user that opens the upgrade pull requests.
+const AUTOMATION_USER = 'cdk8s-automation';
+
+// id of the job in projen's 'auto-queue' workflow.
+const AUTO_QUEUE_JOB_ID = 'enableAutoQueue';
+
 /**
  * Subset of options that should be fixed for all cdk8s-team node projects.
  * These will not be available for customization by individual projects.
@@ -68,7 +74,7 @@ export function buildNodeProjectFixedOptions(options: Cdk8sTeamNodeProjectOption
     authorName: 'Amazon Web Services',
     repository: `https://github.com/cdk8s-team/${options.repoName ?? buildRepositoryName(options.name)}.git`,
     autoApproveOptions: {
-      allowedUsernames: ['cdk8s-automation'],
+      allowedUsernames: [AUTOMATION_USER],
       secret: 'GITHUB_TOKEN',
     },
     autoApproveUpgrades: true,
@@ -188,6 +194,7 @@ export class Cdk8sTeamNodeProject extends javascript.NodeProject {
     }
 
     limitReleaseConcurrency(this);
+    autoQueueAutomationPullRequestsOnPush(this);
   }
 }
 
@@ -316,4 +323,29 @@ export function limitReleaseConcurrency(project: Project) {
     const objectFile = project.tryFindObjectFile(releaseWorkflow.path)!;
     objectFile.patch(JsonPatch.add('/concurrency', { 'group': '${{ github.workflow }}', 'cancel-in-progress': false }));
   }
+}
+
+/**
+ * Re-enable auto-merge when cdk8s-automation pushes to its non-draft upgrade pull requests.
+ * projen only enables auto-merge when a pull request is opened, so a failed run or a merge
+ * queue removal leaves auto-merge off. To hold an upgrade pull request, convert it to a draft.
+ */
+export function autoQueueAutomationPullRequestsOnPush(project: javascript.NodeProject) {
+
+  const workflow = project.github?.tryFindWorkflow('auto-queue');
+  const job = workflow?.getJob(AUTO_QUEUE_JOB_ID);
+  if (!workflow?.file || !job) {
+    // merge queue or auto-queue is disabled for this project
+    return;
+  }
+
+  const label = (project.autoApprove?.label ?? 'auto-approve').replace(/'/g, "''");
+  const isAutomationPullRequest = `!github.event.pull_request.draft && contains(github.event.pull_request.labels.*.name, '${label}') && github.event.pull_request.user.login == '${AUTOMATION_USER}'`;
+  const condition = `github.event.action != 'synchronize' || (${isAutomationPullRequest})`;
+
+  workflow.updateJob(AUTO_QUEUE_JOB_ID, {
+    ...job,
+    if: job.if ? `(${job.if}) && (${condition})` : condition,
+  });
+  workflow.file.patch(JsonPatch.add('/on/pull_request_target/types/-', 'synchronize'));
 }
