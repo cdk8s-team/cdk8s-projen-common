@@ -89,5 +89,6 @@ export class Cdk8sTeamTypeScriptProject extends typescript.TypeScriptProject {
     }
 
     node.limitReleaseConcurrency(this);
+    node.autoQueueAutomationPullRequestsOnPush(this);
   }
 }
