@@ -122,6 +122,7 @@ export class Cdk8sTeamJsiiProject extends cdk.JsiiProject {
     this.deps.addDependency('@types/node@^18', DependencyType.BUILD);
 
     node.limitReleaseConcurrency(this);
+    node.autoQueueAutomationPullRequestsOnPush(this);
 
   }
 }
