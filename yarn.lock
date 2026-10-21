@@ -3997,10 +3997,10 @@ pretty-format@^29.0.0, pretty-format@^29.7.0:
     ansi-styles "^5.0.0"
     react-is "^18.0.0"
 
-projen@^0.104.8:
-  version "0.104.8"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.104.8.tgz#fdf0f17b97c343079abcc9e5fbc507a64188c723"
-  integrity sha512-+aP/lwF00aclH+CLMta1ikb4Vzb2jrCQlK4usDevnvpSS0r/uG+CFj08RED813u3Y++xvKJK3Kwn58ctKLq45g==
+projen@^0.104.10:
+  version "0.104.10"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.104.10.tgz#db51c895b3db88ba27d4bb9390d1b16a2e5249ee"
+  integrity sha512-N8lRjL0Jq/vG0qj1FtrRqrdDTyam5MCjAQBdqKUdZOOtdekbzt1J9QOmoYpSLIcjxuOZA0RjWQqUx9AywS4nuQ==
   dependencies:
     "@iarna/toml" "^2.2.5"
     case "^1.6.3"
