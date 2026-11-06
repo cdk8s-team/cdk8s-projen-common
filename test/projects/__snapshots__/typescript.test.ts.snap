@@ -1358,17 +1358,13 @@ tsconfig.tsbuildinfo
         "description": "hard resets to HEAD of origin and cleans the local repo",
         "env": {
           "BRANCH": "$(git branch --show-current)",
+          "HEAD_COMMIT": "$(git rev-parse --short HEAD)",
         },
         "name": "clobber",
         "steps": [
           {
-            "execArgs": [
-              "git",
-              "checkout",
-              "-b",
-              "scratch",
-            ],
-            "name": "save current HEAD in "scratch" branch",
+            "exec": "git checkout -B "scratch-$HEAD_COMMIT"",
+            "name": "save current HEAD in a "scratch-<commit>" branch",
           },
           {
             "exec": "git checkout "$BRANCH"",
@@ -1394,7 +1390,7 @@ tsconfig.tsbuildinfo
             "name": "clean all untracked files",
           },
           {
-            "say": "ready to rock! (unpushed commits are under the "scratch" branch)",
+            "say": "ready to rock! (unpushed commits are under a "scratch-<commit>" branch)",
           },
         ],
       },
@@ -3602,17 +3598,13 @@ tsconfig.tsbuildinfo
         "description": "hard resets to HEAD of origin and cleans the local repo",
         "env": {
           "BRANCH": "$(git branch --show-current)",
+          "HEAD_COMMIT": "$(git rev-parse --short HEAD)",
         },
         "name": "clobber",
         "steps": [
           {
-            "execArgs": [
-              "git",
-              "checkout",
-              "-b",
-              "scratch",
-            ],
-            "name": "save current HEAD in "scratch" branch",
+            "exec": "git checkout -B "scratch-$HEAD_COMMIT"",
+            "name": "save current HEAD in a "scratch-<commit>" branch",
           },
           {
             "exec": "git checkout "$BRANCH"",
@@ -3638,7 +3630,7 @@ tsconfig.tsbuildinfo
             "name": "clean all untracked files",
           },
           {
-            "say": "ready to rock! (unpushed commits are under the "scratch" branch)",
+            "say": "ready to rock! (unpushed commits are under a "scratch-<commit>" branch)",
           },
         ],
       },
@@ -5652,17 +5644,13 @@ tsconfig.tsbuildinfo
         "description": "hard resets to HEAD of origin and cleans the local repo",
         "env": {
           "BRANCH": "$(git branch --show-current)",
+          "HEAD_COMMIT": "$(git rev-parse --short HEAD)",
         },
         "name": "clobber",
         "steps": [
           {
-            "execArgs": [
-              "git",
-              "checkout",
-              "-b",
-              "scratch",
-            ],
-            "name": "save current HEAD in "scratch" branch",
+            "exec": "git checkout -B "scratch-$HEAD_COMMIT"",
+            "name": "save current HEAD in a "scratch-<commit>" branch",
           },
           {
             "exec": "git checkout "$BRANCH"",
@@ -5688,7 +5676,7 @@ tsconfig.tsbuildinfo
             "name": "clean all untracked files",
           },
           {
-            "say": "ready to rock! (unpushed commits are under the "scratch" branch)",
+            "say": "ready to rock! (unpushed commits are under a "scratch-<commit>" branch)",
           },
         ],
       },
@@ -7610,17 +7598,13 @@ tsconfig.tsbuildinfo
         "description": "hard resets to HEAD of origin and cleans the local repo",
         "env": {
           "BRANCH": "$(git branch --show-current)",
+          "HEAD_COMMIT": "$(git rev-parse --short HEAD)",
         },
         "name": "clobber",
         "steps": [
           {
-            "execArgs": [
-              "git",
-              "checkout",
-              "-b",
-              "scratch",
-            ],
-            "name": "save current HEAD in "scratch" branch",
+            "exec": "git checkout -B "scratch-$HEAD_COMMIT"",
+            "name": "save current HEAD in a "scratch-<commit>" branch",
           },
           {
             "exec": "git checkout "$BRANCH"",
@@ -7646,7 +7630,7 @@ tsconfig.tsbuildinfo
             "name": "clean all untracked files",
           },
           {
-            "say": "ready to rock! (unpushed commits are under the "scratch" branch)",
+            "say": "ready to rock! (unpushed commits are under a "scratch-<commit>" branch)",
           },
         ],
       },
@@ -9565,17 +9549,13 @@ tsconfig.tsbuildinfo
         "description": "hard resets to HEAD of origin and cleans the local repo",
         "env": {
           "BRANCH": "$(git branch --show-current)",
+          "HEAD_COMMIT": "$(git rev-parse --short HEAD)",
         },
         "name": "clobber",
         "steps": [
           {
-            "execArgs": [
-              "git",
-              "checkout",
-              "-b",
-              "scratch",
-            ],
-            "name": "save current HEAD in "scratch" branch",
+            "exec": "git checkout -B "scratch-$HEAD_COMMIT"",
+            "name": "save current HEAD in a "scratch-<commit>" branch",
           },
           {
             "exec": "git checkout "$BRANCH"",
@@ -9601,7 +9581,7 @@ tsconfig.tsbuildinfo
             "name": "clean all untracked files",
           },
           {
-            "say": "ready to rock! (unpushed commits are under the "scratch" branch)",
+            "say": "ready to rock! (unpushed commits are under a "scratch-<commit>" branch)",
           },
         ],
       },
@@ -11704,17 +11684,13 @@ tsconfig.tsbuildinfo
         "description": "hard resets to HEAD of origin and cleans the local repo",
         "env": {
           "BRANCH": "$(git branch --show-current)",
+          "HEAD_COMMIT": "$(git rev-parse --short HEAD)",
         },
         "name": "clobber",
         "steps": [
           {
-            "execArgs": [
-              "git",
-              "checkout",
-              "-b",
-              "scratch",
-            ],
-            "name": "save current HEAD in "scratch" branch",
+            "exec": "git checkout -B "scratch-$HEAD_COMMIT"",
+            "name": "save current HEAD in a "scratch-<commit>" branch",
           },
           {
             "exec": "git checkout "$BRANCH"",
@@ -11740,7 +11716,7 @@ tsconfig.tsbuildinfo
             "name": "clean all untracked files",
           },
           {
-            "say": "ready to rock! (unpushed commits are under the "scratch" branch)",
+            "say": "ready to rock! (unpushed commits are under a "scratch-<commit>" branch)",
           },
         ],
       },
@@ -13895,17 +13871,13 @@ tsconfig.tsbuildinfo
         "description": "hard resets to HEAD of origin and cleans the local repo",
         "env": {
           "BRANCH": "$(git branch --show-current)",
+          "HEAD_COMMIT": "$(git rev-parse --short HEAD)",
         },
         "name": "clobber",
         "steps": [
           {
-            "execArgs": [
-              "git",
-              "checkout",
-              "-b",
-              "scratch",
-            ],
-            "name": "save current HEAD in "scratch" branch",
+            "exec": "git checkout -B "scratch-$HEAD_COMMIT"",
+            "name": "save current HEAD in a "scratch-<commit>" branch",
           },
           {
             "exec": "git checkout "$BRANCH"",
@@ -13931,7 +13903,7 @@ tsconfig.tsbuildinfo
             "name": "clean all untracked files",
           },
           {
-            "say": "ready to rock! (unpushed commits are under the "scratch" branch)",
+            "say": "ready to rock! (unpushed commits are under a "scratch-<commit>" branch)",
           },
         ],
       },
@@ -16083,17 +16055,13 @@ tsconfig.tsbuildinfo
         "description": "hard resets to HEAD of origin and cleans the local repo",
         "env": {
           "BRANCH": "$(git branch --show-current)",
+          "HEAD_COMMIT": "$(git rev-parse --short HEAD)",
         },
         "name": "clobber",
         "steps": [
           {
-            "execArgs": [
-              "git",
-              "checkout",
-              "-b",
-              "scratch",
-            ],
-            "name": "save current HEAD in "scratch" branch",
+            "exec": "git checkout -B "scratch-$HEAD_COMMIT"",
+            "name": "save current HEAD in a "scratch-<commit>" branch",
           },
           {
             "exec": "git checkout "$BRANCH"",
@@ -16119,7 +16087,7 @@ tsconfig.tsbuildinfo
             "name": "clean all untracked files",
           },
           {
-            "say": "ready to rock! (unpushed commits are under the "scratch" branch)",
+            "say": "ready to rock! (unpushed commits are under a "scratch-<commit>" branch)",
           },
         ],
       },
@@ -18377,17 +18345,13 @@ tsconfig.tsbuildinfo
         "description": "hard resets to HEAD of origin and cleans the local repo",
         "env": {
           "BRANCH": "$(git branch --show-current)",
+          "HEAD_COMMIT": "$(git rev-parse --short HEAD)",
         },
         "name": "clobber",
         "steps": [
           {
-            "execArgs": [
-              "git",
-              "checkout",
-              "-b",
-              "scratch",
-            ],
-            "name": "save current HEAD in "scratch" branch",
+            "exec": "git checkout -B "scratch-$HEAD_COMMIT"",
+            "name": "save current HEAD in a "scratch-<commit>" branch",
           },
           {
             "exec": "git checkout "$BRANCH"",
@@ -18413,7 +18377,7 @@ tsconfig.tsbuildinfo
             "name": "clean all untracked files",
           },
           {
-            "say": "ready to rock! (unpushed commits are under the "scratch" branch)",
+            "say": "ready to rock! (unpushed commits are under a "scratch-<commit>" branch)",
           },
         ],
       },
@@ -20568,17 +20532,13 @@ tsconfig.tsbuildinfo
         "description": "hard resets to HEAD of origin and cleans the local repo",
         "env": {
           "BRANCH": "$(git branch --show-current)",
+          "HEAD_COMMIT": "$(git rev-parse --short HEAD)",
         },
         "name": "clobber",
         "steps": [
           {
-            "execArgs": [
-              "git",
-              "checkout",
-              "-b",
-              "scratch",
-            ],
-            "name": "save current HEAD in "scratch" branch",
+            "exec": "git checkout -B "scratch-$HEAD_COMMIT"",
+            "name": "save current HEAD in a "scratch-<commit>" branch",
           },
           {
             "exec": "git checkout "$BRANCH"",
@@ -20604,7 +20564,7 @@ tsconfig.tsbuildinfo
             "name": "clean all untracked files",
           },
           {
-            "say": "ready to rock! (unpushed commits are under the "scratch" branch)",
+            "say": "ready to rock! (unpushed commits are under a "scratch-<commit>" branch)",
           },
         ],
       },
