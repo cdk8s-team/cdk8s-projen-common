@@ -19,6 +19,8 @@ const project = new src.Cdk8sTeamJsiiProject({
   maven: false,
   nuget: false,
   golang: false,
+  // projen's bundled dax dependency is ESM-only
+  jestOptions: { jestVersion: '^30', experimentalVmModules: true },
 });
 // Do not force a node version as install requirement since this can fail upgrading
 // Consuming packages will update node versions AFTER the upgrade
