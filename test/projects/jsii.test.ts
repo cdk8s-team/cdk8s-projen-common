@@ -71,7 +71,7 @@ test('jsii project name must start with cdk8s-', () => {
       name: 'sample',
       defaultReleaseBranch: 'main',
     });
-  }).toThrowError("Illegal project name: sample. Name must start with 'cdk8s-'");
+  }).toThrow("Illegal project name: sample. Name must start with 'cdk8s-'");
 
 });
 
@@ -267,7 +267,7 @@ test('jsii project throws on invalid option', () => {
       defaultReleaseBranch: 'main',
       authorName: 'foor',
     });
-  }).toThrowError('Invalid option: authorName');
+  }).toThrow('Invalid option: authorName');
 
 });
 
