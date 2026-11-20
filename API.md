@@ -4,6 +4,8 @@
 
 ### Cdk8sTeamJsiiProject <a name="Cdk8sTeamJsiiProject" id="@cdk8s/projen-common.Cdk8sTeamJsiiProject"></a>
 
+- *Implements:* constructs.IConstruct, constructs.IDependable
+
 #### Initializers <a name="Initializers" id="@cdk8s/projen-common.Cdk8sTeamJsiiProject.Initializer"></a>
 
 ```typescript
@@ -1395,6 +1397,8 @@ public readonly DEFAULT_TS_JEST_TRANFORM_PATTERN: string;
 
 ### Cdk8sTeamNodeProject <a name="Cdk8sTeamNodeProject" id="@cdk8s/projen-common.Cdk8sTeamNodeProject"></a>
 
+- *Implements:* constructs.IConstruct, constructs.IDependable
+
 #### Initializers <a name="Initializers" id="@cdk8s/projen-common.Cdk8sTeamNodeProject.Initializer"></a>
 
 ```typescript
@@ -2641,6 +2645,8 @@ this task should synthesize the project files.
 ---
 
 ### Cdk8sTeamTypeScriptProject <a name="Cdk8sTeamTypeScriptProject" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject"></a>
+
+- *Implements:* constructs.IConstruct, constructs.IDependable
 
 #### Initializers <a name="Initializers" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.Initializer"></a>
 
@@ -4032,6 +4038,8 @@ public readonly DEFAULT_TS_JEST_TRANFORM_PATTERN: string;
 ---
 
 ### Triage <a name="Triage" id="@cdk8s/projen-common.Triage"></a>
+
+- *Implements:* constructs.IConstruct, constructs.IDependable
 
 Add a Triage workflow to our repos.
 
