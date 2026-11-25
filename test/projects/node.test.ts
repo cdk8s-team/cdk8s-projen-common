@@ -13,7 +13,20 @@ test('can configure triage pr labels', () => {
   });
 
   const snapshot = Testing.synth(project);
-  expect(snapshot['.github/workflows/triage.yml']).toMatchSnapshot();
+  const triage = YAML.parse(snapshot['.github/workflows/triage.yml']);
+  expect(Object.keys(triage.jobs)).toStrictEqual(['add-labels-to-pr']);
+  expect(triage.jobs['add-labels-to-pr'].steps[0].with.labels).toBe('label1\nlabel2');
+});
+
+test('no triage workflow without pr labels', () => {
+
+  const project = new src.Cdk8sTeamNodeProject({
+    name: 'root',
+    defaultReleaseBranch: 'main',
+  });
+
+  const snapshot = Testing.synth(project);
+  expect(snapshot['.github/workflows/triage.yml']).toBeUndefined();
 });
 
 test('auto-queue targets the default release branch', () => {
