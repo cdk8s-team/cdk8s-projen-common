@@ -1,4 +1,5 @@
-import { Testing } from 'projen';
+import { github, Testing } from 'projen';
+import * as YAML from 'yaml';
 import * as src from '../../src';
 
 test('can configure triage pr labels', () => {
@@ -13,6 +14,56 @@ test('can configure triage pr labels', () => {
 
   const snapshot = Testing.synth(project);
   expect(snapshot['.github/workflows/triage.yml']).toMatchSnapshot();
+});
+
+test('auto-queue targets the default release branch', () => {
+
+  const project = new src.Cdk8sTeamNodeProject({
+    name: 'root',
+    defaultReleaseBranch: 'release',
+  });
+
+  const snapshot = Testing.synth(project);
+  const autoQueue = YAML.parse(snapshot['.github/workflows/auto-queue.yml']);
+  expect(autoQueue.on.pull_request_target.branches).toStrictEqual(['release']);
+});
+
+test('merge queue options are merged', () => {
+
+  const project = new src.Cdk8sTeamNodeProject({
+    name: 'root',
+    defaultReleaseBranch: 'main',
+    githubOptions: {
+      mergeQueueOptions: {
+        autoQueueOptions: {
+          mergeMethod: github.MergeMethod.MERGE,
+        },
+      },
+    },
+  });
+
+  const snapshot = Testing.synth(project);
+  const autoQueue = YAML.parse(snapshot['.github/workflows/auto-queue.yml']);
+  expect(autoQueue.jobs.enableAutoQueue.steps[0].run).toBe('gh pr merge --auto --merge "$PR_NUMBER" --repo "$GH_REPO"');
+});
+
+test('merge queue target branches can be overwritten', () => {
+
+  const project = new src.Cdk8sTeamNodeProject({
+    name: 'root',
+    defaultReleaseBranch: 'main',
+    githubOptions: {
+      mergeQueueOptions: {
+        autoQueueOptions: {
+          targetBranches: ['1.x'],
+        },
+      },
+    },
+  });
+
+  const snapshot = Testing.synth(project);
+  const autoQueue = YAML.parse(snapshot['.github/workflows/auto-queue.yml']);
+  expect(autoQueue.on.pull_request_target.branches).toStrictEqual(['1.x']);
 });
 
 test('deps upgrade options are merged', () => {

@@ -59,7 +59,8 @@
     "projen": "^0.105.10",
     "ts-jest": "^29",
     "ts-node": "^10.9.2",
-    "typescript": "6.0.x"
+    "typescript": "6.0.x",
+    "yaml": "^2.9.1"
   },
   "peerDependencies": {
     "projen": ">=0.100.0 <1"

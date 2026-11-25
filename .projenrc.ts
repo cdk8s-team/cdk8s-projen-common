@@ -10,6 +10,7 @@ const project = new src.Cdk8sTeamJsiiProject({
     pinnedDevDependency: false,
   },
   deps: ['codemaker'],
+  devDeps: ['yaml'],
   bundledDeps: ['codemaker', 'deepmerge'],
   jsiiVersion: '6.0.x',
   typescriptVersion: '6.0.x',
