@@ -246,3 +246,24 @@ test('upgrade-runtime-dependencies includes bundled', () => {
 
 });
 
+
+test('sets up yarn right before installing dependencies', () => {
+
+  const project = new src.Cdk8sTeamNodeProject({
+    name: 'root',
+    defaultReleaseBranch: 'main',
+  });
+
+  const snapshot = Testing.synth(project);
+  for (const [file, job] of [['build.yml', 'build'], ['release.yml', 'release'], ['upgrade-runtime-dependencies-main.yml', 'upgrade']]) {
+    const workflow = YAML.parse(snapshot[`.github/workflows/${file}`]);
+    const steps = workflow.jobs[job].steps.map((s: any) => s.name);
+    expect(steps.indexOf('Setup yarn')).toBeGreaterThan(steps.indexOf('Setup Node.js'));
+    expect(steps.indexOf('Setup yarn')).toBe(steps.indexOf('Install dependencies') - 1);
+  }
+});
+
+test('fails to add yarn setup without an install step', () => {
+  expect(() => src.addYarnSetupBeforeInstall([{ name: 'Setup Node.js', uses: 'actions/setup-node' }]))
+    .toThrow("Unable to find an 'Install dependencies' step to place 'Setup yarn' before");
+});

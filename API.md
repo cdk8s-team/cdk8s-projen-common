@@ -495,8 +495,6 @@ Returns the set of workflow steps which should be executed to bootstrap a workfl
 
 - *Type:* projen.javascript.RenderWorkflowSetupOptions
 
-Options.
-
 ---
 
 ##### `setScript` <a name="setScript" id="@cdk8s/projen-common.Cdk8sTeamJsiiProject.setScript"></a>
@@ -1888,8 +1886,6 @@ Returns the set of workflow steps which should be executed to bootstrap a workfl
 
 - *Type:* projen.javascript.RenderWorkflowSetupOptions
 
-Options.
-
 ---
 
 ##### `setScript` <a name="setScript" id="@cdk8s/projen-common.Cdk8sTeamNodeProject.setScript"></a>
@@ -3136,8 +3132,6 @@ Returns the set of workflow steps which should be executed to bootstrap a workfl
 ###### `options`<sup>Optional</sup> <a name="options" id="@cdk8s/projen-common.Cdk8sTeamTypeScriptProject.renderWorkflowSetup.parameter.options"></a>
 
 - *Type:* projen.javascript.RenderWorkflowSetupOptions
-
-Options.
 
 ---
 
