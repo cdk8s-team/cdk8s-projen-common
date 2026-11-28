@@ -43,6 +43,9 @@ jobs:
         with:
           node-version: lts/*
           package-manager-cache: false
+      - name: Setup yarn
+        id: setup_yarn
+        run: command -v yarn >/dev/null 2>&1 || npm install -g yarn@1.22.22
       - name: Install dependencies
         id: install_dependencies
         run: yarn install --check-files --frozen-lockfile
@@ -141,6 +144,9 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           path: .repo
+      - name: Setup yarn
+        id: setup_yarn
+        run: command -v yarn >/dev/null 2>&1 || npm install -g yarn@1.22.22
       - name: Install Dependencies
         id: install_dependencies
         run: cd .repo && yarn install --check-files --frozen-lockfile

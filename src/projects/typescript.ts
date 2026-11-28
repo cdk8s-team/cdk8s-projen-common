@@ -1,5 +1,5 @@
 import * as deepmerge from 'deepmerge';
-import { typescript } from 'projen';
+import { github as gh, javascript, typescript } from 'projen';
 import * as github from './github';
 import * as node from './node';
 import { TriageOptions } from '../components';
@@ -90,5 +90,9 @@ export class Cdk8sTeamTypeScriptProject extends typescript.TypeScriptProject {
 
     node.limitReleaseConcurrency(this);
     node.autoQueueAutomationPullRequestsOnPush(this);
+  }
+
+  public renderWorkflowSetup(options?: javascript.RenderWorkflowSetupOptions): gh.workflows.JobStep[] {
+    return node.addYarnSetupBeforeInstall(super.renderWorkflowSetup(options));
   }
 }

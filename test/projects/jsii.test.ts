@@ -1,4 +1,5 @@
 import { Testing } from 'projen';
+import * as YAML from 'yaml';
 import * as src from '../../src';
 
 test('can configure triage pr labels', () => {
@@ -282,4 +283,26 @@ test('can configure backport', () => {
 
   expect(Testing.synth(project)).toMatchSnapshot();
 
+});
+
+test('sets up yarn right before installing dependencies in packaging and publishing jobs', () => {
+
+  const project = new src.Cdk8sTeamJsiiProject({
+    name: 'root',
+    defaultReleaseBranch: 'main',
+  });
+
+  const snapshot = Testing.synth(project);
+  const build = YAML.parse(snapshot['.github/workflows/build.yml']);
+  const release = YAML.parse(snapshot['.github/workflows/release.yml']);
+  const jobs = [
+    ...['js', 'java', 'python', 'dotnet', 'go'].map(l => build.jobs[`package-${l}`]),
+    ...['npm', 'maven', 'pypi', 'nuget', 'golang'].map(p => release.jobs[`release_${p}`]),
+  ];
+  for (const job of jobs) {
+    const steps = job.steps.map((s: any) => s.name);
+    expect(steps.indexOf('Setup yarn')).toBeGreaterThanOrEqual(0);
+    expect(steps.indexOf('Setup yarn')).toBe(steps.indexOf('Install Dependencies') - 1);
+    expect(steps.filter((s: string) => s === 'Setup yarn')).toHaveLength(1);
+  }
 });

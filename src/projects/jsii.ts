@@ -1,6 +1,6 @@
 import * as maker from 'codemaker';
 import * as deepmerge from 'deepmerge';
-import { DependencyType, cdk } from 'projen';
+import { Component, DependencyType, cdk, github as gh, javascript } from 'projen';
 import * as github from './github';
 import * as node from './node';
 import * as ts from './typescript';
@@ -123,7 +123,40 @@ export class Cdk8sTeamJsiiProject extends cdk.JsiiProject {
 
     node.limitReleaseConcurrency(this);
     node.autoQueueAutomationPullRequestsOnPush(this);
+    new JsiiJobsYarnSetup(this);
 
+  }
+
+  public renderWorkflowSetup(options?: javascript.RenderWorkflowSetupOptions): gh.workflows.JobStep[] {
+    return node.addYarnSetupBeforeInstall(super.renderWorkflowSetup(options));
+  }
+}
+
+/**
+ * jsii packaging and publishing jobs don't use `renderWorkflowSetup`,
+ * so add the yarn setup step to them directly. Runs at pre-synthesis
+ * because that's when projen adds the publishing jobs.
+ */
+class JsiiJobsYarnSetup extends Component {
+
+  constructor(private readonly jsiiProject: cdk.JsiiProject) {
+    super(jsiiProject);
+  }
+
+  public preSynthesize() {
+    this.addToJobs(this.jsiiProject.buildWorkflow!.workflow, /^package-(js|java|python|dotnet|go)$/);
+    if (this.jsiiProject.release) {
+      this.addToJobs(this.jsiiProject.github!.tryFindWorkflow('release')!, /^release_(npm|maven|pypi|nuget|golang)$/);
+    }
+  }
+
+  private addToJobs(workflow: gh.GithubWorkflow, jobIds: RegExp) {
+    for (const [jobId, job] of Object.entries(workflow.jobs)) {
+      if (jobIds.test(jobId)) {
+        const steps = node.addYarnSetupBeforeInstall((job as gh.workflows.Job).steps);
+        workflow.updateJob(jobId, { ...job, steps } as gh.workflows.Job);
+      }
+    }
   }
 }
 

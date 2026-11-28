@@ -1,5 +1,5 @@
 import * as deepmerge from 'deepmerge';
-import { DependencyType, JsonPatch, Project, ReleasableCommits, javascript } from 'projen';
+import { DependencyType, JsonPatch, Project, ReleasableCommits, github as gh, javascript } from 'projen';
 import * as github from './github';
 import { Backport } from '../components/backport/backport';
 import { CodeOfConductMD } from '../components/code-of-conduct/code-of-conduct';
@@ -119,6 +119,24 @@ export function buildNodeProjectDefaultOptions(options: Cdk8sTeamNodeProjectOpti
 }
 
 /**
+ * Add the yarn setup step right before dependencies are installed.
+ * Node is already set up at that point, so the step can use npm.
+ */
+export function addYarnSetupBeforeInstall(steps: gh.workflows.JobStep[]): gh.workflows.JobStep[] {
+  // projen names it 'Install dependencies' in most jobs, and 'Install Dependencies' in jsii jobs.
+  const index = steps.findIndex(s => /^install dependencies$/i.test(s.name ?? ''));
+  if (index === -1) {
+    throw new Error("Unable to find an 'Install dependencies' step to place 'Setup yarn' before");
+  }
+  // install yarn v1 on runners that don't have it (e.g CNCF runners).
+  const setupYarn: gh.workflows.JobStep = {
+    name: 'Setup yarn',
+    run: 'command -v yarn >/dev/null 2>&1 || npm install -g yarn@1.22.22',
+  };
+  return [...steps.slice(0, index), setupYarn, ...steps.slice(index)];
+}
+
+/**
  * Create the repository name based on the project name.
  */
 export function buildRepositoryName(projectName: string) {
@@ -195,6 +213,10 @@ export class Cdk8sTeamNodeProject extends javascript.NodeProject {
 
     limitReleaseConcurrency(this);
     autoQueueAutomationPullRequestsOnPush(this);
+  }
+
+  public renderWorkflowSetup(options?: javascript.RenderWorkflowSetupOptions): gh.workflows.JobStep[] {
+    return addYarnSetupBeforeInstall(super.renderWorkflowSetup(options));
   }
 }
 
